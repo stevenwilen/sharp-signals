@@ -7,6 +7,7 @@ const { capabilities } = require("./lib/env");
 const { paths, readJson, writeJson } = require("./lib/store");
 const grade = require("./lib/grade");
 const match = require("./lib/match");
+const { notify } = require("./lib/notify");
 
 const MOCK = process.argv.includes("--mock");
 
@@ -118,6 +119,33 @@ async function run() {
       console.log(`   · ${s.pick} ${(s.sourceProb * 100).toFixed(0)}% vs ${(s.marketProb * 100).toFixed(0)}% mkt  [${s.source}${s.trusted ? "" : ", untrusted"}]`);
   }
   console.log(`\nwrote ${paths.signals}`);
+
+  // ---- TELEGRAM -----------------------------------------------------------
+  // Alert on a real edge. Stay QUIET otherwise — six "no signals" pings a day
+  // would train you to ignore the one that matters. But send one daily heartbeat
+  // so silence is never ambiguous ("is it broken, or is there just nothing?").
+  if (trusted.length) {
+    const lines = trusted.map((s) =>
+      `⭐ ${s.pick}\n   ${(s.sourceProb * 100).toFixed(0)}% src vs ${(s.marketProb * 100).toFixed(0)}% market ` +
+      `(edge +${(s.edge * 100).toFixed(0)} pts)\n   ${s.source} — ROI ${s.sourceRoi}, n=${(graded[s.source] || {}).n}\n` +
+      `   ${s.market}\n   ${s.ticker}` + (s.quote ? `\n   “${s.quote.slice(0, 90)}”` : ""));
+    await notify(`🚨 SHARP SIGNAL — a trusted voice disagrees with Kalshi\n\n${lines.join("\n\n")}\n\n` +
+      `Your call. Samples are still modest — size accordingly.`).catch(() => {});
+  } else {
+    const hour = new Date().getUTCHours();
+    const force = process.env.FORCE_HEARTBEAT === "1"; // used to verify cloud->Telegram works
+    if (force || (hour >= 12 && hour < 16)) { // one heartbeat/day (the 12:00 UTC run)
+      const t = Object.values(graded).filter((g) => g.trusted)
+        .map((g) => `${g.source} (ROI ${g.roi}, n=${g.n})`).join(", ") || "none yet";
+      await notify(`✅ Sharp Signals ran — no edges right now.\n\n` +
+        `Checked ${fresh.length} fresh picks.\nTrusted sources: ${t}\n\n` +
+        `Quiet means nothing worth betting, not that it's broken.`).catch(() => {});
+    }
+  }
 }
 
-run().catch((e) => console.error("pipeline error:", e.message));
+run().catch(async (e) => {
+  console.error("pipeline error:", e.message);
+  await notify(`⚠️ Sharp Signals pipeline FAILED: ${e.message}`).catch(() => {});
+  process.exit(1);
+});
