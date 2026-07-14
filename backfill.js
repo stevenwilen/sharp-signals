@@ -61,19 +61,34 @@ const YT_ONLY = process.argv.includes("--yt-only");
     process.exit(1);
   }
   log(`  ${videos.length} prediction videos since ${SINCE_ISO.slice(0, 10)}`);
-  let vi = 0, fetched = 0, cached = 0;
-  for (const v of videos) {
-    vi++;
-    const t = await getTranscript(v.url).catch(() => ({}));
-    if (!t.text) { log(`  [${vi}/${videos.length}] no transcript: ${v.title.slice(0, 45)}`); continue; }
-    if (t.cached) cached++; else fetched++;
-    const got = await extractFromTranscript(t.text, {
-      source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url,
-    }).catch(() => []);
-    picks.push(...got);
-    log(`  [${vi}/${videos.length}]${t.cached ? " (cached)" : ""} ${got.length} picks <- ${v.source}: ${v.title.slice(0, 38)}`);
+
+  // PARALLEL. Doing this one-at-a-time was the reason the job kept hitting GitHub's timeout
+  // and getting killed before it could commit anything: each Blotato call polls until the
+  // transcript is ready, so 300 videos serially is hours. Both Blotato and Gemini are
+  // network-bound, so a modest pool of workers cuts wall-clock by ~6x with no extra credits
+  // (the same videos get fetched either way).
+  const WORKERS = 6;
+  let vi = 0, fetched = 0, cached = 0, failed = 0;
+  const queue = videos.slice();
+
+  async function worker() {
+    while (queue.length) {
+      const v = queue.shift();
+      if (!v) return;
+      const n = ++vi;
+      const t = await getTranscript(v.url).catch(() => ({}));
+      if (!t.text) { failed++; log(`  [${n}/${videos.length}] no transcript: ${v.title.slice(0, 42)}`); continue; }
+      if (t.cached) cached++; else fetched++;
+      const got = await extractFromTranscript(t.text, {
+        source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url,
+      }).catch(() => []);
+      picks.push(...got);
+      log(`  [${n}/${videos.length}]${t.cached ? " (cached)" : ""} ${got.length} picks <- ${v.source}: ${v.title.slice(0, 34)}`);
+    }
   }
-  log(`transcript picks: ${picks.length}  |  Blotato: ${fetched} fetched, ${cached} from cache (0 credits)`);
+  await Promise.all(Array.from({ length: WORKERS }, worker));
+
+  log(`transcript picks: ${picks.length}  |  Blotato: ${fetched} fetched, ${cached} cached (0 credits), ${failed} failed`);
 
   // SAFETY: if most transcripts failed (Blotato balance exhausted, API down), this run's
   // picks are a fraction of reality. Writing them would silently gut every track record

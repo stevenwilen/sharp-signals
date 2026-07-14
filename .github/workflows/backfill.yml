@@ -23,7 +23,10 @@ concurrency:
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # The first cold-cache backfill fetches ~300 transcripts. At 90 min it was being killed
+    # mid-run by GitHub, so no results were ever committed. 6h is GitHub's hosted-runner max.
+    # Later runs are far quicker because transcripts are cached in the repo.
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
 
