@@ -36,8 +36,9 @@ jobs:
           BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          # set to "1" to force a Telegram heartbeat on every run (used to verify wiring)
-          FORCE_HEARTBEAT: "1"
+          # FORCE_HEARTBEAT=1 would ping on EVERY run (6x/day). Left off on purpose:
+          # alert fatigue is how you end up ignoring the one message that matters.
+          # Signals always alert; "nothing to report" pings once a day (12:00 UTC run).
         run: node pipeline.js
 
       # Persist results + the transcript cache so the next run doesn't re-fetch
