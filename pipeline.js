@@ -124,22 +124,32 @@ async function run() {
   // Alert on a real edge. Stay QUIET otherwise — six "no signals" pings a day
   // would train you to ignore the one that matters. But send one daily heartbeat
   // so silence is never ambiguous ("is it broken, or is there just nothing?").
+  // Kept deliberately plain: cents, not percentages. A Kalshi contract costs X cents
+  // and pays $1 if you're right, so "costs 32c, worth 52c" needs no betting knowledge.
   if (trusted.length) {
-    const lines = trusted.map((s) =>
-      `⭐ ${s.pick}\n   ${(s.sourceProb * 100).toFixed(0)}% src vs ${(s.marketProb * 100).toFixed(0)}% market ` +
-      `(edge +${(s.edge * 100).toFixed(0)} pts)\n   ${s.source} — ROI ${s.sourceRoi}, n=${(graded[s.source] || {}).n}\n` +
-      `   ${s.market}\n   ${s.ticker}` + (s.quote ? `\n   “${s.quote.slice(0, 90)}”` : ""));
-    await notify(`🚨 SHARP SIGNAL — a trusted voice disagrees with Kalshi\n\n${lines.join("\n\n")}\n\n` +
-      `Your call. Samples are still modest — size accordingly.`).catch(() => {});
+    const c = (v) => Math.round(v * 100); // probability -> cents
+    const lines = trusted.map((s) => {
+      const g = graded[s.source] || {};
+      const fight = (s.market || "").replace(/^Will .*? win the /, "").replace(/ professional MMA fight.*/, "")
+        .replace(/\?$/, "").trim() || s.market;
+      return [
+        `BET: ${s.pick}`,
+        `Fight: ${fight}`,
+        ``,
+        `Kalshi price: ${c(s.marketProb)}c (pays $1 if he wins)`,
+        `${s.source} says it's worth: ${c(s.sourceProb)}c`,
+        `So it looks ${c(s.edge)}c too cheap.`,
+        ``,
+        `${s.source}'s record: ${g.n} past picks, beat the market by ${Math.round((g.roi || 0) * 100)}%.`,
+        `Market code: ${s.ticker}`,
+      ].join("\n");
+    });
+    await notify(`SIGNAL\n\n${lines.join("\n\n———\n\n")}\n\nBet small.`).catch(() => {});
   } else {
     const hour = new Date().getUTCHours();
-    const force = process.env.FORCE_HEARTBEAT === "1"; // used to verify cloud->Telegram works
-    if (force || (hour >= 12 && hour < 16)) { // one heartbeat/day (the 12:00 UTC run)
-      const t = Object.values(graded).filter((g) => g.trusted)
-        .map((g) => `${g.source} (ROI ${g.roi}, n=${g.n})`).join(", ") || "none yet";
-      await notify(`✅ Sharp Signals ran — no edges right now.\n\n` +
-        `Checked ${fresh.length} fresh picks.\nTrusted sources: ${t}\n\n` +
-        `Quiet means nothing worth betting, not that it's broken.`).catch(() => {});
+    const force = process.env.FORCE_HEARTBEAT === "1";
+    if (force || (hour >= 12 && hour < 16)) { // one quiet-day note (the 12:00 UTC run)
+      await notify(`No bets today.\n\nChecked ${fresh.length} picks. Nothing worth it.`).catch(() => {});
     }
   }
 }
