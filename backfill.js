@@ -125,29 +125,30 @@ const YT_ONLY = process.argv.includes("--yt-only");
   log(`transcript picks: ${picks.length}  |  ${reused} reused (0 cost), ${fetched} Blotato fetched, ` +
     `${cached} transcript-cached, ${failed} no-transcript, ${extractFailed} extract-FAILED`);
 
-  // An extraction wipeout (Gemini outage / sustained rate-limiting) yields a fraction of the
-  // real picks. Writing that would gut every track record while looking like a normal run.
-  const attempted = fetched + cached;
-  if (attempted >= 10 && extractFailed / attempted > 0.3) {
-    log(`ABORTING: ${Math.round((extractFailed / attempted) * 100)}% of extractions failed.`);
-    await notify(`Backfill ABORTED: ${extractFailed} of ${attempted} extractions failed (likely a ` +
-      `Gemini outage or rate limiting). Refused to overwrite track records with partial data. ` +
-      `Nothing was cached, so a retry loses nothing.`).catch(() => {});
+  // FAST ABORT on a live wipeout, so a broken run stops in seconds instead of grinding for
+  // hours. These rates are measured ONLY over videos that actually did work THIS run — NOT over
+  // videos.length, which includes the picks-cache hits that never touched Blotato or Gemini.
+  // (That denominator bug is exactly what aborted two good runs: 283 fresh extractions out of
+  // 843 total looked like a 66% "failure" when really 538 were served from cache.)
+  //
+  // A persistent tail matters too: ~22 videos in the roster are livestreams/Shorts/reactions
+  // with no captions and will fail transcript retrieval FOREVER. So these guards require both a
+  // high rate AND a meaningful absolute count, or a handful of known-unfetchable clips would
+  // block every future run.
+  const gotTranscript = fetched + cached;
+  const triedTranscript = gotTranscript + failed;
+  const tFailRate = triedTranscript ? failed / triedTranscript : 0;
+  if (triedTranscript >= 30 && tFailRate > 0.5 && failed > 30) {
+    log(`ABORTING: ${failed}/${triedTranscript} transcript fetches failed this run (Blotato down/empty?).`);
+    await notify(`Backfill stopped: ${failed} of ${triedTranscript} transcript fetches failed this run ` +
+      `(likely Blotato is down or out of credit). Nothing was overwritten; a retry loses nothing.`).catch(() => {});
     process.exit(1);
   }
-
-  // SAFETY: if most transcripts failed (Blotato balance exhausted, API down), this run's
-  // picks are a fraction of reality. Writing them would silently gut every track record
-  // while looking like a normal, successful run. Refuse.
-  const gotTranscripts = fetched + cached;
-  const failRate = videos.length ? 1 - gotTranscripts / videos.length : 0;
-  if (videos.length >= 10 && failRate > 0.4) {
-    log(`ABORTING: ${Math.round(failRate * 100)}% of transcripts failed (${gotTranscripts}/${videos.length}).`);
-    log(`          Likely Blotato credits exhausted. Refusing to overwrite good track records`);
-    log(`          with a partial dataset. Existing results left untouched.`);
-    await notify(` Backfill ABORTED: ${Math.round(failRate * 100)}% of transcripts failed ` +
-      `(likely Blotato credits exhausted). Refused to overwrite track records with partial data. ` +
-      `Existing results are intact.`).catch(() => {});
+  const eFailRate = gotTranscript ? extractFailed / gotTranscript : 0;
+  if (gotTranscript >= 30 && eFailRate > 0.5 && extractFailed > 30) {
+    log(`ABORTING: ${extractFailed}/${gotTranscript} extractions failed this run (Gemini down/rate-limited?).`);
+    await notify(`Backfill stopped: ${extractFailed} of ${gotTranscript} extractions failed this run. ` +
+      `Nothing was cached or overwritten; a retry loses nothing.`).catch(() => {});
     process.exit(1);
   }
 
@@ -171,6 +172,21 @@ const YT_ONLY = process.argv.includes("--yt-only");
   log("resolving vs Kalshi results + line-at-call...");
   const { resolved, matched, unmatched, noLine } = await resolveAll(picks, cfg);
   log(`  matched ${matched} | with-line ${resolved.length} | no-line ${noLine} | unmatched ${unmatched}`);
+
+  // THE REAL BACKSTOP. Every abort guard above is a proxy for one thing: "don't overwrite good
+  // track records with a gutted dataset." So check that DIRECTLY, right before writing, instead
+  // of trying to infer it from transcript/extraction rates. It doesn't matter WHY a run came up
+  // short (credit, outage, a bug in a guard's own arithmetic) — if it produced materially fewer
+  // gradeable picks than we already have, refuse. And because the caches persist, a healthy run
+  // can only ever grow the corpus, so this never blocks legitimate progress.
+  const existing = readJson(paths.predictions, []);
+  if (existing.length >= 50 && resolved.length < existing.length * 0.8) {
+    log(`ABORTING: would shrink the corpus from ${existing.length} to ${resolved.length} picks. Refusing.`);
+    await notify(`Backfill stopped: this run resolved only ${resolved.length} gradeable picks, down from ` +
+      `${existing.length}. Something is off, so it refused to overwrite. Existing records are intact.`).catch(() => {});
+    process.exit(1);
+  }
+  log(`  corpus: ${existing.length} -> ${resolved.length} gradeable picks`);
   writeJson(paths.predictions, resolved);
 
   const meta = {};
