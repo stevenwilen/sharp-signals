@@ -128,22 +128,37 @@ async function run() {
   // and pays $1 if you're right, so "costs 32c, worth 52c" needs no betting knowledge.
   if (trusted.length) {
     const c = (v) => Math.round(v * 100); // probability -> cents
-    const lines = trusted.map((s) => {
-      const g = graded[s.source] || {};
-      const fight = (s.market || "").replace(/^Will .*? win the /, "").replace(/ professional MMA fight.*/, "")
-        .replace(/\?$/, "").trim() || s.market;
-      return [
-        `BET: ${s.pick}`,
-        `Fight: ${fight}`,
-        ``,
-        `Kalshi price: ${c(s.marketProb)}c (pays $1 if he wins)`,
-        `${s.source} says it's worth: ${c(s.sourceProb)}c`,
-        `So it looks ${c(s.edge)}c too cheap.`,
-        ``,
-        `${s.source}'s record: ${g.n} past picks, beat the market by ${Math.round((g.roi || 0) * 100)}%.`,
-        `Market code: ${s.ticker}`,
-      ].join("\n");
+
+    // Several trusted sources landing on the SAME fighter is a stronger signal than one,
+    // not two separate ones. Group by market so agreement reads as agreement.
+    const byTicker = {};
+    for (const s of trusted) (byTicker[s.ticker] = byTicker[s.ticker] || []).push(s);
+
+    const lines = Object.values(byTicker).map((group) => {
+      const s0 = group[0];
+      const fight = (s0.market || "").replace(/^Will .*? win the /, "")
+        .replace(/ professional MMA fight.*/, "").replace(/\?$/, "").trim() || s0.market;
+      const avg = group.reduce((a, x) => a + x.sourceProb, 0) / group.length;
+      const out = [`BET: ${s0.pick}`, `Fight: ${fight}`, ``,
+        `Kalshi price: ${c(s0.marketProb)}c (pays $1 if he wins)`, ``];
+
+      if (group.length === 1) {
+        const g = graded[s0.source] || {};
+        out.push(`${s0.source} says it's worth: ${c(s0.sourceProb)}c`,
+          `So it looks ${c(s0.sourceProb - s0.marketProb)}c too cheap.`, ``,
+          `${s0.source}'s record: ${g.n} past picks, beat the market by ${Math.round((g.roi || 0) * 100)}%.`);
+      } else {
+        out.push(`${group.length} trusted sources all like him:`);
+        for (const s of group) {
+          const g = graded[s.source] || {};
+          out.push(`- ${s.source} says ${c(s.sourceProb)}c  (${g.n} picks, beats market by ${Math.round((g.roi || 0) * 100)}%)`);
+        }
+        out.push(``, `Together: worth about ${c(avg)}c, so it looks ${c(avg - s0.marketProb)}c too cheap.`);
+      }
+      out.push(`Market code: ${s0.ticker}`);
+      return out.join("\n");
     });
+
     await notify(`SIGNAL\n\n${lines.join("\n\n———\n\n")}\n\nBet small.`).catch(() => {});
   } else {
     const hour = new Date().getUTCHours();
