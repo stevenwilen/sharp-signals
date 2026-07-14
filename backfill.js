@@ -75,6 +75,21 @@ const YT_ONLY = process.argv.includes("--yt-only");
   }
   log(`transcript picks: ${picks.length}  |  Blotato: ${fetched} fetched, ${cached} from cache (0 credits)`);
 
+  // SAFETY: if most transcripts failed (Blotato balance exhausted, API down), this run's
+  // picks are a fraction of reality. Writing them would silently gut every track record
+  // while looking like a normal, successful run. Refuse.
+  const gotTranscripts = fetched + cached;
+  const failRate = videos.length ? 1 - gotTranscripts / videos.length : 0;
+  if (videos.length >= 10 && failRate > 0.4) {
+    log(`ABORTING: ${Math.round(failRate * 100)}% of transcripts failed (${gotTranscripts}/${videos.length}).`);
+    log(`          Likely Blotato credits exhausted. Refusing to overwrite good track records`);
+    log(`          with a partial dataset. Existing results left untouched.`);
+    await notify(`⚠️ Backfill ABORTED: ${Math.round(failRate * 100)}% of transcripts failed ` +
+      `(likely Blotato credits exhausted). Refused to overwrite track records with partial data. ` +
+      `Existing results are intact.`).catch(() => {});
+    process.exit(1);
+  }
+
   // ---------- X tweets ----------
   if (!YT_ONLY) {
     log(`harvesting tweets for ${xSources.length} X sources...`);
