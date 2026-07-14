@@ -1,0 +1,4 @@
+# Shell scripts MUST be LF. Git was checking save-data.sh out with CRLF on Windows, and a
+# CRLF shell script fails in Actions with `$'\r': command not found` — which would break the
+# step that saves all our paid-for data, on every single run.
+*.sh text eol=lf
