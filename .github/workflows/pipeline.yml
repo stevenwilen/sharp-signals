@@ -4,7 +4,10 @@ name: Sharp Signals — Pipeline
 on:
   schedule:
     - cron: "0 */4 * * *" # every 4 hours (UTC)
-  workflow_dispatch: {} # lets you run it on demand from the Actions tab
+  workflow_dispatch: {} # run on demand from the Actions tab
+  push:
+    branches: [main]
+    paths: ["trigger.txt"] # touching this file kicks a run (handy for testing)
 
 permissions:
   contents: write # needed to commit the updated data/ back to the repo
