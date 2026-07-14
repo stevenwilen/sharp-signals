@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 8 * * 1" # Mondays 08:00 UTC (after the weekend's fights settle)
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["backfill-trigger.txt"] # touch this file to force a rebuild in the cloud
 
 permissions:
   contents: write
