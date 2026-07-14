@@ -37,8 +37,7 @@
   <h1>⚡ Sharp <span class="z">Signals</span></h1>
   <span class="src">UFC + Boxing · edge vs the Kalshi line</span>
   <div class="spacer"></div>
-  <button onclick="refresh('mock')">↻ Demo (mock)</button>
-  <button class="primary" onclick="refresh('')">↻ Refresh (live)</button>
+  <span class="src" id="freshness">—</span>
 </header>
 <main>
   <div class="caps" id="caps"></div>
@@ -53,14 +52,22 @@
 <script>
 const $=(id)=>document.getElementById(id);
 const pct=(v)=>v==null?'–':(v*100).toFixed(0)+'%';
-async function refresh(mode){
-  await fetch('/api/refresh'+(mode==='mock'?'-mock':''),{method:'POST'});
-  setTimeout(load, 1500); setTimeout(load, 5000); setTimeout(load, 12000);
+// No refresh button on purpose: the runs happen in GitHub's cloud every 4h. The Desktop
+// shortcut git-pulls those results before opening this, so closing + reopening = fresh data.
+// (A local "refresh" would re-run the pipeline here and burn API/Blotato credits for nothing.)
+function ago(iso){
+  if(!iso) return 'unknown';
+  const m = Math.round((Date.now()-new Date(iso).getTime())/60000);
+  if(m<1) return 'just now';
+  if(m<60) return m+' min ago';
+  const h=Math.round(m/60); if(h<24) return h+'h ago';
+  return Math.round(h/24)+'d ago';
 }
 async function load(){
   let d; try{ d=await (await fetch('/api/data')).json(); }catch(e){ return; }
-  const capDefs=[['kalshiMarketReads','Kalshi'],['extractPredictions','Claude'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube'],['kalshiTrading','Trading']];
-  $('caps').innerHTML=capDefs.map(([k,l])=>`<span class="cap ${d.caps[k]?'on':'off'}">${d.caps[k]?'✅':'⛔'} ${l}</span>`).join('')+(d.refreshing?'<span class="cap">↻ refreshing…</span>':'');
+  const capDefs=[['kalshiMarketReads','Kalshi'],['extractPredictions','Gemini'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube'],['kalshiTrading','Trading']];
+  $('caps').innerHTML=capDefs.map(([k,l])=>`<span class="cap ${d.caps[k]?'on':'off'}">${d.caps[k]?'✅':'⛔'} ${l}</span>`).join('');
+  $('freshness').textContent = 'data updated ' + ago(d.updatedAt) + ' · close & reopen to sync';
 
   const sigs=(d.signals||[]);
   const trusted=sigs.filter(s=>s.trusted&&(s.edge||0)>=0.05);
