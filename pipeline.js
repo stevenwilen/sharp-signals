@@ -36,6 +36,7 @@ async function getPredictions(cfg) {
   const { findVideos } = require("./lib/youtube");
   const { getTranscript } = require("./lib/blotato");
   const { extractPredictions, extractFromTranscript } = require("./lib/extractor");
+  const picksCache = require("./lib/picks-cache");
   const all = (readJson(paths.sources, { sources: [] }).sources || []).filter((s) => s.handle);
   const preds = [];
 
@@ -44,14 +45,24 @@ async function getPredictions(cfg) {
   const yt = all.filter((s) => s.platform === "youtube");
   console.log(`[live] scanning ${yt.length} channels for new prediction videos since ${sinceIso.slice(0, 10)}...`);
   const videos = await findVideos(yt, sinceIso, (m) => console.log(m));
+  let reused = 0, extracted = 0;
   for (const v of videos) {
+    // A video's transcript never changes, so its picks never change. Re-running Gemini over
+    // the same 163 cached videos 6x/day was ~1,000 redundant extractions (~$4/day) to
+    // re-derive picks we already had. Extract once, reuse forever.
+    const hit = picksCache.get(v.url);
+    if (hit) { preds.push(...hit); reused++; continue; }
+
     const t = await getTranscript(v.url).catch(() => ({}));
     if (!t.text) continue;
     const got = await extractFromTranscript(t.text, {
       source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url }).catch(() => []);
+    picksCache.set(v.url, got); // cache even an empty result — "this vlog has no picks" is a real answer
     preds.push(...got);
+    extracted++;
     console.log(`  ${got.length} picks <- ${v.source}: ${v.title.slice(0, 45)}`);
   }
+  console.log(`[live] videos: ${reused} from cache (0 cost), ${extracted} newly extracted`);
 
   // recent tweets
   const xs = all.filter((s) => s.platform === "x");
