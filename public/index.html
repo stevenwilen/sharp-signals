@@ -35,23 +35,26 @@
 <body>
 <header>
   <h1>⚡ Sharp <span class="z">Signals</span></h1>
-  <span class="src">UFC + Boxing · edge vs the Kalshi line</span>
+  <span class="src">UFC + Boxing · edge vs the market line</span>
   <div class="spacer"></div>
-  <span class="src" id="freshness">—</span>
+  <span class="src" id="freshness">...</span>
 </header>
 <main>
   <div class="caps" id="caps"></div>
 
-  <h2>Live signals — a trusted voice disagrees with the market</h2>
+  <h2>Live signals: a trusted voice disagrees with the market</h2>
   <div id="signals"><div class="empty">Loading…</div></div>
 
-  <h2>Source track records — who beats the line</h2>
-  <table><thead><tr><th>Source</th><th>Trusted</th><th>ROI vs line</th><th>Shrunk</th><th>Picks</th><th>Hit%</th></tr></thead>
-  <tbody id="records"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody></table>
+  <h2>Source track records: who beats the line</h2>
+  <table><thead><tr><th>Source</th><th>Trusted</th><th>ROI vs line</th><th>Shrunk</th><th>Defensible</th><th>Picks</th><th>Hit%</th></tr></thead>
+  <tbody id="records"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody></table>
+  <p class="src" style="margin-top:8px">"Defensible" is the edge that survives its own error bars (95% lower bound).
+  If it is not above zero, the sample is too small to tell skill from luck, and no bet is sized off it.</p>
 </main>
 <script>
 const $=(id)=>document.getElementById(id);
-const pct=(v)=>v==null?'–':(v*100).toFixed(0)+'%';
+const pct=(v)=>v==null?'-':(v*100).toFixed(0)+'%';
+const cents=(v)=>v==null?'-':Math.round(v*100)+'c';
 // No refresh button on purpose: the runs happen in GitHub's cloud every 4h. The Desktop
 // shortcut git-pulls those results before opening this, so closing + reopening = fresh data.
 // (A local "refresh" would re-run the pipeline here and burn API/Blotato credits for nothing.)
@@ -65,32 +68,38 @@ function ago(iso){
 }
 async function load(){
   let d; try{ d=await (await fetch('/api/data')).json(); }catch(e){ return; }
-  const capDefs=[['kalshiMarketReads','Kalshi'],['extractPredictions','Gemini'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube'],['kalshiTrading','Trading']];
+  const capDefs=[['extractPredictions','Gemini'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube']];
   $('caps').innerHTML=capDefs.map(([k,l])=>`<span class="cap ${d.caps[k]?'on':'off'}">${d.caps[k]?'✅':'⛔'} ${l}</span>`).join('');
   $('freshness').textContent = 'data updated ' + ago(d.updatedAt) + ' · close & reopen to sync';
 
+  // Signals changed shape when sizing stopped using the model's confidence score. A signal now
+  // carries: fighter/opponent, cost (the ASK, what you actually pay), and the source's measured
+  // edge vs the line (sourceRoi) plus its defensible lower bound (sourceRoiLcb). There is no
+  // "sourceProb" any more, because the number it used to hold was invented by the model.
   const sigs=(d.signals||[]);
-  const trusted=sigs.filter(s=>s.trusted&&(s.edge||0)>=0.05);
-  const research=sigs.filter(s=>!(s.trusted&&(s.edge||0)>=0.05));
+  const isReal=(s)=>s.trusted && (s.sourceRoiLcb||0)>0;
+  const trusted=sigs.filter(isReal);
+  const research=sigs.filter(s=>!isReal(s));
   const card=(s,star)=>{
-    const mkt=(s.marketProb||0)*100, src=(s.sourceProb||0)*100;
+    const cost=(s.cost||0)*100;
     return `<div class="sig ${star?'star':''}">
-      <div class="top"><span class="pick">${star?'⭐ ':''}${s.pick}</span>
-      ${s.edge!=null?`<span class="edge">+${(s.edge*100).toFixed(0)} pts</span>`:''}
-      <span class="src">${s.source}${s.trusted?'':' · untrusted'} ${s.sourceRoi!=null?'· ROI '+s.sourceRoi:''}</span></div>
-      <div class="bar"><div class="mkt" style="width:${mkt}%"></div></div>
-      <div class="src">market ${pct(s.marketProb)} → source ${pct(s.sourceProb)} · ${s.market||''}</div>
-      ${s.quote?`<div class="q">“${s.quote}”</div>`:''}</div>`;
+      <div class="top"><span class="pick">${star?'⭐ ':''}${s.fighter||s.pick}</span>
+      ${s.sourceRoiLcb!=null?`<span class="edge">edge ${(s.sourceRoiLcb*100).toFixed(0)}%</span>`:''}
+      <span class="src">${s.source}${s.trusted?'':' · untrusted'} · ${s.n||0} past picks</span></div>
+      <div class="bar"><div class="mkt" style="width:${cost}%"></div></div>
+      <div class="src">costs ${cents(s.cost)}, pays $1 if he wins${s.opponent?' · vs '+s.opponent:''}${s.fightDate?' · '+s.fightDate:''}</div>
+      ${s.quote?`<div class="q">"${s.quote}"</div>`:''}</div>`;
   };
-  $('signals').innerHTML=(trusted.length?trusted.map(s=>card(s,true)).join(''):'<div class="empty">No trusted-voice edges clear the threshold right now.</div>')
-    +(research.length?'<h2>Research-only</h2>'+research.map(s=>card(s,false)).join(''):'');
+  $('signals').innerHTML=(trusted.length?trusted.map(s=>card(s,true)).join(''):'<div class="empty">Nothing worth betting right now.</div>')
+    +(research.length?'<h2>Research only</h2>'+research.map(s=>card(s,false)).join(''):'');
 
   const recs=(d.graded||[]).sort((a,b)=>(b.shrunkRoi||-9)-(a.shrunkRoi||-9));
   $('records').innerHTML=recs.length?recs.map(g=>`<tr>
-    <td>${g.source}</td><td>${g.trusted?'<span class="yes">YES</span>':'<span class="no">–</span>'}</td>
-    <td class="${g.roi>=0?'pos':'neg'}">${g.roi==null?'–':(g.roi*100).toFixed(1)+'%'}</td>
-    <td class="${g.shrunkRoi>=0?'pos':'neg'}">${g.shrunkRoi==null?'–':(g.shrunkRoi*100).toFixed(1)+'%'}</td>
-    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="6" class="empty">No graded sources yet — run Demo or add keys.</td></tr>';
+    <td>${g.source}</td><td>${g.trusted?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
+    <td class="${g.roi>=0?'pos':'neg'}">${g.roi==null?'-':(g.roi*100).toFixed(1)+'%'}</td>
+    <td class="${g.shrunkRoi>=0?'pos':'neg'}">${g.shrunkRoi==null?'-':(g.shrunkRoi*100).toFixed(1)+'%'}</td>
+    <td class="${g.roiLcb>0?'pos':'neg'}">${g.roiLcb==null?'-':(g.roiLcb*100).toFixed(1)+'%'}</td>
+    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">No graded sources yet.</td></tr>';
 }
 load(); setInterval(load, 8000);
 </script>
