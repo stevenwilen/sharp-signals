@@ -97,6 +97,20 @@ const YT_ONLY = process.argv.includes("--yt-only");
           source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url,
         });
       } catch (e) {
+        // Out of Gemini credit. Waiting does not fix this, a human topping up does. Stop the
+        // whole run now instead of backing off for 10 minutes on each of hundreds of videos,
+        // burning the 6-hour budget to produce nothing. Nothing is lost: failed extractions are
+        // never cached, and if:always() commits every transcript already paid for.
+        if (e.outOfCredit) {
+          log(`ABORTING: ${e.message}`);
+          await notify(
+            "Backfill stopped: the Gemini account is out of credit.\n\n" +
+            "Nothing was lost. Every transcript it already paid for is saved, and failed " +
+            "extractions are never cached, so a re-run picks up exactly where it stopped.\n\n" +
+            "Top up Gemini, then re-run."
+          ).catch(() => {});
+          process.exit(1);
+        }
         extractFailed++;
         log(`  [${n}/${videos.length}] EXTRACT FAILED (uncached, will retry): ${v.source}: ${e.message}`);
         continue;
