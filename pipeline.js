@@ -8,6 +8,10 @@ const { paths, readJson, writeJson } = require("./lib/store");
 const grade = require("./lib/grade");
 const match = require("./lib/match");
 const { notify } = require("./lib/notify");
+const { sizeBet } = require("./lib/sizing");
+
+// Optional: set BANKROLL=500 in .env and alerts will show dollars, not just a %.
+const BANKROLL = Number(process.env.BANKROLL) || 0;
 
 const MOCK = process.argv.includes("--mock");
 
@@ -154,6 +158,20 @@ async function run() {
           out.push(`- ${s.source} says ${c(s.sourceProb)}c  (${g.n} picks, beats market by ${Math.round((g.roi || 0) * 100)}%)`);
         }
         out.push(``, `Together: worth about ${c(avg)}c, so it looks ${c(avg - s0.marketProb)}c too cheap.`);
+      }
+
+      // How much to actually bet (Kelly, shrunk by sample size, quarter-staked, capped)
+      const size = sizeBet(
+        group.map((s) => ({ sourceProb: s.sourceProb, n: (graded[s.source] || {}).n || 0 })),
+        s0.marketProb
+      );
+      out.push(``);
+      if (size.skip) {
+        out.push(`Bet: skip. Once you account for how few picks back this, the edge is too thin.`);
+      } else {
+        out.push(`BET ${size.pct}% of your bankroll.`);
+        if (BANKROLL) out.push(`On your $${BANKROLL} that's about $${Math.round(BANKROLL * size.pct / 100)}.`);
+        if (size.capped) out.push(`(capped at 5% - never more on one fight)`);
       }
       out.push(`Market code: ${s0.ticker}`);
       return out.join("\n");
