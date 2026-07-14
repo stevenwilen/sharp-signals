@@ -9,6 +9,7 @@ const grade = require("./lib/grade");
 const match = require("./lib/match");
 const { notify } = require("./lib/notify");
 const { sizeBet } = require("./lib/sizing");
+const ledger = require("./lib/alert-ledger");
 
 // ============================ SAFETY: ALERTS ARE DISARMED ============================
 // A full audit (2026-07-14) found the alert path can currently:
@@ -145,35 +146,56 @@ async function run() {
 
   // MATCH + SIGNAL
   const signals = [];
+  const refused = [];
   for (const f of fresh) {
     const mkt = await match.matchToMarket(f).catch(() => null);
-    if (!mkt || mkt.price == null) continue;
+    if (!mkt) continue;
+    // matchToMarket returns { ok:false, reason } when it cannot establish WHICH SIDE of the
+    // fight the source was backing, or when the fight is today/over. Those refusals are the
+    // whole point — log them, never bet them.
+    if (mkt.ok === false) { refused.push(`${f.source}: ${mkt.reason}`); continue; }
+
+    // BELT AND BRACES. The market we are about to price must BE the fighter who was picked.
+    // The old matcher could return the right fight and the wrong side; nothing ever checked.
+    if (match.nameScore(f.pick, mkt.fighter) < 1) {
+      refused.push(`${f.source}: matched ${mkt.fighter} but the pick was "${f.pick}" — REFUSED`);
+      continue;
+    }
+
+    // The price is what you PAY: the ask. A one-sided book (no offers to lift) is not a
+    // tradeable market — a lone stale bid would otherwise read as a huge edge.
+    const cost = mkt.yesAsk;
+    if (!(cost > 0 && cost < 1)) { refused.push(`${f.source}: ${mkt.fighter} has no offers to buy`); continue; }
+
     const g = graded[f.source] || {};
     signals.push({
       source: f.source, trusted: !!g.trusted, domain: f.domain,
-      pick: f.pick, market: mkt.matchTitle, ticker: mkt.ticker,
-      marketProb: mkt.price, sourceProb: f.confidence,
-      edge: f.confidence != null ? +(f.confidence - mkt.price).toFixed(3) : null,
-      sourceRoi: g.shrunkRoi ?? null, quote: f.quote || "",
+      pick: f.pick, fighter: mkt.fighter, opponent: mkt.opponent,
+      market: mkt.matchTitle, ticker: mkt.ticker, fightDate: mkt.fightDate,
+      cost,                             // the ask — what you actually pay
+      mid: mkt.price, yesBid: mkt.yesBid,
+      sourceRoi: g.shrunkRoi ?? null,   // the trust decision's number
+      sourceRoiLcb: g.roiLcb ?? null,   // the DEFENSIBLE edge — what sizing uses
+      n: g.n || 0,
+      quote: f.quote || "",
     });
   }
-  const minEdge = (cfg.signals && cfg.signals.minTrustedEdge) || 0.05;
-  signals.sort((a, b) => (b.trusted - a.trusted) || ((b.edge || -9) - (a.edge || -9)));
+  signals.sort((a, b) => (b.trusted - a.trusted) || ((b.sourceRoiLcb || -9) - (a.sourceRoiLcb || -9)));
   writeJson(paths.signals, signals);
 
-  console.log("\nLIVE SIGNALS (trusted voice disagrees with Kalshi):");
-  const trusted = signals.filter((s) => s.trusted && (s.edge || 0) >= minEdge);
-  if (!trusted.length) console.log("  (none clear the edge threshold right now)");
-  for (const s of trusted)
-    console.log(`  ⭐ ${s.pick} — ${(s.sourceProb * 100).toFixed(0)}% src vs ${(s.marketProb * 100).toFixed(0)}% mkt` +
-      `  (edge +${(s.edge * 100).toFixed(0)}pts, ROI ${s.sourceRoi})  [${s.source}]  ${s.market}`);
-
-  const research = signals.filter((s) => !(s.trusted && (s.edge || 0) >= minEdge));
-  if (research.length) {
-    console.log("\n  research-only (untrusted / thin edge):");
-    for (const s of research)
-      console.log(`   · ${s.pick} ${(s.sourceProb * 100).toFixed(0)}% vs ${(s.marketProb * 100).toFixed(0)}% mkt  [${s.source}${s.trusted ? "" : ", untrusted"}]`);
+  if (refused.length) {
+    console.log(`\nREFUSED ${refused.length} pick(s) rather than guess:`);
+    for (const r of refused.slice(0, 20)) console.log(`  - ${r}`);
   }
+
+  // A signal now requires: a trusted source, AND a defensible (lower-bound) edge over the
+  // price you actually pay. Gemini's confidence score is no longer part of this decision.
+  const trusted = signals.filter((s) => s.trusted && (s.sourceRoiLcb || 0) > 0);
+  console.log("\nLIVE SIGNALS (trusted source with a defensible edge):");
+  if (!trusted.length) console.log("  (none)");
+  for (const s of trusted)
+    console.log(`  ${s.fighter} vs ${s.opponent} — costs ${Math.round(s.cost * 100)}c` +
+      `  [${s.source}: n=${s.n}, edge ${s.sourceRoi} (lower bound ${s.sourceRoiLcb})]  ${s.fightDate}`);
   console.log(`\nwrote ${paths.signals}`);
 
   // ---- TELEGRAM -----------------------------------------------------------
@@ -186,53 +208,72 @@ async function run() {
     console.log(`\n[SAFETY] alerts DISARMED — ${trusted.length} signal(s) suppressed, not sent.`);
     console.log(`         data/signals.json is still written; see ALERTS_ARMED in pipeline.js.`);
   } else if (trusted.length) {
-    const c = (v) => Math.round(v * 100); // probability -> cents
+    const cents = (v) => Math.round(v * 100);
 
-    // Several trusted sources landing on the SAME fighter is a stronger signal than one,
-    // not two separate ones. Group by market so agreement reads as agreement.
+    // Group by market so agreement reads as agreement...
     const byTicker = {};
     for (const s of trusted) (byTicker[s.ticker] = byTicker[s.ticker] || []).push(s);
 
-    const lines = Object.values(byTicker).map((group) => {
+    const lines = [];
+    for (const [ticker, all] of Object.entries(byTicker)) {
+      // ...but DEDUPE BY SOURCE first. A channel that posts a "Preview" and a "Best Bets" video
+      // in the same week was landing here twice, so the message said "2 trusted sources all like
+      // him" and listed the same man twice — manufactured consensus — while also doubling his
+      // weight in the bet size.
+      const bySource = new Map();
+      for (const s of all) if (!bySource.has(s.source)) bySource.set(s.source, s);
+      const group = Array.from(bySource.values());
       const s0 = group[0];
-      const fight = (s0.market || "").replace(/^Will .*? win the /, "")
-        .replace(/ professional MMA fight.*/, "").replace(/\?$/, "").trim() || s0.market;
-      const avg = group.reduce((a, x) => a + x.sourceProb, 0) / group.length;
-      const out = [`BET: ${s0.pick}`, `Fight: ${fight}`, ``,
-        `Kalshi price: ${c(s0.marketProb)}c (pays $1 if he wins)`, ``];
+
+      const size = sizeBet(
+        group.map((s) => ({ source: s.source, roiLcb: s.sourceRoiLcb, shrunkRoi: s.sourceRoi, n: s.n })),
+        s0.cost
+      );
+      if (size.skip) {
+        console.log(`  (skipping ${s0.fighter}: ${size.reason})`);
+        continue;
+      }
+
+      const gate = ledger.shouldSend(ticker, group.map((s) => s.source), size.pct);
+      if (!gate.send) { console.log(`  (already alerted ${s0.fighter}: ${gate.why})`); continue; }
+
+      const out = [
+        `BET: ${s0.fighter}`,
+        `Fight: ${s0.fighter} vs ${s0.opponent}, ${s0.fightDate}`,
+        ``,
+        `It costs ${cents(s0.cost)}c and pays $1 if he wins.`,
+        `We think it is worth about ${size.p}c.`,
+        ``,
+      ];
 
       if (group.length === 1) {
-        const g = graded[s0.source] || {};
-        out.push(`${s0.source} says it's worth: ${c(s0.sourceProb)}c`,
-          `So it looks ${c(s0.sourceProb - s0.marketProb)}c too cheap.`, ``,
-          `${s0.source}'s record: ${g.n} past picks, beat the market by ${Math.round((g.roi || 0) * 100)}%.`);
+        out.push(`${s0.source} picked him.`,
+          `His record: ${s0.n} past picks, and he beats the market by ` +
+          `${Math.round((s0.sourceRoi || 0) * 100)}% on average.`);
       } else {
-        out.push(`${group.length} trusted sources all like him:`);
+        out.push(`${group.length} sources we trust all picked him:`);
         for (const s of group) {
-          const g = graded[s.source] || {};
-          out.push(`- ${s.source} says ${c(s.sourceProb)}c  (${g.n} picks, beats market by ${Math.round((g.roi || 0) * 100)}%)`);
+          out.push(`- ${s.source} (${s.n} past picks, beats the market by ` +
+            `${Math.round((s.sourceRoi || 0) * 100)}%)`);
         }
-        out.push(``, `Together: worth about ${c(avg)}c, so it looks ${c(avg - s0.marketProb)}c too cheap.`);
       }
 
-      // How much to actually bet (Kelly, shrunk by sample size, quarter-staked, capped)
-      const size = sizeBet(
-        group.map((s) => ({ sourceProb: s.sourceProb, n: (graded[s.source] || {}).n || 0 })),
-        s0.marketProb
-      );
-      out.push(``);
-      if (size.skip) {
-        out.push(`Bet: skip. Once you account for how few picks back this, the edge is too thin.`);
-      } else {
-        out.push(`BET ${size.pct}% of your bankroll.`);
-        if (BANKROLL) out.push(`On your $${BANKROLL} that's about $${Math.round(BANKROLL * size.pct / 100)}.`);
-        if (size.capped) out.push(`(capped at 5% - never more on one fight)`);
-      }
-      out.push(`Market code: ${s0.ticker}`);
-      return out.join("\n");
-    });
+      out.push(``, `BET ${size.pct}% of your bankroll.`);
+      if (BANKROLL) out.push(`On your $${BANKROLL} that is about $${Math.round(BANKROLL * size.pct / 100)}.`);
+      if (size.capped) out.push(`(capped at 5%, never more on one fight)`);
+      out.push(``,
+        `This is a small sample, so the size is deliberately cautious.`,
+        `Market code: ${ticker}`);
 
-    await notify(`SIGNAL\n\n${lines.join("\n\n———\n\n")}\n\nBet small.`).catch(() => {});
+      lines.push(out.join("\n"));
+      ledger.record(ticker, group.map((s) => s.source), size.pct);
+    }
+
+    if (lines.length) {
+      await notify(lines.join("\n\n-----\n\n")).catch(() => {});
+    } else {
+      console.log("  (all signals suppressed: already sent, or too thin to bet)");
+    }
   } else {
     const hour = new Date().getUTCHours();
     const force = process.env.FORCE_HEARTBEAT === "1";
