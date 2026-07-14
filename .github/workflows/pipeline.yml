@@ -36,18 +36,17 @@ jobs:
           BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BANKROLL: ${{ vars.BANKROLL }}
           # FORCE_HEARTBEAT=1 would ping on EVERY run (6x/day). Left off on purpose:
           # alert fatigue is how you end up ignoring the one message that matters.
           # Signals always alert; "nothing to report" pings once a day (12:00 UTC run).
         run: node pipeline.js
 
-      # Persist results + the transcript cache so the next run doesn't re-fetch
-      # them (this is what keeps Blotato credit usage near zero).
-      - name: Save results
-        run: |
-          git config user.name  "sharp-signals-bot"
-          git config user.email "actions@github.com"
-          git add data/ || true
-          git diff --staged --quiet || git commit -m "pipeline: $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git pull --rebase --autostash || true
-          git push || true
+      # if: always() — the SAME lesson the backfill already learned, never applied here.
+      # Transcripts and extractions cost real money and are written to disk as they arrive.
+      # Without this, a run that dies part-way (timeout on a busy fight week, a crash) skips
+      # this step and THROWS AWAY everything it just paid for — then re-buys it 4 hours later,
+      # forever, because it can never finish a run to commit the cache.
+      - name: Save results (even on failure — the cache is paid for)
+        if: always()
+        run: bash .github/save-data.sh pipeline

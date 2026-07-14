@@ -1,4 +1,4 @@
-﻿// Backfill track records from BOTH sources:
+// Backfill track records from BOTH sources:
 //   X:        tweets -> picks
 //   YouTube:  prediction videos -> Blotato transcript -> picks   (the high-yield path)
 // Then resolve every pick against Kalshi's settled result AND the market price at the
@@ -10,7 +10,7 @@ const { paths, readJson, writeJson } = require("./lib/store");
 const { harvest } = require("./lib/history");
 const { findVideos } = require("./lib/youtube");
 const { getTranscript } = require("./lib/blotato");
-const { extractPredictions, extractFromTranscript } = require("./lib/extractor");
+const { extractPredictions, extractFromTranscript, promptFingerprint } = require("./lib/extractor");
 const { resolveAll, settledFor } = require("./lib/results");
 const { norm } = require("./lib/match");
 const picksCache = require("./lib/picks-cache");
@@ -46,18 +46,18 @@ const YT_ONLY = process.argv.includes("--yt-only");
     videos = await findVideos(ytSources, SINCE_ISO, log);
   } catch (e) {
     if (e.quota) {
-      log("ABORTING: YouTube quota exhausted â€” refusing to overwrite track records with tweet-only data.");
+      log("ABORTING: YouTube quota exhausted  refusing to overwrite track records with tweet-only data.");
       log("          Quota resets at midnight Pacific. Re-run then. Existing data left untouched.");
-      await notify("âš ï¸ Backfill ABORTED: YouTube quota exhausted. No transcripts available, so it refused " +
+      await notify(" Backfill ABORTED: YouTube quota exhausted. No transcripts available, so it refused " +
         "to overwrite the track records with tweet-only data. Existing results are intact. Retry after midnight Pacific.").catch(() => {});
       process.exit(1);
     }
     throw e;
   }
   if (!videos.length && ytSources.length) {
-    log("ABORTING: 0 prediction videos found across all channels â€” that is almost certainly an API");
+    log("ABORTING: 0 prediction videos found across all channels  that is almost certainly an API");
     log("          failure, not a real absence of picks. Refusing to overwrite good data.");
-    await notify("âš ï¸ Backfill ABORTED: 0 prediction videos found across every channel (likely a YouTube API " +
+    await notify(" Backfill ABORTED: 0 prediction videos found across every channel (likely a YouTube API " +
       "issue). Refused to overwrite track records. Existing results are intact.").catch(() => {});
     process.exit(1);
   }
@@ -69,7 +69,8 @@ const YT_ONLY = process.argv.includes("--yt-only");
   // network-bound, so a modest pool of workers cuts wall-clock by ~6x with no extra credits
   // (the same videos get fetched either way).
   const WORKERS = 6;
-  let vi = 0, fetched = 0, cached = 0, failed = 0, reused = 0;
+  const FP = promptFingerprint();
+  let vi = 0, fetched = 0, cached = 0, failed = 0, reused = 0, extractFailed = 0;
   const queue = videos.slice();
 
   async function worker() {
@@ -78,25 +79,48 @@ const YT_ONLY = process.argv.includes("--yt-only");
       if (!v) return;
       const n = ++vi;
 
-      // Already extracted this video on a previous run? Reuse it. Transcripts never change,
-      // so neither do the picks. Skips both the Blotato fetch AND the Gemini call.
-      const hit = picksCache.get(v.url);
+      // Already extracted this video under the SAME prompt+model? Reuse it. Transcripts never
+      // change, so neither do the picks. Skips both the Blotato fetch AND the Gemini call.
+      const hit = picksCache.get(v.url, FP);
       if (hit) { picks.push(...hit); reused++; continue; }
 
       const t = await getTranscript(v.url).catch(() => ({}));
       if (!t.text) { failed++; log(`  [${n}/${videos.length}] no transcript: ${v.title.slice(0, 42)}`); continue; }
       if (t.cached) cached++; else fetched++;
-      const got = await extractFromTranscript(t.text, {
-        source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url,
-      }).catch(() => []);
-      picksCache.set(v.url, got);
+
+      // A FAILED extraction must NOT be cached. 6 workers hammering Gemini in parallel is
+      // exactly how you earn a 429 burst; caching those as [] would permanently blank real
+      // prediction videos and quietly shrink every track record. Leave it uncached; retry.
+      let got;
+      try {
+        got = await extractFromTranscript(t.text, {
+          source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url,
+        });
+      } catch (e) {
+        extractFailed++;
+        log(`  [${n}/${videos.length}] EXTRACT FAILED (uncached, will retry): ${v.source}: ${e.message}`);
+        continue;
+      }
+      picksCache.set(v.url, got, FP);
       picks.push(...got);
       log(`  [${n}/${videos.length}]${t.cached ? " (cached)" : ""} ${got.length} picks <- ${v.source}: ${v.title.slice(0, 34)}`);
     }
   }
   await Promise.all(Array.from({ length: WORKERS }, worker));
 
-  log(`transcript picks: ${picks.length}  |  ${reused} videos reused from picks-cache (0 cost), ${fetched} Blotato fetched, ${cached} transcript-cached, ${failed} failed`);
+  log(`transcript picks: ${picks.length}  |  ${reused} reused (0 cost), ${fetched} Blotato fetched, ` +
+    `${cached} transcript-cached, ${failed} no-transcript, ${extractFailed} extract-FAILED`);
+
+  // An extraction wipeout (Gemini outage / sustained rate-limiting) yields a fraction of the
+  // real picks. Writing that would gut every track record while looking like a normal run.
+  const attempted = fetched + cached;
+  if (attempted >= 10 && extractFailed / attempted > 0.3) {
+    log(`ABORTING: ${Math.round((extractFailed / attempted) * 100)}% of extractions failed.`);
+    await notify(`Backfill ABORTED: ${extractFailed} of ${attempted} extractions failed (likely a ` +
+      `Gemini outage or rate limiting). Refused to overwrite track records with partial data. ` +
+      `Nothing was cached, so a retry loses nothing.`).catch(() => {});
+    process.exit(1);
+  }
 
   // SAFETY: if most transcripts failed (Blotato balance exhausted, API down), this run's
   // picks are a fraction of reality. Writing them would silently gut every track record
@@ -107,7 +131,7 @@ const YT_ONLY = process.argv.includes("--yt-only");
     log(`ABORTING: ${Math.round(failRate * 100)}% of transcripts failed (${gotTranscripts}/${videos.length}).`);
     log(`          Likely Blotato credits exhausted. Refusing to overwrite good track records`);
     log(`          with a partial dataset. Existing results left untouched.`);
-    await notify(`âš ï¸ Backfill ABORTED: ${Math.round(failRate * 100)}% of transcripts failed ` +
+    await notify(` Backfill ABORTED: ${Math.round(failRate * 100)}% of transcripts failed ` +
       `(likely Blotato credits exhausted). Refused to overwrite track records with partial data. ` +
       `Existing results are intact.`).catch(() => {});
     process.exit(1);
@@ -148,15 +172,17 @@ const YT_ONLY = process.argv.includes("--yt-only");
   log("done. `node pipeline.js` now grades live picks against these records.");
 
   const trusted = ranked.filter((g) => g.trusted);
-  const top = ranked.slice(0, 5).map((g) => `â€¢ ${g.source}: ROI ${g.roi} (n=${g.n})${g.trusted ? " âœ…TRUSTED" : ""}`).join("\n");
+  const top = ranked.slice(0, 5).map((g) => ` ${g.source}: ROI ${g.roi} (n=${g.n})${g.trusted ? " TRUSTED" : ""}`).join("\n");
   await notify(
-    `ðŸ“Š Backfill complete.\n\n${resolved.length} gradeable picks across ${ranked.length} sources.\n` +
+    ` Backfill complete.\n\n${resolved.length} gradeable picks across ${ranked.length} sources.\n` +
     `Trusted (beat the line w/ enough sample): ${trusted.length}\n\nTop by ROI:\n${top}`
   ).catch(() => {});
 })().catch(async (e) => {
-  console.error("backfill error:", e.message);
-  await notify(`âš ï¸ Backfill failed: ${e.message}`).catch(() => {});
+  console.error("backfill error:", e.stack || e.message);
+  await notify("Backfill FAILED: " + e.message).catch(() => {});
+  // MUST exit non-zero. Without this a crash exited 0, the Actions job went GREEN, and
+  // GitHub never emailed - so the weekly backfill could be dead for months behind an
+  // unbroken column of green checks, with Telegram (which itself no-ops when the token is
+  // missing) as the only signal that anything was wrong.
+  process.exit(1);
 });
-
-
-

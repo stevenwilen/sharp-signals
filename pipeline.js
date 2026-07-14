@@ -53,8 +53,9 @@ async function getPredictions(cfg) {
   const { pullTwitter } = require("./lib/sources");
   const { findVideos } = require("./lib/youtube");
   const { getTranscript } = require("./lib/blotato");
-  const { extractPredictions, extractFromTranscript } = require("./lib/extractor");
+  const { extractPredictions, extractFromTranscript, promptFingerprint } = require("./lib/extractor");
   const picksCache = require("./lib/picks-cache");
+  const FP = promptFingerprint();
   const all = (readJson(paths.sources, { sources: [] }).sources || []).filter((s) => s.handle);
   const preds = [];
 
@@ -63,24 +64,35 @@ async function getPredictions(cfg) {
   const yt = all.filter((s) => s.platform === "youtube");
   console.log(`[live] scanning ${yt.length} channels for new prediction videos since ${sinceIso.slice(0, 10)}...`);
   const videos = await findVideos(yt, sinceIso, (m) => console.log(m));
-  let reused = 0, extracted = 0;
+  let reused = 0, extracted = 0, extractFailed = 0;
   for (const v of videos) {
     // A video's transcript never changes, so its picks never change. Re-running Gemini over
     // the same 163 cached videos 6x/day was ~1,000 redundant extractions (~$4/day) to
     // re-derive picks we already had. Extract once, reuse forever.
-    const hit = picksCache.get(v.url);
+    const hit = picksCache.get(v.url, FP);
     if (hit) { preds.push(...hit); reused++; continue; }
 
     const t = await getTranscript(v.url).catch(() => ({}));
     if (!t.text) continue;
-    const got = await extractFromTranscript(t.text, {
-      source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url }).catch(() => []);
-    picksCache.set(v.url, got); // cache even an empty result — "this vlog has no picks" is a real answer
+
+    // A FAILED extraction must never be cached. It would blank this video permanently.
+    // Leave it uncached and the next run retries it — which is exactly what we want.
+    let got;
+    try {
+      got = await extractFromTranscript(t.text, {
+        source: v.source, domain: v.domain, timestamp: v.publishedAt, url: v.url });
+    } catch (e) {
+      extractFailed++;
+      console.log(`  EXTRACT FAILED (will retry next run): ${v.source}: ${e.message}`);
+      continue;
+    }
+    picksCache.set(v.url, got, FP); // [] here is a REAL answer: "this vlog has no picks"
     preds.push(...got);
     extracted++;
     console.log(`  ${got.length} picks <- ${v.source}: ${v.title.slice(0, 45)}`);
   }
-  console.log(`[live] videos: ${reused} from cache (0 cost), ${extracted} newly extracted`);
+  console.log(`[live] videos: ${reused} from cache (0 cost), ${extracted} newly extracted` +
+    (extractFailed ? `, ${extractFailed} FAILED (uncached, will retry)` : ""));
 
   // recent tweets
   const xs = all.filter((s) => s.platform === "x");
@@ -94,7 +106,10 @@ async function getPredictions(cfg) {
     try { preds.push(...(await extractPredictions(posts, { batchDelayMs: 200 }))); }
     catch (e) { console.log("  extract:", e.message); }
   }
-  writeJson(paths.rawPosts, posts);
+  // NOTE: deliberately does NOT write raw_posts.json. That file is the BACKFILL's deep
+  // multi-month harvest; the pipeline only sees the last 20 tweets per handle. Overwriting
+  // it every 4h both destroyed the backfill's version and created a guaranteed git conflict
+  // between two jobs that now run concurrently.
   console.log(`[live] ${preds.length} fresh picks`);
   // Track records come from the backfill (predictions.json holds RESOLVED history).
   // Fresh picks are the unresolved ones we just pulled.
@@ -110,9 +125,17 @@ async function run() {
 
   const { resolved, fresh } = await getPredictions(cfg);
 
-  // GRADE
-  const graded = grade.gradeAll(resolved, cfg);
-  writeJson(paths.graded, graded);
+  // GRADE (in memory only).
+  // Two reasons this no longer writes sources_graded.json:
+  //   1. It called gradeAll WITHOUT the source metadata the backfill passes, so every run
+  //      silently stripped domain/type/handle/platform off every record until Monday.
+  //   2. Both jobs writing the same file, concurrently, is what made the git rebase conflict
+  //      that could silently discard a 5-hour backfill. The backfill OWNS this file now.
+  const meta = {};
+  for (const s of (readJson(paths.sources, { sources: [] }).sources || [])) {
+    meta[s.name] = { domain: s.domain, type: s.type, handle: s.handle, platform: s.platform };
+  }
+  const graded = grade.gradeAll(resolved, cfg, meta);
   const ranked = Object.values(graded).sort((a, b) => (b.shrunkRoi || -9) - (a.shrunkRoi || -9));
   console.log("Source track records (beat-the-line):");
   console.log("  ROI    shrunk  n   trusted  source");
