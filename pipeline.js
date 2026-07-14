@@ -10,6 +10,24 @@ const match = require("./lib/match");
 const { notify } = require("./lib/notify");
 const { sizeBet } = require("./lib/sizing");
 
+// ============================ SAFETY: ALERTS ARE DISARMED ============================
+// A full audit (2026-07-14) found the alert path can currently:
+//   1. match the WRONG SIDE of a fight (lib/match.js surname-only fallback: "Usman over
+//      Du Plessis" resolves to the Du Plessis market) -> a BET on the fighter the source
+//      picked AGAINST;
+//   2. alert on a fight that is IN PROGRESS or ALREADY DECIDED (the live path has no
+//      fight-date guard, and Kalshi leaves markets open until an operator settles them —
+//      a decided fight produces the LARGEST computed edge, so it alerts hardest);
+//   3. re-send the identical BET on every run (no alert ledger) — ~18 copies over a fight
+//      week, which defeats the "never more than 5% on one fight" cap by repetition;
+//   4. size the bet from Gemini's *conviction* score, which is empirically +11 points
+//      overconfident vs. the actual hit rate.
+// Until those are fixed, the pipeline still SCANS, EXTRACTS, GRADES and writes data —
+// it just does not tell a human to put money down. Failure alerts still go out, so the
+// system cannot die quietly. Flip this to true only when Tier-1 is fixed and verified.
+const ALERTS_ARMED = false;
+// =====================================================================================
+
 // Optional: set BANKROLL=500 in .env and alerts will show dollars, not just a %.
 const BANKROLL = Number(process.env.BANKROLL) || 0;
 
@@ -141,7 +159,10 @@ async function run() {
   // so silence is never ambiguous ("is it broken, or is there just nothing?").
   // Kept deliberately plain: cents, not percentages. A Kalshi contract costs X cents
   // and pays $1 if you're right, so "costs 32c, worth 52c" needs no betting knowledge.
-  if (trusted.length) {
+  if (!ALERTS_ARMED) {
+    console.log(`\n[SAFETY] alerts DISARMED — ${trusted.length} signal(s) suppressed, not sent.`);
+    console.log(`         data/signals.json is still written; see ALERTS_ARMED in pipeline.js.`);
+  } else if (trusted.length) {
     const c = (v) => Math.round(v * 100); // probability -> cents
 
     // Several trusted sources landing on the SAME fighter is a stronger signal than one,
@@ -194,6 +215,20 @@ async function run() {
     const force = process.env.FORCE_HEARTBEAT === "1";
     if (force || (hour >= 12 && hour < 16)) { // one quiet-day note (the 12:00 UTC run)
       await notify(`No bets today.\n\nChecked ${fresh.length} picks. Nothing worth it.`).catch(() => {});
+    }
+  }
+
+  // Silence must never be ambiguous. While disarmed, still send the one daily note so a
+  // paused system is not mistaken for a dead one.
+  if (!ALERTS_ARMED) {
+    const hour = new Date().getUTCHours();
+    if (process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16)) {
+      await notify(
+        `Bet alerts are PAUSED while I fix some bugs.\n\n` +
+        `The system is still running and still learning. It checked ${fresh.length} picks today ` +
+        `and found ${trusted.length} it would have flagged.\n\n` +
+        `Do not place any bets from this system until I turn alerts back on.`
+      ).catch(() => {});
     }
   }
 }
