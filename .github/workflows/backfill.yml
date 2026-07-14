@@ -12,8 +12,12 @@ on:
 permissions:
   contents: write
 
+# MUST NOT share a concurrency group with the pipeline. GitHub keeps only ONE pending run
+# per group, so the pipeline (every 4h) kept cancelling the queued backfill (rare) before it
+# ever started — the backfill silently never ran. Separate groups; the workflows both
+# `git pull --rebase` before pushing, so a rare overlap on data/ resolves itself.
 concurrency:
-  group: sharp-signals # must not collide with the pipeline run
+  group: sharp-signals-backfill
   cancel-in-progress: false
 
 jobs:
