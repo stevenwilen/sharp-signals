@@ -11,7 +11,22 @@
   },
   "signals": {
     "minTrustedEdge": 0.05,
-    "minMarketLiquidityUsd": 500,
     "showUntrustedForResearch": true
+  },
+
+  "markets": {
+    "_comment": "Ignore filler fights. Measured by traded volume, with SEPARATE floors for open and settled markets because volume accrues right up to the bell - one floor for both would filter by how soon a fight is, not how big.",
+
+    "boxing": {
+      "minVolumeOpen": 20000,
+      "minVolumeSettled": 100000,
+      "_why": "Boxing looked worthless: 31 graded picks, +2.3% ROI vs the line, 77% of them favourites at an average of 73c. That is the exact signature of 'right a lot, earning nothing'. But it was composition, not talent. On a small card the matchmaking is protective, the favourite is a heavy favourite, everyone picks him, and there is nothing to disagree about. Filter to the fights that matter and ROI goes 2.3% -> ~19%. HONESTY: that is 12-14 picks. The direction is trustworthy (an absolute floor and a relative one both showed it, and it matches a real structural story). The magnitude is not. Also cuts La Velada, the Spanish influencer boxing event Kalshi files under KXBOXING, which no analyst on our roster covers."
+    },
+
+    "mma": {
+      "minVolumeOpen": 0,
+      "minVolumeSettled": 0,
+      "_why": "Deliberately unfiltered. Across thresholds MMA went 24.6% -> 10.0% -> 14.2%: non-monotonic, i.e. noise. There is no effect here to exploit, and picking the best-looking cut would be curve-fitting."
+    }
   }
 }

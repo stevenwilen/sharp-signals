@@ -155,7 +155,7 @@ const YT_ONLY = process.argv.includes("--yt-only");
 
   // ---------- resolve + grade ----------
   log("resolving vs Kalshi results + line-at-call...");
-  const { resolved, matched, unmatched, noLine } = await resolveAll(picks);
+  const { resolved, matched, unmatched, noLine } = await resolveAll(picks, cfg);
   log(`  matched ${matched} | with-line ${resolved.length} | no-line ${noLine} | unmatched ${unmatched}`);
   writeJson(paths.predictions, resolved);
 

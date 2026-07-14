@@ -148,7 +148,7 @@ async function run() {
   const signals = [];
   const refused = [];
   for (const f of fresh) {
-    const mkt = await match.matchToMarket(f).catch(() => null);
+    const mkt = await match.matchToMarket(f, { cfg }).catch(() => null);
     if (!mkt) continue;
     // matchToMarket returns { ok:false, reason } when it cannot establish WHICH SIDE of the
     // fight the source was backing, or when the fight is today/over. Those refusals are the
