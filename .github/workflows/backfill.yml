@@ -45,7 +45,13 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node backfill.js
 
-      - name: Save track records
+      # if: always() is doing real work here. Transcripts cost Blotato credits, and the cache
+      # is written to disk as each one arrives. Without this, a job that dies part-way through
+      # (abort guard, timeout, crash) skips this step and THROWS AWAY every transcript it just
+      # paid for — then re-fetches them all next run. Committing the cache even on failure means
+      # a failed run is never wasted money: the next attempt resumes from where it stopped.
+      - name: Save track records (and the transcript cache, even on failure)
+        if: always()
         run: |
           git config user.name  "sharp-signals-bot"
           git config user.email "actions@github.com"
