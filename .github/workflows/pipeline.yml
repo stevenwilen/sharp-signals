@@ -1,0 +1,47 @@
+name: Sharp Signals — Pipeline
+
+# Runs in GitHub's cloud, so it fires whether the laptop is open, closed, or off.
+on:
+  schedule:
+    - cron: "0 */4 * * *" # every 4 hours (UTC)
+  workflow_dispatch: {} # lets you run it on demand from the Actions tab
+
+permissions:
+  contents: write # needed to commit the updated data/ back to the repo
+
+concurrency:
+  group: sharp-signals # never let two runs collide over data/
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Find live edges
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL }}
+          TWITTERAPI_KEY: ${{ secrets.TWITTERAPI_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node pipeline.js
+
+      # Persist results + the transcript cache so the next run doesn't re-fetch
+      # them (this is what keeps Blotato credit usage near zero).
+      - name: Save results
+        run: |
+          git config user.name  "sharp-signals-bot"
+          git config user.email "actions@github.com"
+          git add data/ || true
+          git diff --staged --quiet || git commit -m "pipeline: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --autostash || true
+          git push || true

@@ -1,0 +1,12 @@
+# secrets NEVER go in the repo — they live in GitHub Actions Secrets
+.env
+
+node_modules/
+*.log
+*.BACKUP.json
+
+# NOTE: data/ IS committed on purpose.
+#   data/*.json         -> track records + signals persist between runs
+#   data/transcripts/   -> the transcript cache. Committing it is what keeps
+#                          Blotato credits at ~0 (otherwise every cloud run
+#                          re-downloads the whole back catalogue).

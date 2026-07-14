@@ -1,0 +1,45 @@
+name: Sharp Signals — Weekly Backfill
+
+# Re-grades every source after Saturday's card resolves, so track records grow.
+on:
+  schedule:
+    - cron: "0 8 * * 1" # Mondays 08:00 UTC (after the weekend's fights settle)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sharp-signals # must not collide with the pipeline run
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Rebuild track records
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL }}
+          TWITTERAPI_KEY: ${{ secrets.TWITTERAPI_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node backfill.js
+
+      - name: Save track records
+        run: |
+          git config user.name  "sharp-signals-bot"
+          git config user.email "actions@github.com"
+          git add data/ || true
+          git diff --staged --quiet || git commit -m "backfill: $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase --autostash || true
+          git push || true
