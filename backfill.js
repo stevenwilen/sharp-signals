@@ -23,7 +23,12 @@ const YT_ONLY = process.argv.includes("--yt-only");
 
 (async () => {
   const cfg = readJson(paths.config, {});
-  const all = readJson(paths.sources, { sources: [] }).sources || [];
+  // SPORT GATE: only scan sources whose domain is enabled in config.sports (default UFC/MMA only).
+  // This is what keeps boxing channels — and their Gemini extraction cost — out of the backfill.
+  const sports = cfg.sports || ["mma", "boxing"];
+  const everySource = readJson(paths.sources, { sources: [] }).sources || [];
+  const all = everySource.filter((s) => sports.includes(s.domain));
+  log(`sports enabled: ${sports.join(", ")} — scanning ${all.length} of ${everySource.length} sources (boxing excluded)`);
   const xSources = all.filter((s) => s.platform === "x" && s.handle);
   const ytSources = all.filter((s) => s.platform === "youtube" && s.handle);
   const since = Math.floor(Date.parse(SINCE_ISO) / 1000);

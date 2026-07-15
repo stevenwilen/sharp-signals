@@ -3,6 +3,9 @@
   "series": "KXUFCFIGHT",
   "kalshiEnv": "prod",
 
+  "sports": ["mma"],
+  "_sports_why": "STRICTLY UFC/MMA for now. This gates what gets SCANNED: only sources whose domain is in this list are pulled by the backfill, the live pipeline, and the watcher. Boxing's 28 channels are excluded until the system is proven, which also keeps the historical backfill from spending Gemini credits on boxing. To re-enable boxing later, add \"boxing\" to this array — nothing else changes.",
+
   "grading": {
     "minSampleForTrust": 15,
     "minEdgeVsLine": 0.03,

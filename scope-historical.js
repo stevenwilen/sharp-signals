@@ -14,7 +14,10 @@ const AVG_TOKENS = 9000;          // measured mean transcript size
 const GEMINI_PER_M = 0.30;        // gemini-flash-latest, $/1M input tokens
 
 (async () => {
-  const yt = (readJson(paths.sources, { sources: [] }).sources || []).filter((s) => s.platform === "youtube" && s.handle);
+  const cfg = readJson(paths.config, {});
+  const sports = cfg.sports || ["mma", "boxing"]; // match the backfill's sport gate
+  const yt = (readJson(paths.sources, { sources: [] }).sources || [])
+    .filter((s) => s.platform === "youtube" && s.handle && sports.includes(s.domain));
   const FP = promptFingerprint();
   const haveTranscript = new Set(fs.readdirSync(path("transcripts")).map((f) => f.replace(".txt", "")));
 

@@ -79,7 +79,10 @@ async function getPredictions(cfg) {
   const { extractPredictions, extractFromTranscript, promptFingerprint } = require("./lib/extractor");
   const picksCache = require("./lib/picks-cache");
   const FP = promptFingerprint();
-  const all = (readJson(paths.sources, { sources: [] }).sources || []).filter((s) => s.handle);
+  // SPORT GATE: only scan sources whose domain is enabled in config.sports (default UFC/MMA only).
+  const sports = cfg.sports || ["mma", "boxing"];
+  const all = (readJson(paths.sources, { sources: [] }).sources || [])
+    .filter((s) => s.handle && sports.includes(s.domain));
   const preds = [];
 
   // last 10 days of prediction videos (covers the upcoming card's fight week)
