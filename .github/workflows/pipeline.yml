@@ -3,13 +3,13 @@ name: Sharp Signals — Pipeline
 # Runs in GitHub's cloud, so it fires whether the laptop is open, closed, or off.
 on:
   schedule:
-    # Hourly. The edge (if any) lives in the gap between a pundit posting and the market
-    # catching up, so scanning more often is what lets us reach a fresh pick before its line
-    # moves. This is safe under every limit: a scan is ~18s + ~90 YouTube units (halved by the
-    # channel-id cache), and the expensive per-video work (Blotato, Gemini) runs ONCE per video
-    # and is cached, so cadence does not multiply it. The one cost that would scale — the tweet
-    # harvest — is gated to every 6h in pipeline.js. Hourly is near the free GitHub-Actions
-    # minute budget (~1,800 of 2,000/mo), so keep runs lean; drop to */2 if minutes run short.
+    # Hourly discovery scan. The edge (if any) lives in the gap between a pundit posting and the
+    # market catching up, so scanning often is what lets us reach a fresh pick before its line
+    # moves. The expensive per-video work (Blotato, Gemini) runs ONCE per video and is cached, so
+    # cadence does not multiply it; the tweet harvest is gated to daily in pipeline.js. The repo
+    # is PUBLIC, so GitHub-Actions minutes are UNLIMITED — the old "~1,800 of 2,000/mo" budget note
+    # was wrong (that cap is for PRIVATE repos). The fast, cheap market re-check lives in the
+    # separate watch.yml (*/15) so this scan does not need to run more often than hourly.
     - cron: "0 * * * *"
   workflow_dispatch: {} # run on demand from the Actions tab
   push:

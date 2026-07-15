@@ -9,7 +9,10 @@ const grade = require("./lib/grade");
 const match = require("./lib/match");
 const { notify } = require("./lib/notify");
 const { sizeBet } = require("./lib/sizing");
-const ledger = require("./lib/alert-ledger");
+const alertLedger = require("./lib/alert-ledger");
+const ledger = require("./lib/pick-ledger");
+const positions = require("./lib/positions");
+const k = require("./lib/kalshi");
 
 // ============================ SAFETY: ALERTS ARE DISARMED ============================
 // A full audit (2026-07-14) found the alert path can currently:
@@ -33,6 +36,10 @@ const ALERTS_ARMED = false;
 const BANKROLL = Number(process.env.BANKROLL) || 0;
 
 const MOCK = process.argv.includes("--mock");
+// --watch: a CHEAP re-check. No YouTube, no Gemini — just re-run the EXISTING watch list against
+// Kalshi to catch a market that opened since the last run (the "get in at the open" edge). Runs
+// often and costs almost nothing; the expensive discovery scan stays on its slower schedule.
+const WATCH = process.argv.includes("--watch");
 
 function banner(caps) {
   const yn = (b) => (b ? "✅" : "⛔ needs key");
@@ -49,6 +56,21 @@ async function getPredictions(cfg) {
     const m = require("./lib/mock").build();
     console.log(`[mock] ${m.resolved.length} resolved history + ${m.fresh.length} fresh picks\n`);
     return { resolved: m.resolved, fresh: m.fresh };
+  }
+  if (WATCH) {
+    // Cheap path: re-use the picks we already wrote down and re-check them against Kalshi. No
+    // new video scan, no Gemini extraction — the market may have opened since last run, and this
+    // is how we pounce on it fast without paying the full-scan cost. Shares the same ledger.
+    const ledgerMap = ledger.load();
+    const c = ledger.counts(ledgerMap);
+    console.log(`[watch] re-checking ${c.waiting} waiting + ${c.live} live pick(s) against Kalshi (no scan)`);
+    const fresh = ledger.active(ledgerMap).map((e) => ({
+      source: e.source, domain: e.domain, pick: e.pick, opponent: e.opponent,
+      timestamp: e.pickTime, quote: e.quote, url: e.url, _key: e.key,
+    }));
+    const history = readJson(paths.predictions, []);
+    const resolved = history.filter((p) => p.result === 0 || p.result === 1);
+    return { resolved, fresh, ledgerMap };
   }
   // LIVE: fresh prediction VIDEOS (high yield) + recent tweets -> picks
   const { pullTwitter } = require("./lib/sources");
@@ -122,12 +144,100 @@ async function getPredictions(cfg) {
   // multi-month harvest; the pipeline only sees the last 20 tweets per handle. Overwriting
   // it every 4h both destroyed the backfill's version and created a guaranteed git conflict
   // between two jobs that now run concurrently.
-  console.log(`[live] ${preds.length} fresh picks`);
-  // Track records come from the backfill (predictions.json holds RESOLVED history).
-  // Fresh picks are the unresolved ones we just pulled.
+  console.log(`[live] ${preds.length} picks from this scan`);
+
+  // WRITE THEM DOWN. Every pick from this scan goes into the persistent ledger (new ones added,
+  // existing ones refreshed). The ledger — not the 10-day scan — is then the source of truth for
+  // what we are watching. A pick stays on it from the moment it is spoken until its fight
+  // resolves, so a call made weeks before Kalshi opens the market is no longer lost after 10 days.
+  const ledgerMap = ledger.load();
+  for (const p of preds) if (p.result == null) ledger.upsert(ledgerMap, p);
+  const c = ledger.counts(ledgerMap);
+  console.log(`[ledger] ${c.waiting} waiting for a market, ${c.live} live, ${c.settled} settled`);
+
+  // `fresh` is now the ACTIVE ledger (waiting + live), not the raw scan. This is what removes
+  // both the loss (picks persist past 10 days) and the waste (settled fights drop off and are
+  // never re-matched again). Each active pick carries its ledger key so run() can update status.
+  const fresh = ledger.active(ledgerMap).map((e) => ({
+    source: e.source, domain: e.domain, pick: e.pick, opponent: e.opponent,
+    timestamp: e.pickTime, quote: e.quote, url: e.url, _key: e.key,
+  }));
+
   const history = readJson(paths.predictions, []);
   const resolved = history.filter((p) => p.result === 0 || p.result === 1);
-  return { resolved, fresh: preds.filter((p) => p.result == null) };
+  return { resolved, fresh, ledgerMap };
+}
+
+// Resolve finished PAPER positions from Kalshi. For a fighter's YES market, result "yes" = that
+// fighter won. Unreadable or not-yet-settled markets are LEFT OPEN and retried — never guessed
+// (guessing an outcome is exactly the confident-wrong-number this project forbids).
+async function settlePositions(posState) {
+  let settled = 0;
+  for (const p of positions.openPositions(posState)) {
+    if (!p.fightDate || Date.parse(p.fightDate) > Date.now()) continue; // fight not over yet
+    try {
+      const s = await k.settlement(p.ticker);
+      const st = String(s.status || "").toLowerCase();
+      const res = String(s.result || "").toLowerCase();
+      if (res === "yes" || res === "no") {
+        positions.settle(posState, p.ticker, res === "yes" ? 1 : 0, res === "yes" ? 1 : 0, `kalshi ${st || "settled"}`);
+        settled++;
+      } else if ((st === "settled" || st === "finalized") && (res === "" || res === "void" || res === "voided")) {
+        positions.settle(posState, p.ticker, null, null, "void/cancelled");
+        settled++;
+      }
+      // otherwise still active/closed-but-unsettled -> leave open, retry next run
+    } catch (_) { /* transient read failure -> leave open, retry next run */ }
+  }
+  return settled;
+}
+
+// The trimmed buy alert — only the critical, actionable facts: what to buy, price, edge, stake.
+function buildAlert(s0, group, size, ticker) {
+  const cents = (v) => Math.round(v * 100);
+  const edge = size.p - cents(s0.cost);
+  const who = group.length === 1
+    ? `${group[0].source} (n=${group[0].n})`
+    : `${group.length} trusted: ${group.map((s) => s.source).join(", ")}`;
+  const dollars = BANKROLL ? `  (~$${Math.round(BANKROLL * size.pct / 100)} of $${BANKROLL})` : "";
+  const t = new Date().toISOString().slice(11, 16);
+  return [
+    `🥊 BUY  ${s0.fighter}  vs ${s0.opponent}  ·  ${s0.fightDate}`,
+    `Price ${cents(s0.cost)}c → worth ~${size.p}c  (edge +${edge}c)`,
+    `Stake ${size.pct}%${dollars}${size.capped ? "  [capped]" : ""}`,
+    `${who}  ·  ${t} UTC  ·  ${ticker}`,
+  ].join("\n");
+}
+
+// The once-a-day paper scoreboard: what STARTED (bought, not ended) and what ENDED (with paper
+// P&L + 🟢/🔴). Everything here is explicitly paper — the bot alerts, it does not trade.
+function buildSummary(posState) {
+  const cents = (v) => Math.round(v * 100);
+  const opened = positions.newlyOpened(posState);
+  const settled = positions.newlySettled(posState);
+  const L = [`📊 Sharp Signals — daily paper summary (${new Date().toISOString().slice(0, 10)})`, ``];
+
+  L.push(`🆕 Started (${opened.length}) — bought, not yet ended:`);
+  if (!opened.length) L.push(`   nothing new`);
+  for (const p of opened)
+    L.push(`   • ${p.fighter} vs ${p.opponent || "?"} — ${cents(p.entryCost)}c, stake ${p.stakePct}%  [${(p.sources || []).join(", ")}]`);
+  L.push(``);
+
+  L.push(`🏁 Ended (${settled.length}):`);
+  if (!settled.length) L.push(`   nothing settled`);
+  let net = 0, haveMoney = false;
+  for (const p of settled) {
+    if (p.result == null) { L.push(`   ◻️ ${p.fighter} — void/cancelled`); continue; }
+    const d = positions.pnlDollars(p, BANKROLL);
+    const emoji = p.result === 1 ? "🟢" : "🔴";
+    let money;
+    if (d != null) { money = `${d >= 0 ? "+" : "-"}$${Math.abs(d)} paper`; net += d; haveMoney = true; }
+    else money = `${p.pnlPct >= 0 ? "+" : ""}${p.pnlPct}% paper`;
+    L.push(`   ${emoji} ${p.fighter} — ${p.result === 1 ? "WON" : "lost"}, ${money}`);
+  }
+  if (haveMoney) L.push(``, `Net today: ${net >= 0 ? "+" : "-"}$${Math.abs(+net.toFixed(2))} paper`);
+  L.push(``, `Paper only — the bot alerts, it doesn't trade. This is "if you'd taken each call as given."`);
+  return { text: L.join("\n"), opened, settled };
 }
 
 async function run() {
@@ -135,7 +245,9 @@ async function run() {
   const caps = capabilities();
   banner(caps);
 
-  const { resolved, fresh } = await getPredictions(cfg);
+  const { resolved, fresh, ledgerMap } = await getPredictions(cfg);
+  // The paper-trade book (null in --mock so the self-test never writes the real file).
+  const posState = MOCK ? null : positions.load();
 
   // GRADE (in memory only).
   // Two reasons this no longer writes sources_graded.json:
@@ -158,20 +270,76 @@ async function run() {
   // MATCH + SIGNAL
   const signals = [];
   const refused = [];
+
+  // FRESHNESS. A pick is only as good as the information behind it. A call made weeks ago, never
+  // re-confirmed, was made WITHOUT news that has since moved the market — a torn ligament, a
+  // weight miss, a pulled fighter. That is worse than "less reliable": the stale view now
+  // disagrees with an informed market, and the system reads that disagreement as a big EDGE when
+  // it is really just the pundit not knowing what the market knows. So a pick older than this
+  // stays on the watch list (we don't lose it) but does not fire a money-alert unless it was made
+  // recently. Default 21 days; tune with config.freshness.staleAfterDays or STALE_AFTER_DAYS.
+  const STALE_AFTER_DAYS = Number(
+    (cfg.freshness && cfg.freshness.staleAfterDays) ?? process.env.STALE_AFTER_DAYS ?? 21);
+  // A refusal reason is PERMANENT (the pick text is ambiguous, or the fight is over — settle it,
+  // stop watching) or TRANSIENT (no market open yet, or below the volume floor for now — keep
+  // waiting, re-check next hour). Only permanent reasons take a pick off the watch list.
+  // A refusal is PERMANENT only if it is intrinsic to the pick text or the fight (over, hindsight,
+  // names both fighters). `surname` and `equally` are NOT here on purpose: they depend on which
+  // markets happen to be open right now (a same-surname decoy card, or an equally-scoring rival
+  // card), so they are transient — the pick's real market may simply not be listed yet. Settling
+  // on them would permanently drop a recoverable early call once the decoy card closes.
+  const isPermanent = (reason) => /past|today|hindsight|postdates|both fighters|cannot read/i.test(reason || "");
+
   for (const f of fresh) {
-    const mkt = await match.matchToMarket(f, { cfg }).catch(() => null);
-    if (!mkt) continue;
-    // matchToMarket returns { ok:false, reason } when it cannot establish WHICH SIDE of the
-    // fight the source was backing, or when the fight is today/over. Those refusals are the
-    // whole point — log them, never bet them.
-    if (mkt.ok === false) { refused.push(`${f.source}: ${mkt.reason}`); continue; }
+    const e = f._key ? ledgerMap[f._key] : null;
+
+    // Fetch the board FIRST and separately, so we can tell a transient Kalshi problem (empty or
+    // failed board — never a reason to settle anything) from "this one fight's market is gone".
+    let boardOk = false, mkt = null, threw = false;
+    try {
+      const board = await match.marketsFor(f.domain);
+      boardOk = Array.isArray(board) && board.length > 0;
+      mkt = await match.matchToMarket(f, { cfg });
+    } catch (_) { threw = true; }
+
+    // No candidate for this fight.
+    if (!mkt) {
+      // Only touch a LIVE pick, and only when the board was actually readable and non-empty. An
+      // empty/failed board (or a throw) is a transient Kalshi hiccup, NOT "the fight is over" —
+      // settling on it would silently discard the entire live watch list on one blip (finding #2).
+      if (!threw && boardOk && e && e.status === "live") {
+        // Its market is genuinely gone. If the fight date has passed, it's over -> settle. A
+        // network blip cannot move e.fightDate, so gating on it is safe. Otherwise the market was
+        // PULLED while the fight is still ahead (a postponement re-lists under a new ticker/date):
+        // revert to waiting so the re-listed market can re-match, instead of settling it forever.
+        const over = e.fightDate && Date.parse(e.fightDate) <= Date.now();
+        if (over) ledger.settle(ledgerMap, f._key, "market closed (fight over)");
+        else { e.status = "waiting"; e.ticker = null; e.fightDate = null; }
+      }
+      continue;
+    }
+
+    if (mkt.ok === false) {
+      refused.push(`${f.source}: ${mkt.reason}`);
+      // Only settle on a refusal for a pick that is already LIVE (its real fight was identified
+      // before). For a WAITING pick a refusal is board-relative — a surname/ambiguity collision
+      // with an unrelated open fight whose true market is not listed yet — so settling would
+      // permanently drop a recoverable early call (findings #5, #9). Waiting picks are retired
+      // only by the WAITING_EXPIRE timeout.
+      if (e && e.status === "live" && isPermanent(mkt.reason)) ledger.settle(ledgerMap, f._key, mkt.reason);
+      continue;
+    }
 
     // BELT AND BRACES. The market we are about to price must BE the fighter who was picked.
     // The old matcher could return the right fight and the wrong side; nothing ever checked.
     if (match.nameScore(f.pick, mkt.fighter) < 1) {
       refused.push(`${f.source}: matched ${mkt.fighter} but the pick was "${f.pick}" — REFUSED`);
+      if (e && e.status === "live") ledger.settle(ledgerMap, f._key, "name mismatch");
       continue;
     }
+
+    // Matched a real, future fight: mark it live on the ledger (waiting -> live).
+    if (f._key) ledger.setMatched(ledgerMap, f._key, mkt.ticker, mkt.fightDate);
 
     // The price is what you PAY: the ask. A one-sided book (no offers to lift) is not a
     // tradeable market — a lone stale bid would otherwise read as a huge edge.
@@ -179,6 +347,11 @@ async function run() {
     if (!(cost > 0 && cost < 1)) { refused.push(`${f.source}: ${mkt.fighter} has no offers to buy`); continue; }
 
     const g = graded[f.source] || {};
+    // How old is the view we'd be betting on? Age is measured from the pick (video publish) time
+    // to now, because "now" is what the market price already reflects — an old pick has had that
+    // many days for news to arrive that the pundit never saw.
+    const pickAgeDays = f.timestamp
+      ? Math.round((Date.now() - Date.parse(f.timestamp)) / 86400000) : null;
     signals.push({
       source: f.source, trusted: !!g.trusted, domain: f.domain,
       pick: f.pick, fighter: mkt.fighter, opponent: mkt.opponent,
@@ -188,11 +361,27 @@ async function run() {
       sourceRoi: g.shrunkRoi ?? null,   // the trust decision's number
       sourceRoiLcb: g.roiLcb ?? null,   // the DEFENSIBLE edge — what sizing uses
       n: g.n || 0,
+      pickAgeDays,                      // days from the pick to now
+      stale: pickAgeDays != null && pickAgeDays > STALE_AFTER_DAYS,
       quote: f.quote || "",
     });
   }
   signals.sort((a, b) => (b.trusted - a.trusted) || ((b.sourceRoiLcb || -9) - (a.sourceRoiLcb || -9)));
   writeJson(paths.signals, signals);
+
+  // Persist the watch list: statuses updated above, old settled entries pruned, expired
+  // never-opened picks retired. This is the "write it down" — next hour resumes from here
+  // instead of re-deriving everything from a fresh video scan.
+  // Guarded: in --mock mode getPredictions returns no ledgerMap. Skipping here (rather than
+  // defaulting to {}) both avoids the crash AND protects the committed ledger — save({}) would
+  // otherwise overwrite the real file with an empty map every time the mock self-test runs.
+  if (ledgerMap) {
+    ledger.prune(ledgerMap);
+    ledger.save(ledgerMap);
+    const lc = ledger.counts(ledgerMap);
+    console.log(`[ledger] after matching: ${lc.waiting} waiting, ${lc.live} live, ${lc.settled} settled`);
+  }
+  alertLedger.pruneOld(45); // keep alerts_sent.json from growing forever (finding #15)
 
   if (refused.length) {
     console.log(`\nREFUSED ${refused.length} pick(s) rather than guess:`);
@@ -200,112 +389,102 @@ async function run() {
   }
 
   // A signal now requires: a trusted source, AND a defensible (lower-bound) edge over the
-  // price you actually pay. Gemini's confidence score is no longer part of this decision.
-  const trusted = signals.filter((s) => s.trusted && (s.sourceRoiLcb || 0) > 0);
-  console.log("\nLIVE SIGNALS (trusted source with a defensible edge):");
+  // price you actually pay, AND a FRESH view (see STALE_AFTER_DAYS above). Gemini's confidence
+  // score is no longer part of this decision.
+  const qualifying = signals.filter((s) => s.trusted && (s.sourceRoiLcb || 0) > 0);
+  const staleHeld = qualifying.filter((s) => s.stale);
+  const trusted = qualifying.filter((s) => !s.stale);
+  if (staleHeld.length) {
+    // Never drop silently. These stay on the watch list; they just don't fire a bet on a view
+    // that predates news the market has since absorbed.
+    console.log(`\n[freshness] ${staleHeld.length} trusted signal(s) HELD BACK as stale ` +
+      `(pick older than ${STALE_AFTER_DAYS}d — not alerted, still watched):`);
+    for (const s of staleHeld) console.log(`  - ${s.fighter} [${s.source}, pick ${s.pickAgeDays}d old]`);
+  }
+  console.log("\nLIVE SIGNALS (trusted source, defensible edge, fresh view):");
   if (!trusted.length) console.log("  (none)");
   for (const s of trusted)
     console.log(`  ${s.fighter} vs ${s.opponent} — costs ${Math.round(s.cost * 100)}c` +
       `  [${s.source}: n=${s.n}, edge ${s.sourceRoi} (lower bound ${s.sourceRoiLcb})]  ${s.fightDate}`);
   console.log(`\nwrote ${paths.signals}`);
 
-  // ---- TELEGRAM -----------------------------------------------------------
-  // Alert on a real edge. Stay QUIET otherwise — six "no signals" pings a day
-  // would train you to ignore the one that matters. But send one daily heartbeat
-  // so silence is never ambiguous ("is it broken, or is there just nothing?").
-  // Kept deliberately plain: cents, not percentages. A Kalshi contract costs X cents
-  // and pays $1 if you're right, so "costs 32c, worth 52c" needs no betting knowledge.
+  // ---- BETS: size, record as PAPER positions, and (if armed) alert ----------------------
+  // One bet per market from the qualifying signals. We size it and record a PAPER position for it
+  // whether or not alerts are armed — that paper record is the honest out-of-sample scoreboard
+  // (lib/positions.js). The ALERTS_ARMED gate only decides whether a human is actually told.
+  const cents = (v) => Math.round(v * 100);
+  const byTicker = {};
+  for (const s of trusted) (byTicker[s.ticker] = byTicker[s.ticker] || []).push(s);
+
+  const bets = [];
+  for (const [ticker, all] of Object.entries(byTicker)) {
+    // DEDUPE BY SOURCE: one channel's "Preview" + "Best Bets" videos are ONE opinion, not two.
+    const bySource = new Map();
+    for (const s of all) if (!bySource.has(s.source)) bySource.set(s.source, s);
+    const group = Array.from(bySource.values());
+    const s0 = group[0];
+    const size = sizeBet(
+      group.map((s) => ({ source: s.source, roiLcb: s.sourceRoiLcb, shrunkRoi: s.sourceRoi, n: s.n })),
+      s0.cost);
+    if (size.skip) { console.log(`  (skipping ${s0.fighter}: ${size.reason})`); continue; }
+    bets.push({ ticker, group, s0, size });
+
+    if (posState) {
+      const opened = positions.recordOpen(posState, {
+        ticker, fighter: s0.fighter, opponent: s0.opponent, domain: s0.domain,
+        fightDate: s0.fightDate, entryCost: s0.cost, fairValueCents: size.p,
+        stakePct: size.pct, sources: group.map((s) => s.source),
+      });
+      if (opened) console.log(`  [paper] opened ${s0.fighter} @ ${cents(s0.cost)}c, stake ${size.pct}%`);
+    }
+  }
+
+  // Resolve any paper positions whose fights have finished (reads Kalshi; unresolved ones stay
+  // open and retry). Every run, so the daily summary always has up-to-date outcomes.
+  if (posState) {
+    const n = await settlePositions(posState);
+    if (n) console.log(`  [paper] settled ${n} finished position(s)`);
+    positions.prune(posState);
+    const pc = positions.counts(posState);
+    console.log(`[paper] book: ${pc.open} open, ${pc.settled} settled`);
+  }
+
+  // ---- TELEGRAM: buy alerts (only when armed) -------------------------------------------
   if (!ALERTS_ARMED) {
-    console.log(`\n[SAFETY] alerts DISARMED — ${trusted.length} signal(s) suppressed, not sent.`);
-    console.log(`         data/signals.json is still written; see ALERTS_ARMED in pipeline.js.`);
-  } else if (trusted.length) {
-    const cents = (v) => Math.round(v * 100);
-
-    // Group by market so agreement reads as agreement...
-    const byTicker = {};
-    for (const s of trusted) (byTicker[s.ticker] = byTicker[s.ticker] || []).push(s);
-
-    const lines = [];
-    for (const [ticker, all] of Object.entries(byTicker)) {
-      // ...but DEDUPE BY SOURCE first. A channel that posts a "Preview" and a "Best Bets" video
-      // in the same week was landing here twice, so the message said "2 trusted sources all like
-      // him" and listed the same man twice — manufactured consensus — while also doubling his
-      // weight in the bet size.
-      const bySource = new Map();
-      for (const s of all) if (!bySource.has(s.source)) bySource.set(s.source, s);
-      const group = Array.from(bySource.values());
-      const s0 = group[0];
-
-      const size = sizeBet(
-        group.map((s) => ({ source: s.source, roiLcb: s.sourceRoiLcb, shrunkRoi: s.sourceRoi, n: s.n })),
-        s0.cost
-      );
-      if (size.skip) {
-        console.log(`  (skipping ${s0.fighter}: ${size.reason})`);
-        continue;
-      }
-
-      const gate = ledger.shouldSend(ticker, group.map((s) => s.source), size.pct);
-      if (!gate.send) { console.log(`  (already alerted ${s0.fighter}: ${gate.why})`); continue; }
-
-      const out = [
-        `BET: ${s0.fighter}`,
-        `Fight: ${s0.fighter} vs ${s0.opponent}, ${s0.fightDate}`,
-        ``,
-        `It costs ${cents(s0.cost)}c and pays $1 if he wins.`,
-        `We think it is worth about ${size.p}c.`,
-        ``,
-      ];
-
-      if (group.length === 1) {
-        out.push(`${s0.source} picked him.`,
-          `His record: ${s0.n} past picks, and he beats the market by ` +
-          `${Math.round((s0.sourceRoi || 0) * 100)}% on average.`);
-      } else {
-        out.push(`${group.length} sources we trust all picked him:`);
-        for (const s of group) {
-          out.push(`- ${s.source} (${s.n} past picks, beats the market by ` +
-            `${Math.round((s.sourceRoi || 0) * 100)}%)`);
-        }
-      }
-
-      out.push(``, `BET ${size.pct}% of your bankroll.`);
-      if (BANKROLL) out.push(`On your $${BANKROLL} that is about $${Math.round(BANKROLL * size.pct / 100)}.`);
-      if (size.capped) out.push(`(capped at 5%, never more on one fight)`);
-      out.push(``,
-        `This is a small sample, so the size is deliberately cautious.`,
-        `Market code: ${ticker}`);
-
-      lines.push(out.join("\n"));
-      ledger.record(ticker, group.map((s) => s.source), size.pct);
-    }
-
-    if (lines.length) {
-      await notify(lines.join("\n\n-----\n\n")).catch(() => {});
-    } else {
-      console.log("  (all signals suppressed: already sent, or too thin to bet)");
-    }
+    console.log(`\n[SAFETY] alerts DISARMED — ${bets.length} bet(s) recorded on paper, none sent.`);
   } else {
+    const lines = [];
+    for (const { ticker, group, s0, size } of bets) {
+      const gate = alertLedger.shouldSend(ticker, group.map((s) => s.source), size.pct);
+      if (!gate.send) { console.log(`  (already alerted ${s0.fighter}: ${gate.why})`); continue; }
+      lines.push(buildAlert(s0, group, size, ticker));
+      alertLedger.record(ticker, group.map((s) => s.source), size.pct);
+    }
+    if (lines.length) await notify(lines.join("\n\n—\n\n")).catch(() => {});
+    else console.log("  (all bets suppressed: already sent, or too thin)");
+  }
+
+  // ---- DAILY SUMMARY: one message a day — Bought + Ended with paper P&L ------------------
+  // Not in --watch (that runs many times a day) and not in --mock. Once per calendar day in the
+  // midday window, guarded by meta.lastSummaryDate so it can't double-send. Safe to send even
+  // while disarmed: it reports paper results, it does not tell anyone to place a bet.
+  if (posState && !WATCH) {
     const hour = new Date().getUTCHours();
-    const force = process.env.FORCE_HEARTBEAT === "1";
-    if (force || (hour >= 12 && hour < 16)) { // one quiet-day note (the 12:00 UTC run)
-      await notify(`No bets today.\n\nChecked ${fresh.length} picks. Nothing worth it.`).catch(() => {});
+    const today = new Date().toISOString().slice(0, 10);
+    const due = process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16);
+    if (due && posState.meta.lastSummaryDate !== today) {
+      const sum = buildSummary(posState);
+      const status = ALERTS_ARMED
+        ? `Alerts are LIVE. Checked ${fresh.length} picks today.`
+        : `⚠️ Alerts are PAUSED — do not bet from this yet. Checked ${fresh.length} picks today.`;
+      await notify(`${sum.text}\n\n${status}`).catch(() => {});
+      positions.markSummarized(posState, sum.opened.map((p) => p.ticker), "open");
+      positions.markSummarized(posState, sum.settled.map((p) => p.ticker), "settled");
+      posState.meta.lastSummaryDate = today;
     }
   }
 
-  // Silence must never be ambiguous. While disarmed, still send the one daily note so a
-  // paused system is not mistaken for a dead one.
-  if (!ALERTS_ARMED) {
-    const hour = new Date().getUTCHours();
-    if (process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16)) {
-      await notify(
-        `Bet alerts are PAUSED while I fix some bugs.\n\n` +
-        `The system is still running and still learning. It checked ${fresh.length} picks today ` +
-        `and found ${trusted.length} it would have flagged.\n\n` +
-        `Do not place any bets from this system until I turn alerts back on.`
-      ).catch(() => {});
-    }
-  }
+  if (posState) positions.save(posState); // one atomic write after all mutations
 }
 
 run().catch(async (e) => {

@@ -1,0 +1,44 @@
+name: Sharp Signals — Market Watch
+
+# CHEAP, FREQUENT re-check. It does NOT scan YouTube or call Gemini — it just re-runs the picks
+# we already wrote down against Kalshi, to catch a market the instant it opens (the softest,
+# most-beatable line is at the open). The expensive discovery scan stays on the hourly Pipeline.
+#
+# This is only worth the frequency because the repo is PUBLIC, so GitHub Actions minutes are
+# UNLIMITED — a private repo would have to weigh this against the 2,000-minute budget. A watch run
+# is a handful of Kalshi reads (~1 min), so the load is trivial. Dial the cadence below to taste.
+on:
+  schedule:
+    - cron: "*/15 * * * *" # every 15 min; the pipeline already covers the top of each hour
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # commit the updated data/ (ledger, positions) back to the repo
+
+concurrency:
+  # SAME group as the pipeline, so a watch run and a pipeline run can never write data/ at the
+  # same time. If the hourly pipeline is running, the watch run waits (or is superseded) — safe.
+  group: sharp-signals
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Re-check open markets (no scan, no Gemini)
+        env:
+          # No GEMINI/YOUTUBE/BLOTATO/TWITTER keys — watch mode never touches them.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BANKROLL: ${{ vars.BANKROLL }}
+        run: node pipeline.js --watch
+
+      - name: Save results (even on failure — settled outcomes are worth keeping)
+        if: always()
+        run: bash .github/save-data.sh watch
