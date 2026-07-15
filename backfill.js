@@ -186,8 +186,9 @@ const YT_ONLY = process.argv.includes("--yt-only");
 
   // ---------- resolve + grade ----------
   log("resolving vs Kalshi results + line-at-call...");
-  const { resolved, matched, unmatched, noLine } = await resolveAll(picks, cfg);
+  const { resolved, matched, unmatched, noLine, bySource } = await resolveAll(picks, cfg);
   log(`  matched ${matched} | with-line ${resolved.length} | no-line ${noLine} | unmatched ${unmatched}`);
+  log(`  by source: ${bySource.kalshi} kalshi + ${bySource.bfo} bfo (historical)`);
 
   // THE REAL BACKSTOP. Every abort guard above is a proxy for one thing: "don't overwrite good
   // track records with a gutted dataset." So check that DIRECTLY, right before writing, instead
