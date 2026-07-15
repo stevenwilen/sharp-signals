@@ -101,7 +101,7 @@ async function getPredictions(cfg) {
   // ZERO gradeable picks (all 1745 come from YouTube). So run it only a few times a day. Videos
   // are the fast path that matters for the early-line edge; tweets, if they ever prove out, do
   // not need minute-fresh polling. Set TWITTER_EVERY_HOURS to change the interval.
-  const twEvery = Number(process.env.TWITTER_EVERY_HOURS || 6);
+  const twEvery = Number(process.env.TWITTER_EVERY_HOURS || 24);
   const doTwitter = MOCK ? false : (new Date().getUTCHours() % twEvery === 0);
   if (doTwitter) {
     const xs = all.filter((s) => s.platform === "x");
