@@ -7,7 +7,16 @@ on:
     # the pipeline's "0 */4 * * *" fires at 08:00, and starting both jobs in the same minute
     # maximised the chance of them racing each other to push data/.
     - cron: "30 9 * * 1"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      since:
+        description: "Deep-backfill start date YYYY-MM-DD (empty = default Kalshi era). Use for the one-time 24-month historical run."
+        required: false
+        default: ""
+      until:
+        description: "Optional end cap YYYY-MM-DD (for a narrow dry-run window)."
+        required: false
+        default: ""
   push:
     branches: [main]
     paths: ["backfill-trigger.txt"] # touch this file to force a rebuild in the cloud
@@ -40,13 +49,20 @@ jobs:
       - name: Rebuild track records
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL }}
+          # Force the cheap model regardless of any stale secret — the deep run is ~2,500 videos.
+          EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL || 'gemini-flash-lite-latest' }}
           TWITTERAPI_KEY: ${{ secrets.TWITTERAPI_KEY }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: node backfill.js
+          # Deep historical window (from workflow_dispatch inputs); empty falls back to the default.
+          BACKFILL_SINCE: ${{ github.event.inputs.since }}
+          BACKFILL_UNTIL: ${{ github.event.inputs.until }}
+        # For the one-time deep run (since provided) skip the Twitter harvest: 24 months of tweets
+        # would run up the metered twitterapi.io bill, and transcripts supply ~99% of gradeable
+        # picks. The weekly default (no since) still harvests Twitter.
+        run: node backfill.js ${{ github.event.inputs.since != '' && '--yt-only' || '' }}
 
       # if: always() is doing real work here. Transcripts cost Blotato credits, and the cache
       # is written to disk as each one arrives. Without this, a job that dies part-way through
