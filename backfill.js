@@ -18,7 +18,9 @@ const grade = require("./lib/grade");
 const { notify } = require("./lib/notify");
 
 const log = (m) => console.log(`[${new Date().toISOString().slice(11, 19)}] ${m}`);
-const SINCE_ISO = "2026-05-01T00:00:00Z"; // Kalshi settled-history starts ~here
+// Default covers the Kalshi era. Override with BACKFILL_SINCE=YYYY-MM-DD for the one-time deep
+// historical run (graded via the BFO+Wikipedia fallback), without changing the weekly default.
+const SINCE_ISO = process.env.BACKFILL_SINCE || "2026-05-01T00:00:00Z";
 const YT_ONLY = process.argv.includes("--yt-only");
 
 (async () => {
@@ -65,6 +67,15 @@ const YT_ONLY = process.argv.includes("--yt-only");
     await notify(" Backfill ABORTED: 0 prediction videos found across every channel (likely a YouTube API " +
       "issue). Refused to overwrite track records. Existing results are intact.").catch(() => {});
     process.exit(1);
+  }
+  // Optional END cap (BACKFILL_UNTIL=YYYY-MM-DD): scan only [SINCE_ISO, UNTIL]. Used for the small
+  // dry-run window before committing to the full deep run. Applied AFTER the 0-videos abort so a
+  // narrow window can't be mistaken for an API failure.
+  if (process.env.BACKFILL_UNTIL) {
+    const untilMs = Date.parse(process.env.BACKFILL_UNTIL);
+    const before = videos.length;
+    videos = videos.filter((v) => Date.parse(v.publishedAt) <= untilMs);
+    log(`  window cap BACKFILL_UNTIL=${process.env.BACKFILL_UNTIL}: ${videos.length} of ${before} videos`);
   }
   log(`  ${videos.length} prediction videos since ${SINCE_ISO.slice(0, 10)}`);
 
