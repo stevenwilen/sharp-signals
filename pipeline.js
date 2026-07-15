@@ -95,17 +95,28 @@ async function getPredictions(cfg) {
   console.log(`[live] videos: ${reused} from cache (0 cost), ${extracted} newly extracted` +
     (extractFailed ? `, ${extractFailed} FAILED (uncached, will retry)` : ""));
 
-  // recent tweets
-  const xs = all.filter((s) => s.platform === "x");
-  const posts = [];
-  for (const s of xs) {
-    const r = await pullTwitter(s, { limit: 20 }).catch(() => ({ posts: [] }));
-    posts.push(...(r.posts || []));
-  }
-  console.log(`  ${posts.length} recent tweets`);
-  if (posts.length) {
-    try { preds.push(...(await extractPredictions(posts, { batchDelayMs: 200 }))); }
-    catch (e) { console.log("  extract:", e.message); }
+  // Recent tweets — but NOT every run. The tweet path is the one cost that scales linearly with
+  // cadence: it re-pulls 20 tweets x 15 handles (paid twitterapi.io) and re-extracts them with
+  // no cache. At an hourly cadence that would 24x the Twitter bill — and it currently yields
+  // ZERO gradeable picks (all 1745 come from YouTube). So run it only a few times a day. Videos
+  // are the fast path that matters for the early-line edge; tweets, if they ever prove out, do
+  // not need minute-fresh polling. Set TWITTER_EVERY_HOURS to change the interval.
+  const twEvery = Number(process.env.TWITTER_EVERY_HOURS || 6);
+  const doTwitter = MOCK ? false : (new Date().getUTCHours() % twEvery === 0);
+  if (doTwitter) {
+    const xs = all.filter((s) => s.platform === "x");
+    const posts = [];
+    for (const s of xs) {
+      const r = await pullTwitter(s, { limit: 20 }).catch(() => ({ posts: [] }));
+      posts.push(...(r.posts || []));
+    }
+    console.log(`  ${posts.length} recent tweets (twitter runs every ${twEvery}h)`);
+    if (posts.length) {
+      try { preds.push(...(await extractPredictions(posts, { batchDelayMs: 200 }))); }
+      catch (e) { console.log("  extract:", e.message); }
+    }
+  } else {
+    console.log(`  (skipping twitter this hour; runs every ${twEvery}h)`);
   }
   // NOTE: deliberately does NOT write raw_posts.json. That file is the BACKFILL's deep
   // multi-month harvest; the pipeline only sees the last 20 tweets per handle. Overwriting
