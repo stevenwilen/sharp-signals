@@ -2144,5 +2144,14 @@
     ]
   },
   "immutable": true,
-  "completedHash": "004fdcda31c93ab2"
+  "completedHash": "004fdcda31c93ab2",
+  "evaluationStatus": {
+    "status": "BASELINE CONTAMINATED",
+    "labelledAt": "2026-07-16T21:28:08.417Z",
+    "why": "The market baseline was the de-vigged CLOSING line stamped with a synthetic timestamp (sealTs - 2h). The leakage guard passed it because it checked the fabricated time, not a real one. Open-to-close drift on this card reached 14.9 points, so the prior carried information it could not have had.",
+    "consequence": "This evaluation MUST NOT contribute to any claim of predictive performance. The +0.018 log-loss result is void as evidence.",
+    "specificContamination": "Yanez vs Garbrandt - one of the two cap-limited bouts carrying the entire measured edge - drifted +7.9 points from open (68.9%) to close (76.8%), toward Yanez, who won.",
+    "preserved": "The sealed forecasts, hashes and lineage are UNCHANGED and remain the primary record of what was forecast. Only the EVALUATION is void.",
+    "supersededBy": "lib/market-baseline.js (Phase 7.5) - A/B/C/D waterfall, opening lines, no synthetic timestamps"
+  }
 }

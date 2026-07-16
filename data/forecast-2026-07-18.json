@@ -324,73 +324,96 @@
       }
     ]
   },
-  "sealedAt": "2026-07-18T22:00:00.000Z",
+  "sealedAt": "2026-07-16T22:00:00.000Z",
   "rulesVersion": "7.0.0",
-  "marketSource": "kalshi",
+  "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "22c1311c15a92b89",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "19e431ddfce9e715",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B02",
       "fight": "Christian Duncan vs Jared Cannonier",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.7426,
+        "probability": 0.7414,
         "forFighter": "Christian Duncan",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Christian Duncan": 0.75,
-          "Jared Cannonier": 0.26
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 2.47,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Christian Duncan": "-325",
+            "Jared Cannonier": "+275",
+            "rawProbA": 0.7647,
+            "rawProbB": 0.2667,
+            "overround": 1.0314
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "a2c6f854facdfb75"
       },
       "systemCentral": {
-        "Christian Duncan": 0.7539,
-        "Jared Cannonier": 0.2461
+        "Christian Duncan": 0.7527,
+        "Jared Cannonier": 0.2473
       },
       "systemRange": {
         "forFighter": "Christian Duncan",
-        "low": 0.6989,
-        "high": 0.8089
+        "low": 0.6977,
+        "high": 0.8077
       },
       "marketDisagreementPoints": 1.13,
       "outcomeTree": {
         "Christian Duncan": {
-          "win": 0.7539,
-          "byKO": 0.2488,
-          "bySubmission": 0.1282,
-          "byDecision": 0.377,
+          "win": 0.7527,
+          "byKO": 0.2484,
+          "bySubmission": 0.128,
+          "byDecision": 0.3764,
           "koByRound": {
-            "r1": 0.112,
-            "r2": 0.0796,
-            "r3": 0.0572
+            "r1": 0.1118,
+            "r2": 0.0795,
+            "r3": 0.0571
           },
           "submissionByRound": {
-            "r1": 0.0577,
+            "r1": 0.0576,
             "r2": 0.041,
-            "r3": 0.0295
+            "r3": 0.0294
           }
         },
         "Jared Cannonier": {
-          "win": 0.2461,
-          "byKO": 0.0812,
-          "bySubmission": 0.0418,
-          "byDecision": 0.123,
+          "win": 0.2473,
+          "byKO": 0.0816,
+          "bySubmission": 0.042,
+          "byDecision": 0.1236,
           "koByRound": {
-            "r1": 0.0365,
-            "r2": 0.026,
-            "r3": 0.0187
+            "r1": 0.0367,
+            "r2": 0.0261,
+            "r3": 0.0188
           },
           "submissionByRound": {
-            "r1": 0.0188,
+            "r1": 0.0189,
             "r2": 0.0134,
-            "r3": 0.0096
+            "r3": 0.0097
           }
         }
       },
@@ -497,73 +520,96 @@
       },
       "dataHashes": {
         "evidenceEval": "9f679d9a7fffc370",
-        "baseline": "c29b3dda1672341e",
+        "baseline": "0d71b9d375b2fce2",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3bb19fe9ed7b7096",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "786e25c467504abf",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B01",
       "fight": "Kamaru Usman vs Dricus Du Plessis",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3235,
+        "probability": 0.3172,
         "forFighter": "Kamaru Usman",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.02,
-        "note": "live Kalshi asks (overround 1.020)",
-        "rawPrices": {
-          "Kamaru Usman": 0.33,
-          "Dricus Du Plessis": 0.69
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 1.39,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Kamaru Usman": "+205",
+            "Dricus Du Plessis": "-240",
+            "rawProbA": 0.3279,
+            "rawProbB": 0.7059,
+            "overround": 1.0338
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "03f69ff2330fa6a4"
       },
       "systemCentral": {
-        "Kamaru Usman": 0.3235,
-        "Dricus Du Plessis": 0.6765
+        "Kamaru Usman": 0.3172,
+        "Dricus Du Plessis": 0.6828
       },
       "systemRange": {
         "forFighter": "Kamaru Usman",
-        "low": 0.2685,
-        "high": 0.3785
+        "low": 0.2622,
+        "high": 0.3722
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Kamaru Usman": {
-          "win": 0.3235,
-          "byKO": 0.1068,
-          "bySubmission": 0.055,
-          "byDecision": 0.1617,
+          "win": 0.3172,
+          "byKO": 0.1047,
+          "bySubmission": 0.0539,
+          "byDecision": 0.1586,
           "koByRound": {
-            "r1": 0.0481,
-            "r2": 0.0342,
-            "r3": 0.0246
+            "r1": 0.0471,
+            "r2": 0.0335,
+            "r3": 0.0241
           },
           "submissionByRound": {
-            "r1": 0.0248,
-            "r2": 0.0176,
-            "r3": 0.0126
+            "r1": 0.0243,
+            "r2": 0.0172,
+            "r3": 0.0124
           }
         },
         "Dricus Du Plessis": {
-          "win": 0.6765,
-          "byKO": 0.2232,
-          "bySubmission": 0.115,
-          "byDecision": 0.3383,
+          "win": 0.6828,
+          "byKO": 0.2253,
+          "bySubmission": 0.1161,
+          "byDecision": 0.3414,
           "koByRound": {
-            "r1": 0.1004,
-            "r2": 0.0714,
-            "r3": 0.0513
+            "r1": 0.1014,
+            "r2": 0.0721,
+            "r3": 0.0518
           },
           "submissionByRound": {
-            "r1": 0.0518,
-            "r2": 0.0368,
-            "r3": 0.0265
+            "r1": 0.0522,
+            "r2": 0.0372,
+            "r3": 0.0267
           }
         }
       },
@@ -610,73 +656,96 @@
       },
       "dataHashes": {
         "evidenceEval": "2b3cae7138e61aa5",
-        "baseline": "2373bbde68875e47",
+        "baseline": "3a510dded31cfbc2",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "c89bf6ce1fc2c586",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "de9dac7bbc0ab957",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B03",
       "fight": "Mitch Ramirez vs Chase Hooper",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2574,
+        "probability": 0.3065,
         "forFighter": "Mitch Ramirez",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Mitch Ramirez": 0.26,
-          "Chase Hooper": 0.75
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 2.14,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Mitch Ramirez": "+215",
+            "Chase Hooper": "-255",
+            "rawProbA": 0.3175,
+            "rawProbB": 0.7183,
+            "overround": 1.0358
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "927774a3f9858e69"
       },
       "systemCentral": {
-        "Mitch Ramirez": 0.2574,
-        "Chase Hooper": 0.7426
+        "Mitch Ramirez": 0.3065,
+        "Chase Hooper": 0.6935
       },
       "systemRange": {
         "forFighter": "Mitch Ramirez",
-        "low": 0.2024,
-        "high": 0.3124
+        "low": 0.2515,
+        "high": 0.3615
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Mitch Ramirez": {
-          "win": 0.2574,
-          "byKO": 0.0849,
-          "bySubmission": 0.0438,
-          "byDecision": 0.1287,
+          "win": 0.3065,
+          "byKO": 0.1011,
+          "bySubmission": 0.0521,
+          "byDecision": 0.1532,
           "koByRound": {
-            "r1": 0.0382,
-            "r2": 0.0272,
-            "r3": 0.0195
+            "r1": 0.0455,
+            "r2": 0.0324,
+            "r3": 0.0233
           },
           "submissionByRound": {
-            "r1": 0.0197,
-            "r2": 0.014,
-            "r3": 0.0101
+            "r1": 0.0234,
+            "r2": 0.0167,
+            "r3": 0.012
           }
         },
         "Chase Hooper": {
-          "win": 0.7426,
-          "byKO": 0.2451,
-          "bySubmission": 0.1262,
-          "byDecision": 0.3713,
+          "win": 0.6935,
+          "byKO": 0.2289,
+          "bySubmission": 0.1179,
+          "byDecision": 0.3468,
           "koByRound": {
-            "r1": 0.1103,
-            "r2": 0.0784,
-            "r3": 0.0564
+            "r1": 0.103,
+            "r2": 0.0732,
+            "r3": 0.0526
           },
           "submissionByRound": {
-            "r1": 0.0568,
-            "r2": 0.0404,
-            "r3": 0.029
+            "r1": 0.0531,
+            "r2": 0.0377,
+            "r3": 0.0271
           }
         }
       },
@@ -723,73 +792,96 @@
       },
       "dataHashes": {
         "evidenceEval": "7d99d9cabf9d6a5e",
-        "baseline": "61aef1bbb8c0cc64",
+        "baseline": "b9ced1723f972924",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "49044e5b352af1d6",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "ffbd4bda0f73dfea",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B04",
       "fight": "Alberto Montes vs Tommy McMillen",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.4257,
+        "probability": 0.5711,
         "forFighter": "Alberto Montes",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Alberto Montes": 0.43,
-          "Tommy McMillen": 0.58
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 4.71,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Alberto Montes": "-145",
+            "Tommy McMillen": "+125",
+            "rawProbA": 0.5918,
+            "rawProbB": 0.4444,
+            "overround": 1.0363
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "caa58b365088f21c"
       },
       "systemCentral": {
-        "Alberto Montes": 0.4257,
-        "Tommy McMillen": 0.5743
+        "Alberto Montes": 0.5711,
+        "Tommy McMillen": 0.4289
       },
       "systemRange": {
         "forFighter": "Alberto Montes",
-        "low": 0.3757,
-        "high": 0.4757
+        "low": 0.5211,
+        "high": 0.6211
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Alberto Montes": {
-          "win": 0.4257,
-          "byKO": 0.1405,
-          "bySubmission": 0.0724,
-          "byDecision": 0.2129,
+          "win": 0.5711,
+          "byKO": 0.1885,
+          "bySubmission": 0.0971,
+          "byDecision": 0.2856,
           "koByRound": {
-            "r1": 0.0632,
-            "r2": 0.045,
-            "r3": 0.0323
+            "r1": 0.0848,
+            "r2": 0.0603,
+            "r3": 0.0434
           },
           "submissionByRound": {
-            "r1": 0.0326,
-            "r2": 0.0232,
-            "r3": 0.0167
+            "r1": 0.0437,
+            "r2": 0.0311,
+            "r3": 0.0223
           }
         },
         "Tommy McMillen": {
-          "win": 0.5743,
-          "byKO": 0.1895,
-          "bySubmission": 0.0976,
-          "byDecision": 0.2872,
+          "win": 0.4289,
+          "byKO": 0.1415,
+          "bySubmission": 0.0729,
+          "byDecision": 0.2144,
           "koByRound": {
-            "r1": 0.0853,
-            "r2": 0.0606,
-            "r3": 0.0436
+            "r1": 0.0637,
+            "r2": 0.0453,
+            "r3": 0.0325
           },
           "submissionByRound": {
-            "r1": 0.0439,
-            "r2": 0.0312,
-            "r3": 0.0224
+            "r1": 0.0328,
+            "r2": 0.0233,
+            "r3": 0.0168
           }
         }
       },
@@ -828,73 +920,96 @@
       },
       "dataHashes": {
         "evidenceEval": "d35993f02ee002d1",
-        "baseline": "18f309bc12e4136e",
+        "baseline": "49417ad0fe2b990b",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "f6cd3c541d3068ea",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "afcf04eedb71c573",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B05",
       "fight": "Tabatha Ricci vs Fatima Kline",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2079,
+        "probability": 0.2759,
         "forFighter": "Tabatha Ricci",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Tabatha Ricci": 0.21,
-          "Fatima Kline": 0.8
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 5.61,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Tabatha Ricci": "+250",
+            "Fatima Kline": "-300",
+            "rawProbA": 0.2857,
+            "rawProbB": 0.75,
+            "overround": 1.0357
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "c4beca8244040f77"
       },
       "systemCentral": {
-        "Tabatha Ricci": 0.2079,
-        "Fatima Kline": 0.7921
+        "Tabatha Ricci": 0.2759,
+        "Fatima Kline": 0.7241
       },
       "systemRange": {
         "forFighter": "Tabatha Ricci",
-        "low": 0.1579,
-        "high": 0.2579
+        "low": 0.2259,
+        "high": 0.3259
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Tabatha Ricci": {
-          "win": 0.2079,
-          "byKO": 0.0686,
-          "bySubmission": 0.0353,
-          "byDecision": 0.1039,
+          "win": 0.2759,
+          "byKO": 0.091,
+          "bySubmission": 0.0469,
+          "byDecision": 0.138,
           "koByRound": {
-            "r1": 0.0309,
-            "r2": 0.022,
-            "r3": 0.0158
+            "r1": 0.041,
+            "r2": 0.0291,
+            "r3": 0.0209
           },
           "submissionByRound": {
-            "r1": 0.0159,
-            "r2": 0.0113,
-            "r3": 0.0081
+            "r1": 0.0211,
+            "r2": 0.015,
+            "r3": 0.0108
           }
         },
         "Fatima Kline": {
-          "win": 0.7921,
-          "byKO": 0.2614,
-          "bySubmission": 0.1347,
-          "byDecision": 0.3961,
+          "win": 0.7241,
+          "byKO": 0.239,
+          "bySubmission": 0.1231,
+          "byDecision": 0.362,
           "koByRound": {
-            "r1": 0.1176,
-            "r2": 0.0836,
-            "r3": 0.0601
+            "r1": 0.1075,
+            "r2": 0.0765,
+            "r3": 0.055
           },
           "submissionByRound": {
-            "r1": 0.0606,
-            "r2": 0.0431,
-            "r3": 0.031
+            "r1": 0.0554,
+            "r2": 0.0394,
+            "r3": 0.0283
           }
         }
       },
@@ -933,73 +1048,96 @@
       },
       "dataHashes": {
         "evidenceEval": "be8065aa4992785a",
-        "baseline": "e0821ce229769886",
+        "baseline": "943f7c8d9c415a98",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "facdcd63ee249d5f",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "5f6f89504859543c",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B06",
       "fight": "Jose Delgado vs Austin Bashi",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.505,
+        "probability": 0.6067,
         "forFighter": "Jose Delgado",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Jose Delgado": 0.51,
-          "Austin Bashi": 0.5
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 3.63,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Jose Delgado": "-170",
+            "Austin Bashi": "+145",
+            "rawProbA": 0.6296,
+            "rawProbB": 0.4082,
+            "overround": 1.0378
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "8b8107317781ecc2"
       },
       "systemCentral": {
-        "Jose Delgado": 0.505,
-        "Austin Bashi": 0.495
+        "Jose Delgado": 0.6067,
+        "Austin Bashi": 0.3933
       },
       "systemRange": {
         "forFighter": "Jose Delgado",
-        "low": 0.45,
-        "high": 0.56
+        "low": 0.5517,
+        "high": 0.6617
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Jose Delgado": {
-          "win": 0.505,
-          "byKO": 0.1667,
-          "bySubmission": 0.0859,
-          "byDecision": 0.2525,
+          "win": 0.6067,
+          "byKO": 0.2002,
+          "bySubmission": 0.1031,
+          "byDecision": 0.3034,
           "koByRound": {
-            "r1": 0.075,
-            "r2": 0.0533,
-            "r3": 0.0383
+            "r1": 0.0901,
+            "r2": 0.0641,
+            "r3": 0.046
           },
           "submissionByRound": {
-            "r1": 0.0387,
-            "r2": 0.0275,
-            "r3": 0.0198
+            "r1": 0.0464,
+            "r2": 0.033,
+            "r3": 0.0237
           }
         },
         "Austin Bashi": {
-          "win": 0.495,
-          "byKO": 0.1633,
-          "bySubmission": 0.0842,
-          "byDecision": 0.2475,
+          "win": 0.3933,
+          "byKO": 0.1298,
+          "bySubmission": 0.0669,
+          "byDecision": 0.1966,
           "koByRound": {
-            "r1": 0.0735,
-            "r2": 0.0523,
-            "r3": 0.0376
+            "r1": 0.0584,
+            "r2": 0.0415,
+            "r3": 0.0299
           },
           "submissionByRound": {
-            "r1": 0.0379,
-            "r2": 0.0269,
-            "r3": 0.0194
+            "r1": 0.0301,
+            "r2": 0.0214,
+            "r3": 0.0154
           }
         }
       },
@@ -1045,73 +1183,96 @@
       },
       "dataHashes": {
         "evidenceEval": "1e0fa6a15bcc30e4",
-        "baseline": "2e74d4b9664fb90a",
+        "baseline": "f677464c40b6c4ae",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "70c9cec9c208bf4a",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "b5ff491968393952",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B07",
       "fight": "Seok Hyun Ko vs Jean-Paul Lebosnoyani",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.6634,
+        "probability": 0.6889,
         "forFighter": "Seok Hyun Ko",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Seok Hyun Ko": 0.67,
-          "Jean-Paul Lebosnoyani": 0.34
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 4.05,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Seok Hyun Ko": "-250",
+            "Jean-Paul Lebosnoyani": "+210",
+            "rawProbA": 0.7143,
+            "rawProbB": 0.3226,
+            "overround": 1.0369
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "f8cf6bf920b306dc"
       },
       "systemCentral": {
-        "Seok Hyun Ko": 0.6634,
-        "Jean-Paul Lebosnoyani": 0.3366
+        "Seok Hyun Ko": 0.6889,
+        "Jean-Paul Lebosnoyani": 0.3111
       },
       "systemRange": {
         "forFighter": "Seok Hyun Ko",
-        "low": 0.6084,
-        "high": 0.7184
+        "low": 0.6339,
+        "high": 0.7439
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Seok Hyun Ko": {
-          "win": 0.6634,
-          "byKO": 0.2189,
-          "bySubmission": 0.1128,
-          "byDecision": 0.3317,
+          "win": 0.6889,
+          "byKO": 0.2273,
+          "bySubmission": 0.1171,
+          "byDecision": 0.3444,
           "koByRound": {
-            "r1": 0.0985,
-            "r2": 0.07,
-            "r3": 0.0503
+            "r1": 0.1023,
+            "r2": 0.0727,
+            "r3": 0.0523
           },
           "submissionByRound": {
-            "r1": 0.0508,
-            "r2": 0.0361,
-            "r3": 0.0259
+            "r1": 0.0527,
+            "r2": 0.0375,
+            "r3": 0.0269
           }
         },
         "Jean-Paul Lebosnoyani": {
-          "win": 0.3366,
-          "byKO": 0.1111,
-          "bySubmission": 0.0572,
-          "byDecision": 0.1683,
+          "win": 0.3111,
+          "byKO": 0.1027,
+          "bySubmission": 0.0529,
+          "byDecision": 0.1556,
           "koByRound": {
-            "r1": 0.05,
-            "r2": 0.0356,
-            "r3": 0.0256
+            "r1": 0.0462,
+            "r2": 0.0329,
+            "r3": 0.0236
           },
           "submissionByRound": {
-            "r1": 0.0257,
-            "r2": 0.0183,
-            "r3": 0.0132
+            "r1": 0.0238,
+            "r2": 0.0169,
+            "r3": 0.0122
           }
         }
       },
@@ -1156,73 +1317,96 @@
       },
       "dataHashes": {
         "evidenceEval": "8939c6f0c92cd984",
-        "baseline": "058a0f904b9b7cd0",
+        "baseline": "ed9a9bb8e6b1afff",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "fe1072ce4231584f",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "59a93d9d1c513a5a",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B08",
       "fight": "Levi Rodrigues Jr vs Felipe Franco",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.59,
+        "probability": 0.5,
         "forFighter": "Levi Rodrigues Jr",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0,
-        "note": "live Kalshi asks (overround 1.000)",
-        "rawPrices": {
-          "Levi Rodrigues Jr": 0.59,
-          "Felipe Franco": 0.41
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 3.74,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Levi Rodrigues Jr": "-110",
+            "Felipe Franco": "-110",
+            "rawProbA": 0.5238,
+            "rawProbB": 0.5238,
+            "overround": 1.0476
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "141f0624fe77a162"
       },
       "systemCentral": {
-        "Levi Rodrigues Jr": 0.59,
-        "Felipe Franco": 0.41
+        "Levi Rodrigues Jr": 0.5,
+        "Felipe Franco": 0.5
       },
       "systemRange": {
         "forFighter": "Levi Rodrigues Jr",
-        "low": 0.535,
-        "high": 0.645
+        "low": 0.445,
+        "high": 0.555
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Levi Rodrigues Jr": {
-          "win": 0.59,
-          "byKO": 0.1947,
-          "bySubmission": 0.1003,
-          "byDecision": 0.295,
+          "win": 0.5,
+          "byKO": 0.165,
+          "bySubmission": 0.085,
+          "byDecision": 0.25,
           "koByRound": {
-            "r1": 0.0876,
-            "r2": 0.0623,
-            "r3": 0.0448
+            "r1": 0.0743,
+            "r2": 0.0528,
+            "r3": 0.038
           },
           "submissionByRound": {
-            "r1": 0.0451,
-            "r2": 0.0321,
-            "r3": 0.0231
+            "r1": 0.0383,
+            "r2": 0.0272,
+            "r3": 0.0196
           }
         },
         "Felipe Franco": {
-          "win": 0.41,
-          "byKO": 0.1353,
-          "bySubmission": 0.0697,
-          "byDecision": 0.205,
+          "win": 0.5,
+          "byKO": 0.165,
+          "bySubmission": 0.085,
+          "byDecision": 0.25,
           "koByRound": {
-            "r1": 0.0609,
-            "r2": 0.0433,
-            "r3": 0.0311
+            "r1": 0.0743,
+            "r2": 0.0528,
+            "r3": 0.038
           },
           "submissionByRound": {
-            "r1": 0.0314,
-            "r2": 0.0223,
-            "r3": 0.016
+            "r1": 0.0383,
+            "r2": 0.0272,
+            "r3": 0.0196
           }
         }
       },
@@ -1268,73 +1452,96 @@
       },
       "dataHashes": {
         "evidenceEval": "1d98851ecd6e57c4",
-        "baseline": "1fa84c383b07e6a5",
+        "baseline": "f093e19fff62317e",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "f94b95f81785ece6",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "bbb8e14bf68b2126",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B09",
       "fight": "Stewart Nicoll vs Alden Coria",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.1275,
+        "probability": 0.1475,
         "forFighter": "Stewart Nicoll",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.02,
-        "note": "live Kalshi asks (overround 1.020)",
-        "rawPrices": {
-          "Stewart Nicoll": 0.13,
-          "Alden Coria": 0.89
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 2.16,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Stewart Nicoll": "+550",
+            "Alden Coria": "-800",
+            "rawProbA": 0.1538,
+            "rawProbB": 0.8889,
+            "overround": 1.0427
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "e9ada0e888aca9fa"
       },
       "systemCentral": {
-        "Stewart Nicoll": 0.1275,
-        "Alden Coria": 0.8725
+        "Stewart Nicoll": 0.1475,
+        "Alden Coria": 0.8525
       },
       "systemRange": {
         "forFighter": "Stewart Nicoll",
-        "low": 0.0725,
-        "high": 0.1825
+        "low": 0.0925,
+        "high": 0.2025
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Stewart Nicoll": {
-          "win": 0.1275,
-          "byKO": 0.0421,
-          "bySubmission": 0.0217,
-          "byDecision": 0.0638,
+          "win": 0.1475,
+          "byKO": 0.0487,
+          "bySubmission": 0.0251,
+          "byDecision": 0.0737,
           "koByRound": {
-            "r1": 0.0189,
-            "r2": 0.0135,
-            "r3": 0.0097
+            "r1": 0.0219,
+            "r2": 0.0156,
+            "r3": 0.0112
           },
           "submissionByRound": {
-            "r1": 0.0098,
-            "r2": 0.0069,
-            "r3": 0.005
+            "r1": 0.0113,
+            "r2": 0.008,
+            "r3": 0.0058
           }
         },
         "Alden Coria": {
-          "win": 0.8725,
-          "byKO": 0.2879,
-          "bySubmission": 0.1483,
-          "byDecision": 0.4363,
+          "win": 0.8525,
+          "byKO": 0.2813,
+          "bySubmission": 0.1449,
+          "byDecision": 0.4263,
           "koByRound": {
-            "r1": 0.1296,
-            "r2": 0.0921,
-            "r3": 0.0662
+            "r1": 0.1266,
+            "r2": 0.09,
+            "r3": 0.0647
           },
           "submissionByRound": {
-            "r1": 0.0667,
-            "r2": 0.0475,
-            "r3": 0.0341
+            "r1": 0.0652,
+            "r2": 0.0464,
+            "r3": 0.0333
           }
         }
       },
@@ -1380,73 +1587,96 @@
       },
       "dataHashes": {
         "evidenceEval": "07d125c998a1a68d",
-        "baseline": "afddcb5740084e14",
+        "baseline": "a467b8dc8f887209",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "702385e5c1acfab8",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "dcb7c2b1b0b69a48",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B10",
       "fight": "Alvin Hines vs RJ Harris",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.5644,
+        "probability": 0.3571,
         "forFighter": "Alvin Hines",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Alvin Hines": 0.57,
-          "RJ Harris": 0.44
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 3.16,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Alvin Hines": "+170",
+            "RJ Harris": "-200",
+            "rawProbA": 0.3704,
+            "rawProbB": 0.6667,
+            "overround": 1.037
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "2119bfd68a20a157"
       },
       "systemCentral": {
-        "Alvin Hines": 0.5644,
-        "RJ Harris": 0.4356
+        "Alvin Hines": 0.3571,
+        "RJ Harris": 0.6429
       },
       "systemRange": {
         "forFighter": "Alvin Hines",
-        "low": 0.5144,
-        "high": 0.6144
+        "low": 0.3071,
+        "high": 0.4071
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Alvin Hines": {
-          "win": 0.5644,
-          "byKO": 0.1863,
-          "bySubmission": 0.0959,
-          "byDecision": 0.2822,
+          "win": 0.3571,
+          "byKO": 0.1178,
+          "bySubmission": 0.0607,
+          "byDecision": 0.1785,
           "koByRound": {
-            "r1": 0.0838,
-            "r2": 0.0596,
-            "r3": 0.0428
+            "r1": 0.053,
+            "r2": 0.0377,
+            "r3": 0.0271
           },
           "submissionByRound": {
-            "r1": 0.0432,
-            "r2": 0.0307,
-            "r3": 0.0221
+            "r1": 0.0273,
+            "r2": 0.0194,
+            "r3": 0.014
           }
         },
         "RJ Harris": {
-          "win": 0.4356,
-          "byKO": 0.1437,
-          "bySubmission": 0.0741,
-          "byDecision": 0.2178,
+          "win": 0.6429,
+          "byKO": 0.2122,
+          "bySubmission": 0.1093,
+          "byDecision": 0.3215,
           "koByRound": {
-            "r1": 0.0647,
-            "r2": 0.046,
-            "r3": 0.0331
+            "r1": 0.0955,
+            "r2": 0.0679,
+            "r3": 0.0488
           },
           "submissionByRound": {
-            "r1": 0.0333,
-            "r2": 0.0237,
-            "r3": 0.017
+            "r1": 0.0492,
+            "r2": 0.035,
+            "r3": 0.0251
           }
         }
       },
@@ -1485,73 +1715,96 @@
       },
       "dataHashes": {
         "evidenceEval": "c903a283cd40c54b",
-        "baseline": "641302eabc578a1f",
+        "baseline": "1b832395346773c6",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "22d7a00ed4f96550",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "a590ae9b5014eed4",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B11",
       "fight": "Anna Melisano vs Dione Barbosa",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.1683,
+        "probability": 0.2853,
         "forFighter": "Anna Melisano",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.01,
-        "note": "live Kalshi asks (overround 1.010)",
-        "rawPrices": {
-          "Anna Melisano": 0.17,
-          "Dione Barbosa": 0.84
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 2.61,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Anna Melisano": "+240",
+            "Dione Barbosa": "-280",
+            "rawProbA": 0.2941,
+            "rawProbB": 0.7368,
+            "overround": 1.031
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "0484ce73db686d43"
       },
       "systemCentral": {
-        "Anna Melisano": 0.1683,
-        "Dione Barbosa": 0.8317
+        "Anna Melisano": 0.2853,
+        "Dione Barbosa": 0.7147
       },
       "systemRange": {
         "forFighter": "Anna Melisano",
-        "low": 0.1183,
-        "high": 0.2183
+        "low": 0.2353,
+        "high": 0.3353
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Anna Melisano": {
-          "win": 0.1683,
-          "byKO": 0.0555,
-          "bySubmission": 0.0286,
-          "byDecision": 0.0842,
+          "win": 0.2853,
+          "byKO": 0.0941,
+          "bySubmission": 0.0485,
+          "byDecision": 0.1426,
           "koByRound": {
-            "r1": 0.025,
-            "r2": 0.0178,
-            "r3": 0.0128
+            "r1": 0.0423,
+            "r2": 0.0301,
+            "r3": 0.0216
           },
           "submissionByRound": {
-            "r1": 0.0129,
-            "r2": 0.0092,
-            "r3": 0.0066
+            "r1": 0.0218,
+            "r2": 0.0155,
+            "r3": 0.0112
           }
         },
         "Dione Barbosa": {
-          "win": 0.8317,
-          "byKO": 0.2745,
-          "bySubmission": 0.1414,
-          "byDecision": 0.4158,
+          "win": 0.7147,
+          "byKO": 0.2359,
+          "bySubmission": 0.1215,
+          "byDecision": 0.3574,
           "koByRound": {
-            "r1": 0.1235,
-            "r2": 0.0878,
-            "r3": 0.0631
+            "r1": 0.1062,
+            "r2": 0.0755,
+            "r3": 0.0543
           },
           "submissionByRound": {
-            "r1": 0.0636,
-            "r2": 0.0452,
-            "r3": 0.0325
+            "r1": 0.0547,
+            "r2": 0.0389,
+            "r3": 0.0279
           }
         }
       },
@@ -1590,73 +1843,96 @@
       },
       "dataHashes": {
         "evidenceEval": "16f285d60fe01b80",
-        "baseline": "c7a8f0a71233819d",
+        "baseline": "e54980eb6709e59c",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "07a6366393d6cd40",
-      "sealedAt": "2026-07-18T22:00:00.000Z",
+      "forecastId": "b230bf42a52957cf",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B12",
       "fight": "Ezra Elliott vs Damien Anderson",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.4369,
+        "probability": 0.5798,
         "forFighter": "Ezra Elliott",
-        "timestamp": "2026-07-16T20:10:25.925Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-07-16T22:00:00.000Z",
         "sportsbooks": [
-          "Kalshi"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "normalise both sides' asks to sum to 1",
-        "dispersion": 0.03,
-        "note": "live Kalshi asks (overround 1.030)",
-        "rawPrices": {
-          "Ezra Elliott": 0.45,
-          "Damien Anderson": 0.58
-        }
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 4.97,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Ezra Elliott": "-150",
+            "Damien Anderson": "+130",
+            "rawProbA": 0.6,
+            "rawProbB": 0.4348,
+            "overround": 1.0348
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "baselineHash": "a7ade953199207eb"
       },
       "systemCentral": {
-        "Ezra Elliott": 0.4369,
-        "Damien Anderson": 0.5631
+        "Ezra Elliott": 0.5798,
+        "Damien Anderson": 0.4202
       },
       "systemRange": {
         "forFighter": "Ezra Elliott",
-        "low": 0.3869,
-        "high": 0.4869
+        "low": 0.5298,
+        "high": 0.6298
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Ezra Elliott": {
-          "win": 0.4369,
-          "byKO": 0.1442,
-          "bySubmission": 0.0743,
-          "byDecision": 0.2185,
+          "win": 0.5798,
+          "byKO": 0.1913,
+          "bySubmission": 0.0986,
+          "byDecision": 0.2899,
           "koByRound": {
-            "r1": 0.0649,
-            "r2": 0.0461,
-            "r3": 0.0332
+            "r1": 0.0861,
+            "r2": 0.0612,
+            "r3": 0.044
           },
           "submissionByRound": {
-            "r1": 0.0334,
-            "r2": 0.0238,
-            "r3": 0.0171
+            "r1": 0.0444,
+            "r2": 0.0316,
+            "r3": 0.0227
           }
         },
         "Damien Anderson": {
-          "win": 0.5631,
-          "byKO": 0.1858,
-          "bySubmission": 0.0957,
-          "byDecision": 0.2815,
+          "win": 0.4202,
+          "byKO": 0.1387,
+          "bySubmission": 0.0714,
+          "byDecision": 0.2101,
           "koByRound": {
-            "r1": 0.0836,
-            "r2": 0.0595,
-            "r3": 0.0427
+            "r1": 0.0624,
+            "r2": 0.0444,
+            "r3": 0.0319
           },
           "submissionByRound": {
-            "r1": 0.0431,
-            "r2": 0.0306,
-            "r3": 0.022
+            "r1": 0.0321,
+            "r2": 0.0228,
+            "r3": 0.0164
           }
         }
       },
@@ -1695,13 +1971,18 @@
       },
       "dataHashes": {
         "evidenceEval": "68976bcd833f8176",
-        "baseline": "3ca137a05ae83f50",
+        "baseline": "0c932f930d5be76f",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "8a14e0e8112014e0",
-  "sealHash": "d1c0298221b41ea3"
+  "contentHash": "84d592255997f677",
+  "supersedes": {
+    "file": "forecast-2026-07-18.v1784237753902.json",
+    "contentHash": "8a14e0e8112014e0",
+    "sealHash": "d1c0298221b41ea3"
+  },
+  "sealHash": "f869d7bd02f36282"
 }
