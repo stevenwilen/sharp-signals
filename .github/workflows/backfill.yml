@@ -1,12 +1,26 @@
-name: Sharp Signals — Weekly Backfill
+name: Sharp Signals — Backfill (manual only)
 
-# Re-grades every source after Saturday's card resolves, so track records grow.
+# SCHEDULE DISABLED 2026-07-16 — during the V2 migration. Not deleted; retained for
+# reproducibility and future research, and still runnable on demand.
+#
+# WHY: this workflow existed to re-grade every source weekly so their track records would grow.
+# That whole strategy — rank the sources, trust the good ones — has been REJECTED on evidence:
+# 11,452 graded picks over two years show the average source returns -0.4% vs the closing line,
+# and 0 of 50 survive an out-of-sample test with a multiplicity-corrected bound. Five further
+# hypotheses built on the same corpus (venue lag, two-sided arb, CLV, conviction, youth) were
+# each measured and rejected. So a weekly automatic re-grade was spending Gemini credits, Blotato
+# credits and 6-hour runner slots to refresh the track records of a thesis that is dead — and,
+# worse, kept those numbers looking live on a dashboard that should not be trusted.
+#
+# It is also the wrong default for V2: the corpus is now HYPOTHESIS-GENERATING data only. It may
+# suggest an idea; it can never validate one. Validation happens on locked forward predictions.
+# An automatic job that keeps re-mining history is exactly the habit the refresh exists to break.
+#
+# TO RUN IT DELIBERATELY: Actions -> this workflow -> "Run workflow" (optionally set since/until),
+# or touch backfill-trigger.txt on main. Both are conscious acts, which is the point.
 on:
-  schedule:
-    # Mondays 09:30 UTC (after the weekend's fights settle). Deliberately NOT on the hour:
-    # the pipeline's "0 */4 * * *" fires at 08:00, and starting both jobs in the same minute
-    # maximised the chance of them racing each other to push data/.
-    - cron: "30 9 * * 1"
+  # schedule:
+  #   - cron: "30 9 * * 1"   # DISABLED: Mondays 09:30 UTC. See the note above.
   workflow_dispatch:
     inputs:
       since:
