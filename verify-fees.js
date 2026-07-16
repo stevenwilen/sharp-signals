@@ -58,14 +58,24 @@ function main() {
   const results = [];
   let mismatches = 0;
   for (const e of examples) {
+    // TREATMENT IS GATED, not noted. The first version called tradingFee() with the default taker
+    // config regardless of `treatment`, so a maker example would have been scored against the taker
+    // formula and PASSED. Its one guard — `if (treatment === "maker" && FEES.makerRate !== 0)` — was
+    // unreachable, because makerRate was 0: it fired only in the case that could not occur. A
+    // verifier blind to the exact failure it exists to catch is worse than none.
+    if (e.treatment !== "taker") {
+      mismatches++;
+      results.push({ ...e, computedFee: null, difference: null, match: false,
+        rejectReason: `treatment "${e.treatment}" has no verified fee model — tradingFee implements the TAKER formula only, and scoring this example against it would certify a rate nobody measured` });
+      say(`  ${String(e.market).slice(0, 34).padEnd(34)} ${String(e.side).padEnd(4)} ${String(e.price).padStart(5)} ${String(e.contracts).padStart(4)}   ${String(e.interfaceFee).padStart(8)}   ${"REFUSED".padStart(8)}  ${"-".padStart(6)}   ${e.treatment || "?"}  <<< NO MODEL FOR THIS TREATMENT`);
+      continue;
+    }
     const computed = C.tradingFee(e.contracts, e.price);
     const diff = computed === null ? null : +(computed - e.interfaceFee).toFixed(4);
     const match = diff !== null && Math.abs(diff) < 1e-9;   // EXACT, including rounding
     if (!match) mismatches++;
     results.push({ ...e, computedFee: computed, difference: diff, match });
     say(`  ${String(e.market).slice(0, 34).padEnd(34)} ${String(e.side).padEnd(4)} ${String(e.price).padStart(5)} ${String(e.contracts).padStart(4)}   ${String(e.interfaceFee).padStart(8)}   ${String(computed).padStart(8)}  ${String(diff).padStart(6)}   ${e.treatment || "?"}  ${match ? "" : "<<< MISMATCH"}`);
-    if (e.treatment === "maker" && C.FEES.makerRate !== 0)
-      say(`      note: this example is MAKER but the config maker rate is ${C.FEES.makerRate}`);
   }
 
   const out = {
@@ -87,7 +97,13 @@ function main() {
     return 1;
   }
   say(`\n  PHASE 8.5 FEE VERIFICATION: PASS — the config reproduces every interface example exactly.`);
-  say(`  Set FEES.verified = true in lib/contracts.js and record data/fee-verification.json.`);
+  const s = C.FEES.verifiedScope;
+  say(`\n  SCOPE OF THIS RESULT (recorded in lib/contracts.js FEES.verifiedScope, not a bare boolean):`);
+  say(`    verified as of : ${s.asOf}`);
+  say(`    covers         : ${s.series} ${s.side.toUpperCase()} taker, price ${s.priceRange[0]}-${s.priceRange[1]}, size ${s.sizeRange[0]}-${s.sizeRange[1]}, ${s.fills}`);
+  say(`    rate pinned to : (${s.rateConstrainedTo[0]}, ${s.rateConstrainedTo[1]}]  — 0.07 is its only 2-decimal value`);
+  say(`\n  DOES NOT ESTABLISH — an order outside this envelope still carries the caveat:`);
+  for (const d of s.doesNotEstablish) say(`    - ${d}`);
   return 0;
 }
 const code = main();

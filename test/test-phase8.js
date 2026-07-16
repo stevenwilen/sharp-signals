@@ -122,13 +122,68 @@ console.log("\n8B: FEES AND STALENESS");
   ok("fee at 50c = ceil(0.07*100*0.25*100)/100 = 1.75", Math.abs(at50 - 1.75) < 1e-9, String(at50));
   ok("fee rounds UP (never understate cost)", C.tradingFee(1, 0.5) === 0.02, String(C.tradingFee(1, 0.5)));
   ok("fee refuses a non-finite price", C.tradingFee(100, NaN) === null);
-  ok("fee schedule is marked UNVERIFIED", C.FEES.verified === false);
+  // The taker formula was verified on 2026-07-16 against three authenticated Kalshi tickets. It is
+  // recorded as a SCOPED record, never a bare boolean: the old `verified` flag had one consumer —
+  // the caveat on every order — so flipping it would have silenced that warning globally, including
+  // for maker orders, other series and multi-fill ladders that nothing tested.
+  ok("fee config exposes no bare `verified` boolean", C.FEES.verified === undefined);
+  ok("verification is a scoped record", C.FEES.verifiedScope.verified === true && !!C.FEES.verifiedScope.asOf);
+  ok("scope is TAKER-only", C.FEES.verifiedScope.takerFormulaOnly === true);
+  ok("scope names what it does NOT establish", C.FEES.verifiedScope.doesNotEstablish.length >= 8);
+  ok("maker fees are explicitly listed as not established", C.FEES.verifiedScope.doesNotEstablish.some((x) => /MAKER/.test(x)));
+  ok("makerRate is REMOVED, not left at an untested 0.0", C.FEES.makerRate === undefined && C.FEES.makerSupported === false);
 
   const c = C.mapMarket(mkt(), BOUT, TS);
   const fresh = C.priceOrder(c, book(), 100, { nowTs: TS + 60000 });
   ok("a fresh snapshot prices", fresh.ok === true, JSON.stringify(fresh.reasons));
   ok("all-in price exceeds the raw execution price (fees included)", fresh.allInPricePerContract > fresh.avgExecutionPrice);
-  ok("unverified fee schedule is surfaced on every order", fresh.reasons.some((r) => /fee schedule is TRANSCRIBED/.test(r)));
+  // THE SAFETY RAIL. This assertion is the only guarantee that the fee caveat reaches a caller.
+  // It is kept and STRENGTHENED rather than deleted: the caveat is now raised per-order against the
+  // verified envelope, so it still fires exactly where the evidence runs out. The test fixture
+  // prices at 0.46 on 100 contracts — outside the verified band (0.59-0.89, 111-165 contracts) — so
+  // it MUST warn.
+  ok("an order OUTSIDE the verified envelope still warns", fresh.reasons.some((r) => /EXTRAPOLATED beyond the verified envelope/.test(r)),
+    JSON.stringify(fresh.reasons));
+  ok("the warning names why it is outside", /price 0.46 is outside|size 100 is outside/.test(fresh.reasons.join(" ")));
+  ok("the order records envelope status", fresh.feeSchedule.withinVerifiedEnvelope === false && fresh.feeSchedule.envelopeExceptions.length > 0);
+  ok("the order carries the scope's asOf date", fresh.feeSchedule.verifiedScope.asOf === "2026-07-16");
+  // an order INSIDE the envelope must NOT carry the extrapolation caveat
+  const inEnv = C.priceOrder(
+    C.mapMarket(mkt({ ticker: "KXUFCFIGHT-26JUL18ALIBOB-ALI", yes_ask_dollars: "0.6900", no_bid_dollars: "0.3100" }), BOUT, TS),
+    book([["0.3100", "50000.00"]]), 141.84, { nowTs: TS });
+  ok("an order INSIDE the verified envelope does not warn", inEnv.ok && !inEnv.reasons.some((r) => /EXTRAPOLATED/.test(r)),
+    JSON.stringify(inEnv.reasons));
+  ok("...and is marked within the envelope", inEnv.feeSchedule.withinVerifiedEnvelope === true);
+  // maker fails closed rather than being charged the taker rate
+  const maker = C.priceOrder(c, book(), 100, { nowTs: TS, treatment: "maker" });
+  ok("a maker order FAILS CLOSED rather than being priced at the taker rate", maker.ok === false);
+  ok("...and says the maker fee is unverified AND unimplemented", maker.reasons.some((r) => /unverified AND unimplemented/.test(r)));
+  // multi-fill is flagged as an untested billing path
+  const multi = C.priceOrder(c, book([["0.5200", "10.00"], ["0.5300", "10.00"], ["0.5400", "10.00"]]), 25, { nowTs: TS });
+  ok("a multi-level fill warns that the billing path is untested", multi.reasons.some((r) => /multi-level fill/.test(r)));
+
+  // EXACT ARITHMETIC — the two bugs that lived in tradingFee, in opposite directions
+  ok("no overstatement: 100 @ 0.50 is 1.75, not 1.76", C.tradingFee(100, 0.5) === 1.75, String(C.tradingFee(100, 0.5)));
+  ok("no understatement at a 4dp average price: 636.97 @ 0.0508 is 2.16, not 2.15",
+    C.tradingFee(636.97, 0.0508) === 2.16, String(C.tradingFee(636.97, 0.0508)));
+  ok("price is validated BEFORE the size shortcut: tradingFee(-5, 99) is null, not 0", C.tradingFee(-5, 99) === null);
+  ok("tradingFee(0, 5) is null (invalid price), not 0", C.tradingFee(0, 5) === null);
+  ok("tradingFee(0, 0.5) is 0 (no contracts at a valid price)", C.tradingFee(0, 0.5) === 0);
+  ok("inputs finer than the modelled precision are REFUSED, not truncated", C.tradingFee(100, 0.123456789) === null);
+  // exhaustive: the code equals exact integer truth across the whole-cent domain
+  {
+    let bad = 0;
+    for (let k = 1; k < 100; k += 1) for (let m = 1; m <= 400; m += 1) {
+      const N = 70000n * BigInt(m * 100) * BigInt(k * 100) * BigInt(10000 - k * 100), D = 10n ** 14n;
+      if (C.tradingFee(m, k / 100) !== Number((N + D - 1n) / D) / 100) bad++;
+    }
+    ok("exhaustive: matches exact BigInt truth over 39,600 whole-cent cases", bad === 0, `${bad} mismatches`);
+  }
+  // the three authenticated tickets, asserted in the suite itself
+  ok("authenticated ticket 1 (141.84 @ 0.69) reproduces 2.13", C.tradingFee(141.84, 0.69) === 2.13);
+  ok("authenticated ticket 2 (164.76 @ 0.59) reproduces 2.79", C.tradingFee(164.76, 0.59) === 2.79);
+  ok("authenticated ticket 3 (111.49 @ 0.89) reproduces 0.77", C.tradingFee(111.49, 0.89) === 0.77);
+  ok("using the post-fee effective chance instead of the price would MISMATCH", C.tradingFee(141.84, 0.71) !== 2.13);
   const stale = C.priceOrder(c, book(), 100, { nowTs: TS + 60 * 60000 });
   ok("a stale snapshot is REFUSED, not priced", stale.ok === false && stale.reasons.some((r) => /stale/.test(r)));
   const closed = C.priceOrder(C.mapMarket(mkt({ status: "settled" }), BOUT, TS), book(), 100, { nowTs: TS });
