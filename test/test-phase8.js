@@ -46,6 +46,12 @@ const fc = (o = {}) => ({ boutId: "b1", fight: `${A} vs ${B}`, status: "COMPLETE
   marketBaseline: { probability: 0.58, clockBasis: "WALL_CLOCK", fallbackLevel: "A", staleCheckEnforceable: true },
   ...o });
 
+// A fully-specified in-envelope order. Every dimension must be present: withinVerifiedEnvelope
+// fails CLOSED on absent fields, because a gate whose default is "not proven" cannot treat missing
+// data as a pass.
+const ENV = (o = {}) => ({ ticker: "KXUFCFIGHT-26JUL18ALIBOB-ALI", side: "yes", contracts: 500,
+  price: 0.59, treatment: "taker", fillCount: 1, ...o });
+
 console.log("8A: SETTLEMENT IS READ, NEVER INFERRED");
 {
   const c = C.mapMarket(mkt(), BOUT, TS);
@@ -160,7 +166,11 @@ console.log("\n8B: FEES AND STALENESS");
   ok("...and says the maker fee is unverified AND unimplemented", maker.reasons.some((r) => /unverified AND unimplemented/.test(r)));
   // multi-fill is flagged as an untested billing path
   const multi = C.priceOrder(c, book([["0.5200", "10.00"], ["0.5300", "10.00"], ["0.5400", "10.00"]]), 25, { nowTs: TS });
-  ok("a multi-level fill warns that the billing path is untested", multi.reasons.some((r) => /multi-level fill/.test(r)));
+  // Multi-fill is now a dimension of the envelope itself, so the warning arrives through the single
+  // extrapolation channel rather than a second one that could contradict the flag.
+  ok("a multi-level fill warns that the billing path is untested",
+    multi.reasons.some((r) => /EXTRAPOLATED/.test(r) && /level fill/.test(r)), JSON.stringify(multi.reasons));
+  ok("...and the envelope flag agrees it is not verified", multi.feeSchedule.withinVerifiedEnvelope === false);
 
   // EXACT ARITHMETIC — the two bugs that lived in tradingFee, in opposite directions
   ok("no overstatement: 100 @ 0.50 is 1.75, not 1.76", C.tradingFee(100, 0.5) === 1.75, String(C.tradingFee(100, 0.5)));
@@ -194,7 +204,7 @@ console.log("\n8B: FEES AND STALENESS");
     String(C.tradingFee(823.81, 0.59) / C.tradingFee(164.76, 0.59)));
   ok("rival exponent 0.8 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 0.8) - 13.95) > 1);
   ok("rival exponent 1.5 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 1.5) - 13.95) > 1);
-  ok("verified size range widened to the tested band", C.FEES.verifiedScope.sizeRange[0] === 111.49 && C.FEES.verifiedScope.sizeRange[1] === 823.81);
+  ok("verified size range spans the two size-varying tickets", C.FEES.verifiedScope.sizeRange[0] === 82.37 && C.FEES.verifiedScope.sizeRange[1] === 823.81);
   ok("scope records that linearity was MEASURED", /LINEARITY IN CONTRACTS IS MEASURED/.test(C.FEES.verifiedScope.establishes));
   ok("rate interval tightened to ~50ppm", (C.FEES.verifiedScope.rateConstrainedTo[1] - C.FEES.verifiedScope.rateConstrainedTo[0]) < 6e-5);
   ok("0.07 is inside the tightened interval",
@@ -207,16 +217,87 @@ console.log("\n8B: FEES AND STALENESS");
   ok("the NO side is STILL listed as not established", C.FEES.verifiedScope.doesNotEstablish.some((x) => /NO side/.test(x)));
   ok("multi-fill is STILL listed as not established", C.FEES.verifiedScope.doesNotEstablish.some((x) => /Multi-fill/.test(x)));
   ok("scope is STILL single-price fills only", /single-price fills only/.test(C.FEES.verifiedScope.fills));
-  ok("a NO-side order is outside the envelope", C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "no", 500, 0.59).inside === false);
+  ok("a NO-side order is outside the envelope", C.withinVerifiedEnvelope(ENV({ side: "no", contracts: 500 })).inside === false);
   ok("price range was NOT widened by a same-price ticket", C.FEES.verifiedScope.priceRange[0] === 0.59 && C.FEES.verifiedScope.priceRange[1] === 0.89);
 
-  // the practical consequence of the tested floor: real positions sit BELOW it
-  const small = C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "yes", 85, 0.59);
-  ok("an 85-contract order (0.5% of a $10k bankroll) is BELOW the verified floor and still warns", small.inside === false);
-  ok("...and the reason names the size band", small.reasons.some((r) => /size 85 is outside/.test(r)));
-  // but a $500-sized order at a tested price is now inside
-  const big = C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "yes", 823.81, 0.59);
-  ok("an 823.81-contract order at 0.59 is now INSIDE the verified envelope", big.inside === true, JSON.stringify(big.reasons));
+  // THE SMALL-SIZE TICKET. The $50 ticket sets the floor at 82.37, which is what finally brings real
+  // proposed positions inside the band: at a $10k bankroll the 0.5% cap proposes ~85 contracts,
+  // which previously sat BELOW the 111.49 floor and was correctly caveated on every order.
+  ok("authenticated ticket 5 ($50: 82.37 @ 0.59) reproduces 1.40", C.tradingFee(82.37, 0.59) === 1.40, String(C.tradingFee(82.37, 0.59)));
+  ok("an 85-contract order (0.5% of a $10k bankroll) is now INSIDE the envelope",
+    C.withinVerifiedEnvelope(ENV({ contracts: 85 })).inside === true);
+  ok("an 823.81-contract order at 0.59 is INSIDE the envelope",
+    C.withinVerifiedEnvelope(ENV({ contracts: 823.81 })).inside === true);
+  ok("the floor itself (82.37) is inside", C.withinVerifiedEnvelope(ENV({ contracts: 82.37 })).inside === true);
+  // but the floor is a real floor: smaller orders are still extrapolation
+  const tiny = C.withinVerifiedEnvelope(ENV({ contracts: 42 }));
+  ok("a 42-contract order (0.5% of a $5k bankroll) is still BELOW the floor and warns", tiny.inside === false);
+  ok("...and the reason names the size band", tiny.reasons.some((r) => /size 42 is outside/.test(r)));
+  ok("a 1-contract order — the ceil-dominated regime — is still outside", C.withinVerifiedEnvelope(ENV({ contracts: 1 })).inside === false);
+  ok("a 2000-contract order is still outside", C.withinVerifiedEnvelope(ENV({ contracts: 2000 })).inside === false);
+
+  // THE ENVELOPE FAILS CLOSED ON MISSING DATA. The first version guarded each check with a
+  // truthiness test, so an absent field SKIPPED its check and returned inside:true with an empty
+  // reason list — an order with no ticker passed the series gate as "verified".
+  ok("no ticker => outside, not skipped", C.withinVerifiedEnvelope({ ...ENV(), ticker: undefined }).inside === false);
+  ok("no side => outside", C.withinVerifiedEnvelope({ ...ENV(), side: undefined }).inside === false);
+  ok("no treatment => outside", C.withinVerifiedEnvelope({ ...ENV(), treatment: undefined }).inside === false);
+  ok("no price => outside", C.withinVerifiedEnvelope({ ...ENV(), price: undefined }).inside === false);
+  ok("no size => outside", C.withinVerifiedEnvelope({ ...ENV(), contracts: undefined }).inside === false);
+  ok("no fill count => outside", C.withinVerifiedEnvelope({ ...ENV(), fillCount: undefined }).inside === false);
+  ok("an empty order => outside", C.withinVerifiedEnvelope({}).inside === false);
+  ok("no order at all => outside", C.withinVerifiedEnvelope(undefined).inside === false);
+
+  // series is an exact SEGMENT match: startsWith let a sibling series squat the prefix
+  ok("KXUFCFIGHTNIGHT does NOT squat the KXUFCFIGHT prefix", C.withinVerifiedEnvelope(ENV({ ticker: "KXUFCFIGHTNIGHT-x" })).inside === false);
+  ok("a different series is outside", C.withinVerifiedEnvelope(ENV({ ticker: "KXNFLGAME-x" })).inside === false);
+
+  // treatment is an ALLOWLIST: the deny-list on the literal "maker" refused one spelling and priced
+  // every other non-taker intent at the full taker rate
+  for (const t of ["maker", "Maker", "MAKER", "limit", "post_only", "passive"]) {
+    ok(`treatment "${t}" is refused by priceOrder`, C.priceOrder(c, book(), 100, { nowTs: TS, treatment: t }).ok === false);
+    ok(`treatment "${t}" is outside the envelope`, C.withinVerifiedEnvelope(ENV({ treatment: t })).inside === false);
+  }
+  ok("treatment 'taker' is accepted", C.withinVerifiedEnvelope(ENV({ treatment: "taker" })).inside === true);
+  ok("treatment 'TAKER' is accepted case-insensitively", C.withinVerifiedEnvelope(ENV({ treatment: "TAKER" })).inside === true);
+
+  // the multi-fill flag and its warning must not contradict each other
+  {
+    const mf = C.priceOrder(c, book([["0.5400", "100.00"], ["0.5300", "100.00"]]), 200, { nowTs: TS });
+    ok("a multi-level fill is OUTSIDE the envelope", mf.feeSchedule.withinVerifiedEnvelope === false);
+    ok("...and the exception names the fill count", mf.feeSchedule.envelopeExceptions.some((r) => /level fill/.test(r)));
+    ok("...so the flag and the warning agree", mf.feeSchedule.withinVerifiedEnvelope === false && mf.reasons.some((r) => /EXTRAPOLATED/.test(r)));
+    ok("a single-price fill is INSIDE", C.withinVerifiedEnvelope(ENV({ fillCount: 1 })).inside === true);
+  }
+
+  // the shipped provenance string must not overstate the evidence
+  {
+    const T = [[141.84, 0.69, 2.13], [164.76, 0.59, 2.79], [111.49, 0.89, 0.77], [823.81, 0.59, 13.95], [82.37, 0.59, 1.40]];
+    const round = T.filter(([cc, pp, f]) => Math.abs(Math.round(0.07 * cc * pp * (1 - pp) * 100) / 100 - f) < 1e-9).length;
+    const floor = T.filter(([cc, pp, f]) => Math.abs(Math.floor(0.07 * cc * pp * (1 - pp) * 100) / 100 - f) < 1e-9).length;
+    ok("round-half-up genuinely fits 2/5, and the scope says 2/5 (it said 1/5)", round === 2 && /round-half-up fits 2\/5/.test(C.FEES.verifiedScope.establishes), `computed ${round}/5`);
+    ok("floor genuinely fits 0/5, and the scope says 0/5", floor === 0 && /floor fits 0\/5/.test(C.FEES.verifiedScope.establishes));
+    ok("ceil fits 5/5", T.every(([cc, pp, f]) => C.tradingFee(cc, pp) === f));
+    // the declared rate interval must CONTAIN the true intersection, never claim more than it excludes
+    const iv = T.map(([cc, pp, f]) => { const b = cc * pp * (1 - pp) * 100; return [(f * 100 - 1) / b, (f * 100) / b]; });
+    const trueLo = Math.max(...iv.map((x) => x[0])), trueHi = Math.min(...iv.map((x) => x[1]));
+    const [dLo, dHi] = C.FEES.verifiedScope.rateConstrainedTo;
+    ok("the declared rate interval matches the true 5-ticket intersection", Math.abs(dLo - trueLo) < 1e-7 && Math.abs(dHi - trueHi) < 1e-7,
+      `declared [${dLo}, ${dHi}] vs true (${trueLo.toFixed(8)}, ${trueHi.toFixed(8)}]`);
+    ok("0.07 is inside the true intersection", 0.07 > trueLo && 0.07 <= trueHi);
+  }
+
+  // linearity now spans 10x at a fixed price, measured on three tickets in one market
+  {
+    const exact = (cc) => 0.07 * cc * 0.59 * 0.41;
+    ok("exact pre-ceil fee is EXACTLY linear over the 10x span",
+      Math.abs((exact(823.81) / exact(82.37)) - (823.81 / 82.37)) < 1e-9);
+    ok("all three fixed-price tickets reproduce",
+      C.tradingFee(82.37, 0.59) === 1.40 && C.tradingFee(164.76, 0.59) === 2.79 && C.tradingFee(823.81, 0.59) === 13.95);
+    // the ceil premium is larger at the floor than at the ceiling — observed, not assumed
+    const prem = (cc) => (C.tradingFee(cc, 0.59) - exact(cc)) / exact(cc);
+    ok("the ceil premium is measurably larger at small size", prem(82.37) > prem(823.81) * 10, `${(prem(82.37) * 100).toFixed(3)}% vs ${(prem(823.81) * 100).toFixed(3)}%`);
+  }
   const stale = C.priceOrder(c, book(), 100, { nowTs: TS + 60 * 60000 });
   ok("a stale snapshot is REFUSED, not priced", stale.ok === false && stale.reasons.some((r) => /stale/.test(r)));
   const closed = C.priceOrder(C.mapMarket(mkt({ status: "settled" }), BOUT, TS), book(), 100, { nowTs: TS });
