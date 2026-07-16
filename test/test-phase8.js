@@ -179,11 +179,44 @@ console.log("\n8B: FEES AND STALENESS");
     }
     ok("exhaustive: matches exact BigInt truth over 39,600 whole-cent cases", bad === 0, `${bad} mismatches`);
   }
-  // the three authenticated tickets, asserted in the suite itself
+  // the four authenticated tickets, asserted in the suite itself
   ok("authenticated ticket 1 (141.84 @ 0.69) reproduces 2.13", C.tradingFee(141.84, 0.69) === 2.13);
   ok("authenticated ticket 2 (164.76 @ 0.59) reproduces 2.79", C.tradingFee(164.76, 0.59) === 2.79);
   ok("authenticated ticket 3 (111.49 @ 0.89) reproduces 0.77", C.tradingFee(111.49, 0.89) === 0.77);
+  ok("authenticated ticket 4 ($500: 823.81 @ 0.59) reproduces 13.95", C.tradingFee(823.81, 0.59) === 13.95, String(C.tradingFee(823.81, 0.59)));
   ok("using the post-fee effective chance instead of the price would MISMATCH", C.tradingFee(141.84, 0.71) !== 2.13);
+
+  // THE SIZE-CONFOUND TEST. Tickets 2 and 4 share a market and a price and differ only in size, so
+  // linearity in contracts is measured rather than assumed. The first three were all $100, where
+  // C = (100 - fee)/price made size a mechanical function of price and rivals k*gross^x (x 0.8-1.5)
+  // all fitted.
+  ok("5x the size at a FIXED price gives exactly 5x the fee", Math.abs(C.tradingFee(823.81, 0.59) / C.tradingFee(164.76, 0.59) - 5) < 0.001,
+    String(C.tradingFee(823.81, 0.59) / C.tradingFee(164.76, 0.59)));
+  ok("rival exponent 0.8 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 0.8) - 13.95) > 1);
+  ok("rival exponent 1.5 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 1.5) - 13.95) > 1);
+  ok("verified size range widened to the tested band", C.FEES.verifiedScope.sizeRange[0] === 111.49 && C.FEES.verifiedScope.sizeRange[1] === 823.81);
+  ok("scope records that linearity was MEASURED", /LINEARITY IN CONTRACTS IS MEASURED/.test(C.FEES.verifiedScope.establishes));
+  ok("rate interval tightened to ~50ppm", (C.FEES.verifiedScope.rateConstrainedTo[1] - C.FEES.verifiedScope.rateConstrainedTo[0]) < 6e-5);
+  ok("0.07 is inside the tightened interval",
+    0.07 > C.FEES.verifiedScope.rateConstrainedTo[0] && 0.07 <= C.FEES.verifiedScope.rateConstrainedTo[1]);
+
+  // THE EXPANSION MUST NOT LEAK. Maker, NO and multi-fill were explicitly NOT authorised.
+  ok("maker STILL fails closed after the expansion", C.priceOrder(c, book(), 100, { nowTs: TS, treatment: "maker" }).ok === false);
+  ok("maker is STILL absent from the config", C.FEES.makerRate === undefined && C.FEES.makerSupported === false);
+  ok("scope is STILL yes-side only", C.FEES.verifiedScope.side === "yes");
+  ok("the NO side is STILL listed as not established", C.FEES.verifiedScope.doesNotEstablish.some((x) => /NO side/.test(x)));
+  ok("multi-fill is STILL listed as not established", C.FEES.verifiedScope.doesNotEstablish.some((x) => /Multi-fill/.test(x)));
+  ok("scope is STILL single-price fills only", /single-price fills only/.test(C.FEES.verifiedScope.fills));
+  ok("a NO-side order is outside the envelope", C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "no", 500, 0.59).inside === false);
+  ok("price range was NOT widened by a same-price ticket", C.FEES.verifiedScope.priceRange[0] === 0.59 && C.FEES.verifiedScope.priceRange[1] === 0.89);
+
+  // the practical consequence of the tested floor: real positions sit BELOW it
+  const small = C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "yes", 85, 0.59);
+  ok("an 85-contract order (0.5% of a $10k bankroll) is BELOW the verified floor and still warns", small.inside === false);
+  ok("...and the reason names the size band", small.reasons.some((r) => /size 85 is outside/.test(r)));
+  // but a $500-sized order at a tested price is now inside
+  const big = C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x" }, "yes", 823.81, 0.59);
+  ok("an 823.81-contract order at 0.59 is now INSIDE the verified envelope", big.inside === true, JSON.stringify(big.reasons));
   const stale = C.priceOrder(c, book(), 100, { nowTs: TS + 60 * 60000 });
   ok("a stale snapshot is REFUSED, not priced", stale.ok === false && stale.reasons.some((r) => /stale/.test(r)));
   const closed = C.priceOrder(C.mapMarket(mkt({ status: "settled" }), BOUT, TS), book(), 100, { nowTs: TS });
