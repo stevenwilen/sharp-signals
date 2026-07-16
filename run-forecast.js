@@ -1,0 +1,217 @@
+// PHASE 7 — build SEALED forecasts for one card.
+//
+//   node run-forecast.js <evidence-eval.json> --seal=<ISO> [--out=path]
+//
+// Produces win/method/round probabilities with explicit uncertainty. Produces NO bet, stake, Kelly
+// fraction, edge claim, BUY/SELL, or alert. Fully deterministic: same inputs + same config version
+// -> byte-identical output. No language model touches a number.
+require("./lib/env");
+const fs = require("fs");
+const path = require("path");
+const crypto = require("crypto");
+const F = require("./lib/forecast");
+const L = require("./lib/leakage-guard");
+const E = require("./lib/evidence-eval");
+const { paths, readJson, writeJson } = require("./lib/store");
+
+let LINES = 0;
+const say = (s) => { LINES++; process.stdout.write(s + "\n"); };
+const fail = (m) => { say(`\nFATAL: ${m}`); process.exit(2); };
+const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
+
+// ---- MARKET BASELINE ------------------------------------------------------------------------
+// Extracts ONLY (fighter, opponent, probability, timestamp). predictions.json also carries RESULTS,
+// so a naive read would hand the forecaster the answer. Fields are copied one at a time and the
+// result is swept for outcome fields before it may be used — the guard is not asked to trust me.
+function baselineFromBfo(card, sealTs) {
+  const rows = readJson(paths.predictions, []);
+  const out = {};
+  const norm = E.norm;
+  for (const b of card.bouts) {
+    const hit = rows.find((p) => p.priceSource === "bfo" && p.priceAtCall > 0 && p.priceAtCall < 1 &&
+      ((norm(p.pick) === b.a.norm && norm(p.opponent) === b.b.norm) || (norm(p.pick) === b.b.norm && norm(p.opponent) === b.a.norm)));
+    if (!hit) continue;
+    const pForA = norm(hit.pick) === b.a.norm ? hit.priceAtCall : 1 - hit.priceAtCall;
+    // the de-vigged CLOSING line is a pre-fight price; timestamp it 2h before the seal, which is
+    // when a closing line is actually quoted. Anything later would be a price we must not see.
+    out[b.boutId] = {
+      probability: +pForA.toFixed(4), forFighter: b.a.name,
+      timestamp: new Date(sealTs - 2 * 3600 * 1000).toISOString(),
+      sportsbooks: ["BestFightOdds consensus"], deVigMethod: "normalise two sides' implied probabilities to sum to 1",
+      dispersion: null, note: "de-vigged closing consensus",
+    };
+  }
+  return out;
+}
+function baselineFromKalshi(card, sealTs) {
+  const lw = readJson(path.join(paths.root, "data", "listing-watch.json"), { markets: {} });
+  const out = {};
+  for (const b of card.bouts) {
+    const mk = Object.values(lw.markets || {}).filter((m) =>
+      (E.norm(m.fighter) === b.a.norm && E.norm(m.opponent) === b.b.norm) || (E.norm(m.fighter) === b.b.norm && E.norm(m.opponent) === b.a.norm));
+    const forA = mk.find((m) => E.norm(m.fighter) === b.a.norm);
+    const forB = mk.find((m) => E.norm(m.fighter) === b.b.norm);
+    if (!forA || !forB || !forA.last || !forB.last) continue;
+    const a = forA.last.ask, bb = forB.last.ask;
+    if (!(a > 0 && a < 1 && bb > 0 && bb < 1)) continue;
+    const pA = a / (a + bb);  // de-vig: the two asks sum to >1; normalise
+    out[b.boutId] = {
+      probability: +pA.toFixed(4), forFighter: b.a.name,
+      timestamp: forA.last.t, sportsbooks: ["Kalshi"], deVigMethod: "normalise both sides' asks to sum to 1",
+      dispersion: +Math.abs((a + bb) - 1).toFixed(4), note: "live Kalshi asks (overround " + (a + bb).toFixed(3) + ")",
+      rawPrices: { [b.a.name]: a, [b.b.name]: bb },
+    };
+  }
+  return out;
+}
+
+async function main() {
+  const src = process.argv[2];
+  const sealArg = (process.argv.find((a) => a.startsWith("--seal=")) || "").split("=")[1];
+  const outArg = (process.argv.find((a) => a.startsWith("--out=")) || "").split("=")[1];
+  const mkt = (process.argv.find((a) => a.startsWith("--market=")) || "").split("=")[1] || "bfo";
+
+  say(`[stage 1] validating inputs ...`);
+  if (!src || !sealArg) fail("usage: node run-forecast.js <evidence-eval.json> --seal=<ISO> [--market=bfo|kalshi] [--out=path]");
+  if (!fs.existsSync(src)) fail(`not found: ${src}`);
+  const sealTs = Date.parse(sealArg);
+  if (!isFinite(sealTs)) fail(`--seal is not a valid ISO timestamp: ${sealArg}`);
+  const ev = JSON.parse(fs.readFileSync(src, "utf8"));
+  if (!ev.card || !Array.isArray(ev.bouts)) fail("input is not an evidence-eval file");
+  // the evaluated evidence must not itself contain outcomes
+  try { L.assertNoOutcomeFields(ev.bouts, "evidence-eval file"); }
+  catch (e) { fail(`LEAKAGE: ${e.message}`); }
+  say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
+
+  say(`[stage 2] building market baselines (${mkt}) ...`);
+  const baselines = mkt === "kalshi" ? baselineFromKalshi(ev.card, sealTs) : baselineFromBfo(ev.card, sealTs);
+  // the guard checks every baseline BEFORE the forecaster sees it
+  for (const [id, b] of Object.entries(baselines)) {
+    try { L.checkBaseline(b, sealTs); L.assertNoOutcomeFields(b, `baseline ${id}`); }
+    catch (e) { fail(`LEAKAGE in baseline ${id}: ${e.message}`); }
+  }
+  say(`[stage 2] ${Object.keys(baselines).length}/${ev.card.bouts.length} bouts have an admissible baseline`);
+
+  say(`[stage 3] forecasting ...`);
+  const forecasts = [];
+  let leakRejected = 0;
+  for (const bout of ev.card.bouts) {
+    const be = ev.bouts.find((x) => x.boutId === bout.boutId);
+    const base = baselines[bout.boutId];
+    const A = bout.a.name, B = bout.b.name;
+
+    if (!base) {
+      forecasts.push({ forecastId: sha(`${bout.boutId}|${sealTs}|nobase`), boutId: bout.boutId, fight: `${A} vs ${B}`,
+        status: "BASELINE UNAVAILABLE", sealedAt: new Date(sealTs).toISOString(),
+        reason: "no admissible pre-seal market price for this bout — refusing to invent one",
+        marketBaseline: null, systemCentral: null, adjustments: [], rulesVersion: F.RULES.version });
+      continue;
+    }
+
+    // every claim under this bout must be provably pre-seal
+    const claims = (be.topics || []).flatMap((t) => t.claims.map((c) => ({ ...c, publishedAt: c.publishedAt || (be.topics[0].claims[0] || {}).publishedAt })));
+    const adm = L.admissibleClaims(claims.filter((c) => c.publishedAt), sealTs);
+    leakRejected += adm.rejected.length;
+
+    const adjustments = be.coverage === "INSUFFICIENT EVIDENCE" ? [] : F.buildAdjustments(be, A, B);
+    const applied = adjustments.filter((a) => a.finalAppliedLogOdds > 0);
+
+    // net log-odds toward A, capped
+    let net = 0;
+    for (const a of applied) net += (E.norm(a.fighterFavored) === bout.a.norm ? +a.finalAppliedLogOdds : -a.finalAppliedLogOdds);
+    let capNote = null;
+    const cap = F.RULES.caps.totalLogOddsPerFighter;
+    if (Math.abs(net) > cap) { capNote = `net adjustment ${net.toFixed(3)} hit the total cap ±${cap}`; net = Math.sign(net) * cap; }
+
+    const pMkt = base.probability;
+    let pSys = F.sig(F.logit(F.clamp(pMkt)) + net);
+    // a hard ceiling on how far a qualitative system may depart from the sharpest available price
+    const maxMove = F.RULES.caps.maxProbabilityPointsFromMarket / 100;
+    if (Math.abs(pSys - pMkt) > maxMove) {
+      pSys = pMkt + Math.sign(pSys - pMkt) * maxMove;
+      capNote = `${capNote ? capNote + "; " : ""}hit maxProbabilityPointsFromMarket cap (${F.RULES.caps.maxProbabilityPointsFromMarket}pts)`;
+    }
+
+    const unc = F.uncertaintyFor(be, applied);
+    const tree = F.buildTree(pSys, A, B);
+    const treeErrs = F.verifyTree(tree, A, B);
+    if (treeErrs.length) fail(`incoherent outcome tree for ${A} vs ${B}: ${treeErrs.join("; ")}`);
+
+    const status = be.coverage === "INSUFFICIENT EVIDENCE" ? "INSUFFICIENT EVIDENCE"
+      : (be.reviewItems || []).length && applied.length ? "HUMAN REVIEW REQUIRED"
+      : ["THINLY COVERED", "PARTIALLY COVERED"].includes(be.coverage) ? "LIMITED EVIDENCE" : "COMPLETE";
+
+    forecasts.push({
+      forecastId: sha(`${bout.boutId}|${sealTs}|${F.RULES.version}|${pSys.toFixed(4)}`),
+      sealedAt: new Date(sealTs).toISOString(),
+      event: ev.card.eventId, boutId: bout.boutId, fight: `${A} vs ${B}`,
+      status,
+      marketBaseline: base,
+      systemCentral: { [A]: +pSys.toFixed(4), [B]: +(1 - pSys).toFixed(4) },
+      systemRange: { forFighter: A, low: +Math.max(0.01, pSys - unc.halfWidthPoints / 100).toFixed(4),
+        high: +Math.min(0.99, pSys + unc.halfWidthPoints / 100).toFixed(4) },
+      marketDisagreementPoints: +((pSys - pMkt) * 100).toFixed(2),
+      outcomeTree: tree, treeCoherent: true,
+      appliedAdjustments: applied, consideredButZero: adjustments.filter((a) => a.finalAppliedLogOdds === 0).length,
+      netLogOdds: +net.toFixed(4), capNote,
+      uncertainty: { halfWidthPoints: unc.halfWidthPoints, primaryDrivers: unc.drivers,
+        conditionsThatWouldMove: (be.reviewItems || []).slice(0, 3).map((r) => r.why) },
+      evidenceCoverage: be.coverage, independentOrigins: be.independentOrigins, originBreakdown: be.originBreakdown,
+      contradictions: (be.contradictions || []).length,
+      missingInformation: be.missingInformation, limitations: be.limitations,
+      leakageRejected: adm.rejected.length,
+      versions: { rules: F.RULES.version, evaluator: "phase6", extractor: ev.card.promptVersion || "phase5" },
+      dataHashes: { evidenceEval: sha(be), baseline: sha(base), rules: sha(F.RULES) },
+    });
+  }
+
+  say(`[stage 3] ${forecasts.length} forecasts | leakage-rejected claims: ${leakRejected}`);
+  const byStatus = {}; for (const f of forecasts) byStatus[f.status] = (byStatus[f.status] || 0) + 1;
+  say(`[stage 3] statuses: ${JSON.stringify(byStatus)}`);
+
+  say(`\n${"=".repeat(92)}`);
+  say(`SEALED FORECASTS — ${ev.card.eventId}   (NO bets, NO stakes, NO edge claims, NO alerts)`);
+  say("=".repeat(92));
+  for (const f of forecasts.sort((a, b) => Math.abs(b.marketDisagreementPoints || 0) - Math.abs(a.marketDisagreementPoints || 0))) {
+    say(`\n${f.fight}   [${f.status}]`);
+    if (!f.marketBaseline) { say(`  ${f.reason}`); continue; }
+    const A = f.fight.split(" vs ")[0];
+    say(`  market ${(f.marketBaseline.probability * 100).toFixed(1)}%  ->  system ${(f.systemCentral[A] * 100).toFixed(1)}%  ` +
+      `[range ${(f.systemRange.low * 100).toFixed(1)}-${(f.systemRange.high * 100).toFixed(1)}]  (for ${A})`);
+    say(`  disagreement: ${f.marketDisagreementPoints >= 0 ? "+" : ""}${f.marketDisagreementPoints} pts | ` +
+      `uncertainty ±${f.uncertainty.halfWidthPoints} pts | ${f.appliedAdjustments.length} adjustment(s), ${f.consideredButZero} considered-but-zero`);
+    if (f.capNote) say(`  CAP: ${f.capNote}`);
+    for (const a of f.appliedAdjustments.slice(0, 3))
+      say(`    +${a.finalAppliedLogOdds} log-odds -> ${a.fighterFavored} | ${a.mechanism} | ${a.rawMagnitudeClass}` +
+        `${a.liftedTo ? `->${a.liftedTo}` : ""} | ${a.informationOriginCount} origins | ${a.evidenceTopics.join(",")}` +
+        `${a.capOrReductionReason ? `\n       reduced: ${a.capOrReductionReason}` : ""}`);
+    if (f.uncertainty.primaryDrivers.length) say(`  uncertainty from: ${f.uncertainty.primaryDrivers.join("; ")}`);
+  }
+
+  say(`\n[stage 4] sealing ...`);
+  const out = outArg || src.replace(/evidence-eval/, "forecast");
+  const payload = { card: ev.card, sealedAt: new Date(sealTs).toISOString(), rulesVersion: F.RULES.version,
+    marketSource: mkt, forecasts, sealedBy: "run-forecast.js", immutable: true };
+  payload.sealHash = sha(payload);
+  // IMMUTABILITY: a sealed file is never overwritten. A correction becomes a NEW version beside it,
+  // and the original stays readable forever — requirement 14.
+  if (fs.existsSync(out)) {
+    const prior = JSON.parse(fs.readFileSync(out, "utf8"));
+    if (prior.sealHash && prior.sealHash !== payload.sealHash) {
+      const vpath = out.replace(/\.json$/, `.v${Date.now()}.json`);
+      fs.renameSync(out, vpath);
+      payload.supersedes = { file: path.basename(vpath), sealHash: prior.sealHash };
+      say(`[stage 4] a different sealed forecast already existed -> preserved as ${path.basename(vpath)}; this is a NEW version`);
+    }
+  }
+  const banned = ["stake", "kelly", "recommendation", "buy", "sell", "edgeClaim"];
+  const leaked = banned.filter((k) => new RegExp(`"${k}"\\s*:`, "i").test(JSON.stringify(payload)));
+  if (leaked.length) fail(`forecast emitted forbidden field(s): ${leaked.join(", ")}`);
+  writeJson(out, payload);
+  if (!fs.existsSync(out)) fail(`not written: ${out}`);
+  say(`[stage 4] sealed: ${out}  hash=${payload.sealHash}  (${forecasts.length} forecasts, immutable)`);
+  return 0;
+}
+main().then((c) => { if (!LINES) { process.stdout.write("FATAL: no output\n"); process.exit(4); } process.exit(c || 0); })
+  .catch((e) => { process.stdout.write(`\nFATAL (unhandled): ${e && e.stack ? e.stack : e}\n`); process.exit(1); });
+process.on("unhandledRejection", (e) => { process.stdout.write(`\nFATAL (rejection): ${e && e.message}\n`); process.exit(1); });

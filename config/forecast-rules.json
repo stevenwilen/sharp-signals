@@ -1,0 +1,94 @@
+{
+  "version": "7.0.0",
+  "createdAt": "2026-07-16",
+  "_why": "Chosen BEFORE looking at any fight outcome. The qualitative system has never been prospectively calibrated, so every magnitude here is deliberately small. If these numbers are ever changed after seeing whether a forecast was right, the change is not a calibration - it is hindsight wearing a config file.",
+
+  "magnitudeClasses": {
+    "_units": "log-odds applied to the market prior. 0.10 log-odds ~= 2.5 probability points at a 50c line, ~1.9 points at 75c.",
+    "NONE": 0.0,
+    "MINOR": 0.06,
+    "MODERATE": 0.14,
+    "MAJOR": 0.28
+  },
+
+  "caps": {
+    "_why": "A qualitative system that can move the sharpest available price by more than ~7 points is asserting it knows better than the market, which nothing in this project's evidence supports. 11,452 graded picks showed the average analyst returns -0.4% vs the close.",
+    "totalLogOddsPerFighter": 0.45,
+    "singleMechanismLogOdds": 0.28,
+    "maxProbabilityPointsFromMarket": 8.0
+  },
+
+  "magnitudeRules": {
+    "_why": "Deterministic. Evidence properties in -> magnitude class out. No model judgement, no unexplained score.",
+    "MAJOR": {
+      "minIndependentOrigins": 5,
+      "requiredStrength": ["strong"],
+      "requiredKinds": ["verified_hard_fact", "verifiable_statistical_claim"],
+      "requiredRelevance": ["direct_current_matchup", "current_fighter_condition", "stable_historical_tendency"],
+      "forbiddenFreshness": ["stale_or_dated", "unknown_timeframe"]
+    },
+    "MODERATE": {
+      "minIndependentOrigins": 3,
+      "requiredStrength": ["strong", "moderate"],
+      "requiredKinds": ["verified_hard_fact", "verifiable_statistical_claim", "film_study_observation", "matchup_inference", "current_condition_report"],
+      "requiredRelevance": ["direct_current_matchup", "current_fighter_condition", "stable_historical_tendency"],
+      "forbiddenFreshness": ["stale_or_dated"]
+    },
+    "MINOR": {
+      "minIndependentOrigins": 2,
+      "requiredStrength": ["strong", "moderate", "weak"],
+      "requiredKinds": ["verified_hard_fact", "verifiable_statistical_claim", "film_study_observation", "matchup_inference", "current_condition_report", "firsthand_statement"],
+      "requiredRelevance": ["direct_current_matchup", "current_fighter_condition", "stable_historical_tendency", "opponent_specific_historical"],
+      "forbiddenFreshness": []
+    }
+  },
+
+  "narrativeCategories": {
+    "_why": "Requirement 6. These get ZERO numerical influence by default. They still appear in the report - the reader may see them - but they may not move a number without a verified fact AND a stated mechanism AND a pre-existing rule. No rule is granted here, so today they are all zero.",
+    "blocked": ["psychological", "unsupported_narrative", "external_circumstance", "direct_prediction"],
+    "permittedWithMechanism": []
+  },
+
+  "mechanismClusters": {
+    "_why": "Requirement 10. 'Poor cardio', 'fades after round one', 'cannot maintain pace' and 'five-round concern' are ONE mechanism, not four adjustments. Extra independent support may raise the magnitude class or narrow uncertainty - it must never multiply the adjustment.",
+    "cardio": ["cardio", "pressure_pace"],
+    "grappling": ["wrestling_offense", "takedown_defense", "submission_offense", "submission_defense"],
+    "striking": ["striking_offense", "striking_defense", "power", "speed"],
+    "durability": ["durability"],
+    "physical": ["size_reach"],
+    "condition": ["injury_health", "weight_cut", "training_camp", "coaching_change", "short_notice"],
+    "activity": ["inactivity_layoff", "recent_form", "quality_of_opposition"],
+    "style": ["style_matchup", "fight_iq"]
+  },
+
+  "uncertainty": {
+    "_why": "Requirement 11. Contradiction widens the range; it does not cancel to a falsely precise midpoint.",
+    "baseHalfWidthPoints": 2.0,
+    "perContradictionTopicPoints": 0.8,
+    "maxHalfWidthPoints": 12.0,
+    "wideners": {
+      "unverifiedCurrentCondition": 2.0,
+      "longLayoff": 2.5,
+      "shortNotice": 2.5,
+      "limitedFootage": 1.5,
+      "insufficientEvidence": 3.0,
+      "singleAnalystOnly": 2.0
+    }
+  },
+
+  "methodPriors": {
+    "_why": "Base rates for how UFC fights end, used ONLY to split a fighter's win probability into KO/sub/decision so the outcome tree is coherent. These are priors, not predictions, and they are not tuned per fight.",
+    "ko": 0.33,
+    "submission": 0.17,
+    "decision": 0.50,
+    "_note": "Method splits are held at the prior unless mechanism evidence is strong enough to shift them; the shift is capped by methodShiftCap."
+  },
+  "methodShiftCap": 0.10,
+
+  "statuses": ["COMPLETE", "LIMITED EVIDENCE", "INSUFFICIENT EVIDENCE", "BASELINE UNAVAILABLE", "HUMAN REVIEW REQUIRED"],
+
+  "insufficientEvidencePolicy": {
+    "_why": "Requirement 13. When we do not know, we say the market's number back. A system that manufactures an opinion because it needs an output is the failure mode this whole rebuild exists to prevent.",
+    "maxLogOddsAdjustment": 0.0
+  }
+}
