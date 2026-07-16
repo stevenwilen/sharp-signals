@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ARCHIVED RESEARCH — Source Track Records (not a signal)</title>
+<style>
+  :root{--bg:#0b0f14;--card:#141b24;--line:#243040;--fg:#e6edf3;--muted:#8b98a8;--green:#3fb950;--red:#f85149;--gold:#e3b341;--blue:#58a6ff;}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 24px;border-bottom:1px solid var(--line)}
+  h1{font-size:18px;margin:0;font-weight:700}h1 .z{color:var(--gold)}
+  .spacer{flex:1}
+  button{font:inherit;font-weight:600;border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;background:#1b2430;color:var(--fg)}
+  button.primary{background:var(--blue);border-color:var(--blue);color:#04101f}
+  main{padding:22px;max-width:1080px;margin:0 auto}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:26px 0 10px}
+  .caps{display:flex;gap:8px;flex-wrap:wrap}
+  .cap{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
+  .cap.on{color:var(--green);border-color:var(--green)}.cap.off{color:var(--muted)}
+  .sig{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+  .sig.star{border-left-color:var(--gold)}
+  .sig .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .pick{font-size:16px;font-weight:700}
+  .edge{font-weight:700;color:var(--green)}
+  .src{color:var(--muted);font-size:12px}
+  .bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:8px 0;background:#0c1218}
+  .bar .mkt{background:#30475e}.bar .src2{background:var(--gold)}
+  .q{color:var(--muted);font-style:italic;font-size:13px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px}
+  th{color:var(--muted);font-size:11px;text-transform:uppercase}
+  .yes{color:var(--green);font-weight:700}.no{color:var(--muted)}
+  .pos{color:var(--green)}.neg{color:var(--red)}
+  .empty{color:var(--muted);padding:12px}
+</style></head>
+<body><div style="background:#7f1d1d;color:#fff;padding:16px;font:600 14px/1.5 system-ui;border-bottom:3px solid #dc2626">
+ARCHIVED RESEARCH — NOT A LIVE BETTING SIGNAL.
+<div style="font-weight:400;margin-top:6px">A 24-month backfill graded 12,597 picks from these sources. The market was efficient (&minus;0.4% average ROI) and <b>no source showed an edge that generalised out of sample</b>. These track records are kept because they are a real measurement, not because they predict anything. Source track record is <b>not an input to any forecast</b> in the current pipeline. <a href="/" style="color:#fca5a5">Return to the live board</a>.</div></div>
+<header>
+  <h1>⚡ Sharp <span class="z">Signals</span></h1>
+  <span class="src">UFC + Boxing · edge vs the market line</span>
+  <div class="spacer"></div>
+  <span class="src" id="freshness">...</span>
+</header>
+<main>
+  <div class="caps" id="caps"></div>
+
+  <h2>Live signals: an edge that survived out-of-sample</h2>
+  <div id="signals"><div class="empty">Loading…</div></div>
+
+  <h2>Source track records: who beats the line</h2>
+  <table><thead><tr><th>Source</th><th>Trusted<br><span class="src">in-sample</span></th><th>Survives<br><span class="src">out-of-sample</span></th><th>ROI vs line</th><th>Shrunk</th><th>Defensible</th><th>Picks</th><th>Hit%</th></tr></thead>
+  <tbody id="records"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody></table>
+  <p class="src" style="margin-top:8px">"Defensible" is the edge that survives its own error bars (95% lower bound).
+  "Trusted" is in-sample — it looked good on the same fights we graded it on. "Survives" is the honest one:
+  the edge still held on held-out fights that had no say in the trust decision. Only survivors are bettable.</p>
+</main>
+<script>
+const $=(id)=>document.getElementById(id);
+const pct=(v)=>v==null?'-':(v*100).toFixed(0)+'%';
+const cents=(v)=>v==null?'-':Math.round(v*100)+'c';
+// No refresh button on purpose: the runs happen in GitHub's cloud every 4h. The Desktop
+// shortcut git-pulls those results before opening this, so closing + reopening = fresh data.
+// (A local "refresh" would re-run the pipeline here and burn API/Blotato credits for nothing.)
+function ago(iso){
+  if(!iso) return 'unknown';
+  const m = Math.round((Date.now()-new Date(iso).getTime())/60000);
+  if(m<1) return 'just now';
+  if(m<60) return m+' min ago';
+  const h=Math.round(m/60); if(h<24) return h+'h ago';
+  return Math.round(h/24)+'d ago';
+}
+async function load(){
+  let d; try{ d=await (await fetch('/api/data')).json(); }catch(e){ return; }
+  const capDefs=[['extractPredictions','Gemini'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube']];
+  $('caps').innerHTML=capDefs.map(([k,l])=>`<span class="cap ${d.caps[k]?'on':'off'}">${d.caps[k]?'✅':'⛔'} ${l}</span>`).join('');
+  $('freshness').textContent = 'data updated ' + ago(d.updatedAt) + ' · close & reopen to sync';
+
+  // Signals changed shape when sizing stopped using the model's confidence score. A signal now
+  // carries: fighter/opponent, cost (the ASK, what you actually pay), and the source's measured
+  // edge vs the line (sourceRoi) plus its defensible lower bound (sourceRoiLcb). There is no
+  // "sourceProb" any more, because the number it used to hold was invented by the model.
+  const sigs=(d.signals||[]);
+  // BETTABLE only if the edge SURVIVED out of sample AND the source is not an active fighter
+  // previewing their own team. In-sample "trusted" is NOT enough: the 24-month backfill showed the
+  // trusted group did no better out of sample (+13.0%) than picking everyone (+12.9%) — i.e. luck.
+  const isReal=(s)=>s.survives && !s.isFighter && (s.sourceRoiLcb||0)>0;
+  const why=(s)=>s.isFighter?'fighter · own team'
+    :(!s.survives?'in-sample only · failed holdout'
+    :((s.sourceRoiLcb||0)<=0?'edge inside error bars':''));
+  const trusted=sigs.filter(isReal);
+  const research=sigs.filter(s=>!isReal(s));
+  const card=(s,star)=>{
+    const cost=(s.cost||0)*100;
+    const edgeVal=star?(s.oosRoiLcb!=null?s.oosRoiLcb:s.sourceRoiLcb):s.sourceRoiLcb;
+    const reason=star?'':why(s);
+    return `<div class="sig ${star?'star':''}">
+      <div class="top"><span class="pick">${star?'⭐ ':''}${s.fighter||s.pick}</span>
+      ${edgeVal!=null?`<span class="edge">${star?'edge (out-of-sample) ':'edge (in-sample) '}${(edgeVal*100).toFixed(0)}%</span>`:''}
+      <span class="src">${s.source} · ${s.n||0} past picks${reason?' · '+reason:''}</span></div>
+      <div class="bar"><div class="mkt" style="width:${cost}%"></div></div>
+      <div class="src">costs ${cents(s.cost)}, pays $1 if he wins${s.opponent?' · vs '+s.opponent:''}${s.fightDate?' · '+s.fightDate:''}</div>
+      ${s.quote?`<div class="q">"${s.quote}"</div>`:''}</div>`;
+  };
+  $('signals').innerHTML=(trusted.length?trusted.map(s=>card(s,true)).join(''):'<div class="empty">Nothing worth betting right now.</div>')
+    +(research.length?'<h2>Research only</h2>'+research.map(s=>card(s,false)).join(''):'');
+
+  // Survivors first — the honest ranking. Then by in-sample shrunk ROI.
+  const recs=(d.graded||[]).sort((a,b)=>((b.survives?1:0)-(a.survives?1:0))||((b.shrunkRoi||-9)-(a.shrunkRoi||-9)));
+  $('records').innerHTML=recs.length?recs.map(g=>`<tr>
+    <td>${g.source}</td><td>${g.trusted?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
+    <td>${g.survives?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
+    <td class="${g.roi>=0?'pos':'neg'}">${g.roi==null?'-':(g.roi*100).toFixed(1)+'%'}</td>
+    <td class="${g.shrunkRoi>=0?'pos':'neg'}">${g.shrunkRoi==null?'-':(g.shrunkRoi*100).toFixed(1)+'%'}</td>
+    <td class="${g.roiLcb>0?'pos':'neg'}">${g.roiLcb==null?'-':(g.roiLcb*100).toFixed(1)+'%'}</td>
+    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">No graded sources yet.</td></tr>';
+}
+load(); setInterval(load, 8000);
+</script>
+</body></html>

@@ -1,0 +1,1964 @@
+{
+  "phase": "9C",
+  "mode": "END-TO-END SHADOW",
+  "card": "UFC-2026-07-18",
+  "ranAt": "2026-07-16T23:13:48.600Z",
+  "armed": false,
+  "tradingCapability": "NONE",
+  "telegramDestination": "TEST SINK (disk) — lib/notify was never loaded; no transport exists in this process",
+  "productionChatTouched": false,
+  "requiredScenarios": {
+    "atLeastOneNoBet": 24,
+    "staleDataRefusal": "snapshot is 60.0 min old — stale, refusing to price against it",
+    "outOfEnvelopeFeeRefusal": "treatment \"maker\" is not a verified taker fill — no fee model exists for it (maker fees are unverified AND unimplemented), refusing to price it at the taker rate",
+    "withdrawnMockPosition": [
+      "ask 47.0c crossed ABOVE the maximum acceptable price 45.0c",
+      "position withdrawn: ACTIONABLE EXPERIMENTAL -> NO BET"
+    ],
+    "supersededForecast": {
+      "file": "phase8-shadow-2026-07-18.v25934d94862924a2.json",
+      "hash": "25934d94862924a2"
+    },
+    "pipelineFailureNotification": true,
+    "dailySummary": true
+  },
+  "reproducibility": {
+    "checks": [
+      {
+        "what": "forecast sealHash reproduces",
+        "ok": true
+      },
+      {
+        "what": "decision decisionHash reproduces",
+        "ok": true
+      },
+      {
+        "what": "every dashboard probability equals its sealed value",
+        "ok": true,
+        "detail": "0 mismatches"
+      },
+      {
+        "what": "every contract number equals the sealed decision",
+        "ok": true,
+        "detail": "0 mismatches"
+      },
+      {
+        "what": "the dashboard never contradicts the decision record on classification",
+        "ok": true
+      }
+    ],
+    "allReproduce": true
+  },
+  "messages": [
+    {
+      "type": "POSITION WITHDRAWN",
+      "sentAt": "2026-07-16T23:13:48.634Z",
+      "destination": "TEST SINK (disk)",
+      "mock": true,
+      "triggers": [
+        "ask 47.0c crossed ABOVE the maximum acceptable price 45.0c",
+        "position withdrawn: ACTIONABLE EXPERIMENTAL -> NO BET"
+      ],
+      "text": "🚫 POSITION WITHDRAWN\nMOCK: Alice Ace vs Bob Bruiser\nContract: Alice Ace YES\nReason: ask 47.0c crossed ABOVE the maximum acceptable price 45.0c; position withdrawn: ACTIONABLE EXPERIMENTAL -> NO BET\nPreviously suggested stake: 0.40%\nThis position no longer qualifies. If you placed it manually, that is your decision to review —\nthis system has no order path and cannot close anything.\nDashboard: http://localhost:4400/card/2026-07-18"
+    },
+    {
+      "type": "EVIDENCE UPDATE",
+      "sentAt": "2026-07-16T23:13:48.634Z",
+      "destination": "TEST SINK (disk)",
+      "supersedes": {
+        "file": "phase8-shadow-2026-07-18.v25934d94862924a2.json",
+        "hash": "25934d94862924a2"
+      },
+      "text": "📚 EVIDENCE UPDATE\n\nCARD-LEVEL\n\nThe sealed forecast changed because the evidence changed:\n• the sealed decision was re-run against a fresher snapshot\n\nSystem range: 49.0%–54.0% (was 48.0%–55.0%)\nEvidence coverage: see per-bout detail\n\nPrevious forecast: 25934d94862924a2 (superseded, not overwritten)\nCurrent forecast: 1472cd7644fe6901\n\nDashboard: http://localhost:4400/card/2026-07-18"
+    },
+    {
+      "type": "PIPELINE FAILURE",
+      "sentAt": "2026-07-16T23:13:48.634Z",
+      "destination": "TEST SINK (disk)",
+      "simulated": true,
+      "text": "🔴 PIPELINE FAILURE\n\nStage: sportsbook snapshot (simulated for this test)\nWhen: 2026-07-16T23:13:48.600Z\n\nWhat happened: HTTP 503 from the odds source — the consensus could not be collected\n\nConsequence: no live baseline, so no contract could be valued against a contemporaneous price. No decision advanced.\n\nNo positions were proposed from a failed run.\nAlerts: DISARMED · Trading capability: NONE"
+    },
+    {
+      "type": "DAILY SHADOW SUMMARY",
+      "sentAt": "2026-07-16T23:13:48.634Z",
+      "destination": "TEST SINK (disk)",
+      "text": "📋 DAILY SHADOW SUMMARY\n\n2026-07-16 — 1 card(s), 48 decisions\n\nActionable experimental: 0\nWatch: 0\nNo bet: 24\nAnalysis only: 0\nUnpriced: 0\nHuman review required: 0\n\nNo-bet frequency: 85.4%\nCard exposure: $0 (cap $300)\n\nPipeline: GREEN\n\nAlerts: DISARMED · Trading capability: NONE · Orders placed: 0\n\nDashboard: http://localhost:4400/"
+    }
+  ],
+  "dashboardSnapshot": {
+    "status": {
+      "alerts": "DISARMED",
+      "tradingCapability": "NONE",
+      "orderPlacementPath": "does not exist in this build",
+      "pipelineVersion": {
+        "rules": "7.0.0",
+        "contracts": "contracts@1.0.0",
+        "value": "contract-value@1.0.0",
+        "portfolio": "portfolio@1.0.0",
+        "sportsbook": "sportsbook-live@1.0.0",
+        "dashboard": "dashboard-data@1.0.0"
+      },
+      "freshness": {
+        "lastSuccessfulRun": "2026-07-16T23:12:25.518Z",
+        "ageMinutes": 1.4,
+        "stale": false
+      },
+      "sportsbookSnapshot": {
+        "status": "NOT COLLECTED",
+        "reason": "no sportsbook snapshot supplied to this render"
+      },
+      "kalshiSnapshot": {
+        "status": "NOT COLLECTED"
+      },
+      "feeVerification": {
+        "status": "VERIFIED (scoped)",
+        "asOf": "2026-07-16",
+        "scope": {
+          "series": "KXUFCFIGHT",
+          "side": "yes",
+          "priceRange": [
+            0.59,
+            0.89
+          ],
+          "sizeRange": [
+            82.37,
+            823.81
+          ],
+          "fills": "single-price fills only"
+        },
+        "doesNotEstablish": [
+          "MAKER fees. No maker example exists. `makerRate` has been REMOVED rather than left at an untested 0.0 — see below.",
+          "Settlement/exercise fees — a separate Kalshi line item the order ticket never displays.",
+          "Linearity in `contracts` at prices OTHER than 0.59. Size was varied at one price only, so the separable form k*C*P*(1-P) is measured on its two axes independently — linear in C at P=0.59, quadratic in P at C~111-165 — and the cross-term is inferred from separability rather than observed. A non-separable rival (an exponent on C that itself varies with P) is not excluded, though nothing suggests one.",
+          "The P=0.50 peak — the very figure that motivates this gate. Tested p(1-p) is 0.2419/0.2139/0.0979; the 0.2500 maximum is never observed. The '1.75c at 50c' number is interpolated from the fitted model, not measured.",
+          "Prices outside 0.59-0.89. Below 0.59 is covered only by the formula's own p<->1-p symmetry, which cannot validate itself.",
+          "The NO side. Symmetry makes NO@0.31 identical to YES@0.69 only if Kalshi bills side-agnostically, which no YES-only example tests.",
+          "Sizes below 82.37 contracts, where the ceil premium grows without bound as size shrinks: 1 contract at 0.50 costs $0.02 = 4.0% of notional vs 3.5% asymptotically. The premium is measured at the 82.37 floor (0.375% of the fee) but nothing below it is tested. NOTE: at a $5k bankroll the 0.5% cap proposes ~42 contracts, still below this floor and still correctly caveated; a $10k bankroll proposes ~85, which is inside.",
+          "Multi-fill ladders — the actual production path. priceOrder applies ONE ceil to the blended average price; every ticket is a single-price fill. Direction is not uniformly conservative.",
+          "Any series other than KXUFCFIGHT (other series carry different published rates), or any date other than 2026-07-16."
+        ],
+        "reviewProvenance": "2 of 3 independent adversarial lenses completed; the third failed on a retry cap and its small-size claims were manually reproduced, NOT independently reviewed. See docs/fee-verification-provenance.md.",
+        "artifact": "data/fee-verification.json"
+      },
+      "activeCards": 1,
+      "counts": {
+        "actionableExperimental": 0,
+        "watch": 0,
+        "noBet": 24,
+        "analysisOnly": 0,
+        "unpriced": 0,
+        "humanReviewRequired": 0
+      },
+      "failedStages": [],
+      "indicator": "GREEN",
+      "indicatorMeaning": "GREEN = the pipeline completed and every artifact reproduces. It does NOT mean a bet exists, and it is unrelated to whether any position is proposed."
+    },
+    "card": {
+      "ok": true,
+      "card": "UFC-2026-07-18",
+      "eventDate": "2026-07-18",
+      "sealedAt": "2026-07-16T22:00:00.000Z",
+      "rulesVersion": "7.0.0",
+      "forecastHash": "f869d7bd02f36282",
+      "decisionHash": "1472cd7644fe6901",
+      "decisionArtifact": null,
+      "totalBouts": 12,
+      "boutsWithoutBaseline": 0,
+      "rows": [
+        {
+          "boutId": "UFC-2026-07-18-B02",
+          "fight": "Christian Duncan vs Jared Cannonier",
+          "fighterA": "Christian Duncan",
+          "fighterB": "Jared Cannonier",
+          "marketBaseline": {
+            "probability": 0.7414,
+            "forFighter": "Christian Duncan",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.7527,
+          "systemRange": {
+            "forFighter": "Christian Duncan",
+            "low": 0.6977,
+            "high": 0.8077
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "PARTIALLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B01",
+          "fight": "Kamaru Usman vs Dricus Du Plessis",
+          "fighterA": "Kamaru Usman",
+          "fighterB": "Dricus Du Plessis",
+          "marketBaseline": {
+            "probability": 0.3172,
+            "forFighter": "Kamaru Usman",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.3172,
+          "systemRange": {
+            "forFighter": "Kamaru Usman",
+            "low": 0.2622,
+            "high": 0.3722
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "THINLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B03",
+          "fight": "Mitch Ramirez vs Chase Hooper",
+          "fighterA": "Mitch Ramirez",
+          "fighterB": "Chase Hooper",
+          "marketBaseline": {
+            "probability": 0.3065,
+            "forFighter": "Mitch Ramirez",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.3065,
+          "systemRange": {
+            "forFighter": "Mitch Ramirez",
+            "low": 0.2515,
+            "high": 0.3615
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "THINLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B04",
+          "fight": "Alberto Montes vs Tommy McMillen",
+          "fighterA": "Alberto Montes",
+          "fighterB": "Tommy McMillen",
+          "marketBaseline": {
+            "probability": 0.5711,
+            "forFighter": "Alberto Montes",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.5711,
+          "systemRange": {
+            "forFighter": "Alberto Montes",
+            "low": 0.5211,
+            "high": 0.6211
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "INSUFFICIENT EVIDENCE",
+          "evidenceCoverage": "INSUFFICIENT EVIDENCE",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B05",
+          "fight": "Tabatha Ricci vs Fatima Kline",
+          "fighterA": "Tabatha Ricci",
+          "fighterB": "Fatima Kline",
+          "marketBaseline": {
+            "probability": 0.2759,
+            "forFighter": "Tabatha Ricci",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.2759,
+          "systemRange": {
+            "forFighter": "Tabatha Ricci",
+            "low": 0.2259,
+            "high": 0.3259
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "INSUFFICIENT EVIDENCE",
+          "evidenceCoverage": "INSUFFICIENT EVIDENCE",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B06",
+          "fight": "Jose Delgado vs Austin Bashi",
+          "fighterA": "Jose Delgado",
+          "fighterB": "Austin Bashi",
+          "marketBaseline": {
+            "probability": 0.6067,
+            "forFighter": "Jose Delgado",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.6067,
+          "systemRange": {
+            "forFighter": "Jose Delgado",
+            "low": 0.5517,
+            "high": 0.6617
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "THINLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B07",
+          "fight": "Seok Hyun Ko vs Jean-Paul Lebosnoyani",
+          "fighterA": "Seok Hyun Ko",
+          "fighterB": "Jean-Paul Lebosnoyani",
+          "marketBaseline": {
+            "probability": 0.6889,
+            "forFighter": "Seok Hyun Ko",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.6889,
+          "systemRange": {
+            "forFighter": "Seok Hyun Ko",
+            "low": 0.6339,
+            "high": 0.7439
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "THINLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B08",
+          "fight": "Levi Rodrigues Jr vs Felipe Franco",
+          "fighterA": "Levi Rodrigues Jr",
+          "fighterB": "Felipe Franco",
+          "marketBaseline": {
+            "probability": 0.5,
+            "forFighter": "Levi Rodrigues Jr",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.5,
+          "systemRange": {
+            "forFighter": "Levi Rodrigues Jr",
+            "low": 0.445,
+            "high": 0.555
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "PARTIALLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B09",
+          "fight": "Stewart Nicoll vs Alden Coria",
+          "fighterA": "Stewart Nicoll",
+          "fighterB": "Alden Coria",
+          "marketBaseline": {
+            "probability": 0.1475,
+            "forFighter": "Stewart Nicoll",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.1475,
+          "systemRange": {
+            "forFighter": "Stewart Nicoll",
+            "low": 0.0925,
+            "high": 0.2025
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "LIMITED EVIDENCE",
+          "evidenceCoverage": "THINLY COVERED",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B10",
+          "fight": "Alvin Hines vs RJ Harris",
+          "fighterA": "Alvin Hines",
+          "fighterB": "RJ Harris",
+          "marketBaseline": {
+            "probability": 0.3571,
+            "forFighter": "Alvin Hines",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.3571,
+          "systemRange": {
+            "forFighter": "Alvin Hines",
+            "low": 0.3071,
+            "high": 0.4071
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "INSUFFICIENT EVIDENCE",
+          "evidenceCoverage": "INSUFFICIENT EVIDENCE",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B11",
+          "fight": "Anna Melisano vs Dione Barbosa",
+          "fighterA": "Anna Melisano",
+          "fighterB": "Dione Barbosa",
+          "marketBaseline": {
+            "probability": 0.2853,
+            "forFighter": "Anna Melisano",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.2853,
+          "systemRange": {
+            "forFighter": "Anna Melisano",
+            "low": 0.2353,
+            "high": 0.3353
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "INSUFFICIENT EVIDENCE",
+          "evidenceCoverage": "INSUFFICIENT EVIDENCE",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        },
+        {
+          "boutId": "UFC-2026-07-18-B12",
+          "fight": "Ezra Elliott vs Damien Anderson",
+          "fighterA": "Ezra Elliott",
+          "fighterB": "Damien Anderson",
+          "marketBaseline": {
+            "probability": 0.5798,
+            "forFighter": "Ezra Elliott",
+            "tier": "B",
+            "clockBasis": "LOGICAL_OPEN",
+            "source": [
+              "BestFightOdds opening consensus"
+            ]
+          },
+          "systemProbability": 0.5798,
+          "systemRange": {
+            "forFighter": "Ezra Elliott",
+            "low": 0.5298,
+            "high": 0.6298
+          },
+          "kalshiExecutablePrice": null,
+          "kalshiAsk": null,
+          "forecastStatus": "INSUFFICIENT EVIDENCE",
+          "evidenceCoverage": "INSUFFICIENT EVIDENCE",
+          "capLimited": false,
+          "capNote": null,
+          "contractClassification": "NO BET",
+          "highestRankedEligible": null,
+          "noBetReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "lastUpdate": "2026-07-16T23:12:25.518Z",
+          "provenance": {
+            "forecastHash": "f869d7bd02f36282",
+            "decisionHash": "1472cd7644fe6901"
+          }
+        }
+      ]
+    },
+    "contracts": {
+      "ok": true,
+      "decisionHash": "1472cd7644fe6901",
+      "snapshotTimestamp": "2026-07-16T23:12:26.468Z",
+      "contracts": [
+        {
+          "ticker": "KXUFCFIGHT-26JUL18ELLAND-ELL",
+          "bout": "Ezra Elliott vs Damien Anderson",
+          "contractWording": "Will Ezra Elliott win the Elliott vs Anderson professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Ezra Elliott wins the Elliott vs Anderson professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Ezra Elliott",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.5798,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 1,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18ELLAND-AND",
+          "bout": "Ezra Elliott vs Damien Anderson",
+          "contractWording": "Will Damien Anderson win the Elliott vs Anderson professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Damien Anderson wins the Elliott vs Anderson professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Damien Anderson",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.4202,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 2,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18DUUSM-USM",
+          "bout": "Kamaru Usman vs Dricus Du Plessis",
+          "contractWording": "Will Kamaru Usman win the Du Plessis vs Usman professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Kamaru Usman wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Kamaru Usman",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.3172,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 3,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
+          "bout": "Kamaru Usman vs Dricus Du Plessis",
+          "contractWording": "Will Dricus Du Plessis win the Du Plessis vs Usman professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Dricus Du Plessis wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Dricus Du Plessis",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.6828,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 4,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18CANDUN-DUN",
+          "bout": "Christian Duncan vs Jared Cannonier",
+          "contractWording": "Will Christian Duncan win the Cannonier vs Duncan professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Christian Duncan wins the Cannonier vs Duncan professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Christian Duncan",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.7527,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 5,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18CANDUN-CAN",
+          "bout": "Christian Duncan vs Jared Cannonier",
+          "contractWording": "Will Jared Cannonier win the Cannonier vs Duncan professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Jared Cannonier wins the Cannonier vs Duncan professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Jared Cannonier",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.2473,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 6,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18HOORAM-RAM",
+          "bout": "Mitch Ramirez vs Chase Hooper",
+          "contractWording": "Will Mitch Ramirez win the Hooper vs Ramirez professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Mitch Ramirez wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Mitch Ramirez",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.3065,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 7,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18HOORAM-HOO",
+          "bout": "Mitch Ramirez vs Chase Hooper",
+          "contractWording": "Will Chase Hooper win the Hooper vs Ramirez professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Chase Hooper wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Chase Hooper",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.6935,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 8,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
+          "bout": "Alberto Montes vs Tommy McMillen",
+          "contractWording": "Will Alberto Montes win the McMillen vs Montes professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Alberto Montes wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Alberto Montes",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.5711,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 9,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18MCMMON-MCM",
+          "bout": "Alberto Montes vs Tommy McMillen",
+          "contractWording": "Will Tommy McMillen win the McMillen vs Montes professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Tommy McMillen wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Tommy McMillen",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.4289,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 10,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18RICKLI-RIC",
+          "bout": "Tabatha Ricci vs Fatima Kline",
+          "contractWording": "Will Tabatha Ricci win the Ricci vs Kline professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Tabatha Ricci wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Tabatha Ricci",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.2759,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 11,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18RICKLI-KLI",
+          "bout": "Tabatha Ricci vs Fatima Kline",
+          "contractWording": "Will Fatima Kline win the Ricci vs Kline professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Fatima Kline wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Fatima Kline",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.7241,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 12,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18BASDEL-DEL",
+          "bout": "Jose Delgado vs Austin Bashi",
+          "contractWording": "Will Jose Delgado win the Bashi vs Delgado professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Jose Delgado wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Jose Delgado",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.6067,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 13,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18BASDEL-BAS",
+          "bout": "Jose Delgado vs Austin Bashi",
+          "contractWording": "Will Austin Bashi win the Bashi vs Delgado professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Austin Bashi wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Austin Bashi",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.3933,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 14,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18LEBSEO-SEO",
+          "bout": "Seok Hyun Ko vs Jean-Paul Lebosnoyani",
+          "contractWording": "Will Seok Hyun Ko win the Lebosnoyani vs Ko professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Seok Hyun Ko wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Seok Hyun Ko",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.6889,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 15,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18LEBSEO-LEB",
+          "bout": "Seok Hyun Ko vs Jean-Paul Lebosnoyani",
+          "contractWording": "Will Jean-Paul Lebosnoyani win the Lebosnoyani vs Ko professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Jean-Paul Lebosnoyani wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Jean-Paul Lebosnoyani",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.3111,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 16,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18RODFRA-ROD",
+          "bout": "Levi Rodrigues Jr vs Felipe Franco",
+          "contractWording": "Will Levi Rodrigues Jr win the Rodrigues Jr vs Franco professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Levi Rodrigues Jr wins the Rodrigues Jr vs Franco professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Levi Rodrigues Jr",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.5,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 17,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18RODFRA-FRA",
+          "bout": "Levi Rodrigues Jr vs Felipe Franco",
+          "contractWording": "Will Felipe Franco win the Rodrigues Jr vs Franco professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Felipe Franco wins the Rodrigues Jr vs Franco professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Felipe Franco",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.5,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 18,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18CORNIC-NIC",
+          "bout": "Stewart Nicoll vs Alden Coria",
+          "contractWording": "Will Stewart Nicoll win the Coria vs Nicoll professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Stewart Nicoll wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Stewart Nicoll",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.1475,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 19,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18CORNIC-COR",
+          "bout": "Stewart Nicoll vs Alden Coria",
+          "contractWording": "Will Alden Coria win the Coria vs Nicoll professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Alden Coria wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Alden Coria",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.8525,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 20,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18HARHIN-HIN",
+          "bout": "Alvin Hines vs RJ Harris",
+          "contractWording": "Will Alvin Hines win the Harris vs Hines professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Alvin Hines wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Alvin Hines",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.3571,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 21,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18HARHIN-HAR",
+          "bout": "Alvin Hines vs RJ Harris",
+          "contractWording": "Will RJ Harris win the Harris vs Hines professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If RJ Harris wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "RJ Harris",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.6429,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 22,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18MELBAR-MEL",
+          "bout": "Anna Melisano vs Dione Barbosa",
+          "contractWording": "Will Anna Melisano win the Melisano vs Barbosa professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Anna Melisano wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Anna Melisano",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.2853,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 23,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        },
+        {
+          "ticker": "KXUFCFIGHT-26JUL18MELBAR-BAR",
+          "bout": "Anna Melisano vs Dione Barbosa",
+          "contractWording": "Will Dione Barbosa win the Melisano vs Barbosa professional MMA fight scheduled for Jul 18, 2026?",
+          "settlementRule": "If Dione Barbosa wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
+          "outcomeType": "FIGHTER_WINS",
+          "subject": "Dione Barbosa",
+          "executablePrice": null,
+          "allInPrice": null,
+          "systemProbability": 0.7147,
+          "conservativeProbability": null,
+          "fee": null,
+          "slippage": null,
+          "estimatedValueAfterCosts": null,
+          "estimatedValueLabel": null,
+          "maximumAcceptablePrice": null,
+          "liquidity": null,
+          "fullyFillable": null,
+          "verificationEnvelope": null,
+          "modelStatus": "outright winner — priced from the fighter win probability",
+          "rankingStatus": "NO BET",
+          "rank": 24,
+          "rejectionReason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
+          "analysisOnly": false
+        }
+      ]
+    },
+    "portfolio": {
+      "ok": true,
+      "decisionHash": "1472cd7644fe6901",
+      "bankroll": 10000,
+      "caps": {
+        "maxFractionPerPosition": 0.005,
+        "maxFractionPerFight": 0.01,
+        "maxFractionPerCard": 0.03,
+        "kellyFraction": 0.25,
+        "rationale": "initial safety caps, deliberately conservative; never widen them on a winning streak"
+      },
+      "proposedPositions": [],
+      "exposureByFight": [],
+      "cardTotalExposure": 0,
+      "cardMaxLoss": 0,
+      "cardMaxGain": 0,
+      "concentrationByFighter": {},
+      "independenceAssumption": "no positions proposed",
+      "diversificationWarning": "Overlapping positions on one fight are CONCENTRATION, never diversification. A nested contract is one bet at two sizes."
+    },
+    "forwardRecord": {
+      "runs": [
+        {
+          "file": "phase8-shadow-2026-07-18.v23e3347089c80176.json",
+          "ok": false,
+          "reason": "decisionHash does not reproduce — artifact was modified after sealing",
+          "superseded": true
+        },
+        {
+          "file": "phase8-shadow-2026-07-18.v25934d94862924a2.json",
+          "ok": false,
+          "reason": "decisionHash does not reproduce — artifact was modified after sealing",
+          "superseded": true
+        },
+        {
+          "file": "phase8-shadow-2026-07-18.v28bebdcd0a784e1f.json",
+          "ok": false,
+          "reason": "decisionHash does not reproduce — artifact was modified after sealing",
+          "superseded": true
+        },
+        {
+          "file": "phase8-shadow-2026-07-18.v5587b8f8f39070c8.json",
+          "ok": false,
+          "reason": "decisionHash does not reproduce — artifact was modified after sealing",
+          "superseded": true
+        },
+        {
+          "file": "phase8-shadow-2026-07-18.json",
+          "ok": true,
+          "superseded": false,
+          "card": "UFC-2026-07-18",
+          "decidedAt": "2026-07-16T23:12:25.518Z",
+          "decisionHash": "1472cd7644fe6901",
+          "supersededBy": null,
+          "supersedes": {
+            "file": "phase8-shadow-2026-07-18.v25934d94862924a2.json",
+            "hash": "25934d94862924a2"
+          },
+          "armed": false,
+          "alertsSent": 0,
+          "ordersPlaced": 0,
+          "decisions": [
+            {
+              "ticker": "KXUFCFIGHT-26JUL18ELLAND-ELL",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.5798,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18ELLAND-AND",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.4202,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18DUUSM-USM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.3172,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.6828,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CANDUN-DUN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.7527,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CANDUN-CAN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.2473,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HOORAM-RAM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.3065,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HOORAM-HOO",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.6935,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.5711,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MCMMON-MCM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.4289,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RICKLI-RIC",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.2759,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RICKLI-KLI",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.7241,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18BASDEL-DEL",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.6067,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18BASDEL-BAS",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.3933,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18LEBSEO-SEO",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.6889,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18LEBSEO-LEB",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.3111,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RODFRA-ROD",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.5,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RODFRA-FRA",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.5,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CORNIC-NIC",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.1475,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CORNIC-COR",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.8525,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HARHIN-HIN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.3571,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HARHIN-HAR",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.6429,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MELBAR-MEL",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.2853,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MELBAR-BAR",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": null,
+              "systemProbability": 0.7147,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            }
+          ]
+        },
+        {
+          "file": "phase8-shadow-2026-07-18.v06ec56f5eb5f97d4.json",
+          "ok": true,
+          "superseded": true,
+          "card": "UFC-2026-07-18",
+          "decidedAt": "2026-07-16T21:36:50.606Z",
+          "decisionHash": "06ec56f5eb5f97d4",
+          "supersedes": null,
+          "armed": false,
+          "alertsSent": 0,
+          "ordersPlaced": 0,
+          "decisions": [
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MELBAR-MEL",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.1799,
+              "systemProbability": 0.2853,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HARHIN-HAR",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.4573,
+              "systemProbability": 0.6429,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.4371,
+              "systemProbability": 0.5711,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18ELLAND-ELL",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.4774,
+              "systemProbability": 0.5798,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RODFRA-FRA",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.427,
+              "systemProbability": 0.5,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18BASDEL-DEL",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 47.85,
+              "allInPrice": 0.5275,
+              "systemProbability": 0.6067,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RICKLI-RIC",
+              "classification": "ACTIONABLE EXPERIMENTAL",
+              "stake": 12.91,
+              "allInPrice": 0.2217,
+              "systemProbability": 0.2759,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18ELLAND-AND",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.5872,
+              "systemProbability": 0.4202,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18DUUSM-USM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.3353,
+              "systemProbability": 0.3172,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.705,
+              "systemProbability": 0.6828,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CANDUN-DUN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.7632,
+              "systemProbability": 0.7527,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CANDUN-CAN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.2632,
+              "systemProbability": 0.2473,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HOORAM-RAM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.2528,
+              "systemProbability": 0.3065,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HOORAM-HOO",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.7824,
+              "systemProbability": 0.6935,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MCMMON-MCM",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.607,
+              "systemProbability": 0.4289,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RICKLI-KLI",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.8112,
+              "systemProbability": 0.7241,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18BASDEL-BAS",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.5175,
+              "systemProbability": 0.3933,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18LEBSEO-SEO",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.6855,
+              "systemProbability": 0.6889,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18LEBSEO-LEB",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.3558,
+              "systemProbability": 0.3111,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18RODFRA-ROD",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.607,
+              "systemProbability": 0.5,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CORNIC-NIC",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.1274,
+              "systemProbability": 0.1475,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18CORNIC-COR",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.8969,
+              "systemProbability": 0.8525,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18HARHIN-HIN",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.5872,
+              "systemProbability": 0.3571,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            },
+            {
+              "ticker": "KXUFCFIGHT-26JUL18MELBAR-BAR",
+              "classification": "NO BET",
+              "stake": 0,
+              "allInPrice": 0.8495,
+              "systemProbability": 0.7147,
+              "outcomeTracking": {
+                "closingPrice": null,
+                "settlement": null,
+                "netResultAfterCosts": null,
+                "couldRealisticallyFill": null,
+                "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
+              }
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "totalDecisions": 48,
+        "byClassification": {
+          "NO BET": 41,
+          "ACTIONABLE EXPERIMENTAL": 7
+        },
+        "noBetFrequency": "85.4%",
+        "actionableFrequency": "14.6%",
+        "settledPositions": 0,
+        "netPaperResultAfterVerifiedCosts": null,
+        "calibration": "not computable yet — no shadow position has settled",
+        "note": "Performance is reported as no-bet frequency and calibration first. ROI on an unsettled, never-armed shadow book would be a number about nothing."
+      }
+    }
+  },
+  "messagesFile": "data/phase9-test-messages.json"
+}

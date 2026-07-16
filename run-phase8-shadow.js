@@ -164,20 +164,31 @@ async function main() {
       note: "to be filled by a later settlement pass — the decision above is sealed and must not be edited then" },
     immutable: true,
   };
-  record.decisionHash = C.sha(record);
+  // contentHash covers the DECISION and is what identifies a version. It deliberately excludes
+  // lineage, so the same decision hashes the same whether or not it supersedes anything.
+  record.contentHash = C.sha(record);
 
   const out = `data/phase8-shadow-${fc.card.eventDate}.json`;
   if (fs.existsSync(out)) {
     const prior = JSON.parse(fs.readFileSync(out, "utf8"));
-    if (prior.decisionHash && prior.decisionHash !== record.decisionHash) {
+    const priorContent = prior.contentHash || prior.decisionHash;
+    if (priorContent && priorContent !== record.contentHash) {
       // A price or evidence change makes a NEW version. Overwriting would erase what we actually
       // decided at the time, which is the only thing worth recording.
-      const v = out.replace(/\.json$/, `.v${prior.decisionHash}.json`);
+      const v = out.replace(/\.json$/, `.v${priorContent}.json`);
       fs.renameSync(out, v);
-      record.supersedes = { file: path.basename(v), hash: prior.decisionHash };
+      record.supersedes = { file: path.basename(v), hash: priorContent };
       say(`\n  prior decision preserved as ${path.basename(v)} — this is a NEW version, nothing overwritten`);
     }
   }
+  // decisionHash is computed LAST, over EVERYTHING including `supersedes`.
+  //
+  // The first version hashed the record before attaching lineage, so `supersedes` sat outside the
+  // hash that was supposed to protect it: the lineage could be edited and the hash would still
+  // verify. This is verbatim the Phase 7 sealHash defect, which the static review caught there and
+  // which I then reproduced here. The Phase 9 dashboard found it only because it refuses to render
+  // an artifact whose hash does not reproduce — the check earned its keep on its first run.
+  record.decisionHash = C.sha(record);
   writeJson(out, record);
   if (!fs.existsSync(out)) fail(`not written: ${out}`);
   say(`\n  SEALED: ${out}`);
