@@ -1,0 +1,51 @@
+name: Sharp Signals — Listing Watch
+
+# CATCH A MARKET AT BIRTH. Everything else we hypothesised is dead by measurement: the roster does
+# not beat the closing line (12,597 graded picks, -0.4% average), Kalshi does not lag the sharp book
+# once a card is close (20 live markets, mean |gap| 1.15%, two-sided), and there is no two-sided arb
+# (every fight's asks summed to >= 100c). The ONE untested claim is the price a market opens with,
+# before real money arrives — so this exists to watch for a new ticker and snapshot it immediately.
+#
+# It RECORDS ONLY. No bets, no bet alerts, nothing armed. The verdict needs convergence data:
+# does Kalshi walk to the sharp line (the birth price was stale -> real edge), or does the sharp
+# line walk to Kalshi (Kalshi knew first -> we'd have been the sucker)?
+#
+# Cheap by design: a run with no new listings is ONE Kalshi read and zero scraping. The sharp line
+# is only fetched at a birth, or every SHARP_EVERY_H hours to track convergence — BFO is a scrape
+# and we stay polite to it. Free to run this often only because the repo is PUBLIC (unlimited
+# Actions minutes); on a private repo this would eat the 2,000-minute budget.
+on:
+  schedule:
+    - cron: "10,40 * * * *" # every 30 min, offset off :00/:15/:30/:45 so it isn't queued behind the pipeline/watch
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # commit data/listing-watch.json back to the repo
+
+concurrency:
+  # SAME group as the pipeline and market watch: three jobs writing data/ concurrently is exactly
+  # how a git rebase silently discards someone's results.
+  group: sharp-signals
+  cancel-in-progress: false
+
+jobs:
+  listing-watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Snapshot newly-listed markets vs the sharp line
+        env:
+          # No GEMINI/YOUTUBE/BLOTATO keys — this never scans content. Kalshi reads are public.
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SHARP_EVERY_H: "6"
+        run: node listing-watch.js
+
+      - name: Save results (even on failure — a caught birth is unrepeatable)
+        if: always()
+        run: bash .github/save-data.sh listing-watch
