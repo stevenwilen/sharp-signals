@@ -154,7 +154,11 @@ const YT_ONLY = process.argv.includes("--yt-only");
   const gotTranscript = fetched + cached;
   const triedTranscript = gotTranscript + failed;
   const tFailRate = triedTranscript ? failed / triedTranscript : 0;
-  if (triedTranscript >= 30 && tFailRate > 0.5 && failed > 30) {
+  // ...AND only when the run is actually THIN. With a warm picks-cache we assemble tens of thousands
+  // of picks while Blotato is momentarily down for a few NEW videos — that is NOT a gutted run, and
+  // the corpus backstop below is the real guard on the final write. Without this, any Blotato hiccup
+  // on new uploads aborts a fully-cached run (184/226 new fetches failed while 41,542 picks sat ready).
+  if (triedTranscript >= 30 && tFailRate > 0.5 && failed > 30 && picks.length < 500) {
     log(`ABORTING: ${failed}/${triedTranscript} transcript fetches failed this run (Blotato down/empty?).`);
     await notify(`Backfill stopped: ${failed} of ${triedTranscript} transcript fetches failed this run ` +
       `(likely Blotato is down or out of credit). Nothing was overwritten; a retry loses nothing.`).catch(() => {});
