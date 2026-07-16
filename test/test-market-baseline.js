@@ -198,5 +198,37 @@ console.log("\nFAIL-CLOSED INVARIANTS");
   ok("bad-parse reason mentions overround", bad.missingSourceReasons.some((x) => /overround/.test(x)));
 }
 
+console.log("\nLEAKAGE GUARD: THE LOGICAL_OPEN EXCEPTION CANNOT BE ABUSED");
+{
+  const L = require("../lib/leakage-guard");
+  const seal = T0;
+  const base = (o) => ({ probability: 0.58, forFighter: "Alice Ace", clockBasis: "LOGICAL_OPEN",
+    derivedFrom: "opening line", timestamp: null, priceTimestamps: [{ book: "BFO", observedAt: null }], ...o });
+  const throws = (fn) => { try { fn(); return false; } catch (e) { return !!e.leakage; } };
+
+  ok("a well-formed LOGICAL_OPEN baseline is admitted", L.checkBaseline(base(), seal) === true);
+  ok("LOGICAL_OPEN without declaring the opening line is REFUSED",
+    throws(() => L.checkBaseline(base({ derivedFrom: null }), seal)));
+  ok("LOGICAL_OPEN carrying a wall-clock price timestamp is REFUSED (cannot opt out by label)",
+    throws(() => L.checkBaseline(base({ priceTimestamps: [{ book: "DK", observedAt: new Date(T0 - H).toISOString() }] }), seal)));
+  ok("LOGICAL_OPEN whose own timestamp is at/after the seal is REFUSED",
+    throws(() => L.checkBaseline(base({ timestamp: new Date(seal).toISOString() }), seal)));
+  ok("LOGICAL_OPEN still cannot smuggle an outcome field",
+    throws(() => L.checkBaseline(base({ result: 1 }), seal)));
+
+  // THE ORIGINAL BUG: a closing line wearing a fabricated pre-seal timestamp.
+  const fabricated = { probability: 0.768, forFighter: "Alice Ace", clockBasis: "WALL_CLOCK",
+    timestamp: new Date(seal - 2 * H).toISOString(), priceTimestamps: [] };
+  ok("a wall-clock price stamped before the seal is admitted (the guard cannot detect a lie in the value)",
+    L.checkBaseline(fabricated, seal) === true);
+  ok("...which is WHY the live path never synthesises a timestamp — market-baseline.js emits null instead",
+    M.tierB(BOUT, hit(["-150", "-160", "-140"], ["+130", "+140", "+120"]), M.DEFAULTS).clock === "LOGICAL_OPEN");
+  ok("a wall-clock price AT the seal is refused", throws(() => L.checkBaseline({ ...fabricated, timestamp: new Date(seal).toISOString() }, seal)));
+  ok("a wall-clock price after the seal is refused", throws(() => L.checkBaseline({ ...fabricated, timestamp: new Date(seal + H).toISOString() }, seal)));
+  ok("a wall-clock price with no timestamp is refused", throws(() => L.checkBaseline({ ...fabricated, timestamp: null }, seal)));
+  ok("an unknown clockBasis falls through to the strict timestamp rule",
+    throws(() => L.checkBaseline({ ...fabricated, clockBasis: "MADE_UP", timestamp: null }, seal)));
+}
+
 console.log(`\n${pass}/${pass + fail} passed`);
 process.exit(fail ? 1 : 0);

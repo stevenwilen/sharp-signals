@@ -12,6 +12,8 @@ const crypto = require("crypto");
 const F = require("./lib/forecast");
 const L = require("./lib/leakage-guard");
 const E = require("./lib/evidence-eval");
+const MB = require("./lib/market-baseline");
+const O = require("./lib/odds-history");
 const { paths, readJson, writeJson } = require("./lib/store");
 
 let LINES = 0;
@@ -20,10 +22,24 @@ const fail = (m) => { say(`\nFATAL: ${m}`); process.exit(2); };
 const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
 
 // ---- MARKET BASELINE ------------------------------------------------------------------------
-// Extracts ONLY (fighter, opponent, probability, timestamp). predictions.json also carries RESULTS,
-// so a naive read would hand the forecaster the answer. Fields are copied one at a time and the
-// result is swept for outcome fields before it may be used — the guard is not asked to trust me.
-function baselineFromBfo(card, sealTs) {
+// The baseline now comes from lib/market-baseline.js — a deterministic A/B/C/D waterfall reading
+// BFO directly. The two functions below are SUPERSEDED and kept only so the sealed Phase 7
+// artifacts remain reproducible from the code that produced them.
+//
+// Why they were replaced, both defects found in Phase 7.5:
+//
+//   1. SOURCE. baselineFromBfo read predictions.json — the graded PICK ledger. A bout only had a
+//      price if a tipster happened to pick it, so coverage tracked tipster attention: 5/15, every
+//      one a headline fight, every prelim missing. Reading BFO directly gives 15/15 (96.4% across
+//      8 cards). The data was always there.
+//
+//   2. LEAKAGE. It used the de-vigged CLOSING line stamped `sealTs - 2h` (line ~39) — a synthetic
+//      timestamp, not when the price was quoted. The leakage guard passed it because it checked the
+//      fabricated time rather than a real one. Open-to-close drift on that card reached 14.9 points,
+//      so the "prior" carried up to 14.9 points of information it could not have had.
+//
+// Do not reuse these. buildBaselines() below is the live path.
+function baselineFromBfo_SUPERSEDED(card, sealTs) {
   const rows = readJson(paths.predictions, []);
   const out = {};
   const norm = E.norm;
@@ -43,7 +59,48 @@ function baselineFromBfo(card, sealTs) {
   }
   return out;
 }
-function baselineFromKalshi(card, sealTs) {
+// THE LIVE BASELINE PATH. Deterministic waterfall, full provenance, no closing line, no invented
+// timestamp. Returns the same {boutId: baseline} shape the forecaster already consumes, so the
+// engine and its frozen v7.0.0 rules are untouched.
+async function buildBaselines(card, sealTs) {
+  const out = {};
+  const stats = { A: 0, B: 0, C: 0, D: 0 };
+  const fightMs = Date.parse(`${card.eventDate}T22:00:00Z`);
+  for (const b of card.bouts) {
+    let hit = null;
+    try {
+      hit = await O.lookup(b.a.name, b.b.name, fightMs);
+      if (!hit) {
+        const v = await O.lookup(b.b.name, b.a.name, fightMs);
+        if (v) hit = { me: v.opp, opp: v.me, ft: v.ft };  // on the opponent's page the sides swap
+      }
+    } catch (e) { /* the waterfall records this as a missing-source reason */ }
+    const rec = MB.buildBaseline(b, { liveSnapshot: null, bfoHit: hit, kalshi: null }, sealTs);
+    stats[rec.fallbackLevel]++;
+    if (rec.probability === null) continue;   // tier D: no baseline, the bout is not forecast
+    // shape it for the forecaster, carrying the full provenance through rather than flattening it
+    out[b.boutId] = {
+      probability: rec.probability, forFighter: rec.forFighter,
+      // A LOGICAL_OPEN price gets NO wall-clock `timestamp`. Synthesising one here — even an
+      // honest-looking one — is exactly the superseded bug: the old code stamped `sealTs - 2h` on a
+      // closing line and the guard believed it. Absence is the truthful value.
+      timestamp: rec.clockBasis === "LOGICAL_OPEN" ? null : rec.forecastTimestamp,
+      forecastTimestamp: rec.forecastTimestamp,
+      sportsbooks: rec.sourceBooks, deVigMethod: rec.deVigMethod,
+      dispersion: rec.marketDispersion,
+      note: `${rec.tier} (fallback ${rec.fallbackLevel}); ${rec.tierMeaning}`,
+      rawPrices: rec.rawPrices, priceTimestamps: rec.priceTimestamps,
+      clockBasis: rec.clockBasis, derivedFrom: rec.derivedFrom,
+      staleCheckEnforceable: rec.staleCheckEnforceable,
+      oldestPriceAgeHours: rec.oldestPriceAgeHours,
+      fallbackLevel: rec.fallbackLevel, missingSourceReasons: rec.missingSourceReasons,
+      baselineHash: rec.contentHash,
+    };
+  }
+  return { baselines: out, stats };
+}
+
+function baselineFromKalshi_SUPERSEDED(card, sealTs) {
   const lw = readJson(path.join(paths.root, "data", "listing-watch.json"), { markets: {} });
   const out = {};
   for (const b of card.bouts) {
@@ -83,14 +140,17 @@ async function main() {
   catch (e) { fail(`LEAKAGE: ${e.message}`); }
   say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
 
-  say(`[stage 2] building market baselines (${mkt}) ...`);
-  const baselines = mkt === "kalshi" ? baselineFromKalshi(ev.card, sealTs) : baselineFromBfo(ev.card, sealTs);
+  say(`[stage 2] building market baselines via the A/B/C/D waterfall ...`);
+  const { baselines, stats } = await buildBaselines(ev.card, sealTs);
   // the guard checks every baseline BEFORE the forecaster sees it
   for (const [id, b] of Object.entries(baselines)) {
     try { L.checkBaseline(b, sealTs); L.assertNoOutcomeFields(b, `baseline ${id}`); }
     catch (e) { fail(`LEAKAGE in baseline ${id}: ${e.message}`); }
   }
-  say(`[stage 2] ${Object.keys(baselines).length}/${ev.card.bouts.length} bouts have an admissible baseline`);
+  const priced = Object.keys(baselines).length;
+  const pct = (priced / ev.card.bouts.length) * 100;
+  say(`[stage 2] tiers: A=${stats.A} B=${stats.B} C=${stats.C} D=${stats.D}`);
+  say(`[stage 2] ${priced}/${ev.card.bouts.length} bouts have an admissible baseline (${pct.toFixed(1)}%)`);
 
   say(`[stage 3] forecasting ...`);
   const forecasts = [];
