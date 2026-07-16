@@ -420,9 +420,58 @@
       }
     ]
   },
-  "sealedAt": "2026-07-11T22:00:00.000Z",
-  "rulesVersion": "7.0.0",
-  "marketSource": "bfo",
+  "phase": 7,
+  "completedAt": "2026-07-16T20:54:23.777Z",
+  "sealedForecastAt": "2026-07-11T22:00:00.000Z",
+  "references": {
+    "numericalForecastHash": "58f8a47d22b548e0",
+    "numericalForecastFile": "forecast-2026-07-11.json",
+    "scenarioHash": "647606546f122207",
+    "evidenceHash": "514a126dc8e2836c",
+    "marketSnapshotHash": "109aee616097498f",
+    "engineVersion": "phase7-engine-1.0.0",
+    "ruleConfigVersion": "7.0.0"
+  },
+  "capLimited": [
+    {
+      "boutId": "UFC-2026-07-11-B15",
+      "fight": "Conor McGregor vs Max Holloway",
+      "uncappedLogOdds": -0.7,
+      "uncappedProbability": 0.1758,
+      "appliedCaps": "net adjustment -0.700 hit the total cap ±0.45; hit maxProbabilityPointsFromMarket cap (8pts)",
+      "finalProbability": 0.2204,
+      "mechanismsResponsible": [
+        "activity",
+        "condition",
+        "striking",
+        "physical",
+        "cardio",
+        "durability",
+        "grappling",
+        "style"
+      ],
+      "causedBySingleMechanism": false,
+      "probabilityWithoutStrongestMechanism": 0.22,
+      "strongestMechanism": "activity"
+    },
+    {
+      "boutId": "UFC-2026-07-11-B09",
+      "fight": "Adrian Yanez vs Cody Garbrandt",
+      "uncappedLogOdds": 0.62,
+      "uncappedProbability": 0.8604,
+      "appliedCaps": "net adjustment 0.620 hit the total cap ±0.45",
+      "finalProbability": 0.8387,
+      "mechanismsResponsible": [
+        "striking",
+        "cardio",
+        "activity",
+        "durability"
+      ],
+      "causedBySingleMechanism": false,
+      "probabilityWithoutStrongestMechanism": 0.8233,
+      "strongestMechanism": "striking"
+    }
+  ],
   "forecasts": [
     {
       "forecastId": "ed631b4268d330c6",
@@ -1040,73 +1089,6 @@
           "magnitudeReason": "5 independent origin(s), strength=strong, kinds=verifiable_statistical_claim/film_study_observation, relevance=stable_historical_tendency"
         },
         {
-          "adjustmentId": "ed0b64f0bf",
-          "boutId": "UFC-2026-07-11-B15",
-          "fighterFavored": "Max Holloway",
-          "outcomeAffected": "win",
-          "mechanism": "physical",
-          "evidenceTopics": [
-            "size_reach",
-            "size_reach"
-          ],
-          "supportingEvidenceIds": [
-            "CxtqQIjZ380#9145",
-            "sn9ISMFiBas#0",
-            "CB4ndNSm5AM#53241",
-            "CB4ndNSm5AM#63235",
-            "WXiFOHrzeus#0"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
-          "originIds": [
-            "analyst:james lynch",
-            "analyst:lucrative james",
-            "analyst:michael chiesa",
-            "analyst:half the battle"
-          ],
-          "evidenceTypes": [
-            "unsupported_narrative",
-            "film_study_observation",
-            "matchup_inference"
-          ],
-          "relevance": [
-            "weakly_relevant",
-            "stable_historical_tendency",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "stale_or_dated",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Max Holloway",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=unsupported_narrative/film_study_observation, relevance=weakly_relevant/stable_historical_tendency"
-        },
-        {
           "adjustmentId": "a088b24a8f",
           "boutId": "UFC-2026-07-11-B15",
           "fighterFavored": "Max Holloway",
@@ -1243,81 +1225,6 @@
           "finalAppliedLogOdds": 0.28,
           "capOrReductionReason": null,
           "magnitudeReason": "16 independent origin(s), strength=strong, kinds=film_study_observation/verifiable_statistical_claim/unsupported_narrative/matchup_inference, relevance=direct_current_matchup/stable_historical_tendency/weakly_relevant"
-        },
-        {
-          "adjustmentId": "53aae8e300",
-          "boutId": "UFC-2026-07-11-B15",
-          "fighterFavored": "Conor McGregor",
-          "outcomeAffected": "win",
-          "mechanism": "physical",
-          "evidenceTopics": [
-            "size_reach",
-            "size_reach"
-          ],
-          "supportingEvidenceIds": [
-            "wANMI4lavf0#165278",
-            "nYI6Rj3YGxc#10196",
-            "WiunZgfZLCo#19913",
-            "_K8KefTH610#0",
-            "Zc3Z6enxga8#46048",
-            "hC_i9dn3p7E#23113",
-            "CB4ndNSm5AM#63235",
-            "_K8KefTH610#0"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 8,
-          "originIds": [
-            "record:conor mcgregor has a 5 inch ",
-            "analyst:the fighting business",
-            "analyst:the mike finch show",
-            "record:conor mcgregor has a longer ",
-            "record:mcgregor has a 5 inch reach ",
-            "analyst:greedo plays mma",
-            "report:according to tapology",
-            "analyst:michael bisping yt"
-          ],
-          "evidenceTypes": [
-            "verified_hard_fact",
-            "matchup_inference",
-            "film_study_observation",
-            "verifiable_statistical_claim",
-            "secondhand_report"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Conor McGregor",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=verified_hard_fact/matchup_inference/film_study_observation/verifiable_statistical_claim, relevance=direct_current_matchup/stable_historical_tendency"
         },
         {
           "adjustmentId": "91d2e2bf67",
@@ -1472,166 +1379,6 @@
           "magnitudeReason": "18 independent origin(s), strength=strong, kinds=film_study_observation/psychological_interpretation/matchup_inference/verified_hard_fact/unsupported_narrative, relevance=opponent_specific_historical/general_career_background/stable_historical_tendency/direct_current_matchup"
         },
         {
-          "adjustmentId": "82d193f998",
-          "boutId": "UFC-2026-07-11-B15",
-          "fighterFavored": "Conor McGregor",
-          "outcomeAffected": "win",
-          "mechanism": "activity",
-          "evidenceTopics": [
-            "recent_form",
-            "inactivity_layoff",
-            "recent_form",
-            "inactivity_layoff"
-          ],
-          "supportingEvidenceIds": [
-            "sn9ISMFiBas#9979",
-            "hC_i9dn3p7E#32956",
-            "CJw4YaTrxgY#18517",
-            "DdSFGBCtVYk#0",
-            "Zc3Z6enxga8#31511",
-            "TNRD049xx4c#42340",
-            "Ec_8Zi22ggc#10756",
-            "Zc3Z6enxga8#46048",
-            "aBiKNqbcF_o#6304",
-            "DwriC-36cjY#0",
-            "Oxeq7lVsTEE#0",
-            "Zc3Z6enxga8#31511",
-            "Ec_8Zi22ggc#10756"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 11,
-          "originIds": [
-            "analyst:lucrative james",
-            "analyst:greedo plays mma",
-            "analyst:mma jawn",
-            "analyst:morning kombat",
-            "record:max holloway has no experien",
-            "record:max holloway has been droppe",
-            "analyst:tom aspinall official",
-            "record:holloway s takedown defense ",
-            "record:conor mcgregor has never pul",
-            "record:conor mcgregor has a 2 1 rec",
-            "record:conor mcgregor has a signifi"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "unsupported_narrative",
-            "matchup_inference",
-            "verified_hard_fact",
-            "verifiable_statistical_claim"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "weakly_relevant",
-            "direct_current_matchup",
-            "current_fighter_condition",
-            "general_career_background"
-          ],
-          "freshness": [
-            "recent_fights",
-            "unknown_timeframe",
-            "long_term_tendency",
-            "current_fight_week"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 6,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Conor McGregor",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "8 independent origin(s), strength=moderate, kinds=film_study_observation/unsupported_narrative/matchup_inference/verified_hard_fact/verifiable_statistical_claim, relevance=stable_historical_tendency/weakly_relevant/direct_current_matchup"
-        },
-        {
-          "adjustmentId": "47ec040c6d",
-          "boutId": "UFC-2026-07-11-B15",
-          "fighterFavored": "Conor McGregor",
-          "outcomeAffected": "win",
-          "mechanism": "cardio",
-          "evidenceTopics": [
-            "cardio",
-            "cardio",
-            "pressure_pace"
-          ],
-          "supportingEvidenceIds": [
-            "hC_i9dn3p7E#23113",
-            "O2ApLON-nW4#78697",
-            "Zc3Z6enxga8#46048",
-            "izv0Y4dQ_Dc#0",
-            "_K8KefTH610#9982"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 5,
-          "originIds": [
-            "record:max holloway leads the ufc i",
-            "record:conor mcgregor out wrestled ",
-            "analyst:morning kombat",
-            "analyst:tim welch",
-            "analyst:michael bisping yt"
-          ],
-          "evidenceTypes": [
-            "verifiable_statistical_claim",
-            "verified_hard_fact",
-            "film_study_observation",
-            "psychological_interpretation"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup",
-            "general_career_background"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "unknown",
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Conor McGregor",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verified_hard_fact/film_study_observation, relevance=direct_current_matchup"
-        },
-        {
           "adjustmentId": "d3b75e9184",
           "boutId": "UFC-2026-07-11-B15",
           "fighterFavored": "Conor McGregor",
@@ -1710,75 +1457,6 @@
           "finalAppliedLogOdds": 0.28,
           "capOrReductionReason": null,
           "magnitudeReason": "9 independent origin(s), strength=strong, kinds=film_study_observation/verifiable_statistical_claim/matchup_inference, relevance=stable_historical_tendency/direct_current_matchup"
-        },
-        {
-          "adjustmentId": "1528ab2514",
-          "boutId": "UFC-2026-07-11-B15",
-          "fighterFavored": "Max Holloway",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "takedown_defense",
-            "wrestling_offense",
-            "submission_defense"
-          ],
-          "supportingEvidenceIds": [
-            "ds8s17Tvgkg#38044",
-            "WiunZgfZLCo#19913",
-            "wANMI4lavf0#131237",
-            "Oxeq7lVsTEE#9970",
-            "GcgMzJ9J31c#8250",
-            "CB4ndNSm5AM#63235"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 5,
-          "originIds": [
-            "analyst:the mike finch show",
-            "record:max holloway has a higher ta",
-            "analyst:chronic combat conversations",
-            "analyst:mma experts",
-            "analyst:michael chiesa"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "verifiable_statistical_claim"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation",
-            "public_but_possibly_underweighted"
-          ],
-          "direction": "favors Max Holloway",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
         },
         {
           "adjustmentId": "6af5067603",
@@ -1948,6 +1626,377 @@
           "finalAppliedLogOdds": 0.28,
           "capOrReductionReason": null,
           "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
+        },
+        {
+          "adjustmentId": "53aae8e300",
+          "boutId": "UFC-2026-07-11-B15",
+          "fighterFavored": "Conor McGregor",
+          "outcomeAffected": "win",
+          "mechanism": "physical",
+          "evidenceTopics": [
+            "size_reach",
+            "size_reach"
+          ],
+          "supportingEvidenceIds": [
+            "wANMI4lavf0#165278",
+            "nYI6Rj3YGxc#10196",
+            "WiunZgfZLCo#19913",
+            "_K8KefTH610#0",
+            "Zc3Z6enxga8#46048",
+            "hC_i9dn3p7E#23113",
+            "CB4ndNSm5AM#63235",
+            "_K8KefTH610#0"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 8,
+          "originIds": [
+            "record:conor mcgregor has a 5 inch ",
+            "analyst:the fighting business",
+            "analyst:the mike finch show",
+            "record:conor mcgregor has a longer ",
+            "record:mcgregor has a 5 inch reach ",
+            "analyst:greedo plays mma",
+            "report:according to tapology",
+            "analyst:michael bisping yt"
+          ],
+          "evidenceTypes": [
+            "verified_hard_fact",
+            "matchup_inference",
+            "film_study_observation",
+            "verifiable_statistical_claim",
+            "secondhand_report"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Conor McGregor",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=verified_hard_fact/matchup_inference/film_study_observation/verifiable_statistical_claim, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "82d193f998",
+          "boutId": "UFC-2026-07-11-B15",
+          "fighterFavored": "Conor McGregor",
+          "outcomeAffected": "win",
+          "mechanism": "activity",
+          "evidenceTopics": [
+            "recent_form",
+            "inactivity_layoff",
+            "recent_form",
+            "inactivity_layoff"
+          ],
+          "supportingEvidenceIds": [
+            "sn9ISMFiBas#9979",
+            "hC_i9dn3p7E#32956",
+            "CJw4YaTrxgY#18517",
+            "DdSFGBCtVYk#0",
+            "Zc3Z6enxga8#31511",
+            "TNRD049xx4c#42340",
+            "Ec_8Zi22ggc#10756",
+            "Zc3Z6enxga8#46048",
+            "aBiKNqbcF_o#6304",
+            "DwriC-36cjY#0",
+            "Oxeq7lVsTEE#0",
+            "Zc3Z6enxga8#31511",
+            "Ec_8Zi22ggc#10756"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 11,
+          "originIds": [
+            "analyst:lucrative james",
+            "analyst:greedo plays mma",
+            "analyst:mma jawn",
+            "analyst:morning kombat",
+            "record:max holloway has no experien",
+            "record:max holloway has been droppe",
+            "analyst:tom aspinall official",
+            "record:holloway s takedown defense ",
+            "record:conor mcgregor has never pul",
+            "record:conor mcgregor has a 2 1 rec",
+            "record:conor mcgregor has a signifi"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "unsupported_narrative",
+            "matchup_inference",
+            "verified_hard_fact",
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "weakly_relevant",
+            "direct_current_matchup",
+            "current_fighter_condition",
+            "general_career_background"
+          ],
+          "freshness": [
+            "recent_fights",
+            "unknown_timeframe",
+            "long_term_tendency",
+            "current_fight_week"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 6,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Conor McGregor",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "8 independent origin(s), strength=moderate, kinds=film_study_observation/unsupported_narrative/matchup_inference/verified_hard_fact/verifiable_statistical_claim, relevance=stable_historical_tendency/weakly_relevant/direct_current_matchup"
+        },
+        {
+          "adjustmentId": "1528ab2514",
+          "boutId": "UFC-2026-07-11-B15",
+          "fighterFavored": "Max Holloway",
+          "outcomeAffected": "win",
+          "mechanism": "grappling",
+          "evidenceTopics": [
+            "takedown_defense",
+            "wrestling_offense",
+            "submission_defense"
+          ],
+          "supportingEvidenceIds": [
+            "ds8s17Tvgkg#38044",
+            "WiunZgfZLCo#19913",
+            "wANMI4lavf0#131237",
+            "Oxeq7lVsTEE#9970",
+            "GcgMzJ9J31c#8250",
+            "CB4ndNSm5AM#63235"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 5,
+          "originIds": [
+            "analyst:the mike finch show",
+            "record:max holloway has a higher ta",
+            "analyst:chronic combat conversations",
+            "analyst:mma experts",
+            "analyst:michael chiesa"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation",
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Max Holloway",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "ed0b64f0bf",
+          "boutId": "UFC-2026-07-11-B15",
+          "fighterFavored": "Max Holloway",
+          "outcomeAffected": "win",
+          "mechanism": "physical",
+          "evidenceTopics": [
+            "size_reach",
+            "size_reach"
+          ],
+          "supportingEvidenceIds": [
+            "CxtqQIjZ380#9145",
+            "sn9ISMFiBas#0",
+            "CB4ndNSm5AM#53241",
+            "CB4ndNSm5AM#63235",
+            "WXiFOHrzeus#0"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 4,
+          "originIds": [
+            "analyst:james lynch",
+            "analyst:lucrative james",
+            "analyst:michael chiesa",
+            "analyst:half the battle"
+          ],
+          "evidenceTypes": [
+            "unsupported_narrative",
+            "film_study_observation",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "weakly_relevant",
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "stale_or_dated",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Max Holloway",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=unsupported_narrative/film_study_observation, relevance=weakly_relevant/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "47ec040c6d",
+          "boutId": "UFC-2026-07-11-B15",
+          "fighterFavored": "Conor McGregor",
+          "outcomeAffected": "win",
+          "mechanism": "cardio",
+          "evidenceTopics": [
+            "cardio",
+            "cardio",
+            "pressure_pace"
+          ],
+          "supportingEvidenceIds": [
+            "hC_i9dn3p7E#23113",
+            "O2ApLON-nW4#78697",
+            "Zc3Z6enxga8#46048",
+            "izv0Y4dQ_Dc#0",
+            "_K8KefTH610#9982"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 5,
+          "originIds": [
+            "record:max holloway leads the ufc i",
+            "record:conor mcgregor out wrestled ",
+            "analyst:morning kombat",
+            "analyst:tim welch",
+            "analyst:michael bisping yt"
+          ],
+          "evidenceTypes": [
+            "verifiable_statistical_claim",
+            "verified_hard_fact",
+            "film_study_observation",
+            "psychological_interpretation"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup",
+            "general_career_background"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "unknown",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Conor McGregor",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verified_hard_fact/film_study_observation, relevance=direct_current_matchup"
         }
       ],
       "consideredButZero": 9,
@@ -1990,6 +2039,26 @@
         "evidenceEval": "5149065bd7e05d1c",
         "baseline": "718cbdec2433e9c1",
         "rules": "22a3275b9ea3fea9"
+      },
+      "capLimited": true,
+      "capDetail": {
+        "uncappedLogOdds": -0.7,
+        "uncappedProbability": 0.1758,
+        "appliedCaps": "net adjustment -0.700 hit the total cap ±0.45; hit maxProbabilityPointsFromMarket cap (8pts)",
+        "finalProbability": 0.2204,
+        "mechanismsResponsible": [
+          "activity",
+          "condition",
+          "striking",
+          "physical",
+          "cardio",
+          "durability",
+          "grappling",
+          "style"
+        ],
+        "causedBySingleMechanism": false,
+        "probabilityWithoutStrongestMechanism": 0.22,
+        "strongestMechanism": "activity"
       }
     },
     {
@@ -2143,6 +2212,84 @@
           "magnitudeReason": "7 independent origin(s), strength=strong, kinds=film_study_observation/verifiable_statistical_claim, relevance=stable_historical_tendency/direct_current_matchup/opponent_specific_historical"
         },
         {
+          "adjustmentId": "8315cc5702",
+          "boutId": "UFC-2026-07-11-B09",
+          "fighterFavored": "Adrian Yanez",
+          "outcomeAffected": "win",
+          "mechanism": "durability",
+          "evidenceTopics": [
+            "durability",
+            "durability"
+          ],
+          "supportingEvidenceIds": [
+            "gBA51eg7KmY#0",
+            "JolI0UsxhBw#0",
+            "JolI0UsxhBw#0",
+            "JolI0UsxhBw#0",
+            "c3gLFAvFx7c#0",
+            "6BfkfZfV904#0",
+            "6BfkfZfV904#9929",
+            "CJw4YaTrxgY#0",
+            "b7R7GZrgqJ0#0",
+            "84LyiQ4Zko4#131046",
+            "hIeg3pIcHJo#10801"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 6,
+          "originIds": [
+            "analyst:uselyis",
+            "analyst:dfs by the numbers",
+            "record:cody garbrandt has been knoc",
+            "record:cody garbrandt has been drop",
+            "analyst:title talkmma",
+            "analyst:artem mma"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "psychological_interpretation",
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "opponent_specific_historical",
+            "general_career_background",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency",
+            "stale_or_dated"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "public_but_possibly_underweighted",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Adrian Yanez",
+          "rawMagnitudeClass": "MAJOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "5 independent origin(s), strength=strong, kinds=film_study_observation/psychological_interpretation/verified_hard_fact, relevance=stable_historical_tendency/opponent_specific_historical/general_career_background/direct_current_matchup"
+        },
+        {
           "adjustmentId": "dc478fecfb",
           "boutId": "UFC-2026-07-11-B09",
           "fighterFavored": "Adrian Yanez",
@@ -2283,84 +2430,6 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verifiable_statistical_claim/matchup_inference, relevance=stable_historical_tendency/direct_current_matchup"
         },
         {
-          "adjustmentId": "8315cc5702",
-          "boutId": "UFC-2026-07-11-B09",
-          "fighterFavored": "Adrian Yanez",
-          "outcomeAffected": "win",
-          "mechanism": "durability",
-          "evidenceTopics": [
-            "durability",
-            "durability"
-          ],
-          "supportingEvidenceIds": [
-            "gBA51eg7KmY#0",
-            "JolI0UsxhBw#0",
-            "JolI0UsxhBw#0",
-            "JolI0UsxhBw#0",
-            "c3gLFAvFx7c#0",
-            "6BfkfZfV904#0",
-            "6BfkfZfV904#9929",
-            "CJw4YaTrxgY#0",
-            "b7R7GZrgqJ0#0",
-            "84LyiQ4Zko4#131046",
-            "hIeg3pIcHJo#10801"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 6,
-          "originIds": [
-            "analyst:uselyis",
-            "analyst:dfs by the numbers",
-            "record:cody garbrandt has been knoc",
-            "record:cody garbrandt has been drop",
-            "analyst:title talkmma",
-            "analyst:artem mma"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "psychological_interpretation",
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "opponent_specific_historical",
-            "general_career_background",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency",
-            "stale_or_dated"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "strong",
-            "_plus": 5,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "public_but_possibly_underweighted",
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Adrian Yanez",
-          "rawMagnitudeClass": "MAJOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
-          "capOrReductionReason": null,
-          "magnitudeReason": "5 independent origin(s), strength=strong, kinds=film_study_observation/psychological_interpretation/verified_hard_fact, relevance=stable_historical_tendency/opponent_specific_historical/general_career_background/direct_current_matchup"
-        },
-        {
           "adjustmentId": "96301594c7",
           "boutId": "UFC-2026-07-11-B09",
           "fighterFavored": "Cody Garbrandt",
@@ -2466,6 +2535,22 @@
         "evidenceEval": "71a942cc76ed87fd",
         "baseline": "8140f14e72d309a4",
         "rules": "22a3275b9ea3fea9"
+      },
+      "capLimited": true,
+      "capDetail": {
+        "uncappedLogOdds": 0.62,
+        "uncappedProbability": 0.8604,
+        "appliedCaps": "net adjustment 0.620 hit the total cap ±0.45",
+        "finalProbability": 0.8387,
+        "mechanismsResponsible": [
+          "striking",
+          "cardio",
+          "activity",
+          "durability"
+        ],
+        "causedBySingleMechanism": false,
+        "probabilityWithoutStrongestMechanism": 0.8233,
+        "strongestMechanism": "striking"
       }
     },
     {
@@ -2532,6 +2617,429 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [
+        {
+          "adjustmentId": "98d2c14b9b",
+          "boutId": "UFC-2026-07-11-B03",
+          "fighterFavored": "Paddy Pimblett",
+          "outcomeAffected": "win",
+          "mechanism": "grappling",
+          "evidenceTopics": [
+            "submission_offense",
+            "wrestling_offense",
+            "submission_offense",
+            "takedown_defense"
+          ],
+          "supportingEvidenceIds": [
+            "VtjqPMvxqhc#59877",
+            "ds8s17Tvgkg#18131",
+            "CojuwmRfk5c#43974",
+            "WRlNSsrQQnE#70959",
+            "PmHICa4ZfOc#28952",
+            "CJw4YaTrxgY#8536",
+            "tmH-BOLQf8Q#60204",
+            "oCL5HTLYLJQ#36062",
+            "zrPB2YwSTKs#6997",
+            "vyITop6apBA#39621",
+            "CB4ndNSm5AM#53241",
+            "wkNXWP7rZu4#29194",
+            "gOygZypSCs0#35438",
+            "hIeg3pIcHJo#20800",
+            "iv1Mn-fS868#7703",
+            "vopunpVaRZo#40486",
+            "c3gLFAvFx7c#11025",
+            "f62dfZgoRN4#22599",
+            "gOygZypSCs0#35438"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 16,
+          "originIds": [
+            "analyst:mma experts",
+            "analyst:the mike finch show",
+            "analyst:lucastracymma",
+            "analyst:jakegerbermma",
+            "analyst:dfs by the numbers",
+            "analyst:sean brady steadypicks",
+            "record:paddy pimblett is a brazilia",
+            "analyst:the fight site presents",
+            "analyst:we want picks",
+            "analyst:tim welch",
+            "analyst:138 mma",
+            "analyst:michael chiesa",
+            "analyst:kennyokoyemma",
+            "analyst:uselyis",
+            "analyst:artem mma",
+            "analyst:show me the money"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "matchup_inference",
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup",
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Paddy Pimblett",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": "MAJOR",
+          "liftReason": "4 supporting topics across 16 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "11 independent origin(s), strength=moderate, kinds=film_study_observation/matchup_inference/verified_hard_fact, relevance=stable_historical_tendency/direct_current_matchup"
+        },
+        {
+          "adjustmentId": "46ead95a7c",
+          "boutId": "UFC-2026-07-11-B03",
+          "fighterFavored": "Benoit Saint-Denis",
+          "outcomeAffected": "win",
+          "mechanism": "grappling",
+          "evidenceTopics": [
+            "takedown_defense",
+            "wrestling_offense",
+            "wrestling_offense",
+            "submission_offense"
+          ],
+          "supportingEvidenceIds": [
+            "LF05SkQm9kA#28414",
+            "wANMI4lavf0#131237",
+            "wANMI4lavf0#63224",
+            "wANMI4lavf0#247670",
+            "O2ApLON-nW4#68826",
+            "wkNXWP7rZu4#29194",
+            "-xFDyaqNGLA#0",
+            "oCL5HTLYLJQ#36062",
+            "wANMI4lavf0#131237",
+            "vopunpVaRZo#40486",
+            "SFuJndHwxjo#151773",
+            "tA76dPVQ9-k#117611",
+            "zrPB2YwSTKs#6997"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 11,
+          "originIds": [
+            "analyst:tcmma podcast",
+            "record:paddy pimblett has a poor ta",
+            "record:paddy pimblett has a 44 take",
+            "analyst:greedo plays mma",
+            "analyst:kennyokoyemma",
+            "analyst:james lynch",
+            "analyst:we want picks",
+            "analyst:lucastracymma",
+            "record:benoit saint denis lands fou",
+            "analyst:santino defranco",
+            "analyst:tim welch"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "verifiable_statistical_claim",
+            "film_study_observation",
+            "psychological_interpretation"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency",
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation",
+            "public_but_possibly_underweighted",
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Benoit Saint-Denis",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": "MAJOR",
+          "liftReason": "3 supporting topics across 11 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/verifiable_statistical_claim/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "2bb57bd300",
+          "boutId": "UFC-2026-07-11-B03",
+          "fighterFavored": "Paddy Pimblett",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "striking_offense",
+            "striking_defense",
+            "striking_offense"
+          ],
+          "supportingEvidenceIds": [
+            "vK-MeTpvkIQ#43127",
+            "gBA51eg7KmY#19924",
+            "6BfkfZfV904#9929",
+            "SFuJndHwxjo#151773",
+            "tmH-BOLQf8Q#60204",
+            "fRiaEGbo8SA#0",
+            "rntR3nJUL_M#0",
+            "HJ7-lkA1Zt0#0",
+            "HJ7-lkA1Zt0#8496",
+            "c3gLFAvFx7c#11025",
+            "tmH-BOLQf8Q#60204",
+            "84LyiQ4Zko4#165792",
+            "84LyiQ4Zko4#165792",
+            "f62dfZgoRN4#22599"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 7,
+          "originIds": [
+            "analyst:artem mma",
+            "analyst:uselyis",
+            "analyst:dfs by the numbers",
+            "analyst:we want picks",
+            "analyst:the fight site presents",
+            "analyst:theweasle",
+            "analyst:michael bisping yt"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup",
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market",
+            "niche_analytical_interpretation",
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Paddy Pimblett",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": "MAJOR",
+          "liftReason": "3 supporting topics across 7 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency/direct_current_matchup/opponent_specific_historical"
+        },
+        {
+          "adjustmentId": "5740a944e9",
+          "boutId": "UFC-2026-07-11-B03",
+          "fighterFavored": "Benoit Saint-Denis",
+          "outcomeAffected": "win",
+          "mechanism": "activity",
+          "evidenceTopics": [
+            "recent_form",
+            "recent_form"
+          ],
+          "supportingEvidenceIds": [
+            "CojuwmRfk5c#43974",
+            "b7R7GZrgqJ0#9844",
+            "WRlNSsrQQnE#0",
+            "eQD4pCF-lGg#35139",
+            "6BfkfZfV904#9929",
+            "OdB_D_snBpA#15765",
+            "84LyiQ4Zko4#121125"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 7,
+          "originIds": [
+            "record:paddy pimblett is coming off",
+            "record:paddy pimblett has not fough",
+            "record:benoit saint denis is on a f",
+            "analyst:hoppermma",
+            "record:benoit saint denis has a 100",
+            "record:benoit saint denis has won f",
+            "record:benoit saint denis won the s"
+          ],
+          "evidenceTypes": [
+            "verified_hard_fact",
+            "verifiable_statistical_claim",
+            "unsupported_narrative"
+          ],
+          "relevance": [
+            "general_career_background",
+            "direct_current_matchup",
+            "stable_historical_tendency",
+            "weakly_relevant",
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "recent_fights",
+            "stale_or_dated",
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "recent_fights",
+            "strength": "strong",
+            "_plus": 6,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Benoit Saint-Denis",
+          "rawMagnitudeClass": "MAJOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "5 independent origin(s), strength=strong, kinds=verifiable_statistical_claim/unsupported_narrative, relevance=stable_historical_tendency/weakly_relevant/direct_current_matchup/opponent_specific_historical"
+        },
+        {
+          "adjustmentId": "321ad61469",
+          "boutId": "UFC-2026-07-11-B03",
+          "fighterFavored": "Benoit Saint-Denis",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "power",
+            "striking_offense",
+            "striking_offense",
+            "power",
+            "striking_defense"
+          ],
+          "supportingEvidenceIds": [
+            "WRlNSsrQQnE#70959",
+            "rntR3nJUL_M#33247",
+            "GcgMzJ9J31c#18233",
+            "OdB_D_snBpA#15765",
+            "-xFDyaqNGLA#0",
+            "tmH-BOLQf8Q#60204",
+            "vyITop6apBA#39621",
+            "vyITop6apBA#39621",
+            "GcgMzJ9J31c#18233",
+            "-xFDyaqNGLA#0",
+            "TNRD049xx4c#42340",
+            "-xFDyaqNGLA#0",
+            "OXPziJthst4#4611",
+            "fRiaEGbo8SA#0"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 11,
+          "originIds": [
+            "analyst:jakegerbermma",
+            "analyst:theweasle",
+            "analyst:mma experts",
+            "analyst:we want picks",
+            "analyst:pound 4 pound kamaru henry",
+            "analyst:james lynch",
+            "analyst:the fight site presents",
+            "analyst:138 mma",
+            "analyst:the mma guru",
+            "analyst:round 3 prediction show",
+            "analyst:uselyis"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency",
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation",
+            "widely_public_probably_in_the_market",
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Benoit Saint-Denis",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": "MAJOR",
+          "liftReason": "3 supporting topics across 11 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
+          "shrunkMagnitudeLogOdds": 0.28,
+          "finalAppliedLogOdds": 0.28,
+          "capOrReductionReason": null,
+          "magnitudeReason": "7 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+        },
         {
           "adjustmentId": "f9eed5ed97",
           "boutId": "UFC-2026-07-11-B03",
@@ -2751,252 +3259,6 @@
           "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact/matchup_inference, relevance=direct_current_matchup/stable_historical_tendency/general_career_background"
         },
         {
-          "adjustmentId": "d997847e78",
-          "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Paddy Pimblett",
-          "outcomeAffected": "win",
-          "mechanism": "style",
-          "evidenceTopics": [
-            "style_matchup",
-            "style_matchup",
-            "fight_iq"
-          ],
-          "supportingEvidenceIds": [
-            "VtjqPMvxqhc#49899",
-            "CB4ndNSm5AM#53241",
-            "HJ7-lkA1Zt0#0",
-            "CJw4YaTrxgY#18517"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
-          "originIds": [
-            "analyst:mma experts",
-            "analyst:michael chiesa",
-            "analyst:michael bisping yt",
-            "analyst:mma jawn"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "long_term_tendency",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": false,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Paddy Pimblett",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
-        },
-        {
-          "adjustmentId": "98d2c14b9b",
-          "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Paddy Pimblett",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "submission_offense",
-            "wrestling_offense",
-            "submission_offense",
-            "takedown_defense"
-          ],
-          "supportingEvidenceIds": [
-            "VtjqPMvxqhc#59877",
-            "ds8s17Tvgkg#18131",
-            "CojuwmRfk5c#43974",
-            "WRlNSsrQQnE#70959",
-            "PmHICa4ZfOc#28952",
-            "CJw4YaTrxgY#8536",
-            "tmH-BOLQf8Q#60204",
-            "oCL5HTLYLJQ#36062",
-            "zrPB2YwSTKs#6997",
-            "vyITop6apBA#39621",
-            "CB4ndNSm5AM#53241",
-            "wkNXWP7rZu4#29194",
-            "gOygZypSCs0#35438",
-            "hIeg3pIcHJo#20800",
-            "iv1Mn-fS868#7703",
-            "vopunpVaRZo#40486",
-            "c3gLFAvFx7c#11025",
-            "f62dfZgoRN4#22599",
-            "gOygZypSCs0#35438"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 16,
-          "originIds": [
-            "analyst:mma experts",
-            "analyst:the mike finch show",
-            "analyst:lucastracymma",
-            "analyst:jakegerbermma",
-            "analyst:dfs by the numbers",
-            "analyst:sean brady steadypicks",
-            "record:paddy pimblett is a brazilia",
-            "analyst:the fight site presents",
-            "analyst:we want picks",
-            "analyst:tim welch",
-            "analyst:138 mma",
-            "analyst:michael chiesa",
-            "analyst:kennyokoyemma",
-            "analyst:uselyis",
-            "analyst:artem mma",
-            "analyst:show me the money"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "matchup_inference",
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup",
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market",
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Paddy Pimblett",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": "MAJOR",
-          "liftReason": "4 supporting topics across 16 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
-          "capOrReductionReason": null,
-          "magnitudeReason": "11 independent origin(s), strength=moderate, kinds=film_study_observation/matchup_inference/verified_hard_fact, relevance=stable_historical_tendency/direct_current_matchup"
-        },
-        {
-          "adjustmentId": "46ead95a7c",
-          "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Benoit Saint-Denis",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "takedown_defense",
-            "wrestling_offense",
-            "wrestling_offense",
-            "submission_offense"
-          ],
-          "supportingEvidenceIds": [
-            "LF05SkQm9kA#28414",
-            "wANMI4lavf0#131237",
-            "wANMI4lavf0#63224",
-            "wANMI4lavf0#247670",
-            "O2ApLON-nW4#68826",
-            "wkNXWP7rZu4#29194",
-            "-xFDyaqNGLA#0",
-            "oCL5HTLYLJQ#36062",
-            "wANMI4lavf0#131237",
-            "vopunpVaRZo#40486",
-            "SFuJndHwxjo#151773",
-            "tA76dPVQ9-k#117611",
-            "zrPB2YwSTKs#6997"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 11,
-          "originIds": [
-            "analyst:tcmma podcast",
-            "record:paddy pimblett has a poor ta",
-            "record:paddy pimblett has a 44 take",
-            "analyst:greedo plays mma",
-            "analyst:kennyokoyemma",
-            "analyst:james lynch",
-            "analyst:we want picks",
-            "analyst:lucastracymma",
-            "record:benoit saint denis lands fou",
-            "analyst:santino defranco",
-            "analyst:tim welch"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "verifiable_statistical_claim",
-            "film_study_observation",
-            "psychological_interpretation"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency",
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation",
-            "public_but_possibly_underweighted",
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Benoit Saint-Denis",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": "MAJOR",
-          "liftReason": "3 supporting topics across 11 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/verifiable_statistical_claim/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
-        },
-        {
           "adjustmentId": "2cb965d07e",
           "boutId": "UFC-2026-07-11-B03",
           "fighterFavored": "Benoit Saint Denis",
@@ -3129,86 +3391,6 @@
           "magnitudeReason": "6 independent origin(s), strength=moderate, kinds=current_condition_report/rumor, relevance=current_fighter_condition/general_career_background"
         },
         {
-          "adjustmentId": "2bb57bd300",
-          "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Paddy Pimblett",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "striking_offense",
-            "striking_defense",
-            "striking_offense"
-          ],
-          "supportingEvidenceIds": [
-            "vK-MeTpvkIQ#43127",
-            "gBA51eg7KmY#19924",
-            "6BfkfZfV904#9929",
-            "SFuJndHwxjo#151773",
-            "tmH-BOLQf8Q#60204",
-            "fRiaEGbo8SA#0",
-            "rntR3nJUL_M#0",
-            "HJ7-lkA1Zt0#0",
-            "HJ7-lkA1Zt0#8496",
-            "c3gLFAvFx7c#11025",
-            "tmH-BOLQf8Q#60204",
-            "84LyiQ4Zko4#165792",
-            "84LyiQ4Zko4#165792",
-            "f62dfZgoRN4#22599"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 7,
-          "originIds": [
-            "analyst:artem mma",
-            "analyst:uselyis",
-            "analyst:dfs by the numbers",
-            "analyst:we want picks",
-            "analyst:the fight site presents",
-            "analyst:theweasle",
-            "analyst:michael bisping yt"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "matchup_inference"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup",
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market",
-            "niche_analytical_interpretation",
-            "public_but_possibly_underweighted"
-          ],
-          "direction": "favors Paddy Pimblett",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": "MAJOR",
-          "liftReason": "3 supporting topics across 7 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
-          "capOrReductionReason": null,
-          "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency/direct_current_matchup/opponent_specific_historical"
-        },
-        {
           "adjustmentId": "bca7afe428",
           "boutId": "UFC-2026-07-11-B03",
           "fighterFavored": "Benoit Saint-Denis",
@@ -3279,135 +3461,40 @@
           "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact, relevance=direct_current_matchup/general_career_background/stable_historical_tendency"
         },
         {
-          "adjustmentId": "5740a944e9",
+          "adjustmentId": "d997847e78",
           "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Benoit Saint-Denis",
+          "fighterFavored": "Paddy Pimblett",
           "outcomeAffected": "win",
-          "mechanism": "activity",
+          "mechanism": "style",
           "evidenceTopics": [
-            "recent_form",
-            "recent_form"
+            "style_matchup",
+            "style_matchup",
+            "fight_iq"
           ],
           "supportingEvidenceIds": [
-            "CojuwmRfk5c#43974",
-            "b7R7GZrgqJ0#9844",
-            "WRlNSsrQQnE#0",
-            "eQD4pCF-lGg#35139",
-            "6BfkfZfV904#9929",
-            "OdB_D_snBpA#15765",
-            "84LyiQ4Zko4#121125"
+            "VtjqPMvxqhc#49899",
+            "CB4ndNSm5AM#53241",
+            "HJ7-lkA1Zt0#0",
+            "CJw4YaTrxgY#18517"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 7,
+          "informationOriginCount": 4,
           "originIds": [
-            "record:paddy pimblett is coming off",
-            "record:paddy pimblett has not fough",
-            "record:benoit saint denis is on a f",
-            "analyst:hoppermma",
-            "record:benoit saint denis has a 100",
-            "record:benoit saint denis has won f",
-            "record:benoit saint denis won the s"
-          ],
-          "evidenceTypes": [
-            "verified_hard_fact",
-            "verifiable_statistical_claim",
-            "unsupported_narrative"
-          ],
-          "relevance": [
-            "general_career_background",
-            "direct_current_matchup",
-            "stable_historical_tendency",
-            "weakly_relevant",
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "recent_fights",
-            "stale_or_dated",
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "recent_fights",
-            "strength": "strong",
-            "_plus": 6,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Benoit Saint-Denis",
-          "rawMagnitudeClass": "MAJOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
-          "capOrReductionReason": null,
-          "magnitudeReason": "5 independent origin(s), strength=strong, kinds=verifiable_statistical_claim/unsupported_narrative, relevance=stable_historical_tendency/weakly_relevant/direct_current_matchup/opponent_specific_historical"
-        },
-        {
-          "adjustmentId": "321ad61469",
-          "boutId": "UFC-2026-07-11-B03",
-          "fighterFavored": "Benoit Saint-Denis",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "power",
-            "striking_offense",
-            "striking_offense",
-            "power",
-            "striking_defense"
-          ],
-          "supportingEvidenceIds": [
-            "WRlNSsrQQnE#70959",
-            "rntR3nJUL_M#33247",
-            "GcgMzJ9J31c#18233",
-            "OdB_D_snBpA#15765",
-            "-xFDyaqNGLA#0",
-            "tmH-BOLQf8Q#60204",
-            "vyITop6apBA#39621",
-            "vyITop6apBA#39621",
-            "GcgMzJ9J31c#18233",
-            "-xFDyaqNGLA#0",
-            "TNRD049xx4c#42340",
-            "-xFDyaqNGLA#0",
-            "OXPziJthst4#4611",
-            "fRiaEGbo8SA#0"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 11,
-          "originIds": [
-            "analyst:jakegerbermma",
-            "analyst:theweasle",
             "analyst:mma experts",
-            "analyst:we want picks",
-            "analyst:pound 4 pound kamaru henry",
-            "analyst:james lynch",
-            "analyst:the fight site presents",
-            "analyst:138 mma",
-            "analyst:the mma guru",
-            "analyst:round 3 prediction show",
-            "analyst:uselyis"
+            "analyst:michael chiesa",
+            "analyst:michael bisping yt",
+            "analyst:mma jawn"
           ],
           "evidenceTypes": [
-            "film_study_observation",
-            "matchup_inference"
+            "matchup_inference",
+            "film_study_observation"
           ],
           "relevance": [
             "direct_current_matchup",
-            "stable_historical_tendency",
-            "opponent_specific_historical"
+            "stable_historical_tendency"
           ],
           "freshness": [
+            "long_term_tendency",
             "unknown_timeframe"
           ],
           "credibilityComponents": {
@@ -3417,28 +3504,26 @@
             "verifiable": false,
             "checkableAgainstFootageOrRecord": false,
             "specific": true,
-            "givesSupportingExample": true,
+            "givesSupportingExample": false,
             "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
-            "recency": "unknown_timeframe",
+            "recency": "long_term_tendency",
             "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
+            "_plus": 3,
+            "_minus": 0
           },
           "marketAwareness": [
-            "niche_analytical_interpretation",
-            "widely_public_probably_in_the_market",
-            "public_but_possibly_underweighted"
+            "niche_analytical_interpretation"
           ],
-          "direction": "favors Benoit Saint-Denis",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": "MAJOR",
-          "liftReason": "3 supporting topics across 11 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
-          "shrunkMagnitudeLogOdds": 0.28,
-          "finalAppliedLogOdds": 0.28,
+          "direction": "favors Paddy Pimblett",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
           "capOrReductionReason": null,
-          "magnitudeReason": "7 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
         }
       ],
       "consideredButZero": 9,
@@ -3481,7 +3566,8 @@
         "evidenceEval": "8807ead84c730738",
         "baseline": "41941461b8781518",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "59f150973c2200a5",
@@ -3547,72 +3633,6 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [
-        {
-          "adjustmentId": "af64935a61",
-          "boutId": "UFC-2026-07-11-B07",
-          "fighterFavored": "Nikita Krylov",
-          "outcomeAffected": "win",
-          "mechanism": "condition",
-          "evidenceTopics": [
-            "injury_health",
-            "weight_cut"
-          ],
-          "supportingEvidenceIds": [
-            "VtjqPMvxqhc#25083",
-            "ds8s17Tvgkg#18131",
-            "6BfkfZfV904#9929",
-            "OXPziJthst4#4611"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
-          "originIds": [
-            "analyst:mma experts",
-            "record:robert whittaker is a welter",
-            "analyst:dfs by the numbers",
-            "analyst:round 3 prediction show"
-          ],
-          "evidenceTypes": [
-            "current_condition_report",
-            "verified_hard_fact",
-            "matchup_inference"
-          ],
-          "relevance": [
-            "current_fighter_condition",
-            "general_career_background",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "newly_emerging",
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Nikita Krylov",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=verified_hard_fact/matchup_inference, relevance=general_career_background/direct_current_matchup"
-        },
         {
           "adjustmentId": "59579518d1",
           "boutId": "UFC-2026-07-11-B07",
@@ -3699,6 +3719,72 @@
           "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
         },
         {
+          "adjustmentId": "af64935a61",
+          "boutId": "UFC-2026-07-11-B07",
+          "fighterFavored": "Nikita Krylov",
+          "outcomeAffected": "win",
+          "mechanism": "condition",
+          "evidenceTopics": [
+            "injury_health",
+            "weight_cut"
+          ],
+          "supportingEvidenceIds": [
+            "VtjqPMvxqhc#25083",
+            "ds8s17Tvgkg#18131",
+            "6BfkfZfV904#9929",
+            "OXPziJthst4#4611"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 4,
+          "originIds": [
+            "analyst:mma experts",
+            "record:robert whittaker is a welter",
+            "analyst:dfs by the numbers",
+            "analyst:round 3 prediction show"
+          ],
+          "evidenceTypes": [
+            "current_condition_report",
+            "verified_hard_fact",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "current_fighter_condition",
+            "general_career_background",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "newly_emerging",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Nikita Krylov",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=verified_hard_fact/matchup_inference, relevance=general_career_background/direct_current_matchup"
+        },
+        {
           "adjustmentId": "50a7b00397",
           "boutId": "UFC-2026-07-11-B07",
           "fighterFavored": "Robert Whittaker",
@@ -3770,6 +3856,70 @@
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
           "magnitudeReason": "6 independent origin(s), strength=moderate, kinds=film_study_observation/verifiable_statistical_claim/unsupported_narrative, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "11efb0c57e",
+          "boutId": "UFC-2026-07-11-B07",
+          "fighterFavored": "Nikita Krylov",
+          "outcomeAffected": "win",
+          "mechanism": "durability",
+          "evidenceTopics": [
+            "durability"
+          ],
+          "supportingEvidenceIds": [
+            "O2ApLON-nW4#40651",
+            "c3gLFAvFx7c#0",
+            "6BfkfZfV904#9929",
+            "84LyiQ4Zko4#152910",
+            "_9deHsS-I1w#33002",
+            "f62dfZgoRN4#12112"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 4,
+          "originIds": [
+            "analyst:greedo plays mma",
+            "analyst:kennyokoyemma",
+            "analyst:dfs by the numbers",
+            "analyst:uselyis"
+          ],
+          "evidenceTypes": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Nikita Krylov",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "4 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency/direct_current_matchup"
         },
         {
           "adjustmentId": "72f966452a",
@@ -3895,70 +4045,6 @@
           "finalAppliedLogOdds": 0.06,
           "capOrReductionReason": null,
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup"
-        },
-        {
-          "adjustmentId": "11efb0c57e",
-          "boutId": "UFC-2026-07-11-B07",
-          "fighterFavored": "Nikita Krylov",
-          "outcomeAffected": "win",
-          "mechanism": "durability",
-          "evidenceTopics": [
-            "durability"
-          ],
-          "supportingEvidenceIds": [
-            "O2ApLON-nW4#40651",
-            "c3gLFAvFx7c#0",
-            "6BfkfZfV904#9929",
-            "84LyiQ4Zko4#152910",
-            "_9deHsS-I1w#33002",
-            "f62dfZgoRN4#12112"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
-          "originIds": [
-            "analyst:greedo plays mma",
-            "analyst:kennyokoyemma",
-            "analyst:dfs by the numbers",
-            "analyst:uselyis"
-          ],
-          "evidenceTypes": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "public_but_possibly_underweighted"
-          ],
-          "direction": "favors Nikita Krylov",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "4 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency/direct_current_matchup"
         },
         {
           "adjustmentId": "fc0ff4434f",
@@ -4133,7 +4219,8 @@
         "evidenceEval": "992d57bfcf720fe9",
         "baseline": "1cc3c99f4deb0f57",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "2abe57774b63c25d",
@@ -4750,7 +4837,8 @@
         "evidenceEval": "a3ce274797321834",
         "baseline": "7f860fa38d5979af",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "edd20d9a7001090a",
@@ -4777,7 +4865,8 @@
         "evidenceEval": "ee87b706bc634c8a",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "23d0d8d8732d4421",
@@ -4804,7 +4893,8 @@
         "evidenceEval": "e86a106380e74f78",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "e711532876a3b185",
@@ -4831,7 +4921,8 @@
         "evidenceEval": "459f29c6aa91fc68",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "2e1e5c743b8ef4cd",
@@ -4858,7 +4949,8 @@
         "evidenceEval": "0db3706ed27856d5",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "ce922325d9b0a346",
@@ -4885,7 +4977,8 @@
         "evidenceEval": "a77d7670f5c6dcfb",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "56e17713d00e476e",
@@ -4912,7 +5005,8 @@
         "evidenceEval": "38797d67399053f4",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "e927ea2da876a23e",
@@ -4939,7 +5033,8 @@
         "evidenceEval": "a638fc3579c60506",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "46a689af30a58f5f",
@@ -4966,7 +5061,8 @@
         "evidenceEval": "6b46eb6d24da0f15",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "5550c6802ed64452",
@@ -4993,7 +5089,8 @@
         "evidenceEval": "8770640d12ec4d83",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
       "forecastId": "761f7cc1c7e04d84",
@@ -5020,11 +5117,1165 @@
         "evidenceEval": "cbbcbd17a32933de",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     }
   ],
-  "sealedBy": "run-forecast.js",
+  "scenarios": {
+    "UFC-2026-07-11-B15": [
+      {
+        "scenarioId": "ACTIVITY-B",
+        "winner": "Max Holloway",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Max Holloway's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "2d6986c99a"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "inactivity_layoff",
+          "recent_form",
+          "quality_of_opposition",
+          "quality_of_opposition",
+          "inactivity_layoff"
+        ],
+        "informationOrigins": 43,
+        "contradictoryMechanismIds": [
+          "82d193f998"
+        ],
+        "mainFailureMode": "Conor McGregor wins the same exchange: recent_form/inactivity_layoff/recent_form/inactivity_layoff cuts the other way",
+        "evidenceLimitations": [
+          "43 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-A",
+        "winner": "Conor McGregor",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Conor McGregor's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "291c384e78"
+        ],
+        "supportingTopics": [
+          "weight_cut",
+          "weight_cut",
+          "training_camp",
+          "injury_health"
+        ],
+        "informationOrigins": 19,
+        "contradictoryMechanismIds": [
+          "a935dbf5fb"
+        ],
+        "mainFailureMode": "Max Holloway wins the same exchange: training_camp/weight_cut/weight_cut/injury_health/training_camp cuts the other way",
+        "evidenceLimitations": [
+          "19 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-B",
+        "winner": "Max Holloway",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Max Holloway's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a935dbf5fb"
+        ],
+        "supportingTopics": [
+          "training_camp",
+          "weight_cut",
+          "weight_cut",
+          "injury_health",
+          "training_camp"
+        ],
+        "informationOrigins": 26,
+        "contradictoryMechanismIds": [
+          "291c384e78"
+        ],
+        "mainFailureMode": "Conor McGregor wins the same exchange: weight_cut/weight_cut/training_camp/injury_health cuts the other way",
+        "evidenceLimitations": [
+          "26 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Conor McGregor",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Conor McGregor's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "07ded53d7a"
+        ],
+        "supportingTopics": [
+          "power",
+          "striking_offense",
+          "power",
+          "striking_defense",
+          "speed",
+          "speed",
+          "striking_offense"
+        ],
+        "informationOrigins": 21,
+        "contradictoryMechanismIds": [
+          "a088b24a8f"
+        ],
+        "mainFailureMode": "Max Holloway wins the same exchange: striking_offense/striking_offense/speed/power/striking_defense/speed/power cuts the other way",
+        "evidenceLimitations": [
+          "21 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Max Holloway",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Max Holloway's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a088b24a8f"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "striking_offense",
+          "speed",
+          "power",
+          "striking_defense",
+          "speed",
+          "power"
+        ],
+        "informationOrigins": 22,
+        "contradictoryMechanismIds": [
+          "07ded53d7a"
+        ],
+        "mainFailureMode": "Conor McGregor wins the same exchange: power/striking_offense/power/striking_defense/speed/speed/striking_offense cuts the other way",
+        "evidenceLimitations": [
+          "22 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Max Holloway",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Max Holloway's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "91d2e2bf67"
+        ],
+        "supportingTopics": [
+          "cardio",
+          "cardio",
+          "pressure_pace",
+          "pressure_pace"
+        ],
+        "informationOrigins": 32,
+        "contradictoryMechanismIds": [
+          "47ec040c6d"
+        ],
+        "mainFailureMode": "Conor McGregor wins the same exchange: cardio/cardio/pressure_pace cuts the other way",
+        "evidenceLimitations": [
+          "32 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-07-11-B09": [
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Adrian Yanez",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Adrian Yanez's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "67312b9053"
+        ],
+        "supportingTopics": [
+          "speed",
+          "striking_offense",
+          "striking_offense",
+          "power",
+          "speed"
+        ],
+        "informationOrigins": 11,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Cody Garbrandt denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "11 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-A",
+        "winner": "Adrian Yanez",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Adrian Yanez's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "8315cc5702"
+        ],
+        "supportingTopics": [
+          "durability",
+          "durability"
+        ],
+        "informationOrigins": 6,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Cody Garbrandt denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "6 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-A",
+        "winner": "Adrian Yanez",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Adrian Yanez's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "dc478fecfb"
+        ],
+        "supportingTopics": [
+          "cardio",
+          "pressure_pace",
+          "pressure_pace"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Cody Garbrandt denies the mechanism entirely (the fight reaches deep water never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-A",
+        "winner": "Adrian Yanez",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Adrian Yanez's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "5fbebc8f55"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form",
+          "quality_of_opposition"
+        ],
+        "informationOrigins": 5,
+        "contradictoryMechanismIds": [
+          "96301594c7"
+        ],
+        "mainFailureMode": "Cody Garbrandt wins the same exchange: recent_form/recent_form cuts the other way",
+        "evidenceLimitations": [
+          "5 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-B",
+        "winner": "Cody Garbrandt",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Cody Garbrandt's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "96301594c7"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [
+          "5fbebc8f55"
+        ],
+        "mainFailureMode": "Adrian Yanez wins the same exchange: recent_form/recent_form/quality_of_opposition cuts the other way",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-07-11-B03": [
+      {
+        "scenarioId": "GRAPPLING-B",
+        "winner": "Paddy Pimblett",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Paddy Pimblett's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "98d2c14b9b"
+        ],
+        "supportingTopics": [
+          "submission_offense",
+          "wrestling_offense",
+          "submission_offense",
+          "takedown_defense"
+        ],
+        "informationOrigins": 16,
+        "contradictoryMechanismIds": [
+          "46ead95a7c"
+        ],
+        "mainFailureMode": "Benoit Saint-Denis wins the same exchange: takedown_defense/wrestling_offense/wrestling_offense/submission_offense cuts the other way",
+        "evidenceLimitations": [
+          "16 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Benoit Saint-Denis",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Benoit Saint-Denis's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "46ead95a7c"
+        ],
+        "supportingTopics": [
+          "takedown_defense",
+          "wrestling_offense",
+          "wrestling_offense",
+          "submission_offense"
+        ],
+        "informationOrigins": 11,
+        "contradictoryMechanismIds": [
+          "98d2c14b9b"
+        ],
+        "mainFailureMode": "Paddy Pimblett wins the same exchange: submission_offense/wrestling_offense/submission_offense/takedown_defense cuts the other way",
+        "evidenceLimitations": [
+          "11 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Paddy Pimblett",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Paddy Pimblett's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "2bb57bd300"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "striking_defense",
+          "striking_offense"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [
+          "321ad61469"
+        ],
+        "mainFailureMode": "Benoit Saint-Denis wins the same exchange: power/striking_offense/striking_offense/power/striking_defense cuts the other way",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-A",
+        "winner": "Benoit Saint-Denis",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Benoit Saint-Denis's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "5740a944e9"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Paddy Pimblett denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Benoit Saint-Denis",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Benoit Saint-Denis's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "321ad61469"
+        ],
+        "supportingTopics": [
+          "power",
+          "striking_offense",
+          "striking_offense",
+          "power",
+          "striking_defense"
+        ],
+        "informationOrigins": 11,
+        "contradictoryMechanismIds": [
+          "2bb57bd300"
+        ],
+        "mainFailureMode": "Paddy Pimblett wins the same exchange: striking_offense/striking_defense/striking_offense cuts the other way",
+        "evidenceLimitations": [
+          "11 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Paddy Pimblett",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Paddy Pimblett's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "f9eed5ed97"
+        ],
+        "supportingTopics": [
+          "cardio",
+          "pressure_pace",
+          "cardio"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [
+          "d64bc86e2a"
+        ],
+        "mainFailureMode": "Benoit Saint-Denis wins the same exchange: pressure_pace/cardio cuts the other way",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-07-11-B07": [
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Robert Whittaker",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Robert Whittaker's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "59579518d1"
+        ],
+        "supportingTopics": [
+          "power",
+          "striking_offense",
+          "speed",
+          "striking_offense",
+          "striking_defense",
+          "power",
+          "striking_defense"
+        ],
+        "informationOrigins": 8,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Nikita Krylov denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "8 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-B",
+        "winner": "Nikita Krylov",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Nikita Krylov's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "af64935a61"
+        ],
+        "supportingTopics": [
+          "injury_health",
+          "weight_cut"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Robert Whittaker denies the mechanism entirely (the reported condition is real and matters on the night never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-A",
+        "winner": "Robert Whittaker",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Robert Whittaker's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "50a7b00397"
+        ],
+        "supportingTopics": [
+          "durability",
+          "durability"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [
+          "11efb0c57e"
+        ],
+        "mainFailureMode": "Nikita Krylov wins the same exchange: durability cuts the other way",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Nikita Krylov",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Nikita Krylov's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "11efb0c57e"
+        ],
+        "supportingTopics": [
+          "durability"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [
+          "50a7b00397"
+        ],
+        "mainFailureMode": "Robert Whittaker wins the same exchange: durability/durability cuts the other way",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Robert Whittaker",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Robert Whittaker's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "72f966452a"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "takedown_defense"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Nikita Krylov denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "PHYSICAL-B",
+        "winner": "Nikita Krylov",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the physical edge is usable at range",
+          "Nikita Krylov's physical advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a6fc2652e2"
+        ],
+        "supportingTopics": [
+          "size_reach",
+          "size_reach"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Robert Whittaker denies the mechanism entirely (the physical edge is usable at range never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-07-11-B04": [
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Cory Sandhagen",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Cory Sandhagen's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "c206b82258"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "submission_offense",
+          "wrestling_offense"
+        ],
+        "informationOrigins": 5,
+        "contradictoryMechanismIds": [
+          "581927dc8b"
+        ],
+        "mainFailureMode": "Mario Bautista wins the same exchange: wrestling_offense/submission_offense cuts the other way",
+        "evidenceLimitations": [
+          "5 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Cory Sandhagen",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Cory Sandhagen's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "7ce0259c8e"
+        ],
+        "supportingTopics": [
+          "power",
+          "striking_offense"
+        ],
+        "informationOrigins": 6,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Mario Bautista denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "6 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-B",
+        "winner": "Mario Bautista",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Mario Bautista's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "1ce2106c8a"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [
+          "a4d153381a"
+        ],
+        "mainFailureMode": "Cory Sandhagen wins the same exchange: quality_of_opposition cuts the other way",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-B",
+        "winner": "Mario Bautista",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Mario Bautista's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "581927dc8b"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "submission_offense"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [
+          "c206b82258"
+        ],
+        "mainFailureMode": "Cory Sandhagen wins the same exchange: wrestling_offense/submission_offense/wrestling_offense cuts the other way",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Mario Bautista",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Mario Bautista's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "46136a118f"
+        ],
+        "supportingTopics": [
+          "pressure_pace"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Cory Sandhagen denies the mechanism entirely (the fight reaches deep water never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STYLE-B",
+        "winner": "Mario Bautista",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the stylistic edge holds for the full fight",
+          "Mario Bautista's style advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "e69021a53d"
+        ],
+        "supportingTopics": [
+          "style_matchup",
+          "fight_iq",
+          "style_matchup"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [
+          "940b7d21ca"
+        ],
+        "mainFailureMode": "Cory Sandhagen wins the same exchange: style_matchup cuts the other way",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-07-11-B01": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "John Garza",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Farid Basharat",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B02": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Cody Durden",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Alessandro Costa",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B05": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Brandon Royval",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Loneer Kavanagh",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B06": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Terrance McKinney",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Bobby Green",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B08": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Gable Steveson",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Elisha Ellison",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B10": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Luke Riley",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Kai Kamaka III",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B11": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Cong Wang",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Tracy Cortez",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B12": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Damian Pinas",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Cesar Almeida",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B13": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Zach Reese",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Ryan Gandra",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-07-11-B14": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Ode Osbourne",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Cody Durden",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ]
+  },
   "immutable": true,
-  "contentHash": "db70851328907fd3",
-  "sealHash": "58f8a47d22b548e0"
+  "completedHash": "1219a84dcbddbd3c"
 }

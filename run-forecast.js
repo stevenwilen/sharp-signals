@@ -101,10 +101,21 @@ async function main() {
     const A = bout.a.name, B = bout.b.name;
 
     if (!base) {
+      // A baseline-unavailable forecast is still a forecast ARTIFACT and must be as auditable as any
+      // other: same version block, same data hashes. The first cut gave these ten records a flat
+      // `rulesVersion` and no dataHashes, so 10 of 15 sealed artifacts could not be reproduced or
+      // traced — caught by the static review before any outcome was opened. Provenance is not a
+      // reward for having an opinion; it is the record that we declined to have one.
       forecasts.push({ forecastId: sha(`${bout.boutId}|${sealTs}|nobase`), boutId: bout.boutId, fight: `${A} vs ${B}`,
+        event: ev.card.eventId,
         status: "BASELINE UNAVAILABLE", sealedAt: new Date(sealTs).toISOString(),
         reason: "no admissible pre-seal market price for this bout — refusing to invent one",
-        marketBaseline: null, systemCentral: null, adjustments: [], rulesVersion: F.RULES.version });
+        marketBaseline: null, systemCentral: null, systemRange: null, marketDisagreementPoints: null,
+        outcomeTree: null, appliedAdjustments: [], consideredButZero: 0,
+        evidenceCoverage: be ? be.coverage : "UNKNOWN",
+        versions: { rules: F.RULES.version, evaluator: "phase6", extractor: ev.card.promptVersion || "phase5" },
+        dataHashes: { evidenceEval: be ? sha(be) : null, baseline: null, rules: sha(F.RULES) },
+      });
       continue;
     }
 
@@ -192,18 +203,27 @@ async function main() {
   const out = outArg || src.replace(/evidence-eval/, "forecast");
   const payload = { card: ev.card, sealedAt: new Date(sealTs).toISOString(), rulesVersion: F.RULES.version,
     marketSource: mkt, forecasts, sealedBy: "run-forecast.js", immutable: true };
-  payload.sealHash = sha(payload);
+
   // IMMUTABILITY: a sealed file is never overwritten. A correction becomes a NEW version beside it,
   // and the original stays readable forever — requirement 14.
+  //
+  // `contentHash` identifies the FORECAST itself and reproduces from identical inputs regardless of
+  // lineage. `sealHash` covers the WHOLE artifact, lineage included. The first cut computed
+  // sealHash and only then attached `supersedes`, so the hash did not cover the file it sealed:
+  // the lineage could be edited and the hash would still "verify". A seal that does not cover its
+  // own contents is decoration.
+  payload.contentHash = sha({ card: payload.card, sealedAt: payload.sealedAt,
+    rulesVersion: payload.rulesVersion, marketSource: payload.marketSource, forecasts: payload.forecasts });
   if (fs.existsSync(out)) {
     const prior = JSON.parse(fs.readFileSync(out, "utf8"));
-    if (prior.sealHash && prior.sealHash !== payload.sealHash) {
+    if (prior.contentHash && prior.contentHash !== payload.contentHash) {
       const vpath = out.replace(/\.json$/, `.v${Date.now()}.json`);
       fs.renameSync(out, vpath);
-      payload.supersedes = { file: path.basename(vpath), sealHash: prior.sealHash };
+      payload.supersedes = { file: path.basename(vpath), contentHash: prior.contentHash, sealHash: prior.sealHash };
       say(`[stage 4] a different sealed forecast already existed -> preserved as ${path.basename(vpath)}; this is a NEW version`);
     }
   }
+  payload.sealHash = sha(payload);   // computed LAST, over everything including lineage
   const banned = ["stake", "kelly", "recommendation", "buy", "sell", "edgeClaim"];
   const leaked = banned.filter((k) => new RegExp(`"${k}"\\s*:`, "i").test(JSON.stringify(payload)));
   if (leaked.length) fail(`forecast emitted forbidden field(s): ${leaked.join(", ")}`);
