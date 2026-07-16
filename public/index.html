@@ -42,14 +42,15 @@
 <main>
   <div class="caps" id="caps"></div>
 
-  <h2>Live signals: a trusted voice disagrees with the market</h2>
+  <h2>Live signals: an edge that survived out-of-sample</h2>
   <div id="signals"><div class="empty">Loading…</div></div>
 
   <h2>Source track records: who beats the line</h2>
-  <table><thead><tr><th>Source</th><th>Trusted</th><th>ROI vs line</th><th>Shrunk</th><th>Defensible</th><th>Picks</th><th>Hit%</th></tr></thead>
-  <tbody id="records"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody></table>
+  <table><thead><tr><th>Source</th><th>Trusted<br><span class="src">in-sample</span></th><th>Survives<br><span class="src">out-of-sample</span></th><th>ROI vs line</th><th>Shrunk</th><th>Defensible</th><th>Picks</th><th>Hit%</th></tr></thead>
+  <tbody id="records"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody></table>
   <p class="src" style="margin-top:8px">"Defensible" is the edge that survives its own error bars (95% lower bound).
-  If it is not above zero, the sample is too small to tell skill from luck, and no bet is sized off it.</p>
+  "Trusted" is in-sample — it looked good on the same fights we graded it on. "Survives" is the honest one:
+  the edge still held on held-out fights that had no say in the trust decision. Only survivors are bettable.</p>
 </main>
 <script>
 const $=(id)=>document.getElementById(id);
@@ -77,15 +78,23 @@ async function load(){
   // edge vs the line (sourceRoi) plus its defensible lower bound (sourceRoiLcb). There is no
   // "sourceProb" any more, because the number it used to hold was invented by the model.
   const sigs=(d.signals||[]);
-  const isReal=(s)=>s.trusted && (s.sourceRoiLcb||0)>0;
+  // BETTABLE only if the edge SURVIVED out of sample AND the source is not an active fighter
+  // previewing their own team. In-sample "trusted" is NOT enough: the 24-month backfill showed the
+  // trusted group did no better out of sample (+13.0%) than picking everyone (+12.9%) — i.e. luck.
+  const isReal=(s)=>s.survives && !s.isFighter && (s.sourceRoiLcb||0)>0;
+  const why=(s)=>s.isFighter?'fighter · own team'
+    :(!s.survives?'in-sample only · failed holdout'
+    :((s.sourceRoiLcb||0)<=0?'edge inside error bars':''));
   const trusted=sigs.filter(isReal);
   const research=sigs.filter(s=>!isReal(s));
   const card=(s,star)=>{
     const cost=(s.cost||0)*100;
+    const edgeVal=star?(s.oosRoiLcb!=null?s.oosRoiLcb:s.sourceRoiLcb):s.sourceRoiLcb;
+    const reason=star?'':why(s);
     return `<div class="sig ${star?'star':''}">
       <div class="top"><span class="pick">${star?'⭐ ':''}${s.fighter||s.pick}</span>
-      ${s.sourceRoiLcb!=null?`<span class="edge">edge ${(s.sourceRoiLcb*100).toFixed(0)}%</span>`:''}
-      <span class="src">${s.source}${s.trusted?'':' · untrusted'} · ${s.n||0} past picks</span></div>
+      ${edgeVal!=null?`<span class="edge">${star?'edge (out-of-sample) ':'edge (in-sample) '}${(edgeVal*100).toFixed(0)}%</span>`:''}
+      <span class="src">${s.source} · ${s.n||0} past picks${reason?' · '+reason:''}</span></div>
       <div class="bar"><div class="mkt" style="width:${cost}%"></div></div>
       <div class="src">costs ${cents(s.cost)}, pays $1 if he wins${s.opponent?' · vs '+s.opponent:''}${s.fightDate?' · '+s.fightDate:''}</div>
       ${s.quote?`<div class="q">"${s.quote}"</div>`:''}</div>`;
@@ -93,13 +102,15 @@ async function load(){
   $('signals').innerHTML=(trusted.length?trusted.map(s=>card(s,true)).join(''):'<div class="empty">Nothing worth betting right now.</div>')
     +(research.length?'<h2>Research only</h2>'+research.map(s=>card(s,false)).join(''):'');
 
-  const recs=(d.graded||[]).sort((a,b)=>(b.shrunkRoi||-9)-(a.shrunkRoi||-9));
+  // Survivors first — the honest ranking. Then by in-sample shrunk ROI.
+  const recs=(d.graded||[]).sort((a,b)=>((b.survives?1:0)-(a.survives?1:0))||((b.shrunkRoi||-9)-(a.shrunkRoi||-9)));
   $('records').innerHTML=recs.length?recs.map(g=>`<tr>
     <td>${g.source}</td><td>${g.trusted?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
+    <td>${g.survives?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
     <td class="${g.roi>=0?'pos':'neg'}">${g.roi==null?'-':(g.roi*100).toFixed(1)+'%'}</td>
     <td class="${g.shrunkRoi>=0?'pos':'neg'}">${g.shrunkRoi==null?'-':(g.shrunkRoi*100).toFixed(1)+'%'}</td>
     <td class="${g.roiLcb>0?'pos':'neg'}">${g.roiLcb==null?'-':(g.roiLcb*100).toFixed(1)+'%'}</td>
-    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">No graded sources yet.</td></tr>';
+    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">No graded sources yet.</td></tr>';
 }
 load(); setInterval(load, 8000);
 </script>

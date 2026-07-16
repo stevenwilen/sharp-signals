@@ -357,20 +357,28 @@ async function run() {
       ? Math.round((Date.now() - Date.parse(f.timestamp)) / 86400000) : null;
     signals.push({
       source: f.source, trusted: !!g.trusted, domain: f.domain,
+      survives: !!g.survives,           // OUT-OF-SAMPLE: edge held on held-out fights (the honest gate)
+      isFighter: g.type === "fighter",  // an active fighter previewing (often) their own team — confounded
+      oosRoiLcb: g.oos ? g.oos.testRoiLcb : null,
       pick: f.pick, fighter: mkt.fighter, opponent: mkt.opponent,
       market: mkt.matchTitle, ticker: mkt.ticker, fightDate: mkt.fightDate,
       cost,                             // the ask — what you actually pay
       mid: mkt.price, yesBid: mkt.yesBid,
       sourceRoi: g.shrunkRoi ?? null,   // the trust decision's number
-      sourceRoiLcb: g.roiLcb ?? null,   // the DEFENSIBLE edge — what sizing uses
+      sourceRoiLcb: g.roiLcb ?? null,   // the DEFENSIBLE in-sample edge
       n: g.n || 0,
       pickAgeDays,                      // days from the pick to now
       stale: pickAgeDays != null && pickAgeDays > STALE_AFTER_DAYS,
       quote: f.quote || "",
     });
   }
-  signals.sort((a, b) => (b.trusted - a.trusted) || ((b.sourceRoiLcb || -9) - (a.sourceRoiLcb || -9)));
-  writeJson(paths.signals, signals);
+  signals.sort((a, b) => (b.survives - a.survives) || (b.trusted - a.trusted) || ((b.sourceRoiLcb || -9) - (a.sourceRoiLcb || -9)));
+  // NEVER let the mock self-test publish. `node pipeline.js --mock` is documented at the top of this
+  // file as a safe no-keys self-test, but it runs on SAMPLE sources (Daniel Cormier, Chael Sonnen…)
+  // and this line wrote them straight over the real board — silently replacing a live 147-signal
+  // file with 3 fakes. It is the same silent-clobber the ledger is guarded against below, which
+  // signals.json never got. Mock proves the logic; it does not get to write real data.
+  if (!MOCK) writeJson(paths.signals, signals);
 
   // Persist the watch list: statuses updated above, old settled entries pruned, expired
   // never-opened picks retired. This is the "write it down" — next hour resumes from here
@@ -391,10 +399,11 @@ async function run() {
     for (const r of refused.slice(0, 20)) console.log(`  - ${r}`);
   }
 
-  // A signal now requires: a trusted source, AND a defensible (lower-bound) edge over the
-  // price you actually pay, AND a FRESH view (see STALE_AFTER_DAYS above). Gemini's confidence
-  // score is no longer part of this decision.
-  const qualifying = signals.filter((s) => s.trusted && (s.sourceRoiLcb || 0) > 0);
+  // A signal now requires: the source's edge SURVIVED out of sample (not just in-sample "trusted"),
+  // the source is NOT an active fighter previewing their own team (confounded, not market-beating),
+  // AND a FRESH view (see STALE_AFTER_DAYS above). The 24-month backfill proved in-sample "trusted"
+  // is indistinguishable from luck, so it is no longer sufficient. Gemini's confidence is not used.
+  const qualifying = signals.filter((s) => s.survives && !s.isFighter && (s.sourceRoiLcb || 0) > 0);
   const staleHeld = qualifying.filter((s) => s.stale);
   const trusted = qualifying.filter((s) => !s.stale);
   if (staleHeld.length) {
@@ -404,7 +413,7 @@ async function run() {
       `(pick older than ${STALE_AFTER_DAYS}d — not alerted, still watched):`);
     for (const s of staleHeld) console.log(`  - ${s.fighter} [${s.source}, pick ${s.pickAgeDays}d old]`);
   }
-  console.log("\nLIVE SIGNALS (trusted source, defensible edge, fresh view):");
+  console.log("\nLIVE SIGNALS (edge SURVIVED out-of-sample, non-fighter source, fresh view):");
   if (!trusted.length) console.log("  (none)");
   for (const s of trusted)
     console.log(`  ${s.fighter} vs ${s.opponent} — costs ${Math.round(s.cost * 100)}c` +

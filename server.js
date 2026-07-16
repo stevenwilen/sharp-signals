@@ -32,11 +32,12 @@ function data() {
 
 const server = http.createServer((req, res) => {
   if (req.url === "/" || req.url === "/index.html") {
-    res.writeHead(200, { "Content-Type": "text/html" });
+    res.writeHead(200, { "Content-Type": "text/html", "Cache-Control": "no-store" });
     return res.end(fs.readFileSync(path.join(paths.root, "public", "index.html")));
   }
   if (req.url === "/api/data") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    // no-store: the browser must re-fetch every open, never show a cached (stale) board.
+    res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
     return res.end(JSON.stringify(data()));
   }
   res.writeHead(404);
