@@ -14,6 +14,7 @@ const L = require("./lib/leakage-guard");
 const E = require("./lib/evidence-eval");
 const MB = require("./lib/market-baseline");
 const O = require("./lib/odds-history");
+const SB = require("./lib/sportsbook-live");
 const { paths, readJson, writeJson } = require("./lib/store");
 
 let LINES = 0;
@@ -62,11 +63,42 @@ function baselineFromBfo_SUPERSEDED(card, sealTs) {
 // THE LIVE BASELINE PATH. Deterministic waterfall, full provenance, no closing line, no invented
 // timestamp. Returns the same {boutId: baseline} shape the forecaster already consumes, so the
 // engine and its frozen v7.0.0 rules are untouched.
-async function buildBaselines(card, sealTs) {
+async function buildBaselines(card, sealTs, opts = {}) {
   const out = {};
   const stats = { A: 0, B: 0, C: 0, D: 0 };
   const fightMs = Date.parse(`${card.eventDate}T22:00:00Z`);
+  // Tier A: the LIVE multi-book consensus, if one was collected for this run.
+  //
+  // Phase 8.5 built this service and validated it standalone — 12/12 bouts, 4 independent books
+  // each, WALL_CLOCK — and then never connected it: this function passed `liveSnapshot: null`, so
+  // tier A was unreachable and every forecast fell to tier B's OPENING line. That is exactly why
+  // Phase 8's stale-prior gate refused every contract: the prior was weeks old and the price was
+  // live, so the gap between them measured elapsed time, not skill. Building the capability and
+  // leaving it unplumbed made the whole card un-actionable for a reason that had nothing to do with
+  // the market.
+  const live = (opts.liveConsensus && opts.liveConsensus.byBout) || {};
   for (const b of card.bouts) {
+    const lc = live[b.boutId];
+    if (lc && lc.ok) {
+      stats.A++;
+      out[b.boutId] = {
+        probability: lc.probability, forFighter: lc.forFighter,
+        timestamp: lc.snapshotTimestamp,          // a REAL observation time, not a synthetic one
+        forecastTimestamp: new Date(sealTs).toISOString(),
+        sportsbooks: lc.sourceBooks, deVigMethod: lc.deVigMethod,
+        consensusMethod: lc.consensusMethod,
+        dispersion: lc.marketDispersion,
+        note: `${lc.tier} (fallback A); ${lc.booksIncluded} independent books, de-vigged per book before combining`,
+        rawPrices: lc.perBook.map((x) => ({ book: x.sportsbook, ...x.rawOdds, overround: x.overround, deVigged: x.deViggedForA })),
+        priceTimestamps: lc.priceTimestamps,
+        clockBasis: lc.clockBasis, derivedFrom: lc.derivedFrom,
+        staleCheckEnforceable: lc.staleCheckEnforceable,
+        oldestPriceAgeHours: lc.oldestQuoteAgeMs == null ? null : +(lc.oldestQuoteAgeMs / 3600000).toFixed(3),
+        fallbackLevel: "A", missingSourceReasons: lc.notes || [],
+        baselineHash: lc.contentHash,
+      };
+      continue;
+    }
     let hit = null;
     try {
       hit = await O.lookup(b.a.name, b.b.name, fightMs);
@@ -140,8 +172,19 @@ async function main() {
   catch (e) { fail(`LEAKAGE: ${e.message}`); }
   say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
 
+  // --live collects a contemporaneous multi-book consensus BEFORE sealing, so tier A is reachable
+  // and every quote provably predates the seal.
+  let liveConsensus = null;
+  if (process.argv.includes("--live")) {
+    say(`[stage 2a] collecting a LIVE multi-book consensus (tier A) ...`);
+    const evPath = (process.argv.find((a) => a.startsWith("--live-event=")) || "").split("=")[1];
+    liveConsensus = await SB.consensusForCard(ev.card, { eventPath: evPath || undefined, nowTs: Date.now() });
+    if (!liveConsensus.ok) say(`[stage 2a] no live consensus: ${liveConsensus.reason} — falling back to the waterfall`);
+    else say(`[stage 2a] ${liveConsensus.withConsensus}/${liveConsensus.of} bouts have a live consensus from ${liveConsensus.eventPath}`);
+  }
+
   say(`[stage 2] building market baselines via the A/B/C/D waterfall ...`);
-  const { baselines, stats } = await buildBaselines(ev.card, sealTs);
+  const { baselines, stats } = await buildBaselines(ev.card, sealTs, { liveConsensus });
   // the guard checks every baseline BEFORE the forecaster sees it
   for (const [id, b] of Object.entries(baselines)) {
     try { L.checkBaseline(b, sealTs); L.assertNoOutcomeFields(b, `baseline ${id}`); }

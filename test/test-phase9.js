@@ -7,6 +7,7 @@
 const DD = require("../lib/dashboard-data");
 const TM = require("../lib/telegram-messages");
 const AL = require("../lib/alert-ledger-v2");
+const P = require("../lib/portfolio");   // research sizer — imported ONLY to prove it stays separate from the entertainment one
 
 let pass = 0, fail = 0;
 const ok = (name, cond, extra) => { if (cond) { pass++; console.log(`  PASS  ${name}`); }
@@ -223,6 +224,98 @@ console.log("\n9B: THE LEDGER MAY NOT GO SILENT ON A LIVE POSITION");
   const both = fires(base, { ...base, ask: 0.47, stale: true });
   ok("simultaneous triggers are all reported, not just the first", both.length >= 2, JSON.stringify(both));
   ok("thirteen triggers are defined", AL.TRIGGERS.length === 13, String(AL.TRIGGERS.length));
+}
+
+console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
+{
+  const EN = require("../lib/entertainment");
+  const C = require("../lib/contracts");
+  ok("bankroll is $100 and labelled entertainment", EN.BANKROLL.amount === 100 && EN.BANKROLL.label === "ENTERTAINMENT");
+  ok("tiers are 2% / 3% / 5%", EN.TIERS.STANDARD.fraction === 0.02 && EN.TIERS.STRONG.fraction === 0.03 && EN.TIERS.MAXIMUM.fraction === 0.05);
+  ok("dollar tiers are $2 / $3 / $5", EN.TIERS.STANDARD.dollars === 2 && EN.TIERS.STRONG.dollars === 3 && EN.TIERS.MAXIMUM.dollars === 5);
+  ok("caps are 5% per fight and 10% per card", EN.CAPS.maxFractionPerFight === 0.05 && EN.CAPS.maxFractionPerCard === 0.10);
+  ok("stakes are declared NOT Kelly and NOT evidence of edge", /NOT derived from Kelly/.test(EN.CAPS.provenance));
+  ok("entertainment sizing is a SEPARATE module from the research sizer", EN.CAPS !== P.CAPS);
+  ok("research caps are untouched at 0.5/1/3%", P.CAPS.maxFractionPerPosition === 0.005 && P.CAPS.maxFractionPerCard === 0.03);
+
+  // THE SAFETY PROPERTY: nothing the research gates refused can be promoted by appetite
+  const base = { ticker: "KXUFCFIGHT-x", allInPrice: 0.59, expectedValueConservative: 0.05,
+    probabilityModelStatus: "outright winner", execution: { fills: [{}] } };
+  for (const cls of EN.NEVER_PROMOTABLE) {
+    const r = EN.sizeEntertainment({ ...base, classification: cls });
+    ok(`a ${cls} contract gets NO entertainment stake`, r.eligible === false && r.stake === 0);
+  }
+  ok("an unvalidated method model gets no stake at any size",
+    EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL", probabilityModelStatus: "UNVALIDATED METHOD MODEL" }).eligible === false);
+  ok("a stale-blocked prior gets no stake",
+    EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL", staleBaselineBlocked: true }).eligible === false);
+  ok("a no-opinion forecast gets no stake",
+    EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL", noOpinion: true }).eligible === false);
+  ok("negative conservative value gets no stake",
+    EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL", expectedValueConservative: -0.01 }).eligible === false);
+  ok("every refusal names the gate that blocked it",
+    EN.NEVER_PROMOTABLE.every((c) => !!EN.sizeEntertainment({ ...base, classification: c }).blockedBy));
+
+  // tiering is driven by conservative margin, never by payout size
+  ok("a small margin is STANDARD", EN.tierFor({ expectedValueConservative: 0.01 }) === "STANDARD");
+  ok("a mid margin is STRONG", EN.tierFor({ expectedValueConservative: 0.04 }) === "STRONG");
+  ok("a large margin is MAXIMUM", EN.tierFor({ expectedValueConservative: 0.08 }) === "MAXIMUM");
+  ok("a 3c lottery contract does not become MAXIMUM by payout size", EN.tierFor({ expectedValueConservative: 0.005 }) === "STANDARD");
+
+  // a qualifying position sizes, and reports the small-order fee gate
+  const good = EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL" });
+  ok("a qualifying position sizes", good.eligible === true);
+  ok("stake is a whole tier of the $100 bankroll", [2, 3, 5].includes(good.stake));
+  ok("sizing states it is NOT Kelly and NOT a measured edge", /NOT Kelly, NOT sized from a measured edge/.test(good.basis));
+  // THE SMALL-ORDER FEE GATE: $2-$5 is a handful of contracts, far below the 82.37 verified floor
+  ok("a $2-$5 order is OUTSIDE the verified fee envelope", good.feeGate.withinVerifiedEnvelope === false);
+  ok("...so production alerting is not allowed for it", good.feeGate.productionAlertAllowed === false);
+  ok("...and the reason demands $2-$5 fee tickets", /Quick Order fee examples at \$2-\$5/.test(good.feeGate.why));
+  ok("the exception names the size band", good.feeGate.exceptions.some((e) => /size .* outside the verified band/.test(e)));
+
+  // card cap binds across fights
+  const many = [1, 2, 3, 4, 5].map((i) => ({ boutId: `b${i}`,
+    entertainment: { eligible: true, stake: 5, contracts: 8, allInPrice: 0.59 } }));
+  const capped = EN.applyEntertainmentCaps(many, { bankroll: 100 });
+  const total = capped.positions.reduce((a, x) => a + x.entertainment.stake, 0);
+  ok("5 x $5 positions are scaled to the $10 card cap", Math.abs(total - 10) < 0.05, String(total));
+  ok("scaling is recorded", capped.positions.every((x) => /per-card entertainment cap/.test(x.entertainment.scaledBy || "")));
+}
+
+console.log("\nTHE MANUAL BUY INSTRUCTION");
+{
+  const b = {
+    fight: "Alice Ace vs Bob Bruiser", ticker: "KXUFCFIGHT-26JUL18ALIBOB-ALI",
+    contractWording: "Will Alice Ace win the Ace vs Bruiser fight?",
+    ask: 0.43, maximumAcceptablePrice: 0.45, percentOfBankroll: 2, bankroll: 100,
+    stake: 2, contracts: 4, tierLabel: "standard experimental", contractsCompared: 2,
+    whyTopRanked: "risk-adjusted conservative value after costs beats the alternative",
+    why: ["Two independent origins support the same wrestling mechanism"],
+    against: ["Forecast has not demonstrated prospective edge"],
+    doNotPlaceIf: ["the ask is above 45.0¢ when you look", "the fight has started"],
+    rangeLow: 0.49, rangeHigh: 0.54, conservativeValuePoints: 2.1,
+    evidenceCoverage: "PARTIALLY COVERED", modelStatus: "outright winner",
+    snapshotTimestamp: "2026-07-16T22:00:00Z",
+    feeGate: { withinVerifiedEnvelope: false, exceptions: ["size 4 is outside the verified band 82.37-823.81 contracts"] },
+  };
+  const m = TM.buyInstruction(b);
+  ok("names the exact Kalshi contract", /Ticker: KXUFCFIGHT-26JUL18ALIBOB-ALI/.test(m));
+  ok("gives the current executable price", /Executable price now: 43\.0¢/.test(m));
+  ok("gives the maximum acceptable price with a do-not-exceed", /Maximum acceptable price: 45\.0¢.*do not pay more/.test(m));
+  ok("gives the percentage of bankroll", /2% of your \$100 entertainment bankroll/.test(m));
+  ok("gives the exact dollar amount", /= \$2\.00/.test(m));
+  ok("gives approximate contracts", /Approximate contracts: 4/.test(m));
+  ok("says why it qualifies", /Why it qualifies:/.test(m));
+  ok("gives the main counterargument", /Main counterargument:/.test(m));
+  ok("says when NOT to place it", /DO NOT place it if:/.test(m));
+  ok("says it must be submitted manually", /YOU MUST SUBMIT THIS MANUALLY/.test(m));
+  ok("states the system has no order path", /no order path and cannot place, modify or close/.test(m));
+  ok("names how many contracts it beat and why", /Ranked #1 of 2 contracts/.test(m) && /Why it ranks above the alternatives:/.test(m));
+  ok("shows the fee-envelope warning when extrapolated", /FEE IS EXTRAPOLATED/.test(m));
+  ok("carries the standing no-edge warning", /has NOT demonstrated a predictive edge/.test(m));
+  ok("...and says the one evaluation that showed one was void", /void \(contaminated baseline\)/.test(m));
+  ok("carries NO confidence score", (() => { try { TM.assertNoConfidenceScore(m); return true; } catch { return false; } })());
+  ok("gives a probability RANGE not a point", /System range: 49\.0%–54\.0%/.test(m));
 }
 
 console.log(`\n${pass}/${pass + fail} passed`);

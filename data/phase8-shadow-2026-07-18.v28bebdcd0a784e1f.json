@@ -2,14 +2,14 @@
   "card": "UFC-2026-07-18",
   "phase": 8,
   "mode": "SHADOW",
-  "decisionTimestamp": "2026-07-17T00:03:28.897Z",
+  "decisionTimestamp": "2026-07-16T21:39:17.071Z",
   "armed": false,
   "alertsSent": 0,
   "ordersPlaced": 0,
-  "forecastHash": "09ff100076ec6692",
+  "forecastHash": "f869d7bd02f36282",
   "forecastFile": "forecast-2026-07-18.json",
-  "contractSnapshotHash": "35847e760cc0ab1a",
-  "snapshotTimestamp": "2026-07-17T00:03:29.891Z",
+  "contractSnapshotHash": "add8e878cb554197",
+  "snapshotTimestamp": "2026-07-16T21:39:17.655Z",
   "versions": {
     "rules": "7.0.0",
     "contracts": "contracts@1.0.0",
@@ -17,50 +17,12 @@
     "portfolio": "portfolio@1.0.0"
   },
   "feeSchedule": {
-    "source": "Kalshi published taker fee schedule, CONFIRMED against five authenticated UFC Quick Order tickets (2026-07-16): $100 x3 at prices 0.59/0.69/0.89, plus $50 and $500 at 0.59 which vary size at a fixed price",
-    "formula": "fee = ceil_to_cent(rate * contracts * price * (1 - price))  [dollars]",
+    "source": "Kalshi published general trading fee schedule (transcribed, NOT read from the API)",
+    "verified": false,
+    "formula": "fee = ceil(rate * contracts * price * (1 - price) * 100) / 100  [dollars]",
     "rate": 0.07,
-    "note": "quadratic in price: maximal near $0.50, minimal at the wings",
-    "verifiedScope": {
-      "verified": true,
-      "asOf": "2026-07-16",
-      "takerFormulaOnly": true,
-      "series": "KXUFCFIGHT",
-      "side": "yes",
-      "priceRange": [
-        0.59,
-        0.89
-      ],
-      "sizeRange": [
-        82.37,
-        823.81
-      ],
-      "notionalRange": [
-        "$50",
-        "$500"
-      ],
-      "fills": "single-price fills only",
-      "rateConstrainedTo": [
-        0.06995195,
-        0.07000213
-      ],
-      "establishes": "taker rate 0.07 and ceil-to-cent rounding, for single-price YES fills on KXUFCFIGHT as of 2026-07-16. Five authenticated Quick Order tickets reproduce exactly (diff 0.00). The admissible rate interval under ceil is (0.06995195, 0.07000213] — 50ppm wide, containing 0.07 as its only two-decimal value. ceil is discriminated: floor fits 0/5, round-half-up fits 2/5 — it reproduces only the two tickets whose exact cents happen to land above the .5 boundary. LINEARITY IN CONTRACTS IS MEASURED over a 10x span at a fixed price, not assumed: at 0.59, 82.37 -> 164.76 -> 823.81 contracts (10.0013x end to end) produce exact pre-ceil fees 1.394771 -> 2.789881 -> 13.949575 (10.0013x), refuting every rival exponent k*gross^x for x in 0.8-1.5. The ceil premium is observed rather than inferred: it adds 0.375% of the fee at 82.37 contracts and 0.003% at 823.81.",
-      "doesNotEstablish": [
-        "MAKER fees. No maker example exists. `makerRate` has been REMOVED rather than left at an untested 0.0 — see below.",
-        "Settlement/exercise fees — a separate Kalshi line item the order ticket never displays.",
-        "Linearity in `contracts` at prices OTHER than 0.59. Size was varied at one price only, so the separable form k*C*P*(1-P) is measured on its two axes independently — linear in C at P=0.59, quadratic in P at C~111-165 — and the cross-term is inferred from separability rather than observed. A non-separable rival (an exponent on C that itself varies with P) is not excluded, though nothing suggests one.",
-        "The P=0.50 peak — the very figure that motivates this gate. Tested p(1-p) is 0.2419/0.2139/0.0979; the 0.2500 maximum is never observed. The '1.75c at 50c' number is interpolated from the fitted model, not measured.",
-        "Prices outside 0.59-0.89. Below 0.59 is covered only by the formula's own p<->1-p symmetry, which cannot validate itself.",
-        "The NO side. Symmetry makes NO@0.31 identical to YES@0.69 only if Kalshi bills side-agnostically, which no YES-only example tests.",
-        "Sizes below 82.37 contracts, where the ceil premium grows without bound as size shrinks: 1 contract at 0.50 costs $0.02 = 4.0% of notional vs 3.5% asymptotically. The premium is measured at the 82.37 floor (0.375% of the fee) but nothing below it is tested. NOTE: at a $5k bankroll the 0.5% cap proposes ~42 contracts, still below this floor and still correctly caveated; a $10k bankroll proposes ~85, which is inside.",
-        "Multi-fill ladders — the actual production path. priceOrder applies ONE ceil to the blended average price; every ticket is a single-price fill. Direction is not uniformly conservative.",
-        "Any series other than KXUFCFIGHT (other series carry different published rates), or any date other than 2026-07-16."
-      ],
-      "examples": "data/fee-examples.json — five unsubmitted Kalshi UFC Quick Order tickets ($50 x1, $100 x3, $500 x1)",
-      "verificationRecord": "data/fee-verification.json"
-    },
-    "makerSupported": false,
-    "makerNote": "maker fees are unverified AND unimplemented; a maker order is refused, not guessed"
+    "makerRate": 0,
+    "note": "quadratic in price: maximal near $0.50, minimal at the wings"
   },
   "bankroll": 10000,
   "probeContracts": 100,
@@ -104,7 +66,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "1d0995423fc21cbe"
+      "contractHash": "8bfe83724999cded"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18ELLAND-AND",
@@ -138,7 +100,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "ccf5cb584653dabd"
+      "contractHash": "7f08c4d692197dba"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18DUUSM-USM",
@@ -147,7 +109,7 @@
       "settlementRules": "If Kamaru Usman wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Kamaru Usman",
-      "systemProbability": 0.3275,
+      "systemProbability": 0.3172,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -167,12 +129,12 @@
       "classification": "NO BET",
       "rank": 3,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "16e7b66fdf654322"
+      "contractHash": "717a028da4a274a5"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
@@ -181,7 +143,7 @@
       "settlementRules": "If Dricus Du Plessis wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Dricus Du Plessis",
-      "systemProbability": 0.6725,
+      "systemProbability": 0.6828,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -201,12 +163,12 @@
       "classification": "NO BET",
       "rank": 4,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "361db795abcfb0a6"
+      "contractHash": "86f1c1449d9f8f2f"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CANDUN-DUN",
@@ -240,7 +202,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "603dd6150676734e"
+      "contractHash": "1d84cd5b7b6c77c6"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CANDUN-CAN",
@@ -274,7 +236,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "e13dd33682cb36e0"
+      "contractHash": "6afa70fa5f96522a"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HOORAM-RAM",
@@ -283,7 +245,7 @@
       "settlementRules": "If Mitch Ramirez wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Mitch Ramirez",
-      "systemProbability": 0.255,
+      "systemProbability": 0.3065,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -303,12 +265,12 @@
       "classification": "NO BET",
       "rank": 7,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "e8ccbb8f1c2f41e6"
+      "contractHash": "53e3bd5ea8a1e1b7"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HOORAM-HOO",
@@ -317,7 +279,7 @@
       "settlementRules": "If Chase Hooper wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Chase Hooper",
-      "systemProbability": 0.745,
+      "systemProbability": 0.6935,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -337,12 +299,12 @@
       "classification": "NO BET",
       "rank": 8,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "6da0583342b58008"
+      "contractHash": "d3de34b1302c1aaf"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
@@ -351,7 +313,7 @@
       "settlementRules": "If Alberto Montes wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alberto Montes",
-      "systemProbability": 0.4145,
+      "systemProbability": 0.5711,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -371,12 +333,12 @@
       "classification": "NO BET",
       "rank": 9,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "92d45627e23ae915"
+      "contractHash": "f7d5c3618efe6ccc"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MCMMON-MCM",
@@ -385,7 +347,7 @@
       "settlementRules": "If Tommy McMillen wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Tommy McMillen",
-      "systemProbability": 0.5855,
+      "systemProbability": 0.4289,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -405,12 +367,12 @@
       "classification": "NO BET",
       "rank": 10,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "d65f3f99937309e5"
+      "contractHash": "76945959f3cae6e6"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RICKLI-RIC",
@@ -419,7 +381,7 @@
       "settlementRules": "If Tabatha Ricci wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Tabatha Ricci",
-      "systemProbability": 0.2137,
+      "systemProbability": 0.2759,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -439,12 +401,12 @@
       "classification": "NO BET",
       "rank": 11,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "1ed8ac53741f9746"
+      "contractHash": "67e07daa7b92b604"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RICKLI-KLI",
@@ -453,7 +415,7 @@
       "settlementRules": "If Fatima Kline wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Fatima Kline",
-      "systemProbability": 0.7863,
+      "systemProbability": 0.7241,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -473,12 +435,12 @@
       "classification": "NO BET",
       "rank": 12,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "a778e97d5b3edb2e"
+      "contractHash": "164f7e20da4c50e4"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18BASDEL-DEL",
@@ -487,7 +449,7 @@
       "settlementRules": "If Jose Delgado wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Jose Delgado",
-      "systemProbability": 0.5119,
+      "systemProbability": 0.6067,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -507,12 +469,12 @@
       "classification": "NO BET",
       "rank": 13,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "9ab815967a6358f5"
+      "contractHash": "103ba8b4a9f9ba0b"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18BASDEL-BAS",
@@ -521,7 +483,7 @@
       "settlementRules": "If Austin Bashi wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Austin Bashi",
-      "systemProbability": 0.4881,
+      "systemProbability": 0.3933,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -541,12 +503,12 @@
       "classification": "NO BET",
       "rank": 14,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "cdec67dc726f53d4"
+      "contractHash": "809ee0e2c9434270"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18LEBSEO-SEO",
@@ -555,7 +517,7 @@
       "settlementRules": "If Seok Hyun Ko wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Seok Hyun Ko",
-      "systemProbability": 0.65,
+      "systemProbability": 0.6889,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -575,12 +537,12 @@
       "classification": "NO BET",
       "rank": 15,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "2ea65b64d06d5211"
+      "contractHash": "3a1549d896f59d6d"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18LEBSEO-LEB",
@@ -589,7 +551,7 @@
       "settlementRules": "If Jean-Paul Lebosnoyani wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Jean-Paul Lebosnoyani",
-      "systemProbability": 0.35,
+      "systemProbability": 0.3111,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -609,12 +571,12 @@
       "classification": "NO BET",
       "rank": 16,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "1fa4502458c69f8e"
+      "contractHash": "a7fb3a98adbe017b"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RODFRA-ROD",
@@ -648,7 +610,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "dcbce9e5437f9ed0"
+      "contractHash": "ff181df39df245ea"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RODFRA-FRA",
@@ -682,7 +644,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "afdbde91447c303d"
+      "contractHash": "c28f0b8a4b9445bd"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CORNIC-NIC",
@@ -691,7 +653,7 @@
       "settlementRules": "If Stewart Nicoll wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Stewart Nicoll",
-      "systemProbability": 0.1247,
+      "systemProbability": 0.1475,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -711,12 +673,12 @@
       "classification": "NO BET",
       "rank": 19,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "2373830b9080d787"
+      "contractHash": "767e1a7fe784cddb"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CORNIC-COR",
@@ -725,7 +687,7 @@
       "settlementRules": "If Alden Coria wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alden Coria",
-      "systemProbability": 0.8753,
+      "systemProbability": 0.8525,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -745,12 +707,12 @@
       "classification": "NO BET",
       "rank": 20,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "7baff5c465ed154e"
+      "contractHash": "e0424872dc7c25e8"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HARHIN-HIN",
@@ -759,7 +721,7 @@
       "settlementRules": "If Alvin Hines wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alvin Hines",
-      "systemProbability": 0.5565,
+      "systemProbability": 0.3571,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -779,12 +741,12 @@
       "classification": "NO BET",
       "rank": 21,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "e3ef257346314b80"
+      "contractHash": "b6a590dd974f1978"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HARHIN-HAR",
@@ -793,7 +755,7 @@
       "settlementRules": "If RJ Harris wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "RJ Harris",
-      "systemProbability": 0.4435,
+      "systemProbability": 0.6429,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -813,12 +775,12 @@
       "classification": "NO BET",
       "rank": 22,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "7d5661d0e3490ce7"
+      "contractHash": "313a1144da0e7e63"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MELBAR-MEL",
@@ -827,7 +789,7 @@
       "settlementRules": "If Anna Melisano wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Anna Melisano",
-      "systemProbability": 0.1806,
+      "systemProbability": 0.2853,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -847,12 +809,12 @@
       "classification": "NO BET",
       "rank": 23,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "e18d56b923efd71e"
+      "contractHash": "df8e17bc9ca32da0"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MELBAR-BAR",
@@ -861,7 +823,7 @@
       "settlementRules": "If Dione Barbosa wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Dione Barbosa",
-      "systemProbability": 0.8194,
+      "systemProbability": 0.7147,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -881,12 +843,12 @@
       "classification": "NO BET",
       "rank": 24,
       "leverageScore": null,
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price.",
       "forecastStatus": null,
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "97e92596fd952612"
+      "contractHash": "f72d37978dfd3215"
     }
   ],
   "portfolioExposure": {
@@ -905,10 +867,9 @@
     "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
   },
   "immutable": true,
-  "contentHash": "cc145d7d6165f3a2",
+  "decisionHash": "28bebdcd0a784e1f",
   "supersedes": {
-    "file": "phase8-shadow-2026-07-18.va6b53b3165312021.json",
-    "hash": "a6b53b3165312021"
-  },
-  "decisionHash": "8f3def499899d3b8"
+    "file": "phase8-shadow-2026-07-18.v06ec56f5eb5f97d4.json",
+    "hash": "06ec56f5eb5f97d4"
+  }
 }
