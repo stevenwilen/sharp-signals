@@ -1,5 +1,5 @@
 ---
-description: Verify a HUMAN REVIEW alert against real sources, then let the pipeline price it
+description: Verify a HUMAN REVIEW alert (unverified fight news) against real sources and count independent origins
 ---
 
 You are verifying an unverified claim that this repo's pipeline surfaced from a YouTube preview

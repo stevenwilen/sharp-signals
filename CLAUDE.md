@@ -57,7 +57,7 @@ Read these before writing code; each cost real time and two of them were the sam
 
 ## Verifying news
 
-`/verify` — paste a HUMAN REVIEW alert. It searches for real sources, counts origins (not headlines),
+`/verify-news` — paste a HUMAN REVIEW alert. (Named to avoid colliding with Claude Code's built-in `verify` skill, which verifies code changes.) It searches for real sources, counts origins (not headlines),
 and runs `run-inject-verified.js` in dry run. Verification **adds** origins; it cannot assert them.
 A block declaring `"origins": 5` is ignored and counted from the sources actually supplied.
 
