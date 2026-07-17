@@ -194,7 +194,17 @@ console.log("\n8B: FEES AND STALENESS");
   ok("authenticated ticket 2 (164.76 @ 0.59) reproduces 2.79", C.tradingFee(164.76, 0.59) === 2.79);
   ok("authenticated ticket 3 (111.49 @ 0.89) reproduces 0.77", C.tradingFee(111.49, 0.89) === 0.77);
   ok("authenticated ticket 4 ($500: 823.81 @ 0.59) reproduces 13.95", C.tradingFee(823.81, 0.59) === 13.95, String(C.tradingFee(823.81, 0.59)));
+  ok("authenticated ticket 6 ($2: 3.28 @ 0.59) reproduces 0.06", C.tradingFee(3.28, 0.59) === 0.06, String(C.tradingFee(3.28, 0.59)));
+  ok("authenticated ticket 7 ($5: 8.23 @ 0.59) reproduces 0.14", C.tradingFee(8.23, 0.59) === 0.14, String(C.tradingFee(8.23, 0.59)));
   ok("using the post-fee effective chance instead of the price would MISMATCH", C.tradingFee(141.84, 0.71) !== 2.13);
+  // linearity now spans 251x at a fixed price, measured end to end
+  {
+    const ex = (cc) => 0.07 * cc * 0.59 * 0.41;
+    ok("exact pre-ceil fee is EXACTLY linear over the 251x span",
+      Math.abs((ex(823.81) / ex(3.28)) - (823.81 / 3.28)) < 1e-9);
+    ok("the ceil premium is far larger at the 3.28 floor than at 823.81",
+      ((C.tradingFee(3.28, 0.59) - ex(3.28)) / ex(3.28)) > 10 * ((C.tradingFee(823.81, 0.59) - ex(823.81)) / ex(823.81)));
+  }
 
   // THE SIZE-CONFOUND TEST. Tickets 2 and 4 share a market and a price and differ only in size, so
   // linearity in contracts is measured rather than assumed. The first three were all $100, where
@@ -204,7 +214,7 @@ console.log("\n8B: FEES AND STALENESS");
     String(C.tradingFee(823.81, 0.59) / C.tradingFee(164.76, 0.59)));
   ok("rival exponent 0.8 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 0.8) - 13.95) > 1);
   ok("rival exponent 1.5 is refuted by ticket 4", Math.abs(2.79 * Math.pow(5.0001, 1.5) - 13.95) > 1);
-  ok("verified size range spans the two size-varying tickets", C.FEES.verifiedScope.sizeRange[0] === 82.37 && C.FEES.verifiedScope.sizeRange[1] === 823.81);
+  ok("verified size range spans the size-varying tickets ($2 floor -> $500 ceiling)", C.FEES.verifiedScope.sizeRange[0] === 3.28 && C.FEES.verifiedScope.sizeRange[1] === 823.81);
   ok("scope records that linearity was MEASURED", /LINEARITY IN CONTRACTS IS MEASURED/.test(C.FEES.verifiedScope.establishes));
   ok("rate interval tightened to ~50ppm", (C.FEES.verifiedScope.rateConstrainedTo[1] - C.FEES.verifiedScope.rateConstrainedTo[0]) < 6e-5);
   ok("0.07 is inside the tightened interval",
@@ -230,9 +240,13 @@ console.log("\n8B: FEES AND STALENESS");
     C.withinVerifiedEnvelope(ENV({ contracts: 823.81 })).inside === true);
   ok("the floor itself (82.37) is inside", C.withinVerifiedEnvelope(ENV({ contracts: 82.37 })).inside === true);
   // but the floor is a real floor: smaller orders are still extrapolation
-  const tiny = C.withinVerifiedEnvelope(ENV({ contracts: 42 }));
-  ok("a 42-contract order (0.5% of a $5k bankroll) is still BELOW the floor and warns", tiny.inside === false);
-  ok("...and the reason names the size band", tiny.reasons.some((r) => /size 42 is outside/.test(r)));
+  // 42 contracts is now INSIDE the band: the $2 ticket dropped the floor to 3.28. The floor is
+  // still a real floor — below 3.28 the ceil premium keeps growing and nothing is tested.
+  ok("a 42-contract order is now INSIDE the extended band", C.withinVerifiedEnvelope(ENV({ contracts: 42 })).inside === true);
+  const tiny = C.withinVerifiedEnvelope(ENV({ contracts: 3 }));
+  ok("a 3-contract order is still BELOW the 3.28 floor and warns", tiny.inside === false);
+  ok("...and the reason names the size band", tiny.reasons.some((r) => /size 3 is outside/.test(r)));
+  ok("the new floor itself (3.28) is inside", C.withinVerifiedEnvelope(ENV({ contracts: 3.28 })).inside === true);
   ok("a 1-contract order — the ceil-dominated regime — is still outside", C.withinVerifiedEnvelope(ENV({ contracts: 1 })).inside === false);
   ok("a 2000-contract order is still outside", C.withinVerifiedEnvelope(ENV({ contracts: 2000 })).inside === false);
 
@@ -272,19 +286,20 @@ console.log("\n8B: FEES AND STALENESS");
 
   // the shipped provenance string must not overstate the evidence
   {
-    const T = [[141.84, 0.69, 2.13], [164.76, 0.59, 2.79], [111.49, 0.89, 0.77], [823.81, 0.59, 13.95], [82.37, 0.59, 1.40]];
+    const T = [[141.84, 0.69, 2.13], [164.76, 0.59, 2.79], [111.49, 0.89, 0.77], [823.81, 0.59, 13.95],
+      [82.37, 0.59, 1.40], [3.28, 0.59, 0.06], [8.23, 0.59, 0.14]];
     const round = T.filter(([cc, pp, f]) => Math.abs(Math.round(0.07 * cc * pp * (1 - pp) * 100) / 100 - f) < 1e-9).length;
     const floor = T.filter(([cc, pp, f]) => Math.abs(Math.floor(0.07 * cc * pp * (1 - pp) * 100) / 100 - f) < 1e-9).length;
-    ok("round-half-up genuinely fits 2/5, and the scope says 2/5 (it said 1/5)", round === 2 && /round-half-up fits 2\/5/.test(C.FEES.verifiedScope.establishes), `computed ${round}/5`);
-    ok("floor genuinely fits 0/5, and the scope says 0/5", floor === 0 && /floor fits 0\/5/.test(C.FEES.verifiedScope.establishes));
-    ok("ceil fits 5/5", T.every(([cc, pp, f]) => C.tradingFee(cc, pp) === f));
+    ok("round-half-up genuinely fits 4/7, and the scope says 4/7 (the $2 and $5 tickets both fit it, WEAKENING the discriminator)", round === 4 && /round-half-up fits 4\/7/.test(C.FEES.verifiedScope.establishes), `computed ${round}/7`);
+    ok("floor genuinely fits 0/7, and the scope says 0/7", floor === 0 && /floor fits 0\/7/.test(C.FEES.verifiedScope.establishes));
+    ok("ceil fits 7/7", T.every(([cc, pp, f]) => C.tradingFee(cc, pp) === f));
     // the declared rate interval must CONTAIN the true intersection, never claim more than it excludes
     const iv = T.map(([cc, pp, f]) => { const b = cc * pp * (1 - pp) * 100; return [(f * 100 - 1) / b, (f * 100) / b]; });
     const trueLo = Math.max(...iv.map((x) => x[0])), trueHi = Math.min(...iv.map((x) => x[1]));
     const [dLo, dHi] = C.FEES.verifiedScope.rateConstrainedTo;
-    ok("the declared rate interval matches the true 5-ticket intersection", Math.abs(dLo - trueLo) < 1e-7 && Math.abs(dHi - trueHi) < 1e-7,
+    ok("the declared rate interval matches the true 7-ticket intersection", Math.abs(dLo - trueLo) < 1e-7 && Math.abs(dHi - trueHi) < 1e-7,
       `declared [${dLo}, ${dHi}] vs true (${trueLo.toFixed(8)}, ${trueHi.toFixed(8)}]`);
-    ok("0.07 is inside the true intersection", 0.07 > trueLo && 0.07 <= trueHi);
+    ok("0.07 is inside the true 7-ticket intersection", 0.07 > trueLo && 0.07 <= trueHi);
   }
 
   // linearity now spans 10x at a fixed price, measured on three tickets in one market

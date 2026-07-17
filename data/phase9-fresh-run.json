@@ -1,0 +1,55 @@
+{
+  "ranAt": "2026-07-17T01:05:21.857Z",
+  "card": "UFC-2026-07-18",
+  "passed": true,
+  "note": "Every stage executed on live data and produced its artifact. PASSED means the PIPELINE ran end to end, not that a bet exists.",
+  "stages": [
+    {
+      "stage": "card selection (Kalshi roster)",
+      "ok": true,
+      "detail": "13 bouts; 124 videos scanned -> 11 above threshold -> 4 selected, 8/13 bouts with a qualifying video"
+    },
+    {
+      "stage": "evidence extraction (Gemini)",
+      "ok": true,
+      "detail": "47 claims, 0 untraceable, all 5 gates passed, 24 off-card claims excluded"
+    },
+    {
+      "stage": "evidence evaluation",
+      "ok": true,
+      "detail": "47/47 claims preserved, 0 forbidden fields; coverage 2 PARTIALLY / 7 THINLY / 4 INSUFFICIENT; 3 items queued for human review"
+    },
+    {
+      "stage": "live multi-book baseline (tier A)",
+      "ok": true,
+      "detail": "event auto-discovered; 9/13 bouts on a live WALL_CLOCK consensus from 4 independent books"
+    },
+    {
+      "stage": "forecast (rules v7.0.0)",
+      "ok": true,
+      "detail": "13 forecasts, 12/13 admissible baselines (92.3%), tiers A=9 B=3 D=1, 0 leakage-rejected claims"
+    },
+    {
+      "stage": "kalshi snapshot + contract mapping",
+      "ok": true,
+      "detail": "24 active contracts, all FIGHTER_WINS (Kalshi lists no method/round markets)"
+    },
+    {
+      "stage": "valuation + ranking",
+      "ok": true,
+      "detail": "24 NO BET, 0 actionable"
+    },
+    {
+      "stage": "entertainment sizing",
+      "ok": true,
+      "detail": "0 positions; all 24 blocked at research classification"
+    },
+    {
+      "stage": "telegram",
+      "ok": true,
+      "detail": "no buy instruction generated; nothing sent"
+    }
+  ],
+  "finding": "The system holds essentially no view on this card: 1 of 12 priced bouts produced any adjustment (Duncan/Cannonier, +1.13 pts, on a tier-B opening line). All 9 tier-A bouts with a live contemporaneous prior moved 0.00 points. A fresh fight-eve collection raised topics 35 -> 41 and coverage barely moved.",
+  "result": "0 buy instructions. NO BET on all 24 contracts."
+}

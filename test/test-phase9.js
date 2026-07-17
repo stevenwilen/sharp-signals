@@ -267,11 +267,17 @@ console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
   ok("a qualifying position sizes", good.eligible === true);
   ok("stake is a whole tier of the $100 bankroll", [2, 3, 5].includes(good.stake));
   ok("sizing states it is NOT Kelly and NOT a measured edge", /NOT Kelly, NOT sized from a measured edge/.test(good.basis));
-  // THE SMALL-ORDER FEE GATE: $2-$5 is a handful of contracts, far below the 82.37 verified floor
-  ok("a $2-$5 order is OUTSIDE the verified fee envelope", good.feeGate.withinVerifiedEnvelope === false);
-  ok("...so production alerting is not allowed for it", good.feeGate.productionAlertAllowed === false);
-  ok("...and the reason demands $2-$5 fee tickets", /Quick Order fee examples at \$2-\$5/.test(good.feeGate.why));
-  ok("the exception names the size band", good.feeGate.exceptions.some((e) => /size .* outside the verified band/.test(e)));
+  // THE SMALL-ORDER FEE GATE. Authenticated $2 and $5 tickets at 0.59 now exist, so the verified
+  // floor is 3.28 contracts and a $2 order AT 0.59 is inside. The floor is in CONTRACTS, so the same
+  // $2 at a higher price buys fewer and falls back outside — this gate is not a dollar rule.
+  ok("a $2 order at 0.59 (3.28 contracts) is now INSIDE the verified envelope",
+    good.feeGate.withinVerifiedEnvelope === true, JSON.stringify(good.feeGate.exceptions));
+  ok("...so production alerting is allowed for it", good.feeGate.productionAlertAllowed === true);
+  const highPrice = EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL", allInPrice: 0.89, expectedValueConservative: 0.01 });
+  ok("the same $2 stake at 0.89 buys too few contracts and is OUTSIDE",
+    highPrice.feeGate.withinVerifiedEnvelope === false, JSON.stringify(highPrice.feeGate.exceptions));
+  ok("...and the exception names the size band", highPrice.feeGate.exceptions.some((e) => /size .* outside the verified band/.test(e)));
+  ok("an out-of-envelope order still blocks production alerting", highPrice.feeGate.productionAlertAllowed === false);
 
   // card cap binds across fights
   const many = [1, 2, 3, 4, 5].map((i) => ({ boutId: `b${i}`,

@@ -159,12 +159,32 @@ async function main() {
       stakePercent: top.entertainment.percentOfBankroll, topTicker: top.ticker,
       stale: false, pipelineFailed: false, withinEnvelope: top.entertainment.feeGate.withinVerifiedEnvelope };
     const decision = AL.shouldSend(key, state);
-    messages.push({ boutId, ticker: top.ticker, wouldSend: decision.send, why: decision.why, text: msg });
+    messages.push({ boutId, ticker: top.ticker, wouldSend: decision.send, why: decision.why, text: msg, state });
+  }
+
+  // ---- delivery ----
+  // The transport is loaded ONLY here, ONLY when the gate passed, --send was asked for, and there is
+  // actually something to say. An earlier version printed "mode: SEND" while importing no transport
+  // at all — a label promising something the code could not do. If the gate is shut or nothing
+  // qualifies, no Telegram module is ever required, so there is no path to a message.
+  const toSend = messages.filter((m) => m.wouldSend);
+  let delivery = { attempted: 0, delivered: 0, transport: "none loaded" };
+  if (wantSend && gate.armed && toSend.length) {
+    const notify = require("./lib/notify");   // Telegram only. There is no trading API in this build.
+    delivery.transport = "telegram (manual instruction)";
+    for (const m of toSend) {
+      delivery.attempted++;
+      try { await notify.notify(m.text); delivery.delivered++; AL.record(`${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
+      catch (e) { say(`  ⚠ delivery failed for ${m.ticker}: ${e.message}`); }
+    }
+  } else if (wantSend && gate.armed && !toSend.length) {
+    delivery.transport = "none loaded — nothing qualified, so there was nothing to deliver";
   }
 
   const out = {
     card: fc.card.eventId, ranAt: new Date(nowTs).toISOString(),
-    mode: gate.armed && wantSend ? "SEND" : "TEST",
+    mode: gate.armed && wantSend ? "SEND (manual instruction)" : "TEST",
+    delivery,
     armed: false, ordersPlaced: 0, orderPathExists: false,
     armingGate: gate,
     bankroll: EN.BANKROLL, tiers: EN.TIERS, caps: EN.CAPS,
