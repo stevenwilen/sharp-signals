@@ -85,6 +85,38 @@ probably doesn't settle on this fight."
 
 **WHAT WOULD CHANGE THE VERDICT** — the specific thing you'd need to see.
 
+**THE BLOCK** — if and only if the verdict is `CONFIRMED` or `LIKELY TRUE`, end with a fenced JSON
+block in exactly this shape. I paste it into my pipeline, which counts the origins itself and lets
+its own frozen rules decide what the news is worth. Nothing you write here decides a bet.
+
+```json
+{
+  "boutId": "<copy it from the alert>",
+  "about": "<the fighter the claim is about>",
+  "opponent": "<the other fighter>",
+  "claim": "<one sentence, what is now established>",
+  "topic": "<copy the topic from the alert, e.g. injury_health>",
+  "direction": "against_about",
+  "verdict": "CONFIRMED",
+  "sources": [
+    {
+      "outlet": "<who published it>",
+      "origin": "<WHO ACTUALLY KNEW IT — the reporter or body the story traces back to>",
+      "url": "<real link>",
+      "quote": "<the actual words>",
+      "publishedAt": "<ISO date>"
+    }
+  ]
+}
+```
+
+`origin` is the field that matters and the one that is easy to get wrong. It is **who knew it**, not
+who printed it. If MMA Junkie, ESPN and Sherdog all say "per Ariel Helwani", then all three have
+`"origin": "helwani"` — that is **one** origin with three amplifiers, and my pipeline will count it
+as one. Do not inflate it, and do not add an `origins` count of your own: that field is ignored and
+the pipeline counts from the sources you actually supply. A source with no real URL or no quote is
+thrown out entirely.
+
 ### Rules
 
 - If you cannot find it, say so. An honest `UNVERIFIABLE` is worth more to me than a confident guess.
