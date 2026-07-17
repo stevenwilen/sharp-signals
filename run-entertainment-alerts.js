@@ -30,15 +30,47 @@ let LINES = 0;
 const say = (s) => { LINES++; process.stdout.write(s + "\n"); };
 const fail = (m) => { say(`\nFATAL: ${m}`); process.exit(2); };
 
-// The two gates that keep --send disarmed. Checked at runtime, not remembered.
+const ARM = require("./lib/arming");
+
+// Alerts are armed ONLY if the flag says so AND the evidence for it still exists. The prerequisites
+// are re-read every run: an armed flag whose evidence has gone missing is worse than a disarmed one,
+// because it looks like a decision somebody made rather than a file that got deleted.
 function armingGate() {
-  const blockers = [];
-  const feeEx = (() => { try { return JSON.parse(fs.readFileSync("data/fee-examples.json", "utf8")); } catch { return []; } })();
-  const small = feeEx.filter((e) => e.totalCost >= 2 && e.totalCost <= 5 && e.treatment === "taker");
-  if (!small.length) blockers.push("no authenticated Quick Order fee example at a $2-$5 size — the fee on an entertainment order is EXTRAPOLATED (small orders are the worst fee regime; ceil() rounds every one up to a whole cent)");
-  const fresh = (() => { try { return JSON.parse(fs.readFileSync("data/phase9-fresh-run.json", "utf8")); } catch { return null; } })();
-  if (!fresh || !fresh.passed) blockers.push("no fresh full-pipeline card run has passed (evidence -> evaluation -> live baseline -> forecast -> scenarios -> contracts -> ranking)");
-  return { armed: blockers.length === 0, blockers };
+  const pre = ARM.checkArmingPrerequisites();
+  const blockers = [...pre.blockers];
+  if (!ARM.ARMING.ALERTS_ARMED) blockers.push("ALERTS_ARMED is false in lib/arming.js");
+  ARM.assertNoTradingPath();   // throws rather than trades if an order path ever appears
+  return { armed: blockers.length === 0, blockers, prerequisites: ARM.ARMING.prerequisites };
+}
+
+// The unverified-news alerts. Sourced from the Phase 6 review queue, which is where the evaluator
+// puts a claim it thinks a human should see BUT that could not clear the magnitude rules — a
+// one-origin injury rumour being the canonical case. The forecast is right to ignore it; the human
+// may still want to know.
+function humanReviewAlerts(evalPath, fc) {
+  if (!evalPath || !fs.existsSync(evalPath)) return [];
+  const ev = JSON.parse(fs.readFileSync(evalPath, "utf8"));
+  const out = [];
+  for (const b of ev.bouts || []) {
+    for (const r of b.reviewItems || []) {
+      const f = fc.forecasts.find((x) => x.boutId === b.boutId);
+      const applied = f ? (f.appliedAdjustments || []).filter((a) => a.finalAppliedLogOdds > 0) : [];
+      const moved = f && f.marketDisagreementPoints ? Math.abs(f.marketDisagreementPoints) : 0;
+      out.push({
+        boutId: b.boutId, key: `review|${b.boutId}|${r.topic}|${String(r.about)}`,
+        text: TM.humanReview({
+          fight: f ? f.fight : b.boutId,
+          about: r.about, claim: r.example, why: r.why, origins: r.origins, topic: r.topic,
+          source: "a YouTube preview transcript collected for this card",
+          forecastEffect: applied.length === 0
+            ? "it applied no adjustment at all — a one-origin report cannot clear the magnitude rules, so this moved nothing"
+            : `the forecast moved ${moved.toFixed(2)} points on this bout, from ${applied.length} mechanism(s) — not from this report`,
+        }),
+        meta: { about: r.about, topic: r.topic, origins: r.origins, why: r.why },
+      });
+    }
+  }
+  return out;
 }
 
 async function main() {
@@ -52,7 +84,9 @@ async function main() {
   say(`ENTERTAINMENT ALERTS — ${fc.card.eventId}`);
   say(`  bankroll $${EN.BANKROLL.amount} (${EN.BANKROLL.label}) · tiers ${Object.values(EN.TIERS).map((t) => `${t.fraction * 100}%=$${t.dollars}`).join(" / ")}`);
   say(`  caps: ${EN.CAPS.maxFractionPerFight * 100}% per fight · ${EN.CAPS.maxFractionPerCard * 100}% per card`);
-  say(`  mode: ${gate.armed && wantSend ? "SEND" : "TEST (no Telegram transport loaded)"}`);
+  say(`  alerts: ${ARM.ARMING.ALERTS_ARMED ? "ARMED" : "DISARMED"} (manual instructions only)`);
+  say(`  trading: ${ARM.ARMING.TRADING_ENABLED ? "ENABLED" : "NONE — no Kalshi write path exists in this build"}`);
+  say(`  mode: ${gate.armed && wantSend ? "SEND" : "TEST"}`);
   if (!gate.armed) for (const b of gate.blockers) say(`    ⛔ ${b}`);
 
   // ---- contract ranking across EVERY contract Kalshi lists on each fight ----
@@ -167,30 +201,47 @@ async function main() {
   // actually something to say. An earlier version printed "mode: SEND" while importing no transport
   // at all — a label promising something the code could not do. If the gate is shut or nothing
   // qualifies, no Telegram module is ever required, so there is no path to a message.
+  // ---- HUMAN REVIEW alerts (unverified news) ----
+  // These travel on their own track. They are NOT gated on anything qualifying as a bet, because
+  // their whole point is news the forecast correctly refused to act on. They are deduped by the
+  // ledger so the same rumour does not re-send every run.
+  const evalPath = (process.argv.find((a) => a.startsWith("--eval=")) || "").split("=")[1];
+  const reviews = humanReviewAlerts(evalPath, fc);
+  const reviewsToSend = reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
+  say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${reviewsToSend.length} new`);
+  for (const r of reviews) say(`    ${reviewsToSend.includes(r) ? "NEW " : "seen"} ${r.meta.about}: ${r.meta.why} (${r.meta.origins ?? "?"} origin)`);
+
   const toSend = messages.filter((m) => m.wouldSend);
-  let delivery = { attempted: 0, delivered: 0, transport: "none loaded" };
-  if (wantSend && gate.armed && toSend.length) {
-    const notify = require("./lib/notify");   // Telegram only. There is no trading API in this build.
-    delivery.transport = "telegram (manual instruction)";
+  let delivery = { attempted: 0, delivered: 0, buyInstructions: 0, humanReviews: 0, transport: "none loaded" };
+  const anything = toSend.length + reviewsToSend.length;
+  if (wantSend && gate.armed && anything) {
+    const notify = require("./lib/notify");   // Telegram ONLY. There is no trading API in this build.
+    delivery.transport = "telegram (manual instruction + human review)";
     for (const m of toSend) {
       delivery.attempted++;
-      try { await notify.notify(m.text); delivery.delivered++; AL.record(`${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
+      try { await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++; AL.record(`${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
       catch (e) { say(`  ⚠ delivery failed for ${m.ticker}: ${e.message}`); }
     }
-  } else if (wantSend && gate.armed && !toSend.length) {
-    delivery.transport = "none loaded — nothing qualified, so there was nothing to deliver";
+    for (const r of reviewsToSend) {
+      delivery.attempted++;
+      try { await notify.notify(r.text); delivery.delivered++; delivery.humanReviews++; AL.record(r.key, { newsKey: r.key, ...r.meta }, "HUMAN_REVIEW"); }
+      catch (e) { say(`  ⚠ delivery failed for review ${r.meta.about}: ${e.message}`); }
+    }
+  } else if (wantSend && gate.armed) {
+    delivery.transport = "none loaded — nothing qualified and no new news, so there was nothing to deliver";
   }
 
   const out = {
     card: fc.card.eventId, ranAt: new Date(nowTs).toISOString(),
     mode: gate.armed && wantSend ? "SEND (manual instruction)" : "TEST",
     delivery,
-    armed: false, ordersPlaced: 0, orderPathExists: false,
+    alertsArmed: ARM.ARMING.ALERTS_ARMED, tradingEnabled: false, ordersPlaced: 0, orderPathExists: false,
     armingGate: gate,
     bankroll: EN.BANKROLL, tiers: EN.TIERS, caps: EN.CAPS,
     contractsListed: byType, onlyOutrightMarketsListed: onlyOutright,
     classificationCounts: counts,
     forecastHash: fc.sealHash, snapshotTimestamp: new Date(snapshotTs).toISOString(),
+    humanReviewAlerts: reviews.map(function(r){ return { boutId:r.boutId, about:r.meta.about, topic:r.meta.topic, origins:r.meta.origins, why:r.meta.why, text:r.text }; }),
     buyInstructions: messages,
     decisions: capped.positions.map((r) => ({
       ticker: r.ticker, bout: r.bout, classification: r.classification, rank: r.rank,
@@ -204,11 +255,14 @@ async function main() {
   say(`\n${"=".repeat(80)}`);
   if (!messages.length) {
     say(`  NO BUY INSTRUCTION. The system found nothing that qualifies.`);
-    say(`  Telegram sends NOTHING — silence is the instruction.`);
+    say(`  ${reviewsToSend.length ? `${reviewsToSend.length} HUMAN REVIEW alert(s) will still go out — unverified news travels on its own` : "Telegram sends NOTHING — silence is the instruction."}`);
+    if (reviewsToSend.length) say(`  track and is NOT a betting instruction.`);
   } else {
     for (const m of messages) say(`\n  [${m.wouldSend ? "WOULD SEND" : "suppressed: " + m.why}]\n${m.text.split("\n").map((l) => "  " + l).join("\n")}`);
   }
-  say(`\n  armed=false · ordersPlaced=0 · order path exists: NO`);
+  for (const r of reviewsToSend) say(`\n  [HUMAN REVIEW — unverified]\n${r.text.split("\n").map((l) => "  " + l).join("\n")}`);
+  say(`\n  alerts=${ARM.ARMING.ALERTS_ARMED ? "ARMED" : "DISARMED"} · trading=NONE (no write path) · ordersPlaced=0`);
+  say(`  delivered: ${delivery.buyInstructions} buy instruction(s), ${delivery.humanReviews} human-review alert(s) via ${delivery.transport}`);
   if (wantSend && !gate.armed) say(`  --send was requested but the arming gate REFUSED: ${gate.blockers.length} blocker(s) above.`);
   say(`  written: data/entertainment-alerts-${fc.card.eventDate}.json`);
   return 0;

@@ -174,7 +174,7 @@ console.log("\n9B: THE PROPOSED-POSITION MESSAGE");
 
 console.log("\n9B: THE OTHER SIX MESSAGE TYPES");
 {
-  ok("seven notification types are defined", Object.keys(TM.TYPES).length === 7);
+  ok("eight notification types are defined (the seven plus HUMAN REVIEW)", Object.keys(TM.TYPES).length === 8, String(Object.keys(TM.TYPES).length));
   const pu = TM.priceUpdate({ fight: "A vs B", contractLabel: "A YES", previousAsk: 0.43, ask: 0.47,
     maximumAcceptablePrice: 0.45, conservativeValuePoints: -0.4, snapshotTimestamp: "t" });
   ok("a price update shows the move", /43\.0¢ → 47\.0¢/.test(pu));
@@ -231,8 +231,8 @@ console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
   const EN = require("../lib/entertainment");
   const C = require("../lib/contracts");
   ok("bankroll is $100 and labelled entertainment", EN.BANKROLL.amount === 100 && EN.BANKROLL.label === "ENTERTAINMENT");
-  ok("tiers are 2% / 3% / 5%", EN.TIERS.STANDARD.fraction === 0.02 && EN.TIERS.STRONG.fraction === 0.03 && EN.TIERS.MAXIMUM.fraction === 0.05);
-  ok("dollar tiers are $2 / $3 / $5", EN.TIERS.STANDARD.dollars === 2 && EN.TIERS.STRONG.dollars === 3 && EN.TIERS.MAXIMUM.dollars === 5);
+  ok("tiers are 3% / 4% / 5%", EN.TIERS.STANDARD.fraction === 0.03 && EN.TIERS.STRONG.fraction === 0.04 && EN.TIERS.MAXIMUM.fraction === 0.05);
+  ok("dollar tiers are $3 / $4 / $5", EN.TIERS.STANDARD.dollars === 3 && EN.TIERS.STRONG.dollars === 4 && EN.TIERS.MAXIMUM.dollars === 5);
   ok("caps are 5% per fight and 10% per card", EN.CAPS.maxFractionPerFight === 0.05 && EN.CAPS.maxFractionPerCard === 0.10);
   ok("stakes are declared NOT Kelly and NOT evidence of edge", /NOT derived from Kelly/.test(EN.CAPS.provenance));
   ok("entertainment sizing is a SEPARATE module from the research sizer", EN.CAPS !== P.CAPS);
@@ -265,7 +265,7 @@ console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
   // a qualifying position sizes, and reports the small-order fee gate
   const good = EN.sizeEntertainment({ ...base, classification: "ACTIONABLE EXPERIMENTAL" });
   ok("a qualifying position sizes", good.eligible === true);
-  ok("stake is a whole tier of the $100 bankroll", [2, 3, 5].includes(good.stake));
+  ok("stake is a whole tier of the $100 bankroll", [3, 4, 5].includes(good.stake), String(good.stake));
   ok("sizing states it is NOT Kelly and NOT a measured edge", /NOT Kelly, NOT sized from a measured edge/.test(good.basis));
   // THE SMALL-ORDER FEE GATE. Authenticated $2 and $5 tickets at 0.59 now exist, so the verified
   // floor is 3.28 contracts and a $2 order AT 0.59 is inside. The floor is in CONTRACTS, so the same
@@ -322,6 +322,75 @@ console.log("\nTHE MANUAL BUY INSTRUCTION");
   ok("...and says the one evaluation that showed one was void", /void \(contaminated baseline\)/.test(m));
   ok("carries NO confidence score", (() => { try { TM.assertNoConfidenceScore(m); return true; } catch { return false; } })());
   ok("gives a probability RANGE not a point", /System range: 49\.0%–54\.0%/.test(m));
+}
+
+console.log("\nARMING: ALERTS AND TRADING ARE NOT THE SAME FLAG");
+{
+  const ARM = require("../lib/arming");
+  ok("alerts are ARMED for manual instructions", ARM.ARMING.ALERTS_ARMED === true);
+  ok("trading is NOT enabled", ARM.ARMING.TRADING_ENABLED === false);
+  ok("trading is described as absent, not merely switched off", /does not exist/.test(ARM.ARMING.tradingNote));
+  ok("...and the note says the flag is documentation, not a switch", /documentation, not a switch/.test(ARM.ARMING.tradingNote));
+  ok("arming records when and why", !!ARM.ARMING.armedAt && /human instruction/.test(ARM.ARMING.armedBy));
+  ok("arming lists exactly what it permits", ARM.ARMING.permits.length === 3);
+  ok("the standing no-edge warning is part of the arming record", /NOT demonstrated a predictive edge/.test(ARM.ARMING.standingWarning));
+  // prerequisites are re-checked from disk, not remembered
+  const pre = ARM.checkArmingPrerequisites();
+  ok("prerequisites are re-checked at runtime and pass", pre.ok === true, JSON.stringify(pre.blockers));
+  ok("...and the $2-$5 fee tickets are found", pre.smallOrderTickets >= 2, String(pre.smallOrderTickets));
+  // the structural guarantee
+  ok("assertNoTradingPath passes because no write call exists", ARM.assertNoTradingPath() === true);
+}
+
+console.log("\nENTERTAINMENT TIERS ARE NOW 3/4/5 AND ALL LAND INSIDE THE FEE ENVELOPE");
+{
+  const EN = require("../lib/entertainment");
+  const C = require("../lib/contracts");
+  ok("standard is 3% = $3", EN.TIERS.STANDARD.fraction === 0.03 && EN.TIERS.STANDARD.dollars === 3);
+  ok("strong is 4% = $4", EN.TIERS.STRONG.fraction === 0.04 && EN.TIERS.STRONG.dollars === 4);
+  ok("rare maximum is 5% = $5", EN.TIERS.MAXIMUM.fraction === 0.05 && EN.TIERS.MAXIMUM.dollars === 5);
+  ok("caps stay 5% per fight / 10% per card", EN.CAPS.maxFractionPerFight === 0.05 && EN.CAPS.maxFractionPerCard === 0.10);
+  // the $2 tier used to fall OUT of the envelope at high prices; $3 does not
+  const contractsFor = (d, p) => { let c = d / p; for (let i = 0; i < 6; i++) { const f = C.tradingFee(c, p) || 0; c = Math.floor(((d - f) / p) * 100) / 100; } return c; };
+  for (const d of [3, 4, 5]) for (const p of [0.59, 0.70, 0.80, 0.89]) {
+    ok(`$${d} at ${p} is inside the verified fee envelope`,
+      C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x", side: "yes", contracts: contractsFor(d, p), price: p, treatment: "taker", fillCount: 1 }).inside === true,
+      `${contractsFor(d, p)} contracts`);
+  }
+  ok("a $2 order at 0.89 would still fall OUTSIDE (why the floor moved to $3)",
+    C.withinVerifiedEnvelope({ ticker: "KXUFCFIGHT-x", side: "yes", contracts: contractsFor(2, 0.89), price: 0.89, treatment: "taker", fillCount: 1 }).inside === false);
+}
+
+console.log("\nHUMAN REVIEW ALERTS CANNOT BECOME BETTING INSTRUCTIONS");
+{
+  const r = {
+    fight: "Jacobe Smith vs Kevin Holland", about: "Kevin Holland",
+    claim: "Kevin Holland has reportedly dropped out of his fight against Jacobe Smith due to injury.",
+    why: "high-impact injury rumor", origins: 1, topic: "injury_health",
+    source: "a YouTube preview transcript collected for this card",
+    forecastEffect: "it applied no adjustment at all — a one-origin report cannot clear the magnitude rules",
+  };
+  const m = TM.humanReview(r);
+  ok("labelled HUMAN REVIEW and UNVERIFIED in the header", /🔎 HUMAN REVIEW — UNVERIFIED/.test(m));
+  ok("states the claim", /reportedly dropped out/.test(m));
+  ok("names how many independent origins", /Independent origins: 1/.test(m));
+  ok("...and spells out that one origin means nobody corroborated it", /nobody corroborated it/.test(m));
+  ok("says loudly that it is unverified", /THIS IS UNVERIFIED INFORMATION/.test(m));
+  ok("says it is NOT an instruction and NOT a forecast", /NOT an instruction and NOT a forecast/.test(m));
+  ok("says the sealed forecast did not move on it", /The sealed forecast did NOT move on this/.test(m));
+  ok("tells the human to verify it themselves", /verify it yourself first/.test(m));
+
+  // THE STRUCTURAL GUARANTEE: betting language is refused at construction
+  const throws = (fn) => { try { fn(); return false; } catch (e) { return true; } };
+  ok("a review alert containing a price is REFUSED", throws(() => TM.assertNotABettingInstruction("Holland out. Ask: 43¢")));
+  ok("a review alert containing a stake is REFUSED", throws(() => TM.assertNotABettingInstruction("Holland out. Suggested stake 3%")));
+  ok("a review alert saying 'buy' is REFUSED", throws(() => TM.assertNotABettingInstruction("Holland out — buy Smith")));
+  ok("a review alert naming a contract is REFUSED", throws(() => TM.assertNotABettingInstruction("Holland out. Contract: Smith YES")));
+  ok("a review alert quoting EV is REFUSED", throws(() => TM.assertNotABettingInstruction("Holland out, EV +4 pts")));
+  ok("the real message passes its own guard", TM.assertNotABettingInstruction(m) === true);
+  ok("the real message carries no cents symbol, no stake, no ticker", !/¢|stake|YES|ticker/i.test(m));
+  ok("a review alert carries no confidence score", (() => { try { TM.assertNoConfidenceScore(m); return true; } catch { return false; } })());
+  ok("HUMAN REVIEW is a distinct notification type", TM.TYPES.HUMAN_REVIEW === "HUMAN REVIEW");
 }
 
 console.log(`\n${pass}/${pass + fail} passed`);

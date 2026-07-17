@@ -1,18 +1,25 @@
 {
   "card": "UFC-2026-07-18",
-  "ranAt": "2026-07-17T01:06:08.561Z",
+  "ranAt": "2026-07-17T01:20:52.464Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
     "attempted": 0,
     "delivered": 0,
-    "transport": "none loaded — nothing qualified, so there was nothing to deliver"
+    "buyInstructions": 0,
+    "humanReviews": 0,
+    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
   },
-  "armed": false,
+  "alertsArmed": true,
+  "tradingEnabled": false,
   "ordersPlaced": 0,
   "orderPathExists": false,
   "armingGate": {
     "armed": true,
-    "blockers": []
+    "blockers": [],
+    "prerequisites": {
+      "smallOrderFeeTickets": "authenticated $2 and $5 unsubmitted Quick Order tickets at 0.59 reproduce exactly (3.28 -> $0.06, 8.23 -> $0.14); envelope floor now 3.28 contracts",
+      "freshFullPipelineRun": "data/phase9-fresh-run.json — every stage executed on live data for UFC-2026-07-18"
+    }
   },
   "bankroll": {
     "amount": 100,
@@ -22,13 +29,13 @@
   },
   "tiers": {
     "STANDARD": {
-      "fraction": 0.02,
-      "dollars": 2,
+      "fraction": 0.03,
+      "dollars": 3,
       "label": "standard experimental"
     },
     "STRONG": {
-      "fraction": 0.03,
-      "dollars": 3,
+      "fraction": 0.04,
+      "dollars": 4,
       "label": "strong experimental"
     },
     "MAXIMUM": {
@@ -50,7 +57,31 @@
     "NO BET": 24
   },
   "forecastHash": "c15427c5d791dea8",
-  "snapshotTimestamp": "2026-07-17T01:06:10.199Z",
+  "snapshotTimestamp": "2026-07-17T01:20:56.461Z",
+  "humanReviewAlerts": [
+    {
+      "boutId": "UFC-2026-07-18-B01",
+      "about": "Kevin Holland",
+      "topic": "injury_health",
+      "origins": 1,
+      "why": "high-impact injury rumor",
+      "text": "🔎 HUMAN REVIEW — UNVERIFIED\n\nJacobe Smith vs Kevin Holland\n\nReported about Kevin Holland: Kevin Holland has reportedly dropped out of his fight against Jacobe Smith due to injury.\n\nWhat kind of report: high-impact injury rumor\nIndependent origins: 1 — a single source said this, nobody corroborated it\nTopic: injury_health\nHeard in: a YouTube preview transcript collected for this card\n\nTHIS IS UNVERIFIED INFORMATION.\nIt is one report picked out of a transcript. It has not been checked against the UFC,\nthe promotion, or any official source, and it may simply be wrong or already out of date.\n\nThis is NOT an instruction and NOT a forecast.\nThe sealed forecast did NOT move on this: it applied no adjustment at all — a one-origin report cannot clear the magnitude rules, so this moved nothing\n\nIf you want to act on it, verify it yourself first."
+    },
+    {
+      "boutId": "UFC-2026-07-18-B03",
+      "about": "Kamaru Usman",
+      "topic": "injury_health",
+      "why": "potentially new information with a single origin",
+      "text": "🔎 HUMAN REVIEW — UNVERIFIED\n\nKamaru Usman vs Dricus Du Plessis\n\nReported about Kamaru Usman: Kamaru Usman's knees are severely damaged, impacting his mobility.\n\nWhat kind of report: potentially new information with a single origin\nIndependent origins: unknown\nTopic: injury_health\nHeard in: a YouTube preview transcript collected for this card\n\nTHIS IS UNVERIFIED INFORMATION.\nIt is one report picked out of a transcript. It has not been checked against the UFC,\nthe promotion, or any official source, and it may simply be wrong or already out of date.\n\nThis is NOT an instruction and NOT a forecast.\nThe sealed forecast did NOT move on this: it applied no adjustment at all — a one-origin report cannot clear the magnitude rules, so this moved nothing\n\nIf you want to act on it, verify it yourself first."
+    },
+    {
+      "boutId": "UFC-2026-07-18-B05",
+      "about": "Chase Hooper",
+      "topic": "injury_health",
+      "why": "potentially new information with a single origin",
+      "text": "🔎 HUMAN REVIEW — UNVERIFIED\n\nMitch Ramirez vs Chase Hooper\n\nReported about Chase Hooper: Chase Hooper is fighting too soon after being knocked out.\n\nWhat kind of report: potentially new information with a single origin\nIndependent origins: unknown\nTopic: injury_health\nHeard in: a YouTube preview transcript collected for this card\n\nTHIS IS UNVERIFIED INFORMATION.\nIt is one report picked out of a transcript. It has not been checked against the UFC,\nthe promotion, or any official source, and it may simply be wrong or already out of date.\n\nThis is NOT an instruction and NOT a forecast.\nThe sealed forecast did NOT move on this: it applied no adjustment at all — a one-origin report cannot clear the magnitude rules, so this moved nothing\n\nIf you want to act on it, verify it yourself first."
+    }
+  ],
   "buyInstructions": [],
   "decisions": [
     {
