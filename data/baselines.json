@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-18T20:25:17.788Z",
+  "generatedAt": "2026-07-18T22:03:12.301Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
@@ -43,6 +43,122 @@
       {
         "boutId": "UFC-2026-07-18-B02",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
+        "forFighter": "Alvin Hines",
+        "probability": 0.3571,
+        "probabilityOther": 0.6429,
+        "orientation": {
+          "favorite": "RJ Harris",
+          "underdog": "Alvin Hines"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Alvin Hines": "+170",
+            "RJ Harris": "-200",
+            "rawProbA": 0.3704,
+            "rawProbB": 0.6667,
+            "overround": 1.037
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.3571,
+        "marketDispersion": 4.34,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "2633111be54b8481"
+      },
+      {
+        "boutId": "UFC-2026-07-18-B03",
+        "forecastTimestamp": "2026-07-18T00:00:00.000Z",
+        "forFighter": "Anna Melisano",
+        "probability": 0.2853,
+        "probabilityOther": 0.7147,
+        "orientation": {
+          "favorite": "Dione Barbosa",
+          "underdog": "Anna Melisano"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Anna Melisano": "+240",
+            "Dione Barbosa": "-280",
+            "rawProbA": 0.2941,
+            "rawProbB": 0.7368,
+            "overround": 1.031
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.2853,
+        "marketDispersion": 2.8,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "ab5e29fadee6501f"
+      },
+      {
+        "boutId": "UFC-2026-07-18-B04",
+        "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Ezra Elliott",
         "probability": 0.5798,
         "probabilityOther": 0.4202,
@@ -79,7 +195,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.5798,
-        "marketDispersion": 1.46,
+        "marketDispersion": 0,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -96,10 +212,10 @@
             "D"
           ]
         },
-        "contentHash": "33582a45862b1fec"
+        "contentHash": "e5dfada63b0c19c4"
       },
       {
-        "boutId": "UFC-2026-07-18-B03",
+        "boutId": "UFC-2026-07-18-B05",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Kamaru Usman",
         "probability": 0.3172,
@@ -154,10 +270,10 @@
             "D"
           ]
         },
-        "contentHash": "53d977273902443f"
+        "contentHash": "1ccb84c2bd4d639e"
       },
       {
-        "boutId": "UFC-2026-07-18-B04",
+        "boutId": "UFC-2026-07-18-B06",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Christian Duncan",
         "probability": 0.7414,
@@ -212,10 +328,10 @@
             "D"
           ]
         },
-        "contentHash": "2da3b36d6ee2bb02"
+        "contentHash": "198a2ca21e41744d"
       },
       {
-        "boutId": "UFC-2026-07-18-B05",
+        "boutId": "UFC-2026-07-18-B07",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Mitch Ramirez",
         "probability": 0.3065,
@@ -270,10 +386,10 @@
             "D"
           ]
         },
-        "contentHash": "220007a2a6842a0a"
+        "contentHash": "33b725906bcf1a5d"
       },
       {
-        "boutId": "UFC-2026-07-18-B06",
+        "boutId": "UFC-2026-07-18-B08",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Alberto Montes",
         "probability": 0.5711,
@@ -311,7 +427,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.5711,
-        "marketDispersion": 6.46,
+        "marketDispersion": 4,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -328,10 +444,10 @@
             "D"
           ]
         },
-        "contentHash": "aa5c123338bd2971"
+        "contentHash": "f5096a8780b74229"
       },
       {
-        "boutId": "UFC-2026-07-18-B07",
+        "boutId": "UFC-2026-07-18-B09",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Tabatha Ricci",
         "probability": 0.2759,
@@ -386,10 +502,10 @@
             "D"
           ]
         },
-        "contentHash": "dbcc2774fe0e3a05"
+        "contentHash": "56dad204b08ac5b3"
       },
       {
-        "boutId": "UFC-2026-07-18-B08",
+        "boutId": "UFC-2026-07-18-B10",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Jose Delgado",
         "probability": 0.6067,
@@ -427,7 +543,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.6067,
-        "marketDispersion": 5.76,
+        "marketDispersion": 4.1,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -444,10 +560,10 @@
             "D"
           ]
         },
-        "contentHash": "c380e1753293c1c6"
+        "contentHash": "687030bef403c426"
       },
       {
-        "boutId": "UFC-2026-07-18-B09",
+        "boutId": "UFC-2026-07-18-B11",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Seok Hyun Ko",
         "probability": 0.6889,
@@ -502,10 +618,10 @@
             "D"
           ]
         },
-        "contentHash": "2d9b6294cad2b23d"
+        "contentHash": "daf689929ead2687"
       },
       {
-        "boutId": "UFC-2026-07-18-B10",
+        "boutId": "UFC-2026-07-18-B12",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Levi Rodrigues Jr",
         "probability": 0.5,
@@ -543,7 +659,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.5,
-        "marketDispersion": 1.24,
+        "marketDispersion": 2.56,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -560,10 +676,10 @@
             "D"
           ]
         },
-        "contentHash": "66a1cf92178d2b37"
+        "contentHash": "35e6d53a50b893a7"
       },
       {
-        "boutId": "UFC-2026-07-18-B11",
+        "boutId": "UFC-2026-07-18-B13",
         "forecastTimestamp": "2026-07-18T00:00:00.000Z",
         "forFighter": "Stewart Nicoll",
         "probability": 0.1475,
@@ -601,7 +717,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.1475,
-        "marketDispersion": 2.24,
+        "marketDispersion": 3.76,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -618,123 +734,7 @@
             "D"
           ]
         },
-        "contentHash": "23a58526f9498e32"
-      },
-      {
-        "boutId": "UFC-2026-07-18-B12",
-        "forecastTimestamp": "2026-07-18T00:00:00.000Z",
-        "forFighter": "Alvin Hines",
-        "probability": 0.3571,
-        "probabilityOther": 0.6429,
-        "orientation": {
-          "favorite": "RJ Harris",
-          "underdog": "Alvin Hines"
-        },
-        "fallbackLevel": "B",
-        "tier": "B_OPEN_CONSENSUS",
-        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
-        "clockBasis": "LOGICAL_OPEN",
-        "derivedFrom": "opening line",
-        "staleCheckEnforceable": false,
-        "sourceBooks": [
-          "BestFightOdds opening consensus"
-        ],
-        "bookCount": 1,
-        "rawPrices": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "Alvin Hines": "+170",
-            "RJ Harris": "-200",
-            "rawProbA": 0.3704,
-            "rawProbB": 0.6667,
-            "overround": 1.037
-          }
-        ],
-        "priceTimestamps": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "observedAt": null,
-            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
-          }
-        ],
-        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "deViggedProbability": 0.3571,
-        "marketDispersion": 2.07,
-        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
-        "oldestPriceAgeMs": null,
-        "oldestPriceAgeHours": null,
-        "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied"
-        ],
-        "provenance": {
-          "module": "market-baseline@1.0.0",
-          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-          "waterfall": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ]
-        },
-        "contentHash": "0fb28a35c7b0003a"
-      },
-      {
-        "boutId": "UFC-2026-07-18-B13",
-        "forecastTimestamp": "2026-07-18T00:00:00.000Z",
-        "forFighter": "Anna Melisano",
-        "probability": 0.2853,
-        "probabilityOther": 0.7147,
-        "orientation": {
-          "favorite": "Dione Barbosa",
-          "underdog": "Anna Melisano"
-        },
-        "fallbackLevel": "B",
-        "tier": "B_OPEN_CONSENSUS",
-        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
-        "clockBasis": "LOGICAL_OPEN",
-        "derivedFrom": "opening line",
-        "staleCheckEnforceable": false,
-        "sourceBooks": [
-          "BestFightOdds opening consensus"
-        ],
-        "bookCount": 1,
-        "rawPrices": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "Anna Melisano": "+240",
-            "Dione Barbosa": "-280",
-            "rawProbA": 0.2941,
-            "rawProbB": 0.7368,
-            "overround": 1.031
-          }
-        ],
-        "priceTimestamps": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "observedAt": null,
-            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
-          }
-        ],
-        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "deViggedProbability": 0.2853,
-        "marketDispersion": 0.94,
-        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
-        "oldestPriceAgeMs": null,
-        "oldestPriceAgeHours": null,
-        "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied"
-        ],
-        "provenance": {
-          "module": "market-baseline@1.0.0",
-          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-          "waterfall": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ]
-        },
-        "contentHash": "76951593885e788a"
+        "contentHash": "b43a7646d5e9abbe"
       }
     ]
   }
