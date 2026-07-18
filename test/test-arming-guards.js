@@ -123,13 +123,21 @@ console.log("\nPRODUCTION IS A SEPARATE SWITCH — GENERATING AN ATTESTATION CAN
   } finally { if (had === undefined) delete process.env.SHARP_PRODUCTION; else process.env.SHARP_PRODUCTION = had; }
 
   // The forecast-hash binding: an attestation about a DIFFERENT sealed run of the same card is refused.
+  // This sub-test is about the HASH, not the clock — so it runs against a freshly-timestamped copy of
+  // the real attestation (backed up and restored), because the committed file's TTL legitimately lapses
+  // in wall-clock time. Freshness and expiry are tested exhaustively below (lines ~150-167).
   const fresh = readFresh();
   if (fresh && fresh.forecastSealHash) {
-    const wrong = ARM.checkArmingPrerequisites(fresh.card, "0000000000000000");
-    ok("an attestation for another sealed run of the same card is a refusal", wrong.ok === false);
-    ok("...and names both hashes", has(wrong, /different sealed run/));
-    const right = ARM.checkArmingPrerequisites(fresh.card, fresh.forecastSealHash);
-    ok("...but the matching hash clears", right.ok === true, right.blockers.join("; "));
+    const bak = fs.readFileSync(FRESH, "utf8");
+    try {
+      fs.writeFileSync(FRESH, JSON.stringify({ ...fresh, writtenBy: "test-arming-guards", passed: true,
+        ranAt: new Date().toISOString(), expiresAt: new Date(Date.now() + 3600e3).toISOString() }, null, 2));
+      const wrong = ARM.checkArmingPrerequisites(fresh.card, "0000000000000000");
+      ok("an attestation for another sealed run of the same card is a refusal", wrong.ok === false);
+      ok("...and names both hashes", has(wrong, /different sealed run/));
+      const right = ARM.checkArmingPrerequisites(fresh.card, fresh.forecastSealHash);
+      ok("...but the matching hash clears", right.ok === true, right.blockers.join("; "));
+    } finally { fs.writeFileSync(FRESH, bak); }
   }
 }
 
