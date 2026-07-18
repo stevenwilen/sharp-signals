@@ -108,6 +108,10 @@ console.log("\nALERT DECISION (§7): only material changes, none after the fight
   ok("an access-relevant source appearing alerts", IM.shouldAlert({ ...watch, accessRelevance: I.ACCESS.ANALYST_ONLY }, { ...watch, accessRelevance: I.ACCESS.FIRSTHAND }, {}).alert === true);
   ok("NOTHING alerts once the fight has begun", IM.shouldAlert(watch, { ...watch, actionStatus: I.ACTION_STATUS.SPECULATIVE_BET }, { fightStarted: true }).alert === false);
   ok("dashboard-only never interrupts the phone", IM.shouldAlert(null, rec({ actionStatus: I.ACTION_STATUS.DASHBOARD_ONLY }), {}).alert === false);
+  // §4: analytical research reaches the phone only as a bet/resolution, never as WATCH/forecast noise.
+  ok("an analytical FORECAST_UPDATED is dashboard-only (not phone news)", IM.shouldAlert(null, rec({ reportType: I.REPORT_TYPE.ANALYTICAL_HYPOTHESIS, actionStatus: I.ACTION_STATUS.FORECAST_UPDATED }), {}).alert === false);
+  ok("...but a condition-report FORECAST_UPDATED IS news", IM.shouldAlert(null, rec({ reportType: I.REPORT_TYPE.CURRENT_CONDITION, actionStatus: I.ACTION_STATUS.FORECAST_UPDATED }), {}).alert === true);
+  ok("...and an analytical SPECULATIVE_BET still alerts (it is a real bet)", IM.shouldAlert(null, rec({ reportType: I.REPORT_TYPE.ANALYTICAL_HYPOTHESIS, actionStatus: I.ACTION_STATUS.SPECULATIVE_BET }), {}).alert === true);
 }
 
 console.log("\nTHREADING (§7): updates carry reply_to so they attach to the original alert");

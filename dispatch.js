@@ -185,7 +185,12 @@ async function main() {
   // may never break the forecast/alerts pipeline while it is being validated. Off unless
   // FIGHT_INTEL_ENABLED=1; --send is deliberately NOT passed until the shadow is switched to production.
   if (process.env.FIGHT_INTEL_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast"))) {
-    run("run-intel.js", [forecastFile, `--eval=${evalFile}`], { allowFail: true });
+    const intelArgs = [forecastFile, `--eval=${evalFile}`];
+    // TWO gates, both reversible repo variables: FIGHT_INTEL_ENABLED=1 shadows (records only);
+    // FIGHT_INTEL_SEND=1 promotes it to production (adds --send, and the legacy HUMAN REVIEW send is
+    // suppressed in run-entertainment-alerts). run-intel still requires SHARP_PRODUCTION to actually send.
+    if (process.env.FIGHT_INTEL_SEND === "1") intelArgs.push("--send");
+    run("run-intel.js", intelArgs, { allowFail: true });
   }
 
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log

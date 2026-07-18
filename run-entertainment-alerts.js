@@ -366,8 +366,13 @@ async function main() {
   // ledger so the same rumour does not re-send every run.
   const evalPath = (process.argv.find((a) => a.startsWith("--eval=")) || "").split("=")[1];
   const reviews = humanReviewAlerts(evalPath, fc);
-  const reviewsToSend = reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
-  say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${reviewsToSend.length} new`);
+  // ARCHIVED when the fight-intelligence lifecycle is live (FIGHT_INTEL_SEND=1): the automated lifecycle
+  // now owns the unverified-news channel with combined, deduped, threaded messages, so the legacy
+  // per-rumour HUMAN REVIEW send is suppressed here (the code stays, dormant, and returns if the flag is
+  // unset — a reversible replacement, not a deletion).
+  const intelOwnsNews = process.env.FIGHT_INTEL_SEND === "1";
+  const reviewsToSend = intelOwnsNews ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
+  say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${intelOwnsNews ? "0 new (archived — fight-intelligence lifecycle owns this channel)" : reviewsToSend.length + " new"}`);
   for (const r of reviews) say(`    ${reviewsToSend.includes(r) ? "NEW " : "seen"} ${r.meta.about}: ${r.meta.why} (${r.meta.origins ?? "?"} origin)`);
 
   const toSend = messages.filter((m) => m.wouldSend);
