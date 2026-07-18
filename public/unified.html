@@ -124,6 +124,11 @@ const ts  = (s) => s ? esc(String(s).replace('T',' ').slice(0,16)) : '<span clas
 const kv  = (k,v,cls) => `<div class="kv"><div class="k">${k}</div><div class="v ${cls||''}">${v}</div></div>`;
 const yn  = (b) => b ? '<span class="pill p-green">YES</span>' : '<span class="pill p-red">NO</span>';
 const bad = (t,cls) => `<span class="pill ${cls}">${esc(t)}</span>`;
+// A verified review item shows its resolution (e.g. CONFIRMED WITHDRAWN — MARKET SETTLED) in place of
+// the amber UNVERIFIED pill. Top-level so both the summary section and renderBout() can use it.
+const verPill = (v) => v.status==='CONFIRMED_WITHDRAWN'
+  ? `<span class="pill p-blue">CONFIRMED WITHDRAWN — MARKET SETTLED</span>`
+  : `<span class="pill p-blue">CHECKED${v.status?(' — '+esc(v.status)):''}</span>`;
 
 async function load(){
   const u = await (await fetch('/api/unified')).json();
@@ -201,13 +206,20 @@ async function load(){
   $('#summary-note').innerHTML = ex.note ? `<b>${esc(ex.note)}</b>` : '';
 
   // ---- human review (top-level) ----
+  // A verified item (checked against real sources) shows its resolution — e.g. CONFIRMED WITHDRAWN /
+  // MARKET SETTLED — in place of the bare amber UNVERIFIED, so a settled bout no longer reads like live
+  // news. Origins are shown unchanged; verification is an overlay, not a rewrite of the forecast.
   const hr = u.humanReviewAlerts||[];
-  $('#human-review').innerHTML = hr.length ? hr.map((x)=>`
+  $('#human-review').innerHTML = hr.length ? hr.map((x)=>{
+    const v = x.verification;
+    return `
     <div class="box" style="margin-bottom:10px">
-      <div><span class="pill p-amber">UNVERIFIED</span> <b>${esc(x.about)}</b> · ${esc(x.topic)} · origins ${esc(x.origins)}</div>
-      <div class="sub" style="margin-top:4px">${esc(x.why)}</div>
+      <div>${v?verPill(v):'<span class="pill p-amber">UNVERIFIED</span>'} <b>${esc(x.about)}</b> · ${esc(x.topic)} · origins ${esc(x.origins)}</div>
+      <div class="sub" style="margin-top:4px">${esc(v?v.summary:x.why)}</div>
+      ${v&&v.marketSettledAt?`<div class="sub">Market <code>${esc(v.marketTicker||'')}</code> settled ${esc(v.marketSettledAt)} — nothing to bet.</div>`:''}
+      ${v&&v.sources&&v.sources.length?`<details><summary>verification sources (${v.sources.length})</summary><div class="sub" style="margin-top:4px">${v.sources.map((s)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.outlet)}</a>`).join(' · ')}</div></details>`:''}
       <details><summary>full alert text</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--muted)">${esc(x.text)}</pre></details>
-    </div>`).join('')
+    </div>`;}).join('')
     : '<div class="na">No human-review alerts on this card.</div>';
 
   // ---- placement status (three distinct statuses; only MANUALLY PLACED is real money) ----
@@ -298,9 +310,10 @@ function renderBout(b){
     <div class="bout-head">
       <span class="name">${esc(b.fight)}</span>
       ${bad(b.status, statusCls)}
-      ${b.verification.hasUnverifiedNews?bad('UNVERIFIED NEWS','p-amber'):''}
+      ${b.verification.boutWithdrawn?bad('BOUT WITHDRAWN — MARKET SETTLED','p-blue'):(b.verification.hasUnverifiedNews?bad('UNVERIFIED NEWS','p-amber'):'')}
       <span class="muted" style="font-size:12px">${esc(b.boutId)}</span>
     </div>
+    ${b.verification.boutWithdrawn?`<div class="box" style="border-color:var(--blue);margin:8px 0"><b>Bout withdrawn.</b> ${esc(b.verification.checked?b.verification.checked.summary:'')}</div>`:''}
     <div class="cols">
       <div class="box"><div class="lbl">Live market prior</div>
         <div class="big">${pct(b.marketPrior?b.marketPrior.probability:null)}</div>
@@ -333,7 +346,7 @@ function renderBout(b){
       <h3>Supporting evidence</h3>${supporting}
       ${condition?('<h3>Current-condition reports</h3>'+condition):''}
       <h3>Contradictory evidence</h3>${contra}
-      ${b.humanReview.length?('<h3>Unverified news for this bout</h3>'+b.humanReview.map(h=>`<div class="ev"><span class="pill p-amber">UNVERIFIED</span> ${esc(h.about)} · ${esc(h.topic)} · ${esc(h.origins)} origin(s)<div class="sub">${esc(h.why)}</div></div>`).join('')):''}
+      ${b.humanReview.length?('<h3>News for this bout</h3>'+b.humanReview.map(h=>`<div class="ev">${h.verification?verPill(h.verification):'<span class="pill p-amber">UNVERIFIED</span>'} ${esc(h.about)} · ${esc(h.topic)} · ${esc(h.origins)} origin(s)<div class="sub">${esc(h.verification?h.verification.summary:h.why)}</div></div>`).join('')):''}
       <div class="note">Provenance — forecast <code>${esc(b.provenance.forecastSealHash)}</code>${b.provenance.dataHashes?(' · baseline <code>'+esc(b.provenance.dataHashes.baseline||'—')+'</code> · evidence <code>'+esc(b.provenance.dataHashes.evidenceEval||'—')+'</code>'):''}</div>
     </details>
   </div>`;
