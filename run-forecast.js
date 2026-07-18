@@ -11,6 +11,7 @@ const path = require("path");
 const crypto = require("crypto");
 const F = require("./lib/forecast");
 const L = require("./lib/leakage-guard");
+const ADM = require("./lib/admission");
 const E = require("./lib/evidence-eval");
 const MB = require("./lib/market-baseline");
 const O = require("./lib/odds-history");
@@ -199,7 +200,7 @@ async function main() {
   const forecasts = [];
   let leakRejected = 0;
   for (const bout of ev.card.bouts) {
-    const be = ev.bouts.find((x) => x.boutId === bout.boutId);
+    let be = ev.bouts.find((x) => x.boutId === bout.boutId);
     const base = baselines[bout.boutId];
     const A = bout.a.name, B = bout.b.name;
 
@@ -222,10 +223,23 @@ async function main() {
       continue;
     }
 
-    // every claim under this bout must be provably pre-seal
-    const claims = (be.topics || []).flatMap((t) => t.claims.map((c) => ({ ...c, publishedAt: c.publishedAt || (be.topics[0].claims[0] || {}).publishedAt })));
-    const adm = L.admissibleClaims(claims.filter((c) => c.publishedAt), sealTs);
-    leakRejected += adm.rejected.length;
+    // THE ADMISSION BOUNDARY. Every claim under this bout must be provably pre-seal, and the evidence
+    // is RE-EVALUATED from the survivors — not filtered. Filtering would keep each topic's origin
+    // count, which was computed over the rejected claims too, and the magnitude rules key on exactly
+    // that count. See lib/admission.js for the four ways the previous gate was decorative.
+    //
+    // `adm.be` shadows the raw `be` deliberately: from here down there is no reference to unadmitted
+    // evidence, because the previous bug was precisely that `adm.admitted` existed and went unread.
+    const adm = ADM.admissibleEvidence(bout, be, sealTs);
+    const admission = ADM.admissionRecord(adm);
+    leakRejected += admission.rejectedForLeakage;
+    if (adm.rejected.length) {
+      say(`  ${bout.boutId}: ${adm.rejected.length}/${adm.considered} claim(s) REFUSED at the admission boundary` +
+          ` (${admission.rejectedForLeakage} leakage, ${admission.rejectedAsMalformed} malformed)`);
+      for (const x of adm.rejected.slice(0, 3)) say(`     ⛔ ${x.why}`);
+      if (adm.rejected.length > 3) say(`     ... and ${adm.rejected.length - 3} more (all recorded in the artifact)`);
+    }
+    be = adm.be;
 
     const adjustments = be.coverage === "INSUFFICIENT EVIDENCE" ? [] : F.buildAdjustments(be, A, B);
     const applied = adjustments.filter((a) => a.finalAppliedLogOdds > 0);
@@ -273,7 +287,8 @@ async function main() {
       evidenceCoverage: be.coverage, independentOrigins: be.independentOrigins, originBreakdown: be.originBreakdown,
       contradictions: (be.contradictions || []).length,
       missingInformation: be.missingInformation, limitations: be.limitations,
-      leakageRejected: adm.rejected.length,
+      leakageRejected: admission.rejectedForLeakage,
+      admission,   // what was refused at the boundary, and why — a rejection nobody can read is invisible
       versions: { rules: F.RULES.version, evaluator: "phase6", extractor: ev.card.promptVersion || "phase5" },
       dataHashes: { evidenceEval: sha(be), baseline: sha(base), rules: sha(F.RULES) },
     });
