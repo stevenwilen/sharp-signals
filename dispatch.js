@@ -157,7 +157,10 @@ async function main() {
     }
     run("run-evidence-eval.js", [ceEvidence]);
     run("run-baselines.js", [`--cards=${td}`], { allowFail: true });
-    run("run-forecast.js", [evalFile, `--seal=${seal}`, "--live"]);
+    // --seal=auto: run-forecast fixes the seal AFTER it fetches the live consensus, so every quote
+    // provably predates it. Passing a fixed dispatch-start time would make the later live fetch look
+    // post-seal and the leakage guard would (correctly) refuse it.
+    run("run-forecast.js", [evalFile, "--seal=auto", "--live"]);
     run("run-phase7-seal.js", [forecastFile, evalFile], { allowFail: true });
     run("run-seal-scenarios.js", [forecastFile, evalFile], { allowFail: true });
     run("run-phase8-shadow.js", [forecastFile], { allowFail: true });

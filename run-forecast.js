@@ -162,16 +162,23 @@ async function main() {
   const mkt = (process.argv.find((a) => a.startsWith("--market=")) || "").split("=")[1] || "bfo";
 
   say(`[stage 1] validating inputs ...`);
-  if (!src || !sealArg) fail("usage: node run-forecast.js <evidence-eval.json> --seal=<ISO> [--market=bfo|kalshi] [--out=path]");
+  if (!src || !sealArg) fail("usage: node run-forecast.js <evidence-eval.json> --seal=<ISO|auto> [--market=bfo|kalshi] [--out=path]");
   if (!fs.existsSync(src)) fail(`not found: ${src}`);
-  const sealTs = Date.parse(sealArg);
-  if (!isFinite(sealTs)) fail(`--seal is not a valid ISO timestamp: ${sealArg}`);
+
+  // --seal=auto (or now): seal at the moment inputs are gathered, computed AFTER the live consensus is
+  // fetched. An unattended dispatcher cannot pass a fixed timestamp, because it decides the seal at
+  // dispatch START but the live prices are fetched minutes LATER when this script runs — a fixed early
+  // seal then makes every live quote "after the seal" and the leakage guard (correctly) refuses it.
+  // Sealing after the fetch keeps the guarantee (prices predate the seal) without inventing a time.
+  const AUTO_SEAL = /^(auto|now)$/i.test(sealArg || "");
+  let sealTs = AUTO_SEAL ? null : Date.parse(sealArg);
+  if (!AUTO_SEAL && !isFinite(sealTs)) fail(`--seal is not a valid ISO timestamp or 'auto': ${sealArg}`);
   const ev = JSON.parse(fs.readFileSync(src, "utf8"));
   if (!ev.card || !Array.isArray(ev.bouts)) fail("input is not an evidence-eval file");
   // the evaluated evidence must not itself contain outcomes
   try { L.assertNoOutcomeFields(ev.bouts, "evidence-eval file"); }
   catch (e) { fail(`LEAKAGE: ${e.message}`); }
-  say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
+  say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${AUTO_SEAL ? "auto (after live fetch)" : new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
 
   // --live collects a contemporaneous multi-book consensus BEFORE sealing, so tier A is reachable
   // and every quote provably predates the seal.
@@ -182,6 +189,12 @@ async function main() {
     liveConsensus = await SB.consensusForCard(ev.card, { eventPath: evPath || undefined, nowTs: Date.now() });
     if (!liveConsensus.ok) say(`[stage 2a] no live consensus: ${liveConsensus.reason} — falling back to the waterfall`);
     else say(`[stage 2a] ${liveConsensus.withConsensus}/${liveConsensus.of} bouts have a live consensus from ${liveConsensus.eventPath}`);
+  }
+
+  // Finalize an auto seal NOW — after the live fetch above, so every quote it gathered predates it.
+  if (AUTO_SEAL) {
+    sealTs = Date.now();
+    say(`[stage 1b] auto-seal fixed at ${new Date(sealTs).toISOString()} (after the live fetch, so all quotes predate it)`);
   }
 
   say(`[stage 2] building market baselines via the A/B/C/D waterfall ...`);
