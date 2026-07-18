@@ -94,8 +94,8 @@
   </section>
 
   <section>
-    <h2>Human review — unverified news (NOT a forecast, NOT an instruction)</h2>
-    <div id="human-review"></div>
+    <h2>Fight intelligence — report lifecycle (NOT a forecast, NOT an instruction)</h2>
+    <div id="fight-intel"></div>
   </section>
 
   <section>
@@ -200,15 +200,49 @@ async function load(){
   ].join('');
   $('#summary-note').innerHTML = ex.note ? `<b>${esc(ex.note)}</b>` : '';
 
-  // ---- human review (top-level) ----
-  const hr = u.humanReviewAlerts||[];
-  $('#human-review').innerHTML = hr.length ? hr.map((x)=>`
-    <div class="box" style="margin-bottom:10px">
-      <div><span class="pill p-amber">UNVERIFIED</span> <b>${esc(x.about)}</b> · ${esc(x.topic)} · origins ${esc(x.origins)}</div>
-      <div class="sub" style="margin-top:4px">${esc(x.why)}</div>
-      <details><summary>full alert text</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--muted)">${esc(x.text)}</pre></details>
-    </div>`).join('')
-    : '<div class="na">No human-review alerts on this card.</div>';
+  // ---- fight intelligence — the report lifecycle (reads persisted records; recomputes nothing) ----
+  const fi = u.fightIntelligence || {present:false, groups:{}};
+  const GROUPS = [
+    ['betProposed','SPECULATIVE BET','p-green'], ['marketMoved','MARKET ALREADY MOVED','p-amber'],
+    ['influencedForecast','INFLUENCED FORECAST','p-green'], ['watching','WATCHING','p-amber'],
+    ['new','NEW','p-blue'], ['confirmed','CONFIRMED','p-green'], ['disproved','DISPROVED','p-red'],
+    ['ignored','IGNORED / DASHBOARD ONLY','p-grey'],
+  ];
+  const cents = (x)=> x==null?'—':(Math.round(x*100)+'c');
+  const intelCard = (r)=>{
+    const mv = r.marketMovementPoints;
+    const move = (r.marketBefore && r.marketAfter && r.marketAfter.length)
+      ? `${cents(r.marketBefore.ask)} → ${cents(r.marketAfter[r.marketAfter.length-1].ask)}${mv!=null?` (${mv>0?'+':''}${mv} pts)`:''}` : 'no snapshots';
+    const fx = r.forecastImpact;
+    return `<div class="box" style="margin-bottom:10px">
+      <div><b>${esc(r.fighter)}</b> — ${esc(r.report||'')}</div>
+      <div class="sub" style="margin-top:3px">${esc(r.fight||'')} · status <b>${esc(r.status)}</b> · action <b>${esc(r.action)}</b> · ${esc(r.reportType)}</div>
+      <div class="sub">origins <b>${esc(r.independentOrigins)}</b> · amplifiers ${esc(r.amplifiers)} · access ${esc(r.accessRelevance)} · specificity ${esc(r.specificity)} · recency ${esc(r.recency)}</div>
+      <div class="sub">first seen ${esc(r.firstSeen)} · last updated ${esc(r.lastUpdated)} · original source ${esc(r.originalSource||'—')}</div>
+      <div class="sub">market ${esc(move)}${fx?` · forecast impact ${esc(fx.impactPointsTowardHelps)} pts toward ${esc(fx.helps||'?')} (${esc(fx.magnitudeBucket||'')}, cap ${esc(fx.boutCap)})`:' · forecast impact none'}</div>
+      ${r.contradictions&&r.contradictions.length?`<div class="sub">contradictions: ${esc(r.contradictions.join('; '))}</div>`:''}
+      ${r.telegramHistory&&r.telegramHistory.length?`<div class="sub">telegram: ${r.telegramHistory.length} message(s)</div>`:''}
+      ${r.quotes&&r.quotes.length?`<details><summary>quotes (${r.quotes.length})</summary>${r.quotes.map(q=>`<div class="sub">“${esc(q.quote)}” — ${esc(q.channel||'?')}</div>`).join('')}</details>`:''}
+      ${r.timeline&&r.timeline.length?`<details><summary>lifecycle timeline (${r.timeline.length})</summary>${r.timeline.map(t=>`<div class="sub">${esc(t.at)} · ${esc(t.status||'')}${t.action?(' → '+esc(t.action)):''} · ${esc(t.note||'')}</div>`).join('')}</details>`:''}
+    </div>`;
+  };
+  const intelBlocks = GROUPS.filter(([k])=> (fi.groups[k]||[]).length).map(([k,label,cls])=>
+    `<div style="margin:6px 0 2px"><span class="pill ${cls}">${esc(label)}</span> <span class="sub">${(fi.groups[k]||[]).length}</span></div>`
+    + (fi.groups[k]||[]).map(intelCard).join('')).join('');
+  if (fi.present && intelBlocks) {
+    $('#fight-intel').innerHTML = intelBlocks;
+  } else {
+    // Shadow fallback: until the intelligence pipeline is enabled, surface the legacy human-review list
+    // so the dashboard is never blank — the Telegram path is unchanged in shadow mode.
+    const hr = u.humanReviewAlerts||[];
+    $('#fight-intel').innerHTML = (fi.present ? '' : `<div class="na">${esc(fi.note||'No fight intelligence recorded for this card yet.')}</div>`)
+      + (hr.length ? hr.map((x)=>`
+      <div class="box" style="margin-bottom:10px">
+        <div><span class="pill p-amber">UNVERIFIED (legacy)</span> <b>${esc(x.about)}</b> · ${esc(x.topic)} · origins ${esc(x.origins)}</div>
+        <div class="sub" style="margin-top:4px">${esc(x.why)}</div>
+        <details><summary>full alert text</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--muted)">${esc(x.text)}</pre></details>
+      </div>`).join('') : '');
+  }
 
   // ---- placement status (three distinct statuses; only MANUALLY PLACED is real money) ----
   const mb = u.manualBankroll;
