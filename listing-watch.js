@@ -64,13 +64,17 @@ async function main() {
   for (const [a, b] of pairs) {
     const wantMs = fightDateOf(a.ticker);
     const isNew = (m) => !st.markets[m.ticker];
-    // Fetch the sharp line if either side is newly seen (birth = the whole point) or our last read
-    // has gone stale. One fetch prices both sides: the de-vig gives us the pair.
-    const staleSharp = [a, b].every((m) => hoursSince((st.markets[m.ticker] || {}).sharpAt) >= SHARP_EVERY_H);
-    let line = null;
+    // Fetch the sharp line if either side is newly seen (birth = the whole point) or our last ATTEMPT
+    // has gone stale. Gate on the attempt time, not the last SUCCESS: sharpAt was only stamped on a
+    // resolved line, so a fight BFO cannot price (name mismatch, no line yet) had sharpAt=undefined ->
+    // hoursSince=Infinity -> a BFO scrape on EVERY run, the opposite of the politeness the cadence buys.
+    const lastAttempt = (st.markets[a.ticker] || {}).sharpAttemptedAt || (st.markets[b.ticker] || {}).sharpAttemptedAt;
+    const staleSharp = hoursSince(lastAttempt) >= SHARP_EVERY_H;
+    let line = null, attemptIso = null;
     if (isNew(a) || isNew(b) || staleSharp) {
       line = await oh.liveLine(a.yes_sub_title, b.yes_sub_title, wantMs);
       if (!line.ok) misses.push(`${a.yes_sub_title} vs ${b.yes_sub_title}: ${line.reason}`);
+      attemptIso = new Date().toISOString();   // stamped on each side's record below, success or not
     }
 
     for (const [m, sharpProb, opp] of [[a, line && line.ok ? line.prob : null, b.yes_sub_title],
@@ -84,10 +88,18 @@ async function main() {
 
       let rec = st.markets[m.ticker];
       if (!rec) {
+        // The TRUE birth is Kalshi's own open_time, not our first sighting. Cron fires unreliably, so
+        // firstSeen can lag the real listing by hours; recording open_time and the latency lets the
+        // convergence evaluator exclude a "birth" we caught too late to trust. Absent open_time -> null,
+        // never invented.
+        const openMs = m.open_time ? Date.parse(m.open_time) : null;
+        const birthLatencyMs = Number.isFinite(openMs) ? Date.parse(sample.t) - openMs : null;
         rec = st.markets[m.ticker] = {
           ticker: m.ticker, fighter: m.yes_sub_title, opponent: opp,
           fightDate: wantMs ? new Date(wantMs).toISOString().slice(0, 10) : null,
           firstSeen: sample.t,
+          kalshiOpenTime: m.open_time || null,
+          birthLatencyMs,
           preExisting: seeding, // <- listed before we watched: never analysed as a birth
           birth: seeding ? null : { ...sample, feeAtAsk: +fee(ask).toFixed(4) },
           samples: [],
@@ -95,8 +107,16 @@ async function main() {
         if (!seeding) births.push(rec);
       }
       if (sharpProb != null) rec.sharpAt = sample.t;
+      if (attemptIso) rec.sharpAttemptedAt = attemptIso;   // gate re-fetch on attempt, not success
       rec.samples.push(sample);
-      if (rec.samples.length > MAX_SAMPLES) rec.samples = rec.samples.slice(-MAX_SAMPLES);
+      // Truncation must KEEP THE BIRTH WINDOW, not drop it. slice(-MAX) discarded the oldest samples
+      // first — exactly the birth-to-week-1 trajectory the whole experiment is about. Keep the first
+      // 40 (the birth window) and the most recent (MAX-40).
+      if (rec.samples.length > MAX_SAMPLES) {
+        const head = rec.samples.slice(0, 40);
+        const tail = rec.samples.slice(-(MAX_SAMPLES - 40));
+        rec.samples = head.concat(tail);
+      }
       rec.last = sample;
     }
   }
