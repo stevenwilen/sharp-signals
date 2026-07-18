@@ -489,7 +489,7 @@ async function run() {
     const due = process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16);
     if (due && posState.meta.lastSummaryDate !== today) {
       const sum = buildSummary(posState);
-      const status = `📎 V1 ARCHIVED RESEARCH — paper only, NOT a betting signal. Checked ${fresh.length} picks today. Betting decisions run through the unified V2 path.`;
+      const status = `📎 V1 ARCHIVED RESEARCH — PAPER ONLY · DO NOT PLACE. Research tracking only, $0 real money, excluded from your real bankroll P&L. Every betting decision runs through the unified V2 path.`;
       await notify(`${sum.text}\n\n${status}`).catch(() => {});
       positions.markSummarized(posState, sum.opened.map((p) => p.ticker), "open");
       positions.markSummarized(posState, sum.settled.map((p) => p.ticker), "settled");

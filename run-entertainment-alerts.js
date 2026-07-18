@@ -24,6 +24,7 @@ const P = require("./lib/portfolio");
 const EN = require("./lib/entertainment");
 const TM = require("./lib/telegram-messages");
 const AL = require("./lib/alert-ledger-v2");
+const MB = require("./lib/manual-bankroll");
 const E = require("./lib/evidence-eval");
 const { writeJson } = require("./lib/store");
 
@@ -328,12 +329,30 @@ async function main() {
   const toSend = messages.filter((m) => m.wouldSend);
   let delivery = { attempted: 0, delivered: 0, buyInstructions: 0, humanReviews: 0, transport: "none loaded" };
   const anything = toSend.length + reviewsToSend.length;
+  // The REAL money ledger (separate from the paper book). A buy instruction that is actually delivered
+  // is recorded as RECOMMENDED_NOT_CONFIRMED — the system told the human what to buy; it has NOT been
+  // confirmed placed and contributes $0 to the real P&L until the human confirms. A parallel RECORD of
+  // what was sent; it does not change what is decided or sent.
+  const mbState = MB.load();
+  let mbTouched = false;
   if (wantSend && gate.armed && anything) {
     const notify = require("./lib/notify");   // Telegram ONLY. There is no trading API in this build.
     delivery.transport = "telegram (manual instruction + human review)";
     for (const m of toSend) {
       delivery.attempted++;
-      try { await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++; AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
+      try {
+        await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++;
+        AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION");
+        MB.recordRecommendation(mbState, {
+          key: m.key || `${m.boutId}|${m.ticker}`, boutId: m.boutId, ticker: m.ticker,
+          fight: (fc.forecasts.find((x) => x.boutId === m.boutId) || {}).fight,
+          lane: m.lane || "core", classification: m.state.classification,
+          recommendedFraction: m.state.stakePercent != null ? m.state.stakePercent / 100 : null,
+          recommendedStakeDollars: m.state.stakePercent != null ? +(EN.BANKROLL.amount * m.state.stakePercent / 100).toFixed(2) : null,
+          maximumAcceptablePrice: m.state.maximumAcceptablePrice, ask: m.state.ask, forecastHash: fc.sealHash,
+        });
+        mbTouched = true;
+      }
       catch (e) { say(`  ⚠ delivery failed for ${m.ticker}: ${e.message}`); }
     }
     for (const r of reviewsToSend) {
@@ -344,6 +363,7 @@ async function main() {
   } else if (wantSend && gate.armed) {
     delivery.transport = "none loaded — nothing qualified and no new news, so there was nothing to deliver";
   }
+  if (mbTouched) MB.save(mbState);   // persist the real-money ledger (recommendations recorded this run)
 
   const out = {
     card: fc.card.eventId, ranAt: new Date(nowTs).toISOString(),

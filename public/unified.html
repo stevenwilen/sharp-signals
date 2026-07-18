@@ -89,6 +89,11 @@
   </section>
 
   <section>
+    <h2>Placement status — real $100 bankroll vs paper vs recommendation</h2>
+    <div id="manual-bankroll"></div>
+  </section>
+
+  <section>
     <h2>Human review — unverified news (NOT a forecast, NOT an instruction)</h2>
     <div id="human-review"></div>
   </section>
@@ -204,6 +209,23 @@ async function load(){
       <details><summary>full alert text</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--muted)">${esc(x.text)}</pre></details>
     </div>`).join('')
     : '<div class="na">No human-review alerts on this card.</div>';
+
+  // ---- placement status (three distinct statuses; only MANUALLY PLACED is real money) ----
+  const mb = u.manualBankroll;
+  if (mb) {
+    const pnl = mb.realBankrollPnl || {};
+    const list = (arr, empty) => arr && arr.length
+      ? arr.map((p)=>`<div class="sub" style="margin:3px 0">• ${esc(p.fight||p.ticker||'?')}${p.classification?` <span class="pill p-amber">${esc(p.classification)}</span>`:''} — recommended $${p.recommendedStakeDollars??0}, actual $${p.actualStake??0}${p.executionPrice?(' @ '+(p.executionPrice*100).toFixed(1)+'c'):''}${p.realPnlDollars!=null?(' · P&L $'+p.realPnlDollars):''}</div>`).join('')
+      : `<div class="na">${empty}</div>`;
+    $('#manual-bankroll').innerHTML = `
+      <div class="grid">
+        ${kv('REAL P&L (placed only)', '$'+(pnl.realPnlDollars??0)+' booked · $'+(pnl.realDollarsDeployed??0)+' deployed · '+(pnl.positionsManuallyPlaced??0)+' placed')}
+      </div>
+      <div class="box" style="margin-top:8px"><b>PAPER ONLY</b> <span class="na">(${mb.paperOnly.count}) — research, $0, DO NOT PLACE, excluded from real P&L</span>${list(mb.paperOnly.positions,'none')}</div>
+      <div class="box" style="margin-top:8px"><b>MANUAL RECOMMENDATION — NOT CONFIRMED</b> <span class="na">(${mb.recommendedNotConfirmed.count}) — Telegram told you to buy; NOT confirmed placed; $0 in real P&L</span>${list(mb.recommendedNotConfirmed.positions,'none')}</div>
+      <div class="box" style="margin-top:8px"><b>MANUALLY PLACED</b> <span class="na">(${mb.manuallyPlaced.count}) — you confirmed you bought it; in your real $100 P&L</span>${list(mb.manuallyPlaced.positions,'none — confirm with run-confirm-placement.js')}</div>
+    `;
+  }
 
   // ---- bouts ----
   $('#card-title').textContent = `Current card — every bout (${u.totalBouts}, ${u.boutsWithoutBaseline} without a usable market baseline)`;
