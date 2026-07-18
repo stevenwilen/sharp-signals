@@ -18,6 +18,19 @@
 
 - **`DATA_DIR` split-brain:** some stores honor `DATA_DIR`, some hardcode `data/`. Do not point
   `DATA_DIR` at a synced folder without unifying — the real-money ledger and the forecasts could split.
+- **Fight-night concurrency residual:** the sentinel and the hourly dispatcher run in separate
+  concurrency groups and share the alert ledger. Mitigations shipped (atomic ledger writes with
+  reload-before-write, per-tick sentinel pull, pre-send origin refresh, rebase-abort recovery) shrink
+  the duplicate/lost-update window to near-simultaneous seconds; a fully conflict-free design
+  (append-only per-run ledger segments) is future work.
+- **Actions cache can resurrect deleted cache files:** the warm-cache step restores `data/evidence`/
+  `data/transcripts` over the checkout and `save-data.sh` recommits them. Harmless for append-only
+  caches; delete a cache entry by also bumping the cache key.
+- **Selection ranges are approximate:** ranges are computed on normalized transcripts and sliced
+  against raw ones, so chunk boundaries can shift by a few characters — the extractor overlaps chunks,
+  so claims are not lost, but exact offsets are not authoritative.
+- **Fee-envelope has no time axis:** the verified fee scope (2026-07-16) is treated as valid until
+  Kalshi changes its published schedule; a schedule change requires re-running `verify-fees.js`.
 
 ## Fixed gaps (kept for history)
 
