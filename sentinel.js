@@ -35,7 +35,25 @@ const ledgerFingerprint = () => { try { return fs.statSync(LEDGER).mtimeMs + ":"
 function persist(label) {
   if (!process.env.GITHUB_ACTIONS) { say(`(local: skip persist ${label})`); return; }
   try { execFileSync("bash", [path.join(ROOT, ".github", "save-data.sh"), `sentinel-${label}`], { cwd: ROOT, stdio: "inherit" }); }
-  catch (e) { say(`persist failed (${e.status}) — will retry next iteration`); }
+  catch (e) {
+    // A failed rebase leaves the repo mid-rebase; retrying the SAME commit next iteration replays the
+    // same conflict forever. Abort cleanly so the next persist starts from a fresh base (the ledger
+    // content in the worktree is preserved — only the git state is reset).
+    say(`persist failed (${e.status}) — aborting any half-rebase so the next attempt starts clean`);
+    try { execFileSync("git", ["rebase", "--abort"], { cwd: ROOT, stdio: "ignore" }); } catch (_) {}
+  }
+}
+
+// PULL BEFORE EACH TICK (certification fix). The sentinel job checks out once and can run ~5h while the
+// hourly dispatcher pushes its own alert-ledger updates. Without a pull, this runner's dedup state is
+// frozen at job start — a message the dispatcher already sent looks unsent here, and a DUPLICATE
+// Telegram needs no git conflict at all. A cheap rebase-pull each tick keeps the dedup current; a
+// transient pull failure is logged and the tick proceeds on the previous state (atomic ledger writes +
+// reload-before-write still bound the damage).
+function refreshState() {
+  if (!process.env.GITHUB_ACTIONS) return;
+  try { execFileSync("git", ["pull", "--rebase", "--autostash", "-q"], { cwd: ROOT, stdio: "inherit", timeout: 60000 }); }
+  catch (_) { say("pull failed (transient) — continuing on current state"); try { execFileSync("git", ["rebase", "--abort"], { cwd: ROOT, stdio: "ignore" }); } catch (_) {} }
 }
 
 // One cheap price-check iteration. Returns true if it exited cleanly. Never throws — a transient
@@ -81,6 +99,7 @@ async function main() {
   let iter = 0, lastFail = 0;
   while (!stopping && iter < maxIterations && Date.now() < deadline) {
     iter++;
+    refreshState();   // pull the dispatcher's ledger updates so dedup state is current, not job-start stale
     const before = ledgerFingerprint();
     say(`iteration ${iter} @ ${new Date().toISOString()}`);
     const okRun = priceCheck(files.forecastFile, files.evalFile);

@@ -82,7 +82,18 @@ function decideDueStages(eventDate, nowMs, receipts) {
 
 // ---------------------------------------------------------------------------------------------
 async function discoverCard(forceTickerDate) {
-  const open = await k.marketsAll({ series_ticker: "KXUFCFIGHT", status: "open" }).catch(() => []);
+  // A Kalshi OUTAGE must be distinguishable from "no card this week": an outage used to yield [] and a
+  // clean green exit, silently skipping every stage. Now the error is surfaced (loudly logged + flagged
+  // on the receipts) while remaining non-fatal — a transient blip self-heals next cron.
+  let fetchFailed = null;
+  const open = await k.marketsAll({ series_ticker: "KXUFCFIGHT", status: "open" })
+    .catch((e) => { fetchFailed = e && e.message || "unknown"; return []; });
+  if (fetchFailed) {
+    say(`[dispatch] ⚠ KALSHI FETCH FAILED (${fetchFailed}) — this is an OUTAGE, not "no card"; skipping this cycle, next cron self-heals`);
+    const r = readReceipts(); r.kalshiFetchFailed = { at: new Date().toISOString(), error: String(fetchFailed).slice(0, 200) }; persistReceipts(r);
+    return null;
+  }
+  { const r = readReceipts(); if (r.kalshiFetchFailed) { delete r.kalshiFetchFailed; persistReceipts(r); } }
   const cards = new Map();
   for (const m of open) {
     const c = cardFromTicker(m.event_ticker);
@@ -123,10 +134,40 @@ async function main() {
   if (!Number.isFinite(nowMs)) fail(`--now=${nowIso} is not a readable timestamp`);
 
   const card = await discoverCard(argv("card"));
-  if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing to do."); return 0; }
+
+  // ROLLOVER-SAFE GRADING (certification fix). Grading used to be structurally unreachable: card
+  // discovery requires OPEN markets, but a settled card's markets are closed — so the moment an event
+  // finished, the dispatcher could no longer see the card it needed to grade, and post-card learning
+  // silently never ran. The last active card is now remembered on the receipts, and once its bell has
+  // passed, its grade runs regardless of whether Kalshi still lists it — even after the NEXT card has
+  // become active. Idempotent: gradedCards records each card once.
+  {
+    const r = readReceipts();
+    const last = r.lastCard;
+    const graded = r.gradedCards || {};
+    if (last && last.eventDate && !graded[last.eventDate]
+        && nowMs > firstBellMs(last.eventDate) + 6 * 3600e3
+        && (!card || card.eventDate !== last.eventDate)
+        && fs.existsSync(path.join(ROOT, `data/forecast-${last.eventDate}.json`))) {
+      say(`[dispatch] grading previous card ${last.eventId || last.eventDate} (settled; no longer listed on Kalshi)`);
+      if (!dry) {
+        const okGrade = run("run-grade-card.js", [`data/forecast-${last.eventDate}.json`, "--write"], { allowFail: true });
+        const scen = `data/scenarios-ranked-${last.eventDate}.json`;
+        if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
+        run("run-convergence-eval.js", ["--write"], { allowFail: true });
+        // stamp ONLY on success — a failed grade must stay due, not look done
+        if (okGrade) { const r2 = readReceipts(); (r2.gradedCards = r2.gradedCards || {})[last.eventDate] = new Date().toISOString(); persistReceipts(r2); }
+      }
+    }
+  }
+
+  if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing else to do."); return 0; }
   say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, first bell ${new Date(firstBellMs(card.eventDate)).toISOString()}`);
 
   const receipts = readReceipts();
+  // remember the active card so its grade can run after its markets close (see above)
+  receipts.lastCard = { eventId: card.eventId, eventDate: card.eventDate, tickerDate: card.tickerDate };
+  persistReceipts(receipts);
   const plan = decideDueStages(card.eventDate, nowMs, receipts);
   const dueList = force ? [force] : Object.entries(plan.due).filter(([, v]) => v).map(([k2]) => k2);
   // Alerts always follow a forecast: a re-sealed forecast may have changed the decision, and the alert

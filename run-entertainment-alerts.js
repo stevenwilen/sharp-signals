@@ -355,6 +355,46 @@ async function main() {
     for (const m of explorationMessages) messages.push(m);
   }
 
+  // ---- WITHDRAWAL SWEEP (certification fix) ----
+  // The ledger's `withdrawn` trigger could never fire: shouldSend was only ever called for contracts
+  // that are CURRENTLY eligible, so a previously-recommended position whose contract vanished or was
+  // demoted was simply never re-evaluated — the human was never told to stand down. This sweep closes
+  // that hole: any ledger entry recorded as actionable that is NOT actionable in the current run gets
+  // ONE positionWithdrawn message, and its ledger state moves to WITHDRAWN so it never re-fires.
+  {
+    const currentKeys = new Set(messages
+      .filter((m) => m.state && AL.ACTIONABLE.has(m.state.classification))
+      .map((m) => m.key || `${m.boutId}|${m.ticker}`));
+    const ledger = AL.load();
+    for (const [key, prev] of Object.entries(ledger)) {
+      if (key.startsWith("review|")) continue;
+      if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
+      if (currentKeys.has(key)) continue;
+      const fight = (fc.forecasts.find((x) => x.boutId === (prev.boutId || key.split("|")[0])) || {}).fight || prev.topTicker || key;
+      messages.push({
+        boutId: key.split("|")[0], ticker: prev.topTicker || key.split("|").pop(), key,
+        wouldSend: true, why: "previously recommended, no longer qualifies",
+        text: TM.positionWithdrawn({ recommendedFirst: fight, reason: "the position no longer qualifies (price, forecast, or listing changed)" }),
+        state: { ...prev, classification: "WITHDRAWN", verdict: "WITHDRAWN" }, verdict: "WITHDRAWN",
+      });
+      say(`  ⚠ WITHDRAWN: ${key} was ${prev.classification}, no longer qualifies — standing-down message queued`);
+    }
+  }
+
+  // ---- FIGHT-START GATE (certification fix) ----
+  // After the first bell, NO new betting instruction may leave — a mid-event BUY is stale by
+  // construction (the sentinel runs DURING the event; a closed market usually yields no ask, but
+  // "usually" is not a gate). Withdrawal notices still pass: telling the human to stand down is safety
+  // information, not a bet.
+  const fightHasStarted = require("./lib/freshness").fightStarted(fc.card.eventDate);
+  if (fightHasStarted) {
+    let gated = 0;
+    for (const m of messages) {
+      if (m.wouldSend && m.verdict !== "WITHDRAWN") { m.wouldSend = false; m.why = "fight has begun — no new betting instructions"; gated++; }
+    }
+    say(`\n  ⛔ FIGHT HAS BEGUN (${fc.card.eventDate} 22:00Z passed) — ${gated} betting message(s) gated; only withdrawals may send`);
+  }
+
   // ---- delivery ----
   // The transport is loaded ONLY here, ONLY when the gate passed, --send was asked for, and there is
   // actually something to say. An earlier version printed "mode: SEND" while importing no transport
@@ -371,7 +411,7 @@ async function main() {
   // per-rumour HUMAN REVIEW send is suppressed here (the code stays, dormant, and returns if the flag is
   // unset — a reversible replacement, not a deletion).
   const intelOwnsNews = process.env.FIGHT_INTEL_SEND === "1";
-  const reviewsToSend = intelOwnsNews ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
+  const reviewsToSend = (intelOwnsNews || fightHasStarted) ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
   say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${intelOwnsNews ? "0 new (archived — fight-intelligence lifecycle owns this channel)" : reviewsToSend.length + " new"}`);
   for (const r of reviews) say(`    ${reviewsToSend.includes(r) ? "NEW " : "seen"} ${r.meta.about}: ${r.meta.why} (${r.meta.origins ?? "?"} origin)`);
 

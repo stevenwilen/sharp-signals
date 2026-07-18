@@ -91,7 +91,7 @@ async function getPredictions(cfg) {
   const yt = all.filter((s) => s.platform === "youtube");
   console.log(`[live] scanning ${yt.length} channels for new prediction videos since ${sinceIso.slice(0, 10)}...`);
   const videos = await findVideos(yt, sinceIso, (m) => console.log(m));
-  let reused = 0, extracted = 0, extractFailed = 0;
+  let reused = 0, extracted = 0, extractFailed = 0, transcriptFailed = 0;
   for (const v of videos) {
     // A video's transcript never changes, so its picks never change. Re-running Gemini over
     // the same 163 cached videos 6x/day was ~1,000 redundant extractions (~$4/day) to
@@ -99,7 +99,9 @@ async function getPredictions(cfg) {
     const hit = picksCache.get(v.url, FP);
     if (hit) { preds.push(...hit); reused++; continue; }
 
-    const t = await getTranscript(v.url).catch(() => ({}));
+    // A transcript FAILURE is not "no transcript": count it so discovery health can distinguish
+    // "nothing new" from "the fetcher is failing". Uncached -> retried next run either way.
+    const t = await getTranscript(v.url).catch(() => { transcriptFailed++; return {}; });
     if (!t.text) continue;
 
     // A FAILED extraction must never be cached. It would blank this video permanently.
@@ -119,7 +121,17 @@ async function getPredictions(cfg) {
     console.log(`  ${got.length} picks <- ${v.source}: ${v.title.slice(0, 45)}`);
   }
   console.log(`[live] videos: ${reused} from cache (0 cost), ${extracted} newly extracted` +
-    (extractFailed ? `, ${extractFailed} FAILED (uncached, will retry)` : ""));
+    (extractFailed ? `, ${extractFailed} EXTRACT-FAILED (uncached, will retry)` : "") +
+    (transcriptFailed ? `, ${transcriptFailed} TRANSCRIPT-FAILED (will retry)` : ""));
+  // Discovery health receipt: actual counts with a real timestamp, so the health view can tell
+  // "nothing new" from "the discovery/transcript path is failing". Never fatal.
+  try {
+    writeJson(require("path").join(paths.data, "discovery-status.json"), {
+      schemaVersion: 1, at: new Date().toISOString(), channelsScanned: yt.length,
+      videosFound: videos.length, reusedFromCache: reused, newlyExtracted: extracted,
+      extractFailed, transcriptFailed,
+    });
+  } catch (_) {}
 
   // Recent tweets — but NOT every run. The tweet path is the one cost that scales linearly with
   // cadence: it re-pulls 20 tweets x 15 handles (paid twitterapi.io) and re-extracts them with
