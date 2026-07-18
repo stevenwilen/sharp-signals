@@ -138,7 +138,7 @@ console.log("\nLOWERING THE ORIGIN THRESHOLD CANNOT BYPASS LEAKAGE CONTROLS");
   // recomputed rather than filtered, so a naive source grep matches its own documentation and fails a
   // module that is in fact correct — a check that cannot see its own case, in the test this time.
   const raw = fs.readFileSync(path.join(__dirname, "..", "lib", "admission.js"), "utf8");
-  const code = raw.replace(/\/\*[\s\S]*?\*\//g, "").split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
+  const code = raw.replace(/\r/g, "").replace(/\/\*[\s\S]*?\*\//g, "").split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
   ok("lib/admission.js code never reads forecast-rules", !/forecast-rules|RULES\.|magnitudeClass|minIndependentOrigins/.test(code));
   ok("lib/admission.js code never branches on an origin count", !/independentOrigins|originAnalysis/.test(code));
   ok("...and the module does not even require lib/forecast", !/require\(["'][^"']*forecast/.test(code));

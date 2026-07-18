@@ -115,7 +115,7 @@ try {
     // Strip comments before checking, so the prose that DESCRIBES the arming contract ("requires
     // ALERTS_ARMED and SHARP_PRODUCTION=1") is not mistaken for code that sets it.
     const src = fs.readFileSync(path.join(ROOT, "run-attest.js"), "utf8")
-      .replace(/\/\*[\s\S]*?\*\//g, "").split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
+      .replace(/\r/g, "").replace(/\/\*[\s\S]*?\*\//g, "").split("\n").map((l) => l.replace(/\/\/.*$/, "")).join("\n");
     ok("run-attest.js has no code that assigns SHARP_PRODUCTION or ALERTS_ARMED",
       !/process\.env\.SHARP_PRODUCTION\s*=[^=]|ALERTS_ARMED\s*=[^=]/.test(src));
     ok("...and never requires lib/arming at all", !/require\(["'][^"']*arming/.test(src));

@@ -14,25 +14,20 @@ const ledger = require("./lib/pick-ledger");
 const positions = require("./lib/positions");
 const k = require("./lib/kalshi");
 
-// ============================ SAFETY: ALERTS ARE DISARMED ============================
-// A full audit (2026-07-14) found the alert path can currently:
-//   1. match the WRONG SIDE of a fight (lib/match.js surname-only fallback: "Usman over
-//      Du Plessis" resolves to the Du Plessis market) -> a BET on the fighter the source
-//      picked AGAINST;
-//   2. alert on a fight that is IN PROGRESS or ALREADY DECIDED (the live path has no
-//      fight-date guard, and Kalshi leaves markets open until an operator settles them —
-//      a decided fight produces the LARGEST computed edge, so it alerts hardest);
-//   3. re-send the identical BET on every run (no alert ledger) — ~18 copies over a fight
-//      week, which defeats the "never more than 5% on one fight" cap by repetition;
-//   4. size the bet from Gemini's *conviction* score, which is empirically +11 points
-//      overconfident vs. the actual hit rate.
-// Until those are fixed, the pipeline still SCANS, EXTRACTS, GRADES and writes data —
-// it just does not tell a human to put money down. Failure alerts still go out, so the
-// system cannot die quietly. Flip this to true only when Tier-1 is fixed and verified.
-const ALERTS_ARMED = false;
-// =====================================================================================
+// ============================ V1 NEVER SENDS A BUY ALERT ============================
+// V1's guru-rank betting thesis failed out-of-sample (0 of 50 sources survive), and its alert path
+// had four separate defects (wrong-side surname matching, no fight-date guard, no dedup, conviction
+// sizing). Rather than gate that path behind a flag — which the previous audit showed is an invitation
+// to flip it — the path is GONE. V1 records paper positions for research and nothing else; every
+// betting decision now runs through the unified V2 path (run-entertainment-alerts.js) and its single
+// arming gate (lib/arming.js: ALERTS_ARMED + machine attestation + SHARP_PRODUCTION).
+//
+// This module may still Telegram exactly two NON-betting things: the daily PAPER summary (research
+// results, never an instruction) and a pipeline-failure alert (so the system cannot die quietly).
+// There is no ALERTS_ARMED flag here anymore, because there is no buy path for it to guard.
+// ===================================================================================
 
-// Optional: set BANKROLL=500 in .env and alerts will show dollars, not just a %.
+// Optional: set BANKROLL=500 in .env and the paper summary shows dollars, not just a %.
 const BANKROLL = Number(process.env.BANKROLL) || 0;
 
 // The identity of the V1 live-signal gate, stamped onto every position it admits so the row can always
@@ -203,22 +198,10 @@ async function settlePositions(posState) {
   return settled;
 }
 
-// The trimmed buy alert — only the critical, actionable facts: what to buy, price, edge, stake.
-function buildAlert(s0, group, size, ticker) {
-  const cents = (v) => Math.round(v * 100);
-  const edge = size.p - cents(s0.cost);
-  const who = group.length === 1
-    ? `${group[0].source} (n=${group[0].n})`
-    : `${group.length} trusted: ${group.map((s) => s.source).join(", ")}`;
-  const dollars = BANKROLL ? `  (~$${Math.round(BANKROLL * size.pct / 100)} of $${BANKROLL})` : "";
-  const t = new Date().toISOString().slice(11, 16);
-  return [
-    `🥊 BUY  ${s0.fighter}  vs ${s0.opponent}  ·  ${s0.fightDate}`,
-    `Price ${cents(s0.cost)}c → worth ~${size.p}c  (edge +${edge}c)`,
-    `Stake ${size.pct}%${dollars}${size.capped ? "  [capped]" : ""}`,
-    `${who}  ·  ${t} UTC  ·  ${ticker}`,
-  ].join("\n");
-}
+// buildAlert() — the V1 "🥊 BUY" message builder — was DELETED in the arming consolidation. V1 no
+// longer constructs a buy instruction at all; that is the structural guarantee behind "no rejected V1
+// betting alert can reach Telegram". Betting messages are built only by lib/telegram-messages.js on the
+// unified V2 path.
 
 // The once-a-day paper scoreboard: what STARTED (bought, not ended) and what ENDED (with paper
 // P&L + 🟢/🔴). Everything here is explicitly paper — the bot alerts, it does not trade.
@@ -431,7 +414,7 @@ async function run() {
   // ---- BETS: size, record as PAPER positions, and (if armed) alert ----------------------
   // One bet per market from the qualifying signals. We size it and record a PAPER position for it
   // whether or not alerts are armed — that paper record is the honest out-of-sample scoreboard
-  // (lib/positions.js). The ALERTS_ARMED gate only decides whether a human is actually told.
+  // (lib/positions.js). V1 never tells a human to bet — it only records paper positions for research.
   const cents = (v) => Math.round(v * 100);
   const byTicker = {};
   for (const s of trusted) (byTicker[s.ticker] = byTicker[s.ticker] || []).push(s);
@@ -490,34 +473,23 @@ async function run() {
     console.log(`[paper] book: ${pc.active} active, ${pc.withdrawn} withdrawn, ${pc.settled} settled, ${pc.quarantined} quarantined`);
   }
 
-  // ---- TELEGRAM: buy alerts (only when armed) -------------------------------------------
-  if (!ALERTS_ARMED) {
-    console.log(`\n[SAFETY] alerts DISARMED — ${bets.length} bet(s) recorded on paper, none sent.`);
-  } else {
-    const lines = [];
-    for (const { ticker, group, s0, size } of bets) {
-      const gate = alertLedger.shouldSend(ticker, group.map((s) => s.source), size.pct);
-      if (!gate.send) { console.log(`  (already alerted ${s0.fighter}: ${gate.why})`); continue; }
-      lines.push(buildAlert(s0, group, size, ticker));
-      alertLedger.record(ticker, group.map((s) => s.source), size.pct);
-    }
-    if (lines.length) await notify(lines.join("\n\n—\n\n")).catch(() => {});
-    else console.log("  (all bets suppressed: already sent, or too thin)");
-  }
+  // ---- V1 SENDS NO BUY ALERT ------------------------------------------------------------
+  // The paper positions above are recorded for research only. There is deliberately no code here that
+  // turns a V1 signal into a Telegram buy instruction — betting decisions run exclusively through the
+  // unified V2 path. `bets` exists solely to drive recordOpen and the reconcile above.
+  console.log(`\n[V1] ${bets.length} paper position(s) recorded for research. V1 sends no buy alerts.`);
 
-  // ---- DAILY SUMMARY: one message a day — Bought + Ended with paper P&L ------------------
+  // ---- DAILY PAPER SUMMARY: one research message a day — Bought + Ended with paper P&L ---------
   // Not in --watch (that runs many times a day) and not in --mock. Once per calendar day in the
-  // midday window, guarded by meta.lastSummaryDate so it can't double-send. Safe to send even
-  // while disarmed: it reports paper results, it does not tell anyone to place a bet.
+  // midday window, guarded by meta.lastSummaryDate so it can't double-send. This is NOT a betting
+  // instruction — it reports paper results — so it is not gated by the arming mechanism.
   if (posState && !WATCH) {
     const hour = new Date().getUTCHours();
     const today = new Date().toISOString().slice(0, 10);
     const due = process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16);
     if (due && posState.meta.lastSummaryDate !== today) {
       const sum = buildSummary(posState);
-      const status = ALERTS_ARMED
-        ? `Alerts are LIVE. Checked ${fresh.length} picks today.`
-        : `⚠️ Alerts are PAUSED — do not bet from this yet. Checked ${fresh.length} picks today.`;
+      const status = `📎 V1 ARCHIVED RESEARCH — paper only, NOT a betting signal. Checked ${fresh.length} picks today. Betting decisions run through the unified V2 path.`;
       await notify(`${sum.text}\n\n${status}`).catch(() => {});
       positions.markSummarized(posState, sum.opened.map((p) => p.ticker), "open");
       positions.markSummarized(posState, sum.settled.map((p) => p.ticker), "settled");

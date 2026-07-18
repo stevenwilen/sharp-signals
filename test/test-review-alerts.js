@@ -95,10 +95,12 @@ console.log("\nIDENTITY: A BOUT WHOSE TWO HALVES DISAGREE IS REFUSED, NOT RENDER
     { boutId: "UFC-2026-07-18-B01", fight: "Jacobe Smith vs Kevin Holland", appliedAdjustments: [] }] };
   const fcMissing = { card: { eventId: "UFC-2026-07-18" }, forecasts: [] };
 
-  // humanReviewAlerts is module-private, so exercise it the way the runner does.
+  // humanReviewAlerts is module-private, so exercise it the way the runner does. Normalize CRLF first
+  // — git may check the file out with \r\n, and the "\n}\n" boundary below would never match, slicing
+  // the function to garbage.
   const run = (fc) => {
-    const src = fs.readFileSync(path.join(__dirname, "..", "run-entertainment-alerts.js"), "utf8");
-    const body = src.slice(src.indexOf("function humanReviewAlerts"), src.indexOf("\n// ---- TELEGRAM") > 0 ? undefined : undefined);
+    const src = fs.readFileSync(path.join(__dirname, "..", "run-entertainment-alerts.js"), "utf8").replace(/\r/g, "");
+    const body = src.slice(src.indexOf("function humanReviewAlerts"));
     const fn = body.slice(0, body.indexOf("\n}\n") + 3);
     const crypto = require("crypto");
     const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
