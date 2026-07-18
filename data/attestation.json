@@ -1,0 +1,59 @@
+{
+  "writtenBy": "run-attest.js",
+  "card": "UFC-2026-07-18",
+  "eventDate": "2026-07-18",
+  "forecastSealHash": "b38be6deaf89d1bb",
+  "rulesVersion": "7.0.0",
+  "pipelineVersion": "unified-v2",
+  "ranAt": "2026-07-18T00:23:10.378Z",
+  "expiresAt": "2026-07-18T12:23:10.378Z",
+  "ttlHours": 12,
+  "machine": {
+    "platform": "win32",
+    "node": "v24.15.0",
+    "hostFingerprint": "f40c85ad7acd",
+    "ci": false
+  },
+  "stages": [
+    {
+      "stage": "forecast (rules v7.0.0)",
+      "ok": true,
+      "detail": "12 sealed forecasts, sealHash b38be6deaf89d1bb",
+      "artifact": {
+        "path": "data/forecast-2026-07-18.json",
+        "bytes": 70040,
+        "sha256": "ed514ce774a701738426a0c93816b029b6ccf241cdaf2f0cc10f1876b04fee20"
+      },
+      "forecasts": 12
+    },
+    {
+      "stage": "evidence evaluation + admission",
+      "ok": true,
+      "detail": "12 bouts; 12/12 forecasts carry an admission record; claims carry publishedAt",
+      "artifact": {
+        "path": "data/evidence-eval-2026-07-18.json",
+        "bytes": 138216,
+        "sha256": "31755ca8a61463eb103c66fef7b35e4fe3614a7ec7c934e039f39bf5451b61c0"
+      }
+    },
+    {
+      "stage": "verified fee example present",
+      "ok": true,
+      "detail": "2 authenticated $2-$5 taker example(s)",
+      "artifact": {
+        "path": "data/fee-examples.json",
+        "bytes": 6388,
+        "sha256": "3d3f6a2a9666fa251e4175ea86ef4b21e3f3bde4c5a759f11ffe94f3bcfde0e6"
+      }
+    },
+    {
+      "stage": "leakage admission enforced",
+      "ok": true,
+      "detail": "38 claims checked at the admission boundary, 0 rejected"
+    }
+  ],
+  "passed": true,
+  "failures": [],
+  "alertsPermittedByPipeline": true,
+  "note": "Machine-generated. `passed` means every stage ran and produced its artifact — NOT that a bet exists, and NOT that the system is armed. Arming additionally requires ALERTS_ARMED and SHARP_PRODUCTION=1; writing this file arms nothing."
+}
