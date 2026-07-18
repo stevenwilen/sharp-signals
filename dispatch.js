@@ -248,6 +248,14 @@ async function main() {
     run("run-intel.js", intelArgs, { allowFail: true });
   }
 
+  // COMBO ENGINE — runs AFTER the individual recommendation cycle, on the SAME sealed singles. Gated by
+  // COMBO_ENABLED (shadow: records + audit only, no Telegram); --send only when it is promoted. Reads
+  // sealed artifacts, adds no forecast, has no order path. Non-fatal.
+  if (process.env.COMBO_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast"))) {
+    const comboArgs = process.env.COMBO_SEND === "1" ? ["--send"] : [];
+    run("run-combo.js", comboArgs, { allowFail: true });
+  }
+
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
   // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
   // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
