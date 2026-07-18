@@ -239,11 +239,19 @@ async function main() {
   // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
   // any outcome, so a grade can never be an artifact of hindsight.
   if (dueList.includes("grade")) {
-    if (fs.existsSync(path.join(ROOT, forecastFile))) run("run-grade-card.js", [forecastFile, "--write"], { allowFail: true });
+    // Stamp the receipt (and the per-card graded record) ONLY when the grade actually succeeded — a
+    // failed grade must stay due, not look done. A settlement that isn't in yet is exactly that case.
+    let okGrade = false;
+    if (fs.existsSync(path.join(ROOT, forecastFile))) okGrade = run("run-grade-card.js", [forecastFile, "--write"], { allowFail: true });
     const scen = `data/scenarios-ranked-${ed}.json`;
     if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
     run("run-convergence-eval.js", ["--write"], { allowFail: true });   // update the read-only convergence record
-    stamp(receipts, "grade", { card: card.eventId });
+    if (okGrade) {
+      stamp(receipts, "grade", { card: card.eventId });
+      (receipts.gradedCards = receipts.gradedCards || {})[ed] = new Date().toISOString();
+    } else {
+      say("[dispatch] grade did not complete (settlement likely not in) — staying due for the next cycle");
+    }
   }
 
   persistReceipts(receipts);
