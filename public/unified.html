@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sharp Signals — unified board</title>
+<style>
+  :root{--bg:#0b0f14;--card:#141b24;--line:#243040;--fg:#e6edf3;--muted:#8b98a8;--green:#3fb950;--red:#f85149;--gold:#e3b341;--blue:#58a6ff;--amber:#d29922;--panel:#0f151d}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,Segoe UI,Roboto,sans-serif}
+  header{padding:16px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  h1{font-size:18px;margin:0;font-weight:700}h1 .z{color:var(--gold)}
+  .readonly{font-size:12px;color:var(--muted);font-weight:400}
+  .spacer{flex:1}
+  main{padding:20px 24px;max-width:1400px;margin:0 auto}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:18px}
+  h2{font-size:13px;margin:0 0 12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  h3{font-size:13px;margin:14px 0 8px;color:var(--fg)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .kv{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .kv .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .kv .v{font-size:16px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums;word-break:break-word}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em}
+  .p-green{background:#12261a;color:var(--green);border:1px solid #1f5132}
+  .p-red{background:#2d1618;color:var(--red);border:1px solid #6b2529}
+  .p-amber{background:#2b2312;color:var(--amber);border:1px solid #5c4610}
+  .p-blue{background:#111f30;color:var(--blue);border:1px solid #1c3a5c}
+  .p-grey{background:#1b2430;color:var(--muted);border:1px solid var(--line)}
+  .banner{border-radius:10px;padding:12px 14px;margin-bottom:14px;font-weight:600}
+  .b-safe{background:#12261a;border:1px solid #1f5132;color:var(--green)}
+  .b-warn{background:#2b2312;border:1px solid #5c4610;color:var(--amber)}
+  .b-red{background:#2d1618;border:1px solid #6b2529;color:var(--red)}
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+  th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+  .muted{color:var(--muted)}
+  .reason{color:var(--muted);font-size:12px;max-width:520px}
+  a{color:var(--blue)}
+  .note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+  code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--gold);word-break:break-all}
+  details{margin-top:8px}summary{cursor:pointer;color:var(--muted);font-size:12px}
+  .bout{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px}
+  .bout-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .bout-head .name{font-size:15px;font-weight:700}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .box{background:#0b1119;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .box .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+  .big{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums}
+  .sub{font-size:11px;color:var(--muted);margin-top:2px}
+  ul.tight{margin:6px 0 0;padding-left:18px}ul.tight li{margin:3px 0}
+  .ev{font-size:12px;border-left:2px solid var(--line);padding:2px 0 2px 10px;margin:6px 0}
+  .na{color:var(--muted);font-style:italic;font-size:12px}
+  .archived-link{font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Sharp <span class="z">Signals</span> <span class="muted" style="font-weight:400">unified board</span></h1>
+  <div class="readonly" id="readonly-line">Reads sealed artifacts only — does not recalculate decisions.</div>
+  <div class="spacer"></div>
+  <span class="muted archived-link"><a href="/archived-research">V1 archived research →</a></span>
+</header>
+<main>
+  <!-- Safety first, always. A reader learns the system cannot trade before anything else. -->
+  <div class="banner b-safe" id="safety">Loading sealed artifacts…</div>
+
+  <section>
+    <h2>Sealed-artifact provenance</h2>
+    <div class="grid" id="hashes"></div>
+    <div class="note" id="hash-note"></div>
+  </section>
+
+  <section>
+    <h2>Cloud workflow health</h2>
+    <div class="scroll"><table id="workflow"><thead><tr>
+      <th>Stage</th><th>Last run</th><th>Card</th><th>Status</th></tr></thead><tbody></tbody></table></div>
+    <div class="note" id="workflow-note"></div>
+  </section>
+
+  <section>
+    <h2>Attestation</h2>
+    <div class="grid" id="attestation"></div>
+    <div id="att-stages"></div>
+  </section>
+
+  <section>
+    <h2>Decision summary &amp; exposure</h2>
+    <div class="grid" id="summary"></div>
+    <div class="note" id="summary-note"></div>
+  </section>
+
+  <section>
+    <h2>Human review — unverified news (NOT a forecast, NOT an instruction)</h2>
+    <div id="human-review"></div>
+  </section>
+
+  <section>
+    <h2 id="card-title">Current card — every bout</h2>
+    <div id="bouts"></div>
+  </section>
+
+  <section>
+    <h2>Prospective &amp; provisional learning</h2>
+    <div class="grid" id="learning"></div>
+    <div class="note">These are forward-looking measurements. They exist to be graded later, not to justify a bet now.</div>
+  </section>
+
+  <section>
+    <h2>Artifact status — this is a sealed-artifact viewer</h2>
+    <div class="scroll"><table id="artifacts"><thead><tr>
+      <th>Artifact</th><th>File</th><th>Present</th><th>Reproduces</th></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s==null?'':s).replace(/[&<>]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const pct = (x) => x==null ? '<span class="na">—</span>' : (x*100).toFixed(1)+'%';
+const cts = (x) => x==null ? '<span class="na">—</span>' : (x*100).toFixed(1)+'¢';
+const ts  = (s) => s ? esc(String(s).replace('T',' ').slice(0,16)) : '<span class="na">—</span>';
+const kv  = (k,v,cls) => `<div class="kv"><div class="k">${k}</div><div class="v ${cls||''}">${v}</div></div>`;
+const yn  = (b) => b ? '<span class="pill p-green">YES</span>' : '<span class="pill p-red">NO</span>';
+const bad = (t,cls) => `<span class="pill ${cls}">${esc(t)}</span>`;
+
+async function load(){
+  const u = await (await fetch('/api/unified')).json();
+
+  if (!u.ok){
+    $('#safety').className = 'banner b-red';
+    $('#safety').innerHTML = `No sealed forecast to display: ${esc(u.reason||'unknown')}`;
+    if (u.safety) renderSafety(u.safety);
+    return;
+  }
+  $('#readonly-line').textContent = u.readsSealedArtifactsOnly;
+  renderSafety(u.safety);
+
+  // ---- provenance / hashes (prominent) ----
+  const h = u.hashes;
+  $('#hashes').innerHTML = [
+    kv('Forecast seal hash', `<code>${esc(h.forecastSealHash||'—')}</code>`),
+    kv('Forecast reproduces', yn(h.forecastReproduces)),
+    kv('Decision → forecast hash', `<code>${esc(h.decisionForecastHash||'—')}</code>`),
+    kv('Decision matches forecast', h.decisionMatchesForecast==null?'<span class="na">n/a</span>':yn(h.decisionMatchesForecast)),
+    kv('Attestation → forecast hash', `<code>${esc(h.attestationForecastHash||'—')}</code>`),
+    kv('Attestation matches forecast', h.attestationMatchesForecast==null?'<span class="na">n/a</span>':yn(h.attestationMatchesForecast)),
+    kv('All artifacts agree', h.allAgree?'<span class="pill p-green">CONSISTENT</span>':'<span class="pill p-red">MISMATCH</span>'),
+    kv('Card', `${esc(u.card)} · ${esc(u.eventDate)}`),
+    kv('Rules version', esc(u.rulesVersion||'—')),
+  ].join('');
+  $('#hash-note').innerHTML =
+    `Sealed ${ts(u.sealedAt)} · market source ${esc(u.marketSource||'—')}. `
+    + (h.supersedes?`This forecast supersedes <code>${esc(h.supersedes.sealHash||h.supersedes.file||'')}</code>. `:'')
+    + `Every number on this page is copied from a sealed artifact and carries the hash it came from — nothing here is recomputed.`;
+
+  // ---- cloud workflow ----
+  $('#workflow tbody').innerHTML = u.cloudWorkflow.stages.map((s)=>`<tr>
+    <td><b>${esc(s.stage)}</b></td>
+    <td>${ts(s.ranAt)}</td>
+    <td>${esc(s.card||'—')}</td>
+    <td>${s.present?'<span class="pill p-green">RAN</span>':'<span class="pill p-grey">NOT YET</span>'}</td>
+  </tr>`).join('');
+  $('#workflow-note').innerHTML = u.cloudWorkflow.available
+    ? `Last successful run: <b>${ts(u.cloudWorkflow.lastSuccessfulRun)}</b>. "grade" runs after a card settles.`
+    : `<span class="na">Dispatch receipts not yet available: ${esc(u.cloudWorkflow.reason||'')}</span>`;
+
+  // ---- attestation ----
+  const a = u.attestation;
+  if (a.available){
+    $('#attestation').innerHTML = [
+      kv('Passed', a.passed?'<span class="pill p-green">PASSED</span>':'<span class="pill p-red">FAILED</span>'),
+      kv('Bound to this forecast', yn(a.boundToThisForecast)),
+      kv('Ran at', ts(a.ranAt)),
+      kv('Expires at', ts(a.expiresAt)),
+      kv('Expired', a.expired==null?'<span class="na">n/a</span>':(a.expired?'<span class="pill p-red">EXPIRED</span>':'<span class="pill p-green">FRESH</span>')),
+      kv('Card', esc(a.card||'—')),
+    ].join('');
+    $('#att-stages').innerHTML = `<div class="scroll"><table style="margin-top:10px"><thead><tr><th>Stage</th><th>OK</th><th>Detail</th></tr></thead><tbody>`
+      + (a.stages||[]).map((s)=>`<tr><td>${esc(s.stage)}</td><td>${s.ok?'<span class="pill p-green">OK</span>':'<span class="pill p-red">FAIL</span>'}</td><td class="reason">${esc(s.detail||'')}</td></tr>`).join('')
+      + `</tbody></table></div>`
+      + (a.failures&&a.failures.length?`<div class="banner b-red" style="margin-top:10px">Failures: ${a.failures.map(esc).join('; ')}</div>`:'');
+  } else {
+    $('#attestation').innerHTML = kv('Attestation', `<span class="na">${esc(a.reason||'not yet available')}</span>`);
+  }
+
+  // ---- decision summary & exposure ----
+  const ds = u.decisionSummary, ex = u.exposure;
+  const counts = ds.available ? Object.entries(ds.classificationCounts||{}).map(([k,v])=>`${esc(k)}: ${v}`).join(' · ') : '';
+  $('#summary').innerHTML = [
+    kv('Classifications', ds.available?(counts||'<span class="na">none</span>'):'<span class="na">n/a</span>'),
+    kv('Contracts listed', ds.available?esc(JSON.stringify(ds.contractsListed)):'<span class="na">n/a</span>'),
+    kv('Buy instructions', ds.available?ds.buyInstructionsCount:'<span class="na">n/a</span>'),
+    kv('Human review items', ds.available?ds.humanReviewCount:'<span class="na">n/a</span>'),
+    kv('Current exposure', ex.available===false?'<span class="na">n/a</span>':('$'+ex.currentExposure)),
+    kv('Bankroll', ex.bankroll?('$'+ex.bankroll.amount+' '+esc(ex.bankroll.label||'')):'<span class="na">—</span>'),
+    kv('Per-fight / per-card cap', ex.caps?`${(ex.caps.maxFractionPerFight*100)}% / ${(ex.caps.maxFractionPerCard*100)}%`:'<span class="na">—</span>'),
+    kv('Suggested tiers', ex.tiers?Object.values(ex.tiers).map(t=>'$'+t.dollars).join(' / '):'<span class="na">—</span>'),
+  ].join('');
+  $('#summary-note').innerHTML = ex.note ? `<b>${esc(ex.note)}</b>` : '';
+
+  // ---- human review (top-level) ----
+  const hr = u.humanReviewAlerts||[];
+  $('#human-review').innerHTML = hr.length ? hr.map((x)=>`
+    <div class="box" style="margin-bottom:10px">
+      <div><span class="pill p-amber">UNVERIFIED</span> <b>${esc(x.about)}</b> · ${esc(x.topic)} · origins ${esc(x.origins)}</div>
+      <div class="sub" style="margin-top:4px">${esc(x.why)}</div>
+      <details><summary>full alert text</summary><pre style="white-space:pre-wrap;font-size:12px;color:var(--muted)">${esc(x.text)}</pre></details>
+    </div>`).join('')
+    : '<div class="na">No human-review alerts on this card.</div>';
+
+  // ---- bouts ----
+  $('#card-title').textContent = `Current card — every bout (${u.totalBouts}, ${u.boutsWithoutBaseline} without a usable market baseline)`;
+  $('#bouts').innerHTML = u.bouts.map(renderBout).join('');
+
+  // ---- learning / provisional ----
+  const learnCard = (title,obj,extra)=>{
+    if (obj && obj.available) return kv(title, `<span class="pill p-blue">AVAILABLE</span> ${extra||''}`);
+    return kv(title, `<span class="pill p-grey">NOT YET AVAILABLE</span>`, '') + `<div style="grid-column:1/-1" class="note">${esc((obj&&obj.reason)||'')}</div>`;
+  };
+  $('#learning').innerHTML = [
+    learnCard('Prospective learning (ledger)', u.learning),
+    learnCard('Mechanism reliability', u.mechanismReliability, '<span class="pill p-amber">PROVISIONAL</span>'),
+    (u.convergence && u.convergence.available)
+      ? kv('Convergence', `n=${esc(u.convergence.n)} · <span class="pill p-amber">${esc(u.convergence.verdict)}</span>`)
+      : kv('Convergence', `<span class="pill p-grey">NOT READY</span>`) ,
+  ].join('');
+
+  // ---- artifact status ----
+  $('#artifacts tbody').innerHTML = u.artifactStatus.map((x)=>`<tr>
+    <td><b>${esc(x.name)}</b></td><td><code>${esc(x.file)}</code></td>
+    <td>${x.present?'<span class="pill p-green">PRESENT</span>':'<span class="pill p-grey">ABSENT</span>'}</td>
+    <td>${x.reproduces==null?'<span class="na">—</span>':(x.reproduces?'<span class="pill p-green">YES</span>':'<span class="pill p-red">NO</span>')}</td>
+  </tr>`).join('');
+}
+
+function renderSafety(s){
+  const cls = (s.tradingCapability.startsWith('ABSENT') && s.tradingEnabledFlag===false) ? 'b-safe' : 'b-red';
+  $('#safety').className = 'banner '+cls;
+  $('#safety').innerHTML =
+    `ALERTS: <b>${esc(s.alerts)}</b> &nbsp;·&nbsp; TRADING CAPABILITY: <b>${esc(s.tradingCapability)}</b> &nbsp;·&nbsp; PRODUCTION SEND: <b>${s.productionEnabled?'ON':'OFF'}</b> &nbsp;·&nbsp; ORDER PATH: ${esc(s.orderPlacementPath)}`
+    + `<div style="font-weight:400;font-size:12px;margin-top:6px;opacity:.9">${esc(s.standingWarning)}</div>`;
+}
+
+function renderBout(b){
+  const A=b.fighterA, ca=b.finalProbability.central;
+  const centralA = ca ? ca[A] : null;
+  const adj = b.coreAdjustment;
+  const ev = b.evidenceDetail;
+  const statusCls = b.status==='BASELINE UNAVAILABLE'||b.status==='INSUFFICIENT EVIDENCE' ? 'p-grey' : (adj.applied?'p-amber':'p-grey');
+
+  const supporting = ev && ev.supporting.length ? ev.supporting.map((s)=>`
+    <div class="ev"><b>${esc(s.about)}</b> · ${esc(s.topic)} <span class="muted">(${esc(s.direction||'')}${s.origins!=null?', '+s.origins+' origin(s)':''})</span><br>${esc(s.claim)}${s.quote?`<div class="sub">“${esc(s.quote)}”</div>`:''}</div>`).join('')
+    : '<div class="na">no admitted supporting evidence</div>';
+  const contra = ev && ev.contradictory.length ? ev.contradictory.map((c)=>`<div class="ev"><b>${esc(c.about)}</b> · ${esc(c.topic)}<br>${esc(c.claim)}</div>`).join('')
+    : '<div class="na">no contradictory evidence recorded</div>';
+  const condition = ev && ev.currentCondition.length ? ev.currentCondition.map((c)=>`<div class="ev"><b>${esc(c.about)}</b> · ${esc(c.topic)} <span class="muted">(${c.origins!=null?c.origins+' origin(s)':''}${c.chain?', '+esc(c.chain):''})</span><br>${esc(c.claim)}</div>`).join('') : '';
+
+  const adjRows = adj.adjustments.length ? adj.adjustments.map((a)=>`
+    <div class="ev">${esc(a.mechanism)} → favours <b>${esc(a.favours)}</b> · ${esc(a.magnitudeClass)}${a.liftedTo?(' → '+esc(a.liftedTo)):''} · log-odds ${esc(a.appliedLogOdds)} · ${esc(a.independentOrigins)} origin(s)<div class="sub">${esc(a.reason||'')}</div></div>`).join('')
+    : '<div class="na">no adjustment cleared the magnitude rules — the forecast restates the market baseline</div>';
+
+  const hyps = b.creativeHypotheses.length ? b.creativeHypotheses.map((hy)=>`
+    <div class="ev"><b>${esc(hy.text)}</b> ${hy.verificationStatus?bad(hy.verificationStatus,'p-blue'):''}
+      <div class="sub">mechanism: ${esc(hy.mechanism||'—')} · novelty: ${esc(hy.novelty)} · probably priced: ${esc(hy.probablyPriced)} · adjustment: ${esc(hy.adjustment)}</div>
+      ${hy.evidenceAgainst?`<div class="sub">evidence against: ${esc(hy.evidenceAgainst)}</div>`:''}
+      ${hy.falsification?`<div class="sub">falsified if: ${esc(hy.falsification)}</div>`:''}</div>`).join('')
+    : '<div class="na">none — this sealed forecast carries no exploration block</div>';
+
+  const contracts = b.kalshi.contracts.length ? `<div class="scroll"><table style="margin-top:6px"><thead><tr><th>Ticker</th><th>Rank</th><th>Class</th><th>Reason (NO BET)</th></tr></thead><tbody>`
+    + b.kalshi.contracts.map((c)=>`<tr><td><code>${esc(c.ticker)}</code></td><td>${esc(c.rank)}</td><td>${bad(c.classification, c.classification==='ACTIONABLE EXPERIMENTAL'?'p-amber':'p-grey')}</td><td class="reason">${esc(c.reason||'')}</td></tr>`).join('')
+    + `</tbody></table></div>`
+    : '<div class="na">no Kalshi contract mapped (no admissible baseline)</div>';
+
+  const suggested = b.kalshi.suggestedPosition
+    ? `<div class="box"><div class="lbl">Suggested manual position</div><div class="big">$${esc(b.kalshi.suggestedPosition.stake ?? b.kalshi.suggestedPosition.dollars ?? '—')}</div><div class="sub">max acceptable price: ${b.kalshi.maximumAcceptablePrice!=null?cts(b.kalshi.maximumAcceptablePrice):'—'}</div></div>`
+    : '';
+
+  return `<div class="bout">
+    <div class="bout-head">
+      <span class="name">${esc(b.fight)}</span>
+      ${bad(b.status, statusCls)}
+      ${b.verification.hasUnverifiedNews?bad('UNVERIFIED NEWS','p-amber'):''}
+      <span class="muted" style="font-size:12px">${esc(b.boutId)}</span>
+    </div>
+    <div class="cols">
+      <div class="box"><div class="lbl">Live market prior</div>
+        <div class="big">${pct(b.marketPrior?b.marketPrior.probability:null)}</div>
+        <div class="sub">${b.marketPrior?('for '+esc(b.marketPrior.forFighter)+' · tier '+esc(b.marketPrior.tier)+' · '+esc(b.marketPrior.clockBasis)):'no admissible market price'}</div>
+        <div class="sub">${b.marketPrior&&b.marketPrior.sportsbooks.length?esc(b.marketPrior.sportsbooks.join(', ')):''}</div>
+      </div>
+      <div class="box"><div class="lbl">Core adjustment</div>
+        <div class="big">${adj.marketDisagreementPoints!=null?esc(adj.marketDisagreementPoints)+' pts':'<span class="na">—</span>'}</div>
+        <div class="sub">${adj.applied?'evidence moved the forecast off baseline':'no adjustment applied'} · considered-but-zero: ${esc(adj.consideredButZero)}</div>
+      </div>
+      <div class="box"><div class="lbl">Creative adjustment</div>
+        <div class="big">${b.creativeAdjustment.present?esc(b.creativeAdjustment.adjustment):'none'}</div>
+        <div class="sub">${esc(b.creativeAdjustment.note||'')}</div>
+      </div>
+      <div class="box"><div class="lbl">Final probability (for ${esc(A)})</div>
+        <div class="big">${pct(centralA)}</div>
+        <div class="sub">range ${b.finalProbability.range?pct(b.finalProbability.range.low)+'–'+pct(b.finalProbability.range.high):'—'}${b.finalProbability.creativeCentral?(' · creative '+pct(b.finalProbability.creativeCentral[A])):''}</div>
+        <div class="sub">evidence: ${esc(b.evidenceCoverage||'—')} · ${esc(b.independentOrigins)} independent origin(s)</div>
+      </div>
+      ${suggested}
+    </div>
+
+    <h3>Kalshi contracts &amp; NO BET reasons</h3>
+    ${contracts}
+
+    <details>
+      <summary>Evidence, hypotheses &amp; verification</summary>
+      <h3>Core adjustment detail</h3>${adjRows}
+      <h3>Creative hypotheses</h3>${hyps}
+      <h3>Supporting evidence</h3>${supporting}
+      ${condition?('<h3>Current-condition reports</h3>'+condition):''}
+      <h3>Contradictory evidence</h3>${contra}
+      ${b.humanReview.length?('<h3>Unverified news for this bout</h3>'+b.humanReview.map(h=>`<div class="ev"><span class="pill p-amber">UNVERIFIED</span> ${esc(h.about)} · ${esc(h.topic)} · ${esc(h.origins)} origin(s)<div class="sub">${esc(h.why)}</div></div>`).join('')):''}
+      <div class="note">Provenance — forecast <code>${esc(b.provenance.forecastSealHash)}</code>${b.provenance.dataHashes?(' · baseline <code>'+esc(b.provenance.dataHashes.baseline||'—')+'</code> · evidence <code>'+esc(b.provenance.dataHashes.evidenceEval||'—')+'</code>'):''}</div>
+    </details>
+  </div>`;
+}
+
+load().catch((e)=>{ $('#safety').className='banner b-red'; $('#safety').textContent='Dashboard failed to load: '+e.message; });
+</script>
+</body>
+</html>

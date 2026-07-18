@@ -43,9 +43,28 @@ const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
   const p = url.pathname;
 
-  if (p === "/" || p === "/index.html") {
+  // ---- the PRIMARY board: the unified sealed-artifact viewer ----
+  if (p === "/" || p === "/unified.html") {
     res.writeHead(200, { "Content-Type": "text/html", "Cache-Control": "no-store" });
-    return res.end(fs.readFileSync(path.join(paths.root, "public", "index.html")));
+    return res.end(fs.readFileSync(path.join(paths.root, "public", "unified.html")));
+  }
+  // Single JSON object assembled from sealed artifacts. It reads and copies; it never recomputes a
+  // decision. Absent artifacts come back as "not yet available" rather than an error.
+  if (p === "/api/unified") {
+    return json(res, DD.buildUnifiedDashboard(url.searchParams.get("date") || undefined));
+  }
+
+  // ---- ARCHIVED: the V1 shadow/guru board, kept reachable but clearly labelled ----
+  if (p === "/archived-research" || p === "/index.html") {
+    const raw = fs.readFileSync(path.join(paths.root, "public", "index.html"), "utf8");
+    const bannerHtml =
+      '<div style="background:#2b2312;border-bottom:1px solid #5c4610;color:#e3b341;padding:12px 24px;' +
+      'font:700 14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;text-align:center">' +
+      'V1 ARCHIVED RESEARCH — NOT USED FOR CURRENT BETTING DECISIONS &nbsp;·&nbsp; ' +
+      '<a href="/" style="color:#58a6ff">go to the current unified board &rarr;</a></div>';
+    const withBanner = raw.replace("<body>", "<body>\n" + bannerHtml);
+    res.writeHead(200, { "Content-Type": "text/html", "Cache-Control": "no-store" });
+    return res.end(withBanner);
   }
 
   // ---- the primary board ----
