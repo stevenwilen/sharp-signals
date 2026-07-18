@@ -20,6 +20,8 @@
 | `FIGHT_INTEL_ENABLED` | fight-intelligence lifecycle on (records + dashboard) | `1` |
 | `FIGHT_INTEL_SEND` | promote intel lifecycle to production Telegram (else shadow) | `1` |
 | `INTEL_WEB_SEARCH` | grounded-Gemini web research in the researcher | unset (off) |
+| `COMBO_ENABLED` | combo recommendation engine on (records + audit; shadow) | `1` |
+| `COMBO_SEND` | promote the combo engine to production Telegram | unset (shadow) |
 | `BANKROLL` | V1 paper-summary display only (not the real $100 bankroll) | as set |
 
 **Required secrets** (in `.env` locally, GitHub Secrets in cloud; never committed): `TELEGRAM_BOT_TOKEN`,

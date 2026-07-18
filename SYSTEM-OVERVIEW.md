@@ -56,6 +56,22 @@ placement only."* No repeated methodological disclaimers.
   manual recommendations, and confirmed placements are kept structurally separate; a recommendation
   never enters real-bankroll P&L on its own.
 
+## Combos (separate market, read-only)
+
+When there are ≥2 active single BUYs, the **combo engine** (`lib/combo-engine.js`, after the singles
+cycle, behind `COMBO_ENABLED`) checks whether combining them is a properly priced Kalshi combo. A combo
+is a *separate market* (pays YES only if every leg wins), so it gets its own gates: conservative joint
+probability (product of the sealed conservative leg probs, never inflated, with an uncertainty haircut),
+structural correlation classification (same fighter = refuse, same event = no uplift claimed, different
+events = independent, unknowable = fail closed), a maximum entry price strictly below fair value, a
+combo fee flagged *extrapolated* beyond the verified single-leg envelope, and a **separate ≤$2 stake
+that never breaches the $10 card cap**. It emits COMBO BUY / COMBO PRICE TOO HIGH / NO COMBO BET / COMBO
+UNAVAILABLE and records a COMBO BUY as its own manual recommendation ($0 real P&L until you confirm).
+
+**Read-only limitation:** live Kalshi combo pricing needs an RFQ / collection-lookup **write** request,
+which this build refuses (no order path). So a combo is priceable here only if it is already listed as a
+readable market; otherwise the honest output is **COMBO UNAVAILABLE**. The engine never invents a price.
+
 ## Money
 
 A **$100 entertainment bankroll** (money the human is content to lose — not Kelly, not a validated
