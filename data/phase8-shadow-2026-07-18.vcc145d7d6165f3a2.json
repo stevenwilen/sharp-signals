@@ -2,14 +2,14 @@
   "card": "UFC-2026-07-18",
   "phase": 8,
   "mode": "SHADOW",
-  "decisionTimestamp": "2026-07-18T01:17:56.063Z",
+  "decisionTimestamp": "2026-07-17T00:03:28.897Z",
   "armed": false,
   "alertsSent": 0,
   "ordersPlaced": 0,
-  "forecastHash": "b95e8b0844686d09",
+  "forecastHash": "09ff100076ec6692",
   "forecastFile": "forecast-2026-07-18.json",
-  "contractSnapshotHash": "3841c0b49e05b7a5",
-  "snapshotTimestamp": "2026-07-18T01:17:56.109Z",
+  "contractSnapshotHash": "35847e760cc0ab1a",
+  "snapshotTimestamp": "2026-07-17T00:03:29.891Z",
   "versions": {
     "rules": "7.0.0",
     "contracts": "contracts@1.0.0",
@@ -17,7 +17,7 @@
     "portfolio": "portfolio@1.0.0"
   },
   "feeSchedule": {
-    "source": "Kalshi published taker fee schedule, CONFIRMED against seven authenticated UFC Quick Order tickets (2026-07-16): $100 x3 at prices 0.59/0.69/0.89, plus $2/$5/$50/$500 at 0.59 which vary size at a fixed price across a 251x span",
+    "source": "Kalshi published taker fee schedule, CONFIRMED against five authenticated UFC Quick Order tickets (2026-07-16): $100 x3 at prices 0.59/0.69/0.89, plus $50 and $500 at 0.59 which vary size at a fixed price",
     "formula": "fee = ceil_to_cent(rate * contracts * price * (1 - price))  [dollars]",
     "rate": 0.07,
     "note": "quadratic in price: maximal near $0.50, minimal at the wings",
@@ -32,11 +32,11 @@
         0.89
       ],
       "sizeRange": [
-        3.28,
+        82.37,
         823.81
       ],
       "notionalRange": [
-        "$2",
+        "$50",
         "$500"
       ],
       "fills": "single-price fills only",
@@ -44,7 +44,7 @@
         0.06995195,
         0.07000213
       ],
-      "establishes": "taker rate 0.07 and ceil-to-cent rounding, for single-price YES fills on KXUFCFIGHT as of 2026-07-16. Seven authenticated Quick Order tickets reproduce exactly (diff 0.00). The admissible rate interval under ceil is (0.06995195, 0.07000213] — 50ppm wide, containing 0.07 as its only two-decimal value. ceil is discriminated: floor fits 0/7, round-half-up fits 4/7 — it reproduces the four tickets whose exact cents happen to land above the .5 boundary, so ceil remains the ONLY mode fitting all seven, but the $2 and $5 tickets both fit round-half-up and therefore WEAKEN that discriminator rather than strengthening it. LINEARITY IN CONTRACTS IS MEASURED over a 251x span at a fixed price, not assumed: at 0.59, 3.28 -> 8.23 -> 82.37 -> 164.76 -> 823.81 contracts (251.16x end to end) produce exact pre-ceil fees 0.055540 -> 0.139359 -> 1.394771 -> 2.789881 -> 13.949575 (251.16x), refuting every rival exponent k*gross^x for x in 0.8-1.5. The ceil premium is observed across the whole band rather than inferred at its ends: it adds 8.03% of the fee at 3.28 contracts, 0.46% at 8.23, 0.375% at 82.37 and 0.003% at 823.81 — the small-order regime is measured, not extrapolated. The $2 and $5 tickets do NOT tighten the rate (their own intervals are 12603ppm and 5023ppm wide, since a 6-cent fee has coarse resolution); their value is size coverage only.",
+      "establishes": "taker rate 0.07 and ceil-to-cent rounding, for single-price YES fills on KXUFCFIGHT as of 2026-07-16. Five authenticated Quick Order tickets reproduce exactly (diff 0.00). The admissible rate interval under ceil is (0.06995195, 0.07000213] — 50ppm wide, containing 0.07 as its only two-decimal value. ceil is discriminated: floor fits 0/5, round-half-up fits 2/5 — it reproduces only the two tickets whose exact cents happen to land above the .5 boundary. LINEARITY IN CONTRACTS IS MEASURED over a 10x span at a fixed price, not assumed: at 0.59, 82.37 -> 164.76 -> 823.81 contracts (10.0013x end to end) produce exact pre-ceil fees 1.394771 -> 2.789881 -> 13.949575 (10.0013x), refuting every rival exponent k*gross^x for x in 0.8-1.5. The ceil premium is observed rather than inferred: it adds 0.375% of the fee at 82.37 contracts and 0.003% at 823.81.",
       "doesNotEstablish": [
         "MAKER fees. No maker example exists. `makerRate` has been REMOVED rather than left at an untested 0.0 — see below.",
         "Settlement/exercise fees — a separate Kalshi line item the order ticket never displays.",
@@ -52,11 +52,11 @@
         "The P=0.50 peak — the very figure that motivates this gate. Tested p(1-p) is 0.2419/0.2139/0.0979; the 0.2500 maximum is never observed. The '1.75c at 50c' number is interpolated from the fitted model, not measured.",
         "Prices outside 0.59-0.89. Below 0.59 is covered only by the formula's own p<->1-p symmetry, which cannot validate itself.",
         "The NO side. Symmetry makes NO@0.31 identical to YES@0.69 only if Kalshi bills side-agnostically, which no YES-only example tests.",
-        "Sizes below 3.28 contracts, where the ceil premium keeps growing as size shrinks — it is already 8.03% of the fee at the 3.28 floor. NOTE THE UNIT: the floor is in CONTRACTS, so a fixed dollar stake falls out of the envelope as price rises. A $2 entertainment order is inside at 0.59 (3.28 contracts) but OUTSIDE at 0.70/0.80/0.89 (2.78/2.46/2.22 contracts). $3 and $5 orders are inside across the whole 0.59-0.89 band.",
+        "Sizes below 82.37 contracts, where the ceil premium grows without bound as size shrinks: 1 contract at 0.50 costs $0.02 = 4.0% of notional vs 3.5% asymptotically. The premium is measured at the 82.37 floor (0.375% of the fee) but nothing below it is tested. NOTE: at a $5k bankroll the 0.5% cap proposes ~42 contracts, still below this floor and still correctly caveated; a $10k bankroll proposes ~85, which is inside.",
         "Multi-fill ladders — the actual production path. priceOrder applies ONE ceil to the blended average price; every ticket is a single-price fill. Direction is not uniformly conservative.",
         "Any series other than KXUFCFIGHT (other series carry different published rates), or any date other than 2026-07-16."
       ],
-      "examples": "data/fee-examples.json — seven unsubmitted Kalshi UFC Quick Order tickets ($2, $5, $50, $100 x3, $500)",
+      "examples": "data/fee-examples.json — five unsubmitted Kalshi UFC Quick Order tickets ($50 x1, $100 x3, $500 x1)",
       "verificationRecord": "data/fee-verification.json"
     },
     "makerSupported": false,
@@ -104,7 +104,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "124b3bba185fd0cf"
+      "contractHash": "1d0995423fc21cbe"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18ELLAND-AND",
@@ -138,7 +138,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "efdd561ad6c93a8d"
+      "contractHash": "ccf5cb584653dabd"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18DUUSM-USM",
@@ -147,7 +147,7 @@
       "settlementRules": "If Kamaru Usman wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Kamaru Usman",
-      "systemProbability": 0.327,
+      "systemProbability": 0.3275,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -172,7 +172,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "ad9e54d66c6c7aff"
+      "contractHash": "16e7b66fdf654322"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
@@ -181,7 +181,7 @@
       "settlementRules": "If Dricus Du Plessis wins the Du Plessis vs Usman professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Dricus Du Plessis",
-      "systemProbability": 0.673,
+      "systemProbability": 0.6725,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -206,7 +206,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "9474374236553040"
+      "contractHash": "361db795abcfb0a6"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CANDUN-DUN",
@@ -240,7 +240,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "49b8d01bafe1b525"
+      "contractHash": "603dd6150676734e"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CANDUN-CAN",
@@ -274,7 +274,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "f762b29eb4c24ca5"
+      "contractHash": "e13dd33682cb36e0"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HOORAM-RAM",
@@ -283,7 +283,7 @@
       "settlementRules": "If Mitch Ramirez wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Mitch Ramirez",
-      "systemProbability": 0.2546,
+      "systemProbability": 0.255,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -308,7 +308,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "34d7ff9c0406ee55"
+      "contractHash": "e8ccbb8f1c2f41e6"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HOORAM-HOO",
@@ -317,7 +317,7 @@
       "settlementRules": "If Chase Hooper wins the Hooper vs Ramirez professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Chase Hooper",
-      "systemProbability": 0.7454,
+      "systemProbability": 0.745,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -342,7 +342,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "32dcbcf274384362"
+      "contractHash": "6da0583342b58008"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
@@ -351,37 +351,32 @@
       "settlementRules": "If Alberto Montes wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alberto Montes",
-      "systemProbability": 0.4105,
-      "conservativeProbability": 0.3555,
+      "systemProbability": 0.4145,
+      "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
-      "askPrice": 0.41,
-      "executablePrice": 0.41,
-      "fees": 1.7,
-      "slippage": 0,
-      "allInPrice": 0.427,
-      "netExpectedValueCentral": -0.0165,
-      "netExpectedValueConservative": -0.0715,
-      "breakEvenProbability": 0.427,
-      "maximumAcceptablePrice": 0.3555,
-      "availableLiquidity": 189251.9,
-      "fullyFillable": true,
+      "askPrice": null,
+      "executablePrice": null,
+      "fees": null,
+      "slippage": null,
+      "allInPrice": null,
+      "netExpectedValueCentral": null,
+      "netExpectedValueConservative": null,
+      "breakEvenProbability": null,
+      "maximumAcceptablePrice": null,
+      "availableLiquidity": null,
+      "fullyFillable": null,
       "proposedStake": 0,
       "proposedContracts": 0,
       "flatStakeComparison": null,
       "classification": "NO BET",
       "rank": 9,
       "leverageScore": null,
-      "reason": "conservative EV -0.0715 is not favourable after fees and slippage",
-      "forecastStatus": "LIMITED EVIDENCE",
-      "evidenceCoverage": "PARTIALLY COVERED",
-      "mainUncertainty": "stated range 35.5-46.6% for Alberto Montes; evidence PARTIALLY COVERED",
-      "unverifiedEstimatedEdge": {
-        "label": "UNVERIFIED ESTIMATED EDGE",
-        "centralPoints": -1.65,
-        "conservativePoints": -7.15,
-        "caveat": "This system has never demonstrated predictive skill. The only evaluation that showed one is void (BASELINE CONTAMINATED). This is a difference between two numbers, not a proven advantage."
-      },
-      "contractHash": "c8e7055884ffa86e"
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "forecastStatus": null,
+      "evidenceCoverage": null,
+      "mainUncertainty": null,
+      "unverifiedEstimatedEdge": null,
+      "contractHash": "92d45627e23ae915"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MCMMON-MCM",
@@ -390,37 +385,32 @@
       "settlementRules": "If Tommy McMillen wins the McMillen vs Montes professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Tommy McMillen",
-      "systemProbability": 0.5895,
-      "conservativeProbability": 0.5345,
+      "systemProbability": 0.5855,
+      "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
-      "askPrice": 0.61,
-      "executablePrice": 0.61,
-      "fees": 1.67,
-      "slippage": 0,
-      "allInPrice": 0.6267,
-      "netExpectedValueCentral": -0.0372,
-      "netExpectedValueConservative": -0.0922,
-      "breakEvenProbability": 0.6267,
-      "maximumAcceptablePrice": 0.5345,
-      "availableLiquidity": 98729.07,
-      "fullyFillable": true,
+      "askPrice": null,
+      "executablePrice": null,
+      "fees": null,
+      "slippage": null,
+      "allInPrice": null,
+      "netExpectedValueCentral": null,
+      "netExpectedValueConservative": null,
+      "breakEvenProbability": null,
+      "maximumAcceptablePrice": null,
+      "availableLiquidity": null,
+      "fullyFillable": null,
       "proposedStake": 0,
       "proposedContracts": 0,
       "flatStakeComparison": null,
       "classification": "NO BET",
       "rank": 10,
       "leverageScore": null,
-      "reason": "conservative EV -0.0922 is not favourable after fees and slippage",
-      "forecastStatus": "LIMITED EVIDENCE",
-      "evidenceCoverage": "PARTIALLY COVERED",
-      "mainUncertainty": "stated range 35.5-46.6% for Alberto Montes; evidence PARTIALLY COVERED",
-      "unverifiedEstimatedEdge": {
-        "label": "UNVERIFIED ESTIMATED EDGE",
-        "centralPoints": -3.72,
-        "conservativePoints": -9.22,
-        "caveat": "This system has never demonstrated predictive skill. The only evaluation that showed one is void (BASELINE CONTAMINATED). This is a difference between two numbers, not a proven advantage."
-      },
-      "contractHash": "2f5284ee443d26b3"
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting.",
+      "forecastStatus": null,
+      "evidenceCoverage": null,
+      "mainUncertainty": null,
+      "unverifiedEstimatedEdge": null,
+      "contractHash": "d65f3f99937309e5"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RICKLI-RIC",
@@ -429,7 +419,7 @@
       "settlementRules": "If Tabatha Ricci wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Tabatha Ricci",
-      "systemProbability": 0.2077,
+      "systemProbability": 0.2137,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -454,7 +444,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "77107fe1fa587949"
+      "contractHash": "1ed8ac53741f9746"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RICKLI-KLI",
@@ -463,7 +453,7 @@
       "settlementRules": "If Fatima Kline wins the Ricci vs Kline professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Fatima Kline",
-      "systemProbability": 0.7923,
+      "systemProbability": 0.7863,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -488,7 +478,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "fb06d5cdbc86f197"
+      "contractHash": "a778e97d5b3edb2e"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18BASDEL-DEL",
@@ -497,7 +487,7 @@
       "settlementRules": "If Jose Delgado wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Jose Delgado",
-      "systemProbability": 0.4912,
+      "systemProbability": 0.5119,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -522,7 +512,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "8220644fd1ca2e57"
+      "contractHash": "9ab815967a6358f5"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18BASDEL-BAS",
@@ -531,7 +521,7 @@
       "settlementRules": "If Austin Bashi wins the Bashi vs Delgado professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Austin Bashi",
-      "systemProbability": 0.5088,
+      "systemProbability": 0.4881,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -556,7 +546,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "8e1b55cef22caea5"
+      "contractHash": "cdec67dc726f53d4"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18LEBSEO-SEO",
@@ -565,7 +555,7 @@
       "settlementRules": "If Seok Hyun Ko wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Seok Hyun Ko",
-      "systemProbability": 0.6386,
+      "systemProbability": 0.65,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -590,7 +580,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "38a36492ecfae827"
+      "contractHash": "2ea65b64d06d5211"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18LEBSEO-LEB",
@@ -599,7 +589,7 @@
       "settlementRules": "If Jean-Paul Lebosnoyani wins the Lebosnoyani vs Ko professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Jean-Paul Lebosnoyani",
-      "systemProbability": 0.3614,
+      "systemProbability": 0.35,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -624,7 +614,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "fcb6bafbe0c3cba7"
+      "contractHash": "1fa4502458c69f8e"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RODFRA-ROD",
@@ -658,7 +648,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "ccc68295f80a4a93"
+      "contractHash": "dcbce9e5437f9ed0"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18RODFRA-FRA",
@@ -692,7 +682,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "5ff9d7c1144dc4ac"
+      "contractHash": "afdbde91447c303d"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CORNIC-NIC",
@@ -701,7 +691,7 @@
       "settlementRules": "If Stewart Nicoll wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Stewart Nicoll",
-      "systemProbability": 0.1231,
+      "systemProbability": 0.1247,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -726,7 +716,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "2054ae94733e8351"
+      "contractHash": "2373830b9080d787"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18CORNIC-COR",
@@ -735,7 +725,7 @@
       "settlementRules": "If Alden Coria wins the Coria vs Nicoll professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alden Coria",
-      "systemProbability": 0.8769,
+      "systemProbability": 0.8753,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -760,7 +750,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "105fb1b52a057da7"
+      "contractHash": "7baff5c465ed154e"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HARHIN-HIN",
@@ -769,7 +759,7 @@
       "settlementRules": "If Alvin Hines wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Alvin Hines",
-      "systemProbability": 0.5271,
+      "systemProbability": 0.5565,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -794,7 +784,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "309967d08d6b5c94"
+      "contractHash": "e3ef257346314b80"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18HARHIN-HAR",
@@ -803,7 +793,7 @@
       "settlementRules": "If RJ Harris wins the Harris vs Hines professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "RJ Harris",
-      "systemProbability": 0.4729,
+      "systemProbability": 0.4435,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -828,7 +818,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "5d3e6b6d22055bc7"
+      "contractHash": "7d5661d0e3490ce7"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MELBAR-MEL",
@@ -837,7 +827,7 @@
       "settlementRules": "If Anna Melisano wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Anna Melisano",
-      "systemProbability": 0.1759,
+      "systemProbability": 0.1806,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -862,7 +852,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "125e2086a65004a5"
+      "contractHash": "e18d56b923efd71e"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL18MELBAR-BAR",
@@ -871,7 +861,7 @@
       "settlementRules": "If Dione Barbosa wins the Melisano vs Barbosa professional MMA fight originally scheduled for Jul 18, 2026, then the market resolves to Yes.",
       "outcomeType": "FIGHTER_WINS",
       "outcomeSubject": "Dione Barbosa",
-      "systemProbability": 0.8241,
+      "systemProbability": 0.8194,
       "conservativeProbability": null,
       "probabilityModelStatus": "outright winner — priced from the fighter win probability",
       "askPrice": null,
@@ -896,7 +886,7 @@
       "evidenceCoverage": null,
       "mainUncertainty": null,
       "unverifiedEstimatedEdge": null,
-      "contractHash": "ea285d99907741eb"
+      "contractHash": "97e92596fd952612"
     }
   ],
   "portfolioExposure": {
@@ -915,10 +905,10 @@
     "note": "to be filled by a later settlement pass — the decision above is sealed and must not be edited then"
   },
   "immutable": true,
-  "contentHash": "4436e91e8bc825ce",
+  "contentHash": "cc145d7d6165f3a2",
   "supersedes": {
-    "file": "phase8-shadow-2026-07-18.vcc145d7d6165f3a2.json",
-    "hash": "cc145d7d6165f3a2"
+    "file": "phase8-shadow-2026-07-18.va6b53b3165312021.json",
+    "hash": "a6b53b3165312021"
   },
-  "decisionHash": "91154e56def05142"
+  "decisionHash": "8f3def499899d3b8"
 }

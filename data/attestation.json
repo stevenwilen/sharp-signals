@@ -2,38 +2,38 @@
   "writtenBy": "run-attest.js",
   "card": "UFC-2026-07-18",
   "eventDate": "2026-07-18",
-  "forecastSealHash": "b38be6deaf89d1bb",
+  "forecastSealHash": "b95e8b0844686d09",
   "rulesVersion": "7.0.0",
   "pipelineVersion": "unified-v2",
-  "ranAt": "2026-07-18T00:23:10.378Z",
-  "expiresAt": "2026-07-18T12:23:10.378Z",
+  "ranAt": "2026-07-18T01:17:57.580Z",
+  "expiresAt": "2026-07-18T13:17:57.580Z",
   "ttlHours": 12,
   "machine": {
-    "platform": "win32",
-    "node": "v24.15.0",
-    "hostFingerprint": "f40c85ad7acd",
-    "ci": false
+    "platform": "linux",
+    "node": "v20.20.2",
+    "hostFingerprint": "f0f3fcef2999",
+    "ci": true
   },
   "stages": [
     {
       "stage": "forecast (rules v7.0.0)",
       "ok": true,
-      "detail": "12 sealed forecasts, sealHash b38be6deaf89d1bb",
+      "detail": "13 sealed forecasts, sealHash b95e8b0844686d09",
       "artifact": {
         "path": "data/forecast-2026-07-18.json",
-        "bytes": 70040,
-        "sha256": "ed514ce774a701738426a0c93816b029b6ccf241cdaf2f0cc10f1876b04fee20"
+        "bytes": 72764,
+        "sha256": "8f4683a5fb78f8dfd649d632e34a4a1dc21d218fa7f1bef8b71fb30370eb137f"
       },
-      "forecasts": 12
+      "forecasts": 13
     },
     {
       "stage": "evidence evaluation + admission",
-      "ok": true,
-      "detail": "12 bouts; 12/12 forecasts carry an admission record; claims carry publishedAt",
+      "ok": false,
+      "detail": "13 bouts; 12/13 forecasts carry an admission record; claims carry publishedAt",
       "artifact": {
         "path": "data/evidence-eval-2026-07-18.json",
-        "bytes": 138216,
-        "sha256": "31755ca8a61463eb103c66fef7b35e4fe3614a7ec7c934e039f39bf5451b61c0"
+        "bytes": 160133,
+        "sha256": "59e1020157a13782a4c3804d7492493fccacc6223a7dc20ad1740b449d59de23"
       }
     },
     {
@@ -49,11 +49,13 @@
     {
       "stage": "leakage admission enforced",
       "ok": true,
-      "detail": "38 claims checked at the admission boundary, 0 rejected"
+      "detail": "40 claims checked at the admission boundary, 0 rejected"
     }
   ],
-  "passed": true,
-  "failures": [],
-  "alertsPermittedByPipeline": true,
+  "passed": false,
+  "failures": [
+    "evidence evaluation + admission: 13 bouts; 12/13 forecasts carry an admission record; claims carry publishedAt"
+  ],
+  "alertsPermittedByPipeline": false,
   "note": "Machine-generated. `passed` means every stage ran and produced its artifact — NOT that a bet exists, and NOT that the system is armed. Arming additionally requires ALERTS_ARMED and SHARP_PRODUCTION=1; writing this file arms nothing."
 }
