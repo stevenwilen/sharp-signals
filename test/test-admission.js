@@ -30,7 +30,16 @@ if (!fs.existsSync(EV_PATH)) { console.log("  SKIP  no serialized evidence on di
 const ev = JSON.parse(fs.readFileSync(EV_PATH, "utf8"));
 const SEAL = Date.parse("2026-07-18T20:00:00Z");
 const covered = ev.bouts.filter((b) => (b.topics || []).length > 0);
-const be0 = covered[0];
+// PICK A PRISTINE BOUT: the forged-leak assertions below count rejections in ABSOLUTE terms, so the
+// fixture bout must have zero baseline rejections at the test seal. The richer live corpus can carry
+// legitimately-rejected retro-phrased claims on some bouts (the guard erring toward rejection, by
+// design) — those bouts are fine for production and wrong for this fixture.
+const be0 = covered.find((b) => {
+  try {
+    const bt = ev.card.bouts.find((x) => x.boutId === b.boutId);
+    return bt && ADM.admissibleEvidence(bt, b, SEAL).rejected.length === 0;
+  } catch (_) { return false; }
+}) || covered[0];
 const bout0 = ev.card.bouts.find((b) => b.boutId === be0.boutId);
 const clone = (o) => JSON.parse(JSON.stringify(o));
 
@@ -59,11 +68,16 @@ console.log("THE REAL EVIDENCE IS ROUND-TRIPPABLE (the omission that made the ga
 
 console.log("\nPOST-SEAL EVIDENCE IS EXCLUDED");
 {
+  // BASELINE-RELATIVE: the real corpus may itself carry claims the guard legitimately rejects (the
+  // 29-channel corpus includes retro-phrased history like "knocked out in", which the RETRO guard
+  // rejects by design — it errs toward rejection). Assert the forged leak adds EXACTLY ONE rejection
+  // on top of the baseline, and that everything the baseline admits still survives.
+  const r0 = ADM.admissibleEvidence(bout0, be0, SEAL);
   const leak = withClaim(be0, { claim: "A post-seal claim.", channel: "LEAK", publishedAt: "2026-07-19T04:00:00Z" });
   const r = ADM.admissibleEvidence(bout0, leak, SEAL);
-  ok("a claim published after the seal is rejected", r.rejected.length === 1);
-  ok("...for being post-seal", /AFTER the forecast seal/.test(r.rejected[0].why));
-  ok("...and every legitimate claim survives", r.admitted.length === ADM.claimsOf(be0).length);
+  ok("a claim published after the seal is rejected", r.rejected.length === r0.rejected.length + 1, `${r.rejected.length} vs baseline ${r0.rejected.length}`);
+  ok("...for being post-seal", r.rejected.some((x) => /AFTER the forecast seal/.test(x.why)));
+  ok("...and every claim the baseline admits still survives", r.admitted.length === r0.admitted.length);
 
   // Moving the seal earlier must reject MORE, never fewer.
   const early = ADM.admissibleEvidence(bout0, be0, Date.parse("2026-07-01T00:00:00Z"));

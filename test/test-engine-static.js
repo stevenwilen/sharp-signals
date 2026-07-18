@@ -20,7 +20,11 @@ const allTopics = [...dense.bouts, ...sparse.bouts].flatMap((b) => b.topics || [
 const FIX = {
   dense: dense.bouts.find((b) => /McGregor/.test(b.fight)),
   sparse: sparse.bouts.find((b) => b.coverage !== "INSUFFICIENT EVIDENCE"),
-  insufficient: sparse.bouts.find((b) => b.coverage === "INSUFFICIENT EVIDENCE"),
+  // The live candidate index made the corpus broad enough that every bout on the current card now has
+  // coverage — a GOOD failure of this fixture hunt. When no real insufficient bout exists, synthesize
+  // the shape through the REAL evaluator (zero claims -> INSUFFICIENT EVIDENCE), never by hand.
+  insufficient: sparse.bouts.find((b) => b.coverage === "INSUFFICIENT EVIDENCE")
+    || require("../lib/bout-evidence").evaluateBout({ boutId: "SYNTH-B0", a: { name: "Synth A", norm: "synth a" }, b: { name: "Synth B", norm: "synth b" } }, []),
   oneOrigin: allTopics.find((t) => t.origin && t.origin.independentOrigins === 1),
   manyMentionsOneOrigin: allTopics.find((t) => t.origin && t.origin.independentOrigins === 1 && t.origin.totalMentions >= 3),
   multiOrigin: allTopics.find((t) => t.origin && t.origin.independentOrigins >= 5),
