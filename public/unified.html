@@ -278,10 +278,15 @@ async function load(){
       : kv('Convergence', `<span class="pill p-grey">NOT READY</span>`) ,
   ].join('');
 
-  // ---- artifact status ----
+  // ---- artifact status (meaningful lifecycle labels, not a bare ABSENT) ----
+  const artState = (x)=>{
+    if (x.present) return '<span class="pill p-green">PRESENT</span>';
+    if (x.state==='waiting for settlement') return '<span class="pill p-amber">WAITING FOR SETTLEMENT</span>';
+    return '<span class="pill p-red">MISSING</span>';
+  };
   $('#artifacts tbody').innerHTML = u.artifactStatus.map((x)=>`<tr>
     <td><b>${esc(x.name)}</b></td><td><code>${esc(x.file)}</code></td>
-    <td>${x.present?'<span class="pill p-green">PRESENT</span>':'<span class="pill p-grey">ABSENT</span>'}</td>
+    <td>${artState(x)}</td>
     <td>${x.reproduces==null?'<span class="na">—</span>':(x.reproduces?'<span class="pill p-green">YES</span>':'<span class="pill p-red">NO</span>')}</td>
   </tr>`).join('');
 }
