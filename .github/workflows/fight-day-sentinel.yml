@@ -47,6 +47,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           BANKROLL: ${{ vars.BANKROLL }}
           SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
+          EXPLORATION_ENABLED: ${{ vars.EXPLORATION_ENABLED }}
         run: |
           node sentinel.js \
             --minutes=${{ github.event.inputs.minutes || '300' }} \

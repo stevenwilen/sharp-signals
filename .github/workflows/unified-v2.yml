@@ -65,6 +65,7 @@ jobs:
           # SHARP_PRODUCTION gates the actual Telegram SEND. It is a repository VARIABLE (not a secret),
           # set only after review. Absent -> the alert path runs in TEST mode and sends nothing.
           SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
+          EXPLORATION_ENABLED: ${{ vars.EXPLORATION_ENABLED }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \
