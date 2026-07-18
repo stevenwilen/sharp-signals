@@ -223,7 +223,21 @@ console.log("\n9B: THE LEDGER MAY NOT GO SILENT ON A LIVE POSITION");
   // simultaneous problems are ALL reported
   const both = fires(base, { ...base, ask: 0.47, stale: true });
   ok("simultaneous triggers are all reported, not just the first", both.length >= 2, JSON.stringify(both));
-  ok("thirteen triggers are defined", AL.TRIGGERS.length === 13, String(AL.TRIGGERS.length));
+  // A bare count pinned at 13 asserts nothing a reader can act on — it fails the moment a trigger is
+  // added and says only "17". What matters is that the trigger set is exhaustive over the states a
+  // human must hear about, so name them. (The four review-* triggers were added 2026-07-17: every
+  // trigger above inspects a field only a CONTRACT state carries, so a HUMAN REVIEW key that had
+  // spoken once could never speak again — including on origins 1 -> 5. See test/test-review-alerts.js.)
+  const ids = AL.TRIGGERS.map((t) => t.id);
+  const expected = [
+    "first", "price-crossed-max", "price-favourable-again", "forecast-changed", "forecast-superseded",
+    "withdrawn", "became-actionable", "top-contract-changed", "stake-moved", "data-stale",
+    "data-fresh-again", "pipeline-failed", "envelope-left",
+    "review-origins-changed", "review-origins-known", "review-claim-changed", "review-verdict-changed",
+  ];
+  ok("the trigger set is exactly the documented one", JSON.stringify(ids) === JSON.stringify(expected),
+    JSON.stringify(ids.filter((i) => !expected.includes(i)).concat(expected.filter((e) => !ids.includes(e)))));
+  ok("every trigger has a unique id", new Set(ids).size === ids.length);
 }
 
 console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
@@ -334,10 +348,16 @@ console.log("\nARMING: ALERTS AND TRADING ARE NOT THE SAME FLAG");
   ok("arming records when and why", !!ARM.ARMING.armedAt && /human instruction/.test(ARM.ARMING.armedBy));
   ok("arming lists exactly what it permits", ARM.ARMING.permits.length === 3);
   ok("the standing no-edge warning is part of the arming record", /NOT demonstrated a predictive edge/.test(ARM.ARMING.standingWarning));
-  // prerequisites are re-checked from disk, not remembered
+  // Prerequisites are re-checked from disk, not remembered.
+  //
+  // This assertion used to read `pre.ok === true` and it was WRONG — not stale, wrong. It called
+  // checkArmingPrerequisites() with no card, which is the one call the gate must refuse: an
+  // attestation is only evidence about the card it names, and data/phase9-fresh-run.json describes a
+  // 13-bout run while the sealed artifacts for that same card hold 12. The test passed because the
+  // gate asked no question the file could fail. See test/test-arming-guards.js for the full refusal set.
   const pre = ARM.checkArmingPrerequisites();
-  ok("prerequisites are re-checked at runtime and pass", pre.ok === true, JSON.stringify(pre.blockers));
-  ok("...and the $2-$5 fee tickets are found", pre.smallOrderTickets >= 2, String(pre.smallOrderTickets));
+  ok("a prerequisite check with no card is REFUSED", pre.ok === false);
+  ok("...and the $2-$5 fee tickets are still found", pre.smallOrderTickets >= 2, String(pre.smallOrderTickets));
   // the structural guarantee
   ok("assertNoTradingPath passes because no write call exists", ARM.assertNoTradingPath() === true);
 }

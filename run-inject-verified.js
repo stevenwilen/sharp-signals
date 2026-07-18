@@ -14,7 +14,41 @@ require("./lib/env");
 const fs = require("fs");
 const VN = require("./lib/verified-news");
 const F = require("./lib/forecast");
+const N = require("./lib/names");
 const { writeJson } = require("./lib/store");
+
+// IDENTITY. A block is matched to a bout by boutId and nothing else, and boutId is a POSITIONAL index
+// (lib/target-card.js:68) over an array that renumbers whenever a bout leaves the card. So a block
+// naming the right fighter and a stale boutId lands, silently, on a bout that fighter is not in —
+// attaching "Usman's knee is hurt" to Ramirez vs Hooper with no complaint. On 2026-07-17 three HUMAN
+// REVIEW alerts shipped with exactly that mis-bind, and every one of their boutIds EXISTS, so the
+// `if (!bout)` guard could not see any of them.
+//
+// The bout knows who is fighting. Ask it. This is the check lib/contracts.js:265-268 already makes on
+// the contract path ("matches neither fighter in the mapped bout") — reused, not reinvented.
+//
+// A bare surname (nameScore 1) is deliberately NOT enough: two fighters share a surname more often
+// than you would think, and "Usman over Du Plessis" scores 1 against Du Plessis. lib/names.js:50-52
+// says a 1 must be corroborated or refused; here there is nothing to corroborate it with, so refuse.
+function fighterIsInBout(about, bout) {
+  const fight = bout && bout.fight;
+  if (!about || !fight) return { ok: false, why: `bout ${bout && bout.boutId} carries no fight name — cannot confirm "${about}" is in it` };
+  const sides = String(fight).split(/\s+vs\.?\s+/i).map((s) => s.trim()).filter(Boolean);
+  if (sides.length !== 2) return { ok: false, why: `cannot read two fighters out of "${fight}" — refusing rather than guessing which side "${about}" is` };
+  const scores = sides.map((s) => N.nameScore(s, about));
+  const best = Math.max(...scores);
+  // Ambiguity is a refusal, not a coin flip. nameScore returns 2 when every token of `about` appears,
+  // so a SINGLE-token about ("Silva") scores 2 against "Bruno Silva" by its surname alone — and MMA
+  // cards do run Silva vs Silva. If both sides answer to the name we cannot say which one the claim is
+  // about, and picking the higher score would just be guessing quietly. lib/match.js:103-116 refuses
+  // the same shape on the pick path.
+  if (scores[0] >= 2 && scores[1] >= 2) {
+    return { ok: false, why: `"${about}" matches BOTH fighters in "${fight}" — ambiguous, refusing rather than guessing a side` };
+  }
+  if (best >= 2) return { ok: true, side: scores[0] >= 2 ? "a" : "b" };
+  if (best === 1) return { ok: false, why: `"${about}" matches only a surname in "${fight}" — a surname alone is never sufficient (lib/names.js:50)` };
+  return { ok: false, why: `"${about}" is in neither side of "${fight}" — this block names a fighter who is not in bout ${bout.boutId}` };
+}
 
 let LINES = 0;
 const say = (s) => { LINES++; process.stdout.write(s + "\n"); };
@@ -46,11 +80,18 @@ function main() {
     for (const n of r.notes) say(`     note: ${n}`);
     say(`     what that clears: ${r.wouldClear}`);
     const bout = ev.bouts.find((x) => x.boutId === r.boutId);
-    if (!bout) { say(`     but bout ${r.boutId} is not in this evidence file — nothing to attach it to`); continue; }
+    if (!bout) { say(`     but bout ${r.boutId} is not in this evidence file — nothing to attach it to`); r.identityOk = false; continue; }
+    const id = fighterIsInBout(r.claim.about, bout);
+    r.identityOk = id.ok;
+    if (!id.ok) { say(`     ⛔ IDENTITY REFUSED: ${id.why}`); continue; }
+    say(`     bout: ${bout.fight} — "${r.claim.about}" confirmed on side ${id.side}`);
     say(`     bout currently: coverage ${bout.coverage}, ${(bout.topics || []).length} topic(s)`);
   }
 
-  const admissible = results.filter((x) => x.result.ok && x.result.admissible);
+  // identityOk is part of admissibility, not a warning printed beside it. The dry run used to warn
+  // while the --write path silently dropped (`if (!bout) continue`) — the safer mode told you and the
+  // mutating one did not.
+  const admissible = results.filter((x) => x.result.ok && x.result.admissible && x.result.identityOk);
   say(`\n[2] ${admissible.length} of ${blocks.length} block(s) carry evidence the engine can use`);
   if (!admissible.length) { say(`[2] nothing to inject. The forecast is unchanged.`); return 0; }
 
@@ -66,9 +107,15 @@ function main() {
   // Attach as topics on the bout, in the shape the evaluator already emits, so the forecaster needs
   // no special case for human-supplied evidence: it is evidence, and it is gated like evidence.
   let added = 0;
+  const attached = [];
   for (const { result } of admissible) {
     const bout = ev.bouts.find((x) => x.boutId === result.boutId);
-    if (!bout) continue;
+    // Belt and braces: `admissible` already required identityOk, but a silent `continue` here is how
+    // the tally and the file disagreed in the first place. If this ever fires, it is a bug, not a skip.
+    if (!bout || !fighterIsInBout(result.claim.about, bout).ok) {
+      fail(`block for ${result.boutId} passed admissibility but failed identity at write time — refusing to write a partial injection`);
+    }
+    attached.push(result);
     bout.topics = bout.topics || [];
     bout.topics.push({
       topic: result.claim.evidenceType,
@@ -86,11 +133,16 @@ function main() {
     added++;
   }
   const out = evPath.replace(/\.json$/, ".with-verified.json");
-  ev.verifiedInjections = admissible.map((x) => ({
-    boutId: x.result.boutId, verdict: x.result.verdict, origins: x.result.origins,
-    originIds: x.result.originIds, sources: x.result.claim.sources, injectedAt: new Date().toISOString(),
+  // Built from what ACTUALLY attached, not from what was admissible. These were different sets: the
+  // ledger was mapped over `admissible` while `added` counted only the blocks that found a bout, so
+  // ev.verifiedInjections could record an injection that never happened — a tally edited by hand
+  // rather than recomputed, in the tally itself.
+  ev.verifiedInjections = attached.map((r) => ({
+    boutId: r.boutId, verdict: r.verdict, origins: r.origins,
+    originIds: r.originIds, sources: r.claim.sources, injectedAt: new Date().toISOString(),
     humanSupplied: true,
   }));
+  if (ev.verifiedInjections.length !== added) fail(`internal: ledger says ${ev.verifiedInjections.length} injections but ${added} attached — refusing to write a record that disagrees with itself`);
   writeJson(out, ev);
   say(`\n  wrote ${out} — ${added} verified topic(s) attached, each marked humanSupplied`);
   say(`  now re-run the forecast against it. The magnitude rules decide; this script does not.`);

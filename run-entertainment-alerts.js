@@ -16,6 +16,7 @@
 require("./lib/env");
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const k = require("./lib/kalshi");
 const C = require("./lib/contracts");
 const V = require("./lib/contract-value");
@@ -29,16 +30,25 @@ const { writeJson } = require("./lib/store");
 let LINES = 0;
 const say = (s) => { LINES++; process.stdout.write(s + "\n"); };
 const fail = (m) => { say(`\nFATAL: ${m}`); process.exit(2); };
+const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
 
 const ARM = require("./lib/arming");
 
 // Alerts are armed ONLY if the flag says so AND the evidence for it still exists. The prerequisites
 // are re-read every run: an armed flag whose evidence has gone missing is worse than a disarmed one,
 // because it looks like a decision somebody made rather than a file that got deleted.
-function armingGate() {
-  const pre = ARM.checkArmingPrerequisites();
+// A production send requires THREE independent things to all be true, and they are deliberately
+// separate so no single act can arm the system:
+//   1. ALERTS_ARMED    — the alert path is wired and meant to be usable (committed code).
+//   2. a machine attestation matching THIS card AND this sealed forecast (data/attestation.json).
+//   3. SHARP_PRODUCTION=1 in the environment — the explicit human "go", set only after review, and
+//      living outside the repo so neither a generator nor a commit can flip it.
+// Generating the attestation satisfies (2) and touches neither (1) nor (3): it cannot arm anything.
+function armingGate(cardId, forecastHash) {
+  const pre = ARM.checkArmingPrerequisites(cardId, forecastHash);
   const blockers = [...pre.blockers];
   if (!ARM.ARMING.ALERTS_ARMED) blockers.push("ALERTS_ARMED is false in lib/arming.js");
+  if (!ARM.productionEnabled()) blockers.push("SHARP_PRODUCTION is not set — production sends require the explicit environment switch, set only after review");
   ARM.assertNoTradingPath();   // throws rather than trades if an order path ever appears
   return { armed: blockers.length === 0, blockers, prerequisites: ARM.ARMING.prerequisites };
 }
@@ -50,26 +60,52 @@ function armingGate() {
 function humanReviewAlerts(evalPath, fc) {
   if (!evalPath || !fs.existsSync(evalPath)) return [];
   const ev = JSON.parse(fs.readFileSync(evalPath, "utf8"));
-  const out = [];
+  const out = [], refused = [];
   for (const b of ev.bouts || []) {
     for (const r of b.reviewItems || []) {
       const f = fc.forecasts.find((x) => x.boutId === b.boutId);
-      const applied = f ? (f.appliedAdjustments || []).filter((a) => a.finalAppliedLogOdds > 0) : [];
-      const moved = f && f.marketDisagreementPoints ? Math.abs(f.marketDisagreementPoints) : 0;
+
+      // IDENTITY, BEFORE ANYTHING ELSE. The fight NAME comes from the forecast and the claim comes
+      // from the eval bout, joined on boutId alone. boutId is a positional index (lib/target-card.js:68)
+      // over an array that renumbers whenever a bout drops off the card, so the two sides of this join
+      // can silently describe different fights. On 2026-07-17 they did: three HUMAN REVIEW messages
+      // were sent binding a Kevin Holland withdrawal rumour to Kamaru Usman's bout, for a Holland fight
+      // that was not on the card at all.
+      //
+      // b.fight was on the object being iterated the entire time. Nothing compared them. This is the
+      // same check lib/contracts.js:265-268 already makes on the contract path — a mapping whose
+      // subject matches neither fighter in the bout is refused, not rendered.
+      if (f && b.fight && f.fight !== b.fight) {
+        refused.push(`${b.boutId}: eval says "${b.fight}", forecast says "${f.fight}" — refusing to alert on a bout whose two halves disagree`);
+        continue;
+      }
+      if (!f) {
+        refused.push(`${b.boutId}: no forecast for this bout — refusing rather than alerting on a bout the forecast never saw`);
+        continue;
+      }
+
+      const applied = (f.appliedAdjustments || []).filter((a) => a.finalAppliedLogOdds > 0);
+      const moved = f.marketDisagreementPoints ? Math.abs(f.marketDisagreementPoints) : 0;
       out.push({
         boutId: b.boutId, key: `review|${b.boutId}|${r.topic}|${String(r.about)}`,
         text: TM.humanReview({
-          fight: f ? f.fight : b.boutId,
+          fight: f.fight,
           about: r.about, claim: r.example, why: r.why, origins: r.origins, topic: r.topic,
           source: "a YouTube preview transcript collected for this card",
           forecastEffect: applied.length === 0
             ? "it applied no adjustment at all — a one-origin report cannot clear the magnitude rules, so this moved nothing"
             : `the forecast moved ${moved.toFixed(2)} points on this bout, from ${applied.length} mechanism(s) — not from this report`,
         }),
-        meta: { about: r.about, topic: r.topic, origins: r.origins, why: r.why },
+        // claimHash lets the ledger notice that DIFFERENT news arrived about the same fighter and
+        // topic. The key omits the claim text on purpose (a re-worded transcript must not re-send), so
+        // without this a withdrawal rumour is swallowed because a knee rumour was already sent.
+        meta: { about: r.about, topic: r.topic, origins: r.origins, why: r.why,
+                claimHash: sha(String(r.example || "")), fight: b.fight || null },
       });
     }
   }
+  // Never silent. A refusal that only a reader of the console would notice is how the last one shipped.
+  for (const m of refused) say(`  ⛔ REFUSED ${m}`);
   return out;
 }
 
@@ -77,9 +113,12 @@ async function main() {
   const fPath = process.argv[2];
   if (!fPath || !fs.existsSync(fPath)) fail("usage: node run-entertainment-alerts.js <forecast.json> [--send]");
   const wantSend = process.argv.includes("--send");
-  const gate = armingGate();
 
+  // Read the forecast BEFORE the gate: the gate cannot decide whether the freshness attestation is
+  // about this card until it knows which card this is.
   const fc = JSON.parse(fs.readFileSync(fPath, "utf8"));
+  const gate = armingGate(fc.card && fc.card.eventId, fc.sealHash);
+
   const nowTs = Date.now();
   say(`ENTERTAINMENT ALERTS — ${fc.card.eventId}`);
   say(`  bankroll $${EN.BANKROLL.amount} (${EN.BANKROLL.label}) · tiers ${Object.values(EN.TIERS).map((t) => `${t.fraction * 100}%=$${t.dollars}`).join(" / ")}`);
@@ -91,7 +130,16 @@ async function main() {
 
   // ---- contract ranking across EVERY contract Kalshi lists on each fight ----
   say(`\n[1] inspecting every contract Kalshi lists for this card ...`);
-  const markets = await k.marketsAll({ series_ticker: "KXUFCFIGHT", status: "open" }).catch((e) => fail(`kalshi: ${e.message}`));
+  const rawMarkets = await k.marketsAll({ series_ticker: "KXUFCFIGHT", status: "open" }).catch((e) => fail(`kalshi: ${e.message}`));
+  // Evaluate only genuine fight-OUTCOME markets. This board is already KXUFCFIGHT-only, but the guard
+  // is explicit so a future discovery expansion cannot price a KXFIGHTMENTION commentary prop — same
+  // event codes, strikes named "Knockout"/"Decision", resolves on what the announcers say — as a bet.
+  const disc = C.admissibleFightMarkets(rawMarkets);
+  const markets = rawMarkets.filter((m) => disc.admitted.some((a) => a.ticker === m.ticker));
+  if (disc.rejected.length) {
+    say(`  refused ${disc.rejected.length} non-outcome contract(s):`);
+    for (const r of disc.rejected.slice(0, 5)) say(`     ⛔ ${r.ticker}: ${r.reason}`);
+  }
   const snapshotTs = Date.now();
   const mapped = [];
   for (const m of markets) {
