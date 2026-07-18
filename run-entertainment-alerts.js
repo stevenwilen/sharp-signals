@@ -169,6 +169,10 @@ async function main() {
 
   say(`\n[2] valuing and ranking (executable price, fees, slippage, liquidity, uncertainty, correlation) ...`);
   const valued = [];
+  const explorationCandidates = [];
+  const XP = require("./lib/exploration");
+  const explorationOn = XP.enabled();
+  if (explorationOn) say(`[2] EXPLORATION lane ENABLED — creative speculative positions will be evaluated (capped, $3/$4/$5)`);
   for (const c of mapped) {
     const f = fc.forecasts.find((x) => x.boutId === c.boutId);
     let ob = null;
@@ -177,6 +181,14 @@ async function main() {
     v.contract = c;
     v.mechanisms = f && f.appliedAdjustments ? [...new Set(f.appliedAdjustments.filter((a) => a.finalAppliedLogOdds > 0).map((a) => a.mechanism))] : [];
     valued.push(v);
+    // EXPLORATION lane: value the SAME contract against the creative probability, reusing every
+    // mechanical gate (fees, stale-baseline, liquidity, identity) inside valueContract. Only when the
+    // bout carries an active creative hypothesis.
+    if (explorationOn && f && f.exploration && f.exploration.activeHypotheses > 0) {
+      const vx = V.valueContract(c, f, ob, { contracts: 100, nowTs, maxSnapshotAgeMs: 30 * 60 * 1000, useExploration: true });
+      vx.contract = c;
+      explorationCandidates.push({ valued: vx, boutId: c.boutId, ticker: c.ticker, exploration: f.exploration });
+    }
   }
   const ranked = P.rankContracts(valued, { contracts: 100 });
   const counts = {};
@@ -244,6 +256,60 @@ async function main() {
     messages.push({ boutId, ticker: top.ticker, wouldSend: decision.send, why: decision.why, text: msg, state });
   }
 
+  // ---- EXPLORATION LANE positions -------------------------------------------------------------
+  // Classify + size the creative candidates, apply the $5/fight $10/card exposure caps, and build a
+  // buy instruction for each tiered position. They flow through the SAME alert ledger and Telegram
+  // path as core, so dedup / price-cross / withdrawal triggers apply identically.
+  const explorationMessages = [];
+  if (explorationOn && explorationCandidates.length) {
+    const sized = explorationCandidates.map((cand) => ({ ...cand, sized: XP.classifyAndSize(cand.valued, cand.exploration) }));
+    // Keep the single best-tier candidate per bout, then cap exposure.
+    const bestByBout = {};
+    for (const s of sized) {
+      if (!s.sized || s.sized.stake <= 0) continue;
+      const cur = bestByBout[s.boutId];
+      if (!cur || s.sized.stake > cur.sized.stake) bestByBout[s.boutId] = s;
+    }
+    const { positions: capped2, cardExposure } = XP.applyExposureCaps(Object.values(bestByBout));
+    say(`\n[3b] EXPLORATION positions: ${capped2.filter((p) => p.sized.stake > 0).length} tiered, card exposure $${cardExposure} (cap $10)`);
+    for (const p of capped2) {
+      if (!p.sized || p.sized.stake <= 0) continue;
+      const f = fc.forecasts.find((x) => x.boutId === p.boutId);
+      const v = p.valued;
+      const msg = TM.buyInstruction({
+        fight: f.fight, ticker: p.ticker, contractWording: (v.contract && v.contract.contractWording) || p.ticker,
+        ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
+        percentOfBankroll: p.sized.fraction * 100, bankroll: EN.BANKROLL.amount,
+        stake: p.sized.stake, contracts: v.maxFillable != null ? Math.floor(p.sized.stake / (v.allInPrice || 1)) : null,
+        tierLabel: p.sized.tier,
+        contractsCompared: 1,
+        whyTopRanked: `EXPLORATION lane — creative speculative. ${p.sized.reason}`,
+        why: `${p.sized.hypothesis} · why it may be underpriced: ${p.sized.probablyPriced ? "the market may still be digesting it" : "not yet widely public"}`,
+        against: `${p.sized.evidenceAgainst}. CREATIVE SPECULATIVE — one uncertain hypothesis, capped, prospectively graded, UNPROVEN.`,
+        doNotPlaceIf: [
+          `the ask is above ${(v.maximumAcceptablePrice * 100).toFixed(1)}¢ when you look`,
+          "the hypothesis is disconfirmed before first bell",
+          "the fight has started or the market is suspended",
+          "you cannot fill the whole size at or under the maximum price",
+        ],
+        rangeLow: f.systemRange ? f.systemRange.low : null, rangeHigh: f.systemRange ? f.systemRange.high : null,
+        conservativeValuePoints: +((p.sized.conservativeEV) * 100).toFixed(2),
+        evidenceCoverage: f.evidenceCoverage || "unknown",
+        modelStatus: `EXPLORATION (${p.sized.verificationStatus}, ${p.sized.independentOrigins} origin(s))`,
+        snapshotTimestamp: new Date(snapshotTs).toISOString(),
+        feeGate: { withinVerifiedEnvelope: true },
+      });
+      const key = `explore|${p.boutId}|${p.ticker}`;
+      const state = { ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
+        forecastHash: fc.sealHash, classification: p.sized.tier, lane: "exploration",
+        stakePercent: p.sized.fraction * 100, topTicker: p.ticker,
+        stale: false, pipelineFailed: false, withinEnvelope: true };
+      const decision = AL.shouldSend(key, state);
+      explorationMessages.push({ boutId: p.boutId, ticker: p.ticker, key, wouldSend: decision.send, why: decision.why, text: msg, state, lane: "exploration" });
+    }
+    for (const m of explorationMessages) messages.push(m);
+  }
+
   // ---- delivery ----
   // The transport is loaded ONLY here, ONLY when the gate passed, --send was asked for, and there is
   // actually something to say. An earlier version printed "mode: SEND" while importing no transport
@@ -267,7 +333,7 @@ async function main() {
     delivery.transport = "telegram (manual instruction + human review)";
     for (const m of toSend) {
       delivery.attempted++;
-      try { await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++; AL.record(`${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
+      try { await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++; AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION"); }
       catch (e) { say(`  ⚠ delivery failed for ${m.ticker}: ${e.message}`); }
     }
     for (const r of reviewsToSend) {

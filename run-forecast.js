@@ -12,6 +12,7 @@ const crypto = require("crypto");
 const F = require("./lib/forecast");
 const L = require("./lib/leakage-guard");
 const ADM = require("./lib/admission");
+const XP = require("./lib/exploration");
 const E = require("./lib/evidence-eval");
 const MB = require("./lib/market-baseline");
 const O = require("./lib/odds-history");
@@ -211,6 +212,14 @@ async function main() {
 
   say(`[stage 3] forecasting ...`);
   const forecasts = [];
+  // Provisional per-mechanism reliability from post-fight grading — read once, blended (capped) into
+  // the creative lane. Absent on a cold start; then the creative lane simply uses neutral weights.
+  const mechReliability = (() => {
+    try { return (JSON.parse(fs.readFileSync(path.join(paths.root, "data", "mechanism-reliability.json"), "utf8")).mechanisms) || []; }
+    catch { return []; }
+  })();
+  if (XP.enabled()) say(`[stage 3] EXPLORATION lane ENABLED — creative adjustments will be computed (capped, separate from core)`);
+
   let leakRejected = 0;
   for (const bout of ev.card.bouts) {
     let be = ev.bouts.find((x) => x.boutId === bout.boutId);
@@ -278,6 +287,29 @@ async function main() {
     const treeErrs = F.verifyTree(tree, A, B);
     if (treeErrs.length) fail(`incoherent outcome tree for ${A} vs ${B}: ${treeErrs.join("; ")}`);
 
+    // ---- EXPLORATION LANE (creative) ----------------------------------------------------------
+    // Runs on the SAME admitted evidence `be` (so leakage/identity/malformed protection is inherited),
+    // with the SAME origin counting (5 channels = 1 origin). Produces a CAPPED creative adjustment,
+    // stored SEPARATELY from the core. Off unless EXPLORATION_ENABLED=1. Core `pSys` is never touched.
+    let exploration = null;
+    if (XP.enabled() && be.coverage !== "INSUFFICIENT EVIDENCE") {
+      const ca = XP.creativeAdjustment(be, A, B, { reliabilityRecords: mechReliability });
+      const creativeA = XP.creativeCentral(pSys, ca.creativeLogOddsTowardA);
+      exploration = {
+        lane: "exploration",
+        marketPriorA: +pMkt.toFixed(4),
+        coreAdjustmentLogOdds: +net.toFixed(4),
+        coreCentralA: +pSys.toFixed(4),
+        creativeAdjustmentLogOddsTowardA: ca.creativeLogOddsTowardA,
+        creativeCentralA: creativeA,
+        creativeMovePoints: +((creativeA - pSys) * 100).toFixed(2),
+        capped: ca.capped, cap: ca.cap,
+        activeHypotheses: ca.activeHypotheses,
+        hypotheses: ca.hypotheses,
+        label: "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core.",
+      };
+    }
+
     const status = be.coverage === "INSUFFICIENT EVIDENCE" ? "INSUFFICIENT EVIDENCE"
       : (be.reviewItems || []).length && applied.length ? "HUMAN REVIEW REQUIRED"
       : ["THINLY COVERED", "PARTIALLY COVERED"].includes(be.coverage) ? "LIMITED EVIDENCE" : "COMPLETE";
@@ -295,6 +327,7 @@ async function main() {
       outcomeTree: tree, treeCoherent: true,
       appliedAdjustments: applied, consideredButZero: adjustments.filter((a) => a.finalAppliedLogOdds === 0).length,
       netLogOdds: +net.toFixed(4), capNote,
+      exploration,   // the creative lane's separate, capped adjustment + hypotheses (null unless enabled)
       uncertainty: { halfWidthPoints: unc.halfWidthPoints, primaryDrivers: unc.drivers,
         conditionsThatWouldMove: (be.reviewItems || []).slice(0, 3).map((r) => r.why) },
       evidenceCoverage: be.coverage, independentOrigins: be.independentOrigins, originBreakdown: be.originBreakdown,
