@@ -285,8 +285,19 @@ async function main() {
         tierLabel: p.sized.tier,
         contractsCompared: 1,
         whyTopRanked: `EXPLORATION lane — creative speculative. ${p.sized.reason}`,
-        why: `${p.sized.hypothesis} · why it may be underpriced: ${p.sized.probablyPriced ? "the market may still be digesting it" : "not yet widely public"}`,
-        against: `${p.sized.evidenceAgainst}. CREATIVE SPECULATIVE — one uncertain hypothesis, capped, prospectively graded, UNPROVEN.`,
+        // Reasons are a LIST of short bullets, never one concatenated sentence. Rendering a section
+        // as bullets over a string iterates it character by character.
+        why: [
+          p.sized.hypothesis,
+          `${p.sized.independentOrigins} independent origin(s) · ${p.sized.verificationStatus}${p.sized.novelty === "NOVEL" ? " · NOVEL" : ""}`,
+          p.sized.probablyPriced ? "May be underpriced: the market may still be digesting it" : "May be underpriced: not yet widely public",
+        ],
+        against: [
+          p.sized.evidenceAgainst && p.sized.evidenceAgainst !== "none recorded"
+            ? `Evidence against: ${p.sized.evidenceAgainst}`
+            : "The hypothesis is unverified — one origin, no corroboration",
+          "CREATIVE SPECULATIVE — one uncertain hypothesis, capped, prospectively graded, UNPROVEN",
+        ],
         doNotPlaceIf: [
           `the ask is above ${(v.maximumAcceptablePrice * 100).toFixed(1)}¢ when you look`,
           "the hypothesis is disconfirmed before first bell",
