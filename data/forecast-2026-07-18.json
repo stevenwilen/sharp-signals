@@ -310,13 +310,13 @@
       }
     ]
   },
-  "sealedAt": "2026-07-18T01:35:13.863Z",
+  "sealedAt": "2026-07-18T02:08:42.445Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "5583cff121cc3be0",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "8e3b94c9af772b4e",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B06",
       "fight": "Alberto Montes vs Tommy McMillen",
@@ -324,8 +324,8 @@
       "marketBaseline": {
         "probability": 0.3961,
         "forFighter": "Alberto Montes",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -369,32 +369,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "205f1ec5a216ac84"
+        "baselineHash": "a34f86ae7c6b0766"
       },
       "systemCentral": {
         "Alberto Montes": 0.4105,
@@ -503,6 +503,20 @@
       "consideredButZero": 1,
       "netLogOdds": 0.06,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.3961,
+        "coreAdjustmentLogOdds": 0.06,
+        "coreCentralA": 0.4105,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.4105,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 0,
+        "hypotheses": [],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -548,13 +562,13 @@
       },
       "dataHashes": {
         "evidenceEval": "f0e73bc5af26b12a",
-        "baseline": "de61cc09f4fa06b1",
+        "baseline": "a84b4272a21f2421",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3f3129dd18e3430d",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "ef8590dae5061dd2",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B04",
       "fight": "Christian Duncan vs Jared Cannonier",
@@ -563,7 +577,7 @@
         "probability": 0.7414,
         "forFighter": "Christian Duncan",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -595,7 +609,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "ac309984dc9e1b5e"
+        "baselineHash": "6a397e151d8ccbde"
       },
       "systemCentral": {
         "Christian Duncan": 0.7527,
@@ -708,6 +722,60 @@
       "consideredButZero": 4,
       "netLogOdds": 0.06,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.7414,
+        "coreAdjustmentLogOdds": 0.06,
+        "coreCentralA": 0.7527,
+        "creativeAdjustmentLogOddsTowardA": 0.12,
+        "creativeCentralA": 0.7744,
+        "creativeMovePoints": 2.17,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 1,
+        "hypotheses": [
+          {
+            "hypothesis": "Jared Cannonier — durability: Jared Cannonier's chin has shown signs of decline starting with the Caio Borralho fight. (against_about)",
+            "fighter": "Jared Cannonier",
+            "boutTopic": "durability",
+            "supportingFacts": [
+              "the chin really did not start to go south, I believe, until the Caio fight.",
+              "Rodriguez knocks him down twice in the first."
+            ],
+            "supportingInferences": [
+              "2 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "VERIFIED",
+            "causalMechanism": "durability → hurts Jared Cannonier",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 2,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Jared Cannonier shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.12,
+            "magnitudeBucket": "strong_multi_signal",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.468Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -753,17 +821,17 @@
       },
       "dataHashes": {
         "evidenceEval": "07f6a4e68120432c",
-        "baseline": "695023c08db72f3c",
+        "baseline": "eae8a9c78efa1a8a",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "141e58074561bdcf",
+      "forecastId": "62d507c75b991b05",
       "boutId": "UFC-2026-07-18-B01",
       "fight": "Jacobe Smith vs Kevin Holland",
       "event": "UFC-2026-07-18",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -785,8 +853,8 @@
       }
     },
     {
-      "forecastId": "870697300dc033de",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "88d74b4e1346da89",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B02",
       "fight": "Ezra Elliott vs Damien Anderson",
@@ -795,7 +863,7 @@
         "probability": 0.5798,
         "forFighter": "Ezra Elliott",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -827,7 +895,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "a14478a510c36f00"
+        "baselineHash": "c18ff7d7d9774303"
       },
       "systemCentral": {
         "Ezra Elliott": 0.5798,
@@ -878,6 +946,7 @@
       "consideredButZero": 0,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": null,
       "uncertainty": {
         "halfWidthPoints": 5,
         "primaryDrivers": [
@@ -917,13 +986,13 @@
       },
       "dataHashes": {
         "evidenceEval": "6ecd61a1ffcd0c9c",
-        "baseline": "21191e18dcf5aa6b",
+        "baseline": "472b662cde441a78",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "6a6396233cc6ce48",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "4cd88755e07db95e",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B03",
       "fight": "Kamaru Usman vs Dricus Du Plessis",
@@ -931,8 +1000,8 @@
       "marketBaseline": {
         "probability": 0.327,
         "forFighter": "Kamaru Usman",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -976,32 +1045,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "77b2ac2edbdacb74"
+        "baselineHash": "0179a7b4db8ded31"
       },
       "systemCentral": {
         "Kamaru Usman": 0.327,
@@ -1052,6 +1121,135 @@
       "consideredButZero": 7,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.327,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.327,
+        "creativeAdjustmentLogOddsTowardA": -0.2,
+        "creativeCentralA": 0.2846,
+        "creativeMovePoints": -4.24,
+        "capped": true,
+        "cap": 0.2,
+        "activeHypotheses": 3,
+        "hypotheses": [
+          {
+            "hypothesis": "Dricus Du Plessis — weight_cut: Dricus Du Plessis is one of the biggest middleweights in the division. (favors_about)",
+            "fighter": "Dricus Du Plessis",
+            "boutTopic": "weight_cut",
+            "supportingFacts": [
+              "Du Plessis is one of the biggest 185-pounders you can find."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "weight_cut → helps Dricus Du Plessis",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Dricus Du Plessis shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.465Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Dricus Du Plessis — style_matchup: Dricus Du Plessis is physically stronger than Kamaru Usman. (favors_about)",
+            "fighter": "Dricus Du Plessis",
+            "boutTopic": "style_matchup",
+            "supportingFacts": [
+              "Dricus is just so much stronger than Kamaru."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "style_matchup → helps Dricus Du Plessis",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Dricus Du Plessis shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.465Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Kamaru Usman — injury_health: Kamaru Usman's knees are severely damaged, impacting his mobility. (against_about)",
+            "fighter": "Kamaru Usman",
+            "boutTopic": "injury_health",
+            "supportingFacts": [
+              "We know your knees are fried. We know you can't go upstairs anymore."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "POSSIBLY TRUE",
+            "causalMechanism": "injury_health → hurts Kamaru Usman",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 1,
+                "recorded": 0,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Kamaru Usman shows no injury_health effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.465Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -1099,13 +1297,13 @@
       },
       "dataHashes": {
         "evidenceEval": "7d79c172cef6c7d3",
-        "baseline": "be08f7a1f321b6ac",
+        "baseline": "11d6f5dca1eea267",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "329b2b0343eb1ca0",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "dd0b779cf9c9d159",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B05",
       "fight": "Mitch Ramirez vs Chase Hooper",
@@ -1113,8 +1311,8 @@
       "marketBaseline": {
         "probability": 0.2546,
         "forFighter": "Mitch Ramirez",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1158,32 +1356,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "20592f4a59fe5f5a"
+        "baselineHash": "aa99bb9779f0e1e0"
       },
       "systemCentral": {
         "Mitch Ramirez": 0.2546,
@@ -1234,6 +1432,59 @@
       "consideredButZero": 3,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.2546,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.2546,
+        "creativeAdjustmentLogOddsTowardA": 0.07,
+        "creativeCentralA": 0.2681,
+        "creativeMovePoints": 1.35,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 1,
+        "hypotheses": [
+          {
+            "hypothesis": "Chase Hooper — injury_health: Chase Hooper is fighting too soon after being knocked out. (against_about)",
+            "fighter": "Chase Hooper",
+            "boutTopic": "injury_health",
+            "supportingFacts": [
+              "I don't love the fact that he's fighting so soon after getting knocked out against Lance Gibson."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "POSSIBLY TRUE",
+            "causalMechanism": "injury_health → hurts Chase Hooper",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 1,
+                "recorded": 0,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Chase Hooper shows no injury_health effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.470Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -1282,13 +1533,13 @@
       },
       "dataHashes": {
         "evidenceEval": "ddc18302eea69594",
-        "baseline": "bfd25137b81b8b9d",
+        "baseline": "b0b4d42b427d6a27",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "958153b509ba816a",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "4b1c3d8d2e7c0869",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B07",
       "fight": "Tabatha Ricci vs Fatima Kline",
@@ -1296,8 +1547,8 @@
       "marketBaseline": {
         "probability": 0.2077,
         "forFighter": "Tabatha Ricci",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1341,32 +1592,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "54bcf9bdac110092"
+        "baselineHash": "248ef27fc441b18a"
       },
       "systemCentral": {
         "Tabatha Ricci": 0.2077,
@@ -1417,6 +1668,7 @@
       "consideredButZero": 0,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": null,
       "uncertainty": {
         "halfWidthPoints": 5,
         "primaryDrivers": [
@@ -1456,13 +1708,13 @@
       },
       "dataHashes": {
         "evidenceEval": "620fac3a8c7a980a",
-        "baseline": "0d5307fb18d88ebc",
+        "baseline": "99a43800f0ad3ab0",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "5ceb05ed9e908773",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "e1b3e7d4c4eb6cdd",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B08",
       "fight": "Jose Delgado vs Austin Bashi",
@@ -1470,8 +1722,8 @@
       "marketBaseline": {
         "probability": 0.4912,
         "forFighter": "Jose Delgado",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1515,32 +1767,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "4ff77633bfb43706"
+        "baselineHash": "b8c2a56a68cd96c1"
       },
       "systemCentral": {
         "Jose Delgado": 0.4912,
@@ -1591,6 +1843,20 @@
       "consideredButZero": 2,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.4912,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.4912,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.4912,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 0,
+        "hypotheses": [],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -1637,13 +1903,13 @@
       },
       "dataHashes": {
         "evidenceEval": "d6bf5347a8d50fc0",
-        "baseline": "e29c9ed4487429a2",
+        "baseline": "48713dc0279bd291",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "04682b75414276af",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "172bd0f16dc17dc3",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B09",
       "fight": "Seok Hyun Ko vs Jean-Paul Lebosnoyani",
@@ -1651,8 +1917,8 @@
       "marketBaseline": {
         "probability": 0.6386,
         "forFighter": "Seok Hyun Ko",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1696,32 +1962,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "3081d87f960557d5"
+        "baselineHash": "241db40526f3c6fb"
       },
       "systemCentral": {
         "Seok Hyun Ko": 0.6386,
@@ -1772,6 +2038,20 @@
       "consideredButZero": 1,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.6386,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.6386,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.6386,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 0,
+        "hypotheses": [],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -1817,13 +2097,13 @@
       },
       "dataHashes": {
         "evidenceEval": "5c9971f49eb10f86",
-        "baseline": "794d52f6611bcb78",
+        "baseline": "e006f4e1d9b8b4d8",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "b71e7bcb98f1ceca",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "9eefb8a2372551e7",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B10",
       "fight": "Levi Rodrigues Jr vs Felipe Franco",
@@ -1832,7 +2112,7 @@
         "probability": 0.5,
         "forFighter": "Levi Rodrigues Jr",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -1864,7 +2144,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "fad54a49fba600e3"
+        "baselineHash": "18937b20131473b8"
       },
       "systemCentral": {
         "Levi Rodrigues Jr": 0.5,
@@ -1915,6 +2195,20 @@
       "consideredButZero": 3,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.5,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.5,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.5,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 0,
+        "hypotheses": [],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -1961,13 +2255,13 @@
       },
       "dataHashes": {
         "evidenceEval": "afd305f364a61b19",
-        "baseline": "384dadfe7b2a17e1",
+        "baseline": "ed8af474048e1b34",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "6613acfd81741d5a",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "49b2d503980ae233",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B11",
       "fight": "Stewart Nicoll vs Alden Coria",
@@ -1975,8 +2269,8 @@
       "marketBaseline": {
         "probability": 0.1231,
         "forFighter": "Stewart Nicoll",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2020,32 +2314,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "56f2f267aaedc217"
+        "baselineHash": "71505c5b730a1024"
       },
       "systemCentral": {
         "Stewart Nicoll": 0.1231,
@@ -2096,6 +2390,97 @@
       "consideredButZero": 3,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.1231,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.1231,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.1231,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 0.2,
+        "activeHypotheses": 2,
+        "hypotheses": [
+          {
+            "hypothesis": "Alden Coria — style_matchup: Alden Coria is a significantly higher-level fighter than Stuart Nicoll. (favors_about)",
+            "fighter": "Alden Coria",
+            "boutTopic": "style_matchup",
+            "supportingFacts": [
+              "Alden Coria is on a much higher level than Stuart Nicoll."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "style_matchup → helps Alden Coria",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Alden Coria shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.475Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Stuart Nicoll — durability: Stuart Nicoll has shown no specific skills that are high-level in his UFC tenure. (against_about)",
+            "fighter": "Stuart Nicoll",
+            "boutTopic": "durability",
+            "supportingFacts": [
+              "there's nothing that I can say, you know, watching these three fights in the UFC that he does all that well."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "durability → hurts Stuart Nicoll",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Stuart Nicoll shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-18T02:08:42.475Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
         "halfWidthPoints": 5.5,
         "primaryDrivers": [
@@ -2142,13 +2527,13 @@
       },
       "dataHashes": {
         "evidenceEval": "f0144fd914fd0e6e",
-        "baseline": "d624bf1b1ec3dac7",
+        "baseline": "20af733d8e31c040",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "65090e9e63267596",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "7398aace8017c50d",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B12",
       "fight": "Alvin Hines vs RJ Harris",
@@ -2156,8 +2541,8 @@
       "marketBaseline": {
         "probability": 0.5271,
         "forFighter": "Alvin Hines",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2201,32 +2586,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "15c8b074f3468124"
+        "baselineHash": "efb7fef46170e2fb"
       },
       "systemCentral": {
         "Alvin Hines": 0.5271,
@@ -2277,6 +2662,7 @@
       "consideredButZero": 0,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": null,
       "uncertainty": {
         "halfWidthPoints": 5,
         "primaryDrivers": [
@@ -2316,13 +2702,13 @@
       },
       "dataHashes": {
         "evidenceEval": "ffcec193c16b7234",
-        "baseline": "0df0aa87b83720cd",
+        "baseline": "712716db1f1e6f74",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "f6b9210cee6423c6",
-      "sealedAt": "2026-07-18T01:35:13.863Z",
+      "forecastId": "73cd227219e6f5d8",
+      "sealedAt": "2026-07-18T02:08:42.445Z",
       "event": "UFC-2026-07-18",
       "boutId": "UFC-2026-07-18-B13",
       "fight": "Anna Melisano vs Dione Barbosa",
@@ -2330,8 +2716,8 @@
       "marketBaseline": {
         "probability": 0.1759,
         "forFighter": "Anna Melisano",
-        "timestamp": "2026-07-18T01:35:13.855Z",
-        "forecastTimestamp": "2026-07-18T01:35:13.863Z",
+        "timestamp": "2026-07-18T02:08:42.437Z",
+        "forecastTimestamp": "2026-07-18T02:08:42.445Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2375,32 +2761,32 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-18T01:35:13.855Z",
+            "observedAt": "2026-07-18T02:08:42.437Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "d76a6617ca97ac3e"
+        "baselineHash": "9b9377eab0ecbb12"
       },
       "systemCentral": {
         "Anna Melisano": 0.1759,
@@ -2451,6 +2837,7 @@
       "consideredButZero": 0,
       "netLogOdds": 0,
       "capNote": null,
+      "exploration": null,
       "uncertainty": {
         "halfWidthPoints": 5,
         "primaryDrivers": [
@@ -2490,18 +2877,18 @@
       },
       "dataHashes": {
         "evidenceEval": "f5a94a8a390a0d5e",
-        "baseline": "c59f33655a458ef7",
+        "baseline": "e5204ff956ae9293",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "4184b738eaab6f88",
+  "contentHash": "be218e6e70f3e0fa",
   "supersedes": {
-    "file": "forecast-2026-07-18.v1784338513893.json",
-    "contentHash": "bb3f5f4047c92fd9",
-    "sealHash": "b95e8b0844686d09"
+    "file": "forecast-2026-07-18.v1784340522477.json",
+    "contentHash": "4184b738eaab6f88",
+    "sealHash": "1b339f40d3655952"
   },
-  "sealHash": "1b339f40d3655952"
+  "sealHash": "2a1c3d1865186633"
 }
