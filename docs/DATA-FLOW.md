@@ -7,11 +7,16 @@ scripts the manual path uses — there is no second, simplified cloud implementa
 ## The canonical pipeline (dispatch.js stages)
 
 ```
-V1 SENSING  (pipeline.yml, hourly): lib/youtube.findVideos → lib/blotato.getTranscript → data/transcripts/*.txt
-                                     (feeds V2's evidence base via the shared transcript cache)
+V1 SENSING  (pipeline.yml, hourly): lib/youtube.findVideos → lib/blotato.getTranscript
+                                     → data/transcripts/*.txt  AND  data/picks/<videoId>.json
+                                     (both git-committed — the LIVE feeder of V2's candidate universe)
         │
         ▼
-COLLECT     make-card-selection.js   (data/predictions.json + Kalshi card → card-selection-<date>.json)
+COLLECT     make-card-selection.js   via lib/candidate-index: MERGES the live picks store with the
+                                      historical corpus (predictions.json), dedup by URL (live wins),
+                                      freshness computed from ACTUAL source timestamps and embedded in
+                                      the selection (+ data/candidate-index-status.json for the health
+                                      view). A stale universe reads STALE — never "current research".
             run-card-evidence.js      (data/transcripts/*.txt + data/evidence cache → card-evidence-<date>.json)
         │
         ▼

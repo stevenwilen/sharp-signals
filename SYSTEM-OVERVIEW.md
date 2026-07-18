@@ -62,6 +62,25 @@ A **$100 entertainment bankroll** (money the human is content to lose — not Ke
 edge). Speculative stakes $3 / $4 / $5, capped at **$5 per fight** and **$10 per card**. All constants
 live in one file, `config/bankroll.json`.
 
+## Freshness, sources, and cost
+
+- **How new videos enter:** the hourly sensing workflow discovers channel uploads, caches transcripts,
+  and extracts picks into the live store (`data/picks/`). The selector merges that live store with the
+  historical corpus automatically — **no backfill, no manual refresh, no laptop**. Backfill remains a
+  historical-import tool only.
+- **How freshness is checked:** every data class has an explicit status (CURRENT / DEGRADED / STALE /
+  FAILED / DISABLED / WAITING) computed from **actual source timestamps**, never from "the workflow ran".
+  The dashboard's *System health* section shows the newest ingested source, live channel count, and the
+  active-card corpus status. During fight week a corpus older than 24h reads DEGRADED, older than 72h
+  reads STALE — and a stale corpus is never described as current research.
+- **When a source fails:** a malformed or unavailable item is counted and skipped — it cannot block the
+  other channels — and a Gemini failure is an ERROR, never silently treated as "no relevant claims".
+- **What Gemini is used for:** extracting structured claims/picks from transcripts (cheap flash-lite by
+  default), and — only if `INTEL_WEB_SEARCH=1`, currently **off** — grounded web research whose findings
+  still pass the origin counter. Every call is logged to a bounded usage ledger with tokens and
+  estimated cost (dashboard System health shows today/month spend). Extractions are cached per
+  video/prompt fingerprint so unchanged content is never re-paid.
+
 ## Where to look
 
 - **Run it / operate it:** [docs/OPERATIONS.md](docs/OPERATIONS.md)

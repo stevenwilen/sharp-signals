@@ -7,7 +7,7 @@
 | **unified-v2.yml** | hourly (`:05`) + manual | THE production dispatcher (`dispatch.js`): decides due stages and runs the full V2 collect→forecast→decide→alert→grade chain. The only armed decision path. |
 | **fight-day-sentinel.yml** | Fri/Sat 20:00 & 23:00 UTC + manual | 15-min wall-clock price + shadow-intel loop inside one long job (reuses `run-entertainment-alerts.js`). |
 | **listing-watch.yml** | every 30 min (`:10/:40`) + manual | Records Kalshi birth-price/convergence (`listing-watch.json`). Research only; never bets. |
-| **pipeline.yml** | hourly + manual | V1 **sensing** layer: YouTube discovery + transcript fetch that feeds V2's evidence cache. Its daily paper-summary Telegram is OFF by default (`V1_PAPER_SUMMARY=1` to opt in). Archived paper research, no buy alert. |
+| **pipeline.yml** | hourly + manual | V1 **sensing** layer: YouTube discovery + transcript fetch + pick extraction. **This is the LIVE feeder of V2's candidate universe** (via `lib/candidate-index`) — if it stops, the corpus freshness on the dashboard goes DEGRADED→STALE. Its daily paper-summary Telegram is OFF by default (`V1_PAPER_SUMMARY=1` to opt in). No buy alert. |
 | **watch.yml** | **manual only** (cron disabled) | V1 paper-book settlement pass. Feeds V2 nothing. |
 | **backfill.yml** | **manual only** (cron disabled) | Re-grades the rejected guru corpus and writes `data/predictions.json` (V2's candidate-video universe). Do **not** re-enable the schedule. |
 

@@ -18,6 +18,12 @@
 
 - **`DATA_DIR` split-brain:** some stores honor `DATA_DIR`, some hardcode `data/`. Do not point
   `DATA_DIR` at a synced folder without unifying — the real-money ledger and the forecasts could split.
-- **Candidate-video freeze:** `make-card-selection.js` draws from `data/predictions.json`, written only
-  by the manual `backfill.js`. Fresh videos for a new card require a manual backfill run. This is
-  deliberate (the guru corpus is frozen); do **not** "fix" it by re-enabling backfill's schedule.
+
+## Fixed gaps (kept for history)
+
+- **Candidate-video freeze (FIXED 2026-07-18):** the selector used to draw only from the manual-
+  backfill corpus, freezing the candidate universe days before a card (a 2-channel selection was
+  presented as a 50-channel search). `lib/candidate-index.js` now merges the LIVE picks store the
+  hourly sensing writes, with explicit freshness status (`data/candidate-index-status.json`, the
+  dashboard's System health section). If the corpus shows STALE during fight week, check that
+  `pipeline.yml` (V1 sensing) is running — it is the live feeder; backfill remains historical-only.
