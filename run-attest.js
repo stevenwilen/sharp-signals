@@ -73,11 +73,21 @@ function main() {
   if (evalPath) {
     stages.push(artifactStage("evidence evaluation + admission", evalPath, (ev) => {
       const bouts = ev.bouts || [];
-      const withAdmission = (fc.forecasts || []).filter((f) => f.admission).length;
+      const forecasts = fc.forecasts || [];
+      // A bout with INSUFFICIENT EVIDENCE has no claims to admit, so it legitimately carries no
+      // admission record — requiring ALL forecasts to carry one wrongly fails a card with a thin bout
+      // (e.g. a freshly-listed fight with no preview coverage yet). The real guarantee is: every bout
+      // that HAS evidence went through the admission boundary, and no claim lost its publishedAt.
+      const withEvidence = forecasts.filter((f) => f.admission && f.admission.claimsConsidered > 0);
+      // A bout with no market baseline is never forecast (nothing to adjust), so the admission boundary
+      // is moot there — leaked evidence can only move a number where a number exists. The guarantee is:
+      // every bout that WAS forecast (has a marketBaseline) and had claims went through admission.
+      const boutsWithClaims = new Set(bouts.filter((b) => (b.topics || []).some((t) => (t.claims || []).length)).map((b) => b.boutId));
+      const missingAdmission = forecasts.filter((f) => f.marketBaseline && boutsWithClaims.has(f.boutId) && !f.admission);
       const roundTrippable = bouts.every((b) => (b.topics || []).every((t) => (t.claims || []).every((c) => c.publishedAt !== undefined)));
       return {
-        ok: bouts.length > 0 && withAdmission === (fc.forecasts || []).length && roundTrippable,
-        detail: `${bouts.length} bouts; ${withAdmission}/${(fc.forecasts || []).length} forecasts carry an admission record; claims ${roundTrippable ? "carry" : "DO NOT carry"} publishedAt`,
+        ok: bouts.length > 0 && missingAdmission.length === 0 && withEvidence.length > 0 && roundTrippable,
+        detail: `${bouts.length} bouts; ${withEvidence.length} carry admitted evidence; ${missingAdmission.length} evidence-bearing bouts MISSING admission; claims ${roundTrippable ? "carry" : "DO NOT carry"} publishedAt`,
       };
     }));
   }

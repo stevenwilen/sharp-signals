@@ -175,10 +175,15 @@ async function main() {
     stamp(receipts, "alerts", { card: card.eventId });
   }
 
-  // GRADE — post-fight. run-scenario-eval verifies the seal hash before reading any outcome.
+  // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
+  // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
+  // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
+  // any outcome, so a grade can never be an artifact of hindsight.
   if (dueList.includes("grade")) {
+    if (fs.existsSync(path.join(ROOT, forecastFile))) run("run-grade-card.js", [forecastFile, "--write"], { allowFail: true });
     const scen = `data/scenarios-ranked-${ed}.json`;
     if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
+    run("run-convergence-eval.js", ["--write"], { allowFail: true });   // update the read-only convergence record
     stamp(receipts, "grade", { card: card.eventId });
   }
 
