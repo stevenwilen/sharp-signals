@@ -7,9 +7,14 @@ name: Sharp Signals — Market Watch
 # This is only worth the frequency because the repo is PUBLIC, so GitHub Actions minutes are
 # UNLIMITED — a private repo would have to weigh this against the 2,000-minute budget. A watch run
 # is a handful of Kalshi reads (~1 min), so the load is trivial. Dial the cadence below to taste.
+# SCHEDULE DISABLED 2026-07-18 (consolidation). `pipeline.js --watch` does NO collection — it only
+# re-checks the V1 archived-research paper book/pick-ledger against Kalshi, which feeds the unified V2
+# system nothing. Every-15-min runs only made dead-thesis paper positions look live (the same reason
+# backfill's schedule was disabled). Retained manual-only via workflow_dispatch for a deliberate
+# settlement pass. Not deleted; re-enable by uncommenting the cron.
 on:
-  schedule:
-    - cron: "*/15 * * * *" # every 15 min; the pipeline already covers the top of each hour
+  # schedule:
+  #   - cron: "*/15 * * * *"   # DISABLED: V1 paper-book bookkeeping only; feeds V2 nothing.
   workflow_dispatch: {}
 
 permissions:

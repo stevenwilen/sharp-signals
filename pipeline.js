@@ -483,7 +483,11 @@ async function run() {
   // Not in --watch (that runs many times a day) and not in --mock. Once per calendar day in the
   // midday window, guarded by meta.lastSummaryDate so it can't double-send. This is NOT a betting
   // instruction — it reports paper results — so it is not gated by the arming mechanism.
-  if (posState && !WATCH) {
+  // ONE canonical Telegram path: the unified V2 lifecycle. This V1 archived-research paper summary is a
+  // SECOND path, so it is OFF by default — opt in with V1_PAPER_SUMMARY=1 for a research digest. The
+  // paper positions are still RECORDED for the dashboard's archived-research view; they just don't
+  // interrupt the phone beside the production alerts. Reversible.
+  if (posState && !WATCH && process.env.V1_PAPER_SUMMARY === "1") {
     const hour = new Date().getUTCHours();
     const today = new Date().toISOString().slice(0, 10);
     const due = process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16);
