@@ -35,6 +35,12 @@ const ALERTS_ARMED = false;
 // Optional: set BANKROLL=500 in .env and alerts will show dollars, not just a %.
 const BANKROLL = Number(process.env.BANKROLL) || 0;
 
+// The identity of the V1 live-signal gate, stamped onto every position it admits so the row can always
+// be attributed to the rules in force when it opened. Bump this when the gate at :408 changes, so a
+// position opened under an old gate is distinguishable from one opened under the new one — the exact
+// distinction whose absence let three repealed positions look like current calls.
+const GATE_VERSION = "v1-gate:b1399bd (survives && !isFighter && roiLcb>0)";
+
 const MOCK = process.argv.includes("--mock");
 // --watch: a CHEAP re-check. No YouTube, no Gemini — just re-run the EXISTING watch list against
 // Kalshi to catch a market that opened since the last run (the "get in at the open" edge). Runs
@@ -176,7 +182,9 @@ async function getPredictions(cfg) {
 // (guessing an outcome is exactly the confident-wrong-number this project forbids).
 async function settlePositions(posState) {
   let settled = 0;
-  for (const p of positions.openPositions(posState)) {
+  // settleable, not open: a quarantined position's outcome is still recorded (inside its quarantine
+  // block, for history) — it just never reaches the P&L. See lib/positions.js settle().
+  for (const p of positions.settleablePositions(posState)) {
     if (!p.fightDate || Date.parse(p.fightDate) > Date.now()) continue; // fight not over yet
     try {
       const s = await k.settlement(p.ticker);
@@ -446,8 +454,29 @@ async function run() {
         ticker, fighter: s0.fighter, opponent: s0.opponent, domain: s0.domain,
         fightDate: s0.fightDate, entryCost: s0.cost, fairValueCents: size.p,
         stakePct: size.pct, sources: group.map((s) => s.source),
+        // Provenance: which rules admitted this. V1 has no sealed forecast/decision, so those are
+        // null; what it does have is the gate that let the signal through.
+        rulesVersion: GATE_VERSION, pipeline: "v1-signals",
+        gateResult: { survives: s0.survives, isFighter: s0.isFighter, sourceRoiLcb: s0.sourceRoiLcb },
       });
-      if (opened) console.log(`  [paper] opened ${s0.fighter} @ ${cents(s0.cost)}c, stake ${size.pct}%`);
+      if (opened === "opened") console.log(`  [paper] opened ${s0.fighter} @ ${cents(s0.cost)}c, stake ${size.pct}%`);
+      else if (opened === "reactivated") console.log(`  [paper] reactivated ${s0.fighter} — qualifies again`);
+    }
+  }
+
+  // VERSION-AWARE RECONCILE. Any position that is ACTIVE but whose ticker did NOT qualify this run no
+  // longer clears the current gate — withdraw it, with the reason, rather than letting it sit "open"
+  // until it settles into the P&L under rules that would now refuse it. This is the loop whose absence
+  // let three repealed positions reach the eve of settlement.
+  if (posState) {
+    const qualifyingTickers = new Set(bets.map((b) => b.ticker));
+    for (const p of positions.activePositions(posState)) {
+      if (qualifyingTickers.has(p.ticker)) continue;
+      const r = positions.reconcile(posState, p.ticker, {
+        eligibleNow: false, rulesVersion: GATE_VERSION,
+        reason: "did not clear the current live-signal gate this run",
+      });
+      if (r === "withdrawn") console.log(`  [paper] withdrew ${p.fighter} — no longer clears the gate`);
     }
   }
 
@@ -458,7 +487,7 @@ async function run() {
     if (n) console.log(`  [paper] settled ${n} finished position(s)`);
     positions.prune(posState);
     const pc = positions.counts(posState);
-    console.log(`[paper] book: ${pc.open} open, ${pc.settled} settled`);
+    console.log(`[paper] book: ${pc.active} active, ${pc.withdrawn} withdrawn, ${pc.settled} settled, ${pc.quarantined} quarantined`);
   }
 
   // ---- TELEGRAM: buy alerts (only when armed) -------------------------------------------

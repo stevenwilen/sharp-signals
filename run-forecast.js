@@ -11,7 +11,11 @@ const path = require("path");
 const crypto = require("crypto");
 const F = require("./lib/forecast");
 const L = require("./lib/leakage-guard");
+const ADM = require("./lib/admission");
 const E = require("./lib/evidence-eval");
+const MB = require("./lib/market-baseline");
+const O = require("./lib/odds-history");
+const SB = require("./lib/sportsbook-live");
 const { paths, readJson, writeJson } = require("./lib/store");
 
 let LINES = 0;
@@ -20,10 +24,24 @@ const fail = (m) => { say(`\nFATAL: ${m}`); process.exit(2); };
 const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
 
 // ---- MARKET BASELINE ------------------------------------------------------------------------
-// Extracts ONLY (fighter, opponent, probability, timestamp). predictions.json also carries RESULTS,
-// so a naive read would hand the forecaster the answer. Fields are copied one at a time and the
-// result is swept for outcome fields before it may be used — the guard is not asked to trust me.
-function baselineFromBfo(card, sealTs) {
+// The baseline now comes from lib/market-baseline.js — a deterministic A/B/C/D waterfall reading
+// BFO directly. The two functions below are SUPERSEDED and kept only so the sealed Phase 7
+// artifacts remain reproducible from the code that produced them.
+//
+// Why they were replaced, both defects found in Phase 7.5:
+//
+//   1. SOURCE. baselineFromBfo read predictions.json — the graded PICK ledger. A bout only had a
+//      price if a tipster happened to pick it, so coverage tracked tipster attention: 5/15, every
+//      one a headline fight, every prelim missing. Reading BFO directly gives 15/15 (96.4% across
+//      8 cards). The data was always there.
+//
+//   2. LEAKAGE. It used the de-vigged CLOSING line stamped `sealTs - 2h` (line ~39) — a synthetic
+//      timestamp, not when the price was quoted. The leakage guard passed it because it checked the
+//      fabricated time rather than a real one. Open-to-close drift on that card reached 14.9 points,
+//      so the "prior" carried up to 14.9 points of information it could not have had.
+//
+// Do not reuse these. buildBaselines() below is the live path.
+function baselineFromBfo_SUPERSEDED(card, sealTs) {
   const rows = readJson(paths.predictions, []);
   const out = {};
   const norm = E.norm;
@@ -43,7 +61,79 @@ function baselineFromBfo(card, sealTs) {
   }
   return out;
 }
-function baselineFromKalshi(card, sealTs) {
+// THE LIVE BASELINE PATH. Deterministic waterfall, full provenance, no closing line, no invented
+// timestamp. Returns the same {boutId: baseline} shape the forecaster already consumes, so the
+// engine and its frozen v7.0.0 rules are untouched.
+async function buildBaselines(card, sealTs, opts = {}) {
+  const out = {};
+  const stats = { A: 0, B: 0, C: 0, D: 0 };
+  const fightMs = Date.parse(`${card.eventDate}T22:00:00Z`);
+  // Tier A: the LIVE multi-book consensus, if one was collected for this run.
+  //
+  // Phase 8.5 built this service and validated it standalone — 12/12 bouts, 4 independent books
+  // each, WALL_CLOCK — and then never connected it: this function passed `liveSnapshot: null`, so
+  // tier A was unreachable and every forecast fell to tier B's OPENING line. That is exactly why
+  // Phase 8's stale-prior gate refused every contract: the prior was weeks old and the price was
+  // live, so the gap between them measured elapsed time, not skill. Building the capability and
+  // leaving it unplumbed made the whole card un-actionable for a reason that had nothing to do with
+  // the market.
+  const live = (opts.liveConsensus && opts.liveConsensus.byBout) || {};
+  for (const b of card.bouts) {
+    const lc = live[b.boutId];
+    if (lc && lc.ok) {
+      stats.A++;
+      out[b.boutId] = {
+        probability: lc.probability, forFighter: lc.forFighter,
+        timestamp: lc.snapshotTimestamp,          // a REAL observation time, not a synthetic one
+        forecastTimestamp: new Date(sealTs).toISOString(),
+        sportsbooks: lc.sourceBooks, deVigMethod: lc.deVigMethod,
+        consensusMethod: lc.consensusMethod,
+        dispersion: lc.marketDispersion,
+        note: `${lc.tier} (fallback A); ${lc.booksIncluded} independent books, de-vigged per book before combining`,
+        rawPrices: lc.perBook.map((x) => ({ book: x.sportsbook, ...x.rawOdds, overround: x.overround, deVigged: x.deViggedForA })),
+        priceTimestamps: lc.priceTimestamps,
+        clockBasis: lc.clockBasis, derivedFrom: lc.derivedFrom,
+        staleCheckEnforceable: lc.staleCheckEnforceable,
+        oldestPriceAgeHours: lc.oldestQuoteAgeMs == null ? null : +(lc.oldestQuoteAgeMs / 3600000).toFixed(3),
+        fallbackLevel: "A", missingSourceReasons: lc.notes || [],
+        baselineHash: lc.contentHash,
+      };
+      continue;
+    }
+    let hit = null;
+    try {
+      hit = await O.lookup(b.a.name, b.b.name, fightMs);
+      if (!hit) {
+        const v = await O.lookup(b.b.name, b.a.name, fightMs);
+        if (v) hit = { me: v.opp, opp: v.me, ft: v.ft };  // on the opponent's page the sides swap
+      }
+    } catch (e) { /* the waterfall records this as a missing-source reason */ }
+    const rec = MB.buildBaseline(b, { liveSnapshot: null, bfoHit: hit, kalshi: null }, sealTs);
+    stats[rec.fallbackLevel]++;
+    if (rec.probability === null) continue;   // tier D: no baseline, the bout is not forecast
+    // shape it for the forecaster, carrying the full provenance through rather than flattening it
+    out[b.boutId] = {
+      probability: rec.probability, forFighter: rec.forFighter,
+      // A LOGICAL_OPEN price gets NO wall-clock `timestamp`. Synthesising one here — even an
+      // honest-looking one — is exactly the superseded bug: the old code stamped `sealTs - 2h` on a
+      // closing line and the guard believed it. Absence is the truthful value.
+      timestamp: rec.clockBasis === "LOGICAL_OPEN" ? null : rec.forecastTimestamp,
+      forecastTimestamp: rec.forecastTimestamp,
+      sportsbooks: rec.sourceBooks, deVigMethod: rec.deVigMethod,
+      dispersion: rec.marketDispersion,
+      note: `${rec.tier} (fallback ${rec.fallbackLevel}); ${rec.tierMeaning}`,
+      rawPrices: rec.rawPrices, priceTimestamps: rec.priceTimestamps,
+      clockBasis: rec.clockBasis, derivedFrom: rec.derivedFrom,
+      staleCheckEnforceable: rec.staleCheckEnforceable,
+      oldestPriceAgeHours: rec.oldestPriceAgeHours,
+      fallbackLevel: rec.fallbackLevel, missingSourceReasons: rec.missingSourceReasons,
+      baselineHash: rec.contentHash,
+    };
+  }
+  return { baselines: out, stats };
+}
+
+function baselineFromKalshi_SUPERSEDED(card, sealTs) {
   const lw = readJson(path.join(paths.root, "data", "listing-watch.json"), { markets: {} });
   const out = {};
   for (const b of card.bouts) {
@@ -83,35 +173,73 @@ async function main() {
   catch (e) { fail(`LEAKAGE: ${e.message}`); }
   say(`[stage 1] ${ev.card.eventId}: ${ev.bouts.length} bouts | seal ${new Date(sealTs).toISOString()} | rules v${F.RULES.version}`);
 
-  say(`[stage 2] building market baselines (${mkt}) ...`);
-  const baselines = mkt === "kalshi" ? baselineFromKalshi(ev.card, sealTs) : baselineFromBfo(ev.card, sealTs);
+  // --live collects a contemporaneous multi-book consensus BEFORE sealing, so tier A is reachable
+  // and every quote provably predates the seal.
+  let liveConsensus = null;
+  if (process.argv.includes("--live")) {
+    say(`[stage 2a] collecting a LIVE multi-book consensus (tier A) ...`);
+    const evPath = (process.argv.find((a) => a.startsWith("--live-event=")) || "").split("=")[1];
+    liveConsensus = await SB.consensusForCard(ev.card, { eventPath: evPath || undefined, nowTs: Date.now() });
+    if (!liveConsensus.ok) say(`[stage 2a] no live consensus: ${liveConsensus.reason} — falling back to the waterfall`);
+    else say(`[stage 2a] ${liveConsensus.withConsensus}/${liveConsensus.of} bouts have a live consensus from ${liveConsensus.eventPath}`);
+  }
+
+  say(`[stage 2] building market baselines via the A/B/C/D waterfall ...`);
+  const { baselines, stats } = await buildBaselines(ev.card, sealTs, { liveConsensus });
   // the guard checks every baseline BEFORE the forecaster sees it
   for (const [id, b] of Object.entries(baselines)) {
     try { L.checkBaseline(b, sealTs); L.assertNoOutcomeFields(b, `baseline ${id}`); }
     catch (e) { fail(`LEAKAGE in baseline ${id}: ${e.message}`); }
   }
-  say(`[stage 2] ${Object.keys(baselines).length}/${ev.card.bouts.length} bouts have an admissible baseline`);
+  const priced = Object.keys(baselines).length;
+  const pct = (priced / ev.card.bouts.length) * 100;
+  say(`[stage 2] tiers: A=${stats.A} B=${stats.B} C=${stats.C} D=${stats.D}`);
+  say(`[stage 2] ${priced}/${ev.card.bouts.length} bouts have an admissible baseline (${pct.toFixed(1)}%)`);
 
   say(`[stage 3] forecasting ...`);
   const forecasts = [];
   let leakRejected = 0;
   for (const bout of ev.card.bouts) {
-    const be = ev.bouts.find((x) => x.boutId === bout.boutId);
+    let be = ev.bouts.find((x) => x.boutId === bout.boutId);
     const base = baselines[bout.boutId];
     const A = bout.a.name, B = bout.b.name;
 
     if (!base) {
+      // A baseline-unavailable forecast is still a forecast ARTIFACT and must be as auditable as any
+      // other: same version block, same data hashes. The first cut gave these ten records a flat
+      // `rulesVersion` and no dataHashes, so 10 of 15 sealed artifacts could not be reproduced or
+      // traced — caught by the static review before any outcome was opened. Provenance is not a
+      // reward for having an opinion; it is the record that we declined to have one.
       forecasts.push({ forecastId: sha(`${bout.boutId}|${sealTs}|nobase`), boutId: bout.boutId, fight: `${A} vs ${B}`,
+        event: ev.card.eventId,
         status: "BASELINE UNAVAILABLE", sealedAt: new Date(sealTs).toISOString(),
         reason: "no admissible pre-seal market price for this bout — refusing to invent one",
-        marketBaseline: null, systemCentral: null, adjustments: [], rulesVersion: F.RULES.version });
+        marketBaseline: null, systemCentral: null, systemRange: null, marketDisagreementPoints: null,
+        outcomeTree: null, appliedAdjustments: [], consideredButZero: 0,
+        evidenceCoverage: be ? be.coverage : "UNKNOWN",
+        versions: { rules: F.RULES.version, evaluator: "phase6", extractor: ev.card.promptVersion || "phase5" },
+        dataHashes: { evidenceEval: be ? sha(be) : null, baseline: null, rules: sha(F.RULES) },
+      });
       continue;
     }
 
-    // every claim under this bout must be provably pre-seal
-    const claims = (be.topics || []).flatMap((t) => t.claims.map((c) => ({ ...c, publishedAt: c.publishedAt || (be.topics[0].claims[0] || {}).publishedAt })));
-    const adm = L.admissibleClaims(claims.filter((c) => c.publishedAt), sealTs);
-    leakRejected += adm.rejected.length;
+    // THE ADMISSION BOUNDARY. Every claim under this bout must be provably pre-seal, and the evidence
+    // is RE-EVALUATED from the survivors — not filtered. Filtering would keep each topic's origin
+    // count, which was computed over the rejected claims too, and the magnitude rules key on exactly
+    // that count. See lib/admission.js for the four ways the previous gate was decorative.
+    //
+    // `adm.be` shadows the raw `be` deliberately: from here down there is no reference to unadmitted
+    // evidence, because the previous bug was precisely that `adm.admitted` existed and went unread.
+    const adm = ADM.admissibleEvidence(bout, be, sealTs);
+    const admission = ADM.admissionRecord(adm);
+    leakRejected += admission.rejectedForLeakage;
+    if (adm.rejected.length) {
+      say(`  ${bout.boutId}: ${adm.rejected.length}/${adm.considered} claim(s) REFUSED at the admission boundary` +
+          ` (${admission.rejectedForLeakage} leakage, ${admission.rejectedAsMalformed} malformed)`);
+      for (const x of adm.rejected.slice(0, 3)) say(`     ⛔ ${x.why}`);
+      if (adm.rejected.length > 3) say(`     ... and ${adm.rejected.length - 3} more (all recorded in the artifact)`);
+    }
+    be = adm.be;
 
     const adjustments = be.coverage === "INSUFFICIENT EVIDENCE" ? [] : F.buildAdjustments(be, A, B);
     const applied = adjustments.filter((a) => a.finalAppliedLogOdds > 0);
@@ -159,7 +287,8 @@ async function main() {
       evidenceCoverage: be.coverage, independentOrigins: be.independentOrigins, originBreakdown: be.originBreakdown,
       contradictions: (be.contradictions || []).length,
       missingInformation: be.missingInformation, limitations: be.limitations,
-      leakageRejected: adm.rejected.length,
+      leakageRejected: admission.rejectedForLeakage,
+      admission,   // what was refused at the boundary, and why — a rejection nobody can read is invisible
       versions: { rules: F.RULES.version, evaluator: "phase6", extractor: ev.card.promptVersion || "phase5" },
       dataHashes: { evidenceEval: sha(be), baseline: sha(base), rules: sha(F.RULES) },
     });
@@ -192,18 +321,27 @@ async function main() {
   const out = outArg || src.replace(/evidence-eval/, "forecast");
   const payload = { card: ev.card, sealedAt: new Date(sealTs).toISOString(), rulesVersion: F.RULES.version,
     marketSource: mkt, forecasts, sealedBy: "run-forecast.js", immutable: true };
-  payload.sealHash = sha(payload);
+
   // IMMUTABILITY: a sealed file is never overwritten. A correction becomes a NEW version beside it,
   // and the original stays readable forever — requirement 14.
+  //
+  // `contentHash` identifies the FORECAST itself and reproduces from identical inputs regardless of
+  // lineage. `sealHash` covers the WHOLE artifact, lineage included. The first cut computed
+  // sealHash and only then attached `supersedes`, so the hash did not cover the file it sealed:
+  // the lineage could be edited and the hash would still "verify". A seal that does not cover its
+  // own contents is decoration.
+  payload.contentHash = sha({ card: payload.card, sealedAt: payload.sealedAt,
+    rulesVersion: payload.rulesVersion, marketSource: payload.marketSource, forecasts: payload.forecasts });
   if (fs.existsSync(out)) {
     const prior = JSON.parse(fs.readFileSync(out, "utf8"));
-    if (prior.sealHash && prior.sealHash !== payload.sealHash) {
+    if (prior.contentHash && prior.contentHash !== payload.contentHash) {
       const vpath = out.replace(/\.json$/, `.v${Date.now()}.json`);
       fs.renameSync(out, vpath);
-      payload.supersedes = { file: path.basename(vpath), sealHash: prior.sealHash };
+      payload.supersedes = { file: path.basename(vpath), contentHash: prior.contentHash, sealHash: prior.sealHash };
       say(`[stage 4] a different sealed forecast already existed -> preserved as ${path.basename(vpath)}; this is a NEW version`);
     }
   }
+  payload.sealHash = sha(payload);   // computed LAST, over everything including lineage
   const banned = ["stake", "kelly", "recommendation", "buy", "sell", "edgeClaim"];
   const leaked = banned.filter((k) => new RegExp(`"${k}"\\s*:`, "i").test(JSON.stringify(payload)));
   if (leaked.length) fail(`forecast emitted forbidden field(s): ${leaked.join(", ")}`);

@@ -2,116 +2,225 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Sharp Signals</title>
+<title>Sharp Signals — shadow board</title>
 <style>
-  :root{--bg:#0b0f14;--card:#141b24;--line:#243040;--fg:#e6edf3;--muted:#8b98a8;--green:#3fb950;--red:#f85149;--gold:#e3b341;--blue:#58a6ff;}
-  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
-  header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:18px 24px;border-bottom:1px solid var(--line)}
+  :root{--bg:#0b0f14;--card:#141b24;--line:#243040;--fg:#e6edf3;--muted:#8b98a8;--green:#3fb950;--red:#f85149;--gold:#e3b341;--blue:#58a6ff;--amber:#d29922;}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,Segoe UI,Roboto,sans-serif}
+  header{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   h1{font-size:18px;margin:0;font-weight:700}h1 .z{color:var(--gold)}
   .spacer{flex:1}
-  button{font:inherit;font-weight:600;border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;background:#1b2430;color:var(--fg)}
-  button.primary{background:var(--blue);border-color:var(--blue);color:#04101f}
-  main{padding:22px;max-width:1080px;margin:0 auto}
-  h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:26px 0 10px}
-  .caps{display:flex;gap:8px;flex-wrap:wrap}
-  .cap{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line)}
-  .cap.on{color:var(--green);border-color:var(--green)}.cap.off{color:var(--muted)}
-  .sig{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px}
-  .sig.star{border-left-color:var(--gold)}
-  .sig .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-  .pick{font-size:16px;font-weight:700}
-  .edge{font-weight:700;color:var(--green)}
-  .src{color:var(--muted);font-size:12px}
-  .bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin:8px 0;background:#0c1218}
-  .bar .mkt{background:#30475e}.bar .src2{background:var(--gold)}
-  .q{color:var(--muted);font-style:italic;font-size:13px;margin-top:4px}
-  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px}
-  th{color:var(--muted);font-size:11px;text-transform:uppercase}
-  .yes{color:var(--green);font-weight:700}.no{color:var(--muted)}
-  .pos{color:var(--green)}.neg{color:var(--red)}
-  .empty{color:var(--muted);padding:12px}
-</style></head>
+  main{padding:20px 24px;max-width:1400px;margin:0 auto}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:18px}
+  h2{font-size:14px;margin:0 0 12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .kv{background:#0f151d;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+  .kv .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .kv .v{font-size:16px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em}
+  .p-green{background:#12261a;color:var(--green);border:1px solid #1f5132}
+  .p-red{background:#2d1618;color:var(--red);border:1px solid #6b2529}
+  .p-amber{background:#2b2312;color:var(--amber);border:1px solid #5c4610}
+  .p-grey{background:#1b2430;color:var(--muted);border:1px solid var(--line)}
+  .banner{border-radius:10px;padding:12px 14px;margin-bottom:14px;font-weight:600}
+  .b-disarm{background:#12261a;border:1px solid #1f5132;color:var(--green)}
+  .b-warn{background:#2b2312;border:1px solid #5c4610;color:var(--amber)}
+  .scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;min-width:960px;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+  th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+  .muted{color:var(--muted)}
+  .reason{color:var(--muted);font-size:12px;max-width:420px}
+  a{color:var(--blue)}
+  .note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6}
+  details{margin-top:8px}summary{cursor:pointer;color:var(--muted);font-size:12px}
+  code{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+</style>
+</head>
 <body>
 <header>
-  <h1>⚡ Sharp <span class="z">Signals</span></h1>
-  <span class="src">UFC + Boxing · edge vs the market line</span>
+  <h1>Sharp <span class="z">Signals</span> <span class="muted" style="font-weight:400">shadow board</span></h1>
   <div class="spacer"></div>
-  <span class="src" id="freshness">...</span>
+  <span class="muted" id="card-picker"></span>
 </header>
 <main>
-  <div class="caps" id="caps"></div>
+  <!-- The first thing on the page, always. A reader must learn the system cannot trade before they
+       learn anything else. -->
+  <div class="banner b-disarm" id="safety">Loading…</div>
 
-  <h2>Live signals: an edge that survived out-of-sample</h2>
-  <div id="signals"><div class="empty">Loading…</div></div>
+  <section>
+    <h2>System status</h2>
+    <div class="grid" id="status"></div>
+    <div class="note" id="status-note"></div>
+    <div id="failed"></div>
+  </section>
 
-  <h2>Source track records: who beats the line</h2>
-  <table><thead><tr><th>Source</th><th>Trusted<br><span class="src">in-sample</span></th><th>Survives<br><span class="src">out-of-sample</span></th><th>ROI vs line</th><th>Shrunk</th><th>Defensible</th><th>Picks</th><th>Hit%</th></tr></thead>
-  <tbody id="records"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody></table>
-  <p class="src" style="margin-top:8px">"Defensible" is the edge that survives its own error bars (95% lower bound).
-  "Trusted" is in-sample — it looked good on the same fights we graded it on. "Survives" is the honest one:
-  the edge still held on held-out fights that had no say in the trust decision. Only survivors are bettable.</p>
+  <section>
+    <h2>Upcoming card — every bout, including the ones we declined to price</h2>
+    <div class="scroll"><table id="card">
+      <thead><tr>
+        <th>Fight</th><th>Baseline</th><th>System</th><th>Range</th><th>Kalshi</th>
+        <th>Forecast</th><th>Evidence</th><th>Classification</th><th>Eligible</th><th>Reason</th><th>Updated</th>
+      </tr></thead><tbody></tbody>
+    </table></div>
+    <div class="note" id="card-note"></div>
+  </section>
+
+  <section>
+    <h2>Contract comparison</h2>
+    <div class="scroll"><table id="contracts">
+      <thead><tr>
+        <th>Ticker</th><th>Settlement</th><th>Exec</th><th>All-in</th><th>System</th><th>Conservative</th>
+        <th>Fee</th><th>Slip</th><th>Value after costs</th><th>Max price</th><th>Liquidity</th>
+        <th>Envelope</th><th>Status</th><th>Reason</th>
+      </tr></thead><tbody></tbody>
+    </table></div>
+    <div class="note">Method and round contracts remain <b>ANALYSIS ONLY</b> until a validated method model exists. Any value shown is labelled <b>UNVERIFIED ESTIMATED EDGE</b> — it is a difference between two numbers, not a proven advantage.</div>
+  </section>
+
+  <section>
+    <h2>Portfolio</h2>
+    <div class="grid" id="portfolio"></div>
+    <div id="exposure"></div>
+    <div class="note" id="port-note"></div>
+  </section>
+
+  <section>
+    <h2>Forward record — no-bets included</h2>
+    <div class="grid" id="record"></div>
+    <div class="note" id="record-note"></div>
+  </section>
+
+  <section>
+    <h2>Archived research</h2>
+    <div class="note">
+      The V1 source track-record board has moved to <a href="/research/sources">/research/sources</a> and is
+      <b>archived research, not a live betting signal</b>. A 24-month backfill graded 12,597 picks and found no
+      source with an edge that generalised out of sample. Source track record is not an input to any forecast here.
+    </div>
+  </section>
 </main>
 <script>
-const $=(id)=>document.getElementById(id);
-const pct=(v)=>v==null?'-':(v*100).toFixed(0)+'%';
-const cents=(v)=>v==null?'-':Math.round(v*100)+'c';
-// No refresh button on purpose: the runs happen in GitHub's cloud every 4h. The Desktop
-// shortcut git-pulls those results before opening this, so closing + reopening = fresh data.
-// (A local "refresh" would re-run the pipeline here and burn API/Blotato credits for nothing.)
-function ago(iso){
-  if(!iso) return 'unknown';
-  const m = Math.round((Date.now()-new Date(iso).getTime())/60000);
-  if(m<1) return 'just now';
-  if(m<60) return m+' min ago';
-  const h=Math.round(m/60); if(h<24) return h+'h ago';
-  return Math.round(h/24)+'d ago';
-}
-async function load(){
-  let d; try{ d=await (await fetch('/api/data')).json(); }catch(e){ return; }
-  const capDefs=[['extractPredictions','Gemini'],['pullTwitter','X/Twitter'],['pullYouTube','YouTube']];
-  $('caps').innerHTML=capDefs.map(([k,l])=>`<span class="cap ${d.caps[k]?'on':'off'}">${d.caps[k]?'✅':'⛔'} ${l}</span>`).join('');
-  $('freshness').textContent = 'data updated ' + ago(d.updatedAt) + ' · close & reopen to sync';
+const $ = (s) => document.querySelector(s);
+const pct = (x) => x == null ? '<span class="muted">—</span>' : (x*100).toFixed(1)+'%';
+const cts = (x) => x == null ? '<span class="muted">—</span>' : (x*100).toFixed(1)+'¢';
+const esc = (s) => String(s==null?'':s).replace(/[&<>]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const kv = (k,v,cls) => `<div class="kv"><div class="k">${k}</div><div class="v ${cls||''}">${v}</div></div>`;
+const statusPill = (s) => {
+  const m = {'ACTIONABLE EXPERIMENTAL':'p-amber','WATCH':'p-grey','NO BET':'p-grey','ANALYSIS ONLY':'p-grey',
+             'UNPRICED':'p-grey','HUMAN REVIEW REQUIRED':'p-red','NO CONTRACT MAPPED':'p-grey'};
+  return `<span class="pill ${m[s]||'p-grey'}">${esc(s)}</span>`;
+};
 
-  // Signals changed shape when sizing stopped using the model's confidence score. A signal now
-  // carries: fighter/opponent, cost (the ASK, what you actually pay), and the source's measured
-  // edge vs the line (sourceRoi) plus its defensible lower bound (sourceRoiLcb). There is no
-  // "sourceProb" any more, because the number it used to hold was invented by the model.
-  const sigs=(d.signals||[]);
-  // BETTABLE only if the edge SURVIVED out of sample AND the source is not an active fighter
-  // previewing their own team. In-sample "trusted" is NOT enough: the 24-month backfill showed the
-  // trusted group did no better out of sample (+13.0%) than picking everyone (+12.9%) — i.e. luck.
-  const isReal=(s)=>s.survives && !s.isFighter && (s.sourceRoiLcb||0)>0;
-  const why=(s)=>s.isFighter?'fighter · own team'
-    :(!s.survives?'in-sample only · failed holdout'
-    :((s.sourceRoiLcb||0)<=0?'edge inside error bars':''));
-  const trusted=sigs.filter(isReal);
-  const research=sigs.filter(s=>!isReal(s));
-  const card=(s,star)=>{
-    const cost=(s.cost||0)*100;
-    const edgeVal=star?(s.oosRoiLcb!=null?s.oosRoiLcb:s.sourceRoiLcb):s.sourceRoiLcb;
-    const reason=star?'':why(s);
-    return `<div class="sig ${star?'star':''}">
-      <div class="top"><span class="pick">${star?'⭐ ':''}${s.fighter||s.pick}</span>
-      ${edgeVal!=null?`<span class="edge">${star?'edge (out-of-sample) ':'edge (in-sample) '}${(edgeVal*100).toFixed(0)}%</span>`:''}
-      <span class="src">${s.source} · ${s.n||0} past picks${reason?' · '+reason:''}</span></div>
-      <div class="bar"><div class="mkt" style="width:${cost}%"></div></div>
-      <div class="src">costs ${cents(s.cost)}, pays $1 if he wins${s.opponent?' · vs '+s.opponent:''}${s.fightDate?' · '+s.fightDate:''}</div>
-      ${s.quote?`<div class="q">"${s.quote}"</div>`:''}</div>`;
-  };
-  $('signals').innerHTML=(trusted.length?trusted.map(s=>card(s,true)).join(''):'<div class="empty">Nothing worth betting right now.</div>')
-    +(research.length?'<h2>Research only</h2>'+research.map(s=>card(s,false)).join(''):'');
+async function load() {
+  const st = await (await fetch('/api/status')).json();
 
-  // Survivors first — the honest ranking. Then by in-sample shrunk ROI.
-  const recs=(d.graded||[]).sort((a,b)=>((b.survives?1:0)-(a.survives?1:0))||((b.shrunkRoi||-9)-(a.shrunkRoi||-9)));
-  $('records').innerHTML=recs.length?recs.map(g=>`<tr>
-    <td>${g.source}</td><td>${g.trusted?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
-    <td>${g.survives?'<span class="yes">YES</span>':'<span class="no">-</span>'}</td>
-    <td class="${g.roi>=0?'pos':'neg'}">${g.roi==null?'-':(g.roi*100).toFixed(1)+'%'}</td>
-    <td class="${g.shrunkRoi>=0?'pos':'neg'}">${g.shrunkRoi==null?'-':(g.shrunkRoi*100).toFixed(1)+'%'}</td>
-    <td class="${g.roiLcb>0?'pos':'neg'}">${g.roiLcb==null?'-':(g.roiLcb*100).toFixed(1)+'%'}</td>
-    <td>${g.n||0}</td><td>${pct(g.hitRate)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">No graded sources yet.</td></tr>';
+  // safety banner — first, and it never hides anything
+  $('#safety').className = 'banner ' + (st.failedStages.length ? 'b-warn' : 'b-disarm');
+  $('#safety').innerHTML =
+    `ALERTS: <b>${st.alerts}</b> &nbsp;·&nbsp; TRADING CAPABILITY: <b>${st.tradingCapability}</b> &nbsp;·&nbsp; ORDER PATH: ${esc(st.orderPlacementPath)}`
+    + `<div style="font-weight:400;font-size:12px;margin-top:6px;opacity:.9">${esc(st.indicatorMeaning)}</div>`;
+
+  $('#status').innerHTML = [
+    kv('Pipeline', `<span class="pill ${st.indicator==='GREEN'?'p-green':'p-red'}">${st.indicator}</span>`),
+    kv('Rules version', esc(st.pipelineVersion.rules||'—')),
+    kv('Last successful run', st.freshness.lastSuccessfulRun ? esc(st.freshness.lastSuccessfulRun.replace('T',' ').slice(0,16)) : '<span class="muted">none</span>'),
+    kv('Data freshness', st.freshness.ageMinutes==null?'<span class="muted">—</span>':`${st.freshness.ageMinutes} min ${st.freshness.stale?'<span class="pill p-red">STALE</span>':''}`),
+    kv('Sportsbook snapshot', esc(st.sportsbookSnapshot.status)),
+    kv('Kalshi snapshot', esc(st.kalshiSnapshot.status)),
+    kv('Fee verification', `${esc(st.feeVerification.status)}<div class="k" style="margin-top:4px">as of ${esc(st.feeVerification.asOf||'—')}</div>`),
+    kv('Active cards', st.activeCards),
+    kv('Actionable experimental', st.counts.actionableExperimental),
+    kv('Watch', st.counts.watch),
+    kv('No bet', st.counts.noBet),
+    kv('Analysis only', st.counts.analysisOnly),
+    kv('Unpriced', st.counts.unpriced),
+    kv('Human review', st.counts.humanReviewRequired),
+  ].join('');
+
+  const sc = st.feeVerification.scope;
+  $('#status-note').innerHTML = sc
+    ? `<b>Fee verification scope:</b> ${esc(sc.series)} · ${esc(sc.side).toUpperCase()} side · ${esc(sc.fills)} · price ${sc.priceRange[0]}–${sc.priceRange[1]} · size ${sc.sizeRange[0]}–${sc.sizeRange[1]} contracts.
+       <details><summary>What this does NOT establish (${st.feeVerification.doesNotEstablish.length})</summary>
+       <ul>${st.feeVerification.doesNotEstablish.map((d)=>`<li>${esc(d)}</li>`).join('')}</ul>
+       <p><b>Review provenance:</b> ${esc(st.feeVerification.reviewProvenance)}</p></details>` : '';
+
+  $('#failed').innerHTML = st.failedStages.length
+    ? `<div class="banner b-warn" style="margin-top:12px">Failed / incomplete stages:<ul style="font-weight:400;margin:6px 0 0">${st.failedStages.map((f)=>`<li>${esc(f.stage)}: ${esc(f.why)}</li>`).join('')}</ul></div>` : '';
+
+  const cards = (await (await fetch('/api/cards')).json()).cards;
+  $('#card-picker').textContent = cards.length ? `card ${cards[0]}` : 'no sealed card';
+  if (!cards.length) return;
+  const date = cards[0];
+
+  const c = await (await fetch('/api/card?date='+date)).json();
+  if (c.ok) {
+    $('#card tbody').innerHTML = c.rows.map((r)=>`<tr>
+      <td><b>${esc(r.fight)}</b>${r.capLimited?' <span class="pill p-amber">CAP LIMITED</span>':''}</td>
+      <td>${pct(r.marketBaseline?r.marketBaseline.probability:null)}${r.marketBaseline?`<div class="k muted">tier ${esc(r.marketBaseline.tier)} · ${esc(r.marketBaseline.clockBasis)}</div>`:'<div class="k muted">BASELINE UNAVAILABLE</div>'}</td>
+      <td>${pct(r.systemProbability)}</td>
+      <td>${r.systemRange?`${pct(r.systemRange.low)}–${pct(r.systemRange.high)}`:'<span class="muted">—</span>'}</td>
+      <td>${cts(r.kalshiExecutablePrice)}</td>
+      <td>${esc(r.forecastStatus)}</td>
+      <td>${esc(r.evidenceCoverage||'—')}</td>
+      <td>${statusPill(r.contractClassification)}</td>
+      <td>${r.highestRankedEligible?esc(r.highestRankedEligible.subject)+' $'+r.highestRankedEligible.stake:'<span class="muted">none</span>'}</td>
+      <td class="reason">${esc(r.noBetReason||'')}</td>
+      <td class="muted">${esc(String(r.lastUpdate||'').replace('T',' ').slice(0,16))}</td>
+    </tr>`).join('');
+    $('#card-note').innerHTML = `${c.totalBouts} bouts · ${c.boutsWithoutBaseline} without a usable market baseline (shown anyway — omitting them would make the card look smaller than it is).
+      <br>Forecast <code>${esc(c.forecastHash)}</code> sealed ${esc(String(c.sealedAt).replace('T',' ').slice(0,16))} · decision <code>${esc(c.decisionHash||'none')}</code>. Every number above is copied from those sealed artifacts.`;
+  }
+
+  const ct = await (await fetch('/api/contracts?date='+date)).json();
+  if (ct.ok) {
+    $('#contracts tbody').innerHTML = ct.contracts.map((x)=>`<tr>
+      <td><code>${esc(x.ticker)}</code>${x.analysisOnly?'<div><span class="pill p-amber">UNVALIDATED METHOD MODEL</span></div>':''}</td>
+      <td class="reason">${esc(String(x.settlementRule||'').slice(0,90))}…</td>
+      <td>${cts(x.executablePrice)}</td><td>${cts(x.allInPrice)}</td>
+      <td>${pct(x.systemProbability)}</td><td>${pct(x.conservativeProbability)}</td>
+      <td>${x.fee==null?'—':'$'+x.fee}</td><td>${x.slippage==null?'—':cts(x.slippage)}</td>
+      <td>${x.estimatedValueAfterCosts==null?'<span class="muted">—</span>':(x.estimatedValueAfterCosts*100).toFixed(1)+' pts'}</td>
+      <td>${cts(x.maximumAcceptablePrice)}</td>
+      <td>${x.liquidity==null?'—':x.liquidity}</td>
+      <td>${x.verificationEnvelope==null?'<span class="muted">—</span>':(x.verificationEnvelope.withinVerifiedEnvelope?'<span class="pill p-green">IN</span>':'<span class="pill p-amber">EXTRAPOLATED</span>')}</td>
+      <td>${statusPill(x.rankingStatus)}</td>
+      <td class="reason">${esc(String(x.rejectionReason||'').slice(0,110))}</td>
+    </tr>`).join('');
+  }
+
+  const p = await (await fetch('/api/portfolio?date='+date)).json();
+  if (p.ok) {
+    $('#portfolio').innerHTML = [
+      kv('Proposed positions', p.proposedPositions.length),
+      kv('Card exposure', '$'+p.cardTotalExposure),
+      kv('Card max loss', '$'+p.cardMaxLoss),
+      kv('Card max gain', '$'+p.cardMaxGain),
+      kv('Bankroll', '$'+p.bankroll),
+      kv('Card cap', p.caps?(p.caps.maxFractionPerCard*100)+'%':'—'),
+    ].join('');
+    $('#exposure').innerHTML = p.exposureByFight.length ? `<div class="scroll"><table style="margin-top:12px"><thead><tr>
+      <th>Fight</th><th>Positions</th><th>Exposure</th><th>Max loss</th><th>Max gain</th><th>Correlation</th></tr></thead><tbody>
+      ${p.exposureByFight.map((b)=>`<tr><td>${esc(b.fight)}</td><td>${b.positions}</td><td>$${b.totalExposure}</td>
+      <td>$${b.maxLoss}</td><td>$${b.maxGain}</td><td class="reason">${esc(b.diversificationNote||'—')}</td></tr>`).join('')}
+      </tbody></table></div>` : '<div class="note">No positions proposed.</div>';
+    $('#port-note').innerHTML = `<b>${esc(p.diversificationWarning)}</b><br>${esc(p.independenceAssumption||'')}`;
+  }
+
+  const fr = await (await fetch('/api/forward-record')).json();
+  $('#record').innerHTML = [
+    kv('Total decisions', fr.summary.totalDecisions),
+    kv('No-bet frequency', fr.summary.noBetFrequency),
+    kv('Actionable frequency', fr.summary.actionableFrequency),
+    kv('Settled positions', fr.summary.settledPositions),
+    kv('Net paper result', fr.summary.netPaperResultAfterVerifiedCosts==null?'<span class="muted">n/a</span>':fr.summary.netPaperResultAfterVerifiedCosts),
+    kv('Calibration', '<span class="muted" style="font-size:12px">'+esc(fr.summary.calibration)+'</span>'),
+  ].join('');
+  $('#record-note').innerHTML = esc(fr.summary.note) +
+    `<details><summary>${fr.runs.length} sealed runs (superseded versions retained)</summary><ul>` +
+    fr.runs.map((r)=>`<li><code>${esc(r.file)}</code> ${r.superseded?'<span class="pill p-grey">SUPERSEDED</span>':''} ${r.ok?`· ${esc(String(r.decidedAt||'').slice(0,16))} · armed=${r.armed} · orders=${r.ordersPlaced}`:`· <span class="pill p-red">UNUSABLE</span> ${esc(r.reason)}`}</li>`).join('') +
+    '</ul></details>';
 }
-load(); setInterval(load, 8000);
+load().catch((e)=>{ $('#safety').className='banner b-warn'; $('#safety').textContent='Dashboard failed to load: '+e.message; });
 </script>
-</body></html>
+</body>
+</html>
