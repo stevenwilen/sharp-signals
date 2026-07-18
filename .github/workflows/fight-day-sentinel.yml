@@ -1,0 +1,60 @@
+name: Sharp Signals — Fight-Day Sentinel
+
+# FIGHT-DAY 15-MINUTE PRICE CHECKS, inside ONE long job. GitHub cron cannot reliably fire every 15
+# minutes (~14% of a */15 schedule lands on this public repo), so instead a single job starts the
+# sentinel, which loops on a real 15-minute wall-clock interval for up to ~5 hours. Cron only has to
+# land the job a few times a day; the sentinel carries the fine-grained cadence.
+#
+# Each iteration is cheap: re-value the listed contracts against current Kalshi prices and let the
+# alert ledger fire price-crossed / became-actionable / withdrawn triggers. No Gemini, no re-forecast.
+on:
+  schedule:
+    # A few starts across a fight day (UTC). The sentinel self-limits to card windows: if there is no
+    # sealed forecast, or the card is not near, it exits immediately.
+    - cron: "0 20,23 * * 5,6"     # Fri/Sat 20:00 and 23:00 UTC — UFC cards run Sat evening US time
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "How long to watch (max 350)"
+        required: false
+        default: "300"
+      iterations:
+        description: "Cap the number of iterations (blank = time-bounded)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sharp-signals-sentinel
+  cancel-in-progress: false
+
+jobs:
+  sentinel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350           # GitHub's hosted-runner cap is 6h; stay under it
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+
+      - name: Watch prices on a 15-minute loop
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BANKROLL: ${{ vars.BANKROLL }}
+          SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
+        run: |
+          node sentinel.js \
+            --minutes=${{ github.event.inputs.minutes || '300' }} \
+            --interval-sec=900 \
+            ${{ github.event.inputs.iterations && format('--iterations={0}', github.event.inputs.iterations) || '' }}
+
+      # The sentinel persists incrementally after any iteration that changed the ledger, so it cannot
+      # re-send on a fresh runner. This is the backstop for whatever the final iteration produced.
+      - name: Persist final state (even on cancellation)
+        if: always()
+        run: bash .github/save-data.sh sentinel-final

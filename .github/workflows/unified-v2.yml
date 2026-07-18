@@ -1,0 +1,78 @@
+name: Sharp Signals — Unified V2
+
+# THE UNIFIED PRODUCTION PIPELINE. One hourly dispatcher decides what work is due for the active card
+# (discovery / evidence / forecast / alerts / grade) and runs the SAME tested scripts the manual path
+# uses — there is no second, simplified cloud implementation. Missed crons self-heal: the next
+# invocation sees the overdue stage and runs it (GitHub cron fires ~14-40% of schedule on a public
+# repo, so the dispatcher must not assume a run landed).
+on:
+  schedule:
+    - cron: "5 * * * *"          # hourly; the dispatcher decides whether anything is actually due
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force a stage (collect | forecast | alerts | grade), or leave blank for the schedule to decide"
+        required: false
+        default: ""
+      dry:
+        description: "Dry run — decide stages but execute nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write               # commit sealed forecasts + state back to the repo
+
+concurrency:
+  # Its OWN group, separate from the V1 workflows. They write disjoint files (V1: signals/pick-ledger/
+  # positions/picks/transcripts; V2: card-evidence/evidence-eval/forecast/attestation/receipts), and
+  # save-data.sh rebases before pushing, so a rare overlap merges. cancel-in-progress:false so a
+  # forecast run is never killed mid-seal.
+  group: sharp-signals-unified
+  cancel-in-progress: false
+
+jobs:
+  unified:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }     # full history so save-data.sh can rebase onto origin/main
+
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+
+      # Cheap, replaceable computational caches (transcripts, extraction) also live in git, but the
+      # Actions cache warms a fresh runner faster on the common no-op hourly run.
+      - name: Warm caches
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/evidence
+            data/transcripts
+          key: sharp-caches-${{ github.run_id }}
+          restore-keys: sharp-caches-
+
+      - name: Run the unified dispatcher
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
+          TWITTERAPI_KEY: ${{ secrets.TWITTERAPI_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          BANKROLL: ${{ vars.BANKROLL }}
+          # SHARP_PRODUCTION gates the actual Telegram SEND. It is a repository VARIABLE (not a secret),
+          # set only after review. Absent -> the alert path runs in TEST mode and sends nothing.
+          SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
+        run: |
+          node dispatch.js \
+            ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \
+            ${{ github.event.inputs.dry == 'true' && '--dry' || '' }}
+
+      # if: always() — sealed forecasts and the alert ledger cost real money / carry real
+      # consequences, and are written to disk as they are produced. A run that dies part-way must still
+      # commit what it made, or it re-does the paid work and (worse) loses the record of what it sent.
+      - name: Persist state (even on failure)
+        if: always()
+        run: bash .github/save-data.sh unified-v2
