@@ -129,6 +129,10 @@ async function main() {
   const receipts = readReceipts();
   const plan = decideDueStages(card.eventDate, nowMs, receipts);
   const dueList = force ? [force] : Object.entries(plan.due).filter(([, v]) => v).map(([k2]) => k2);
+  // Alerts always follow a forecast: a re-sealed forecast may have changed the decision, and the alert
+  // ledger must get the chance to fire a price/withdrawal/supersede update. This holds whether the
+  // forecast was due or forced.
+  if (dueList.includes("forecast") && !dueList.includes("alerts")) dueList.push("alerts");
   say(`[dispatch] tier ${plan.tier} · ${plan.hoursToBell}h to bell · due: ${dueList.length ? dueList.join(", ") : "nothing"}${force ? ` (forced: ${force})` : ""}`);
 
   if (dry) { say(`[dispatch] --dry: would run [${dueList.join(", ")}]. Nothing executed.`); return 0; }
