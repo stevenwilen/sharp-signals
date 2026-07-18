@@ -198,6 +198,21 @@ async function main() {
   // about this card until it knows which card this is.
   const fc = JSON.parse(fs.readFileSync(fPath, "utf8"));
   fc0 = fc;   // let buildActionMessage read the seal hash
+
+  // CROSS-RUNNER DEDUP REFRESH (certification fix) — BEFORE any shouldSend decision. This runner may
+  // have checked out 20-40 minutes ago; the fight-day sentinel may have sent (and pushed) the same
+  // trigger since. Pull JUST the alert ledger from origin so every dedup comparison below runs against
+  // the network-current state — a duplicate Telegram must not depend on this runner's checkout time.
+  // Fetch failure: proceed with a loud warning (a rare git blip must not silence a legitimate first
+  // alert; residual re-send risk is bounded by record()'s reload-before-write + atomic rename).
+  if (process.env.GITHUB_ACTIONS) {
+    try {
+      const { execFileSync } = require("child_process");
+      execFileSync("git", ["fetch", "-q", "origin", "main"], { cwd: __dirname, timeout: 30000 });
+      execFileSync("git", ["checkout", "origin/main", "--", "data/alert-ledger-v2.json"], { cwd: __dirname, timeout: 15000 });
+      say("(dedup state refreshed from origin)");
+    } catch (e) { say(`⚠ could not refresh dedup state from origin (${e.message}) — using checkout state`); }
+  }
   const gate = armingGate(fc.card && fc.card.eventId, fc.sealHash);
 
   const nowTs = Date.now();

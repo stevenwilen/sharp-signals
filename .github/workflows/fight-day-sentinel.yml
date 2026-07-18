@@ -51,6 +51,10 @@ jobs:
           # Shadow fight-intelligence tick on each price loop (final-48h recheck cadence). Never sends
           # Telegram in shadow — run-intel is called without --send.
           FIGHT_INTEL_ENABLED: ${{ vars.FIGHT_INTEL_ENABLED }}
+          # REQUIRED for consistency with the dispatcher (certification fix): run-entertainment-alerts
+          # suppresses the LEGACY human-review send only when FIGHT_INTEL_SEND=1. Omitting it here made
+          # the sentinel's fight-day runs send legacy review messages beside the intel lifecycle.
+          FIGHT_INTEL_SEND: ${{ vars.FIGHT_INTEL_SEND }}
           INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
         run: |
           node sentinel.js \

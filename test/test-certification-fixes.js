@@ -45,10 +45,12 @@ console.log("\nROLLOVER-SAFE GRADING — the settled card is graded after its ma
 {
   const s = src("dispatch.js");
   ok("the active card is remembered on the receipts", /receipts\.lastCard = \{ eventId: card\.eventId/.test(s));
-  ok("a settled last card is graded even when Kalshi no longer lists it", /grading previous card/.test(s) && /gradedCards/.test(s));
-  ok("grading waits for bell + 6h (not before the event ends)", /firstBellMs\(last\.eventDate\) \+ 6 \* 3600e3/.test(s));
+  ok("EVERY past ungraded sealed forecast is graded from disk (discovery not required)", /grading past card/.test(s) && /forecast-\(/.test(s) && /gradedCards/.test(s));
+  ok("grading waits for bell + 6h (not before the event ends)", /firstBellMs\(d\) \+ 6 \* 3600e3/.test(s));
   ok("the grade receipt is stamped ONLY on success", /if \(okGrade\)/.test(s));
-  ok("grading is idempotent per card (gradedCards keyed once)", /!graded\[last\.eventDate\]/.test(s));
+  ok("grading is idempotent per card (gradedCards keyed once)", /!graded\[d\]/.test(s));
+  ok("a finished card is released even if a market lingers open (rollover starvation)", /firstBellMs\(c\.eventDate\) \+ 24 \* 3600e3/.test(s));
+  ok("a stage receipt from a different card is not recency for this card", /receipts\[st\]\.card !== card\.eventId/.test(s));
 }
 
 console.log("\nSENTINEL DEDUP FRESHNESS — cross-runner state is pulled, and a stuck rebase aborts");
@@ -56,6 +58,20 @@ console.log("\nSENTINEL DEDUP FRESHNESS — cross-runner state is pulled, and a 
   const s = src("sentinel.js");
   ok("each tick pulls the dispatcher's ledger updates before deciding to send", /refreshState\(\);\s+\/\/ pull/.test(s) || /refreshState\(\)/.test(s) && /pull.*--rebase.*--autostash/.test(s));
   ok("a failed persist aborts the half-rebase so retries start clean", /rebase", "--abort"/.test(s));
+  ok("the sentinel refuses a card outside the ±36h fight-day window", /36 \* 3600e3/.test(s) && /outside the ±36h/.test(s));
+}
+
+console.log("\nVOCABULARY + DEDUP + IDENTITY (verdict fixes)");
+{
+  const AL = require("../lib/alert-ledger-v2");
+  ok("core-lane tier labels ARE in the ledger's ACTIONABLE set (withdrawn/became-actionable now live for core)",
+    AL.ACTIONABLE.has("standard experimental") && AL.ACTIONABLE.has("strong experimental") && AL.ACTIONABLE.has("rare maximum"));
+  const ra = src("run-entertainment-alerts.js");
+  ok("dedup state is refreshed from origin BEFORE shouldSend decisions", ra.indexOf("CROSS-RUNNER DEDUP REFRESH") < ra.indexOf("[1] inspecting"));
+  const ri = src("run-intel.js");
+  ok("run-intel refuses a positional-boutId join when the fight names disagree", /identity refusal/.test(ri) && /eb\.fight === f\.fight/.test(ri));
+  const wf = src(".github/workflows/fight-day-sentinel.yml");
+  ok("the sentinel workflow passes FIGHT_INTEL_SEND (legacy review suppression consistent with the dispatcher)", /FIGHT_INTEL_SEND: \$\{\{ vars\.FIGHT_INTEL_SEND \}\}/.test(wf));
 }
 
 console.log("\nDISCOVERY HEALTH — transcript failures are counted, not silently dropped");

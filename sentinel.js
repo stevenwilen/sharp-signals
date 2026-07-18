@@ -73,6 +73,14 @@ function activeCardFiles() {
   if (!forecasts.length) return null;
   const fc = forecasts[forecasts.length - 1];       // latest event date
   const ed = fc.match(/forecast-(\d{4}-\d{2}-\d{2})\.json/)[1];
+  // EVENT-WINDOW GUARD (certification fix): the newest forecast FILE is not necessarily a LIVE card.
+  // Without this check, a fight-day run landing after a card settled (or before the next was sealed)
+  // would happily price-check an old event. The bell must be within ±36h of now.
+  const bell = Date.parse(`${ed}T22:00:00Z`);
+  if (!Number.isFinite(bell) || Math.abs(Date.now() - bell) > 36 * 3600e3) {
+    say(`newest forecast is ${ed} — outside the ±36h fight-day window; nothing live to watch`);
+    return null;
+  }
   const evalFile = `data/evidence-eval-${ed}.json`;
   if (!fs.existsSync(path.join(dir, `evidence-eval-${ed}.json`))) return null;
   return { forecastFile: `data/forecast-${ed}.json`, evalFile, eventDate: ed };

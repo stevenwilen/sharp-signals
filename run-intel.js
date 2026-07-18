@@ -31,7 +31,13 @@ function build(forecast, evalData, cardDate) {
   for (const f of forecast.forecasts || []) {
     forecastByBout[f.boutId] = { ...f, sealHash: forecast.sealHash };
     const eb = evalBouts.find((b) => b.boutId === f.boutId);
-    const topics = (eb && eb.topics) || [];
+    // IDENTITY REFUSAL (certification fix): boutId is a POSITIONAL index that renumbers when a bout
+    // drops off the card. Joining on it alone once bound a Kevin Holland rumour to Usman's bout. If the
+    // eval bout and the forecast disagree about which FIGHT this is, refuse the topics (fail closed)
+    // rather than attach intelligence to the wrong fighters.
+    const identityOk = !eb || !eb.fight || !f.fight || eb.fight === f.fight;
+    const topics = (identityOk && eb && eb.topics) || [];
+    if (!identityOk) say(`[intel] ⛔ identity refusal: ${f.boutId} is "${f.fight}" in the forecast but "${eb.fight}" in the eval — topics dropped`);
     const [A, B] = String(f.fight || "").split(" vs ");
     const opponentOf = {};
     if (A && B) { opponentOf[N(A)] = B; opponentOf[N(B)] = A; }

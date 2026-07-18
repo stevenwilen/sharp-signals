@@ -103,8 +103,14 @@ async function discoverCard(forceTickerDate) {
     cards.get(c.eventDate).bouts++;
   }
   if (!cards.size) return null;
-  // The SOONEST card by event date is the active one.
-  return [...cards.values()].sort((a, b) => firstBellMs(a.eventDate) - firstBellMs(b.eventDate))[0];
+  // The SOONEST card by event date is the active one — but a card whose bell passed more than 24h ago
+  // is FINISHED, however long Kalshi keeps a rescheduled market open on it. One lingering market used
+  // to pin the prior card active for up to a week, starving the next card of collect/forecast/alerts
+  // while every run exited green (rollover starvation). Grading no longer needs discovery (the
+  // gradedCards sweep grades from disk), so a finished card can simply be released.
+  const live = [...cards.values()].filter((c) => Date.now() < firstBellMs(c.eventDate) + 24 * 3600e3);
+  if (!live.length) return null;
+  return live.sort((a, b) => firstBellMs(a.eventDate) - firstBellMs(b.eventDate))[0];
 }
 
 const readReceipts = () => { try { return JSON.parse(fs.readFileSync(RECEIPTS, "utf8")); } catch { return {}; } };
@@ -143,21 +149,23 @@ async function main() {
   // become active. Idempotent: gradedCards records each card once.
   {
     const r = readReceipts();
-    const last = r.lastCard;
     const graded = r.gradedCards || {};
-    if (last && last.eventDate && !graded[last.eventDate]
-        && nowMs > firstBellMs(last.eventDate) + 6 * 3600e3
-        && (!card || card.eventDate !== last.eventDate)
-        && fs.existsSync(path.join(ROOT, `data/forecast-${last.eventDate}.json`))) {
-      say(`[dispatch] grading previous card ${last.eventId || last.eventDate} (settled; no longer listed on Kalshi)`);
-      if (!dry) {
-        const okGrade = run("run-grade-card.js", [`data/forecast-${last.eventDate}.json`, "--write"], { allowFail: true });
-        const scen = `data/scenarios-ranked-${last.eventDate}.json`;
-        if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
-        run("run-convergence-eval.js", ["--write"], { allowFail: true });
-        // stamp ONLY on success — a failed grade must stay due, not look done
-        if (okGrade) { const r2 = readReceipts(); (r2.gradedCards = r2.gradedCards || {})[last.eventDate] = new Date().toISOString(); persistReceipts(r2); }
-      }
+    // Every past sealed forecast on disk that has never been graded is due — not just the most recent
+    // card. Discovery is NOT required (a settled card's markets are closed and gone from the board);
+    // grading works from the sealed file + Kalshi settlement reads. Bounded to 3 cards per run.
+    const ungraded = fs.readdirSync(path.join(ROOT, "data"))
+      .map((f) => (f.match(/^forecast-(\d{4}-\d{2}-\d{2})\.json$/) || [])[1]).filter(Boolean)
+      .filter((d) => !graded[d] && nowMs > firstBellMs(d) + 6 * 3600e3 && (!card || card.eventDate !== d))
+      .sort().slice(-3);
+    for (const d of ungraded) {
+      say(`[dispatch] grading past card ${d} (settled; discovery not required)`);
+      if (dry) continue;
+      const okGrade = run("run-grade-card.js", [`data/forecast-${d}.json`, "--write"], { allowFail: true });
+      const scen = `data/scenarios-ranked-${d}.json`;
+      if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
+      run("run-convergence-eval.js", ["--write"], { allowFail: true });
+      // stamp ONLY on success — a failed grade (settlement not in) must stay due, not look done
+      if (okGrade) { const r2 = readReceipts(); (r2.gradedCards = r2.gradedCards || {})[d] = new Date().toISOString(); persistReceipts(r2); }
     }
   }
 
@@ -167,6 +175,12 @@ async function main() {
   const receipts = readReceipts();
   // remember the active card so its grade can run after its markets close (see above)
   receipts.lastCard = { eventId: card.eventId, eventDate: card.eventDate, tickerDate: card.tickerDate };
+  // ROLLOVER RECENCY (certification fix): a stage receipt stamped for a DIFFERENT card is not recency
+  // for THIS card. Without this, a fresh card inherited the old card's ranAt and waited a full cadence
+  // interval before its first collect/forecast — a silent dead window at every rollover.
+  for (const st of ["collect", "forecast", "alerts", "grade"]) {
+    if (receipts[st] && receipts[st].card && receipts[st].card !== card.eventId) delete receipts[st];
+  }
   persistReceipts(receipts);
   const plan = decideDueStages(card.eventDate, nowMs, receipts);
   const dueList = force ? [force] : Object.entries(plan.due).filter(([, v]) => v).map(([k2]) => k2);
