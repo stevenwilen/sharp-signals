@@ -87,6 +87,14 @@ async function main() {
     if (!okRun) { lastFail++; if (lastFail >= 5) { await notify("⚠️ Sharp Signals sentinel: 5 consecutive price-check failures").catch(() => {}); lastFail = 0; } }
     else lastFail = 0;
 
+    // Shadow fight-intelligence tick — the final-48h recheck cadence (§14). On the SAME sealed forecast
+    // (no re-forecast), it refreshes market before/after snapshots and reclassifies (priced-out /
+    // available-again). Shadow: run-intel is called WITHOUT --send, so no Telegram. Non-fatal.
+    if (process.env.FIGHT_INTEL_ENABLED === "1") {
+      try { execFileSync(process.execPath, [path.join(ROOT, "run-intel.js"), files.forecastFile, `--eval=${files.evalFile}`], { cwd: ROOT, stdio: "inherit" }); }
+      catch (e) { say(`intel tick exited ${e.status} — non-fatal`); }
+    }
+
     // Persist immediately if the ledger changed — that is the only state a cancellation could lose in a
     // way that causes a duplicate send.
     if (ledgerFingerprint() !== before) { say("ledger changed — persisting"); persist(`iter${iter}`); }

@@ -66,6 +66,11 @@ jobs:
           # set only after review. Absent -> the alert path runs in TEST mode and sends nothing.
           SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
           EXPLORATION_ENABLED: ${{ vars.EXPLORATION_ENABLED }}
+          # FIGHT_INTEL_ENABLED turns on the automated intelligence lifecycle (records + dashboard). In
+          # shadow it never sends Telegram; run-intel is invoked WITHOUT --send until it is promoted to
+          # production. INTEL_WEB_SEARCH gates the grounded web search — off by default in shadow.
+          FIGHT_INTEL_ENABLED: ${{ vars.FIGHT_INTEL_ENABLED }}
+          INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \

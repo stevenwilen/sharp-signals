@@ -48,6 +48,10 @@ jobs:
           BANKROLL: ${{ vars.BANKROLL }}
           SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
           EXPLORATION_ENABLED: ${{ vars.EXPLORATION_ENABLED }}
+          # Shadow fight-intelligence tick on each price loop (final-48h recheck cadence). Never sends
+          # Telegram in shadow — run-intel is called without --send.
+          FIGHT_INTEL_ENABLED: ${{ vars.FIGHT_INTEL_ENABLED }}
+          INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
         run: |
           node sentinel.js \
             --minutes=${{ github.event.inputs.minutes || '300' }} \

@@ -179,6 +179,15 @@ async function main() {
     stamp(receipts, "alerts", { card: card.eventId });
   }
 
+  // FIGHT INTELLIGENCE (shadow) — the automated report lifecycle, on the SAME cached evidence and sealed
+  // forecast (no re-extraction, so it honours the recheck cadence cheaply). In shadow it records +
+  // dashboards only and sends NO Telegram, so it cannot touch the production alert path. Non-fatal: it
+  // may never break the forecast/alerts pipeline while it is being validated. Off unless
+  // FIGHT_INTEL_ENABLED=1; --send is deliberately NOT passed until the shadow is switched to production.
+  if (process.env.FIGHT_INTEL_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast"))) {
+    run("run-intel.js", [forecastFile, `--eval=${evalFile}`], { allowFail: true });
+  }
+
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
   // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
   // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
