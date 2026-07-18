@@ -60,6 +60,20 @@ function main() {
     outcomesLoaded: false,
   };
   payload.scenarioSetHash = R.sha(payload);
+  // IMMUTABILITY (matches the sealed forecast). This artifact declares immutable:true, so a re-seal must
+  // never DESTROY the prior set — the one run-scenario-eval may have graded. If a different set already
+  // exists, preserve it as .v<oldHash>.json before writing the new one. Identical content yields an
+  // identical scenarioSetHash, so a no-op re-run renames nothing.
+  if (fs.existsSync(outPath)) {
+    try {
+      const prior = JSON.parse(fs.readFileSync(outPath, "utf8"));
+      if (prior.scenarioSetHash && prior.scenarioSetHash !== payload.scenarioSetHash) {
+        const archived = outPath.replace(/\.json$/, `.v${prior.scenarioSetHash}.json`);
+        if (!fs.existsSync(archived)) fs.renameSync(outPath, archived);
+        say(`[stage 4] prior scenario set preserved -> ${path.basename(archived)} (immutable, never overwritten)`);
+      }
+    } catch (_) { /* unreadable prior -> treat as absent; the new seal writes cleanly */ }
+  }
   writeJson(outPath, payload);
   if (!fs.existsSync(outPath)) fail(`not written: ${outPath}`);
   say(`\n[stage 4] SEALED: ${outPath}`);
