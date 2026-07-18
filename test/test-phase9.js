@@ -179,9 +179,9 @@ console.log("\n9B: THE OTHER SIX MESSAGE TYPES");
     maximumAcceptablePrice: 0.45, conservativeValuePoints: -0.4, snapshotTimestamp: "t" });
   ok("a price update shows the move", /43\.0¢ → 47\.0¢/.test(pu));
   ok("a price above the max says the position no longer qualifies", /no longer qualifies/.test(pu));
-  const w = TM.positionWithdrawn({ fight: "A vs B", contractLabel: "A YES", reason: "conservative EV went negative", wasProposedStake: 0.4, dashboardRef: "x" });
+  const w = TM.positionWithdrawn({ recommendedFirst: "Alice Ace vs Bob Bruiser", fight: "A vs B", reason: "conservative EV went negative" });
   ok("a withdrawal states the reason", /conservative EV went negative/.test(w));
-  ok("a withdrawal admits the system cannot close anything", /no order path and cannot close anything/.test(w));
+  ok("a withdrawal says do not place the previous recommendation", /Do not place the previous recommendation\./.test(w));
   const n = TM.noBetStatusChange({ fight: "A vs B", contractLabel: "A YES", previousClassification: "NO BET",
     classification: "ACTIONABLE EXPERIMENTAL", reason: "ask fell below the maximum", dashboardRef: "x" });
   ok("a status change shows both states", /Was: NO BET/.test(n) && /Now: ACTIONABLE EXPERIMENTAL/.test(n));
@@ -302,40 +302,40 @@ console.log("\nENTERTAINMENT BANKROLL: A BIGGER STAKE CANNOT BUY A BET");
   ok("scaling is recorded", capped.positions.every((x) => /per-card entertainment cap/.test(x.entertainment.scaledBy || "")));
 }
 
-console.log("\nTHE MANUAL BUY INSTRUCTION");
+// Since message-13 the phone message is COMPACT: the action, the price, the ceiling, the stake, one
+// reason, one risk, a range and one footer. Everything verbose (ticker, contract wording, % phrasing,
+// the repeated legal/methodology boilerplate, bulleted why/counterargument/do-not-place, the manual-
+// submission lecture) moved to the dashboard and the sealed artifacts. This block pins the new shape
+// AND that the stripped boilerplate is actually gone. The mechanical safety gate that decides whether a
+// BUY may render at all lives in lib/message-invariants and is tested in test-message-invariants.js.
+console.log("\nTHE MANUAL BUY INSTRUCTION (compact)");
 {
   const b = {
-    fight: "Alice Ace vs Bob Bruiser", ticker: "KXUFCFIGHT-26JUL18ALIBOB-ALI",
-    contractWording: "Will Alice Ace win the Ace vs Bruiser fight?",
-    ask: 0.43, maximumAcceptablePrice: 0.45, percentOfBankroll: 2, bankroll: 100,
-    stake: 2, contracts: 4, tierLabel: "standard experimental", contractsCompared: 2,
-    whyTopRanked: "risk-adjusted conservative value after costs beats the alternative",
-    why: ["Two independent origins support the same wrestling mechanism"],
-    against: ["Forecast has not demonstrated prospective edge"],
-    doNotPlaceIf: ["the ask is above 45.0¢ when you look", "the fight has started"],
-    rangeLow: 0.49, rangeHigh: 0.54, conservativeValuePoints: 2.1,
-    evidenceCoverage: "PARTIALLY COVERED", modelStatus: "outright winner",
-    snapshotTimestamp: "2026-07-16T22:00:00Z",
-    feeGate: { withinVerifiedEnvelope: false, exceptions: ["size 4 is outside the verified band 82.37-823.81 contracts"] },
+    classification: "CREATIVE SPECULATIVE", stake: 2, bankroll: 100,
+    recommendedFirst: "Alice Ace vs Bob Bruiser", buyLine: "Alice Ace YES",
+    ask: 0.43, maximumAcceptablePrice: 0.45,
+    whyOne: "Two independent origins support the same wrestling mechanism.",
+    riskOne: "Evidence is only partially covered.",
+    centralProb: 0.515, rangeLow: 0.49, rangeHigh: 0.54,
+    approxContracts: 4, dashboard: "https://dash/alibob",
   };
   const m = TM.buyInstruction(b);
-  ok("names the exact Kalshi contract", /Ticker: KXUFCFIGHT-26JUL18ALIBOB-ALI/.test(m));
-  ok("gives the current executable price", /Executable price now: 43\.0¢/.test(m));
-  ok("gives the maximum acceptable price with a do-not-exceed", /Maximum acceptable price: 45\.0¢.*do not pay more/.test(m));
-  ok("gives the percentage of bankroll", /2% of your \$100 entertainment bankroll/.test(m));
-  ok("gives the exact dollar amount", /= \$2\.00/.test(m));
-  ok("gives approximate contracts", /Approximate contracts: 4/.test(m));
-  ok("says why it qualifies", /Why it qualifies:/.test(m));
-  ok("gives the main counterargument", /Main counterargument:/.test(m));
-  ok("says when NOT to place it", /DO NOT place it if:/.test(m));
-  ok("says it must be submitted manually", /YOU MUST SUBMIT THIS MANUALLY/.test(m));
-  ok("states the system has no order path", /no order path and cannot place, modify or close/.test(m));
-  ok("names how many contracts it beat and why", /Ranked #1 of 2 contracts/.test(m) && /Why it ranks above the alternatives:/.test(m));
-  ok("shows the fee-envelope warning when extrapolated", /FEE IS EXTRAPOLATED/.test(m));
-  ok("carries the standing no-edge warning", /has NOT demonstrated a predictive edge/.test(m));
-  ok("...and says the one evaluation that showed one was void", /void \(contaminated baseline\)/.test(m));
+  ok("headlines the tier and the whole-dollar stake", /^🧪 CREATIVE SPECULATIVE — \$2$/m.test(m));
+  ok("names the recommended fighter first", /Alice Ace vs Bob Bruiser/.test(m));
+  ok("has a single Buy line", (m.match(/^Buy: Alice Ace YES$/gm) || []).length === 1);
+  ok("gives the current executable price", /Current: 43¢/.test(m));
+  ok("gives the maximum with a place-only ceiling", /Maximum: 45¢/.test(m) && /Place only if the displayed average price is 45¢ or less\./.test(m));
+  ok("gives the dollar stake against the bankroll", /Stake: \$2 of \$100/.test(m));
+  ok("gives approximate contracts", /Approx contracts: 4/.test(m));
+  ok("Why and Main risk are single lines", /^Why: Two independent origins/m.test(m) && /^Main risk: Evidence is only/m.test(m));
+  ok("gives a probability RANGE not a point", /System estimate: 52% \(range 49%–54%\)/.test(m));
+  ok("links full reasoning to the dashboard", /Full reasoning: https:\/\/dash\/alibob/.test(m));
   ok("carries NO confidence score", (() => { try { TM.assertNoConfidenceScore(m); return true; } catch { return false; } })());
-  ok("gives a probability RANGE not a point", /System range: 49\.0%–54\.0%/.test(m));
+  ok("carries exactly ONE standing footer", (m.match(/For entertainment use\. Manual placement only\./g) || []).length === 1);
+  // The simplification, pinned: none of the verbose per-alert boilerplate leaks into the phone message.
+  ok("no ticker or contract wording in the phone message", !/KXUFCFIGHT|Ticker:|Will Alice Ace win/.test(m));
+  ok("no repeated legal/methodology disclaimers", !/predictive edge|contaminated baseline|no order path|SUBMIT THIS MANUALLY|% of your|not Kelly/i.test(m));
+  ok("under the 1000-char BUY cap", m.length < 1000, `len=${m.length}`);
 }
 
 console.log("\nARMING: ALERTS AND TRADING ARE NOT THE SAME FLAG");
@@ -391,14 +391,12 @@ console.log("\nHUMAN REVIEW ALERTS CANNOT BECOME BETTING INSTRUCTIONS");
     forecastEffect: "it applied no adjustment at all — a one-origin report cannot clear the magnitude rules",
   };
   const m = TM.humanReview(r);
-  ok("labelled HUMAN REVIEW and UNVERIFIED in the header", /🔎 HUMAN REVIEW — UNVERIFIED/.test(m));
+  ok("headlines UNVERIFIED FIGHT UPDATE", /🔎 UNVERIFIED FIGHT UPDATE/.test(m));
   ok("states the claim", /reportedly dropped out/.test(m));
-  ok("names how many independent origins", /Independent origins: 1/.test(m));
-  ok("...and spells out that one origin means nobody corroborated it", /nobody corroborated it/.test(m));
-  ok("says loudly that it is unverified", /THIS IS UNVERIFIED INFORMATION/.test(m));
-  ok("says it is NOT an instruction and NOT a forecast", /NOT an instruction and NOT a forecast/.test(m));
-  ok("says the sealed forecast did not move on it", /The sealed forecast did NOT move on this/.test(m));
-  ok("tells the human to verify it themselves", /verify it yourself first/.test(m));
+  ok("names how many independent origins", /Sources: 1 independent origin$/m.test(m));
+  ok("states that one origin moved the forecast by nothing", /Forecast impact: None/.test(m));
+  ok("tells the human to verify it themselves", /Verify before acting\./.test(m));
+  ok("does NOT leak the internal topic slug", !/injury_health/.test(m));
 
   // THE STRUCTURAL GUARANTEE: betting language is refused at construction
   const throws = (fn) => { try { fn(); return false; } catch (e) { return true; } };

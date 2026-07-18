@@ -25,6 +25,7 @@ const EN = require("./lib/entertainment");
 const TM = require("./lib/telegram-messages");
 const AL = require("./lib/alert-ledger-v2");
 const MB = require("./lib/manual-bankroll");
+const MI = require("./lib/message-invariants");
 const E = require("./lib/evidence-eval");
 const { writeJson } = require("./lib/store");
 
@@ -110,6 +111,84 @@ function humanReviewAlerts(evalPath, fc) {
   return out;
 }
 
+// One readable sentence from a hypothesis record, WITHOUT the internal topic slug (injury_health,
+// weight_cut) or the (favors_about) direction tag — those are dashboard/artifact detail, not phone copy.
+function shortHypothesis(h) {
+  if (!h) return "an uncertain qualitative signal";
+  let s = String(h);
+  const colon = s.indexOf(": ");
+  if (colon >= 0) s = s.slice(colon + 2);         // drop "Fighter — topic:" prefix
+  s = s.replace(/\s*\((favors_about|against_about|neutral)\)\s*$/i, "").trim();   // drop direction tag
+  return s || "an uncertain qualitative signal";
+}
+
+// Build a compact ACTION message for one valued, sized contract, gated by the pre-render invariants.
+// Returns { verdict, text, state, recommendedFighter } or { verdict:"FAIL_CLOSED", violations } — a
+// betting instruction is NEVER produced for a contradictory recommendation.
+//
+//   v    : the valued contract (contract-value output; already side-correct on prob & max price)
+//   f    : the sealed forecast for this bout
+//   opts : { classification, stake, fraction, whyOne, riskOne, lane, whyRankedFirst, approxContracts,
+//            cardExposureRemaining, dashboard }
+function buildActionMessage(v, f, opts) {
+  const [A, B] = f.fight.split(" vs ");
+  const rec = v.contract ? v.contract.outcomeSubject : v.outcomeSubject;   // the recommended fighter
+  const recIsA = E.norm(rec) === E.norm(A);
+  const other = recIsA ? B : A;
+
+  // THE RANGE, FLIPPED TO THE RECOMMENDED SIDE. f.systemRange is expressed for fighter A; showing it
+  // unflipped on a fighter-B recommendation is exactly the Du Plessis bug (Usman's 27–38% shown on a
+  // Du Plessis buy). The central probability and the max acceptable price are already side-correct
+  // (contract-value computed them for the contract's own subject).
+  const range = f.systemRange
+    ? (recIsA ? { low: f.systemRange.low, high: f.systemRange.high }
+              : { low: +(1 - f.systemRange.high).toFixed(4), high: +(1 - f.systemRange.low).toFixed(4) })
+    : { low: null, high: null };
+
+  const fields = {
+    recommendedSide: rec, fighterA: A, fighterB: B,
+    centralProb: v.systemCentralProbability,
+    rangeLow: range.low, rangeHigh: range.high,
+    ask: v.topOfBookPrice, allInPrice: v.allInPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
+    centralEV: v.expectedValueCentral, conservativeEV: v.expectedValueConservative,
+  };
+  const evalResult = MI.evaluateRecommendation(fields);
+  const recommendedFirst = `${rec} vs ${other}`;
+  const base = {
+    boutId: v.boutId || (v.contract && v.contract.boutId), ticker: v.ticker || (v.contract && v.contract.ticker),
+    recommendedFighter: rec, recommendedFirst, verdict: evalResult.verdict, fields: evalResult.fields, violations: evalResult.violations,
+  };
+
+  if (evalResult.verdict === "FAIL_CLOSED") {
+    say(`  ⛔ FAIL-CLOSED (${rec}): ${evalResult.violations.join("; ")} — no betting instruction sent`);
+    return { ...base, text: null };
+  }
+
+  const state = {
+    ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice, forecastHash: fc0.sealHash,
+    classification: evalResult.verdict === "PRICE_TOO_HIGH" ? "PRICE_TOO_HIGH" : opts.classification,
+    lane: opts.lane || "core", stakePercent: opts.fraction != null ? opts.fraction * 100 : null,
+    topTicker: base.ticker, stale: false, pipelineFailed: false, withinEnvelope: true, verdict: evalResult.verdict,
+  };
+
+  if (evalResult.verdict === "PRICE_TOO_HIGH") {
+    return { ...base, text: TM.priceTooHigh({ recommendedFirst, ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice }), state };
+  }
+  // BUY
+  const text = TM.buyInstruction({
+    classification: opts.classification, stake: opts.stake, bankroll: EN.BANKROLL.amount,
+    recommendedFirst, buyLine: `${rec} YES`,
+    ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
+    whyOne: opts.whyOne, riskOne: opts.riskOne,
+    centralProb: v.systemCentralProbability, rangeLow: range.low, rangeHigh: range.high,
+    approxContracts: opts.approxContracts, cardExposureRemaining: opts.cardExposureRemaining,
+    dashboard: opts.dashboard, whyRankedFirst: opts.whyRankedFirst,
+  });
+  return { ...base, text, state };
+}
+
+let fc0 = null;   // the current forecast, so the helper can read its sealHash without threading it through
+
 async function main() {
   const fPath = process.argv[2];
   if (!fPath || !fs.existsSync(fPath)) fail("usage: node run-entertainment-alerts.js <forecast.json> [--send]");
@@ -118,6 +197,7 @@ async function main() {
   // Read the forecast BEFORE the gate: the gate cannot decide whether the freshness attestation is
   // about this card until it knows which card this is.
   const fc = JSON.parse(fs.readFileSync(fPath, "utf8"));
+  fc0 = fc;   // let buildActionMessage read the seal hash
   const gate = armingGate(fc.card && fc.card.eventId, fc.sealHash);
 
   const nowTs = Date.now();
@@ -222,39 +302,18 @@ async function main() {
     const onThisFight = ranked.filter((r) => r.boutId === boutId);
     const runnerUp = onThisFight.filter((r) => r !== top)[0];
     const { why, against } = TM.reasonsFor(top, f, null);
-    const A = f.fight.split(" vs ")[0];
-    const msg = TM.buyInstruction({
-      fight: f.fight, ticker: top.ticker, contractWording: top.contractWording,
-      ask: top.topOfBookPrice, maximumAcceptablePrice: top.maximumAcceptablePrice,
-      percentOfBankroll: top.entertainment.percentOfBankroll, bankroll: EN.BANKROLL.amount,
-      stake: top.entertainment.stake, contracts: top.entertainment.contracts,
-      tierLabel: top.entertainment.tierLabel,
-      contractsCompared: onThisFight.length,
-      whyTopRanked: runnerUp
-        ? `risk-adjusted conservative value after costs beats ${runnerUp.ticker} (${runnerUp.classification}${runnerUp.reason ? ": " + String(runnerUp.reason).slice(0, 60) : ""})`
-        : "it is the only contract Kalshi lists on this fight",
-      why, against,
-      doNotPlaceIf: [
-        `the ask is above ${(top.maximumAcceptablePrice * 100).toFixed(1)}¢ when you look`,
-        "the sportsbook consensus has moved materially since this snapshot",
-        "the fight has started or the market is suspended",
-        "you cannot fill the whole size at or under the maximum price",
-      ],
-      rangeLow: f.systemRange ? f.systemRange.low : null,
-      rangeHigh: f.systemRange ? f.systemRange.high : null,
-      conservativeValuePoints: top.entertainment.conservativeMarginPoints,
-      evidenceCoverage: f.evidenceCoverage || "unknown",
-      modelStatus: top.probabilityModelStatus,
-      snapshotTimestamp: new Date(snapshotTs).toISOString(),
-      feeGate: top.entertainment.feeGate,
+    const built = buildActionMessage(top, f, {
+      classification: top.entertainment.tierLabel || "EXPERIMENTAL", stake: top.entertainment.stake,
+      fraction: top.entertainment.percentOfBankroll / 100, lane: "core",
+      whyOne: TM.toReasons(why)[0] || "the ranked contract clears the research gates after fees",
+      riskOne: TM.toReasons(against)[0] || "the forecast has not demonstrated a prospective edge",
+      whyRankedFirst: onThisFight.length > 1 ? "best conservative value after costs on this fight" : null,
+      approxContracts: top.entertainment.contracts,
     });
+    if (built.verdict === "FAIL_CLOSED") continue;   // contradictory recommendation — never a message
     const key = `${boutId}|${top.ticker}`;
-    const state = { ask: top.topOfBookPrice, maximumAcceptablePrice: top.maximumAcceptablePrice,
-      forecastHash: fc.sealHash, classification: top.classification,
-      stakePercent: top.entertainment.percentOfBankroll, topTicker: top.ticker,
-      stale: false, pipelineFailed: false, withinEnvelope: top.entertainment.feeGate.withinVerifiedEnvelope };
-    const decision = AL.shouldSend(key, state);
-    messages.push({ boutId, ticker: top.ticker, wouldSend: decision.send, why: decision.why, text: msg, state });
+    const decision = AL.shouldSend(key, built.state);
+    messages.push({ boutId, ticker: top.ticker, wouldSend: decision.send, why: decision.why, text: built.text, state: built.state, verdict: built.verdict });
   }
 
   // ---- EXPLORATION LANE positions -------------------------------------------------------------
@@ -277,47 +336,21 @@ async function main() {
       if (!p.sized || p.sized.stake <= 0) continue;
       const f = fc.forecasts.find((x) => x.boutId === p.boutId);
       const v = p.valued;
-      const msg = TM.buyInstruction({
-        fight: f.fight, ticker: p.ticker, contractWording: (v.contract && v.contract.contractWording) || p.ticker,
-        ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
-        percentOfBankroll: p.sized.fraction * 100, bankroll: EN.BANKROLL.amount,
-        stake: p.sized.stake, contracts: v.maxFillable != null ? Math.floor(p.sized.stake / (v.allInPrice || 1)) : null,
-        tierLabel: p.sized.tier,
-        contractsCompared: 1,
-        whyTopRanked: `EXPLORATION lane — creative speculative. ${p.sized.reason}`,
-        // Reasons are a LIST of short bullets, never one concatenated sentence. Rendering a section
-        // as bullets over a string iterates it character by character.
-        why: [
-          p.sized.hypothesis,
-          `${p.sized.independentOrigins} independent origin(s) · ${p.sized.verificationStatus}${p.sized.novelty === "NOVEL" ? " · NOVEL" : ""}`,
-          p.sized.probablyPriced ? "May be underpriced: the market may still be digesting it" : "May be underpriced: not yet widely public",
-        ],
-        against: [
-          p.sized.evidenceAgainst && p.sized.evidenceAgainst !== "none recorded"
-            ? `Evidence against: ${p.sized.evidenceAgainst}`
-            : "The hypothesis is unverified — one origin, no corroboration",
-          "CREATIVE SPECULATIVE — one uncertain hypothesis, capped, prospectively graded, UNPROVEN",
-        ],
-        doNotPlaceIf: [
-          `the ask is above ${(v.maximumAcceptablePrice * 100).toFixed(1)}¢ when you look`,
-          "the hypothesis is disconfirmed before first bell",
-          "the fight has started or the market is suspended",
-          "you cannot fill the whole size at or under the maximum price",
-        ],
-        rangeLow: f.systemRange ? f.systemRange.low : null, rangeHigh: f.systemRange ? f.systemRange.high : null,
-        conservativeValuePoints: +((p.sized.conservativeEV) * 100).toFixed(2),
-        evidenceCoverage: f.evidenceCoverage || "unknown",
-        modelStatus: `EXPLORATION (${p.sized.verificationStatus}, ${p.sized.independentOrigins} origin(s))`,
-        snapshotTimestamp: new Date(snapshotTs).toISOString(),
-        feeGate: { withinVerifiedEnvelope: true },
+      // One short reason and one short risk — plain language, no lane names or taxonomy.
+      const whyOne = shortHypothesis(p.sized.hypothesis);
+      const riskOne = p.sized.evidenceAgainst && p.sized.evidenceAgainst !== "none recorded"
+        ? p.sized.evidenceAgainst
+        : `Based on ${p.sized.independentOrigins} uncorroborated origin`;
+      const built = buildActionMessage(v, f, {
+        classification: p.sized.tier, stake: p.sized.stake, fraction: p.sized.fraction, lane: "exploration",
+        whyOne, riskOne, approxContracts: v.maxFillable != null ? Math.floor(p.sized.stake / (v.allInPrice || 1)) : null,
+        cardExposureRemaining: +(XP.RULES.caps_exposure.maxPerCardDollars - cardExposure).toFixed(2),
       });
+      // A creative candidate that fails the invariants is not sent as anything betting; it just drops.
+      if (built.verdict === "FAIL_CLOSED") continue;
       const key = `explore|${p.boutId}|${p.ticker}`;
-      const state = { ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
-        forecastHash: fc.sealHash, classification: p.sized.tier, lane: "exploration",
-        stakePercent: p.sized.fraction * 100, topTicker: p.ticker,
-        stale: false, pipelineFailed: false, withinEnvelope: true };
-      const decision = AL.shouldSend(key, state);
-      explorationMessages.push({ boutId: p.boutId, ticker: p.ticker, key, wouldSend: decision.send, why: decision.why, text: msg, state, lane: "exploration" });
+      const decision = AL.shouldSend(key, built.state);
+      explorationMessages.push({ boutId: p.boutId, ticker: p.ticker, key, wouldSend: decision.send, why: decision.why, text: built.text, state: built.state, lane: "exploration", verdict: built.verdict });
     }
     for (const m of explorationMessages) messages.push(m);
   }
@@ -354,15 +387,19 @@ async function main() {
       try {
         await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++;
         AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION");
-        MB.recordRecommendation(mbState, {
-          key: m.key || `${m.boutId}|${m.ticker}`, boutId: m.boutId, ticker: m.ticker,
-          fight: (fc.forecasts.find((x) => x.boutId === m.boutId) || {}).fight,
-          lane: m.lane || "core", classification: m.state.classification,
-          recommendedFraction: m.state.stakePercent != null ? m.state.stakePercent / 100 : null,
-          recommendedStakeDollars: m.state.stakePercent != null ? +(EN.BANKROLL.amount * m.state.stakePercent / 100).toFixed(2) : null,
-          maximumAcceptablePrice: m.state.maximumAcceptablePrice, ask: m.state.ask, forecastHash: fc.sealHash,
-        });
-        mbTouched = true;
+        // Only a BUY becomes a real-money RECOMMENDED_NOT_CONFIRMED entry. A PRICE_TOO_HIGH notice is
+        // explicitly "do not buy" — it must never be recorded as a recommendation to place.
+        if (m.verdict === "BUY" || m.verdict === undefined) {
+          MB.recordRecommendation(mbState, {
+            key: m.key || `${m.boutId}|${m.ticker}`, boutId: m.boutId, ticker: m.ticker,
+            fight: (fc.forecasts.find((x) => x.boutId === m.boutId) || {}).fight,
+            lane: m.lane || "core", classification: m.state.classification,
+            recommendedFraction: m.state.stakePercent != null ? m.state.stakePercent / 100 : null,
+            recommendedStakeDollars: m.state.stakePercent != null ? +(EN.BANKROLL.amount * m.state.stakePercent / 100).toFixed(2) : null,
+            maximumAcceptablePrice: m.state.maximumAcceptablePrice, ask: m.state.ask, forecastHash: fc.sealHash,
+          });
+          mbTouched = true;
+        }
       }
       catch (e) { say(`  ⚠ delivery failed for ${m.ticker}: ${e.message}`); }
     }
