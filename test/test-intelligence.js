@@ -163,6 +163,72 @@ console.log("\nLIFECYCLE TRANSITIONS on the SAME record (§6C) + persistence (§
   ok("actionHistory grew across the lifecycle", confirmed.store.records[id].actionHistory.length >= 4, confirmed.store.records[id].actionHistory.length);
 }
 
+console.log("\nSTORY IDENTITY — separate stories about one fighter stay separate records");
+{
+  const N = require("../lib/evidence-eval").norm;
+  const claim = (text, quote, channel) => ({ claim: text, quote, channel, kind: "current_condition_report", relevance: "current_fighter_condition", freshness: "current_fight_week", publishedAt: "2026-07-16T10:00:00Z" });
+  const injuryTopic = (claims) => topic({ claims });
+
+  // (1) Same rumor, paraphrased wording, more amplifiers → ONE record.
+  {
+    let s = one(fresh(), [injuryTopic([claim("Holland hurt his knee in camp", "Holland tweaked his knee in camp per one report", "ChA")])]).store;
+    const id = Object.keys(s)[0] || Object.keys(s.records)[0];
+    const r = I.ingest(s, { ...batch([injuryTopic([claim("Holland's knee is banged up this camp", "his knee is banged up in camp, same story going around", "ChB")])]), now: "2026-07-17T15:00:00Z" });
+    ok("paraphrased same story → one record", Object.keys(r.store.records).length === 1, Object.keys(r.store.records).length);
+  }
+
+  // (2) Same fighter, two DIFFERENT injuries → TWO records.
+  {
+    const r = one(fresh(), [injuryTopic([
+      claim("Holland hurt his knee in camp", "Holland's knee is hurt", "ChA"),
+      claim("Holland reportedly has a staph infection", "word is Holland has staph", "ChB"),
+    ])]);
+    ok("knee injury and staph → two records", Object.keys(r.store.records).length === 2, Object.keys(r.store.records).length);
+  }
+
+  // (3) Injury rumor and withdrawal rumor → TWO records (condition vs event).
+  {
+    const r = one(fresh(), [injuryTopic([
+      claim("Holland has a knee injury this camp", "his knee is hurt in camp", "ChA"),
+      claim("Holland may have withdrawn from the card", "hearing Holland pulled out of the fight", "ChB"),
+    ])]);
+    ok("injury vs withdrawal → two records", Object.keys(r.store.records).length === 2, Object.keys(r.store.records).length);
+    const types = Object.values(r.store.records).map((x) => x.reportType).sort();
+    ok("...one CURRENT_CONDITION, one EVENT_STATUS", JSON.stringify(types) === JSON.stringify([I.REPORT_TYPE.CURRENT_CONDITION, I.REPORT_TYPE.EVENT_STATUS].sort()), types.join(","));
+  }
+
+  // (4) Later confirmation updates the ORIGINAL record (same proposition).
+  {
+    const KEY = "event:exit";
+    let s = one(fresh(), [injuryTopic([claim("Holland may have withdrawn", "hearing Holland pulled out of the fight", "ChA")])]).store;
+    const id = Object.keys(s.records)[0];
+    const conf = I.ingest(s, { card: "TEST-2026-07-18", eventId: "UFC-TEST", now: "2026-07-18T02:00:00Z",
+      bouts: [{ boutId: "UFC-TEST-B4", fight: "Jacobe Smith vs Kevin Holland", opponentOf: { [N("Kevin Holland")]: "Jacobe Smith" },
+        topics: [injuryTopic([claim("Holland officially withdrew", "Holland has officially withdrawn from the card", "MMAFighting")])], confirmedKeys: [KEY] }] });
+    ok("confirmation updates the same withdrawal record", Object.keys(conf.store.records).length === 1 && conf.store.records[id], id);
+    ok("...now CONFIRMED", conf.store.records[id].truthStatus === I.TRUTH_STATUS.CONFIRMED);
+  }
+
+  // (5) Opponent replacement stays stable without a stable boutId (keyed on fighter+proposition).
+  {
+    let s = one(fresh(), [injuryTopic([claim("Holland may have withdrawn", "Holland pulled out", "ChA")])]).store;
+    const id = Object.keys(s.records)[0];
+    const moved = I.ingest(s, { card: "TEST-2026-07-18", eventId: "UFC-TEST", now: "2026-07-18T03:00:00Z",
+      bouts: [{ boutId: "UFC-TEST-B7", fight: "Jacobe Smith vs Late Replacement", opponentOf: { [N("Kevin Holland")]: "Late Replacement" },
+        topics: [injuryTopic([claim("Holland pulled out", "Holland pulled out of the fight", "ChB")])] }] });
+    ok("same record despite bout renumber + opponent swap", Object.keys(moved.store.records).length === 1 && moved.store.records[id], id);
+  }
+
+  // (6) The SAME claim on a DIFFERENT event is a different record.
+  {
+    let s = one(fresh(), [injuryTopic([claim("Holland may have withdrawn", "Holland pulled out", "ChA")])]).store;
+    const other = I.ingest(s, { card: "TEST-2026-08-01", eventId: "UFC-OTHER", now: "2026-07-18T04:00:00Z",
+      bouts: [{ boutId: "UFC-OTHER-B1", fight: "Jacobe Smith vs Kevin Holland", opponentOf: { [N("Kevin Holland")]: "Jacobe Smith" },
+        topics: [injuryTopic([claim("Holland may have withdrawn", "Holland pulled out", "ChA")])] }] });
+    ok("same claim, different event → two records", Object.keys(other.store.records).length === 2, Object.keys(other.store.records).length);
+  }
+}
+
 console.log("\nDASHBOARD GROUPING (§16) partitions by lifecycle stage");
 {
   const watch = one(fresh(), [topic()]).results[0].record;
