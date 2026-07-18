@@ -102,7 +102,10 @@ console.log("\nALERT DECISION (§7): only material changes, none after the fight
 {
   const watch = rec();
   ok("first material sighting alerts", IM.shouldAlert(null, watch, {}).alert === true);
-  ok("identical state does NOT re-alert", IM.shouldAlert(watch, { ...watch }, {}).alert === false);
+  // "already sent" is represented by a message in the lineage; an unchanged already-sent record is quiet.
+  const sent = rec({ telegramLineage: [{ chatId: "1", messageId: 7 }] });
+  ok("identical already-sent state does NOT re-alert", IM.shouldAlert(sent, { ...sent }, {}).alert === false);
+  ok("a material record not yet sent alerts (shadow → send promotion)", IM.shouldAlert(rec(), { ...rec() }, {}).alert === true);
   ok("WATCH → SPECULATIVE_BET alerts", IM.shouldAlert(watch, { ...watch, actionStatus: I.ACTION_STATUS.SPECULATIVE_BET }, {}).alert === true);
   ok("origins 1 → 5 alerts", IM.shouldAlert(watch, { ...watch, independentOrigins: 5 }, {}).alert === true);
   ok("an access-relevant source appearing alerts", IM.shouldAlert({ ...watch, accessRelevance: I.ACCESS.ANALYST_ONLY }, { ...watch, accessRelevance: I.ACCESS.FIRSTHAND }, {}).alert === true);
