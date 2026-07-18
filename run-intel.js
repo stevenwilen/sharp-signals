@@ -39,7 +39,11 @@ function build(forecast, evalData, cardDate) {
       contradictionByKey: contradictions(eb) });
     const mb = f.marketBaseline || {};
     const ask = mb.probability != null ? mb.probability : (mb.price != null ? mb.price : null);
-    marketByBout[f.boutId] = { kalshiAsk: ask, sportsbook: ask, subject: A || null };
+    // fightStarted gates ALL intel alerts once the event begins (§ shouldAlert). This was wired in the
+    // message layer but never FED from production — the sentinel runs during the event, so without this
+    // flag a mid-event run could still alert on pre-fight intelligence.
+    marketByBout[f.boutId] = { kalshiAsk: ask, sportsbook: ask, subject: A || null,
+      fightStarted: require("./lib/freshness").fightStarted(card) };
   }
   return { batch: { card, eventId, now: null, bouts }, forecastByBout, marketByBout, seal: forecast.sealedAt || null, card };
 }

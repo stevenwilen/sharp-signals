@@ -10,7 +10,7 @@ const fs = require("fs");
 const path = require("path");
 const tc = require("./lib/target-card");
 const k = require("./lib/kalshi");
-const { paths, readJson, writeJson } = require("./lib/store");
+const { writeJson } = require("./lib/store");
 
 const THRESHOLD = 35;          // fixed. Do not tune per card.
 const LOOKBACK_DAYS = 28;      // how far before a fight a video may be published to count
@@ -44,11 +44,20 @@ async function main() {
   say(`[2] ${card.bouts.length} bouts, ${amb} fighters have an ambiguous surname -> full name required`);
 
   say(`[3] scoring candidate videos (threshold ${THRESHOLD}, fixed) ...`);
-  const corpus = new Set();
-  for (const p of readJson(paths.predictions, [])) { if (p.pick) corpus.add(p.pick); if (p.opponent) corpus.add(p.opponent); }
-  const corpusFighters = [...corpus];
-  const byUrl = new Map();
-  for (const p of readJson(paths.predictions, [])) if (p.url && p.timestamp) byUrl.set(p.url, { url: p.url, src: p.source, ts: p.timestamp });
+  // THE LIVE INDEX — the frozen-universe fix. Candidates come from BOTH the historical corpus
+  // (predictions.json, manual backfill) AND the live picks store the hourly sensing writes
+  // (data/picks/*.json), deduped by URL with the live entry winning. Freshness is computed from the
+  // ACTUAL newest source timestamp and embedded in the selection artifact — a stale universe can no
+  // longer masquerade as a complete current search.
+  const CI = require("./lib/candidate-index");
+  const FR = require("./lib/freshness");
+  const idx = CI.buildIndex();
+  const corpusFighters = [...idx.fighters];
+  const byUrl = idx.byUrl;
+  const corpusFreshness = FR.corpusStatus({ newestSourceTs: idx.stats.newestSourceTs, eventDate });
+  say(`[3] candidate universe: ${idx.stats.merged} videos (corpus ${idx.stats.corpusRows} rows, newest ${idx.stats.corpusNewest || "n/a"} · live ${idx.stats.livePicksFiles} files, newest ${idx.stats.liveNewest || "n/a"})`);
+  say(`[3] corpus freshness: ${corpusFreshness.status} — ${corpusFreshness.reason}`);
+  CI.saveStatus(idx.stats, { eventDate, corpusFreshness });
 
   const from = Date.parse(eventDate) - LOOKBACK_DAYS * 86400000;
   const rows = [];
@@ -92,7 +101,10 @@ async function main() {
   if (!vids.length) fail(`NOTHING SELECTED: 0 videos scored >= ${THRESHOLD} for this card. That is a real ` +
     `answer about coverage, but there is nothing to extract.`);
 
-  writeJson(out, { card, threshold: THRESHOLD, include, byVideo });
+  writeJson(out, { card, threshold: THRESHOLD, include, byVideo,
+    // Freshness travels WITH the selection so every downstream consumer (evidence, dashboard, health)
+    // can see what universe this selection was drawn from — and whether it was current.
+    freshness: { ...idx.stats, corpusFreshness } });
   if (!fs.existsSync(out)) fail(`selection file not written: ${out}`);
   say(`[5] wrote ${out}`);
   return 0;

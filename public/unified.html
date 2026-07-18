@@ -64,6 +64,11 @@
   <div class="banner b-safe" id="safety">Loading sealed artifacts…</div>
 
   <section>
+    <h2>System health — is CURRENT information flowing?</h2>
+    <div id="system-health"></div>
+  </section>
+
+  <section>
     <h2>Sealed-artifact provenance</h2>
     <div class="grid" id="hashes"></div>
     <div class="note" id="hash-note"></div>
@@ -136,6 +141,24 @@ async function load(){
   }
   $('#readonly-line').textContent = u.readsSealedArtifactsOnly;
   renderSafety(u.safety);
+
+  // ---- system health: is CURRENT information flowing (actual source timestamps, not green runs) ----
+  const sh = u.systemHealth;
+  if (sh) {
+    const d = sh.discovery || {};
+    const cf = d.corpusFreshness || {status:'WAITING_FOR_FIRST_RUN', reason:''};
+    const fcls = cf.status==='CURRENT'?'p-green':(cf.status==='DEGRADED'?'p-amber':(cf.status==='WAITING_FOR_FIRST_RUN'?'p-grey':'p-red'));
+    const g = sh.gemini;
+    $('#system-health').innerHTML = `
+      <div class="box" style="margin-bottom:10px">
+        <div>Candidate corpus: <span class="pill ${fcls}">${esc(cf.status)}</span> <span class="sub">${esc(cf.reason||'')}</span></div>
+        <div class="sub" style="margin-top:4px">newest source ${esc(d.newestSourceTs||'—')} · live picks ${esc(d.livePicksFiles??'—')} files (newest ${esc(d.liveNewest||'—')}) · historical corpus newest ${esc(d.corpusNewest||'—')}</div>
+        <div class="sub">candidates ${esc(d.mergedCandidates??'—')} · channels: ${esc(d.channelsInLive??'—')} live-active of ${esc(d.channelsTotal??'—')} seen (${esc(d.sourcesConfigured??'—')} configured) · index built ${esc(d.indexBuiltAt||'not yet')}</div>
+        <div class="sub">modes: production ${sh.modes.production?'ON':'off'} · exploration ${sh.modes.exploration?'ON':'off'} · fight-intel ${sh.modes.fightIntel?(sh.modes.fightIntelSend?'LIVE':'shadow'):'off'} · web research <b>${esc(sh.modes.webResearch)}</b> · fight started: ${sh.fightStarted?'YES — pre-fight alerts stopped':'no'}</div>
+        <div class="sub">gemini (${esc(sh.modes.geminiModel)}): ${g?`today ${g.today.calls} calls / ${g.today.inTok+g.today.outTok} tok / ~$${g.today.cost} · month ~$${g.month.cost} (estimates)`:'no usage recorded yet'}</div>
+        <div class="sub">last dispatch stages: ${sh.lastDispatchStages?Object.entries(sh.lastDispatchStages).map(([k,v])=>`${esc(k)} ${esc((v||'').slice(5,16))}`).join(' · '):'—'}</div>
+      </div>`;
+  }
 
   // ---- provenance / hashes (prominent) ----
   const h = u.hashes;
