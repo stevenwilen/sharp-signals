@@ -74,6 +74,10 @@ jobs:
           # HUMAN REVIEW send archived). Reversible: unset it to fall back to shadow + the old path.
           FIGHT_INTEL_SEND: ${{ vars.FIGHT_INTEL_SEND }}
           INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
+          # Combo Recommendation Engine. COMBO_ENABLED=1 shadows it (records + audit, no Telegram);
+          # COMBO_SEND=1 promotes it to production. Reads sealed singles; no order path.
+          COMBO_ENABLED: ${{ vars.COMBO_ENABLED }}
+          COMBO_SEND: ${{ vars.COMBO_SEND }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \
