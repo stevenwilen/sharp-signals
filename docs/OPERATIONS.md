@@ -22,6 +22,8 @@
 | `INTEL_WEB_SEARCH` | grounded-Gemini web research in the researcher | unset (off) |
 | `COMBO_ENABLED` | combo recommendation engine on (records + audit; shadow) | `1` |
 | `COMBO_SEND` | promote the combo engine to production Telegram | unset (shadow) |
+| `COMPACT_NOTIFICATIONS` | slim Telegram to short "Sharp Signals Updated → open dashboard" pings; the dashboard becomes the canonical interface (full reasoning/prices/intel move there). OFF = the legacy full messages, byte-for-byte | unset (off) |
+| `DASHBOARD_URL` | absolute dashboard URL a compact ping links to (e.g. `https://sharp-signals-dashboard.vercel.app`); if unset a compact ping says "Open Sharp Signals to review." | unset |
 | `BANKROLL` | V1 paper-summary display only (not the real $100 bankroll) | as set |
 
 **Required secrets** (in `.env` locally, GitHub Secrets in cloud; never committed): `TELEGRAM_BOT_TOKEN`,
@@ -34,6 +36,24 @@ Telegram sends require, together: `ALERTS_ARMED` (committed) **&&** a valid mach
 the active card + sealHash **&&** `SHARP_PRODUCTION=1` **&&** all message invariants pass **&&**
 `assertNoTradingPath()`. No env var can create a Kalshi write path — the read-only guarantee is
 independent of all configuration.
+
+## Compact notifications (`COMPACT_NOTIFICATIONS=1`)
+
+Opt-in, OFF by default, reversible. When on, Telegram stops carrying the full reasoning/prices/stakes/
+combo/intel write-ups and sends a short "something you might act on changed — open the dashboard" ping
+instead. The detailed artifacts are still computed, sealed and shown on the dashboard; only the phone
+presentation changes. It never decides *whether* something changed — the existing dedup ledgers do — so
+unchanged / timestamp-only / health-only runs still send nothing.
+
+- **Pushes** (a short ping): new single/combo BUY (🟢/🟠), a recommendation now priced too high (🟡),
+  a withdrawal (🔴), fight started → recommendations locked (⚪, once/card), major degradation (⚠️,
+  sentinel/pipeline failures). A record that already pushed a bet to your phone is never silenced later —
+  a disproval/suspension after a bet still pushes a stand-down (this is the alert-ledger rule, preserved).
+- **Dashboard-only** (no ping): unverified-news updates, and intel forecast-movement (watch, market moved,
+  report confirmed/disproved) *when no bet was ever pushed for that record*.
+- **Suppressed entirely:** the V1 archived-research paper digest.
+- Set `DASHBOARD_URL` so the ping links straight to the dashboard. Turn the whole thing off by unsetting
+  `COMPACT_NOTIFICATIONS` — the legacy full messages return unchanged.
 
 ## Common tasks
 

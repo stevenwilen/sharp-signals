@@ -23,6 +23,7 @@ const V = require("./lib/contract-value");
 const P = require("./lib/portfolio");
 const EN = require("./lib/entertainment");
 const TM = require("./lib/telegram-messages");
+const N = require("./lib/notification");
 const AL = require("./lib/alert-ledger-v2");
 const MB = require("./lib/manual-bankroll");
 const MI = require("./lib/message-invariants");
@@ -425,9 +426,12 @@ async function main() {
   // now owns the unverified-news channel with combined, deduped, threaded messages, so the legacy
   // per-rumour HUMAN REVIEW send is suppressed here (the code stays, dormant, and returns if the flag is
   // unset — a reversible replacement, not a deletion).
+  // Compact notifications (opt-in) make unverified-news updates DASHBOARD-ONLY — they never carried a bet,
+  // so dropping the phone push loses nothing. Suppressed here, UP FRONT (the same way FIGHT_INTEL_SEND
+  // already hands this channel to the lifecycle), so the run's logs and delivery counts stay honest.
   const intelOwnsNews = process.env.FIGHT_INTEL_SEND === "1";
-  const reviewsToSend = (intelOwnsNews || fightHasStarted) ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
-  say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${intelOwnsNews ? "0 new (archived — fight-intelligence lifecycle owns this channel)" : reviewsToSend.length + " new"}`);
+  const reviewsToSend = (intelOwnsNews || fightHasStarted || N.compactEnabled()) ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
+  say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${intelOwnsNews ? "0 new (archived — fight-intelligence lifecycle owns this channel)" : N.compactEnabled() ? "0 new (dashboard-only — compact notifications own this channel)" : reviewsToSend.length + " new"}`);
   for (const r of reviews) say(`    ${reviewsToSend.includes(r) ? "NEW " : "seen"} ${r.meta.about}: ${r.meta.why} (${r.meta.origins ?? "?"} origin)`);
 
   const toSend = messages.filter((m) => m.wouldSend);
@@ -443,9 +447,15 @@ async function main() {
     const notify = require("./lib/notify");   // Telegram ONLY. There is no trading API in this build.
     delivery.transport = "telegram (manual instruction + human review)";
     for (const m of toSend) {
+      // Compact notifications (opt-in) replace the full buy/price/withdrawal body with a short
+      // "open the dashboard" ping. All three verdicts PUSH, so `body` is never null here; the guard is
+      // defensive. Legacy mode (default) sends `m.text` unchanged.
+      const kind = m.verdict === "PRICE_TOO_HIGH" ? "PRICE_TOO_HIGH" : m.verdict === "WITHDRAWN" ? "WITHDRAWN" : "BUY";
+      const body = N.forSend(m.text, kind);
+      if (!body) continue;
       delivery.attempted++;
       try {
-        await notify.notify(m.text); delivery.delivered++; delivery.buyInstructions++;
+        await notify.notify(body); delivery.delivered++; delivery.buyInstructions++;
         AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "BUY_INSTRUCTION");
         // Only a BUY becomes a real-money RECOMMENDED_NOT_CONFIRMED entry. A PRICE_TOO_HIGH notice is
         // explicitly "do not buy" — it must never be recorded as a recommendation to place.
@@ -472,6 +482,22 @@ async function main() {
     delivery.transport = "none loaded — nothing qualified and no new news, so there was nothing to deliver";
   }
   if (mbTouched) MB.save(mbState);   // persist the real-money ledger (recommendations recorded this run)
+
+  // Compact-mode only: ONE "fight started — recommendations locked" ping per card, once the bell has
+  // passed, and only if there were live recommendations to lock this card (a NO-BET card has nothing to
+  // say). Legacy mode never sent this — the lock is visible on the dashboard. Deduped once per card via
+  // the alert ledger's first-sight trigger, so it cannot repeat every post-bell run.
+  if (N.compactEnabled() && fightHasStarted && wantSend && gate.armed && messages.length > 0) {
+    const fsKey = `fightstart|${fc.card.eventDate}`;
+    const fsState = { classification: "FIGHT_STARTED", boutId: fc.card.eventId };
+    if (AL.shouldSend(fsKey, fsState).send) {
+      try {
+        const notify = require("./lib/notify");
+        await notify.notify(N.compact("FIGHT_STARTED"));
+        AL.record(fsKey, fsState, "FIGHT_STARTED");
+      } catch (e) { say(`  ⚠ fight-started notice failed: ${e.message}`); }
+    }
+  }
 
   const out = {
     card: fc.card.eventId, ranAt: new Date(nowTs).toISOString(),

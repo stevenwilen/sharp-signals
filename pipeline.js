@@ -8,6 +8,7 @@ const { paths, readJson, writeJson } = require("./lib/store");
 const grade = require("./lib/grade");
 const match = require("./lib/match");
 const { notify } = require("./lib/notify");
+const N = require("./lib/notification");
 const { sizeBet } = require("./lib/sizing");
 const alertLedger = require("./lib/alert-ledger");
 const ledger = require("./lib/pick-ledger");
@@ -499,7 +500,9 @@ async function run() {
   // SECOND path, so it is OFF by default — opt in with V1_PAPER_SUMMARY=1 for a research digest. The
   // paper positions are still RECORDED for the dashboard's archived-research view; they just don't
   // interrupt the phone beside the production alerts. Reversible.
-  if (posState && !WATCH && process.env.V1_PAPER_SUMMARY === "1") {
+  // Under compact notifications this V1 archived-research digest is SUPPRESSED ENTIRELY from Telegram
+  // (the paper positions are still recorded for the dashboard's archived-research view). Reversible.
+  if (posState && !WATCH && process.env.V1_PAPER_SUMMARY === "1" && !N.compactEnabled()) {
     const hour = new Date().getUTCHours();
     const today = new Date().toISOString().slice(0, 10);
     const due = process.env.FORCE_HEARTBEAT === "1" || (hour >= 12 && hour < 16);
@@ -518,6 +521,6 @@ async function run() {
 
 run().catch(async (e) => {
   console.error("pipeline error:", e.message);
-  await notify(`⚠️ Sharp Signals pipeline FAILED: ${e.message}`).catch(() => {});
+  await notify(N.degrade(`⚠️ Sharp Signals pipeline FAILED: ${e.message}`)).catch(() => {});
   process.exit(1);
 });

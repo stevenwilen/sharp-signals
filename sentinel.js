@@ -21,6 +21,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const { notify } = require("./lib/notify");
+const N = require("./lib/notification");
 
 const ROOT = __dirname;
 const argv = (n, d) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : d; };
@@ -111,7 +112,7 @@ async function main() {
     const before = ledgerFingerprint();
     say(`iteration ${iter} @ ${new Date().toISOString()}`);
     const okRun = priceCheck(files.forecastFile, files.evalFile);
-    if (!okRun) { lastFail++; if (lastFail >= 5) { await notify("⚠️ Sharp Signals sentinel: 5 consecutive price-check failures").catch(() => {}); lastFail = 0; } }
+    if (!okRun) { lastFail++; if (lastFail >= 5) { await notify(N.degrade("⚠️ Sharp Signals sentinel: 5 consecutive price-check failures")).catch(() => {}); lastFail = 0; } }
     else lastFail = 0;
 
     // Shadow fight-intelligence tick — the final-48h recheck cadence (§14). On the SAME sealed forecast
@@ -140,7 +141,7 @@ async function main() {
 if (require.main === module) {
   main().then((c) => process.exit(c || 0)).catch(async (e) => {
     process.stdout.write(`[sentinel] FATAL: ${e.message}\n`);
-    await notify(`⚠️ Sharp Signals sentinel FAILED: ${e.message}`).catch(() => {});
+    await notify(N.degrade(`⚠️ Sharp Signals sentinel FAILED: ${e.message}`)).catch(() => {});
     process.exit(1);
   });
 }
