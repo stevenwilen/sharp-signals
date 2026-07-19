@@ -66,6 +66,17 @@ console.log("\nTHE FOUR DECISIONS");
   ok("< 2 legs → NO_COMBO_BET", CE.evaluateCombo([A], quote()).decision === CE.DECISION.NO_BET);
   ok("same fighter (concentration) → NO_COMBO_BET", CE.evaluateCombo([A, leg({ fighter: "A", ticker: "T-A2", eventDate: "2026-08-15" })], quote()).decision === CE.DECISION.NO_BET);
   ok("no live quote → COMBO_UNAVAILABLE", CE.evaluateCombo([A, B], { available: false, reason: "none" }).decision === CE.DECISION.UNAVAILABLE);
+  // The no-quote UNAVAILABLE still carries a READ-ONLY ESTIMATE — fair value + a manual target the human
+  // prices on Kalshi themselves (no RFQ/write). Advisory only; it is never promoted to a BUY.
+  {
+    const est = CE.evaluateCombo([A, B], { available: false, reason: "read-only build makes no RFQ" });
+    ok("...UNAVAILABLE still surfaces a read-only estimate", !!est.estimate && !!est.audit.estimate);
+    ok("...estimate fair value ≈ the conservative joint (0.7×0.7×0.95 = 0.4655)", Math.abs(est.estimate.fairPrice - 0.4655) < 0.01, est.estimate.fairPrice);
+    ok("...estimate target is STRICTLY below fair value", est.estimate.maxBuyPrice < est.estimate.fairPrice);
+    ok("...and it is flagged structurally acceptable", est.estimate.structurallyAcceptable === true);
+    const weakEst = CE.evaluateCombo([leg({ fighter: "A", conservativeProb: 0.25, eventDate: "2026-08-01" }), leg({ fighter: "B", ticker: "T-B", conservativeProb: 0.25, eventDate: "2026-08-15" })], { available: false });
+    ok("...a negligible-value combo estimate is flagged NOT structurally acceptable (no target dangled)", weakEst.estimate.structurallyAcceptable === false);
+  }
   ok("stale quote → COMBO_UNAVAILABLE", CE.evaluateCombo([A, B], quote({ ageSec: 999 })).decision === CE.DECISION.UNAVAILABLE);
   ok("closed market → COMBO_UNAVAILABLE", CE.evaluateCombo([A, B], quote({ marketOpen: false })).decision === CE.DECISION.UNAVAILABLE);
   // fair = 0.7*0.7*0.95 = 0.4655; max = 0.3855
