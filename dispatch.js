@@ -256,6 +256,14 @@ async function main() {
     run("run-combo.js", comboArgs, { allowFail: true });
   }
 
+  // PAPER STRATEGY LEDGER — auto-creates $10,000 paper positions for FORMAL system BUYs (core + formal
+  // combo) from the SAME sealed artifacts, settles resolved ones read-only, and refreshes the canonical
+  // data/bankrolls.json both dashboards read. No real money, no order path, no Telegram. Always on (paper
+  // is simulated, not gated by arming). Non-fatal. --settle only when a grade is due (outcomes may be in).
+  if (dueList.includes("alerts") || dueList.includes("forecast") || dueList.includes("grade")) {
+    run("run-paper.js", dueList.includes("grade") ? ["--settle"] : [], { allowFail: true });
+  }
+
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
   // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
   // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading

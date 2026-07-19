@@ -63,6 +63,13 @@
   <!-- Safety first, always. A reader learns the system cannot trade before anything else. -->
   <div class="banner b-safe" id="safety">Loading sealed artifacts…</div>
 
+  <!-- TWO SEPARATE bankrolls, from the canonical ledger summary (data/bankrolls.json). Never combined. -->
+  <section>
+    <h2>Bankrolls — two fully separate ledgers</h2>
+    <div class="grid" id="bankrolls"></div>
+    <div class="note" id="bankrolls-note"></div>
+  </section>
+
   <section>
     <h2>System health — is CURRENT information flowing?</h2>
     <div id="system-health"></div>
@@ -140,6 +147,23 @@ async function load(){
     return;
   }
   $('#readonly-line').textContent = u.readsSealedArtifactsOnly;
+
+  // TWO SEPARATE bankrolls, straight from the canonical ledger summary — same source the mobile app uses.
+  if (u.bankrolls && u.bankrolls.real && u.bankrolls.paper) {
+    const D = (x) => x==null ? '<span class="na">—</span>' : '$'+Number(x).toFixed(2);
+    const R = u.bankrolls.real, P = u.bankrolls.paper;
+    $('#bankrolls').innerHTML = [
+      kv('REAL — Starting', D(R.startingDollars)), kv('REAL — Account value', D(R.accountValue)),
+      kv('REAL — Available', D(R.availableCash)), kv('REAL — Open exposure', D(R.openExposure)),
+      kv('REAL — Realized P&L', D(R.realizedPnl)), kv('REAL — Unconfirmed (not exposure)', String(R.unconfirmed.count)+' · '+D(R.unconfirmed.recommendedExposure)),
+      kv('PAPER — Starting', D(P.startingDollars)), kv('PAPER — Account value', D(P.accountValue)),
+      kv('PAPER — Available', D(P.availableCash)), kv('PAPER — Open exposure', D(P.openExposure)),
+      kv('PAPER — Simulated P&L', D(P.realizedPnl)), kv('PAPER — Prospective start', ts(P.prospectiveStartAt)),
+    ].join('');
+    $('#bankrolls-note').innerHTML = 'Real Entertainment ($100, your actual money — only bets you confirmed) and Paper Strategy ($10,000, simulated on formal system BUYs only). Never combined. From the canonical <code>data/bankrolls.json</code> — the same source the Sharp Signals mobile app reads, so totals reconcile to the cent.';
+  } else {
+    $('#bankrolls').innerHTML = kv('Bankrolls', '<span class="na">canonical summary not available</span>');
+  }
   renderSafety(u.safety);
 
   // ---- system health: is CURRENT information flowing (actual source timestamps, not green runs) ----
