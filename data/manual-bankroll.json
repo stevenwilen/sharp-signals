@@ -14,11 +14,11 @@
       "askAtRecommendation": 0.67,
       "approxContracts": null,
       "forecastHash": "b417ae82eb8cfa9e",
-      "status": "RECOMMENDED_NOT_CONFIRMED",
-      "actualStake": 0,
-      "executionPrice": null,
-      "actualContracts": null,
-      "includedInRealPnl": false,
+      "status": "SETTLED",
+      "actualStake": 3,
+      "executionPrice": 0.66,
+      "actualContracts": 4,
+      "includedInRealPnl": true,
       "firstRecommendedAt": "2026-07-18T02:26:51.252Z",
       "lastRecommendedAt": "2026-07-18T02:37:41.386Z",
       "recommendationCount": 2,
@@ -28,8 +28,27 @@
           "to": "RECOMMENDED_NOT_CONFIRMED",
           "reason": "Telegram sent a buy instruction",
           "at": "2026-07-18T02:26:51.253Z"
+        },
+        {
+          "from": "RECOMMENDED_NOT_CONFIRMED",
+          "to": "MANUALLY_PLACED",
+          "reason": "human-confirmed placement",
+          "at": "2026-07-19T05:11:46.161Z",
+          "executionPrice": 0.66,
+          "actualStake": 3
+        },
+        {
+          "from": "MANUALLY_PLACED",
+          "to": "SETTLED",
+          "reason": "settled: won",
+          "at": "2026-07-19T05:17:02.669Z",
+          "result": 1
         }
-      ]
+      ],
+      "placedAt": "2026-07-19T05:11:46.162Z",
+      "wasManuallyPlaced": true,
+      "result": 1,
+      "realPnlDollars": 1.55
     },
     "UFC-2026-07-18-B06|KXUFCFIGHT-26JUL18MCMMON-MON": {
       "key": "UFC-2026-07-18-B06|KXUFCFIGHT-26JUL18MCMMON-MON",
@@ -44,11 +63,11 @@
       "askAtRecommendation": 0.35,
       "approxContracts": null,
       "forecastHash": "f3d69fe25ee5fded",
-      "status": "RECOMMENDED_NOT_CONFIRMED",
-      "actualStake": 0,
-      "executionPrice": null,
-      "actualContracts": null,
-      "includedInRealPnl": false,
+      "status": "SETTLED",
+      "actualStake": 4,
+      "executionPrice": 0.35,
+      "actualContracts": 11,
+      "includedInRealPnl": true,
       "firstRecommendedAt": "2026-07-18T20:25:20.761Z",
       "lastRecommendedAt": "2026-07-18T20:25:20.761Z",
       "recommendationCount": 1,
@@ -58,10 +77,29 @@
           "to": "RECOMMENDED_NOT_CONFIRMED",
           "reason": "Telegram sent a buy instruction",
           "at": "2026-07-18T20:25:20.761Z"
+        },
+        {
+          "from": "RECOMMENDED_NOT_CONFIRMED",
+          "to": "MANUALLY_PLACED",
+          "reason": "human-confirmed placement",
+          "at": "2026-07-19T05:11:46.254Z",
+          "executionPrice": 0.35,
+          "actualStake": 4
+        },
+        {
+          "from": "MANUALLY_PLACED",
+          "to": "SETTLED",
+          "reason": "settled: lost",
+          "at": "2026-07-19T05:17:02.774Z",
+          "result": 0
         }
-      ]
+      ],
+      "placedAt": "2026-07-19T05:11:46.255Z",
+      "wasManuallyPlaced": true,
+      "result": 0,
+      "realPnlDollars": -4
     }
   },
   "meta": {},
-  "updatedAt": "2026-07-18T20:25:21.244Z"
+  "updatedAt": "2026-07-19T05:18:58.968Z"
 }
