@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T21:06:49.560Z",
+  "canonical": "These two summaries are the sole sources for current real and paper balances. Do not recompute money elsewhere.",
+  "real": {
+    "label": "Real Entertainment Bankroll",
+    "startingDollars": 100,
+    "realizedPnl": -2.45,
+    "openExposure": 0,
+    "availableCash": 97.55,
+    "accountValue": 97.55,
+    "maxPendingPayout": 0,
+    "fees": {
+      "paidActual": 0,
+      "estimated": 0.25,
+      "note": "Only actual (confirmed) fees reduce available cash; estimated fees are shown but not deducted."
+    },
+    "unconfirmed": {
+      "count": 0,
+      "recommendedExposure": 0,
+      "note": "Recommended but NOT confirmed — excluded from real exposure and available cash."
+    },
+    "counts": {
+      "open": 0,
+      "settled": 2,
+      "unconfirmed": 0
+    },
+    "byCategory": {
+      "SPECULATIVE_BET": {
+        "n": 1,
+        "realizedPnl": 1.55,
+        "openExposure": 0
+      },
+      "CONFIRMED_SYSTEM_BET": {
+        "n": 1,
+        "realizedPnl": -4,
+        "openExposure": 0
+      }
+    },
+    "positions": [
+      {
+        "positionId": "explore|UFC-2026-07-18-B03|KXUFCFIGHT-26JUL18DUUSM-DU",
+        "recommendationId": "explore|UFC-2026-07-18-B03|KXUFCFIGHT-26JUL18DUUSM-DU",
+        "market": "KXUFCFIGHT-26JUL18DUUSM-DU",
+        "ticker": "KXUFCFIGHT-26JUL18DUUSM-DU",
+        "side": "YES",
+        "category": "SPECULATIVE_BET",
+        "source": "SYSTEM",
+        "fight": "Kamaru Usman vs Dricus Du Plessis",
+        "status": "SETTLED",
+        "realStatus": "SETTLED",
+        "stake": 3,
+        "recommendedStake": 3,
+        "contracts": 4,
+        "entryPrice": 0.66,
+        "fees": {
+          "amount": 0.07,
+          "basis": "estimated",
+          "feeModelVersion": "2026-07-16"
+        },
+        "payout": 4,
+        "realizedPnl": 1.55,
+        "paperEligible": false,
+        "placedAt": "2026-07-19T05:11:46.162Z",
+        "settlementTimestamp": "2026-07-19T05:17:02.669Z"
+      },
+      {
+        "positionId": "UFC-2026-07-18-B06|KXUFCFIGHT-26JUL18MCMMON-MON",
+        "recommendationId": "UFC-2026-07-18-B06|KXUFCFIGHT-26JUL18MCMMON-MON",
+        "market": "KXUFCFIGHT-26JUL18MCMMON-MON",
+        "ticker": "KXUFCFIGHT-26JUL18MCMMON-MON",
+        "side": "YES",
+        "category": "CONFIRMED_SYSTEM_BET",
+        "source": "SYSTEM",
+        "fight": "Alberto Montes vs Tommy McMillen",
+        "status": "SETTLED",
+        "realStatus": "SETTLED",
+        "stake": 4,
+        "recommendedStake": 4,
+        "contracts": 11,
+        "entryPrice": 0.35,
+        "fees": {
+          "amount": 0.18,
+          "basis": "estimated",
+          "feeModelVersion": "2026-07-16"
+        },
+        "payout": 0,
+        "realizedPnl": -4,
+        "paperEligible": true,
+        "placedAt": "2026-07-19T05:11:46.255Z",
+        "settlementTimestamp": "2026-07-19T05:17:02.774Z"
+      }
+    ]
+  },
+  "paper": {
+    "label": "Paper Strategy Bankroll",
+    "startingDollars": 10000,
+    "prospectiveStartAt": "2026-07-19T13:57:16.862Z",
+    "feeModelVersion": "2026-07-16",
+    "availableCash": 10000,
+    "openExposure": 0,
+    "accountValue": 10000,
+    "realizedPnl": 0,
+    "maxPendingPayout": 0,
+    "positions": [],
+    "counts": {
+      "total": 0,
+      "open": 0,
+      "settled": 0,
+      "wins": 0,
+      "losses": 0,
+      "voids": 0
+    },
+    "metrics": {
+      "numRecommendations": 0,
+      "winRate": null,
+      "returnOnCapital": 0,
+      "returnOnRisked": null,
+      "avgEdgeAtEntry": null,
+      "byTier": {},
+      "bySingleVsCombo": {
+        "single": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "pnl": 0
+        },
+        "combo": {
+          "n": 0,
+          "wins": 0,
+          "losses": 0,
+          "pnl": 0
+        }
+      },
+      "closingLineAvailable": false
+    }
+  },
+  "legacy": {
+    "note": "Archived research, NOT part of any current bankroll calculation. Preserved, not deleted.",
+    "v1PaperBook": {
+      "file": "data/positions.json",
+      "label": "Legacy V1 paper book",
+      "reason": "repealed pre-b1399bd guru gate; superseded by the Paper Strategy Bankroll",
+      "excludedFromCurrentLedgers": true
+    },
+    "phase8Shadow": {
+      "file": "data/phase8-shadow-*.json",
+      "label": "Legacy $10k sizing shadow",
+      "reason": "a decision journal that never settles into a running balance",
+      "excludedFromCurrentLedgers": true
+    }
+  }
+}

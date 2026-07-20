@@ -1,0 +1,85 @@
+{
+  "version": "research-profile-v1",
+  "note": "DETERMINISTIC research-entry rules for the Speculative Research Portfolio. Every funded position is reproducible from this file plus the sealed artifact it came from. NEVER edit this file to change behaviour after positions exist — create research-profile-v2.json instead, so results stay separable by rulesetVersion. These are EXPERIMENTAL research sizing rules; they do NOT touch the frozen production sizing/thresholds.",
+
+  "allowedCategories": [
+    "CORE_BUY", "EXPLORATION", "STRONG_SPECULATION", "CREATIVE_SPECULATION",
+    "WATCH_EXPERIMENT", "UNCONFIRMED_CANDIDATE", "EXPERIMENTAL_COMBO"
+  ],
+
+  "classificationMap": {
+    "core:standard experimental": "CORE_BUY",
+    "core:strong experimental": "CORE_BUY",
+    "core:rare maximum": "CORE_BUY",
+    "exploration:CREATIVE SPECULATIVE": "CREATIVE_SPECULATION",
+    "exploration:STRONG SPECULATIVE": "STRONG_SPECULATION",
+    "exploration:BEST EXPERIMENTAL": "EXPLORATION",
+    "alerts:PRICE_TOO_HIGH": "UNCONFIRMED_CANDIDATE",
+    "intel:WATCH": "WATCH_EXPERIMENT",
+    "intel:SPECULATIVE_BET": "WATCH_EXPERIMENT",
+    "combo:experimental": "EXPERIMENTAL_COMBO"
+  },
+
+  "gates": {
+    "minEstProbability": 0.10,
+    "minEstEdge": 0.00,
+    "maxMarketPrice": 0.95,
+    "minFreshnessMinutes": 20,
+    "uncertaintyHaircut": 0.20
+  },
+
+  "priceTooHigh": {
+    "priceToleranceCents": 3,
+    "note": "researchMaximumEntryPrice = min(gates.maxMarketPrice, productionMaximumAcceptablePrice + priceToleranceCents/100). A PRICE_TOO_HIGH signal funds only if observedAsk <= researchMaximumEntryPrice AND the post-haircut edge at the effective entry price is >= gates.minEstEdge. Otherwise OBSERVED_NO_ENTRY."
+  },
+
+  "directionalWatch": {
+    "allowed": true,
+    "minNameScore": 2,
+    "note": "A directional intelligence WATCH/SPECULATIVE_BET funds only when direction maps unambiguously to a Kalshi side (see lib/research-ledger mapDirectionToSide), the subject fighter matches the contract with nameScore >= minNameScore, an executable ask for that side is CURRENT, and post-haircut edge >= gates.minEstEdge. neutral/ambiguous/DASHBOARD_ONLY/stale -> OBSERVED_NO_ENTRY."
+  },
+
+  "unconfirmedCandidates": { "allowed": true },
+  "experimentalCombos": {
+    "allowed": true,
+    "note": "Funds ONLY on a real, fresh audit.pricing.liveQuote (quoteTs CURRENT) for a structurally-acceptable non-BUY combo. Never fairPrice/maxBuyPrice/reconstructed/later/fallback prices. No usable live quote -> OBSERVED_NO_ENTRY."
+  },
+
+  "sizing": {
+    "CORE_BUY": "PRODUCTION_TIER",
+    "STRONG_SPECULATION": 0.020,
+    "EXPLORATION": 0.015,
+    "CREATIVE_SPECULATION": 0.010,
+    "WATCH_EXPERIMENT": 0.005,
+    "UNCONFIRMED_CANDIDATE": 0.005,
+    "EXPERIMENTAL_COMBO": 0.010,
+    "note": "Percent of CURRENT research bankroll. CORE_BUY preserves the frozen production tier fraction (3/4/5%) verbatim; it never re-derives frozen sizing. On consolidation the highest eligible category stake percentage is used."
+  },
+
+  "caps": {
+    "perFightPct": 0.05,
+    "perCardPct": 0.15,
+    "totalOpenPct": 0.25,
+    "note": "Fractions of the research bankroll. No martingale, no loss-recovery stake increase, no retroactive stake change, no borrowing or negative cash."
+  },
+
+  "discipline": {
+    "noMartingale": true,
+    "noLossRecoveryStakeIncrease": true,
+    "noRetroactiveStakeChange": true,
+    "allowNegativeCash": false
+  },
+
+  "simulation": {
+    "feeModel": "production:lib/contracts.tradingFee",
+    "feeRate": 0.07,
+    "feeRounding": "ceil-to-cent",
+    "slippageCents": 1,
+    "pessimisticFeeMultiplier": 1.5,
+    "feeBasis": {
+      "inScope": "VERIFIED",
+      "outOfScope": "ESTIMATED_OUT_OF_SCOPE",
+      "note": "Inside contracts.withinVerifiedEnvelope (KXUFCFIGHT, YES, taker, single fill, price 0.59-0.89, size 3.28-823.81 contracts, as of 2026-07-16) the fee is VERIFIED and exact. Outside it the same 0.07 ceil formula is used but stamped ESTIMATED_OUT_OF_SCOPE with the envelope-failure reasons stored, and a pessimistic-fee sensitivity P&L is computed. An entry whose fee cannot be produced by the model at all (tradingFee returns null) is OBSERVED_NO_ENTRY."
+    }
+  }
+}

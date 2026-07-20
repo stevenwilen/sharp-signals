@@ -264,6 +264,17 @@ async function main() {
     run("run-paper.js", dueList.includes("grade") ? ["--settle"] : [], { allowFail: true });
   }
 
+  // SPECULATIVE RESEARCH PORTFOLIO (isolated experiment) — ONE-WAY: reads sealed artifacts, writes only
+  // its own ledger/health. Spawned as a child process, so dispatch (and all production) never imports the
+  // research module — the isolation invariant is "no research->production dependency", grep-enforced by
+  // test-research-isolation. Opt-in + FAIL-CLOSED: only spawned when RESEARCH_ENABLED=1 (RESEARCH_MODE in
+  // {OBSERVE,PAPER} decides observe-only vs funded, inside the runner). With RESEARCH_ENABLED unset it is
+  // never invoked, so removing it is a no-op for production. The runner fingerprints its inputs and skips
+  // when unchanged, so this is cheap and idempotent. Non-fatal — research must never break the pipeline.
+  if (process.env.RESEARCH_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast") || dueList.includes("grade"))) {
+    run("run-research.js", dueList.includes("grade") ? ["--settle"] : [], { allowFail: true });
+  }
+
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
   // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
   // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
