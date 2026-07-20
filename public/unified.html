@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Signals — unified board</title>
+<title>Signals unified board</title>
 <style>
   :root{--bg:#0b0f14;--card:#141b24;--line:#243040;--fg:#e6edf3;--muted:#8b98a8;--green:#3fb950;--red:#f85149;--gold:#e3b341;--blue:#58a6ff;--amber:#d29922;--panel:#0f151d}
   *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.6 -apple-system,Segoe UI,Roboto,sans-serif}
@@ -55,7 +55,7 @@
 <body>
 <header>
   <h1><span class="z">Signals</span> <span class="muted" style="font-weight:400">unified board</span></h1>
-  <div class="readonly" id="readonly-line">Reads sealed artifacts only — does not recalculate decisions.</div>
+  <div class="readonly" id="readonly-line">Reads sealed artifacts only. Does not recalculate decisions.</div>
   <div class="spacer"></div>
   <span class="muted archived-link"><a href="/archived-research">V1 archived research →</a></span>
 </header>
@@ -65,13 +65,13 @@
 
   <!-- TWO SEPARATE bankrolls, from the canonical ledger summary (data/bankrolls.json). Never combined. -->
   <section>
-    <h2>Bankrolls — two fully separate ledgers</h2>
+    <h2>Bankrolls: two fully separate ledgers</h2>
     <div class="grid" id="bankrolls"></div>
     <div class="note" id="bankrolls-note"></div>
   </section>
 
   <section>
-    <h2>System health — is CURRENT information flowing?</h2>
+    <h2>System health: is CURRENT information flowing?</h2>
     <div id="system-health"></div>
   </section>
 
@@ -101,17 +101,17 @@
   </section>
 
   <section>
-    <h2>Placement status — real $100 bankroll vs paper vs recommendation</h2>
+    <h2>Placement status: real $100 bankroll vs paper vs recommendation</h2>
     <div id="manual-bankroll"></div>
   </section>
 
   <section>
-    <h2>Fight intelligence — report lifecycle (NOT a forecast, NOT an instruction)</h2>
+    <h2>Fight intelligence: report lifecycle (NOT a forecast, NOT an instruction)</h2>
     <div id="fight-intel"></div>
   </section>
 
   <section>
-    <h2 id="card-title">Current card — every bout</h2>
+    <h2 id="card-title">Current card: every bout</h2>
     <div id="bouts"></div>
   </section>
 
@@ -122,7 +122,7 @@
   </section>
 
   <section>
-    <h2>Artifact status — this is a sealed-artifact viewer</h2>
+    <h2>Artifact status: this is a sealed-artifact viewer</h2>
     <div class="scroll"><table id="artifacts"><thead><tr>
       <th>Artifact</th><th>File</th><th>Present</th><th>Reproduces</th></tr></thead><tbody></tbody></table></div>
   </section>
@@ -130,9 +130,9 @@
 <script>
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s==null?'':s).replace(/[&<>]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-const pct = (x) => x==null ? '<span class="na">—</span>' : (x*100).toFixed(1)+'%';
-const cts = (x) => x==null ? '<span class="na">—</span>' : (x*100).toFixed(1)+'¢';
-const ts  = (s) => s ? esc(String(s).replace('T',' ').slice(0,16)) : '<span class="na">—</span>';
+const pct = (x) => x==null ? '<span class="na">-</span>' : (x*100).toFixed(1)+'%';
+const cts = (x) => x==null ? '<span class="na">-</span>' : (x*100).toFixed(1)+'¢';
+const ts  = (s) => s ? esc(String(s).replace('T',' ').slice(0,16)) : '<span class="na">-</span>';
 const kv  = (k,v,cls) => `<div class="kv"><div class="k">${k}</div><div class="v ${cls||''}">${v}</div></div>`;
 const yn  = (b) => b ? '<span class="pill p-green">YES</span>' : '<span class="pill p-red">NO</span>';
 const bad = (t,cls) => `<span class="pill ${cls}">${esc(t)}</span>`;
@@ -150,17 +150,17 @@ async function load(){
 
   // TWO SEPARATE bankrolls, straight from the canonical ledger summary — same source the mobile app uses.
   if (u.bankrolls && u.bankrolls.real && u.bankrolls.paper) {
-    const D = (x) => x==null ? '<span class="na">—</span>' : '$'+Number(x).toFixed(2);
+    const D = (x) => x==null ? '<span class="na">-</span>' : '$'+Number(x).toFixed(2);
     const R = u.bankrolls.real, P = u.bankrolls.paper;
     $('#bankrolls').innerHTML = [
-      kv('REAL — Starting', D(R.startingDollars)), kv('REAL — Account value', D(R.accountValue)),
-      kv('REAL — Available', D(R.availableCash)), kv('REAL — Open exposure', D(R.openExposure)),
-      kv('REAL — Realized P&L', D(R.realizedPnl)), kv('REAL — Unconfirmed (not exposure)', String(R.unconfirmed.count)+' · '+D(R.unconfirmed.recommendedExposure)),
-      kv('PAPER — Starting', D(P.startingDollars)), kv('PAPER — Account value', D(P.accountValue)),
-      kv('PAPER — Available', D(P.availableCash)), kv('PAPER — Open exposure', D(P.openExposure)),
-      kv('PAPER — Simulated P&L', D(P.realizedPnl)), kv('PAPER — Prospective start', ts(P.prospectiveStartAt)),
+      kv('Real Starting', D(R.startingDollars)), kv('Real Account value', D(R.accountValue)),
+      kv('Real Available', D(R.availableCash)), kv('Real Open exposure', D(R.openExposure)),
+      kv('Real Realized P&L', D(R.realizedPnl)), kv('Real Unconfirmed (not exposure)', String(R.unconfirmed.count)+' · '+D(R.unconfirmed.recommendedExposure)),
+      kv('Paper Starting', D(P.startingDollars)), kv('Paper Account value', D(P.accountValue)),
+      kv('Paper Available', D(P.availableCash)), kv('Paper Open exposure', D(P.openExposure)),
+      kv('Paper Simulated P&L', D(P.realizedPnl)), kv('Paper Prospective start', ts(P.prospectiveStartAt)),
     ].join('');
-    $('#bankrolls-note').innerHTML = 'Real Entertainment ($100, your actual money — only bets you confirmed) and Paper Strategy ($10,000, simulated on formal system BUYs only). Never combined. From the canonical <code>data/bankrolls.json</code> — the same source the Signals mobile app reads, so totals reconcile to the cent.';
+    $('#bankrolls-note').innerHTML = 'Real Entertainment ($100, your actual money, only bets you confirmed) and Paper Strategy ($10,000, simulated on formal system BUYs only). Never combined. From the canonical <code>data/bankrolls.json</code>, the same source the Signals mobile app reads, so totals reconcile to the cent.';
   } else {
     $('#bankrolls').innerHTML = kv('Bankrolls', '<span class="na">canonical summary not available</span>');
   }
@@ -176,37 +176,37 @@ async function load(){
     $('#system-health').innerHTML = `
       <div class="box" style="margin-bottom:10px">
         <div>Candidate corpus: <span class="pill ${fcls}">${esc(cf.status)}</span> <span class="sub">${esc(cf.reason||'')}</span></div>
-        <div class="sub" style="margin-top:4px">newest source ${esc(d.newestSourceTs||'—')} · live picks ${esc(d.livePicksFiles??'—')} files (newest ${esc(d.liveNewest||'—')}) · historical corpus newest ${esc(d.corpusNewest||'—')}</div>
-        <div class="sub">candidates ${esc(d.mergedCandidates??'—')} · channels: ${esc(d.channelsInLive??'—')} live-active of ${esc(d.channelsTotal??'—')} seen (${esc(d.sourcesConfigured??'—')} configured) · index built ${esc(d.indexBuiltAt||'not yet')}</div>
-        <div class="sub">modes: production ${sh.modes.production?'ON':'off'} · exploration ${sh.modes.exploration?'ON':'off'} · fight-intel ${sh.modes.fightIntel?(sh.modes.fightIntelSend?'LIVE':'shadow'):'off'} · web research <b>${esc(sh.modes.webResearch)}</b> · fight started: ${sh.fightStarted?'YES — pre-fight alerts stopped':'no'}</div>
+        <div class="sub" style="margin-top:4px">newest source ${esc(d.newestSourceTs||'-')} · live picks ${esc(d.livePicksFiles??'-')} files (newest ${esc(d.liveNewest||'-')}) · historical corpus newest ${esc(d.corpusNewest||'-')}</div>
+        <div class="sub">candidates ${esc(d.mergedCandidates??'-')} · channels: ${esc(d.channelsInLive??'-')} live-active of ${esc(d.channelsTotal??'-')} seen (${esc(d.sourcesConfigured??'-')} configured) · index built ${esc(d.indexBuiltAt||'not yet')}</div>
+        <div class="sub">modes: production ${sh.modes.production?'ON':'off'} · exploration ${sh.modes.exploration?'ON':'off'} · fight-intel ${sh.modes.fightIntel?(sh.modes.fightIntelSend?'LIVE':'shadow'):'off'} · web research <b>${esc(sh.modes.webResearch)}</b> · fight started: ${sh.fightStarted?'YES, pre-fight alerts stopped':'no'}</div>
         <div class="sub">gemini (${esc(sh.modes.geminiModel)}): ${g?`today ${g.today.calls} calls / ${g.today.inTok+g.today.outTok} tok / ~$${g.today.cost} · month ~$${g.month.cost} (estimates)`:'no usage recorded yet'}</div>
-        <div class="sub">last dispatch stages: ${sh.lastDispatchStages?Object.entries(sh.lastDispatchStages).map(([k,v])=>`${esc(k)} ${esc((v||'').slice(5,16))}`).join(' · '):'—'}</div>
+        <div class="sub">last dispatch stages: ${sh.lastDispatchStages?Object.entries(sh.lastDispatchStages).map(([k,v])=>`${esc(k)} ${esc((v||'').slice(5,16))}`).join(' · '):'-'}</div>
       </div>`;
   }
 
   // ---- provenance / hashes (prominent) ----
   const h = u.hashes;
   $('#hashes').innerHTML = [
-    kv('Forecast seal hash', `<code>${esc(h.forecastSealHash||'—')}</code>`),
+    kv('Forecast seal hash', `<code>${esc(h.forecastSealHash||'-')}</code>`),
     kv('Forecast reproduces', yn(h.forecastReproduces)),
-    kv('Decision → forecast hash', `<code>${esc(h.decisionForecastHash||'—')}</code>`),
+    kv('Decision → forecast hash', `<code>${esc(h.decisionForecastHash||'-')}</code>`),
     kv('Decision matches forecast', h.decisionMatchesForecast==null?'<span class="na">n/a</span>':yn(h.decisionMatchesForecast)),
-    kv('Attestation → forecast hash', `<code>${esc(h.attestationForecastHash||'—')}</code>`),
+    kv('Attestation → forecast hash', `<code>${esc(h.attestationForecastHash||'-')}</code>`),
     kv('Attestation matches forecast', h.attestationMatchesForecast==null?'<span class="na">n/a</span>':yn(h.attestationMatchesForecast)),
     kv('All artifacts agree', h.allAgree?'<span class="pill p-green">CONSISTENT</span>':'<span class="pill p-red">MISMATCH</span>'),
     kv('Card', `${esc(u.card)} · ${esc(u.eventDate)}`),
-    kv('Rules version', esc(u.rulesVersion||'—')),
+    kv('Rules version', esc(u.rulesVersion||'-')),
   ].join('');
   $('#hash-note').innerHTML =
-    `Sealed ${ts(u.sealedAt)} · market source ${esc(u.marketSource||'—')}. `
+    `Sealed ${ts(u.sealedAt)} · market source ${esc(u.marketSource||'-')}. `
     + (h.supersedes?`This forecast supersedes <code>${esc(h.supersedes.sealHash||h.supersedes.file||'')}</code>. `:'')
-    + `Every number on this page is copied from a sealed artifact and carries the hash it came from — nothing here is recomputed.`;
+    + `Every number on this page is copied from a sealed artifact and carries the hash it came from; nothing here is recomputed.`;
 
   // ---- cloud workflow ----
   $('#workflow tbody').innerHTML = u.cloudWorkflow.stages.map((s)=>`<tr>
     <td><b>${esc(s.stage)}</b></td>
     <td>${ts(s.ranAt)}</td>
-    <td>${esc(s.card||'—')}</td>
+    <td>${esc(s.card||'-')}</td>
     <td>${s.present?'<span class="pill p-green">RAN</span>':'<span class="pill p-grey">NOT YET</span>'}</td>
   </tr>`).join('');
   $('#workflow-note').innerHTML = u.cloudWorkflow.available
@@ -222,7 +222,7 @@ async function load(){
       kv('Ran at', ts(a.ranAt)),
       kv('Expires at', ts(a.expiresAt)),
       kv('Expired', a.expired==null?'<span class="na">n/a</span>':(a.expired?'<span class="pill p-red">EXPIRED</span>':'<span class="pill p-green">FRESH</span>')),
-      kv('Card', esc(a.card||'—')),
+      kv('Card', esc(a.card||'-')),
     ].join('');
     $('#att-stages').innerHTML = `<div class="scroll"><table style="margin-top:10px"><thead><tr><th>Stage</th><th>OK</th><th>Detail</th></tr></thead><tbody>`
       + (a.stages||[]).map((s)=>`<tr><td>${esc(s.stage)}</td><td>${s.ok?'<span class="pill p-green">OK</span>':'<span class="pill p-red">FAIL</span>'}</td><td class="reason">${esc(s.detail||'')}</td></tr>`).join('')
@@ -241,9 +241,9 @@ async function load(){
     kv('Buy instructions', ds.available?ds.buyInstructionsCount:'<span class="na">n/a</span>'),
     kv('Human review items', ds.available?ds.humanReviewCount:'<span class="na">n/a</span>'),
     kv('Current exposure', ex.available===false?'<span class="na">n/a</span>':('$'+ex.currentExposure)),
-    kv('Bankroll', ex.bankroll?('$'+ex.bankroll.amount+' '+esc(ex.bankroll.label||'')):'<span class="na">—</span>'),
-    kv('Per-fight / per-card cap', ex.caps?`${(ex.caps.maxFractionPerFight*100)}% / ${(ex.caps.maxFractionPerCard*100)}%`:'<span class="na">—</span>'),
-    kv('Suggested tiers', ex.tiers?Object.values(ex.tiers).map(t=>'$'+t.dollars).join(' / '):'<span class="na">—</span>'),
+    kv('Bankroll', ex.bankroll?('$'+ex.bankroll.amount+' '+esc(ex.bankroll.label||'')):'<span class="na">-</span>'),
+    kv('Per-fight / per-card cap', ex.caps?`${(ex.caps.maxFractionPerFight*100)}% / ${(ex.caps.maxFractionPerCard*100)}%`:'<span class="na">-</span>'),
+    kv('Suggested tiers', ex.tiers?Object.values(ex.tiers).map(t=>'$'+t.dollars).join(' / '):'<span class="na">-</span>'),
   ].join('');
   $('#summary-note').innerHTML = ex.note ? `<b>${esc(ex.note)}</b>` : '';
 
@@ -255,21 +255,21 @@ async function load(){
     ['new','NEW','p-blue'], ['confirmed','CONFIRMED','p-green'], ['disproved','DISPROVED','p-red'],
     ['ignored','IGNORED / DASHBOARD ONLY','p-grey'],
   ];
-  const cents = (x)=> x==null?'—':(Math.round(x*100)+'c');
+  const cents = (x)=> x==null?'-':(Math.round(x*100)+'c');
   const intelCard = (r)=>{
     const mv = r.marketMovementPoints;
     const move = (r.marketBefore && r.marketAfter && r.marketAfter.length)
       ? `${cents(r.marketBefore.ask)} → ${cents(r.marketAfter[r.marketAfter.length-1].ask)}${mv!=null?` (${mv>0?'+':''}${mv} pts)`:''}` : 'no snapshots';
     const fx = r.forecastImpact;
     return `<div class="box" style="margin-bottom:10px">
-      <div><b>${esc(r.fighter)}</b> — ${esc(r.report||'')}</div>
+      <div><b>${esc(r.fighter)}</b>: ${esc(r.report||'')}</div>
       <div class="sub" style="margin-top:3px">${esc(r.fight||'')} · status <b>${esc(r.status)}</b> · action <b>${esc(r.action)}</b> · ${esc(r.reportType)}</div>
       <div class="sub">origins <b>${esc(r.independentOrigins)}</b> · amplifiers ${esc(r.amplifiers)} · access ${esc(r.accessRelevance)} · specificity ${esc(r.specificity)} · recency ${esc(r.recency)}</div>
-      <div class="sub">first seen ${esc(r.firstSeen)} · last updated ${esc(r.lastUpdated)} · original source ${esc(r.originalSource||'—')}</div>
+      <div class="sub">first seen ${esc(r.firstSeen)} · last updated ${esc(r.lastUpdated)} · original source ${esc(r.originalSource||'-')}</div>
       <div class="sub">market ${esc(move)}${fx?` · forecast impact ${esc(fx.impactPointsTowardHelps)} pts toward ${esc(fx.helps||'?')} (${esc(fx.magnitudeBucket||'')}, cap ${esc(fx.boutCap)})`:' · forecast impact none'}</div>
       ${r.contradictions&&r.contradictions.length?`<div class="sub">contradictions: ${esc(r.contradictions.join('; '))}</div>`:''}
       ${r.telegramHistory&&r.telegramHistory.length?`<div class="sub">telegram: ${r.telegramHistory.length} message(s)</div>`:''}
-      ${r.quotes&&r.quotes.length?`<details><summary>quotes (${r.quotes.length})</summary>${r.quotes.map(q=>`<div class="sub">“${esc(q.quote)}” — ${esc(q.channel||'?')}</div>`).join('')}</details>`:''}
+      ${r.quotes&&r.quotes.length?`<details><summary>quotes (${r.quotes.length})</summary>${r.quotes.map(q=>`<div class="sub">“${esc(q.quote)}” (${esc(q.channel||'?')})</div>`).join('')}</details>`:''}
       ${r.timeline&&r.timeline.length?`<details><summary>lifecycle timeline (${r.timeline.length})</summary>${r.timeline.map(t=>`<div class="sub">${esc(t.at)} · ${esc(t.status||'')}${t.action?(' → '+esc(t.action)):''} · ${esc(t.note||'')}</div>`).join('')}</details>`:''}
     </div>`;
   };
@@ -296,20 +296,20 @@ async function load(){
   if (mb) {
     const pnl = mb.realBankrollPnl || {};
     const list = (arr, empty) => arr && arr.length
-      ? arr.map((p)=>`<div class="sub" style="margin:3px 0">• ${esc(p.fight||p.ticker||'?')}${p.classification?` <span class="pill p-amber">${esc(p.classification)}</span>`:''} — recommended $${p.recommendedStakeDollars??0}, actual $${p.actualStake??0}${p.executionPrice?(' @ '+(p.executionPrice*100).toFixed(1)+'c'):''}${p.realPnlDollars!=null?(' · P&L $'+p.realPnlDollars):''}</div>`).join('')
+      ? arr.map((p)=>`<div class="sub" style="margin:3px 0">• ${esc(p.fight||p.ticker||'?')}${p.classification?` <span class="pill p-amber">${esc(p.classification)}</span>`:''}: recommended $${p.recommendedStakeDollars??0}, actual $${p.actualStake??0}${p.executionPrice?(' @ '+(p.executionPrice*100).toFixed(1)+'c'):''}${p.realPnlDollars!=null?(' · P&L $'+p.realPnlDollars):''}</div>`).join('')
       : `<div class="na">${empty}</div>`;
     $('#manual-bankroll').innerHTML = `
       <div class="grid">
         ${kv('REAL P&L (placed only)', '$'+(pnl.realPnlDollars??0)+' booked · $'+(pnl.realDollarsDeployed??0)+' deployed · '+(pnl.positionsManuallyPlaced??0)+' placed')}
       </div>
-      <div class="box" style="margin-top:8px"><b>PAPER ONLY</b> <span class="na">(${mb.paperOnly.count}) — research, $0, DO NOT PLACE, excluded from real P&L</span>${list(mb.paperOnly.positions,'none')}</div>
-      <div class="box" style="margin-top:8px"><b>MANUAL RECOMMENDATION — NOT CONFIRMED</b> <span class="na">(${mb.recommendedNotConfirmed.count}) — Telegram told you to buy; NOT confirmed placed; $0 in real P&L</span>${list(mb.recommendedNotConfirmed.positions,'none')}</div>
-      <div class="box" style="margin-top:8px"><b>MANUALLY PLACED</b> <span class="na">(${mb.manuallyPlaced.count}) — you confirmed you bought it; in your real $100 P&L</span>${list(mb.manuallyPlaced.positions,'none — confirm with run-confirm-placement.js')}</div>
+      <div class="box" style="margin-top:8px"><b>PAPER ONLY</b> <span class="na">(${mb.paperOnly.count}): research, $0, DO NOT PLACE, excluded from real P&L</span>${list(mb.paperOnly.positions,'none')}</div>
+      <div class="box" style="margin-top:8px"><b>MANUAL RECOMMENDATION, NOT CONFIRMED</b> <span class="na">(${mb.recommendedNotConfirmed.count}): Telegram told you to buy; NOT confirmed placed; $0 in real P&L</span>${list(mb.recommendedNotConfirmed.positions,'none')}</div>
+      <div class="box" style="margin-top:8px"><b>MANUALLY PLACED</b> <span class="na">(${mb.manuallyPlaced.count}): you confirmed you bought it; in your real $100 P&L</span>${list(mb.manuallyPlaced.positions,'none; confirm with run-confirm-placement.js')}</div>
     `;
   }
 
   // ---- bouts ----
-  $('#card-title').textContent = `Current card — every bout (${u.totalBouts}, ${u.boutsWithoutBaseline} without a usable market baseline)`;
+  $('#card-title').textContent = `Current card: every bout (${u.totalBouts}, ${u.boutsWithoutBaseline} without a usable market baseline)`;
   $('#bouts').innerHTML = u.bouts.map(renderBout).join('');
 
   // ---- learning / provisional ----
@@ -334,7 +334,7 @@ async function load(){
   $('#artifacts tbody').innerHTML = u.artifactStatus.map((x)=>`<tr>
     <td><b>${esc(x.name)}</b></td><td><code>${esc(x.file)}</code></td>
     <td>${artState(x)}</td>
-    <td>${x.reproduces==null?'<span class="na">—</span>':(x.reproduces?'<span class="pill p-green">YES</span>':'<span class="pill p-red">NO</span>')}</td>
+    <td>${x.reproduces==null?'<span class="na">-</span>':(x.reproduces?'<span class="pill p-green">YES</span>':'<span class="pill p-red">NO</span>')}</td>
   </tr>`).join('');
 }
 
@@ -362,14 +362,14 @@ function renderBout(b){
 
   const adjRows = adj.adjustments.length ? adj.adjustments.map((a)=>`
     <div class="ev">${esc(a.mechanism)} → favours <b>${esc(a.favours)}</b> · ${esc(a.magnitudeClass)}${a.liftedTo?(' → '+esc(a.liftedTo)):''} · log-odds ${esc(a.appliedLogOdds)} · ${esc(a.independentOrigins)} origin(s)<div class="sub">${esc(a.reason||'')}</div></div>`).join('')
-    : '<div class="na">no adjustment cleared the magnitude rules — the forecast restates the market baseline</div>';
+    : '<div class="na">no adjustment cleared the magnitude rules; the forecast restates the market baseline</div>';
 
   const hyps = b.creativeHypotheses.length ? b.creativeHypotheses.map((hy)=>`
     <div class="ev"><b>${esc(hy.text)}</b> ${hy.verificationStatus?bad(hy.verificationStatus,'p-blue'):''}
-      <div class="sub">mechanism: ${esc(hy.mechanism||'—')} · novelty: ${esc(hy.novelty)} · probably priced: ${esc(hy.probablyPriced)} · adjustment: ${esc(hy.adjustment)}</div>
+      <div class="sub">mechanism: ${esc(hy.mechanism||'-')} · novelty: ${esc(hy.novelty)} · probably priced: ${esc(hy.probablyPriced)} · adjustment: ${esc(hy.adjustment)}</div>
       ${hy.evidenceAgainst?`<div class="sub">evidence against: ${esc(hy.evidenceAgainst)}</div>`:''}
       ${hy.falsification?`<div class="sub">falsified if: ${esc(hy.falsification)}</div>`:''}</div>`).join('')
-    : '<div class="na">none — this sealed forecast carries no exploration block</div>';
+    : '<div class="na">none; this sealed forecast carries no exploration block</div>';
 
   const contracts = b.kalshi.contracts.length ? `<div class="scroll"><table style="margin-top:6px"><thead><tr><th>Ticker</th><th>Rank</th><th>Class</th><th>Reason (NO BET)</th></tr></thead><tbody>`
     + b.kalshi.contracts.map((c)=>`<tr><td><code>${esc(c.ticker)}</code></td><td>${esc(c.rank)}</td><td>${bad(c.classification, c.classification==='ACTIONABLE EXPERIMENTAL'?'p-amber':'p-grey')}</td><td class="reason">${esc(c.reason||'')}</td></tr>`).join('')
@@ -377,7 +377,7 @@ function renderBout(b){
     : '<div class="na">no Kalshi contract mapped (no admissible baseline)</div>';
 
   const suggested = b.kalshi.suggestedPosition
-    ? `<div class="box"><div class="lbl">Suggested manual position</div><div class="big">$${esc(b.kalshi.suggestedPosition.stake ?? b.kalshi.suggestedPosition.dollars ?? '—')}</div><div class="sub">max acceptable price: ${b.kalshi.maximumAcceptablePrice!=null?cts(b.kalshi.maximumAcceptablePrice):'—'}</div></div>`
+    ? `<div class="box"><div class="lbl">Suggested manual position</div><div class="big">$${esc(b.kalshi.suggestedPosition.stake ?? b.kalshi.suggestedPosition.dollars ?? '-')}</div><div class="sub">max acceptable price: ${b.kalshi.maximumAcceptablePrice!=null?cts(b.kalshi.maximumAcceptablePrice):'-'}</div></div>`
     : '';
 
   return `<div class="bout">
@@ -394,7 +394,7 @@ function renderBout(b){
         <div class="sub">${b.marketPrior&&b.marketPrior.sportsbooks.length?esc(b.marketPrior.sportsbooks.join(', ')):''}</div>
       </div>
       <div class="box"><div class="lbl">Core adjustment</div>
-        <div class="big">${adj.marketDisagreementPoints!=null?esc(adj.marketDisagreementPoints)+' pts':'<span class="na">—</span>'}</div>
+        <div class="big">${adj.marketDisagreementPoints!=null?esc(adj.marketDisagreementPoints)+' pts':'<span class="na">-</span>'}</div>
         <div class="sub">${adj.applied?'evidence moved the forecast off baseline':'no adjustment applied'} · considered-but-zero: ${esc(adj.consideredButZero)}</div>
       </div>
       <div class="box"><div class="lbl">Creative adjustment</div>
@@ -403,8 +403,8 @@ function renderBout(b){
       </div>
       <div class="box"><div class="lbl">Final probability (for ${esc(A)})</div>
         <div class="big">${pct(centralA)}</div>
-        <div class="sub">range ${b.finalProbability.range?pct(b.finalProbability.range.low)+'–'+pct(b.finalProbability.range.high):'—'}${b.finalProbability.creativeCentral?(' · creative '+pct(b.finalProbability.creativeCentral[A])):''}</div>
-        <div class="sub">evidence: ${esc(b.evidenceCoverage||'—')} · ${esc(b.independentOrigins)} independent origin(s)</div>
+        <div class="sub">range ${b.finalProbability.range?pct(b.finalProbability.range.low)+'–'+pct(b.finalProbability.range.high):'-'}${b.finalProbability.creativeCentral?(' · creative '+pct(b.finalProbability.creativeCentral[A])):''}</div>
+        <div class="sub">evidence: ${esc(b.evidenceCoverage||'-')} · ${esc(b.independentOrigins)} independent origin(s)</div>
       </div>
       ${suggested}
     </div>
@@ -420,7 +420,7 @@ function renderBout(b){
       ${condition?('<h3>Current-condition reports</h3>'+condition):''}
       <h3>Contradictory evidence</h3>${contra}
       ${b.humanReview.length?('<h3>Unverified news for this bout</h3>'+b.humanReview.map(h=>`<div class="ev"><span class="pill p-amber">UNVERIFIED</span> ${esc(h.about)} · ${esc(h.topic)} · ${esc(h.origins)} origin(s)<div class="sub">${esc(h.why)}</div></div>`).join('')):''}
-      <div class="note">Provenance — forecast <code>${esc(b.provenance.forecastSealHash)}</code>${b.provenance.dataHashes?(' · baseline <code>'+esc(b.provenance.dataHashes.baseline||'—')+'</code> · evidence <code>'+esc(b.provenance.dataHashes.evidenceEval||'—')+'</code>'):''}</div>
+      <div class="note">Provenance: forecast <code>${esc(b.provenance.forecastSealHash)}</code>${b.provenance.dataHashes?(' · baseline <code>'+esc(b.provenance.dataHashes.baseline||'-')+'</code> · evidence <code>'+esc(b.provenance.dataHashes.evidenceEval||'-')+'</code>'):''}</div>
     </details>
   </div>`;
 }
