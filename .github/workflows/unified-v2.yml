@@ -78,6 +78,14 @@ jobs:
           # COMBO_SEND=1 promotes it to production. Reads sealed singles; no order path.
           COMBO_ENABLED: ${{ vars.COMBO_ENABLED }}
           COMBO_SEND: ${{ vars.COMBO_SEND }}
+          # Speculative Research Portfolio (isolated experiment). INERT until RESEARCH_ENABLED=1 is set as a
+          # repository VARIABLE — dispatch only spawns run-research.js when RESEARCH_ENABLED === "1", and
+          # RESEARCH_MODE (OBSERVE|PAPER) decides observe-only vs funded. RESEARCH_EXPLORATION_ENABLED=1 adds
+          # the research-only shadow exploration pass. Reads sealed artifacts, writes only its own ledger; no
+          # Telegram, no order path, never touches real/paper money.
+          RESEARCH_ENABLED: ${{ vars.RESEARCH_ENABLED }}
+          RESEARCH_MODE: ${{ vars.RESEARCH_MODE }}
+          RESEARCH_EXPLORATION_ENABLED: ${{ vars.RESEARCH_EXPLORATION_ENABLED }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \
