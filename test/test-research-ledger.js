@@ -225,6 +225,15 @@ function runOne(rawObs, mode = RL.MODES.PAPER) {
       const vp = Object.values(st.positions)[0];
       ok(vp.result === null && vp.pnl === 0 && vp.payout === vp.totalCost && vp.status === "RESEARCH_SETTLED", "17e. void: pnl 0, payout = totalCost (break-even)"); }
 
+    // 22. Near-miss (PRICE_TOO_HIGH) tracking: capture the price gap and grade it in its own slice.
+    { reset(); const st = RL.load();
+      RL.processObservations(st, [obs({ category: "UNCONFIRMED_CANDIDATE", coreFraction: null, observedAsk: 0.40, productionMaximumAcceptablePrice: 0.38, estProbability: 0.70, market: "NM", ticker: "NM" })], { profile, mode: RL.MODES.PAPER, now: NOW });
+      const p = Object.values(st.positions)[0];
+      ok(p && p.primaryQualification === "UNCONFIRMED_CANDIDATE" && p.priceGapCents === 2, "22a. a near-miss stores the price gap in cents (ask 2c above acceptable)");
+      await RL.settleFromMarket(st, { settlement: async () => ({ status: "settled", result: "yes" }), now: NOW });
+      const s = RL.summary(st);
+      ok(s.nearMiss.numBets === 1 && s.nearMiss.avgPriceGapCents === 2 && s.nearMiss.netPnl > 0, "22b. the near-miss slice grades those bets (count, avg gap, P&L)"); }
+
     const summaryDone = () => {
       // 21. incremental-ex-CORE_BUY measured separately from copied CORE_BUYs.
       reset();
