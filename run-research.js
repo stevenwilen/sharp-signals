@@ -250,7 +250,8 @@ async function fromExplorationShadow(eventDate, forecast, evidence, nowMs, healt
     enabledState: enabled, mode, lastAttemptedRun: now, lastSuccessfulRun: null,
     inputFingerprint: null, lastProcessedFingerprint: null, status: "OK", errorCategory: "NONE", errorDetail: null,
     observationsGenerated: 0, positionsProposed: 0, positionsFunded: 0, positionsSettled: 0,
-    cardsProcessed: [], researchProfileVersion: PROFILE_VERSION, paperProspectiveStartAt: null, notes: [],
+    cardsProcessed: [], researchProfileVersion: PROFILE_VERSION, paperProspectiveStartAt: null,
+    paperModeActivatedAt: null, firstFundedPositionAt: null, notes: [],
   };
   const prevHealth = readJson(HEALTH, null) || {};
   health.lastProcessedFingerprint = prevHealth.lastProcessedFingerprint || null;
@@ -276,6 +277,7 @@ async function fromExplorationShadow(eventDate, forecast, evidence, nowMs, healt
     if (!fingerprintChanged && !(doSettle && openCount > 0)) {
       health.status = "OK"; health.notes.push("inputs unchanged — skipped"); health.lastSuccessfulRun = prevHealth.lastSuccessfulRun || now;
       health.paperProspectiveStartAt = state.prospectiveStartAt || null;
+      health.paperModeActivatedAt = state.paperModeActivatedAt || null; health.firstFundedPositionAt = state.firstFundedPositionAt || null;
       writeHealth(health); say(`run-research: inputs unchanged (fp ${health.inputFingerprint.slice(0, 8)}). Skipped.`); return 0;
     }
 
@@ -317,7 +319,8 @@ async function fromExplorationShadow(eventDate, forecast, evidence, nowMs, healt
     health.observationsGenerated = Object.keys(state.observations || {}).length;
     health.positionsProposed = counts.proposed; health.positionsFunded = counts.funded;
     health.positionsSettled = settled.settled.length; health.cardsProcessed = [eventDate];
-    health.paperProspectiveStartAt = state.prospectiveStartAt || null; health.notes = notes;
+    health.paperProspectiveStartAt = state.prospectiveStartAt || null;
+    health.paperModeActivatedAt = state.paperModeActivatedAt || null; health.firstFundedPositionAt = state.firstFundedPositionAt || null; health.notes = notes;
     writeHealth(health);
 
     const s = RL.summary(state);

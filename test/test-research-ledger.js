@@ -123,14 +123,48 @@ function runOne(rawObs, mode = RL.MODES.PAPER) {
   ok(r.counts.proposed >= 1, "14d. OBSERVE still reports what WOULD fund (proposed >= 1)");
 }
 
-// 15. PAPER stamps the prospective start once. ---------------------------------------------------
+// 15. Activation semantics: PAPER activates the official window (even with 0 positions), separate from the
+//     first fill; OBSERVE never activates; the timestamps are never rewritten or erased. ----------------
 {
+  // (a) PAPER stamps the experiment start even with ZERO eligible positions; firstFunded stays separate.
   reset();
-  const state = RL.load();
-  RL.processObservations(state, [obs({ observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.PAPER, now: NOW });
-  const first = state.prospectiveStartAt;
-  RL.processObservations(state, [obs({ market: "T2", ticker: "T2", observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.PAPER, now: "2026-07-21T00:00:00Z" });
-  ok(first === NOW && state.prospectiveStartAt === first, "15. PAPER stamps prospectiveStartAt once and never moves it");
+  const zeroCard = RL.load();
+  RL.processObservations(zeroCard, [obs({ estProbability: 0.05 })], { profile, mode: RL.MODES.PAPER, now: NOW }); // ineligible -> 0 funded
+  ok(Object.keys(zeroCard.positions).length === 0 && zeroCard.paperModeActivatedAt === NOW && zeroCard.prospectiveStartAt === NOW, "15a. PAPER activates the official start even with ZERO funded positions");
+  ok(zeroCard.firstFundedPositionAt === null, "15b. firstFundedPositionAt stays null until a position actually funds");
+
+  // (c) OBSERVE never activates; switching OBSERVE -> PAPER creates the timestamp; (e) first fill is separate.
+  reset();
+  const st = RL.load();
+  RL.processObservations(st, [obs({ estProbability: 0.05 })], { profile, mode: RL.MODES.OBSERVE, now: "2026-07-19T00:00:00Z" });
+  ok(st.paperModeActivatedAt == null, "15c-i. OBSERVE never activates the official window");
+  RL.processObservations(st, [obs({ observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.PAPER, now: NOW });
+  const activated = st.paperModeActivatedAt, funded1 = st.firstFundedPositionAt;
+  ok(activated === NOW, "15c-ii. switching OBSERVE -> PAPER creates paperModeActivatedAt");
+  ok(funded1 === NOW, "15e. the first funded position stamps a SEPARATE firstFundedPositionAt");
+
+  // (b) repeated PAPER runs and (d) a switch back to OBSERVE never move or erase the timestamps.
+  RL.processObservations(st, [obs({ market: "T9", ticker: "T9", observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.PAPER, now: NOW });
+  ok(st.paperModeActivatedAt === activated && st.firstFundedPositionAt === funded1, "15d-i. repeated PAPER runs never rewrite either timestamp");
+  RL.processObservations(st, [obs({ market: "T10", ticker: "T10", observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.OBSERVE, now: NOW });
+  ok(st.paperModeActivatedAt === activated && st.firstFundedPositionAt === funded1, "15d-ii. switching back to OBSERVE does NOT erase the timestamps");
+
+  // (f) a pre-activation OBSERVE observation is labeled EXCLUDED and not in official performance.
+  reset();
+  const st2 = RL.load();
+  RL.processObservations(st2, [obs({ signalId: "pre", market: "PRE", ticker: "PRE", estProbability: 0.05 })], { profile, mode: RL.MODES.OBSERVE, now: "2026-07-19T00:00:00Z" });
+  RL.processObservations(st2, [obs({ market: "POST", ticker: "POST", observedAsk: 0.40, category: "STRONG_SPECULATION", coreFraction: null })], { profile, mode: RL.MODES.PAPER, now: NOW });
+  const sum = RL.summary(st2);
+  const preObs = sum.observations.find((o) => o.market === "PRE");
+  ok(preObs && preObs.officialPerformanceExcluded === true && /EXCLUDED FROM OFFICIAL PERFORMANCE/.test(preObs.exclusionLabel || ""), "15f. a pre-activation observation is labeled EXCLUDED FROM OFFICIAL PERFORMANCE");
+
+  // (rule 4) a position created BEFORE activation is excluded from official performance metrics.
+  reset();
+  const st3 = RL.load();
+  st3.paperModeActivatedAt = NOW; st3.prospectiveStartAt = NOW;
+  st3.positions["research|pre"] = { researchPositionId: "research|pre", event: "E", market: "PRE", ticker: "PRE", side: "YES", primaryQualification: "STRONG_SPECULATION", contributingQualifications: ["STRONG_SPECULATION"], status: "RESEARCH_SETTLED", openedAt: "2026-07-01T00:00:00Z", settledAt: "2026-07-02T00:00:00Z", result: 1, pnl: 100, pessimisticPnl: 80, totalCost: 200, effectiveEntryPrice: 0.4, estimatedEdgeAfterHaircut: 0.05, contracts: 500, maximumPayout: 500 };
+  const sum3 = RL.summary(st3);
+  ok(sum3.blendedAggressive.numBets === 0 && sum3.counts.preActivationExcluded === 1, "15g. a position opened before activation is EXCLUDED from official performance (rule 4)");
 }
 
 // 16. Consolidation: co-qualifying categories on ONE market/side => ONE funded position. ----------
