@@ -86,6 +86,12 @@ jobs:
           RESEARCH_ENABLED: ${{ vars.RESEARCH_ENABLED }}
           RESEARCH_MODE: ${{ vars.RESEARCH_MODE }}
           RESEARCH_EXPLORATION_ENABLED: ${{ vars.RESEARCH_EXPLORATION_ENABLED }}
+          # Coverage-gated per-fight YouTube search (opt-in, default off). Searches only bouts the roster
+          # leaves under COVERAGE_MIN_ORIGINS independent origins, capped at COVERAGE_MAX_BOUTS per run to
+          # protect the shared YouTube quota. Inert until COVERAGE_SEARCH_ENABLED=1 is set as a Variable.
+          COVERAGE_SEARCH_ENABLED: ${{ vars.COVERAGE_SEARCH_ENABLED }}
+          COVERAGE_MIN_ORIGINS: ${{ vars.COVERAGE_MIN_ORIGINS }}
+          COVERAGE_MAX_BOUTS: ${{ vars.COVERAGE_MAX_BOUTS }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \

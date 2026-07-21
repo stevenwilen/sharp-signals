@@ -204,6 +204,20 @@ async function main() {
   if (dueList.includes("collect")) {
     run("make-card-selection.js", [td, ed, sel]);
     run("run-card-evidence.js", [sel]);
+
+    // COVERAGE-GATED PER-FIGHT SEARCH (opt-in, shadow; default OFF). For each bout the ~50-channel roster
+    // leaves UNDER-COVERED (< COVERAGE_MIN_ORIGINS independent origins), YouTube-search "<A> vs <B>
+    // prediction" and ingest the hits through the SAME transcript/extract/picks path, then re-run
+    // selection+evidence so they fold into the corpus before the forecast stage. It ADDS candidate videos
+    // only — the frozen originAnalysis re-decides independence, so it can never assert an origin or amplify a
+    // well-covered fight. Non-fatal; run-coverage-search fails closed on a missing key and caps the search
+    // at COVERAGE_MAX_BOUTS to protect the shared YouTube quota.
+    if (process.env.COVERAGE_SEARCH_ENABLED === "1") {
+      run("run-evidence-eval.js", [ceEvidence], { allowFail: true });          // cheap: materialize per-bout origins
+      run("run-coverage-search.js", [evalFile, sel], { allowFail: true });     // gate + search + ingest
+      run("make-card-selection.js", [td, ed, sel], { allowFail: true });       // fold searched videos into selection
+      run("run-card-evidence.js", [sel], { allowFail: true });                 // tag their claims to bouts
+    }
     stamp(receipts, "collect", { card: card.eventId });
   }
 
