@@ -328,12 +328,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-07-21T20:30:40.649Z",
-  "scenariosSealedAt": "2026-07-21T20:30:40.781Z",
+  "sealedForecastAt": "2026-07-21T18:22:04.661Z",
+  "scenariosSealedAt": "2026-07-21T18:22:04.800Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "9ab0839ee0107ed1",
+    "numericalForecastHash": "bcf6020bfd1838ac",
     "numericalForecastFile": "forecast-2026-07-25.json"
   },
   "scenarios": {
@@ -342,35 +342,55 @@
         {
           "scenarioId": "A-Decision",
           "rank": 1,
-          "role": "SECONDARY",
+          "role": "PRIMARY",
           "winner": "Abdul Hussein",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
           "share": 0.4124,
           "sharePercent": 41.24,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Cody Gibson do not materialise"
+          "supported": true,
+          "decisiveMechanisms": [
+            "condition"
           ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
+          "requiredConditions": [
+            "Abdul Hussein's condition advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "6d284db89c",
+              "mechanism": "condition",
+              "topics": [
+                "short_notice"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "feb3a93b96",
+              "mechanism": "condition",
+              "topics": [
+                "weight_cut"
+              ],
+              "favours": "Cody Gibson"
+            }
+          ],
           "whyRankedHere": [
             "tree share 41.2% (Abdul Hussein win 82.5% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abdul Hussein by KO/TKO) by -14.0 share points"
+            "1 supporting mechanism(s) across 2 independent origin(s): condition"
           ],
           "falsifiedBy": [
-            "the fight ends inside the distance"
+            "the fight ends inside the distance",
+            "Cody Gibson shows no sign of the reported condition in round 1"
           ],
           "evidenceLimitations": [
-            "no mechanism-level support for this path"
+            "2 independent origin(s)"
           ]
         },
         {
           "scenarioId": "A-KOTKO",
           "rank": 2,
-          "role": "PRIMARY",
+          "role": "SECONDARY",
           "winner": "Abdul Hussein",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
@@ -412,15 +432,17 @@
               "adjustmentId": "86ad0ca889",
               "mechanism": "durability",
               "topics": [
+                "durability",
                 "durability"
               ],
-              "independentOrigins": 2
+              "independentOrigins": 3
             }
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
             "tree share 27.2% (Abdul Hussein win 82.5% x KO/TKO split)",
-            "3 supporting mechanism(s) across 14 independent origin(s): activity, striking, durability"
+            "3 supporting mechanism(s) across 14 independent origin(s): activity, striking, durability",
+            "ranks below PRIMARY (Abdul Hussein by Decision) by 14.0 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Abdul Hussein unable to hurt the opponent",
@@ -431,7 +453,7 @@
           "evidenceLimitations": [
             "7 independent origin(s)",
             "5 independent origin(s)",
-            "2 independent origin(s)"
+            "3 independent origin(s)"
           ]
         },
         {
@@ -455,11 +477,12 @@
               "adjustmentId": "8e55f78533",
               "mechanism": "grappling",
               "topics": [
-                "submission_offense",
                 "wrestling_offense",
+                "takedown_defense",
+                "submission_offense",
                 "wrestling_offense"
               ],
-              "independentOrigins": 5
+              "independentOrigins": 6
             }
           ],
           "contradictingEvidence": [
@@ -475,15 +498,15 @@
           ],
           "whyRankedHere": [
             "tree share 14.0% (Abdul Hussein win 82.5% x Submission split)",
-            "1 supporting mechanism(s) across 5 independent origin(s): grappling",
-            "ranks below PRIMARY (Abdul Hussein by KO/TKO) by 13.2 share points"
+            "1 supporting mechanism(s) across 6 independent origin(s): grappling",
+            "ranks below PRIMARY (Abdul Hussein by Decision) by 27.2 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Abdul Hussein",
             "Abdul Hussein fails to complete a takedown through round 2, or the fight stays standing"
           ],
           "evidenceLimitations": [
-            "5 independent origin(s)"
+            "6 independent origin(s)"
           ]
         },
         {
@@ -498,45 +521,53 @@
           "supported": true,
           "decisiveMechanisms": [
             "condition",
-            "cardio"
+            "physical"
           ],
           "requiredConditions": [
             "Cody Gibson's condition advantage is real and not already in the price",
-            "Cody Gibson's cardio advantage is real and not already in the price"
+            "Cody Gibson's physical advantage is real and not already in the price"
           ],
           "supportingEvidence": [
             {
               "adjustmentId": "feb3a93b96",
               "mechanism": "condition",
               "topics": [
-                "weight_cut",
                 "weight_cut"
               ],
-              "independentOrigins": 3
+              "independentOrigins": 2
             },
             {
-              "adjustmentId": "39bbe9b3fa",
-              "mechanism": "cardio",
+              "adjustmentId": "8114c283de",
+              "mechanism": "physical",
               "topics": [
-                "pressure_pace"
+                "size_reach"
               ],
-              "independentOrigins": 2
+              "independentOrigins": 4
             }
           ],
-          "contradictingEvidence": [],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "6d284db89c",
+              "mechanism": "condition",
+              "topics": [
+                "short_notice"
+              ],
+              "favours": "Abdul Hussein"
+            }
+          ],
           "whyRankedHere": [
             "tree share 8.8% (Cody Gibson win 17.5% x Decision split)",
-            "2 supporting mechanism(s) across 4 independent origin(s): condition, cardio",
-            "ranks below PRIMARY (Abdul Hussein by KO/TKO) by 18.5 share points"
+            "2 supporting mechanism(s) across 6 independent origin(s): condition, physical",
+            "ranks below PRIMARY (Abdul Hussein by Decision) by 32.5 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance",
             "Abdul Hussein shows no sign of the reported condition in round 1",
-            "the fight ends inside round 1 — a cardio edge never gets to matter"
+            "Abdul Hussein closes distance freely and neutralises the physical edge"
           ],
           "evidenceLimitations": [
-            "3 independent origin(s)",
-            "2 independent origin(s)"
+            "2 independent origin(s)",
+            "4 independent origin(s)"
           ]
         },
         {
@@ -558,7 +589,7 @@
           "whyRankedHere": [
             "tree share 5.8% (Cody Gibson win 17.5% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abdul Hussein by KO/TKO) by 21.4 share points"
+            "ranks below PRIMARY (Abdul Hussein by Decision) by 35.5 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Cody Gibson unable to hurt the opponent"
@@ -599,8 +630,9 @@
               "adjustmentId": "8e55f78533",
               "mechanism": "grappling",
               "topics": [
-                "submission_offense",
                 "wrestling_offense",
+                "takedown_defense",
+                "submission_offense",
                 "wrestling_offense"
               ],
               "favours": "Abdul Hussein"
@@ -609,7 +641,7 @@
           "whyRankedHere": [
             "tree share 3.0% (Cody Gibson win 17.5% x Submission split)",
             "1 supporting mechanism(s) across 3 independent origin(s): grappling",
-            "ranks below PRIMARY (Abdul Hussein by KO/TKO) by 24.2 share points"
+            "ranks below PRIMARY (Abdul Hussein by Decision) by 38.3 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Cody Gibson",
@@ -634,7 +666,207 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "220d60c63a9a7b60"
+      "hash": "e56d6cc258954e94"
+    },
+    "UFC-2026-07-25-B13": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Nurullo Aliev",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3143,
+          "sharePercent": 31.43,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mike Davis do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 31.4% (Nurullo Aliev win 62.9% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mike Davis by KO/TKO) by -19.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Nurullo Aliev",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2074,
+          "sharePercent": 20.74,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mike Davis do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 20.7% (Nurullo Aliev win 62.9% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mike Davis by KO/TKO) by -8.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Nurullo Aliev unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Mike Davis",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1857,
+          "sharePercent": 18.57,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Nurullo Aliev do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 18.6% (Mike Davis win 37.1% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mike Davis by KO/TKO) by -6.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 4,
+          "role": "PRIMARY",
+          "winner": "Mike Davis",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1226,
+          "sharePercent": 12.26,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking"
+          ],
+          "requiredConditions": [
+            "Mike Davis's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "8fd38cebd2",
+              "mechanism": "striking",
+              "topics": [
+                "power",
+                "striking_offense",
+                "speed"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.3% (Mike Davis win 37.1% x KO/TKO split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): striking"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Mike Davis unable to hurt the opponent",
+            "Nurullo Aliev wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Nurullo Aliev",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1069,
+          "sharePercent": 10.69,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mike Davis do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 10.7% (Nurullo Aliev win 62.9% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mike Davis by KO/TKO) by 1.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Nurullo Aliev"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Mike Davis",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0631,
+          "sharePercent": 6.31,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Nurullo Aliev do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 6.3% (Mike Davis win 37.1% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mike Davis by KO/TKO) by 5.9 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Mike Davis"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Mike Davis": 0.3714,
+          "Nurullo Aliev": 0.6286
+        },
+        "treeWinProbs": {
+          "Mike Davis": 0.3714,
+          "Nurullo Aliev": 0.6286
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "916c17fee6f63fff"
     },
     "UFC-2026-07-25-B01": {
       "scenarios": [
@@ -1761,8 +1993,8 @@
           "winner": "Rizvan Kuniev",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3633,
-          "sharePercent": 36.33,
+          "share": 0.3614,
+          "sharePercent": 36.14,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1771,7 +2003,7 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 36.3% (Rizvan Kuniev win 72.7% x Decision split)",
+            "tree share 36.1% (Rizvan Kuniev win 72.3% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices"
           ],
           "falsifiedBy": [
@@ -1788,8 +2020,8 @@
           "winner": "Rizvan Kuniev",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2398,
-          "sharePercent": 23.98,
+          "share": 0.2385,
+          "sharePercent": 23.85,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1798,7 +2030,7 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 24.0% (Rizvan Kuniev win 72.7% x KO/TKO split)",
+            "tree share 23.8% (Rizvan Kuniev win 72.3% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
             "ranks below PRIMARY (Rizvan Kuniev by Decision) by 12.3 share points"
           ],
@@ -1816,8 +2048,8 @@
           "winner": "Tyrell Fortune",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.1367,
-          "sharePercent": 13.67,
+          "share": 0.1386,
+          "sharePercent": 13.86,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1826,9 +2058,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 13.7% (Tyrell Fortune win 27.3% x Decision split)",
+            "tree share 13.9% (Tyrell Fortune win 27.7% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 22.7 share points"
+            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 22.3 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -1844,8 +2076,8 @@
           "winner": "Rizvan Kuniev",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1235,
-          "sharePercent": 12.35,
+          "share": 0.1229,
+          "sharePercent": 12.29,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1854,9 +2086,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.3% (Rizvan Kuniev win 72.7% x Submission split)",
+            "tree share 12.3% (Rizvan Kuniev win 72.3% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 24.0 share points"
+            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 23.8 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Rizvan Kuniev"
@@ -1872,8 +2104,8 @@
           "winner": "Tyrell Fortune",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.0902,
-          "sharePercent": 9.02,
+          "share": 0.0915,
+          "sharePercent": 9.15,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1882,9 +2114,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 9.0% (Tyrell Fortune win 27.3% x KO/TKO split)",
+            "tree share 9.2% (Tyrell Fortune win 27.7% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 27.3 share points"
+            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 27.0 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Tyrell Fortune unable to hurt the opponent"
@@ -1900,8 +2132,8 @@
           "winner": "Tyrell Fortune",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0465,
-          "sharePercent": 4.65,
+          "share": 0.0471,
+          "sharePercent": 4.71,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1910,9 +2142,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 4.7% (Tyrell Fortune win 27.3% x Submission split)",
+            "tree share 4.7% (Tyrell Fortune win 27.7% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 31.7 share points"
+            "ranks below PRIMARY (Rizvan Kuniev by Decision) by 31.4 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Tyrell Fortune"
@@ -1927,16 +2159,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Rizvan Kuniev": 0.7266,
-          "Tyrell Fortune": 0.2734
+          "Rizvan Kuniev": 0.7228,
+          "Tyrell Fortune": 0.2772
         },
         "treeWinProbs": {
-          "Rizvan Kuniev": 0.7267,
-          "Tyrell Fortune": 0.2733
+          "Rizvan Kuniev": 0.7227,
+          "Tyrell Fortune": 0.2773
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "0f45e5f428ac9194"
+      "hash": "0015759ebc498077"
     },
     "UFC-2026-07-25-B09": {
       "scenarios": [
@@ -1947,8 +2179,8 @@
           "winner": "Axel Sola",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3167,
-          "sharePercent": 31.67,
+          "share": 0.3192,
+          "sharePercent": 31.92,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1957,7 +2189,7 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 31.7% (Axel Sola win 63.3% x Decision split)",
+            "tree share 31.9% (Axel Sola win 63.8% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices"
           ],
           "falsifiedBy": [
@@ -1974,8 +2206,8 @@
           "winner": "Axel Sola",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2091,
-          "sharePercent": 20.91,
+          "share": 0.2107,
+          "sharePercent": 21.07,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -1984,7 +2216,7 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 20.9% (Axel Sola win 63.3% x KO/TKO split)",
+            "tree share 21.1% (Axel Sola win 63.8% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
             "ranks below PRIMARY (Axel Sola by Decision) by 10.8 share points"
           ],
@@ -2002,8 +2234,8 @@
           "winner": "Ismael Bonfim",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.1833,
-          "sharePercent": 18.33,
+          "share": 0.1808,
+          "sharePercent": 18.08,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -2012,9 +2244,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 18.3% (Ismael Bonfim win 36.6% x Decision split)",
+            "tree share 18.1% (Ismael Bonfim win 36.2% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Axel Sola by Decision) by 13.3 share points"
+            "ranks below PRIMARY (Axel Sola by Decision) by 13.8 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -2030,8 +2262,8 @@
           "winner": "Ismael Bonfim",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.1209,
-          "sharePercent": 12.09,
+          "share": 0.1193,
+          "sharePercent": 11.93,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -2040,9 +2272,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.1% (Ismael Bonfim win 36.6% x KO/TKO split)",
+            "tree share 11.9% (Ismael Bonfim win 36.2% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Axel Sola by Decision) by 19.6 share points"
+            "ranks below PRIMARY (Axel Sola by Decision) by 20.0 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Ismael Bonfim unable to hurt the opponent"
@@ -2058,8 +2290,8 @@
           "winner": "Axel Sola",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1077,
-          "sharePercent": 10.77,
+          "share": 0.1085,
+          "sharePercent": 10.85,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -2068,9 +2300,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 10.8% (Axel Sola win 63.3% x Submission split)",
+            "tree share 10.8% (Axel Sola win 63.8% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Axel Sola by Decision) by 20.9 share points"
+            "ranks below PRIMARY (Axel Sola by Decision) by 21.1 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Axel Sola"
@@ -2086,8 +2318,8 @@
           "winner": "Ismael Bonfim",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0623,
-          "sharePercent": 6.23,
+          "share": 0.0615,
+          "sharePercent": 6.15,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -2096,9 +2328,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 6.2% (Ismael Bonfim win 36.6% x Submission split)",
+            "tree share 6.2% (Ismael Bonfim win 36.2% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Axel Sola by Decision) by 25.4 share points"
+            "ranks below PRIMARY (Axel Sola by Decision) by 25.8 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Ismael Bonfim"
@@ -2113,16 +2345,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Axel Sola": 0.6335,
-          "Ismael Bonfim": 0.3665
+          "Axel Sola": 0.6384,
+          "Ismael Bonfim": 0.3616
         },
         "treeWinProbs": {
-          "Axel Sola": 0.6335,
-          "Ismael Bonfim": 0.3665
+          "Axel Sola": 0.6384,
+          "Ismael Bonfim": 0.3616
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "61b9d44a0ed0b83b"
+      "hash": "f42ff68c32a46981"
     },
     "UFC-2026-07-25-B10": {
       "scenarios": [
@@ -2311,190 +2543,12 @@
       "hash": "950840f59943de10"
     },
     "UFC-2026-07-25-B11": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Abubakar Vagaev",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3245,
-          "sharePercent": 32.45,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Saygid Izagakhmaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 32.5% (Abubakar Vagaev win 64.9% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Abubakar Vagaev",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2141,
-          "sharePercent": 21.41,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Saygid Izagakhmaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 21.4% (Abubakar Vagaev win 64.9% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abubakar Vagaev by Decision) by 11.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Abubakar Vagaev unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Saygid Izagakhmaev",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1755,
-          "sharePercent": 17.55,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Abubakar Vagaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 17.5% (Saygid Izagakhmaev win 35.1% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abubakar Vagaev by Decision) by 14.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Saygid Izagakhmaev",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1159,
-          "sharePercent": 11.59,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Abubakar Vagaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 11.6% (Saygid Izagakhmaev win 35.1% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abubakar Vagaev by Decision) by 20.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Saygid Izagakhmaev unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Abubakar Vagaev",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1103,
-          "sharePercent": 11.03,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Saygid Izagakhmaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 11.0% (Abubakar Vagaev win 64.9% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abubakar Vagaev by Decision) by 21.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Abubakar Vagaev"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Saygid Izagakhmaev",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0597,
-          "sharePercent": 5.97,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Abubakar Vagaev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 6.0% (Saygid Izagakhmaev win 35.1% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Abubakar Vagaev by Decision) by 26.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Saygid Izagakhmaev"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
+      "scenarios": [],
       "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Abubakar Vagaev": 0.6489,
-          "Saygid Izagakhmaev": 0.3511
-        },
-        "treeWinProbs": {
-          "Abubakar Vagaev": 0.6489,
-          "Saygid Izagakhmaev": 0.3511
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+        "ok": false,
+        "reason": "no outcome tree — cannot derive shares without inventing them"
       },
-      "hash": "53c2a47e3fed2db6"
+      "note": "no forecast tree — nothing to rank"
     },
     "UFC-2026-07-25-B12": {
       "scenarios": [
@@ -2681,238 +2735,6 @@
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
       "hash": "5b581591d01eb25f"
-    },
-    "UFC-2026-07-25-B13": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Nurullo Aliev",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3213,
-          "sharePercent": 32.13,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mike Davis do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 32.1% (Nurullo Aliev win 64.3% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nurullo Aliev by KO/TKO) by -10.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "PRIMARY",
-          "winner": "Nurullo Aliev",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.212,
-          "sharePercent": 21.2,
-          "supported": true,
-          "decisiveMechanisms": [
-            "striking"
-          ],
-          "requiredConditions": [
-            "Nurullo Aliev's striking advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "37c6112eec",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "8fd38cebd2",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense",
-                "power",
-                "speed"
-              ],
-              "favours": "Mike Davis"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 21.2% (Nurullo Aliev win 64.3% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): striking"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Nurullo Aliev unable to hurt the opponent",
-            "Mike Davis wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Mike Davis",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1787,
-          "sharePercent": 17.87,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Nurullo Aliev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 17.9% (Mike Davis win 35.8% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nurullo Aliev by KO/TKO) by 3.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mike Davis",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.118,
-          "sharePercent": 11.8,
-          "supported": true,
-          "decisiveMechanisms": [
-            "striking"
-          ],
-          "requiredConditions": [
-            "Mike Davis's striking advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "8fd38cebd2",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense",
-                "power",
-                "speed"
-              ],
-              "independentOrigins": 4
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "37c6112eec",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense"
-              ],
-              "favours": "Nurullo Aliev"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 11.8% (Mike Davis win 35.8% x KO/TKO split)",
-            "1 supporting mechanism(s) across 4 independent origin(s): striking",
-            "ranks below PRIMARY (Nurullo Aliev by KO/TKO) by 9.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Mike Davis unable to hurt the opponent",
-            "Nurullo Aliev wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
-          ],
-          "evidenceLimitations": [
-            "4 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Nurullo Aliev",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1092,
-          "sharePercent": 10.92,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mike Davis do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 10.9% (Nurullo Aliev win 64.3% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nurullo Aliev by KO/TKO) by 10.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Nurullo Aliev"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mike Davis",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0608,
-          "sharePercent": 6.08,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Nurullo Aliev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 6.1% (Mike Davis win 35.8% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nurullo Aliev by KO/TKO) by 15.1 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Mike Davis"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Mike Davis": 0.3575,
-          "Nurullo Aliev": 0.6425
-        },
-        "treeWinProbs": {
-          "Mike Davis": 0.3575,
-          "Nurullo Aliev": 0.6425
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "1caabc9ab8201247"
     },
     "UFC-2026-07-25-B14": {
       "scenarios": [
@@ -3127,5 +2949,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "378acee13a322112"
+  "scenarioSetHash": "8cc01b1e94804279"
 }

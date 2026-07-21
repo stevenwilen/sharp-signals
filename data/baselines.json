@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-21T18:22:04.138Z",
+  "generatedAt": "2026-07-21T20:30:39.307Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
@@ -8,11 +8,11 @@
       "date": "2026-07-25",
       "bouts": 14,
       "A": 0,
-      "B": 13,
+      "B": 14,
       "C": 0,
-      "D": 1,
-      "priced": 13,
-      "pct": 92.9
+      "D": 0,
+      "priced": 14,
+      "pct": 100
     }
   ],
   "baselines": {
@@ -462,7 +462,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.6889,
-        "marketDispersion": 2.01,
+        "marketDispersion": 1.4,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -479,7 +479,7 @@
             "D"
           ]
         },
-        "contentHash": "20750c6390df6606"
+        "contentHash": "472b88e2311b154a"
       },
       {
         "boutId": "UFC-2026-07-25-B09",
@@ -520,7 +520,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.6067,
-        "marketDispersion": 1.87,
+        "marketDispersion": 4.11,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -537,7 +537,7 @@
             "D"
           ]
         },
-        "contentHash": "a1d56a2296d9a148"
+        "contentHash": "6521fa83179226b6"
       },
       {
         "boutId": "UFC-2026-07-25-B10",
@@ -578,7 +578,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.6889,
-        "marketDispersion": 4.15,
+        "marketDispersion": 4.6,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -595,22 +595,57 @@
             "D"
           ]
         },
-        "contentHash": "d7c3c15d1e2e5399"
+        "contentHash": "d6162165c9ebc526"
       },
       {
         "boutId": "UFC-2026-07-25-B11",
         "forecastTimestamp": "2026-07-25T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Abubakar Vagaev",
+        "probability": 0.6489,
+        "probabilityOther": 0.3511,
+        "orientation": {
+          "favorite": "Abubakar Vagaev",
+          "underdog": "Saygid Izagakhmaev"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Abubakar Vagaev": "-205",
+            "Saygid Izagakhmaev": "+175",
+            "rawProbA": 0.6721,
+            "rawProbB": 0.3636,
+            "overround": 1.0358
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.6489,
+        "marketDispersion": 2.4,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -618,7 +653,7 @@
             "D"
           ]
         },
-        "contentHash": "d2f3cb86c73fcc3e"
+        "contentHash": "9349ff20878f5fb2"
       },
       {
         "boutId": "UFC-2026-07-25-B12",

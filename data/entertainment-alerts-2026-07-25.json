@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-21T18:22:06.015Z",
+  "ranAt": "2026-07-21T20:30:42.135Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 1,
-    "delivered": 1,
-    "buyInstructions": 1,
+    "attempted": 0,
+    "delivered": 0,
+    "buyInstructions": 0,
     "humanReviews": 0,
-    "transport": "telegram (manual instruction + human review)"
+    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -54,18 +54,19 @@
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 18,
-    "UNPRICED": 2,
+    "NO BET": 20,
     "HUMAN REVIEW REQUIRED": 6
   },
-  "forecastHash": "bcf6020bfd1838ac",
-  "snapshotTimestamp": "2026-07-21T18:22:06.080Z",
+  "forecastHash": "9ab0839ee0107ed1",
+  "snapshotTimestamp": "2026-07-21T20:30:42.239Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-07-25-B03",
-      "topic": "Cody Gibson — recent_form",
-      "why": "conflicting factual reports",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nAbdul Hussein vs Cody Gibson\n\nReport: undefined\nSources: origin count not available\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "about": "Cody Gibson",
+      "topic": "short_notice",
+      "origins": 1,
+      "why": "potentially new information with a single origin",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nAbdul Hussein vs Cody Gibson\n\nReport: Cody Gibson is taking the fight on short notice and traveling to Abu Dhabi.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
       "boutId": "UFC-2026-07-25-B13",
@@ -73,15 +74,7 @@
       "topic": "injury_health",
       "origins": 1,
       "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis suffered from breathing issues due to newly painted locker rooms during his fight against Fares Ziam.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
-    },
-    {
-      "boutId": "UFC-2026-07-25-B13",
-      "about": "Mike Davis",
-      "topic": "injury_health",
-      "origins": 1,
-      "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis has dealt with injury after injury over the last several years and rarely fights.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis has dealt with injury after injury over the last several years.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
       "boutId": "UFC-2026-07-25-B14",
@@ -89,42 +82,10 @@
       "topic": "injury_health",
       "origins": 1,
       "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Ever since Santiago Ponzinibbio had a big injury a few years ago, he never quite came back the same.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
-    },
-    {
-      "boutId": "UFC-2026-07-25-B04",
-      "about": "Bogdan Guskov",
-      "topic": "short_notice",
-      "origins": 1,
-      "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nBogdan Guskov vs Magomed Ankalaev\n\nReport: Bogdan Guskov is taking the fight against Magomed Ankalaev on short notice.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Santiago Ponzinibbio has never quite looked the same since suffering a major injury a few years ago.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     }
   ],
-  "buyInstructions": [
-    {
-      "boutId": "UFC-2026-07-25-B03",
-      "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
-      "key": "explore|UFC-2026-07-25-B03|KXUFCFIGHT-26JUL25GIBHUS-HUS",
-      "wouldSend": true,
-      "why": "first time this contract has been seen",
-      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nAbdul Hussein vs Cody Gibson\nCurrent: 81¢\nMaximum: 75¢\n\nWait for 75¢ or lower. The system will alert again if it becomes available.",
-      "state": {
-        "ask": 0.81,
-        "maximumAcceptablePrice": 0.7477,
-        "forecastHash": "bcf6020bfd1838ac",
-        "classification": "PRICE_TOO_HIGH",
-        "lane": "exploration",
-        "stakePercent": 3,
-        "topTicker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
-        "stale": false,
-        "pipelineFailed": false,
-        "withinEnvelope": true,
-        "verdict": "PRICE_TOO_HIGH"
-      },
-      "lane": "exploration",
-      "verdict": "PRICE_TOO_HIGH"
-    }
-  ],
+  "buyInstructions": [],
   "decisions": [
     {
       "ticker": "KXUFCFIGHT-26JUL25JACSAI-SAI",
@@ -271,10 +232,28 @@
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
+      "ticker": "KXUFCFIGHT-26JUL25VAGIZA-VAG",
+      "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
+      "classification": "NO BET",
+      "rank": 17,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25VAGIZA-IZA",
+      "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
+      "classification": "NO BET",
+      "rank": 18,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+    },
+    {
       "ticker": "KXUFCFIGHT-26JUL25TUCRIB-TUC",
       "bout": "Magomed Tuchalov vs Brendson Ribeiro",
       "classification": "NO BET",
-      "rank": 17,
+      "rank": 19,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -283,28 +262,10 @@
       "ticker": "KXUFCFIGHT-26JUL25TUCRIB-RIB",
       "bout": "Magomed Tuchalov vs Brendson Ribeiro",
       "classification": "NO BET",
-      "rank": 18,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25VAGIZA-VAG",
-      "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
-      "classification": "UNPRICED",
-      "rank": 19,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "incoherent outcome tree: no tree"
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25VAGIZA-IZA",
-      "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
-      "classification": "UNPRICED",
       "rank": 20,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "incoherent outcome tree: no tree"
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
