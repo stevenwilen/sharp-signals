@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-20T22:12:54.005Z",
+  "ranAt": "2026-07-21T18:22:06.015Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 1,
+    "delivered": 1,
+    "buyInstructions": 1,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -50,26 +50,49 @@
     "provenance": "chosen by the human as entertainment limits; NOT derived from Kelly, NOT fitted to any result, NOT evidence of edge"
   },
   "contractsListed": {
-    "FIGHTER_WINS": 24
+    "FIGHTER_WINS": 26
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 22,
-    "UNPRICED": 2
+    "NO BET": 18,
+    "UNPRICED": 2,
+    "HUMAN REVIEW REQUIRED": 6
   },
-  "forecastHash": "c6f27f6bd88a1125",
-  "snapshotTimestamp": "2026-07-20T22:12:54.065Z",
+  "forecastHash": "bcf6020bfd1838ac",
+  "snapshotTimestamp": "2026-07-21T18:22:06.080Z",
   "humanReviewAlerts": [
     {
-      "boutId": "UFC-2026-07-25-B12",
+      "boutId": "UFC-2026-07-25-B03",
+      "topic": "Cody Gibson — recent_form",
+      "why": "conflicting factual reports",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nAbdul Hussein vs Cody Gibson\n\nReport: undefined\nSources: origin count not available\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+    },
+    {
+      "boutId": "UFC-2026-07-25-B13",
+      "about": "Mike Davis",
+      "topic": "injury_health",
+      "origins": 1,
+      "why": "potentially new information with a single origin",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis suffered from breathing issues due to newly painted locker rooms during his fight against Fares Ziam.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+    },
+    {
+      "boutId": "UFC-2026-07-25-B13",
+      "about": "Mike Davis",
+      "topic": "injury_health",
+      "origins": 1,
+      "why": "potentially new information with a single origin",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis has dealt with injury after injury over the last several years and rarely fights.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+    },
+    {
+      "boutId": "UFC-2026-07-25-B14",
       "about": "Santiago Ponzinibbio",
       "topic": "injury_health",
       "origins": 1,
       "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Santiago Ponzinibbio has not been the same fighter since suffering a major injury several years ago.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Ever since Santiago Ponzinibbio had a big injury a few years ago, he never quite came back the same.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
-      "boutId": "UFC-2026-07-25-B01",
+      "boutId": "UFC-2026-07-25-B04",
       "about": "Bogdan Guskov",
       "topic": "short_notice",
       "origins": 1,
@@ -77,13 +100,55 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nBogdan Guskov vs Magomed Ankalaev\n\nReport: Bogdan Guskov is taking the fight against Magomed Ankalaev on short notice.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     }
   ],
-  "buyInstructions": [],
+  "buyInstructions": [
+    {
+      "boutId": "UFC-2026-07-25-B03",
+      "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+      "key": "explore|UFC-2026-07-25-B03|KXUFCFIGHT-26JUL25GIBHUS-HUS",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
+      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nAbdul Hussein vs Cody Gibson\nCurrent: 81¢\nMaximum: 75¢\n\nWait for 75¢ or lower. The system will alert again if it becomes available.",
+      "state": {
+        "ask": 0.81,
+        "maximumAcceptablePrice": 0.7477,
+        "forecastHash": "bcf6020bfd1838ac",
+        "classification": "PRICE_TOO_HIGH",
+        "lane": "exploration",
+        "stakePercent": 3,
+        "topTicker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "PRICE_TOO_HIGH"
+      },
+      "lane": "exploration",
+      "verdict": "PRICE_TOO_HIGH"
+    }
+  ],
   "decisions": [
+    {
+      "ticker": "KXUFCFIGHT-26JUL25JACSAI-SAI",
+      "bout": "Muhammad Said vs Dustin Jacoby",
+      "classification": "NO BET",
+      "rank": 1,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25JACSAI-JAC",
+      "bout": "Uran Satybaldiev vs Dustin Jacoby",
+      "classification": "NO BET",
+      "rank": 2,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+    },
     {
       "ticker": "KXUFCFIGHT-26JUL25ANKGUS-GUS",
       "bout": "Bogdan Guskov vs Magomed Ankalaev",
       "classification": "NO BET",
-      "rank": 1,
+      "rank": 3,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -92,7 +157,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ANKGUS-ANK",
       "bout": "Bogdan Guskov vs Magomed Ankalaev",
       "classification": "NO BET",
-      "rank": 2,
+      "rank": 4,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -101,7 +166,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ERCTEM-TEM",
       "bout": "Ramazonbek Temirov vs Steve Erceg",
       "classification": "NO BET",
-      "rank": 3,
+      "rank": 5,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -110,7 +175,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ERCTEM-ERC",
       "bout": "Ramazonbek Temirov vs Steve Erceg",
       "classification": "NO BET",
-      "rank": 4,
+      "rank": 6,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -119,7 +184,7 @@
       "ticker": "KXUFCFIGHT-26JUL25DULTUR-TUR",
       "bout": "Wellington Turman vs Islam Dulatov",
       "classification": "NO BET",
-      "rank": 5,
+      "rank": 7,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -128,7 +193,7 @@
       "ticker": "KXUFCFIGHT-26JUL25DULTUR-DUL",
       "bout": "Wellington Turman vs Islam Dulatov",
       "classification": "NO BET",
-      "rank": 6,
+      "rank": 8,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -137,7 +202,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ZAYRZE-ZAY",
       "bout": "Magomed Zaynukov vs Damian Rzepecki",
       "classification": "NO BET",
-      "rank": 7,
+      "rank": 9,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -146,7 +211,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ZAYRZE-RZE",
       "bout": "Magomed Zaynukov vs Damian Rzepecki",
       "classification": "NO BET",
-      "rank": 8,
+      "rank": 10,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -155,7 +220,7 @@
       "ticker": "KXUFCFIGHT-26JUL25KUNFOR-KUN",
       "bout": "Rizvan Kuniev vs Tyrell Fortune",
       "classification": "NO BET",
-      "rank": 9,
+      "rank": 11,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -164,7 +229,7 @@
       "ticker": "KXUFCFIGHT-26JUL25KUNFOR-FOR",
       "bout": "Rizvan Kuniev vs Tyrell Fortune",
       "classification": "NO BET",
-      "rank": 10,
+      "rank": 12,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -173,7 +238,7 @@
       "ticker": "KXUFCFIGHT-26JUL25BONSOL-SOL",
       "bout": "Axel Sola vs Ismael Bonfim",
       "classification": "NO BET",
-      "rank": 11,
+      "rank": 13,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -182,7 +247,7 @@
       "ticker": "KXUFCFIGHT-26JUL25BONSOL-BON",
       "bout": "Axel Sola vs Ismael Bonfim",
       "classification": "NO BET",
-      "rank": 12,
+      "rank": 14,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -191,7 +256,7 @@
       "ticker": "KXUFCFIGHT-26JUL25WALPET-WAL",
       "bout": "Valter Walker vs Thomas Petersen",
       "classification": "NO BET",
-      "rank": 13,
+      "rank": 15,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -200,28 +265,10 @@
       "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
       "bout": "Valter Walker vs Thomas Petersen",
       "classification": "NO BET",
-      "rank": 14,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25SATJAC-SAT",
-      "bout": "Uran Satybaldiev vs Dustin Jacoby",
-      "classification": "NO BET",
-      "rank": 15,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25SATJAC-JAC",
-      "bout": "Uran Satybaldiev vs Dustin Jacoby",
-      "classification": "NO BET",
       "rank": 16,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25TUCRIB-TUC",
@@ -242,46 +289,10 @@
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
-      "ticker": "KXUFCFIGHT-26JUL25ALIDAV-DAV",
-      "bout": "Mike Davis vs Nurullo Aliev",
-      "classification": "NO BET",
-      "rank": 19,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25ALIDAV-ALI",
-      "bout": "Mike Davis vs Nurullo Aliev",
-      "classification": "NO BET",
-      "rank": 20,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25PONPAT-PON",
-      "bout": "Santiago Ponzinibbio vs Sam Patterson",
-      "classification": "NO BET",
-      "rank": 21,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25PONPAT-PAT",
-      "bout": "Santiago Ponzinibbio vs Sam Patterson",
-      "classification": "NO BET",
-      "rank": 22,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-VAG",
       "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
       "classification": "UNPRICED",
-      "rank": 23,
+      "rank": 19,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "incoherent outcome tree: no tree"
@@ -290,10 +301,64 @@
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-IZA",
       "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
       "classification": "UNPRICED",
-      "rank": 24,
+      "rank": 20,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "incoherent outcome tree: no tree"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+      "bout": "Abdul Hussein vs Cody Gibson",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 21,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25GIBHUS-GIB",
+      "bout": "Abdul Hussein vs Cody Gibson",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 22,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25ALIDAV-DAV",
+      "bout": "Mike Davis vs Nurullo Aliev",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 23,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25ALIDAV-ALI",
+      "bout": "Mike Davis vs Nurullo Aliev",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 24,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25PONPAT-PON",
+      "bout": "Santiago Ponzinibbio vs Sam Patterson",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 25,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
+    },
+    {
+      "ticker": "KXUFCFIGHT-26JUL25PONPAT-PAT",
+      "bout": "Santiago Ponzinibbio vs Sam Patterson",
+      "classification": "HUMAN REVIEW REQUIRED",
+      "rank": 26,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
     }
   ]
 }
