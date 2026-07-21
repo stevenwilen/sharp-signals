@@ -56,11 +56,15 @@ function decideDueStages(eventDate, nowMs, receipts) {
   const bell = firstBellMs(eventDate);
   const hoursToBell = (bell - nowMs) / H;
 
+  // Cadence intervals were LOOSENED (cost-tolerant) to reduce the evidence bottleneck: catch a freshly
+  // posted prediction video within ~2h instead of up to 24h. Collect (Gemini extraction) is cache-guarded
+  // (only NEW videos re-extract), so more frequent collect is cheap. The real ceiling is GitHub cron
+  // reliability, not this interval. Tunable per env if a stage needs to go tighter/looser.
   let tier, evidenceEveryH, forecastEveryH;
-  if (hoursToBell > 168) { tier = "outside-fight-week"; evidenceEveryH = 24; forecastEveryH = 24; }
-  else if (hoursToBell > 48) { tier = "fight-week"; evidenceEveryH = 24; forecastEveryH = 24; }
-  else if (hoursToBell > 6) { tier = "final-48h"; evidenceEveryH = 6; forecastEveryH = 6; }
-  else if (hoursToBell > -6) { tier = "fight-day"; evidenceEveryH = 6; forecastEveryH = 1; }
+  if (hoursToBell > 168) { tier = "outside-fight-week"; evidenceEveryH = 6; forecastEveryH = 6; }
+  else if (hoursToBell > 48) { tier = "fight-week"; evidenceEveryH = 2; forecastEveryH = 2; }
+  else if (hoursToBell > 6) { tier = "final-48h"; evidenceEveryH = 1; forecastEveryH = 1; }
+  else if (hoursToBell > -6) { tier = "fight-day"; evidenceEveryH = 1; forecastEveryH = 1; }
   else { tier = "post-card"; evidenceEveryH = Infinity; forecastEveryH = Infinity; }
 
   const since = (stage) => {

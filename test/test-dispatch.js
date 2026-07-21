@@ -34,17 +34,17 @@ console.log("\nA COLD START RUNS EVERYTHING DUE FOR THE TIER");
 
 console.log("\nRECEIPTS GATE RE-RUNS TO THE TIER INTERVAL");
 {
-  const now = at(120);   // fight week: 24h evidence + forecast cadence
-  ok("forecast NOT due 2h after last run",
-    D.decideDueStages(ED, now, { forecast: { ranAt: new Date(now - 2 * H).toISOString() } }).due.forecast === false);
-  ok("forecast due again after 30h",
-    D.decideDueStages(ED, now, { forecast: { ranAt: new Date(now - 30 * H).toISOString() } }).due.forecast === true);
+  const now = at(120);   // fight week: 2h evidence + forecast cadence (loosened to cut the evidence lag)
+  ok("forecast NOT due 1h after last run",
+    D.decideDueStages(ED, now, { forecast: { ranAt: new Date(now - 1 * H).toISOString() } }).due.forecast === false);
+  ok("forecast due again after 3h",
+    D.decideDueStages(ED, now, { forecast: { ranAt: new Date(now - 3 * H).toISOString() } }).due.forecast === true);
 
-  const day = at(24);   // final-48h: 6h cadence
-  ok("in final-48h, forecast NOT due 2h after last run",
-    D.decideDueStages(ED, day, { forecast: { ranAt: new Date(day - 2 * H).toISOString() } }).due.forecast === false);
-  ok("in final-48h, forecast due after 7h",
-    D.decideDueStages(ED, day, { forecast: { ranAt: new Date(day - 7 * H).toISOString() } }).due.forecast === true);
+  const day = at(24);   // final-48h: 1h cadence
+  ok("in final-48h, forecast NOT due 40min after last run",
+    D.decideDueStages(ED, day, { forecast: { ranAt: new Date(day - 40 * 60 * 1000).toISOString() } }).due.forecast === false);
+  ok("in final-48h, forecast due after 90min",
+    D.decideDueStages(ED, day, { forecast: { ranAt: new Date(day - 90 * 60 * 1000).toISOString() } }).due.forecast === true);
 
   const fd = at(3);   // fight day: hourly forecast
   ok("on fight day, forecast due after 70min",
@@ -52,15 +52,13 @@ console.log("\nRECEIPTS GATE RE-RUNS TO THE TIER INTERVAL");
   ok("...but NOT after 20min", D.decideDueStages(ED, fd, { forecast: { ranAt: new Date(fd - 20 * 60 * 1000).toISOString() } }).due.forecast === false);
 }
 
-console.log("\nEXPENSIVE COLLECT IS GATED SEPARATELY FROM CHEAP FORECAST ON FIGHT DAY");
+console.log("\nCOLLECT AND FORECAST ARE GATED INDEPENDENTLY BY THEIR OWN RECEIPTS");
 {
-  const fd = at(3);
-  // forecast every 1h, but collect (Gemini) every 6h — so a fight-day hourly run re-forecasts on
-  // cached evidence without re-paying for extraction.
-  const r = { collect: { ranAt: new Date(fd - 2 * H).toISOString() }, forecast: { ranAt: new Date(fd - 2 * H).toISOString() } };
+  const fd = at(3);   // fight day: 1h collect + 1h forecast (loosened; the fight-day sentinel still does the 15-min price checks)
+  const r = { collect: { ranAt: new Date(fd - 40 * 60 * 1000).toISOString() }, forecast: { ranAt: new Date(fd - 90 * 60 * 1000).toISOString() } };
   const p = D.decideDueStages(ED, fd, r);
-  ok("forecast due again after 2h on fight day", p.due.forecast === true);
-  ok("collect NOT due after 2h on fight day (6h cadence)", p.due.collect === false);
+  ok("forecast due after 90min on fight day (1h cadence)", p.due.forecast === true);
+  ok("collect NOT due after 40min on fight day (1h cadence)", p.due.collect === false);
 }
 
 console.log("\nALERTS PIGGYBACK ON FORECAST; GRADE IS POST-CARD ONLY");

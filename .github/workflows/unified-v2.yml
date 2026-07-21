@@ -7,7 +7,11 @@ name: Sharp Signals — Unified V2
 # repo, so the dispatcher must not assume a run landed).
 on:
   schedule:
-    - cron: "5 * * * *"          # hourly; the dispatcher decides whether anything is actually due
+    # Every 15 min. GitHub fires only ~14-40% of scheduled runs on a public repo, so MORE windows = more
+    # that actually land, tightening the effective cadence toward the loosened per-stage intervals. The
+    # dispatcher self-heals and exits fast when nothing is due, so the extra windows are cheap. The truly
+    # reliable fix is an EXTERNAL trigger hitting workflow_dispatch (see notes) — this is the in-repo half.
+    - cron: "5,20,35,50 * * * *"
   workflow_dispatch:
     inputs:
       force:

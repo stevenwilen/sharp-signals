@@ -32,7 +32,10 @@ const { getTranscript } = require("./lib/blotato");
 const say = (s) => process.stdout.write(s + "\n");
 const numEnv = (v, d) => (Number.isFinite(Number(v)) ? Number(v) : d);
 const MIN_ORIGINS = numEnv(process.env.COVERAGE_MIN_ORIGINS, 3);
-const MAX_BOUTS = numEnv(process.env.COVERAGE_MAX_BOUTS, 4);
+// Default 15 covers a full UFC card (every under-covered bout gets a look). The per-bout COVERAGE_MIN_HOURS
+// guard still bounds daily quota — a bout searched once is not re-searched for ~20h — so widening this does
+// NOT multiply spend by the collect cadence. Lower it to be stingier with the shared YouTube quota.
+const MAX_BOUTS = numEnv(process.env.COVERAGE_MAX_BOUTS, 15);
 const WINDOW_DAYS = numEnv(process.env.COVERAGE_WINDOW_DAYS, 14);
 const MIN_HOURS = numEnv(process.env.COVERAGE_MIN_HOURS, 20);   // don't re-search the same bout within this
 const TRANSCRIPT_MIN_CHARS = 4000;                              // matches make-card-selection's scoring floor
@@ -81,6 +84,7 @@ function boutNames(b, cardBouts) {
   const FP = promptFingerprint();
   const sinceIso = new Date(nowMs - WINDOW_DAYS * 86400000).toISOString();
   const perBout = [];
+  const discovered = {};   // non-roster channels the search ingested, so auto-promotion can trace them later
   let totalIngested = 0, quotaAborted = false;
 
   for (const b of under) {
@@ -112,13 +116,16 @@ function boutNames(b, cardBouts) {
       catch (e) { extractFailed++; say(`  extract failed ${v.url}: ${e.message}`); continue; }
       picksCache.set(v.url, got, FP);   // [] is a real answer: "this video has no picks"
       ingested++; if (!got.length) noPicks++;
+      // Record the discovered (non-roster) channel so run-promote-channels can trace name -> channelId
+      // once its picks have graded. All ingested videos here are non-roster (roster ones were skipped).
+      if (v.channelId) { (discovered[v.source] = discovered[v.source] || { channelId: v.channelId, videos: 0 }).videos++; }
     }
     totalIngested += ingested;
     perBout.push({ boutId: b.boutId, fight: `${nm.a} vs ${nm.b}`, originsBefore: Number(b.independentOrigins || 0), query, searchedAt: new Date(nowMs).toISOString(), found, ingested, skippedDupes: dupes, skippedRoster: rosterSkip, shortTranscript, noPicks, transcriptFailed, extractFailed });
     say(`  ${b.boutId} "${nm.a} vs ${nm.b}" (${b.independentOrigins || 0} origins): ${found} found, ${ingested} ingested, ${dupes} dupes, ${rosterSkip} roster, ${shortTranscript} short`);
   }
 
-  const receipt = { card, ranAt: new Date(nowMs).toISOString(), minOrigins: MIN_ORIGINS, maxBouts: MAX_BOUTS, minHours: MIN_HOURS, boutsSearched: perBout.length, totalIngested, quotaAborted, perBout };
+  const receipt = { card, ranAt: new Date(nowMs).toISOString(), minOrigins: MIN_ORIGINS, maxBouts: MAX_BOUTS, minHours: MIN_HOURS, boutsSearched: perBout.length, totalIngested, quotaAborted, perBout, discoveredChannels: discovered };
   try { if (card) writeJson(path.join(paths.data, `coverage-search-${card}.json`), receipt); } catch (e) { say(`  (receipt write failed: ${e.message})`); }
   say(`run-coverage-search: ingested ${totalIngested} new video(s) across ${perBout.length} bout(s)${quotaAborted ? " — QUOTA/RATE ABORTED" : ""}. Re-run selection+evidence to fold them in.`);
   return 0;
