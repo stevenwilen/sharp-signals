@@ -28,7 +28,7 @@ const TRAPS = [
 ];
 
 (async () => {
-  const model = process.env.EXTRACT_MODEL || "gemini-flash-latest";
+  const model = process.env.EXTRACT_MODEL || "gemini-3.5-flash-lite";
   console.log(`MODEL: ${model}\n`);
   let pass = 0;
   for (const t of TRAPS) {
