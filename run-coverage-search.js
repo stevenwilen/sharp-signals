@@ -39,6 +39,12 @@ const MAX_BOUTS = numEnv(process.env.COVERAGE_MAX_BOUTS, 15);
 const WINDOW_DAYS = numEnv(process.env.COVERAGE_WINDOW_DAYS, 14);
 const MIN_HOURS = numEnv(process.env.COVERAGE_MIN_HOURS, 20);   // don't re-search the same bout within this
 const TRANSCRIPT_MIN_CHARS = 4000;                              // matches make-card-selection's scoring floor
+// HARD RUNTIME BOUNDS so the coverage search can NEVER blow the workflow's 45-min job timeout (a single
+// blotato transcript can take up to 90s). Cap transcript fetches per bout, and stop starting new work after
+// a total time budget. Remaining under-covered bouts are picked up on the NEXT collect — their neediest-
+// first order + the MIN_HOURS skip mean full-card coverage still accrues across runs, just not all at once.
+const MAX_VIDEOS_PER_BOUT = numEnv(process.env.COVERAGE_MAX_VIDEOS_PER_BOUT, 3);
+const TIME_BUDGET_MS = numEnv(process.env.COVERAGE_TIME_BUDGET_SEC, 300) * 1000;   // 5 min hard ceiling
 
 function boutNames(b, cardBouts) {
   const cb = (cardBouts || []).find((x) => x.boutId === b.boutId);
@@ -85,9 +91,11 @@ function boutNames(b, cardBouts) {
   const sinceIso = new Date(nowMs - WINDOW_DAYS * 86400000).toISOString();
   const perBout = [];
   const discovered = {};   // non-roster channels the search ingested, so auto-promotion can trace them later
-  let totalIngested = 0, quotaAborted = false;
+  const deadline = nowMs + TIME_BUDGET_MS;
+  let totalIngested = 0, quotaAborted = false, timeAborted = false;
 
   for (const b of under) {
+    if (Date.now() > deadline) { timeAborted = true; say(`  time budget (${TIME_BUDGET_MS / 1000}s) reached — remaining bouts deferred to the next collect`); break; }
     if (searchedRecently(b.boutId)) { perBout.push({ boutId: b.boutId, searchedAt: lastSearched[b.boutId], skipped: `searched < ${MIN_HOURS}h ago` }); say(`  ${b.boutId}: searched recently — skipping (cross-run budget)`); continue; }
     const nm = boutNames(b, cardBouts);
     if (!nm) { perBout.push({ boutId: b.boutId, skipped: "no fighter names" }); say(`  ${b.boutId}: no fighter names — skipped`); continue; }
@@ -100,13 +108,16 @@ function boutNames(b, cardBouts) {
       perBout.push({ boutId: b.boutId, fight: `${nm.a} vs ${nm.b}`, query, error: e.message, searchedAt: new Date(nowMs).toISOString() });
       say(`  ${b.boutId} search error: ${e.message}`); continue;
     }
-    let found = 0, ingested = 0, dupes = 0, rosterSkip = 0, shortTranscript = 0, noPicks = 0, transcriptFailed = 0, extractFailed = 0;
+    let found = 0, ingested = 0, dupes = 0, rosterSkip = 0, shortTranscript = 0, noPicks = 0, transcriptFailed = 0, extractFailed = 0, fetched = 0;
     for (const v of hits) {
       found++;
       // ORIGINS FIX: a roster channel's video belongs to the roster's labeling — skip it here.
       if (v.channelId && rosterChannelIds.has(v.channelId)) { rosterSkip++; continue; }
       // DEDUPE: already extracted under this prompt fingerprint -> already in the corpus.
       if (picksCache.get(v.url, FP) !== null) { dupes++; continue; }
+      // RUNTIME BOUND: cap the expensive fetch/extract work per bout and stop at the total time budget.
+      if (fetched >= MAX_VIDEOS_PER_BOUT || Date.now() > deadline) break;
+      fetched++;
       const t = await getTranscript(v.url).catch(() => ({}));
       if (!t || !t.text) { transcriptFailed++; continue; }
       // HONEST: a transcript below the scoring floor can never become coverage — do not extract or count it.
@@ -125,8 +136,8 @@ function boutNames(b, cardBouts) {
     say(`  ${b.boutId} "${nm.a} vs ${nm.b}" (${b.independentOrigins || 0} origins): ${found} found, ${ingested} ingested, ${dupes} dupes, ${rosterSkip} roster, ${shortTranscript} short`);
   }
 
-  const receipt = { card, ranAt: new Date(nowMs).toISOString(), minOrigins: MIN_ORIGINS, maxBouts: MAX_BOUTS, minHours: MIN_HOURS, boutsSearched: perBout.length, totalIngested, quotaAborted, perBout, discoveredChannels: discovered };
+  const receipt = { card, ranAt: new Date(nowMs).toISOString(), minOrigins: MIN_ORIGINS, maxBouts: MAX_BOUTS, minHours: MIN_HOURS, maxVideosPerBout: MAX_VIDEOS_PER_BOUT, timeBudgetSec: TIME_BUDGET_MS / 1000, boutsSearched: perBout.length, totalIngested, quotaAborted, timeAborted, perBout, discoveredChannels: discovered };
   try { if (card) writeJson(path.join(paths.data, `coverage-search-${card}.json`), receipt); } catch (e) { say(`  (receipt write failed: ${e.message})`); }
-  say(`run-coverage-search: ingested ${totalIngested} new video(s) across ${perBout.length} bout(s)${quotaAborted ? " — QUOTA/RATE ABORTED" : ""}. Re-run selection+evidence to fold them in.`);
+  say(`run-coverage-search: ingested ${totalIngested} new video(s) across ${perBout.length} bout(s)${quotaAborted ? " — QUOTA/RATE ABORTED" : ""}${timeAborted ? " — TIME BUDGET REACHED (rest next collect)" : ""}. Re-run selection+evidence to fold them in.`);
   return 0;
 })().then((c) => process.exit(c || 0)).catch((e) => { console.error("run-coverage-search error:", e.message); process.exit(1); });
