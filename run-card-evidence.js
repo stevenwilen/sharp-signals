@@ -17,6 +17,7 @@ require("./lib/env");
 const fs = require("fs");
 const path = require("path");
 const ev = require("./lib/evidence");
+const rc = require("./lib/read-completeness");
 const dd = require("./lib/claim-dedupe");
 const tc = require("./lib/target-card");
 const { paths, writeJson } = require("./lib/store");
@@ -71,13 +72,16 @@ async function main() {
   const all = [];
   let newChunks = 0, cachedChunks = 0, rangesRead = 0, charsRead = 0;
   const perVideo = [];
+  const dropped = [];   // videos with an incomplete read: refused WHOLE (never partial), card continues
   for (const videoId of videos) {
     const ranges = sel.byVideo[videoId];
     const row = sel.include.find((r) => r.videoId === videoId);
     if (!row) fail(`selection.byVideo has ${videoId} but include[] has no row for it — inconsistent selection`);
     const raw = fs.readFileSync(path.join("data", "transcripts", videoId + ".txt"), "utf8");
     const boutsHere = sel.include.filter((r) => r.videoId === videoId);
-    let vClaims = 0, vChars = 0;
+    const vBuf = [];              // claims held until the WHOLE video is confirmed fully read
+    const rangeResults = [];      // per-range completeness -> videoReadVerdict
+    let vChars = 0;
     say(`  ${videoId} [${row.source}] — ${ranges.length} range(s), bouts: ${boutsHere.map((b) => b.boutId.slice(-3)).join(",")}`);
     for (const g of ranges) {
       const slice = raw.slice(g.from, g.to);
@@ -85,22 +89,40 @@ async function main() {
       const r = await ev.extractEvidenceChunked(slice, { videoId, source: row.source, url: row.url, timestamp: row.ts }, { log: () => {} });
       newChunks += r.coverage.cacheMisses ?? r.coverage.chunks;
       cachedChunks += r.coverage.cacheHits ?? 0;
-      if (!r.coverage.complete) fail(`range ${g.from}-${g.to} of ${videoId} did not read completely: ` +
-        `${JSON.stringify(r.coverage.unprocessedRanges)} — refusing to bank a partial read`);
+      rangeResults.push({ complete: r.coverage.complete, unprocessed: r.coverage.unprocessedRanges });
       const boutIds = boutsHere.filter((b) => b.ranges.some((x) => x.from < g.to && x.to > g.from)).map((b) => b.boutId);
       for (const c of r.claims) {
         c.segment = { startChar: g.from + c.segment.startChar, endChar: g.from + c.segment.endChar,
           approxMinute: Math.round((g.from + c.segment.startChar) / 12000 * 12) };
         c.rangeBouts = boutIds;
-        all.push(c); vClaims++;
+        vBuf.push(c);
       }
       say(`    range ${g.from}-${g.to} (${(slice.length / 1000).toFixed(0)}k) -> ${r.claims.length} claims, ` +
         `${r.coverage.chunks} chunks (${r.coverage.cacheHits ?? 0} cached)`);
     }
-    perVideo.push({ videoId, source: row.source, ranges: ranges.length, chars: vChars, claims: vClaims });
+    // Refuse to bank a PARTIAL read — but scope the refusal to THIS video, not the whole card. One chunk
+    // the extractor cannot parse used to fail() here and blackhole every bout on the card (froze
+    // collect/forecast/alerts on 2026-07-21). Dropping the video is fail-CLOSED: strictly less evidence.
+    const verdict = rc.videoReadVerdict(rangeResults);
+    if (!verdict.complete) {
+      const unread = verdict.incompleteRanges.map((x) => x.unprocessed);
+      dropped.push({ videoId, source: row.source, bouts: boutsHere.map((b) => b.boutId), unprocessed: unread });
+      say(`    DROPPED ${videoId} [${row.source}] — ${verdict.incompleteRanges.length} range(s) did not read ` +
+        `completely ${JSON.stringify(unread)}; refusing to bank a partial read of this video`);
+      perVideo.push({ videoId, source: row.source, ranges: ranges.length, chars: vChars, claims: 0, dropped: true });
+      continue;
+    }
+    for (const c of vBuf) all.push(c);
+    perVideo.push({ videoId, source: row.source, ranges: ranges.length, chars: vChars, claims: vBuf.length });
   }
+  if (dropped.length) say(`\n  ⚠ ${dropped.length}/${videos.length} video(s) DROPPED for incomplete reads: ` +
+    `${dropped.map((d) => `${d.videoId} [${d.source}]`).join(", ")} — their bouts fall back to whatever OTHER videos cover them`);
   done(2, `extraction complete: ${all.length} raw claims from ${rangesRead} ranges, ` +
-    `${(charsRead / 1000).toFixed(0)}k chars, ${newChunks} new chunks, ${cachedChunks} cached`);
+    `${(charsRead / 1000).toFixed(0)}k chars, ${newChunks} new chunks, ${cachedChunks} cached` +
+    `${dropped.length ? `, ${dropped.length} video(s) dropped` : ""}`);
+  const cardV = rc.cardReadVerdict({ videoCount: videos.length, droppedCount: dropped.length });
+  if (!cardV.ok) fail(`SYSTEMIC INCOMPLETE READ: ${cardV.why}. Refusing to emit a card built on the minority ` +
+    `that survived — this is an extractor/model outage, not one bad video.`);
   if (!all.length) fail(`NOTHING TO PROCESS: ${rangesRead} ranges were read but produced 0 claims. ` +
     `The ranges were selected by co-occurrence, so zero claims means the extractor found no ` +
     `attributable assertions there — report this rather than emit an empty card.`);
@@ -181,7 +203,7 @@ async function main() {
   writeJson(out, { card: sel.card, builtAt: new Date().toISOString(),
     selection: { threshold: sel.threshold, videos: perVideo },
     integrity: { rangesRead, charsRead, newChunks, cachedChunks, rawClaims: all.length,
-      onCardPct: +onCardPct.toFixed(1), buckets, evidenceTypes: et },
+      onCardPct: +onCardPct.toFixed(1), buckets, evidenceTypes: et, droppedVideos: dropped },
     claims: merged, offCard: offMerged, conflictTopics: topics });
   if (!fs.existsSync(out)) fail(`output file was not written: ${out}`);
   const back = JSON.parse(fs.readFileSync(out, "utf8"));
