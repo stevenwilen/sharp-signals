@@ -1,11 +1,11 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-22T05:10:38.055Z",
+  "ranAt": "2026-07-22T07:21:00.426Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 1,
-    "delivered": 1,
-    "buyInstructions": 1,
+    "attempted": 2,
+    "delivered": 2,
+    "buyInstructions": 2,
     "humanReviews": 0,
     "transport": "telegram (manual instruction + human review)"
   },
@@ -57,8 +57,8 @@
     "NO BET": 18,
     "HUMAN REVIEW REQUIRED": 8
   },
-  "forecastHash": "9b75c1df93f19071",
-  "snapshotTimestamp": "2026-07-22T05:10:38.164Z",
+  "forecastHash": "b938613488552ffc",
+  "snapshotTimestamp": "2026-07-22T07:21:00.482Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-07-25-B03",
@@ -77,12 +77,12 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nMike Davis vs Nurullo Aliev\n\nReport: Mike Davis has dealt with injury after injury over the last several years.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
-      "boutId": "UFC-2026-07-25-B14",
-      "about": "Santiago Ponzinibbio",
-      "topic": "injury_health",
+      "boutId": "UFC-2026-07-25-B04",
+      "about": "Bogdan Guskov",
+      "topic": "short_notice",
       "origins": 1,
       "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Santiago Ponzinibbio never quite came back the same after suffering a big injury a few years ago.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nBogdan Guskov vs Magomed Ankalaev\n\nReport: Bogdan Guskov is taking the fight against Magomed Ankalaev on short notice in Abu Dhabi over five rounds.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
       "boutId": "UFC-2026-07-25-B04",
@@ -91,6 +91,20 @@
       "origins": 1,
       "why": "potentially new information with a single origin",
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nBogdan Guskov vs Magomed Ankalaev\n\nReport: Magomed Ankalaev was knocked out by Alex Pereira while fighting during Ramadan and coming off an injury.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+    },
+    {
+      "boutId": "UFC-2026-07-25-B05",
+      "topic": "Ramazan Temirov — recent_form",
+      "why": "conflicting factual reports",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nRamazonbek Temirov vs Steve Erceg\n\nReport: undefined\nSources: origin count not available\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+    },
+    {
+      "boutId": "UFC-2026-07-25-B14",
+      "about": "Santiago Ponzinibbio",
+      "topic": "injury_health",
+      "origins": 1,
+      "why": "potentially new information with a single origin",
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Santiago Ponzinibbio never quite came back the same after suffering a big injury a few years ago.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     }
   ],
   "buyInstructions": [
@@ -99,16 +113,39 @@
       "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
       "key": "explore|UFC-2026-07-25-B03|KXUFCFIGHT-26JUL25GIBHUS-HUS",
       "wouldSend": true,
-      "why": "new evidence changed the sealed forecast (9f7a222fcdb73c9e -> 9b75c1df93f19071)",
+      "why": "new evidence changed the sealed forecast (9b75c1df93f19071 -> b938613488552ffc)",
       "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nAbdul Hussein vs Cody Gibson\nCurrent: 81¢\nMaximum: 77¢\n\nWait for 77¢ or lower. The system will alert again if it becomes available.",
       "state": {
         "ask": 0.81,
         "maximumAcceptablePrice": 0.7658,
-        "forecastHash": "9b75c1df93f19071",
+        "forecastHash": "b938613488552ffc",
         "classification": "PRICE_TOO_HIGH",
         "lane": "exploration",
         "stakePercent": 4,
         "topTicker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "PRICE_TOO_HIGH"
+      },
+      "lane": "exploration",
+      "verdict": "PRICE_TOO_HIGH"
+    },
+    {
+      "boutId": "UFC-2026-07-25-B14",
+      "ticker": "KXUFCFIGHT-26JUL25PONPAT-PON",
+      "key": "explore|UFC-2026-07-25-B14|KXUFCFIGHT-26JUL25PONPAT-PON",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
+      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nSantiago Ponzinibbio vs Sam Patterson\nCurrent: 22¢\nMaximum: 22¢\n\nWait for 22¢ or lower. The system will alert again if it becomes available.",
+      "state": {
+        "ask": 0.22,
+        "maximumAcceptablePrice": 0.2171,
+        "forecastHash": "b938613488552ffc",
+        "classification": "PRICE_TOO_HIGH",
+        "lane": "exploration",
+        "stakePercent": 3,
+        "topTicker": "KXUFCFIGHT-26JUL25PONPAT-PON",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
@@ -234,7 +271,7 @@
       "rank": 13,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0618 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.0236 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
@@ -243,7 +280,7 @@
       "rank": 14,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0911 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.0893 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-VAG",
