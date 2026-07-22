@@ -77,7 +77,7 @@ const correctedButPricedOut = {
   const out = render(correctedButPricedOut, { recommendedFirst: "Dricus Du Plessis vs Kamaru Usman" });
   ok("...render is a PRICE TOO HIGH notice", /PRICE TOO HIGH/.test(out.text));
   ok("...with NO 'Buy:' line", !hasBuyLine(out.text));
-  ok("...telling the human to wait for the maximum", /Wait for 62¢ or lower/.test(out.text), out.text);
+  ok("...telling the human to wait for the tradeable cent AT/BELOW the 61.7¢ ceiling (61¢, never the 62¢ being refused)", /Wait for 61¢ or lower/.test(out.text), out.text);
 }
 
 // (C) A GENUINELY VALID BUY — same shape, but the ask (59¢) is at or below the maximum (61¢).
@@ -162,8 +162,8 @@ console.log("\nPRICE TOO HIGH");
   const t = render(correctedButPricedOut, { recommendedFirst: "Dricus Du Plessis vs Kamaru Usman" }).text;
   ok("headlines DO NOT BUY", /^⏸️ PRICE TOO HIGH — DO NOT BUY$/m.test(t));
   ok("carries NO 'Buy:' instruction", !hasBuyLine(t));
-  ok("shows the current and maximum prices", /Current: 67¢/.test(t) && /Maximum: 62¢/.test(t));
-  ok("tells the human to wait", /Wait for 62¢ or lower/.test(t));
+  ok("shows the live ask and the FINE-precision ceiling (not rounded up to look equal)", /Ask now: 67¢/.test(t) && /Your ceiling: 61\.7¢/.test(t));
+  ok("tells the human to wait for a tradeable cent at/below the ceiling", /Wait for 61¢ or lower/.test(t));
   ok("under the 400-char price-update cap", t.length < 400, `len=${t.length}`);
 }
 
