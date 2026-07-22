@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-21T22:40:45.873Z",
+  "ranAt": "2026-07-22T00:50:40.379Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 1,
+    "delivered": 1,
+    "buyInstructions": 1,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -57,8 +57,8 @@
     "NO BET": 20,
     "HUMAN REVIEW REQUIRED": 6
   },
-  "forecastHash": "c669293b2819a9d2",
-  "snapshotTimestamp": "2026-07-21T22:40:45.936Z",
+  "forecastHash": "1955e57e6e603ee0",
+  "snapshotTimestamp": "2026-07-22T00:50:40.488Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-07-25-B03",
@@ -66,7 +66,7 @@
       "topic": "short_notice",
       "origins": 1,
       "why": "potentially new information with a single origin",
-      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nAbdul Hussein vs Cody Gibson\n\nReport: Cody Gibson is taking the fight on short notice and traveling to Abu Dhabi.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
+      "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nAbdul Hussein vs Cody Gibson\n\nReport: Cody Gibson is taking the fight and making weight on short notice while traveling from the United States to Abu Dhabi.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
       "boutId": "UFC-2026-07-25-B13",
@@ -85,7 +85,31 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nSantiago Ponzinibbio vs Sam Patterson\n\nReport: Santiago Ponzinibbio never quite came back the same after suffering a big injury a few years ago.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     }
   ],
-  "buyInstructions": [],
+  "buyInstructions": [
+    {
+      "boutId": "UFC-2026-07-25-B03",
+      "ticker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+      "key": "explore|UFC-2026-07-25-B03|KXUFCFIGHT-26JUL25GIBHUS-HUS",
+      "wouldSend": true,
+      "why": "new evidence changed the sealed forecast (bcf6020bfd1838ac -> 1955e57e6e603ee0); suggested stake moved 3.00% -> 4.00%",
+      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nAbdul Hussein vs Cody Gibson\nCurrent: 81¢\nMaximum: 76¢\n\nWait for 76¢ or lower. The system will alert again if it becomes available.",
+      "state": {
+        "ask": 0.81,
+        "maximumAcceptablePrice": 0.758,
+        "forecastHash": "1955e57e6e603ee0",
+        "classification": "PRICE_TOO_HIGH",
+        "lane": "exploration",
+        "stakePercent": 4,
+        "topTicker": "KXUFCFIGHT-26JUL25GIBHUS-HUS",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "PRICE_TOO_HIGH"
+      },
+      "lane": "exploration",
+      "verdict": "PRICE_TOO_HIGH"
+    }
+  ],
   "decisions": [
     {
       "ticker": "KXUFCFIGHT-26JUL25JACSAI-SAI",
@@ -238,7 +262,7 @@
       "rank": 17,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-IZA",
@@ -247,7 +271,7 @@
       "rank": 18,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25TUCRIB-TUC",
