@@ -105,6 +105,11 @@ jobs:
           REPORT_TZ: ${{ vars.REPORT_TZ }}
           REPORT_HOUR: ${{ vars.REPORT_HOUR }}
           GH_TOKEN: ${{ github.token }}
+          # Fight-week price watch. When nothing on the forecast cadence is due, re-check LIVE Kalshi
+          # prices so a favorable cross (a priced-out contract falling to/below its ceiling) pings a BUY
+          # within a dispatch cycle instead of up to a full ~2h forecast interval. No Gemini, no
+          # re-forecast. Inert until PRICE_WATCH_ENABLED=1 is set as a Variable.
+          PRICE_WATCH_ENABLED: ${{ vars.PRICE_WATCH_ENABLED }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \

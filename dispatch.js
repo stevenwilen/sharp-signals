@@ -211,13 +211,30 @@ async function main() {
   say(`[dispatch] tier ${plan.tier} · ${plan.hoursToBell}h to bell · due: ${dueList.length ? dueList.join(", ") : "nothing"}${force ? ` (forced: ${force})` : ""}`);
 
   if (dry) { say(`[dispatch] --dry: would run [${dueList.join(", ")}]. Nothing executed.`); return 0; }
-  if (!dueList.length) { say("[dispatch] nothing due this run."); return 0; }
 
   const td = card.tickerDate, ed = card.eventDate, seal = nowIso;
   const sel = `data/card-selection-${ed}.json`;
   const ceEvidence = `data/card-evidence-${ed}.json`;
   const evalFile = `data/evidence-eval-${ed}.json`;
   const forecastFile = `data/forecast-${ed}.json`;
+
+  // FIGHT-WEEK PRICE WATCH — between the ~2h forecasts, a favorable price cross (a priced-out contract's
+  // ask falling to/below its ceiling) should ping a BUY promptly, not wait a full cadence. The fight-day
+  // sentinel does this on a 15-min loop, but ONLY Fri/Sat — the rest of fight week had no fast price
+  // check, so a cross could sit unseen for up to a forecast interval. On any cycle where nothing on the
+  // forecast cadence is due, re-run the alert path against LIVE Kalshi prices and let the ledger fire its
+  // cross / favourable-again / withdrawn triggers. Cheap: NO Gemini, NO re-forecast — the sealed forecast
+  // is fixed; only prices move. Opt-in via PRICE_WATCH_ENABLED; non-fatal; an expired attestation
+  // self-reports TEST mode and sends nothing.
+  if (!dueList.length) {
+    if (process.env.PRICE_WATCH_ENABLED === "1" && plan.tier !== "post-card" && fs.existsSync(path.join(ROOT, forecastFile))) {
+      say("[dispatch] price-watch: re-checking live prices for a favorable cross (nothing on cadence due)");
+      run("run-entertainment-alerts.js", [forecastFile, `--eval=${evalFile}`, "--send"], { allowFail: true });
+    } else {
+      say("[dispatch] nothing due this run.");
+    }
+    return 0;
+  }
 
   // COLLECT — card selection + evidence extraction (Gemini). The expensive stage; caches transcripts
   // and extractions so a re-forecast does not re-pay.
