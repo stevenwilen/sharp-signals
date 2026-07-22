@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-22T13:40:40.925Z",
+  "generatedAt": "2026-07-22T15:10:27.769Z",
   "canonical": "These two summaries are the sole sources for current real and paper balances. Do not recompute money elsewhere.",
   "real": {
     "label": "Real Entertainment Bankroll",
     "startingDollars": 100,
     "realizedPnl": -2.45,
-    "openExposure": 0,
-    "availableCash": 97.55,
+    "openExposure": 3,
+    "availableCash": 94.55,
     "accountValue": 97.55,
-    "maxPendingPayout": 0,
+    "maxPendingPayout": 14,
     "fees": {
       "paidActual": 0,
-      "estimated": 0.25,
+      "estimated": 0.42,
       "note": "Only actual (confirmed) fees reduce available cash; estimated fees are shown but not deducted."
     },
     "unconfirmed": {
@@ -21,11 +21,16 @@
       "note": "Recommended but NOT confirmed — excluded from real exposure and available cash."
     },
     "counts": {
-      "open": 0,
+      "open": 1,
       "settled": 2,
       "unconfirmed": 0
     },
     "byCategory": {
+      "DISCRETIONARY_BET": {
+        "n": 1,
+        "realizedPnl": 0,
+        "openExposure": 3
+      },
       "SPECULATIVE_BET": {
         "n": 1,
         "realizedPnl": 1.55,
@@ -89,6 +94,32 @@
         "paperEligible": true,
         "placedAt": "2026-07-19T05:11:46.255Z",
         "settlementTimestamp": "2026-07-19T05:17:02.774Z"
+      },
+      {
+        "positionId": "discretionary|KXUFCFIGHT-26JUL25PONPAT-PON|2026-07-22T15:10:27.762Z",
+        "recommendationId": null,
+        "market": "KXUFCFIGHT-26JUL25PONPAT-PON",
+        "ticker": "KXUFCFIGHT-26JUL25PONPAT-PON",
+        "side": "YES",
+        "category": "DISCRETIONARY_BET",
+        "source": "DISCRETIONARY",
+        "fight": "KXUFCFIGHT-26JUL25PONPAT-PON",
+        "status": "MANUALLY_PLACED",
+        "realStatus": "CONFIRMED PLACED",
+        "stake": 3,
+        "recommendedStake": null,
+        "contracts": 14,
+        "entryPrice": 0.21,
+        "fees": {
+          "amount": 0.17,
+          "basis": "estimated",
+          "feeModelVersion": "2026-07-16"
+        },
+        "payout": null,
+        "realizedPnl": null,
+        "paperEligible": false,
+        "placedAt": "2026-07-22T15:10:27.762Z",
+        "settlementTimestamp": null
       }
     ]
   },
