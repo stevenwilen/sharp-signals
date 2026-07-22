@@ -70,11 +70,11 @@ const prodUnchanged = () => PROD_FILES.every((f) => sha(fs.readFileSync(path.joi
   ok(h && h.paperProspectiveStartAt === null, "3d. OBSERVE never stamps the official prospective start");
   ok(prodUnchanged(), "3e. OBSERVE leaves forecast/alerts/real/paper/bankrolls byte-for-byte unchanged");
   ok(fs.existsSync(path.join(TMP, "research-ledger.json")) && fs.existsSync(path.join(TMP, "research-health.json")) && fs.existsSync(path.join(TMP, "research-summary.json")), "3f. only research-* artifacts are created (ledger, health, summary)");
-  // fromIntel executed (the seeded card has one WATCH record): it is RECORDED as an observation, never
-  // funded (offline it fails closed on market resolution). Proves the network pass runs + fails soft.
+  // v2: the separate directional-intel stream is RETIRED — a seeded WATCH record must no longer become a
+  // WATCH_EXPERIMENT observation; that evidence now flows through the forecast's creative tier instead.
   let ledger = null; try { ledger = JSON.parse(fs.readFileSync(path.join(TMP, "research-ledger.json"), "utf8")); } catch {}
-  const obsCount = ledger ? Object.keys(ledger.observations || {}).length : 0;
-  ok(obsCount >= 1, `3g. the intel WATCH pass runs and records at least one observation (${obsCount})`);
+  const obs = ledger ? Object.values(ledger.observations || {}) : [];
+  ok(!obs.some((o) => o.category === "WATCH_EXPERIMENT"), "3g. v2: the retired intel stream produces NO WATCH_EXPERIMENT observation");
   process.stdout.write(`        [certification] observations=${h && h.observationsGenerated} proposed=${h && h.positionsProposed} funded=${h && h.positionsFunded} notes=${JSON.stringify((h && h.notes) || [])}\n`);
 }
 

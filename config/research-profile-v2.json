@@ -1,0 +1,74 @@
+{
+  "version": "research-profile-v2",
+  "note": "DETERMINISTIC research-entry rules for the Speculative Research Portfolio. v2 aligns the research book with the UNIFIED TRUST LADDER (lib/trust-tiers): it bets the SAME sealed forecast the other books do, differentiated ONLY by trust. It acts on CORE_BUY copies (the confirmed tier, nested) + the exploration/creative SPECULATIVE tier + experimental combos. Two v1 mistakes are corrected: (1) the 20% uncertaintyHaircut is REMOVED — it silently negated every speculative edge and left the book at $0 while pretending to test speculation; (2) the separate systemCentral-based UNCONFIRMED_CANDIDATE and directional-intel evaluations are RETIRED — the forecast's creative tier already incorporates that evidence, so betting it separately (against the wrong, core probability) was the 'separate sources' problem. Origins-not-voices is untouched: the creative tier is v7's frozen computation, consumed verbatim, so a single-origin rumour still moves it by ~zero. NEVER edit this file to change behaviour after positions exist — create research-profile-v3.json instead, so results stay separable by rulesetVersion. These are EXPERIMENTAL research sizing rules; they do NOT touch the frozen production sizing/thresholds.",
+
+  "allowedCategories": [
+    "CORE_BUY", "EXPLORATION", "STRONG_SPECULATION", "CREATIVE_SPECULATION", "EXPERIMENTAL_COMBO"
+  ],
+
+  "classificationMap": {
+    "core:standard experimental": "CORE_BUY",
+    "core:strong experimental": "CORE_BUY",
+    "core:rare maximum": "CORE_BUY",
+    "exploration:CREATIVE SPECULATIVE": "CREATIVE_SPECULATION",
+    "exploration:STRONG SPECULATIVE": "STRONG_SPECULATION",
+    "exploration:BEST EXPERIMENTAL": "EXPLORATION",
+    "combo:experimental": "EXPERIMENTAL_COMBO"
+  },
+
+  "gates": {
+    "minEstProbability": 0.10,
+    "minEstEdge": 0.00,
+    "maxMarketPrice": 0.95,
+    "minFreshnessMinutes": 20,
+    "uncertaintyHaircut": 0.00
+  },
+
+  "priceTooHigh": {
+    "priceToleranceCents": 3,
+    "note": "researchMaximumEntryPrice = min(gates.maxMarketPrice, productionMaximumAcceptablePrice + priceToleranceCents/100). Applies to a speculative-tier candidate: it funds only if observedAsk <= researchMaximumEntryPrice AND the post-haircut edge at the effective entry price is >= gates.minEstEdge. Otherwise OBSERVED_NO_ENTRY."
+  },
+
+  "unconfirmedCandidates": { "allowed": false, "note": "v1's systemCentral-based UNCONFIRMED_CANDIDATE stream is retired; priced-out exploration candidates are now valued at the correct creative tier by the exploration-shadow pass." },
+  "directionalWatch": { "allowed": false, "note": "v1's separate directional-intel WATCH stream is retired; the forecast's creative tier already incorporates the intel evidence." },
+  "experimentalCombos": {
+    "allowed": true,
+    "note": "Funds ONLY on a real, fresh audit.pricing.liveQuote (quoteTs CURRENT) for a structurally-acceptable non-BUY combo. Never fairPrice/maxBuyPrice/reconstructed/later/fallback prices. No usable live quote -> OBSERVED_NO_ENTRY."
+  },
+
+  "sizing": {
+    "CORE_BUY": "PRODUCTION_TIER",
+    "STRONG_SPECULATION": 0.020,
+    "EXPLORATION": 0.015,
+    "CREATIVE_SPECULATION": 0.010,
+    "EXPERIMENTAL_COMBO": 0.010,
+    "note": "Percent of CURRENT research bankroll. CORE_BUY preserves the frozen production tier fraction (3/4/5%) verbatim; it never re-derives frozen sizing. On consolidation the highest eligible category stake percentage is used."
+  },
+
+  "caps": {
+    "perFightPct": 0.05,
+    "perCardPct": 0.15,
+    "totalOpenPct": 0.25,
+    "note": "Fractions of the research bankroll. No martingale, no loss-recovery stake increase, no retroactive stake change, no borrowing or negative cash."
+  },
+
+  "discipline": {
+    "noMartingale": true,
+    "noLossRecoveryStakeIncrease": true,
+    "noRetroactiveStakeChange": true,
+    "allowNegativeCash": false
+  },
+
+  "simulation": {
+    "feeModel": "production:lib/contracts.tradingFee",
+    "feeRate": 0.07,
+    "feeRounding": "ceil-to-cent",
+    "slippageCents": 1,
+    "pessimisticFeeMultiplier": 1.5,
+    "feeBasis": {
+      "inScope": "VERIFIED",
+      "outOfScope": "ESTIMATED_OUT_OF_SCOPE",
+      "note": "Inside contracts.withinVerifiedEnvelope (KXUFCFIGHT, YES, taker, single fill, price 0.59-0.89, size 3.28-823.81 contracts, as of 2026-07-16) the fee is VERIFIED and exact. Outside it the same 0.07 ceil formula is used but stamped ESTIMATED_OUT_OF_SCOPE with the envelope-failure reasons stored, and a pessimistic-fee sensitivity P&L is computed. An entry whose fee cannot be produced by the model at all (tradingFee returns null) is OBSERVED_NO_ENTRY."
+    }
+  }
+}

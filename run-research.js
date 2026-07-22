@@ -19,6 +19,7 @@ const path = require("path");
 const crypto = require("crypto");
 const { paths, readJson } = require("./lib/store");
 const RL = require("./lib/research-ledger");
+const TT = require("./lib/trust-tiers");
 const C = require("./lib/contracts");
 const FR = require("./lib/freshness");
 
@@ -27,7 +28,7 @@ const num = (x) => (Number.isFinite(Number(x)) ? Number(x) : null);
 const sha = (o) => crypto.createHash("sha256").update(typeof o === "string" ? o : JSON.stringify(o)).digest("hex").slice(0, 16);
 const argv = (n) => { const a = process.argv.find((x) => x.startsWith(`--${n}=`)); return a ? a.slice(n.length + 3) : null; };
 const HEALTH = path.join(paths.data, "research-health.json");
-const PROFILE_VERSION = process.env.RESEARCH_PROFILE_VERSION || "research-profile-v1";
+const PROFILE_VERSION = process.env.RESEARCH_PROFILE_VERSION || "research-profile-v2";
 const CORE_TIER_FRACTION = { "standard experimental": 0.03, "strong experimental": 0.04, "rare maximum": 0.05 };
 
 function resolveMode() {
@@ -65,6 +66,16 @@ function writeHealth(h) {
 
 // ---- signal extraction (read-only from sealed artifacts) -------------------------------------
 const fighterFromText = (t) => (String(t || "").match(/^Buy:\s+(.+?)\s+YES$/m) || [])[1] || null;
+// A PRICE_TOO_HIGH exploration message has no "Buy:" line, so the recommended fighter is resolved from
+// the Kalshi ticker suffix (e.g. ...-HUS) against the two forecast fighters — the side the contract is for.
+const fighterFromTicker = (ticker, fighters) => {
+  const suffix = String(ticker || "").split("-").pop().toLowerCase();
+  if (!suffix || !Array.isArray(fighters)) return null;
+  return fighters.find((f) => {
+    const ln = String(f).toLowerCase().split(" ").filter(Boolean).pop() || "";
+    return ln.startsWith(suffix) || suffix.startsWith(ln.slice(0, 3));
+  }) || null;
+};
 const opponentFromFight = (fight, subject) => {
   const parts = String(fight || "").split(/\s+vs\.?\s+/i);
   if (parts.length !== 2) return null;
@@ -98,11 +109,22 @@ function fromAlerts(alerts, forecast, eventDate, nowMs) {
       obs.push({ ...base, category: "CORE_BUY", observedAsk: num(st.ask),
         coreFraction: st.stakePercent != null ? st.stakePercent / 100 : CORE_TIER_FRACTION[st.classification] || null,
         qualifiedReason: `formal core BUY (${st.classification || "core"})`, reasonProductionRejected: null });
-    } else if (st.classification === "PRICE_TOO_HIGH") {
-      obs.push({ ...base, category: "UNCONFIRMED_CANDIDATE", observedAsk: num(st.ask),
-        productionMaximumAcceptablePrice: num(st.maximumAcceptablePrice),
-        qualifiedReason: "production wanted it but the price was above the maximum acceptable",
-        reasonProductionRejected: `PRICE_TOO_HIGH: ask ${st.ask} > max acceptable ${st.maximumAcceptablePrice}` });
+    } else if (lane === "exploration") {
+      // v2 SPECULATIVE tier. An exploration-lane signal (a BUY, or one production priced out) is valued at
+      // the CREATIVE central for its side — NOT systemCentral. Valuing a speculative pick against the core
+      // probability (which by construction holds ~no edge for it) was v1's bug: every one came out negative
+      // and the book funded nothing. Same sealed forecast, one trust tier lower. Fail closed to no
+      // observation if the side can't be matched to a creative-tier probability.
+      const recFighter = fighter || fighterFromTicker(b.ticker, fc.systemCentral ? Object.keys(fc.systemCentral) : []);
+      const specProb = recFighter ? TT.centralForSide(fc, recFighter, "speculative") : null;
+      if (specProb != null) {
+        const EXPL_CAT = { "CREATIVE SPECULATIVE": "CREATIVE_SPECULATION", "STRONG SPECULATIVE": "STRONG_SPECULATION", "BEST EXPERIMENTAL": "EXPLORATION" };
+        obs.push({ ...base, fighter: recFighter, opponent: opponentFromFight(fc.fight, recFighter),
+          category: EXPL_CAT[st.classification] || "CREATIVE_SPECULATION",
+          estProbability: specProb, observedAsk: num(st.ask), productionMaximumAcceptablePrice: num(st.maximumAcceptablePrice),
+          qualifiedReason: `exploration/speculative tier (${st.classification}), valued at the creative central ${specProb}`,
+          reasonProductionRejected: b.verdict === "BUY" ? null : `production PRICE_TOO_HIGH: ask ${st.ask} > core max ${st.maximumAcceptablePrice}` });
+      }
     }
   }
   return obs;
@@ -135,50 +157,12 @@ function fromCombo(eventDate, nowMs) {
   return obs;
 }
 
-// WATCH_EXPERIMENT — directional intel. The sealed intel record has no ticker and its kalshiBefore.ask is
-// a subject-side implied probability, not an executable quote, so a funded WATCH REQUIRES resolving the
-// live market + a genuine executable ask + a system probability. Network; fail-soft (any gap -> the signal
-// simply carries no usable ask and becomes OBSERVED_NO_ENTRY downstream).
-async function fromIntel(eventDate, forecast, nowMs) {
-  const intel = readJson(path.join(paths.data, `intelligence-${eventDate}.json`), null);
-  if (!intel || !intel.records) return [];
-  const M = require("./lib/match");
-  const K = require("./lib/kalshi");
-  const obs = [];
-  for (const rec of Object.values(intel.records)) {
-    if (rec.actionStatus !== "WATCH" && rec.actionStatus !== "SPECULATIVE_BET") continue;
-    const subject = rec.fighter || null;
-    const opponent = (rec.outcomeAffected && rec.outcomeAffected.helps && rec.outcomeAffected.helps !== subject ? rec.outcomeAffected.helps : null) || opponentFromFight(rec.fight, subject);
-    const base = {
-      signalId: rec.intelligenceId, event: rec.eventId || eventDate, eventDate, market: null, ticker: null,
-      side: null, sideReason: null, fighter: subject, opponent, fight: rec.fight || null, direction: rec.direction || "neutral",
-      category: "WATCH_EXPERIMENT", estProbability: null, observedAsk: null, marketPriceTimestamp: null,
-      marketPriceStatus: null, askSource: "LIVE_KALSHI", signalTimestamp: rec.firstSeenAt || null,
-      forecastHash: forecast.forecastSealHash || null, sealedForecastVersion: forecast.version || null,
-      fightStartTimestamp: `${eventDate}T22:00:00Z`, postBell: FR.fightStarted(eventDate, nowMs), cutoffSource: RL.CUTOFF.CARD,
-      independentOrigins: num(rec.independentOrigins), recommendationId: rec.intelligenceId,
-      qualifiedReason: `directional intel ${rec.direction} (${rec.actionStatus}, ${rec.independentOrigins} origins)`,
-      reasonProductionRejected: `intel actionStatus ${rec.actionStatus} — production takes no position`,
-    };
-    let match = null;
-    try { match = await M.matchToMarket({ pick: subject, opponent, domain: "mma", timestamp: rec.firstSeenAt }, { now: new Date(nowMs) }); } catch { match = null; }
-    if (!match || !match.ok) { base.sideReason = (match && match.reason) || "could not resolve the Kalshi market for this bout"; obs.push(base); continue; }
-    base.ticker = match.ticker; base.market = match.ticker;
-    const map = RL.mapDirectionToSide({ about: subject, direction: rec.direction, contractYesFighter: match.fighter, contractNoFighter: match.opponent });
-    base.side = map.side; base.sideReason = map.reason;
-    // system probability for the resolved side (fail closed without one)
-    const fc = (forecast.forecasts || []).find((x) => x.fight && match.fighter && x.fight.toLowerCase().includes(String(match.fighter).toLowerCase().split(" ").pop())) || {};
-    if (base.side === "YES" && fc.systemCentral) base.estProbability = num(fc.systemCentral[match.fighter]);
-    else if (base.side === "NO" && fc.systemCentral) base.estProbability = num(fc.systemCentral[match.opponent]);
-    // executable ask for the resolved side
-    if (base.side === "YES") { base.observedAsk = num(match.yesAsk); base.marketPriceTimestamp = new Date(nowMs).toISOString(); base.marketPriceStatus = FR.S.CURRENT; }
-    else if (base.side === "NO") {
-      try { const mk = await K.market(match.ticker); const px = C.readPrices((mk && (mk.market || mk)) || {}); base.observedAsk = num(px.noAsk); base.marketPriceTimestamp = new Date(nowMs).toISOString(); base.marketPriceStatus = FR.S.CURRENT; } catch { base.observedAsk = null; }
-    }
-    obs.push(base);
-  }
-  return obs;
-}
+// RETIRED in research-profile-v2. The directional-intel stream valued each intel WATCH against
+// systemCentral (the CORE probability) and resolved its own Kalshi side — a "separate source" that
+// produced picks the unified trust ladder doesn't, and the exact thing being unwound. The forecast's
+// creative/speculative tier already incorporates the intel evidence, so the research book now bets THAT
+// (via fromExplorationShadow) instead of re-deriving a divergent view. Kept out on purpose; re-add only
+// behind a new research-profile version if a separate intel lane is ever pre-registered and tested.
 
 // Research-only SHADOW exploration. Reuses the production exploration calc READ-ONLY on the already-sealed
 // forecast + evidence, writes ONLY data/research-exploration-<CARD>.json, and never re-seals the forecast.
@@ -287,9 +271,14 @@ async function fromExplorationShadow(eventDate, forecast, evidence, nowMs, healt
 
     const notes = [];
     const rawObs = [];
+    // v2 — the research book bets the SAME sealed forecast the other books do, one trust tier lower:
+    //   fromAlerts carries BOTH tiers off the entertainment-alert contracts — CORE_BUY (confirmed, a
+    //   nested copy of what Paper takes) and exploration-lane picks valued at the CREATIVE/speculative
+    //   tier · fromCombo carries experimental combos · fromExplorationShadow is a supplementary creative
+    //   pass. The separate directional-intel stream is RETIRED (the creative tier already incorporates
+    //   that evidence). Trust tier is now the ONLY thing separating the three books.
     rawObs.push(...fromAlerts(alerts, forecast, eventDate, nowMs));
     rawObs.push(...fromCombo(eventDate, nowMs));
-    try { rawObs.push(...(await fromIntel(eventDate, forecast, nowMs))); } catch (e) { notes.push(`intel pass: ${e.message}`); }
     try { rawObs.push(...(await fromExplorationShadow(eventDate, forecast, evidence, nowMs, notes))); } catch (e) { notes.push(`exploration pass: ${e.message}`); }
 
     const { counts } = RL.processObservations(state, rawObs, { profile, mode, now });

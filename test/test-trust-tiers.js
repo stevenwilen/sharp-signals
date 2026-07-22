@@ -51,5 +51,14 @@ ok(tiersForBook("entertainment").includes("speculative") && tiersForBook("resear
 ok(!tiersForBook("paper").includes("speculative"), "12. Paper NEVER acts on the speculative tier (the disciplined line)");
 ok(centralAtTier(HUS, "confirmed") === 0.8518 && centralAtTier(HUS, "speculative") === 0.868, "13. centralAtTier returns the right probability per tier");
 
+// centralForSide: a book values EITHER side at a tier (favored direct, underdog complement).
+{
+  const { centralForSide } = require("../lib/trust-tiers");
+  ok(centralForSide(HUS, "Abdul Hussein", "speculative") === 0.868, "14. favored side at the speculative tier = creative central (0.868)");
+  ok(centralForSide(HUS, "Cody Gibson", "speculative") === 0.132, "15. underdog side = the COMPLEMENT (1 - 0.868 = 0.132)");
+  ok(centralForSide(HUS, "Hussein", "confirmed") === 0.8518, "16. last-name match works, per tier (confirmed = 0.8518)");
+  ok(centralForSide(HUS, "Somebody Else", "speculative") === null, "17. an unmatched fighter -> null (fail closed, no valuation)");
+}
+
 process.stdout.write(`\n${pass}/${pass + fail} passed\n`);
 process.exit(fail ? 1 : 0);
