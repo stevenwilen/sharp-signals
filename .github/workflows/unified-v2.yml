@@ -25,6 +25,7 @@ on:
 
 permissions:
   contents: write               # commit sealed forecasts + state back to the repo
+  actions: read                 # daily report counts today's workflow runs (gh run list)
 
 concurrency:
   # Its OWN group, separate from the V1 workflows. They write disjoint files (V1: signals/pick-ledger/
@@ -96,6 +97,14 @@ jobs:
           COVERAGE_SEARCH_ENABLED: ${{ vars.COVERAGE_SEARCH_ENABLED }}
           COVERAGE_MIN_ORIGINS: ${{ vars.COVERAGE_MIN_ORIGINS }}
           COVERAGE_MAX_BOUTS: ${{ vars.COVERAGE_MAX_BOUTS }}
+          # Daily System Activity Report — an end-of-day health RECEIPT to Telegram (not a bet). Opt-in +
+          # fail-closed: inert until DAILY_REPORT_ENABLED=1 is set as a Variable. REPORT_TZ (default
+          # America/New_York) and REPORT_HOUR (default 23) define the calendar day and when it fires; it
+          # sends once per that day. GH_TOKEN lets the report count today's workflow runs (needs actions:read).
+          DAILY_REPORT_ENABLED: ${{ vars.DAILY_REPORT_ENABLED }}
+          REPORT_TZ: ${{ vars.REPORT_TZ }}
+          REPORT_HOUR: ${{ vars.REPORT_HOUR }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \

@@ -173,6 +173,22 @@ async function main() {
     }
   }
 
+  // DAILY SYSTEM ACTIVITY REPORT — an end-of-day health RECEIPT (not a bet). Fires once per report-TZ
+  // calendar day, INDEPENDENT of the card stages, so it reports even when no card is active and nothing
+  // else is due (hence it sits before the no-card / nothing-due returns). Opt-in + fail-closed via
+  // DAILY_REPORT_ENABLED; non-fatal. run-daily-report.js is read-only and has no order path. Double-
+  // guarded against a duplicate send: the dispatch receipt below AND the report file's own telegramSentAt.
+  if (process.env.DAILY_REPORT_ENABLED === "1" && !dry) {
+    const rtz = process.env.REPORT_TZ || "America/New_York";
+    const rDay = new Intl.DateTimeFormat("en-CA", { timeZone: rtz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(nowMs));
+    const rHour = Number(new Intl.DateTimeFormat("en-US", { timeZone: rtz, hour: "2-digit", hour12: false }).formatToParts(new Date(nowMs)).find((p) => p.type === "hour").value) % 24;
+    const r = readReceipts();
+    if (rHour >= Number(process.env.REPORT_HOUR || 23) && (r.dailyReport || {}).reportDate !== rDay) {
+      const okReport = run("run-daily-report.js", ["--send"], { allowFail: true });
+      if (okReport) { const r2 = readReceipts(); r2.dailyReport = { reportDate: rDay, ranAt: new Date().toISOString() }; persistReceipts(r2); }
+    }
+  }
+
   if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing else to do."); return 0; }
   say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, first bell ${new Date(firstBellMs(card.eventDate)).toISOString()}`);
 
