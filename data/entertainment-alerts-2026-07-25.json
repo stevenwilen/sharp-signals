@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-23T21:40:34.144Z",
+  "ranAt": "2026-07-23T21:50:42.144Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 1,
+    "delivered": 1,
+    "buyInstructions": 1,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -57,8 +57,8 @@
     "NO BET": 20,
     "HUMAN REVIEW REQUIRED": 6
   },
-  "forecastHash": "63ee3e58dff2979d",
-  "snapshotTimestamp": "2026-07-23T21:40:34.207Z",
+  "forecastHash": "2480534578568e7e",
+  "snapshotTimestamp": "2026-07-23T21:50:42.199Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-07-25-B03",
@@ -122,7 +122,7 @@
       "state": {
         "ask": 0.82,
         "maximumAcceptablePrice": 0.7577,
-        "forecastHash": "63ee3e58dff2979d",
+        "forecastHash": "2480534578568e7e",
         "classification": "PRICE_TOO_HIGH",
         "lane": "exploration",
         "stakePercent": 3,
@@ -136,27 +136,30 @@
       "verdict": "PRICE_TOO_HIGH"
     },
     {
-      "boutId": "UFC-2026-07-25-B14",
+      "boutId": "explore",
       "ticker": "KXUFCFIGHT-26JUL25PONPAT-PON",
       "key": "explore|UFC-2026-07-25-B14|KXUFCFIGHT-26JUL25PONPAT-PON",
-      "wouldSend": false,
-      "why": "no material change since the last message",
-      "text": "🧪 CREATIVE SPECULATIVE — $3\n\nSantiago Ponzinibbio vs Sam Patterson\nBuy: Santiago Ponzinibbio YES\n\nCurrent: 19¢\nMaximum: 19¢\nStake: $3 of $100\nApprox contracts: 14\nCard exposure left: $4\n\nWhy: Sam Patterson has tall man defense where he keeps his chin up to be hit.\nMain risk: Based on 3 uncorroborated origin\nSystem estimate: 23% (range 19%–27%)\n\nPlace only if the displayed average price is 19¢ or less.\n\nFor entertainment use. Manual placement only.",
+      "wouldSend": true,
+      "why": "previously recommended, no longer qualifies",
+      "text": "❌ BET WITHDRAWN\nKXUFCFIGHT-26JUL25PONPAT-PON\nReason: the position no longer qualifies (price, forecast, or listing changed)\nDo not place the previous recommendation.",
       "state": {
         "ask": 0.19,
         "maximumAcceptablePrice": 0.1939,
         "forecastHash": "63ee3e58dff2979d",
-        "classification": "CREATIVE SPECULATIVE",
+        "classification": "WITHDRAWN",
         "lane": "exploration",
         "stakePercent": 3,
         "topTicker": "KXUFCFIGHT-26JUL25PONPAT-PON",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
-        "verdict": "BUY"
+        "verdict": "WITHDRAWN",
+        "lastSentAt": "2026-07-23T20:20:33.758Z",
+        "lastType": "BUY_INSTRUCTION",
+        "firstSentAt": "2026-07-22T07:21:02.821Z",
+        "messageCount": 5
       },
-      "lane": "exploration",
-      "verdict": "BUY"
+      "verdict": "WITHDRAWN"
     }
   ],
   "decisions": [
