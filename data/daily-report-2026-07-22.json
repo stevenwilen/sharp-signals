@@ -1,0 +1,130 @@
+{
+  "kind": "daily-system-activity",
+  "reportDate": "2026-07-22",
+  "tz": "America/New_York",
+  "windowLabel": "2026-07-22 00:00 → report time, America/New_York",
+  "generatedAtMs": 1784775636526,
+  "sections": {
+    "activity": {
+      "scheduledRunsExpected": 138,
+      "scheduledRunsCompleted": 152,
+      "failedOrSkippedRuns": 1,
+      "lastSuccessfulPipelineRun": "2026-07-23T01:15:25.773Z",
+      "currentActiveCard": "UFC-2026-07-25",
+      "cardsProcessedToday": 1,
+      "collectRanToday": true,
+      "forecastRanToday": true
+    },
+    "source": {
+      "channelsSearched": 0,
+      "rosterChannels": 70,
+      "videosOrSourcesDiscovered": 0,
+      "newFightWeekSourcesAdded": 0,
+      "transcriptsProcessed": 21,
+      "transcriptFailures": 0,
+      "newestSourceTs": "2026-07-22T23:37:01Z",
+      "newestSourceAgeH": 3.4,
+      "sourcesUnusable": 0,
+      "corpusFreshness": "CURRENT"
+    },
+    "picks": {
+      "total": 52,
+      "confirmedOrVerified": 8,
+      "likelyTrue": 0,
+      "plausibleUnverified": 9,
+      "weakOrUnsupported": 1,
+      "conflicting": 11,
+      "duplicateOrAmplifierOnly": 2,
+      "identityUnresolved": 0,
+      "rejected": 1
+    },
+    "fightIntelligence": {
+      "intelligenceClaimsCreated": 52,
+      "independentOrigins": 58,
+      "amplifyingSources": 57,
+      "watchSignals": 0,
+      "speculativeSignals": 52,
+      "dashboardOnly": 37,
+      "claimsPromoted": 16,
+      "claimsDowngradedOrRejected": 2,
+      "identityMatchFailures": 0
+    },
+    "production": {
+      "coreBuy": 0,
+      "priceTooHigh": 0,
+      "noBet": 20,
+      "withdrawn": 0,
+      "expired": 0,
+      "postFightRefusals": 0,
+      "comboBuy": null,
+      "comboPriceTooHigh": null,
+      "comboUnavailableOrRejected": "unavailable (read-only quote)"
+    },
+    "speculativeResearch": {
+      "researchMode": "PAPER",
+      "observationsCreated": 16,
+      "creativeSpeculative": 6,
+      "strongSpeculative": 0,
+      "exploration": 16,
+      "watchExperiments": 0,
+      "unconfirmedCandidates": 10,
+      "experimentalCombos": 0,
+      "wouldHaveFunded": 6,
+      "actuallyFunded": 0,
+      "rejectedOrNoEntry": 10,
+      "topGateReasons": [
+        {
+          "reason": "estimated probability N below floor N",
+          "count": 10
+        }
+      ]
+    },
+    "paper": {
+      "paperStrategy": {
+        "positionsOpened": 0,
+        "positionsSettled": 0,
+        "wins": 0,
+        "losses": 0,
+        "openExposure": 0
+      },
+      "speculativeResearch": {
+        "positionsOpened": 1,
+        "positionsSettled": 0,
+        "wins": 0,
+        "losses": 0,
+        "openExposure": 0
+      }
+    },
+    "real": {
+      "realRecommendationsIssued": 0,
+      "manuallyConfirmedPositions": 0,
+      "discretionaryPositionsRecorded": 0,
+      "positionsSettled": 0,
+      "realBankrollChange": -2.45,
+      "realBankrollNote": "realizedPnl is cumulative; per-day delta is not separately tracked"
+    },
+    "quality": {
+      "forecastFreshnessH": 0.5,
+      "marketPriceFreshnessH": 0.5,
+      "intelligenceFreshnessH": 0.5,
+      "comboQuoteFreshnessH": null,
+      "persistence": "ok",
+      "deduplication": "ok",
+      "duplicateAlertsPrevented": 0,
+      "geminiCalls": 120,
+      "geminiFailures": 0,
+      "geminiTokens": 514099,
+      "geminiEstCostUsd": 0.322,
+      "telegramNotificationsSent": 10,
+      "warnings": [
+        "1 workflow run(s) failed today"
+      ]
+    }
+  },
+  "status": "SYSTEM DEGRADED",
+  "verdictReasons": [
+    "1 workflow run(s) failed today"
+  ],
+  "telegramMessage": "📋 DAILY SYSTEM ACTIVITY — 2026-07-22\nwindow: 2026-07-22 00:00 → report time, America/New_York\n\n⚠️ SYSTEM DEGRADED\n⚠ 1 workflow run(s) failed today\n\n⚙️ SYSTEM ACTIVITY\nruns expected/done/failed: 138/152/1\nlast run: 2026-07-23 01:15Z · card: UFC-2026-07-25 · processed today: 1\n\n📡 SOURCE COLLECTION\nchannels searched: 0 · roster: 70 · discovered: 0 · new fw-sources: 0\ntranscripts: 21 (fail 0) · newest 3.4h · unusable 0\n\n🎯 PICKS & SIGNALS (analyst/candidate — not bets)\ntotal 52 · verified 8 · likely 0 · plausible 9 · weak 1 · conflict 11 · dup/ampl 2 · identity? 0 · rejected 1\n\n🧠 FIGHT INTELLIGENCE\nclaims 52 · origins 58 · amplifiers 57\nWATCH 0 · speculative 52 · dashboard-only 37 · promoted 16 · down/reject 2 · identity-fail 0\n\n⚖️ PRODUCTION DECISIONS\ncore BUY 0 · PRICE-TOO-HIGH 0 · NO BET 20 · withdrawn 0 · expired 0 · post-fight 0\ncombo: BUY — · PTH — · unavailable (read-only quote)\n\n🧪 SPECULATIVE RESEARCH (mode: PAPER)\nobservations 16 · creative 6 · strong 0 · exploration 16 · watch-exp 0 · unconfirmed 10 · exp-combo 0\nwould-fund 6 · funded 0 · no-entry/rejected 10\ngate reasons: estimated probability N below floor N (10)\n\n🧾 PAPER ACTIVITY\nStrategy: opened 0 · settled 0 · W0 L0 · exposure $0\nResearch: opened 1 · settled 0 · W0 L0 · exposure $0\n\n💵 REAL ACTIVITY\nrecs 0 · confirmed 0 · discretionary 0 · settled 0 · bankroll $-2.45 (cumulative)\n\n🩺 SYSTEM QUALITY\nfresh(h): forecast 0.5 · market 0.5 · intel 0.5 · combo —\nGemini: 120 calls · 0 fail · 514k tok · $0.322\ndedup ok · dup-prevented 0 · Telegram sent 10 · persistence ok\n\n📌 TODAY'S VERDICT\nThe system ran but not at full strength. Processed 52 intelligence claim(s) from current sources and issued 20 production decision(s) (20 NO BET, 0 BUY). Needs attention: 1 workflow run(s) failed today.",
+  "telegramSentAt": "2026-07-23T03:00:36.526Z"
+}
