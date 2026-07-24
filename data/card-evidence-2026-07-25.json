@@ -328,7 +328,7 @@
       }
     ]
   },
-  "builtAt": "2026-07-23T23:15:39.199Z",
+  "builtAt": "2026-07-24T00:25:36.290Z",
   "selection": {
     "threshold": 35,
     "videos": [
@@ -351,8 +351,7 @@
         "source": "Greedo Plays MMA",
         "ranges": 2,
         "chars": 12000,
-        "claims": 0,
-        "dropped": true
+        "claims": 17
       },
       {
         "videoId": "juIbhFBgOmE",
@@ -513,40 +512,25 @@
   "integrity": {
     "rangesRead": 31,
     "charsRead": 235695,
-    "newChunks": 0,
+    "newChunks": 1,
     "cachedChunks": 39,
-    "rawClaims": 246,
+    "rawClaims": 263,
     "onCardPct": 76.8,
     "buckets": {
-      "target_bout": 122,
-      "card_fighter_no_bout_context": 44,
-      "other_fight_or_fighter": 57,
-      "historical_vs_other_opponent": 23
+      "target_bout": 129,
+      "card_fighter_no_bout_context": 47,
+      "other_fight_or_fighter": 61,
+      "historical_vs_other_opponent": 26
     },
     "evidenceTypes": {
       "current_health_camp": 16,
       "current_matchup": 46,
-      "general_tendency": 104,
-      "off_card": 57,
-      "historical_performance": 23
+      "general_tendency": 113,
+      "off_card": 61,
+      "historical_performance": 26,
+      "direct_prediction": 1
     },
-    "droppedVideos": [
-      {
-        "videoId": "vxbTjTzSrQM",
-        "source": "Greedo Plays MMA",
-        "bouts": [
-          "UFC-2026-07-25-B03"
-        ],
-        "unprocessed": [
-          [
-            [
-              0,
-              2904
-            ]
-          ]
-        ]
-      }
-    ]
+    "droppedVideos": []
   },
   "claims": [
     {
@@ -1196,6 +1180,22 @@
           "confidence": 0.95
         },
         {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 95,
+            "endChar": 2999,
+            "approxMinute": 0
+          },
+          "quote": "The 38-year-old out of St. Louis",
+          "claimClass": "hard_fact",
+          "direction": "neutral",
+          "confidence": 0.9
+        },
+        {
           "channel": "Half The Battle",
           "videoId": "Hvk7u13s_vU",
           "url": "https://www.youtube.com/watch?v=Hvk7u13s_vU",
@@ -1228,15 +1228,17 @@
           "confidence": 1
         }
       ],
-      "mentionCount": 3,
-      "independentSources": 3,
+      "mentionCount": 4,
+      "independentSources": 4,
       "sources": [
         "MMA EXPERTS",
+        "Greedo Plays MMA",
         "Half The Battle",
         "James Lynch"
       ],
       "mentionsPerSource": {
         "MMA EXPERTS": 1,
+        "Greedo Plays MMA": 1,
         "Half The Battle": 1,
         "James Lynch": 1
       },
@@ -1601,6 +1603,700 @@
         "MMA EXPERTS": 1
       },
       "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Cody Gibson is likely on his way out of the UFC with a loss in this fight.",
+      "about": "Cody Gibson",
+      "opponent": "Abdul Hussein",
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "prediction",
+      "confidence": 0.8,
+      "quote": "Cody Gibson's probably on his way out of the UFC with a loss here.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 95,
+        "endChar": 2999,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "target_bout",
+      "cardEvidence": "direct_prediction",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 95,
+            "endChar": 2999,
+            "approxMinute": 0
+          },
+          "quote": "Cody Gibson's probably on his way out of the UFC with a loss here.",
+          "claimClass": "prediction",
+          "direction": "against_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "prediction"
+      ]
+    },
+    {
+      "claim": "Abdul Hussein hits significantly hard for being 5'5 and small for 135 pounds.",
+      "about": "Abdul Hussein",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Abdul Hussein hits significantly hard for being 5'5. It's the truth. He is small for 135 pounds.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 95,
+        "endChar": 2999,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 95,
+            "endChar": 2999,
+            "approxMinute": 0
+          },
+          "quote": "Abdul Hussein hits significantly hard for being 5'5. It's the truth. He is small for 135 pounds.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        },
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "Abdul Hussein hits significantly hard for being 5'5. It's the truth. He is small for 135 pounds.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 2
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Abdul Hussein knocked out Tyson Nam in his last fight outside of the UFC.",
+      "about": "Abdul Hussein",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Abdul Hussein knocked out an old UFC veteran in Nam in his last fight outside of the UFC.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "Abdul Hussein knocked out an old UFC veteran in Nam in his last fight outside of the UFC.",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Cody Gibson is on a two-fight losing streak going into this bout.",
+      "about": "Cody Gibson",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "He's lost back toback going into this one.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "He's lost back toback going into this one.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Cody Gibson was submitted in the second round by Deon Blackshere.",
+      "about": "Cody Gibson",
+      "opponent": "Deon Blackshere",
+      "direction": "against_about",
+      "evidenceType": "grappling",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "He got submitted in the second round by Deon Blackshere.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "He got submitted in the second round by Deon Blackshere.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Cody Gibson was knocked out in 25 seconds by Ori Eng.",
+      "about": "Cody Gibson",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "durability",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "And in his last fight, he got knocked out in 25 seconds by Ori Lang.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B03",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "And in his last fight, he got knocked out in 25 seconds by Ori Lang.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Sam Patterson is coming off a poor performance against Michael Venom Paige.",
+      "about": "Sam Patterson",
+      "opponent": "Michael Venom Paige",
+      "direction": "against_about",
+      "evidenceType": "opponent_quality",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "Sam Patterson coming off of one of the worst fights in UFC history against Michael Venom Paige.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B14",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "Sam Patterson coming off of one of the worst fights in UFC history against Michael Venom Paige.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Sam Patterson is a massive betting favorite at around minus 425.",
+      "about": "Sam Patterson",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "market",
+      "claimClass": "statistical",
+      "confidence": 1,
+      "quote": "At about minus 425, Patterson will be the biggest favorite in this three-legg parlay.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 2562,
+        "endChar": 5367,
+        "approxMinute": 3
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B14",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 2562,
+            "endChar": 5367,
+            "approxMinute": 3
+          },
+          "quote": "At about minus 425, Patterson will be the biggest favorite in this three-legg parlay.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Sam Patterson has the ability to stay on the outside and outstrike Santiago Ponzinibio over a 15-minute fight.",
+      "about": "Sam Patterson",
+      "opponent": "Santiago Ponzinibio",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.8,
+      "quote": "I see a world where Patterson just you know stays on the outside and out strikes the guy for 15 minutes.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 5012,
+        "endChar": 6095,
+        "approxMinute": 5
+      },
+      "chunkId": "0.2",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B14",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.2",
+          "segment": {
+            "startChar": 5012,
+            "endChar": 6095,
+            "approxMinute": 5
+          },
+          "quote": "I see a world where Patterson just you know stays on the outside and out strikes the guy for 15 minutes.",
+          "claimClass": "matchup_analysis",
+          "direction": "favors_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Dustin Jacoby is coming off three consecutive knockout victories over Vitor Petrino, Bruno Lopez, and Kennedy Nzechukwu (referred to as Julius Juice Box Walker).",
+      "about": "Dustin Jacoby",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Three consecutive knockout victories over Vtor Patino Bruno Lopez and Julius Juice Box Walker.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 6967,
+        "endChar": 12967,
+        "approxMinute": 7
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B02",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 6967,
+            "endChar": 12967,
+            "approxMinute": 7
+          },
+          "quote": "Three consecutive knockout victories over Vtor Patino Bruno Lopez and Julius Juice Box Walker.",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Dustin Jacoby is 38 years old.",
+      "about": "Dustin Jacoby",
+      "opponent": null,
+      "direction": "neutral",
+      "evidenceType": "other",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "the one thing on Jacobe, he is 38.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 6967,
+        "endChar": 12967,
+        "approxMinute": 7
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": true,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": "UFC-2026-07-25-B02",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 6967,
+            "endChar": 12967,
+            "approxMinute": 7
+          },
+          "quote": "the one thing on Jacobe, he is 38.",
+          "claimClass": "hard_fact",
+          "direction": "neutral",
+          "confidence": 1
+        },
+        {
+          "channel": "We Want Picks",
+          "videoId": "wcSRQfJ14OU",
+          "url": "https://www.youtube.com/watch?v=wcSRQfJ14OU",
+          "publishedAt": "2026-07-21T21:00:25Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 16240,
+            "endChar": 22240,
+            "approxMinute": 16
+          },
+          "quote": "A little worried cuz he's 38.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 2,
+      "sources": [
+        "Greedo Plays MMA",
+        "We Want Picks"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1,
+        "We Want Picks": 1
+      },
+      "directionConflict": true,
       "classSpread": [
         "hard_fact"
       ]
@@ -11228,66 +11924,6 @@
       ]
     },
     {
-      "claim": "Dustin Jacoby is 38 years old.",
-      "about": "Dustin Jacoby",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "other",
-      "claimClass": "hard_fact",
-      "confidence": 1,
-      "quote": "A little worried cuz he's 38.",
-      "videoId": "wcSRQfJ14OU",
-      "channel": "We Want Picks",
-      "publishedAt": "2026-07-21T21:00:25Z",
-      "url": "https://www.youtube.com/watch?v=wcSRQfJ14OU",
-      "segment": {
-        "startChar": 16240,
-        "endChar": 22240,
-        "approxMinute": 16
-      },
-      "chunkId": "0",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-07-25-B08"
-      ],
-      "boutId": "UFC-2026-07-25-B02",
-      "bucket": "card_fighter_no_bout_context",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "We Want Picks",
-          "videoId": "wcSRQfJ14OU",
-          "url": "https://www.youtube.com/watch?v=wcSRQfJ14OU",
-          "publishedAt": "2026-07-21T21:00:25Z",
-          "chunkId": "0",
-          "segment": {
-            "startChar": 16240,
-            "endChar": 22240,
-            "approxMinute": 16
-          },
-          "quote": "A little worried cuz he's 38.",
-          "claimClass": "hard_fact",
-          "direction": "against_about",
-          "confidence": 1
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "We Want Picks"
-      ],
-      "mentionsPerSource": {
-        "We Want Picks": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "hard_fact"
-      ]
-    },
-    {
       "claim": "Abdul Hussein hasn't fought MMA since December of 2025.",
       "about": "Abdul Hussein",
       "opponent": null,
@@ -11947,6 +12583,265 @@
       "directionConflict": false,
       "classSpread": [
         "hard_fact"
+      ]
+    },
+    {
+      "claim": "Santiago Ponzinibio is approaching 40 years old.",
+      "about": "Santiago Ponzinibio",
+      "opponent": "Sam Patterson",
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 0.9,
+      "quote": "Ponzibio is about to be 40.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 5012,
+        "endChar": 6095,
+        "approxMinute": 5
+      },
+      "chunkId": "0.2",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": true,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0.2",
+          "segment": {
+            "startChar": 5012,
+            "endChar": 6095,
+            "approxMinute": 5
+          },
+          "quote": "Ponzibio is about to be 40.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 0.9
+        },
+        {
+          "channel": "DFS BY THE NUMBERS",
+          "videoId": "Qt1ed1nSCAE",
+          "url": "https://www.youtube.com/watch?v=Qt1ed1nSCAE",
+          "publishedAt": "2026-07-22T16:43:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 299,
+            "endChar": 6299,
+            "approxMinute": 0
+          },
+          "quote": "Pontanibio who's 39 years old who is is just approaching the WA or he's he's been approached the washed category.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 2,
+      "sources": [
+        "Greedo Plays MMA",
+        "DFS BY THE NUMBERS"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1,
+        "DFS BY THE NUMBERS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact",
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Magomed Gadzhiyev (Zionov/Zakov) got dropped early by Luis Caldas on the Contender Series before putting on 235 significant strikes and winning a 30-26 decision.",
+      "about": "Magomed Gadzhiyev",
+      "opponent": "Luis Caldas",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 1,
+      "quote": "fight where Zakov gets dropped early. Don't get me wrong. Like immediately he's pouring on the pressure and the volume on Caldus. But Caldus does drop him. Zakov unfased by that eventually puts on 235 significant strikes on Lucas Caldas",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 6967,
+        "endChar": 12967,
+        "approxMinute": 7
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 6967,
+            "endChar": 12967,
+            "approxMinute": 7
+          },
+          "quote": "fight where Zakov gets dropped early. Don't get me wrong. Like immediately he's pouring on the pressure and the volume on Caldus. But Caldus does drop him. Zakov unfased by that eventually puts on 235 significant strikes on Lucas Caldas",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Damian Pęchesky (Respecty) is not ready for the UFC level and will be swarmed by Gadzhiyev.",
+      "about": "Damian Pęchesky",
+      "opponent": "Magomed Gadzhiyev",
+      "direction": "against_about",
+      "evidenceType": "opponent_quality",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "I just don't think he's ready for this level just yet. He is going to be swarmed all fight long and I just don't know what he's going to be able to offer up in return.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 6967,
+        "endChar": 12967,
+        "approxMinute": 7
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 6967,
+            "endChar": 12967,
+            "approxMinute": 7
+          },
+          "quote": "I just don't think he's ready for this level just yet. He is going to be swarmed all fight long and I just don't know what he's going to be able to offer up in return.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Muhammad Naimov (or Sed) has secured four of his six career knockout wins via head kick.",
+      "about": "Muhammad Naimov",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 0.9,
+      "quote": "four of the six knockout wins for Muhammad say throughout the quarters of his career have been via headkick knockout.",
+      "videoId": "vxbTjTzSrQM",
+      "channel": "Greedo Plays MMA",
+      "publishedAt": "2026-07-23T22:30:19Z",
+      "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+      "segment": {
+        "startChar": 6967,
+        "endChar": 12967,
+        "approxMinute": 7
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-07-25-B03"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Greedo Plays MMA",
+          "videoId": "vxbTjTzSrQM",
+          "url": "https://www.youtube.com/watch?v=vxbTjTzSrQM",
+          "publishedAt": "2026-07-23T22:30:19Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 6967,
+            "endChar": 12967,
+            "approxMinute": 7
+          },
+          "quote": "four of the six knockout wins for Muhammad say throughout the quarters of his career have been via headkick knockout.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Greedo Plays MMA"
+      ],
+      "mentionsPerSource": {
+        "Greedo Plays MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
       ]
     },
     {
@@ -12850,66 +13745,6 @@
       ],
       "mentionsPerSource": {
         "138 MMA": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "matchup_analysis"
-      ]
-    },
-    {
-      "claim": "Santiago Ponzinibio is 39 years old and approaching the washed category.",
-      "about": "Santiago Ponzinibio",
-      "opponent": "Sam Patterson",
-      "direction": "against_about",
-      "evidenceType": "record",
-      "claimClass": "matchup_analysis",
-      "confidence": 0.8,
-      "quote": "Pontanibio who's 39 years old who is is just approaching the WA or he's he's been approached the washed category.",
-      "videoId": "Qt1ed1nSCAE",
-      "channel": "DFS BY THE NUMBERS",
-      "publishedAt": "2026-07-22T16:43:47Z",
-      "url": "https://www.youtube.com/watch?v=Qt1ed1nSCAE",
-      "segment": {
-        "startChar": 299,
-        "endChar": 6299,
-        "approxMinute": 0
-      },
-      "chunkId": "0",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-07-25-B03"
-      ],
-      "boutId": null,
-      "bucket": "other_fight_or_fighter",
-      "cardEvidence": "off_card",
-      "occurrences": [
-        {
-          "channel": "DFS BY THE NUMBERS",
-          "videoId": "Qt1ed1nSCAE",
-          "url": "https://www.youtube.com/watch?v=Qt1ed1nSCAE",
-          "publishedAt": "2026-07-22T16:43:47Z",
-          "chunkId": "0",
-          "segment": {
-            "startChar": 299,
-            "endChar": 6299,
-            "approxMinute": 0
-          },
-          "quote": "Pontanibio who's 39 years old who is is just approaching the WA or he's he's been approached the washed category.",
-          "claimClass": "matchup_analysis",
-          "direction": "against_about",
-          "confidence": 0.8
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "DFS BY THE NUMBERS"
-      ],
-      "mentionsPerSource": {
-        "DFS BY THE NUMBERS": 1
       },
       "directionConflict": false,
       "classSpread": [
@@ -14913,12 +15748,12 @@
         ]
       },
       "againstPosition": {
-        "claims": 7,
+        "claims": 9,
         "sources": [
           "MMA EXPERTS",
+          "Greedo Plays MMA",
           "Half The Battle",
           "James Lynch",
-          "Greedo Plays MMA",
           "JakeGerberMMA",
           "DFS BY THE NUMBERS",
           "HopperMMA",
@@ -14927,10 +15762,44 @@
         "independentSources": 8,
         "examples": [
           "Cody Gibson is 38 years old and in the final phase of his career.",
-          "Cody Gibson is nearly 39 years of age with a record of 21 and 12."
+          "Cody Gibson is likely on his way out of the UFC with a loss in this fight."
         ]
       },
       "crossSource": true
+    },
+    {
+      "boutId": "UFC-2026-07-25-B03",
+      "proposition": "Abdul Hussein — striking",
+      "about": "Abdul Hussein",
+      "topic": "striking",
+      "favorPosition": {
+        "claims": 10,
+        "sources": [
+          "MMA EXPERTS",
+          "Greedo Plays MMA",
+          "JakeGerberMMA",
+          "The Mike Finch Show",
+          "MMA JAWN",
+          "DFS BY THE NUMBERS",
+          "The Octagon Oracle"
+        ],
+        "independentSources": 7,
+        "examples": [
+          "Abdul Hussein has a speed edge over Cody Gibson on the feet due to his Southpaw stance and kickboxing game.",
+          "Abdul Hussein hits significantly hard for being 5'5 and small for 135 pounds."
+        ]
+      },
+      "againstPosition": {
+        "claims": 1,
+        "sources": [
+          "The Octagon Oracle"
+        ],
+        "independentSources": 1,
+        "examples": [
+          "Abdul Hussein can be countered because of the risks he takes while fighting in close."
+        ]
+      },
+      "crossSource": false
     },
     {
       "boutId": "UFC-2026-07-25-B03",
@@ -14938,7 +15807,7 @@
       "about": "Abdul Hussein",
       "topic": "record",
       "favorPosition": {
-        "claims": 7,
+        "claims": 8,
         "sources": [
           "Greedo Plays MMA",
           "Half The Battle",
@@ -14950,8 +15819,8 @@
         ],
         "independentSources": 7,
         "examples": [
-          "Abdul Hussein is 15-2 in professional MMA.",
-          "Abdul Hussein secured a violent finish over former UFC fighter Tyson Nam six months ago."
+          "Abdul Hussein knocked out Tyson Nam in his last fight outside of the UFC.",
+          "Abdul Hussein is 15-2 in professional MMA."
         ]
       },
       "againstPosition": {
@@ -14986,7 +15855,7 @@
         ]
       },
       "againstPosition": {
-        "claims": 3,
+        "claims": 4,
         "sources": [
           "Greedo Plays MMA",
           "Topside MMA",
@@ -14994,44 +15863,45 @@
         ],
         "independentSources": 3,
         "examples": [
-          "Cody Gibson lacks the strength at 38 years old to control other bantamweights in the clinch or grappling exchanges.",
-          "Cody Gibson has consistently struggled with grappling throughout his career."
+          "Cody Gibson was submitted in the second round by Deon Blackshere.",
+          "Cody Gibson lacks the strength at 38 years old to control other bantamweights in the clinch or grappling exchanges."
         ]
       },
       "crossSource": true
     },
     {
-      "boutId": "UFC-2026-07-25-B03",
-      "proposition": "Abdul Hussein — striking",
-      "about": "Abdul Hussein",
+      "boutId": "UFC-2026-07-25-B14",
+      "proposition": "Sam Patterson — striking",
+      "about": "Sam Patterson",
       "topic": "striking",
       "favorPosition": {
-        "claims": 9,
+        "claims": 5,
         "sources": [
           "MMA EXPERTS",
-          "JakeGerberMMA",
-          "The Mike Finch Show",
-          "MMA JAWN",
+          "Greedo Plays MMA",
           "DFS BY THE NUMBERS",
-          "The Octagon Oracle"
+          "Half The Battle"
         ],
-        "independentSources": 6,
+        "independentSources": 4,
         "examples": [
-          "Abdul Hussein has a speed edge over Cody Gibson on the feet due to his Southpaw stance and kickboxing game.",
-          "Abdul Hussein utilizes karate and taekwondo-esque light footwork, bouncing in and out of range and charging in with the backhand."
+          "Sam Patterson holds a five-inch reach advantage and a three-inch height advantage over Santiago Ponzanibio.",
+          "Sam Patterson has the ability to stay on the outside and outstrike Santiago Ponzinibio over a 15-minute fight."
         ]
       },
       "againstPosition": {
-        "claims": 1,
+        "claims": 3,
         "sources": [
-          "The Octagon Oracle"
+          "138 MMA",
+          "Half The Battle",
+          "Lucrative James"
         ],
-        "independentSources": 1,
+        "independentSources": 3,
         "examples": [
-          "Abdul Hussein can be countered because of the risks he takes while fighting in close."
+          "Sam Patterson has tall man defense where he keeps his chin up to be hit.",
+          "Sam Patterson possesses a bit of defensive liability due to his tall man's defense."
         ]
       },
-      "crossSource": false
+      "crossSource": true
     },
     {
       "boutId": "UFC-2026-07-25-B03",
@@ -15062,39 +15932,6 @@
         "independentSources": 1,
         "examples": [
           "Abdul Hussein has been outgrappled in a few past fights despite grappling being his main game plan."
-        ]
-      },
-      "crossSource": true
-    },
-    {
-      "boutId": "UFC-2026-07-25-B14",
-      "proposition": "Sam Patterson — striking",
-      "about": "Sam Patterson",
-      "topic": "striking",
-      "favorPosition": {
-        "claims": 4,
-        "sources": [
-          "MMA EXPERTS",
-          "DFS BY THE NUMBERS",
-          "Half The Battle"
-        ],
-        "independentSources": 3,
-        "examples": [
-          "Sam Patterson holds a five-inch reach advantage and a three-inch height advantage over Santiago Ponzanibio.",
-          "Sam Patterson has a ton of power, demonstrated by first-round finishes over Danny Barlow and Trey Waters."
-        ]
-      },
-      "againstPosition": {
-        "claims": 3,
-        "sources": [
-          "138 MMA",
-          "Half The Battle",
-          "Lucrative James"
-        ],
-        "independentSources": 3,
-        "examples": [
-          "Sam Patterson has tall man defense where he keeps his chin up to be hit.",
-          "Sam Patterson possesses a bit of defensive liability due to his tall man's defense."
         ]
       },
       "crossSource": true
