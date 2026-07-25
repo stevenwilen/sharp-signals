@@ -1,11 +1,11 @@
 {
   "card": "UFC-2026-07-25",
-  "ranAt": "2026-07-25T15:40:26.981Z",
+  "ranAt": "2026-07-25T15:50:29.775Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 1,
-    "delivered": 1,
-    "buyInstructions": 1,
+    "attempted": 2,
+    "delivered": 2,
+    "buyInstructions": 2,
     "humanReviews": 0,
     "transport": "telegram (manual instruction + human review)"
   },
@@ -50,15 +50,16 @@
     "provenance": "chosen by the human as entertainment limits; NOT derived from Kelly, NOT fitted to any result, NOT evidence of edge"
   },
   "contractsListed": {
-    "FIGHTER_WINS": 14
+    "FIGHTER_WINS": 12
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 12,
+    "ACTIONABLE EXPERIMENTAL": 1,
+    "NO BET": 9,
     "HUMAN REVIEW REQUIRED": 2
   },
   "forecastHash": "3e7a829a785c9e7d",
-  "snapshotTimestamp": "2026-07-25T15:40:27.050Z",
+  "snapshotTimestamp": "2026-07-25T15:50:29.883Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-07-25-B01",
@@ -127,56 +128,65 @@
   ],
   "buyInstructions": [
     {
-      "boutId": "explore",
-      "ticker": "KXUFCFIGHT-26JUL25WALPET-WAL",
-      "key": "explore|UFC-2026-07-25-B11|KXUFCFIGHT-26JUL25WALPET-WAL",
+      "boutId": "UFC-2026-07-25-B11",
+      "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
       "wouldSend": true,
-      "why": "previously recommended, no longer qualifies",
-      "text": "❌ BET WITHDRAWN\nKXUFCFIGHT-26JUL25WALPET-WAL\nReason: the position no longer qualifies (price, forecast, or listing changed)\nDo not place the previous recommendation.",
+      "why": "first time this contract has been seen",
+      "text": "🧪 rare maximum — $5\n\nThomas Petersen vs Valter Walker\nBuy: Thomas Petersen YES\n\nCurrent: 1¢\nMaximum: 29¢\nStake: $5 of $100\nApprox contracts: 467\n\nWhy: 3 independent origins support the same activity mechanism\nMain risk: Evidence is PARTIALLY COVERED\nSystem estimate: 33% (range 29%–36%)\nTop pick because: best conservative value after costs on this fight\n\nPlace only if the displayed average price is 29¢ or less.\n\nFor entertainment use. Manual placement only.",
       "state": {
-        "ask": 0.63,
-        "maximumAcceptablePrice": 0.6361,
+        "ask": 0.01,
+        "maximumAcceptablePrice": 0.2939,
         "forecastHash": "3e7a829a785c9e7d",
-        "classification": "WITHDRAWN",
-        "lane": "exploration",
-        "stakePercent": 4,
-        "topTicker": "KXUFCFIGHT-26JUL25WALPET-WAL",
+        "classification": "rare maximum",
+        "lane": "core",
+        "stakePercent": 5,
+        "topTicker": "KXUFCFIGHT-26JUL25WALPET-PET",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
-        "verdict": "WITHDRAWN",
-        "lastSentAt": "2026-07-25T15:00:44.206Z",
-        "lastType": "BUY_INSTRUCTION",
-        "firstSentAt": "2026-07-25T15:00:44.206Z",
-        "messageCount": 1
+        "verdict": "BUY"
       },
-      "verdict": "WITHDRAWN"
+      "verdict": "BUY"
+    },
+    {
+      "boutId": "UFC-2026-07-25-B11",
+      "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
+      "key": "explore|UFC-2026-07-25-B11|KXUFCFIGHT-26JUL25WALPET-PET",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
+      "text": "🧪 STRONG SPECULATIVE — $4\n\nThomas Petersen vs Valter Walker\nBuy: Thomas Petersen YES\n\nCurrent: 1¢\nMaximum: 29¢\nStake: $4 of $100\nApprox contracts: 373\nCard exposure left: $6\n\nWhy: Valter Walker has a durable chin.\nMain risk: Based on 1 uncorroborated origin\nSystem estimate: 31% (range 29%–36%)\n\nPlace only if the displayed average price is 29¢ or less.\n\nFor entertainment use. Manual placement only.",
+      "state": {
+        "ask": 0.01,
+        "maximumAcceptablePrice": 0.2939,
+        "forecastHash": "3e7a829a785c9e7d",
+        "classification": "STRONG SPECULATIVE",
+        "lane": "exploration",
+        "stakePercent": 4,
+        "topTicker": "KXUFCFIGHT-26JUL25WALPET-PET",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "BUY"
+      },
+      "lane": "exploration",
+      "verdict": "BUY"
     }
   ],
   "decisions": [
     {
-      "ticker": "KXUFCFIGHT-26JUL25JACSAI-SAI",
-      "bout": "Muhammad Said vs Dustin Jacoby",
-      "classification": "NO BET",
+      "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
+      "bout": "Valter Walker vs Thomas Petersen",
+      "classification": "ACTIONABLE EXPERIMENTAL",
       "rank": 1,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "not executable: empty order book on the side required to fill this trade"
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25JACSAI-JAC",
-      "bout": "Uran Satybaldiev vs Dustin Jacoby",
-      "classification": "NO BET",
-      "rank": 2,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
+      "entertainmentEligible": true,
+      "blockedBy": null,
+      "reason": null
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25ERCTEM-TEM",
       "bout": "Ramazonbek Temirov vs Steve Erceg",
       "classification": "NO BET",
-      "rank": 3,
+      "rank": 2,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -185,7 +195,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ERCTEM-ERC",
       "bout": "Ramazonbek Temirov vs Steve Erceg",
       "classification": "NO BET",
-      "rank": 4,
+      "rank": 3,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -194,7 +204,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ZAYRZE-ZAY",
       "bout": "Magomed Zaynukov vs Damian Rzepecki",
       "classification": "NO BET",
-      "rank": 5,
+      "rank": 4,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -203,7 +213,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ZAYRZE-RZE",
       "bout": "Magomed Zaynukov vs Damian Rzepecki",
       "classification": "NO BET",
-      "rank": 6,
+      "rank": 5,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -212,7 +222,7 @@
       "ticker": "KXUFCFIGHT-26JUL25KUNFOR-KUN",
       "bout": "Rizvan Kuniev vs Tyrell Fortune",
       "classification": "NO BET",
-      "rank": 7,
+      "rank": 6,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -221,7 +231,7 @@
       "ticker": "KXUFCFIGHT-26JUL25KUNFOR-FOR",
       "bout": "Rizvan Kuniev vs Tyrell Fortune",
       "classification": "NO BET",
-      "rank": 8,
+      "rank": 7,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -230,25 +240,16 @@
       "ticker": "KXUFCFIGHT-26JUL25WALPET-WAL",
       "bout": "Valter Walker vs Thomas Petersen",
       "classification": "NO BET",
-      "rank": 9,
+      "rank": 8,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0397 is not favourable after fees and slippage"
-    },
-    {
-      "ticker": "KXUFCFIGHT-26JUL25WALPET-PET",
-      "bout": "Valter Walker vs Thomas Petersen",
-      "classification": "NO BET",
-      "rank": 10,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "conservative EV -0.0721 is not favourable after fees and slippage"
+      "reason": "not executable: empty order book on the side required to fill this trade"
     },
     {
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-VAG",
       "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
       "classification": "NO BET",
-      "rank": 11,
+      "rank": 9,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -257,7 +258,7 @@
       "ticker": "KXUFCFIGHT-26JUL25VAGIZA-IZA",
       "bout": "Abubakar Vagaev vs Saygid Izagakhmaev",
       "classification": "NO BET",
-      "rank": 12,
+      "rank": 10,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -266,7 +267,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ANKGUS-GUS",
       "bout": "Bogdan Guskov vs Magomed Ankalaev",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 13,
+      "rank": 11,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
@@ -275,7 +276,7 @@
       "ticker": "KXUFCFIGHT-26JUL25ANKGUS-ANK",
       "bout": "Bogdan Guskov vs Magomed Ankalaev",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 14,
+      "rank": 12,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
