@@ -287,16 +287,16 @@ async function fromExplorationShadow(eventDate, forecast, evidence, nowMs, healt
     // refuses it. Best-effort; a fetch failure leaves the existing bell-based postBell (fail toward refusal).
     try {
       const K = require("./lib/kalshi");
+      const FR = require("./lib/freshness");
       const ms = await K.marketsAll({ series_ticker: "KXUFCFIGHT" });
       const known = new Set(ms.map((m) => m.ticker));
       const active = new Set(ms.filter((m) => m.status === "active" || m.status === "open").map((m) => m.ticker));
       // Once ANY bout on THIS card has resolved, the card is LIVE — prices are moving fast against a sealed
       // prior, so HALT all new funding for the card, not just the resolved bouts. That is the real accident:
-      // "betting off the market moving on fight day." The card is identified by the shared ticker prefix
-      // (KXUFCFIGHT-<date>), so this needs no hardcoded bell — it reads Kalshi's live state, which is why it
-      // works no matter when the card actually starts.
-      const prefix = (rawObs.map((o) => o.ticker).find(Boolean) || "").split("-").slice(0, 2).join("-");
-      const cardLive = prefix && ms.some((m) => (m.ticker || "").startsWith(prefix) && m.status !== "active" && m.status !== "open");
+      // "betting off the market moving on fight day." Same shared definition the entertainment gate uses
+      // (lib/freshness.cardIsLive) — one source of truth, live Kalshi status, no hardcoded bell, so it works
+      // no matter when the card actually starts.
+      const cardLive = FR.cardIsLive(ms, eventDate);
       let held = 0;
       for (const o of rawObs) if (o.ticker && (cardLive || (known.has(o.ticker) && !active.has(o.ticker)))) { o.postBell = true; held++; }
       if (held) notes.push(`held out ${held} signal(s): ${cardLive ? "card is LIVE (a bout resolved) — no fight-day funding" : "bout already resolved/started"}`);
