@@ -23,11 +23,11 @@
       "feeModelVersion": "2026-07-16",
       "totalCost": 534.65,
       "openedAt": "2026-07-25T15:00:44.677Z",
-      "status": "PAPER_OPEN",
+      "status": "PAPER_SETTLED",
       "result": null,
-      "payout": null,
-      "paperPnl": null,
-      "settledAt": null,
+      "payout": 500,
+      "paperPnl": 0,
+      "settledAt": "2026-07-26T05:14:01.539Z",
       "closingLine": null,
       "history": [
         {
@@ -35,8 +35,22 @@
           "to": "PAPER_OPEN",
           "reason": "formal BUY issued — paper position auto-created",
           "at": "2026-07-25T15:00:44.677Z"
+        },
+        {
+          "from": "PAPER_OPEN",
+          "to": "PAPER_SETTLED",
+          "reason": "settled: void",
+          "at": "2026-07-26T05:14:01.539Z"
+        },
+        {
+          "from": "PAPER_SETTLED",
+          "to": "PAPER_SETTLED",
+          "reason": "REVOKED (void) — accidental fight-day paper entry",
+          "at": "2026-07-26T05:14:01.539Z"
         }
-      ]
+      ],
+      "revoked": true,
+      "revokedReason": "SYSTEM ERROR: auto-funded on fight day (opened 2026-07-25T15:00:44.677Z) — openPaper 22:00 bell missed the ~15:00Z start. Not a legitimate bet; voided with zero P&L, exposure returned."
     }
   },
   "meta": {}

@@ -71,11 +71,20 @@ function comboBuyToRec(eventDate) {
     const recs = [];
     for (const b of alerts.buyInstructions || []) { const r = coreBuyToRec(b, forecast, card.eventDate); if (r) recs.push(r); }
     const combo = comboBuyToRec(card.eventDate); if (combo) recs.push(combo);
+    // Card-live halt: once ANY bout on this card has resolved, the card is LIVE — stop opening paper
+    // positions regardless of the clock. openPaper's own gate uses the fixed 22:00 bell, which misses a
+    // card that starts earlier (a $500 1c longshot got auto-funded here at 15:00Z that way). Same shared
+    // definition the other books use (lib/freshness.cardIsLive); the bell stays as the offline fallback.
+    let cardLive = false;
+    try { const K = require("./lib/kalshi"); cardLive = require("./lib/freshness").cardIsLive(await K.marketsAll({ series_ticker: "KXUFCFIGHT" }), card.eventDate); }
+    catch (e) { say(`  (card-live check unavailable: ${e.message} — falling back to openPaper's 22:00 bell)`); }
     for (const r of recs) {
+      if (cardLive) { skipped++; continue; }
       const res = PL.openPaper(pl, r, { now });
       if (res.created) { created++; say(`  + PAPER ${r.kind} ${r.fight || r.ticker} — $${res.position.paperStake} @ ${Math.round((r.entryPrice || 0) * 100)}c (${res.position.contracts} contracts)`); }
       else skipped++;
     }
+    if (cardLive && recs.length) say(`  ⛔ card is LIVE (a bout resolved) — ${recs.length} paper entr${recs.length === 1 ? "y" : "ies"} held; no funding after a card starts`);
   }
 
   let settled = { settled: [], pending: [], unreadable: [] };
