@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T10:27:32.809Z",
+  "generatedAt": "2026-07-26T10:35:40.060Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
@@ -8,11 +8,11 @@
       "date": "2026-08-01",
       "bouts": 12,
       "A": 0,
-      "B": 9,
+      "B": 11,
       "C": 0,
-      "D": 3,
-      "priced": 9,
-      "pct": 75
+      "D": 1,
+      "priced": 11,
+      "pct": 91.7
     }
   ],
   "baselines": {
@@ -20,17 +20,52 @@
       {
         "boutId": "UFC-2026-08-01-B01",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Daniel Rodriguez",
+        "probability": 0.198,
+        "probabilityOther": 0.802,
+        "orientation": {
+          "favorite": "Uros Medic",
+          "underdog": "Daniel Rodriguez"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Daniel Rodriguez": "+386",
+            "Uros Medic": "-501",
+            "rawProbA": 0.2058,
+            "rawProbB": 0.8336,
+            "overround": 1.0394
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.198,
+        "marketDispersion": 2.26,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -38,22 +73,57 @@
             "D"
           ]
         },
-        "contentHash": "26116f34da6e8b18"
+        "contentHash": "e7dd5b22cc0575e4"
       },
       {
         "boutId": "UFC-2026-08-01-B02",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Navajo Stirling",
+        "probability": 0.6429,
+        "probabilityOther": 0.3571,
+        "orientation": {
+          "favorite": "Navajo Stirling",
+          "underdog": "Jan Blachowicz"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Navajo Stirling": "-200",
+            "Jan Blachowicz": "+170",
+            "rawProbA": 0.6667,
+            "rawProbB": 0.3704,
+            "overround": 1.037
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.6429,
+        "marketDispersion": 2.47,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -61,7 +131,7 @@
             "D"
           ]
         },
-        "contentHash": "2f7baa8b27ccb3fc"
+        "contentHash": "78ebbab4d6f57b35"
       },
       {
         "boutId": "UFC-2026-08-01-B03",
