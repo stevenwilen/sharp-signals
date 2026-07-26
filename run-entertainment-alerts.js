@@ -386,11 +386,17 @@ async function main() {
       if (key.startsWith("review|")) continue;
       if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
       if (currentKeys.has(key)) continue;
-      const fight = (fc.forecasts.find((x) => x.boutId === (prev.boutId || key.split("|")[0])) || {}).fight || prev.topTicker || key;
+      const tk = prev.topTicker || key.split("|").pop();
+      // Name the FIGHTER the contract is for, not a ticker code. The bout has usually left the forecast
+      // (that is WHY it withdrew), so the current forecast rarely still carries the name — fall back to the
+      // live Kalshi contract's fighter (yes_sub_title), and to the ticker only if the market is gone too.
+      let label = (fc.forecasts.find((x) => x.boutId === (prev.boutId || key.split("|")[0])) || {}).fight;
+      if (!label && tk) { try { const r = await k.market(tk); const mkt = (r && (r.market || r)) || {}; label = mkt.yes_sub_title || mkt.title || null; } catch { /* market gone — fall through to the ticker */ } }
+      label = label || tk || key;
       messages.push({
-        boutId: key.split("|")[0], ticker: prev.topTicker || key.split("|").pop(), key,
+        boutId: key.split("|")[0], ticker: tk, key,
         wouldSend: true, why: "previously recommended, no longer qualifies",
-        text: TM.positionWithdrawn({ recommendedFirst: fight, reason: "the position no longer qualifies (price, forecast, or listing changed)" }),
+        text: TM.positionWithdrawn({ recommendedFirst: label, price: prev.ask, reason: "the position no longer qualifies (price, forecast, or listing changed)" }),
         state: { ...prev, classification: "WITHDRAWN", verdict: "WITHDRAWN" }, verdict: "WITHDRAWN",
       });
       say(`  ⚠ WITHDRAWN: ${key} was ${prev.classification}, no longer qualifies — standing-down message queued`);
