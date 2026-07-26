@@ -2,11 +2,11 @@
   "writtenBy": "run-attest.js",
   "card": "UFC-2026-08-01",
   "eventDate": "2026-08-01",
-  "forecastSealHash": "e353bd40be898bec",
+  "forecastSealHash": "d02fc0c4fcb4d997",
   "rulesVersion": "7.0.0",
   "pipelineVersion": "unified-v2",
-  "ranAt": "2026-07-26T09:32:16.728Z",
-  "expiresAt": "2026-07-26T21:32:16.728Z",
+  "ranAt": "2026-07-26T09:49:28.569Z",
+  "expiresAt": "2026-07-26T21:49:28.569Z",
   "ttlHours": 12,
   "machine": {
     "platform": "linux",
@@ -18,22 +18,22 @@
     {
       "stage": "forecast (rules v7.0.0)",
       "ok": true,
-      "detail": "12 sealed forecasts, sealHash e353bd40be898bec",
+      "detail": "12 sealed forecasts, sealHash d02fc0c4fcb4d997",
       "artifact": {
         "path": "data/forecast-2026-08-01.json",
-        "bytes": 95108,
-        "sha256": "9fc3d2c23bf4a624fbcda90e4a3881caa0559330f7332f02e799bbd8c043c555"
+        "bytes": 18400,
+        "sha256": "de7c02e5fa0c1c41705b672870dd8c1d522b2c123022325493b6ff831665840e"
       },
       "forecasts": 12
     },
     {
       "stage": "evidence evaluation + admission",
-      "ok": true,
-      "detail": "12 bouts; 9 carry admitted evidence; 0 evidence-bearing bouts MISSING admission; claims carry publishedAt",
+      "ok": false,
+      "detail": "12 bouts; 0 carry admitted evidence; 0 evidence-bearing bouts MISSING admission; claims carry publishedAt",
       "artifact": {
         "path": "data/evidence-eval-2026-08-01.json",
         "bytes": 134484,
-        "sha256": "35d28198926678713a08d689d395d561fa0bc45d3d16f978c19a6c82f4ba950f"
+        "sha256": "e44007e4685efe03daa71544ce0293e47cacc88325517bf69f52942057d6b0c1"
       }
     },
     {
@@ -48,12 +48,15 @@
     },
     {
       "stage": "leakage admission enforced",
-      "ok": true,
-      "detail": "36 claims checked at the admission boundary, 1 rejected"
+      "ok": false,
+      "detail": "no admission record on any forecast — the leakage boundary did not run"
     }
   ],
-  "passed": true,
-  "failures": [],
-  "alertsPermittedByPipeline": true,
+  "passed": false,
+  "failures": [
+    "evidence evaluation + admission: 12 bouts; 0 carry admitted evidence; 0 evidence-bearing bouts MISSING admission; claims carry publishedAt",
+    "leakage admission enforced: no admission record on any forecast — the leakage boundary did not run"
+  ],
+  "alertsPermittedByPipeline": false,
   "note": "Machine-generated. `passed` means every stage ran and produced its artifact — NOT that a bet exists, and NOT that the system is armed. Arming additionally requires ALERTS_ARMED and SHARP_PRODUCTION=1; writing this file arms nothing."
 }
