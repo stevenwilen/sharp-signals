@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-26T10:17:34.778Z",
+  "generatedAt": "2026-07-26T10:27:32.809Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
@@ -8,11 +8,11 @@
       "date": "2026-08-01",
       "bouts": 12,
       "A": 0,
-      "B": 0,
+      "B": 9,
       "C": 0,
-      "D": 12,
-      "priced": 0,
-      "pct": 0
+      "D": 3,
+      "priced": 9,
+      "pct": 75
     }
   ],
   "baselines": {
@@ -66,17 +66,52 @@
       {
         "boutId": "UFC-2026-08-01-B03",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Marcin Tybura",
+        "probability": 0.3111,
+        "probabilityOther": 0.6889,
+        "orientation": {
+          "favorite": "Aleksandar Rakic",
+          "underdog": "Marcin Tybura"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Marcin Tybura": "+210",
+            "Aleksandar Rakic": "-250",
+            "rawProbA": 0.3226,
+            "rawProbB": 0.7143,
+            "overround": 1.0369
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.3111,
+        "marketDispersion": 2.53,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -84,22 +119,57 @@
             "D"
           ]
         },
-        "contentHash": "618197a0b51eb997"
+        "contentHash": "b778adb27ae3f823"
       },
       {
         "boutId": "UFC-2026-08-01-B04",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Robert Valentin",
+        "probability": 0.5427,
+        "probabilityOther": 0.4573,
+        "orientation": {
+          "favorite": "Robert Valentin",
+          "underdog": "Dusko Todorovic"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Robert Valentin": "-130",
+            "Dusko Todorovic": "+110",
+            "rawProbA": 0.5652,
+            "rawProbB": 0.4762,
+            "overround": 1.0414
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.5427,
+        "marketDispersion": 1.98,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -107,22 +177,57 @@
             "D"
           ]
         },
-        "contentHash": "61532dadc4fef967"
+        "contentHash": "602b07214a0f6a3d"
       },
       {
         "boutId": "UFC-2026-08-01-B05",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Gilbert Urbina",
+        "probability": 0.2381,
+        "probabilityOther": 0.7619,
+        "orientation": {
+          "favorite": "Vlasto Cepo",
+          "underdog": "Gilbert Urbina"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Gilbert Urbina": "+300",
+            "Vlasto Cepo": "-400",
+            "rawProbA": 0.25,
+            "rawProbB": 0.8,
+            "overround": 1.05
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.2381,
+        "marketDispersion": 1.17,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -130,22 +235,57 @@
             "D"
           ]
         },
-        "contentHash": "a25f40f6d5781cbb"
+        "contentHash": "150fbe1c042795f3"
       },
       {
         "boutId": "UFC-2026-08-01-B06",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Tofiq Musayev",
+        "probability": 0.4289,
+        "probabilityOther": 0.5711,
+        "orientation": {
+          "favorite": "Ludovit Klein",
+          "underdog": "Tofiq Musayev"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Tofiq Musayev": "+125",
+            "Ludovit Klein": "-145",
+            "rawProbA": 0.4444,
+            "rawProbB": 0.5918,
+            "overround": 1.0363
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.4289,
+        "marketDispersion": 2.55,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -153,22 +293,57 @@
             "D"
           ]
         },
-        "contentHash": "be43104485d01779"
+        "contentHash": "f7454c1b14c726aa"
       },
       {
         "boutId": "UFC-2026-08-01-B07",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Michael Oliveira",
+        "probability": 0.7107,
+        "probabilityOther": 0.2893,
+        "orientation": {
+          "favorite": "Michael Oliveira",
+          "underdog": "Oban Elliott"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Michael Oliveira": "-275",
+            "Oban Elliott": "+235",
+            "rawProbA": 0.7333,
+            "rawProbB": 0.2985,
+            "overround": 1.0318
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.7107,
+        "marketDispersion": 2.53,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -176,7 +351,7 @@
             "D"
           ]
         },
-        "contentHash": "04ec52ee4ec9bb40"
+        "contentHash": "781a0835d0c23caf"
       },
       {
         "boutId": "UFC-2026-08-01-B08",
@@ -204,17 +379,52 @@
       {
         "boutId": "UFC-2026-08-01-B09",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Bogdan Grad",
+        "probability": 0.7619,
+        "probabilityOther": 0.2381,
+        "orientation": {
+          "favorite": "Bogdan Grad",
+          "underdog": "Dennis Buzukja"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Bogdan Grad": "-400",
+            "Dennis Buzukja": "+300",
+            "rawProbA": 0.8,
+            "rawProbB": 0.25,
+            "overround": 1.05
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.7619,
+        "marketDispersion": 1.93,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -222,22 +432,57 @@
             "D"
           ]
         },
-        "contentHash": "9c150d9853657192"
+        "contentHash": "502d216bab85eaf7"
       },
       {
         "boutId": "UFC-2026-08-01-B10",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Nina Milosevic",
+        "probability": 0.8017,
+        "probabilityOther": 0.1983,
+        "orientation": {
+          "favorite": "Nina Milosevic",
+          "underdog": "Hailey Cowan"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Nina Milosevic": "-500",
+            "Hailey Cowan": "+385",
+            "rawProbA": 0.8333,
+            "rawProbB": 0.2062,
+            "overround": 1.0395
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.8017,
+        "marketDispersion": 1.13,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -245,22 +490,57 @@
             "D"
           ]
         },
-        "contentHash": "45f57bcba19128ff"
+        "contentHash": "bc4997cbf1b3e58b"
       },
       {
         "boutId": "UFC-2026-08-01-B11",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Jovan Leka",
+        "probability": 0.7241,
+        "probabilityOther": 0.2759,
+        "orientation": {
+          "favorite": "Jovan Leka",
+          "underdog": "Max Gimenis"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Jovan Leka": "-300",
+            "Max Gimenis": "+250",
+            "rawProbA": 0.75,
+            "rawProbB": 0.2857,
+            "overround": 1.0357
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.7241,
+        "marketDispersion": 1.36,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -268,22 +548,57 @@
             "D"
           ]
         },
-        "contentHash": "698388ae0d7421b8"
+        "contentHash": "01b5de20248ab06f"
       },
       {
         "boutId": "UFC-2026-08-01-B12",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Mateusz Rebecki",
+        "probability": 0.8017,
+        "probabilityOther": 0.1983,
+        "orientation": {
+          "favorite": "Mateusz Rebecki",
+          "underdog": "Kyle Prepolec"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Mateusz Rebecki": "-500",
+            "Kyle Prepolec": "+385",
+            "rawProbA": 0.8333,
+            "rawProbB": 0.2062,
+            "overround": 1.0395
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.8017,
+        "marketDispersion": 2.53,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -291,7 +606,7 @@
             "D"
           ]
         },
-        "contentHash": "899099f98aa1d88e"
+        "contentHash": "d6be370b8a94b2b9"
       }
     ]
   }
