@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-07-26T22:46:57.031Z",
+  "generatedAt": "2026-07-26T22:55:01.305Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
     {
       "card": "26AUG01",
       "date": "2026-08-01",
-      "bouts": 12,
+      "bouts": 10,
       "A": 0,
-      "B": 11,
+      "B": 10,
       "C": 0,
-      "D": 1,
-      "priced": 11,
-      "pct": 91.7
+      "D": 0,
+      "priced": 10,
+      "pct": 100
     }
   ],
   "baselines": {
@@ -426,29 +426,6 @@
       {
         "boutId": "UFC-2026-08-01-B08",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
-        "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
-        ],
-        "provenance": {
-          "module": "market-baseline@1.0.0",
-          "waterfall": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ]
-        },
-        "contentHash": "4a45bb4de40520b6"
-      },
-      {
-        "boutId": "UFC-2026-08-01-B09",
-        "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Bogdan Grad",
         "probability": 0.7619,
         "probabilityOther": 0.2381,
@@ -502,10 +479,10 @@
             "D"
           ]
         },
-        "contentHash": "9cd436103c3c7a40"
+        "contentHash": "f4773448e4c3a07b"
       },
       {
-        "boutId": "UFC-2026-08-01-B10",
+        "boutId": "UFC-2026-08-01-B09",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Nina Milosevic",
         "probability": 0.8017,
@@ -560,68 +537,10 @@
             "D"
           ]
         },
-        "contentHash": "bc4997cbf1b3e58b"
+        "contentHash": "87c12d87294db3da"
       },
       {
-        "boutId": "UFC-2026-08-01-B11",
-        "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "forFighter": "Jovan Leka",
-        "probability": 0.7241,
-        "probabilityOther": 0.2759,
-        "orientation": {
-          "favorite": "Jovan Leka",
-          "underdog": "Max Gimenis"
-        },
-        "fallbackLevel": "B",
-        "tier": "B_OPEN_CONSENSUS",
-        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
-        "clockBasis": "LOGICAL_OPEN",
-        "derivedFrom": "opening line",
-        "staleCheckEnforceable": false,
-        "sourceBooks": [
-          "BestFightOdds opening consensus"
-        ],
-        "bookCount": 1,
-        "rawPrices": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "Jovan Leka": "-300",
-            "Max Gimenis": "+250",
-            "rawProbA": 0.75,
-            "rawProbB": 0.2857,
-            "overround": 1.0357
-          }
-        ],
-        "priceTimestamps": [
-          {
-            "book": "BestFightOdds opening consensus",
-            "observedAt": null,
-            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
-          }
-        ],
-        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "deViggedProbability": 0.7241,
-        "marketDispersion": 1.36,
-        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
-        "oldestPriceAgeMs": null,
-        "oldestPriceAgeHours": null,
-        "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied"
-        ],
-        "provenance": {
-          "module": "market-baseline@1.0.0",
-          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-          "waterfall": [
-            "A",
-            "B",
-            "C",
-            "D"
-          ]
-        },
-        "contentHash": "01b5de20248ab06f"
-      },
-      {
-        "boutId": "UFC-2026-08-01-B12",
+        "boutId": "UFC-2026-08-01-B10",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Mateusz Rebecki",
         "probability": 0.8017,
@@ -676,7 +595,7 @@
             "D"
           ]
         },
-        "contentHash": "6e23002a4f806ba7"
+        "contentHash": "5a162f7e4e087477"
       }
     ]
   }
