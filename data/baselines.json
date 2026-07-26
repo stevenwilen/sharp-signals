@@ -1,24 +1,105 @@
 {
-  "generatedAt": "2026-07-26T23:23:43.211Z",
+  "generatedAt": "2026-07-26T23:33:41.710Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
     {
       "card": "26AUG01",
       "date": "2026-08-01",
-      "bouts": 10,
+      "bouts": 12,
       "A": 0,
-      "B": 10,
+      "B": 11,
       "C": 0,
-      "D": 0,
-      "priced": 10,
-      "pct": 100
+      "D": 1,
+      "priced": 11,
+      "pct": 91.7
     }
   ],
   "baselines": {
     "26AUG01": [
       {
         "boutId": "UFC-2026-08-01-B01",
+        "forecastTimestamp": "2026-08-01T00:00:00.000Z",
+        "status": "BASELINE UNAVAILABLE",
+        "fallbackLevel": "D",
+        "tier": "D_UNAVAILABLE",
+        "probability": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied",
+          "B: no BFO fight row for this bout",
+          "C: no Kalshi quotes supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "26116f34da6e8b18"
+      },
+      {
+        "boutId": "UFC-2026-08-01-B02",
+        "forecastTimestamp": "2026-08-01T00:00:00.000Z",
+        "forFighter": "Jovan Leka",
+        "probability": 0.7241,
+        "probabilityOther": 0.2759,
+        "orientation": {
+          "favorite": "Jovan Leka",
+          "underdog": "Max Gimenis"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Jovan Leka": "-300",
+            "Max Gimenis": "+250",
+            "rawProbA": 0.75,
+            "rawProbB": 0.2857,
+            "overround": 1.0357
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.7241,
+        "marketDispersion": 1.36,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "f9dd96de50247229"
+      },
+      {
+        "boutId": "UFC-2026-08-01-B03",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Daniel Rodriguez",
         "probability": 0.198,
@@ -73,10 +154,10 @@
             "D"
           ]
         },
-        "contentHash": "ccdaa10fa20efbd6"
+        "contentHash": "96141eb26d791e79"
       },
       {
-        "boutId": "UFC-2026-08-01-B02",
+        "boutId": "UFC-2026-08-01-B04",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Navajo Stirling",
         "probability": 0.6429,
@@ -131,10 +212,10 @@
             "D"
           ]
         },
-        "contentHash": "78ebbab4d6f57b35"
+        "contentHash": "4c3c94a35eed98cf"
       },
       {
-        "boutId": "UFC-2026-08-01-B03",
+        "boutId": "UFC-2026-08-01-B05",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Marcin Tybura",
         "probability": 0.3111,
@@ -189,10 +270,10 @@
             "D"
           ]
         },
-        "contentHash": "968bf1eb95957e81"
+        "contentHash": "abe9b12a8bce6dfe"
       },
       {
-        "boutId": "UFC-2026-08-01-B04",
+        "boutId": "UFC-2026-08-01-B06",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Robert Valentin",
         "probability": 0.5427,
@@ -247,10 +328,10 @@
             "D"
           ]
         },
-        "contentHash": "f6437f42a5f7b9fe"
+        "contentHash": "f7782162d0217390"
       },
       {
-        "boutId": "UFC-2026-08-01-B05",
+        "boutId": "UFC-2026-08-01-B07",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Gilbert Urbina",
         "probability": 0.2381,
@@ -305,10 +386,10 @@
             "D"
           ]
         },
-        "contentHash": "6e7a53f02c806e13"
+        "contentHash": "76402c4c952e3e2c"
       },
       {
-        "boutId": "UFC-2026-08-01-B06",
+        "boutId": "UFC-2026-08-01-B08",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Tofiq Musayev",
         "probability": 0.4289,
@@ -363,10 +444,10 @@
             "D"
           ]
         },
-        "contentHash": "957185687efd4a78"
+        "contentHash": "4f9e267dea7400ea"
       },
       {
-        "boutId": "UFC-2026-08-01-B07",
+        "boutId": "UFC-2026-08-01-B09",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Michael Oliveira",
         "probability": 0.7107,
@@ -421,10 +502,10 @@
             "D"
           ]
         },
-        "contentHash": "781a0835d0c23caf"
+        "contentHash": "ed1a12b65e6838cf"
       },
       {
-        "boutId": "UFC-2026-08-01-B08",
+        "boutId": "UFC-2026-08-01-B10",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Bogdan Grad",
         "probability": 0.7619,
@@ -479,10 +560,10 @@
             "D"
           ]
         },
-        "contentHash": "f4773448e4c3a07b"
+        "contentHash": "010417a11fc287a6"
       },
       {
-        "boutId": "UFC-2026-08-01-B09",
+        "boutId": "UFC-2026-08-01-B11",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Nina Milosevic",
         "probability": 0.8017,
@@ -537,10 +618,10 @@
             "D"
           ]
         },
-        "contentHash": "87c12d87294db3da"
+        "contentHash": "3ffe6e2c7bedbb70"
       },
       {
-        "boutId": "UFC-2026-08-01-B10",
+        "boutId": "UFC-2026-08-01-B12",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
         "forFighter": "Mateusz Rebecki",
         "probability": 0.8017,
@@ -595,7 +676,7 @@
             "D"
           ]
         },
-        "contentHash": "5a162f7e4e087477"
+        "contentHash": "6e23002a4f806ba7"
       }
     ]
   }
