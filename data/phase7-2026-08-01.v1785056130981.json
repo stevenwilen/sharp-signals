@@ -295,40 +295,42 @@
       }
     ]
   },
-  "sealedAt": "2026-07-26T08:55:30.905Z",
-  "rulesVersion": "7.0.0",
-  "marketSource": "bfo",
+  "phase": 7,
+  "completedAt": "2026-07-26T08:45:48.291Z",
+  "sealedForecastAt": "2026-07-26T08:45:48.219Z",
+  "references": {
+    "numericalForecastHash": "3f2c19cd42465b65",
+    "numericalForecastFile": "forecast-2026-08-01.json",
+    "scenarioHash": "ab2e2fb54bf9a3b0",
+    "evidenceHash": "01ec3b3d7995f679",
+    "marketSnapshotHash": "a6c672fdf59dd77e",
+    "engineVersion": "phase7-engine-1.0.0",
+    "ruleConfigVersion": "7.0.0"
+  },
+  "capLimited": [],
   "forecasts": [
     {
-      "forecastId": "462f5e8eb2a57c4d",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "f05cc92bb0a349f3",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B01",
       "fight": "Daniel Rodriguez vs Uros Medic",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2604,
+        "probability": 0.2644,
         "forFighter": "Daniel Rodriguez",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 2.24,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "dispersion": 1.92,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Daniel Rodriguez": "+280",
-            "Uros Medic": "-390",
-            "overround": 1.059076,
-            "deVigged": 0.248479
-          },
           {
             "book": "Caesars",
             "Daniel Rodriguez": "+280",
@@ -353,23 +355,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -379,49 +376,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "7dbe219da5ba91b7"
+        "baselineHash": "ae564b9757c0bd4a"
       },
       "systemCentral": {
-        "Daniel Rodriguez": 0.249,
-        "Uros Medic": 0.751
+        "Daniel Rodriguez": 0.2529,
+        "Uros Medic": 0.7471
       },
       "systemRange": {
         "forFighter": "Daniel Rodriguez",
-        "low": 0.196,
-        "high": 0.302
+        "low": 0.1999,
+        "high": 0.3059
       },
-      "marketDisagreementPoints": -1.14,
+      "marketDisagreementPoints": -1.15,
       "outcomeTree": {
         "Daniel Rodriguez": {
-          "win": 0.249,
-          "byKO": 0.0822,
-          "bySubmission": 0.0423,
-          "byDecision": 0.1245,
+          "win": 0.2529,
+          "byKO": 0.0835,
+          "bySubmission": 0.043,
+          "byDecision": 0.1264,
           "koByRound": {
-            "r1": 0.037,
-            "r2": 0.0263,
-            "r3": 0.0189
+            "r1": 0.0376,
+            "r2": 0.0267,
+            "r3": 0.0192
           },
           "submissionByRound": {
-            "r1": 0.019,
-            "r2": 0.0135,
-            "r3": 0.0097
+            "r1": 0.0193,
+            "r2": 0.0138,
+            "r3": 0.0099
           }
         },
         "Uros Medic": {
-          "win": 0.751,
-          "byKO": 0.2478,
-          "bySubmission": 0.1277,
-          "byDecision": 0.3755,
+          "win": 0.7471,
+          "byKO": 0.2465,
+          "bySubmission": 0.127,
+          "byDecision": 0.3736,
           "koByRound": {
-            "r1": 0.1115,
-            "r2": 0.0793,
-            "r3": 0.057
+            "r1": 0.1109,
+            "r2": 0.0789,
+            "r3": 0.0567
           },
           "submissionByRound": {
-            "r1": 0.0575,
-            "r2": 0.0409,
-            "r3": 0.0294
+            "r1": 0.0571,
+            "r2": 0.0406,
+            "r3": 0.0292
           }
         }
       },
@@ -491,12 +488,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.2604,
+        "marketPriorA": 0.2644,
         "coreAdjustmentLogOdds": -0.06,
-        "coreCentralA": 0.249,
+        "coreCentralA": 0.2529,
         "creativeAdjustmentLogOddsTowardA": -0.1854,
-        "creativeCentralA": 0.216,
-        "creativeMovePoints": -3.3,
+        "creativeCentralA": 0.2195,
+        "creativeMovePoints": -3.34,
         "capped": false,
         "cap": 0.2,
         "activeHypotheses": 4,
@@ -534,7 +531,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.921Z",
+            "timestamp": "2026-07-26T08:45:48.234Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -573,7 +570,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.921Z",
+            "timestamp": "2026-07-26T08:45:48.234Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -611,7 +608,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.921Z",
+            "timestamp": "2026-07-26T08:45:48.235Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -650,7 +647,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.921Z",
+            "timestamp": "2026-07-26T08:45:48.235Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -706,24 +703,24 @@
       },
       "dataHashes": {
         "evidenceEval": "163572107aab6802",
-        "baseline": "f216439a1ed9603b",
+        "baseline": "3aed43b061856361",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "14fd97981aef9cf8",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "3a8bf37163b02947",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B02",
       "fight": "Navajo Stirling vs Jan Blachowicz",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.7276,
+        "probability": 0.7255,
         "forFighter": "Navajo Stirling",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
@@ -731,15 +728,8 @@
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 2.12,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Navajo Stirling": "-350",
-            "Jan Blachowicz": "+255",
-            "overround": 1.059468,
-            "deVigged": 0.734121
-          },
           {
             "book": "Caesars",
             "Navajo Stirling": "-330",
@@ -764,23 +754,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -790,49 +775,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "2193f6fed96a5764"
+        "baselineHash": "5eb95ab4e7f7e57c"
       },
       "systemCentral": {
-        "Navajo Stirling": 0.7276,
-        "Jan Blachowicz": 0.2724
+        "Navajo Stirling": 0.7255,
+        "Jan Blachowicz": 0.2745
       },
       "systemRange": {
         "forFighter": "Navajo Stirling",
-        "low": 0.6776,
-        "high": 0.7776
+        "low": 0.6755,
+        "high": 0.7755
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Navajo Stirling": {
-          "win": 0.7276,
-          "byKO": 0.2401,
-          "bySubmission": 0.1237,
-          "byDecision": 0.3638,
+          "win": 0.7255,
+          "byKO": 0.2394,
+          "bySubmission": 0.1233,
+          "byDecision": 0.3628,
           "koByRound": {
-            "r1": 0.108,
-            "r2": 0.0768,
-            "r3": 0.0552
+            "r1": 0.1077,
+            "r2": 0.0766,
+            "r3": 0.0551
           },
           "submissionByRound": {
-            "r1": 0.0557,
-            "r2": 0.0396,
-            "r3": 0.0285
+            "r1": 0.0555,
+            "r2": 0.0395,
+            "r3": 0.0284
           }
         },
         "Jan Blachowicz": {
-          "win": 0.2724,
-          "byKO": 0.0899,
-          "bySubmission": 0.0463,
-          "byDecision": 0.1362,
+          "win": 0.2745,
+          "byKO": 0.0906,
+          "bySubmission": 0.0467,
+          "byDecision": 0.1372,
           "koByRound": {
-            "r1": 0.0405,
-            "r2": 0.0288,
-            "r3": 0.0207
+            "r1": 0.0408,
+            "r2": 0.029,
+            "r3": 0.0208
           },
           "submissionByRound": {
-            "r1": 0.0208,
-            "r2": 0.0148,
-            "r3": 0.0106
+            "r1": 0.021,
+            "r2": 0.0149,
+            "r3": 0.0107
           }
         }
       },
@@ -881,40 +866,33 @@
       },
       "dataHashes": {
         "evidenceEval": "1430d297315382fc",
-        "baseline": "6b0313797a537270",
+        "baseline": "8e1647e67f2983b4",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "b6ff81e4d4768f6e",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "08cb9c08e1bebe17",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B03",
       "fight": "Marcin Tybura vs Aleksandar Rakic",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2751,
+        "probability": 0.2768,
         "forFighter": "Marcin Tybura",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.7,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "dispersion": 1.61,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Marcin Tybura": "+250",
-            "Aleksandar Rakic": "-340",
-            "overround": 1.058441,
-            "deVigged": 0.269939
-          },
           {
             "book": "Caesars",
             "Marcin Tybura": "+250",
@@ -939,23 +917,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -965,48 +938,48 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "d3627c26b837fadb"
+        "baselineHash": "7c2a8f443ddab1b5"
       },
       "systemCentral": {
-        "Marcin Tybura": 0.2751,
-        "Aleksandar Rakic": 0.7249
+        "Marcin Tybura": 0.2768,
+        "Aleksandar Rakic": 0.7232
       },
       "systemRange": {
         "forFighter": "Marcin Tybura",
-        "low": 0.2201,
-        "high": 0.3301
+        "low": 0.2218,
+        "high": 0.3318
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Marcin Tybura": {
-          "win": 0.2751,
-          "byKO": 0.0908,
-          "bySubmission": 0.0468,
-          "byDecision": 0.1376,
+          "win": 0.2768,
+          "byKO": 0.0913,
+          "bySubmission": 0.0471,
+          "byDecision": 0.1384,
           "koByRound": {
-            "r1": 0.0409,
-            "r2": 0.0291,
-            "r3": 0.0209
+            "r1": 0.0411,
+            "r2": 0.0292,
+            "r3": 0.021
           },
           "submissionByRound": {
-            "r1": 0.0211,
-            "r2": 0.015,
+            "r1": 0.0212,
+            "r2": 0.0151,
             "r3": 0.0108
           }
         },
         "Aleksandar Rakic": {
-          "win": 0.7249,
-          "byKO": 0.2392,
-          "bySubmission": 0.1232,
-          "byDecision": 0.3624,
+          "win": 0.7232,
+          "byKO": 0.2387,
+          "bySubmission": 0.1229,
+          "byDecision": 0.3616,
           "koByRound": {
-            "r1": 0.1076,
-            "r2": 0.0765,
-            "r3": 0.055
+            "r1": 0.1074,
+            "r2": 0.0764,
+            "r3": 0.0549
           },
           "submissionByRound": {
-            "r1": 0.0554,
-            "r2": 0.0394,
+            "r1": 0.0553,
+            "r2": 0.0393,
             "r3": 0.0283
           }
         }
@@ -1018,11 +991,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.2751,
+        "marketPriorA": 0.2768,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.2751,
+        "coreCentralA": 0.2768,
         "creativeAdjustmentLogOddsTowardA": 0.0696,
-        "creativeCentralA": 0.2892,
+        "creativeCentralA": 0.2909,
         "creativeMovePoints": 1.41,
         "capped": false,
         "cap": 0.2,
@@ -1061,7 +1034,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.923Z",
+            "timestamp": "2026-07-26T08:45:48.237Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1099,7 +1072,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.923Z",
+            "timestamp": "2026-07-26T08:45:48.237Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1135,7 +1108,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.923Z",
+            "timestamp": "2026-07-26T08:45:48.237Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1188,24 +1161,24 @@
       },
       "dataHashes": {
         "evidenceEval": "2be993a68aa70930",
-        "baseline": "fd30c832d5e9f619",
+        "baseline": "975a2a18d71ae734",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "76e7517dd32b1430",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "4912412eacf90c0b",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B04",
       "fight": "Robert Valentin vs Dusko Todorovic",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.5831,
+        "probability": 0.5832,
         "forFighter": "Robert Valentin",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
@@ -1213,15 +1186,8 @@
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 0.88,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Robert Valentin": "-162",
-            "Dusko Todorovic": "+126",
-            "overround": 1.060799,
-            "deVigged": 0.582882
-          },
           {
             "book": "Caesars",
             "Robert Valentin": "-155",
@@ -1246,23 +1212,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -1272,24 +1233,24 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "08208c40e37ece70"
+        "baselineHash": "b725df049ff808d0"
       },
       "systemCentral": {
-        "Robert Valentin": 0.5831,
-        "Dusko Todorovic": 0.4169
+        "Robert Valentin": 0.5832,
+        "Dusko Todorovic": 0.4168
       },
       "systemRange": {
         "forFighter": "Robert Valentin",
-        "low": 0.5281,
-        "high": 0.6381
+        "low": 0.5282,
+        "high": 0.6382
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Robert Valentin": {
-          "win": 0.5831,
-          "byKO": 0.1924,
+          "win": 0.5832,
+          "byKO": 0.1925,
           "bySubmission": 0.0991,
-          "byDecision": 0.2915,
+          "byDecision": 0.2916,
           "koByRound": {
             "r1": 0.0866,
             "r2": 0.0616,
@@ -1302,10 +1263,10 @@
           }
         },
         "Dusko Todorovic": {
-          "win": 0.4169,
-          "byKO": 0.1376,
+          "win": 0.4168,
+          "byKO": 0.1375,
           "bySubmission": 0.0709,
-          "byDecision": 0.2085,
+          "byDecision": 0.2084,
           "koByRound": {
             "r1": 0.0619,
             "r2": 0.044,
@@ -1325,11 +1286,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.5831,
+        "marketPriorA": 0.5832,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.5831,
+        "coreCentralA": 0.5832,
         "creativeAdjustmentLogOddsTowardA": 0.0706,
-        "creativeCentralA": 0.6002,
+        "creativeCentralA": 0.6003,
         "creativeMovePoints": 1.71,
         "capped": false,
         "cap": 0.2,
@@ -1370,7 +1331,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.926Z",
+            "timestamp": "2026-07-26T08:45:48.239Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1420,40 +1381,33 @@
       },
       "dataHashes": {
         "evidenceEval": "432b4fe69c810531",
-        "baseline": "fe87d7f7ddf9d002",
+        "baseline": "76387c84c075f5af",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "20df99ec404a1ce3",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "7a8db9541cf16d51",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B05",
       "fight": "Gilbert Urbina vs Vlasto Cepo",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2653,
+        "probability": 0.2638,
         "forFighter": "Gilbert Urbina",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 0.82,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "dispersion": 0.48,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Gilbert Urbina": "+250",
-            "Vlasto Cepo": "-340",
-            "overround": 1.058441,
-            "deVigged": 0.269939
-          },
           {
             "book": "Caesars",
             "Gilbert Urbina": "+265",
@@ -1478,23 +1432,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -1504,49 +1453,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "24e61cb23001c880"
+        "baselineHash": "3551dcf3cb8dcc33"
       },
       "systemCentral": {
-        "Gilbert Urbina": 0.2653,
-        "Vlasto Cepo": 0.7347
+        "Gilbert Urbina": 0.2638,
+        "Vlasto Cepo": 0.7362
       },
       "systemRange": {
         "forFighter": "Gilbert Urbina",
-        "low": 0.2103,
-        "high": 0.3203
+        "low": 0.2088,
+        "high": 0.3188
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Gilbert Urbina": {
-          "win": 0.2653,
-          "byKO": 0.0875,
-          "bySubmission": 0.0451,
-          "byDecision": 0.1326,
+          "win": 0.2638,
+          "byKO": 0.0871,
+          "bySubmission": 0.0448,
+          "byDecision": 0.1319,
           "koByRound": {
-            "r1": 0.0394,
-            "r2": 0.028,
-            "r3": 0.0201
+            "r1": 0.0392,
+            "r2": 0.0279,
+            "r3": 0.02
           },
           "submissionByRound": {
-            "r1": 0.0203,
-            "r2": 0.0144,
-            "r3": 0.0104
+            "r1": 0.0202,
+            "r2": 0.0143,
+            "r3": 0.0103
           }
         },
         "Vlasto Cepo": {
-          "win": 0.7347,
-          "byKO": 0.2425,
-          "bySubmission": 0.1249,
-          "byDecision": 0.3674,
+          "win": 0.7362,
+          "byKO": 0.2429,
+          "bySubmission": 0.1252,
+          "byDecision": 0.3681,
           "koByRound": {
-            "r1": 0.1091,
-            "r2": 0.0776,
-            "r3": 0.0558
+            "r1": 0.1093,
+            "r2": 0.0777,
+            "r3": 0.0559
           },
           "submissionByRound": {
-            "r1": 0.0562,
-            "r2": 0.04,
-            "r3": 0.0287
+            "r1": 0.0563,
+            "r2": 0.0401,
+            "r3": 0.0288
           }
         }
       },
@@ -1557,11 +1506,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.2653,
+        "marketPriorA": 0.2638,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.2653,
+        "coreCentralA": 0.2638,
         "creativeAdjustmentLogOddsTowardA": -0.07,
-        "creativeCentralA": 0.2519,
+        "creativeCentralA": 0.2504,
         "creativeMovePoints": -1.34,
         "capped": false,
         "cap": 0.2,
@@ -1602,7 +1551,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.926Z",
+            "timestamp": "2026-07-26T08:45:48.240Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1655,40 +1604,33 @@
       },
       "dataHashes": {
         "evidenceEval": "28e2bb81158c8269",
-        "baseline": "49e16d6610329925",
+        "baseline": "2c2ddfc57aeae502",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "547804a6eb596995",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "9c1c6cfc3f965ece",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B06",
       "fight": "Tofiq Musayev vs Ludovit Klein",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3438,
+        "probability": 0.346,
         "forFighter": "Tofiq Musayev",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.44,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "dispersion": 0.99,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Tofiq Musayev": "+180",
-            "Ludovit Klein": "-235",
-            "overround": 1.058636,
-            "deVigged": 0.337361
-          },
           {
             "book": "Caesars",
             "Tofiq Musayev": "+180",
@@ -1713,23 +1655,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -1739,49 +1676,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "7ddbc5319175247d"
+        "baselineHash": "c071da7e0f5b0b82"
       },
       "systemCentral": {
-        "Tofiq Musayev": 0.3438,
-        "Ludovit Klein": 0.6562
+        "Tofiq Musayev": 0.346,
+        "Ludovit Klein": 0.654
       },
       "systemRange": {
         "forFighter": "Tofiq Musayev",
-        "low": 0.2888,
-        "high": 0.3988
+        "low": 0.291,
+        "high": 0.401
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Tofiq Musayev": {
-          "win": 0.3438,
-          "byKO": 0.1135,
-          "bySubmission": 0.0584,
-          "byDecision": 0.1719,
+          "win": 0.346,
+          "byKO": 0.1142,
+          "bySubmission": 0.0588,
+          "byDecision": 0.173,
           "koByRound": {
-            "r1": 0.0511,
-            "r2": 0.0363,
-            "r3": 0.0261
+            "r1": 0.0514,
+            "r2": 0.0365,
+            "r3": 0.0263
           },
           "submissionByRound": {
-            "r1": 0.0263,
-            "r2": 0.0187,
-            "r3": 0.0134
+            "r1": 0.0265,
+            "r2": 0.0188,
+            "r3": 0.0135
           }
         },
         "Ludovit Klein": {
-          "win": 0.6562,
-          "byKO": 0.2165,
-          "bySubmission": 0.1116,
-          "byDecision": 0.3281,
+          "win": 0.654,
+          "byKO": 0.2158,
+          "bySubmission": 0.1112,
+          "byDecision": 0.327,
           "koByRound": {
-            "r1": 0.0974,
-            "r2": 0.0693,
-            "r3": 0.0498
+            "r1": 0.0971,
+            "r2": 0.0691,
+            "r3": 0.0496
           },
           "submissionByRound": {
-            "r1": 0.0502,
-            "r2": 0.0357,
-            "r3": 0.0257
+            "r1": 0.05,
+            "r2": 0.0356,
+            "r3": 0.0256
           }
         }
       },
@@ -1792,12 +1729,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.3438,
+        "marketPriorA": 0.346,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.3438,
+        "coreCentralA": 0.346,
         "creativeAdjustmentLogOddsTowardA": 0.141,
-        "creativeCentralA": 0.3763,
-        "creativeMovePoints": 3.25,
+        "creativeCentralA": 0.3786,
+        "creativeMovePoints": 3.26,
         "capped": false,
         "cap": 0.2,
         "activeHypotheses": 2,
@@ -1837,7 +1774,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.927Z",
+            "timestamp": "2026-07-26T08:45:48.241Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1876,7 +1813,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.927Z",
+            "timestamp": "2026-07-26T08:45:48.241Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1926,40 +1863,33 @@
       },
       "dataHashes": {
         "evidenceEval": "2205056bb019cfe9",
-        "baseline": "a489b0177b6270f8",
+        "baseline": "65dfde025523176f",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "81556df1090fa6cf",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "61552fa838175b3f",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B07",
       "fight": "Michael Oliveira vs Oban Elliott",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.731,
+        "probability": 0.7336,
         "forFighter": "Michael Oliveira",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.53,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "dispersion": 0.91,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Michael Oliveira": "-330",
-            "Oban Elliott": "+240",
-            "overround": 1.06156,
-            "deVigged": 0.722938
-          },
           {
             "book": "Caesars",
             "Michael Oliveira": "-340",
@@ -1984,23 +1914,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -2010,49 +1935,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "2edc98f447b5b3bd"
+        "baselineHash": "e37b42027d803e3a"
       },
       "systemCentral": {
-        "Michael Oliveira": 0.731,
-        "Oban Elliott": 0.269
+        "Michael Oliveira": 0.7336,
+        "Oban Elliott": 0.2664
       },
       "systemRange": {
         "forFighter": "Michael Oliveira",
-        "low": 0.676,
-        "high": 0.786
+        "low": 0.6786,
+        "high": 0.7886
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Michael Oliveira": {
-          "win": 0.731,
-          "byKO": 0.2412,
-          "bySubmission": 0.1243,
-          "byDecision": 0.3655,
+          "win": 0.7336,
+          "byKO": 0.2421,
+          "bySubmission": 0.1247,
+          "byDecision": 0.3668,
           "koByRound": {
-            "r1": 0.1085,
-            "r2": 0.0772,
-            "r3": 0.0555
+            "r1": 0.1089,
+            "r2": 0.0775,
+            "r3": 0.0557
           },
           "submissionByRound": {
-            "r1": 0.0559,
-            "r2": 0.0398,
-            "r3": 0.0286
+            "r1": 0.0561,
+            "r2": 0.0399,
+            "r3": 0.0287
           }
         },
         "Oban Elliott": {
-          "win": 0.269,
-          "byKO": 0.0888,
-          "bySubmission": 0.0457,
-          "byDecision": 0.1345,
+          "win": 0.2664,
+          "byKO": 0.0879,
+          "bySubmission": 0.0453,
+          "byDecision": 0.1332,
           "koByRound": {
-            "r1": 0.04,
-            "r2": 0.0284,
-            "r3": 0.0204
+            "r1": 0.0396,
+            "r2": 0.0281,
+            "r3": 0.0202
           },
           "submissionByRound": {
-            "r1": 0.0206,
-            "r2": 0.0146,
-            "r3": 0.0105
+            "r1": 0.0204,
+            "r2": 0.0145,
+            "r3": 0.0104
           }
         }
       },
@@ -2063,11 +1988,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.731,
+        "marketPriorA": 0.7336,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.731,
+        "coreCentralA": 0.7336,
         "creativeAdjustmentLogOddsTowardA": 0,
-        "creativeCentralA": 0.731,
+        "creativeCentralA": 0.7336,
         "creativeMovePoints": 0,
         "capped": false,
         "cap": 0.2,
@@ -2120,17 +2045,18 @@
       },
       "dataHashes": {
         "evidenceEval": "a962141666c179b5",
-        "baseline": "62964bf51027926c",
+        "baseline": "c9691cdf3b78a870",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "cca426013ef94f85",
+      "forecastId": "a561ffcca6696f0b",
       "boutId": "UFC-2026-08-01-B08",
       "fight": "Mark Vologdin vs Josias Musasa",
       "event": "UFC-2026-08-01",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -2149,11 +2075,12 @@
         "evidenceEval": "8b7810cd3769d278",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "b62a94c899517e68",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "bee3784b39e52f83",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B09",
       "fight": "Bogdan Grad vs Dennis Buzukja",
@@ -2162,7 +2089,7 @@
         "probability": 0.7619,
         "forFighter": "Bogdan Grad",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -2194,7 +2121,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "ec291a1d2606d885"
+        "baselineHash": "da6f3945d37cd6fd"
       },
       "systemCentral": {
         "Bogdan Grad": 0.7619,
@@ -2292,7 +2219,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.929Z",
+            "timestamp": "2026-07-26T08:45:48.243Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2344,24 +2271,24 @@
       },
       "dataHashes": {
         "evidenceEval": "70ad9d6cf0a04502",
-        "baseline": "6b945583693ea685",
+        "baseline": "24c864e00b89fceb",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "1cc0e4c37fd2f8e2",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "54b04e70289d9b37",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B10",
       "fight": "Nina Milosevic vs Hailey Cowan",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.7637,
+        "probability": 0.7634,
         "forFighter": "Nina Milosevic",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
@@ -2369,15 +2296,8 @@
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 0.44,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Nina Milosevic": "-430",
-            "Hailey Cowan": "+300",
-            "overround": 1.061321,
-            "deVigged": 0.764444
-          },
           {
             "book": "Caesars",
             "Nina Milosevic": "-400",
@@ -2402,23 +2322,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -2428,28 +2343,28 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "0aa82b4b84db18ae"
+        "baselineHash": "abdbf956a8afe4e2"
       },
       "systemCentral": {
-        "Nina Milosevic": 0.7637,
-        "Hailey Cowan": 0.2363
+        "Nina Milosevic": 0.7634,
+        "Hailey Cowan": 0.2366
       },
       "systemRange": {
         "forFighter": "Nina Milosevic",
-        "low": 0.7087,
-        "high": 0.8187
+        "low": 0.7084,
+        "high": 0.8184
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Nina Milosevic": {
-          "win": 0.7637,
-          "byKO": 0.252,
+          "win": 0.7634,
+          "byKO": 0.2519,
           "bySubmission": 0.1298,
-          "byDecision": 0.3819,
+          "byDecision": 0.3817,
           "koByRound": {
             "r1": 0.1134,
             "r2": 0.0806,
-            "r3": 0.058
+            "r3": 0.0579
           },
           "submissionByRound": {
             "r1": 0.0584,
@@ -2458,14 +2373,14 @@
           }
         },
         "Hailey Cowan": {
-          "win": 0.2363,
-          "byKO": 0.078,
+          "win": 0.2366,
+          "byKO": 0.0781,
           "bySubmission": 0.0402,
-          "byDecision": 0.1181,
+          "byDecision": 0.1183,
           "koByRound": {
             "r1": 0.0351,
             "r2": 0.025,
-            "r3": 0.0179
+            "r3": 0.018
           },
           "submissionByRound": {
             "r1": 0.0181,
@@ -2481,11 +2396,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.7637,
+        "marketPriorA": 0.7634,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.7637,
+        "coreCentralA": 0.7634,
         "creativeAdjustmentLogOddsTowardA": 0.0404,
-        "creativeCentralA": 0.7709,
+        "creativeCentralA": 0.7706,
         "creativeMovePoints": 0.72,
         "capped": false,
         "cap": 0.2,
@@ -2524,7 +2439,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-26T08:55:30.931Z",
+            "timestamp": "2026-07-26T08:45:48.245Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2573,13 +2488,14 @@
       },
       "dataHashes": {
         "evidenceEval": "883dc9cb7180a8fd",
-        "baseline": "716cc72b67f3e0c3",
+        "baseline": "2339c7c3e6bede88",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "2c05a3b9407b1a22",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "d2501c89327c150a",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B11",
       "fight": "Jovan Leka vs Max Gimenis",
@@ -2588,7 +2504,7 @@
         "probability": 0.7241,
         "forFighter": "Jovan Leka",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -2620,7 +2536,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "fef0781a96ac8f35"
+        "baselineHash": "f9d7823c01994d6b"
       },
       "systemCentral": {
         "Jovan Leka": 0.7241,
@@ -2711,24 +2627,24 @@
       },
       "dataHashes": {
         "evidenceEval": "d926d1609b8a1828",
-        "baseline": "ee1bbf7da47c4ba6",
+        "baseline": "0467bcd35e577749",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "2588d4f80b84b14c",
-      "sealedAt": "2026-07-26T08:55:30.905Z",
+      "forecastId": "25a33c09a8a70688",
+      "sealedAt": "2026-07-26T08:45:48.219Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B12",
       "fight": "Mateusz Rebecki vs Kyle Prepolec",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.7546,
+        "probability": 0.7497,
         "forFighter": "Mateusz Rebecki",
-        "timestamp": "2026-07-26T08:55:30.900Z",
-        "forecastTimestamp": "2026-07-26T08:55:30.905Z",
+        "timestamp": "2026-07-26T08:45:48.214Z",
+        "forecastTimestamp": "2026-07-26T08:45:48.219Z",
         "sportsbooks": [
-          "FanDuel",
           "Caesars",
           "BetRivers",
           "BetWay"
@@ -2736,15 +2652,8 @@
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 4.32,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Mateusz Rebecki": "-440",
-            "Kyle Prepolec": "+310",
-            "overround": 1.058717,
-            "deVigged": 0.769625
-          },
           {
             "book": "Caesars",
             "Mateusz Rebecki": "-420",
@@ -2769,23 +2678,18 @@
         ],
         "priceTimestamps": [
           {
-            "book": "FanDuel",
-            "observedAt": "2026-07-26T08:55:30.900Z",
-            "sourceProvided": null
-          },
-          {
             "book": "Caesars",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-26T08:55:30.900Z",
+            "observedAt": "2026-07-26T08:45:48.214Z",
             "sourceProvided": null
           }
         ],
@@ -2795,49 +2699,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "cff1922622fae047"
+        "baselineHash": "d87def30208ff97e"
       },
       "systemCentral": {
-        "Mateusz Rebecki": 0.7546,
-        "Kyle Prepolec": 0.2454
+        "Mateusz Rebecki": 0.7497,
+        "Kyle Prepolec": 0.2503
       },
       "systemRange": {
         "forFighter": "Mateusz Rebecki",
-        "low": 0.6996,
-        "high": 0.8096
+        "low": 0.6947,
+        "high": 0.8047
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Mateusz Rebecki": {
-          "win": 0.7546,
-          "byKO": 0.249,
-          "bySubmission": 0.1283,
-          "byDecision": 0.3773,
+          "win": 0.7497,
+          "byKO": 0.2474,
+          "bySubmission": 0.1274,
+          "byDecision": 0.3749,
           "koByRound": {
-            "r1": 0.112,
-            "r2": 0.0797,
-            "r3": 0.0573
+            "r1": 0.1113,
+            "r2": 0.0792,
+            "r3": 0.0569
           },
           "submissionByRound": {
-            "r1": 0.0577,
-            "r2": 0.0411,
-            "r3": 0.0295
+            "r1": 0.0573,
+            "r2": 0.0408,
+            "r3": 0.0293
           }
         },
         "Kyle Prepolec": {
-          "win": 0.2454,
-          "byKO": 0.081,
-          "bySubmission": 0.0417,
-          "byDecision": 0.1227,
+          "win": 0.2503,
+          "byKO": 0.0826,
+          "bySubmission": 0.0426,
+          "byDecision": 0.1251,
           "koByRound": {
-            "r1": 0.0365,
-            "r2": 0.0259,
-            "r3": 0.0186
+            "r1": 0.0372,
+            "r2": 0.0264,
+            "r3": 0.019
           },
           "submissionByRound": {
-            "r1": 0.0188,
-            "r2": 0.0133,
-            "r3": 0.0096
+            "r1": 0.0192,
+            "r2": 0.0136,
+            "r3": 0.0098
           }
         }
       },
@@ -2848,11 +2752,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.7546,
+        "marketPriorA": 0.7497,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.7546,
+        "coreCentralA": 0.7497,
         "creativeAdjustmentLogOddsTowardA": 0,
-        "creativeCentralA": 0.7546,
+        "creativeCentralA": 0.7497,
         "creativeMovePoints": 0,
         "capped": false,
         "cap": 0.2,
@@ -2906,18 +2810,437 @@
       },
       "dataHashes": {
         "evidenceEval": "67c43ca9794a3f5b",
-        "baseline": "0b63e712e6cdd49d",
+        "baseline": "a9c982d221f80839",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     }
   ],
-  "sealedBy": "run-forecast.js",
-  "immutable": true,
-  "contentHash": "4d22127d0dcb27a7",
-  "supersedes": {
-    "file": "forecast-2026-08-01.v1785056130935.json",
-    "contentHash": "c22df13020c7bb15",
-    "sealHash": "3f2c19cd42465b65"
+  "scenarios": {
+    "UFC-2026-08-01-B01": [
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Uros Medic",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Uros Medic's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "177076d000"
+        ],
+        "supportingTopics": [
+          "durability"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Daniel Rodriguez denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "RESIDUAL-A",
+        "winner": "Daniel Rodriguez",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the mechanisms favouring Uros Medic do not materialise"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [
+          "177076d000"
+        ],
+        "mainFailureMode": "no positive evidence describes this path; it is the residual the market already prices",
+        "evidenceLimitations": [
+          "no mechanism-level support was found for this fighter"
+        ],
+        "generic": false,
+        "residual": true
+      }
+    ],
+    "UFC-2026-08-01-B02": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Navajo Stirling",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Jan Blachowicz",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B03": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Marcin Tybura",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Aleksandar Rakic",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B04": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Robert Valentin",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Dusko Todorovic",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B05": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Gilbert Urbina",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Vlasto Cepo",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B06": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Tofiq Musayev",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Ludovit Klein",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B07": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Michael Oliveira",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Oban Elliott",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B08": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Mark Vologdin",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Josias Musasa",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B09": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Bogdan Grad",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Dennis Buzukja",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B10": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Nina Milosevic",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Hailey Cowan",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B11": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Jovan Leka",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Max Gimenis",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-01-B12": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Mateusz Rebecki",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Kyle Prepolec",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ]
   },
-  "sealHash": "21e09625a220b839"
+  "immutable": true,
+  "completedHash": "2afe7820d69a5064",
+  "supersedes": {
+    "file": "phase7-2026-08-01.v1785055548295.json",
+    "hash": "41d690f8ee9865da"
+  }
 }
