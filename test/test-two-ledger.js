@@ -135,21 +135,6 @@ function issueFormalBuy(mb, pl, { key, ticker, fraction, classification, edge })
     ok("10. prospective start timestamp is preserved across restart", pl.prospectiveStartAt === NOW);
   }
 
-  // ── 11: combos follow the same rules ──
-  console.log("\nCASE 11 — combos follow the same separation");
-  {
-    reset();
-    const mb = MB.load(), pl = PL.load();
-    // formal combo BUY -> paper eligible (SYSTEM_COMBO), scaled $200 cap
-    const formal = PL.openPaper(pl, { recommendationId: "C1", ticker: "COMBO1", eventDate: EVENT, fight: "A+C", tier: "COMBO", category: "SYSTEM_COMBO", kind: "combo", fraction: 0.02, entryPrice: 0.4, edgeAtEntry: 0.05 }, { now: NOW });
-    ok("11. formal combo enters paper (SYSTEM_COMBO), capped at $200", formal.created === true && formal.position.paperStake === 200, formal.position && formal.position.paperStake);
-    // manual combo -> real only, SPECULATIVE_COMBO, never paper
-    const manual = MB.recordDiscretionary(mb, { ticker: "COMBO2", executionPrice: 0.3, stake: 2, kind: "combo", note: "my parlay" });
-    const rejManual = PL.openPaper(pl, { recommendationId: "C2", ticker: "COMBO2", eventDate: EVENT, category: "SPECULATIVE_COMBO", kind: "combo", fraction: 0.02, entryPrice: 0.3 }, { now: NOW });
-    ok("11. manual combo is SPECULATIVE_COMBO in REAL only", manual.category === "SPECULATIVE_COMBO" && manual.paperEligible === false);
-    ok("11. paper REFUSES the manual combo", rejManual.created === false);
-  }
-
   // ── 12: safety — fight-start gate + no fabricated settlement ──
   console.log("\nCASE 12 — safety protections intact");
   {

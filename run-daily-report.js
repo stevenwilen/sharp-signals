@@ -81,8 +81,6 @@ async function main() {
     cardEvidence: d ? load(`card-evidence-${d}.json`) : null,
     alertLedger: load("alert-ledger-v2.json"),
     geminiUsage: load("gemini-usage.json"),
-    combo: d ? load(`combo-${d}.json`) : null,
-    comboEnabled: process.env.COMBO_ENABLED === "1",
     researchModeEnv: process.env.RESEARCH_MODE || null,
     runs,
     telegramSends: telegramSendsToday(intel, ent, reportDate, tz),

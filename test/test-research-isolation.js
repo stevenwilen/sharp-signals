@@ -23,7 +23,7 @@ fs.rmSync(TMP, { recursive: true, force: true });
 fs.mkdirSync(TMP, { recursive: true });
 const seed = [
   `forecast-${CARD}.json`, `entertainment-alerts-${CARD}.json`, `evidence-eval-${CARD}.json`,
-  `intelligence-${CARD}.json`, "combo-audit.json",
+  `intelligence-${CARD}.json`,
   "manual-bankroll.json", "paper-ledger.json", "bankrolls.json",
 ];
 for (const f of seed) { if (fs.existsSync(path.join(DATA, f))) fs.copyFileSync(path.join(DATA, f), path.join(TMP, f)); }

@@ -16,7 +16,6 @@ const FULL = "🧪 EXPERIMENTAL — $4\nBuy: Alberto Montes YES\nCurrent: 35¢\n
 // The approved mapping, encoded as data so the test IS the mapping.
 const PUSH_KINDS = [
   "BUY", "SPECULATIVE_BET", "PRICE_TOO_HIGH", "PRICED_OUT", "WITHDRAWN",
-  "COMBO_BUY", "COMBO_PRICE_TOO_HIGH", "COMBO_WITHDRAWN",
   "FIGHT_STARTED", "SETTLED", "DEGRADATION", "RECOMMENDATION_CHANGED",
 ];
 const DASHBOARD_ONLY_KINDS = [
@@ -69,9 +68,8 @@ console.log("\nCOMPACT MODE — icons match the approved mapping");
   delete process.env.DASHBOARD_URL;
   const icon = (k) => N.compact(k).split(" ")[0];
   ok("new recommendation is 🟢", icon("BUY") === "🟢" && icon("SPECULATIVE_BET") === "🟢");
-  ok("priced-out change is 🟡", icon("PRICE_TOO_HIGH") === "🟡" && icon("PRICED_OUT") === "🟡" && icon("COMBO_PRICE_TOO_HIGH") === "🟡");
-  ok("withdrawn is 🔴", icon("WITHDRAWN") === "🔴" && icon("COMBO_WITHDRAWN") === "🔴");
-  ok("combo available is 🟠", icon("COMBO_BUY") === "🟠");
+  ok("priced-out change is 🟡", icon("PRICE_TOO_HIGH") === "🟡" && icon("PRICED_OUT") === "🟡");
+  ok("withdrawn is 🔴", icon("WITHDRAWN") === "🔴");
   ok("fight started / settled is ⚪", icon("FIGHT_STARTED") === "⚪" && icon("SETTLED") === "⚪");
   ok("degradation is ⚠️", icon("DEGRADATION") === "⚠️");
 }

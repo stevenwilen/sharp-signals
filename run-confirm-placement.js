@@ -5,7 +5,7 @@
 //   node run-confirm-placement.js decline <ticker|key> [--reason="didn't like the line"]
 //   node run-confirm-placement.js settle  <ticker|key> --result=win|loss|void
 //   node run-confirm-placement.js discretionary --market=<ticker> --price=0.5 --stake=20 [--side=YES]
-//                                 [--contracts=N] [--fees=0.10] [--kind=combo] [--note="my own read"]
+//                                 [--contracts=N] [--fees=0.10] [--note="my own read"]
 //
 // The system has NO order path and cannot know whether you placed a bet. A recommendation stays
 // RECOMMENDED_NOT_CONFIRMED (real stake $0, excluded from real P&L) until YOU run `confirm` with the
@@ -51,7 +51,7 @@ function main() {
     try {
       p = MB.recordDiscretionary(state, {
         ticker: market, side: arg("side") || "YES", executionPrice: price, stake, contracts, fees,
-        kind: arg("kind") === "combo" ? "combo" : "single", note: arg("note"), fight: arg("fight"),
+        note: arg("note"), fight: arg("fight"),
       });
     } catch (e) { fail(e.message); }
     MB.save(state); BK.write();

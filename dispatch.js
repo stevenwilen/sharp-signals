@@ -299,16 +299,8 @@ async function main() {
     run("run-intel.js", intelArgs, { allowFail: true });
   }
 
-  // COMBO ENGINE — runs AFTER the individual recommendation cycle, on the SAME sealed singles. Gated by
-  // COMBO_ENABLED (shadow: records + audit only, no Telegram); --send only when it is promoted. Reads
-  // sealed artifacts, adds no forecast, has no order path. Non-fatal.
-  if (process.env.COMBO_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast"))) {
-    const comboArgs = process.env.COMBO_SEND === "1" ? ["--send"] : [];
-    run("run-combo.js", comboArgs, { allowFail: true });
-  }
-
-  // PAPER STRATEGY LEDGER — auto-creates $10,000 paper positions for FORMAL system BUYs (core + formal
-  // combo) from the SAME sealed artifacts, settles resolved ones read-only, and refreshes the canonical
+  // PAPER STRATEGY LEDGER — auto-creates $10,000 paper positions for FORMAL system BUYs from the SAME
+  // sealed artifacts, settles resolved ones read-only, and refreshes the canonical
   // data/bankrolls.json both dashboards read. No real money, no order path, no Telegram. Always on (paper
   // is simulated, not gated by arming). Non-fatal. --settle only when a grade is due (outcomes may be in).
   if (dueList.includes("alerts") || dueList.includes("forecast") || dueList.includes("grade")) {
