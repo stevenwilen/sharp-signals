@@ -14,6 +14,19 @@ is built so that fact stays visible rather than getting sanded off.
   order.
 - **Numerical rules are frozen at v7.0.0.** Do not tune them. Especially do not tune them because a
   card produced no bets.
+- **One bankroll (simplified 2026-07-27).** A single real ~$100 gambling bankroll
+  (`data/manual-bankroll.json`, manual placement, bets both confirmed AND speculative tiers). Bets are
+  sized as a % of the CURRENT balance — they compound up when winning, shrink when losing, and no new
+  money is ever added. External deposits/withdrawals are recorded via `manual-bankroll.recordCashAdjustment`
+  so the ledger equals the real Kalshi balance. There is **no paper portfolio and no research portfolio**
+  anymore — both deleted 2026-07-27. **Do not re-add a paper book, a research book, or a combo/parlay
+  engine** (also deleted).
+- **Three Telegram messages, nothing else.** 🟢 BUY (only when actually buyable), 🔴 SELL (the contract
+  is gone / the fight is off — the one stand-down worth acting on), 🩺 STATUS (daily: healthy? + next
+  fight). PRICE-TOO-HIGH pings, drift stand-downs, fight-intel, legacy news pings and combos are silenced
+  or deleted. News/injury discovery (`lib/intel-*`) still feeds the forecast's speculative lane, SILENTLY
+  — `FIGHT_INTEL_ENABLED=1` (records + dashboard) but `FIGHT_INTEL_SEND=0` (no Telegram). Do not turn it
+  back on without asking.
 
 ## The rule that governs everything
 
@@ -67,7 +80,7 @@ to a fair price*. Being right about a withdrawal pays nothing.
 
 ## House style
 
-- Tests assert **refusals**, not just happy paths. 792 across 11 suites; keep them green.
+- Tests assert **refusals**, not just happy paths (`test/test-*.js`, ~59 suites); keep them green.
 - A script that exits 0 without producing its artifact is a **failure**.
 - Comments explain the constraint or the bug that forced the code, never what the next line does.
 - Report outcomes faithfully. If it found nothing, say it found nothing.
