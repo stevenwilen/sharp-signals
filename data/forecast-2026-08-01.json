@@ -295,22 +295,22 @@
       }
     ]
   },
-  "sealedAt": "2026-07-27T04:45:31.403Z",
+  "sealedAt": "2026-07-27T04:56:06.581Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "a42964e16eb54715",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "d4ab810af97b2c30",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B04",
       "fight": "Navajo Stirling vs Jan Blachowicz",
-      "status": "LIMITED EVIDENCE",
+      "status": "HUMAN REVIEW REQUIRED",
       "marketBaseline": {
         "probability": 0.7276,
         "forFighter": "Navajo Stirling",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -354,22 +354,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -379,7 +379,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "432fc0c9aba3af3e"
+        "baselineHash": "4c8f8179bfea8850"
       },
       "systemCentral": {
         "Navajo Stirling": 0.7155,
@@ -387,8 +387,8 @@
       },
       "systemRange": {
         "forFighter": "Navajo Stirling",
-        "low": 0.6605,
-        "high": 0.7705
+        "low": 0.6805,
+        "high": 0.7505
       },
       "marketDisagreementPoints": -1.21,
       "outcomeTree": {
@@ -487,7 +487,7 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact, relevance=stable_historical_tendency/general_career_background"
         }
       ],
-      "consideredButZero": 0,
+      "consideredButZero": 2,
       "netLogOdds": -0.06,
       "capNote": null,
       "exploration": {
@@ -495,12 +495,12 @@
         "marketPriorA": 0.7276,
         "coreAdjustmentLogOdds": -0.06,
         "coreCentralA": 0.7155,
-        "creativeAdjustmentLogOddsTowardA": -0.12,
-        "creativeCentralA": 0.6905,
-        "creativeMovePoints": -2.5,
+        "creativeAdjustmentLogOddsTowardA": -0.05,
+        "creativeCentralA": 0.7053,
+        "creativeMovePoints": -1.02,
         "capped": false,
         "cap": 0.2,
-        "activeHypotheses": 1,
+        "activeHypotheses": 2,
         "hypotheses": [
           {
             "hypothesis": "Yan Blachowicz — durability: Yan Blachowicz is a very difficult guy to knock out. (favors_about)",
@@ -538,31 +538,69 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.425Z",
+            "timestamp": "2026-07-27T04:56:06.605Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Jan Blachowicz — injury_health: Jan Blachowicz has dealt with a lot of injuries. (against_about)",
+            "fighter": "Jan Blachowicz",
+            "boutTopic": "injury_health",
+            "supportingFacts": [
+              "We know Jan has had a lot of injuries"
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "POSSIBLY TRUE",
+            "causalMechanism": "injury_health → hurts Jan Blachowicz",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 1,
+                "recorded": 0,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Jan Blachowicz shows no injury_health effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-27T04:56:06.605Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
         "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
       },
       "uncertainty": {
-        "halfWidthPoints": 5.5,
+        "halfWidthPoints": 3.5,
         "primaryDrivers": [
-          "a single analyst is the only source",
           "very few independent analysts"
         ],
-        "conditionsThatWouldMove": []
+        "conditionsThatWouldMove": [
+          "potentially new information with a single origin"
+        ]
       },
-      "evidenceCoverage": "THINLY COVERED",
-      "independentOrigins": 2,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 4,
       "originBreakdown": {
-        "analysts": 1,
+        "analysts": 2,
         "publicRecords": 1,
-        "externalReports": 0,
+        "externalReports": 1,
         "commentary": 0
       },
       "contradictions": 0,
       "missingInformation": [
-        "striking_offense",
         "striking_defense",
         "wrestling_offense",
         "takedown_defense",
@@ -571,12 +609,12 @@
       ],
       "limitations": [
         "1 topic(s) rest on dated information",
-        "every claim comes from a single analyst — no independent check is possible"
+        "2 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 2,
-        "claimsAdmitted": 2,
+        "claimsConsidered": 4,
+        "claimsAdmitted": 4,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -589,14 +627,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "7660aa35db08a07e",
-        "baseline": "ceca09ff00b600b0",
+        "evidenceEval": "5f89203addb20e96",
+        "baseline": "0359efd8e3fba6d3",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "abf627398e21b171",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "2d5a9248610d7ac5",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B09",
       "fight": "Michael Oliveira vs Oban Elliott",
@@ -604,8 +642,8 @@
       "marketBaseline": {
         "probability": 0.7282,
         "forFighter": "Michael Oliveira",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -649,22 +687,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -674,7 +712,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "5684d8aa9d21e7ba"
+        "baselineHash": "1b8e6d55b48e1493"
       },
       "systemCentral": {
         "Michael Oliveira": 0.7399,
@@ -829,7 +867,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.434Z",
+            "timestamp": "2026-07-27T04:56:06.614Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -876,22 +914,22 @@
       },
       "dataHashes": {
         "evidenceEval": "fcd6224e0c20cbb6",
-        "baseline": "2b99bba27498e089",
+        "baseline": "d9d80f329d66b9fa",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "83254419a383afc3",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "ddd9dccd1fdaa7d1",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B03",
       "fight": "Daniel Rodriguez vs Uros Medic",
-      "status": "LIMITED EVIDENCE",
+      "status": "HUMAN REVIEW REQUIRED",
       "marketBaseline": {
         "probability": 0.2559,
         "forFighter": "Daniel Rodriguez",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -935,22 +973,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -960,7 +998,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "386bab23e1bc3248"
+        "baselineHash": "0a4f7dd3ad887676"
       },
       "systemCentral": {
         "Daniel Rodriguez": 0.2446,
@@ -968,8 +1006,8 @@
       },
       "systemRange": {
         "forFighter": "Daniel Rodriguez",
-        "low": 0.1836,
-        "high": 0.3056
+        "low": 0.1756,
+        "high": 0.3136
       },
       "marketDisagreementPoints": -1.13,
       "outcomeTree": {
@@ -1008,6 +1046,144 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [
+        {
+          "adjustmentId": "37580953d8",
+          "boutId": "UFC-2026-08-01-B03",
+          "fighterFavored": "Daniel Rodriguez",
+          "outcomeAffected": "win",
+          "mechanism": "durability",
+          "evidenceTopics": [
+            "durability",
+            "durability",
+            "durability"
+          ],
+          "supportingEvidenceIds": [
+            "t44g4Wxm0es#77442",
+            "587b81jKebc#0",
+            "DwIZVK_23hE#20638",
+            "2pDNeiTC-X4#42412"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 4,
+          "originIds": [
+            "analyst:greedo plays mma",
+            "analyst:lucrative james",
+            "record:career.daniel.entire.ever.once.only.rodriguez.subbed.tko",
+            "analyst:we want picks"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "matchup_inference",
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Daniel Rodriguez",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=matchup_inference/verifiable_statistical_claim, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "aa7c9c3877",
+          "boutId": "UFC-2026-08-01-B03",
+          "fighterFavored": "Uros Medic",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "power",
+            "speed",
+            "striking_offense",
+            "striking_defense",
+            "striking_offense"
+          ],
+          "supportingEvidenceIds": [
+            "t44g4Wxm0es#87431",
+            "587b81jKebc#0",
+            "2pDNeiTC-X4#42412",
+            "LLWBt1XOklc#0",
+            "LLWBt1XOklc#0",
+            "LLWBt1XOklc#0",
+            "DwIZVK_23hE#20638"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 6,
+          "originIds": [
+            "record:anybody.career.danny.knocked.one.out.punch.rodriguez.ufc",
+            "analyst:lucrative james",
+            "analyst:we want picks",
+            "record:absorbs.daniel.five.minute.per.rodriguez.significant.strikes",
+            "analyst:round 3 prediction show",
+            "record:uros medic:n:100%"
+          ],
+          "evidenceTypes": [
+            "verifiable_statistical_claim",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "long_term_tendency",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "unknown",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Uros Medic",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=film_study_observation/verifiable_statistical_claim, relevance=stable_historical_tendency"
+        },
         {
           "adjustmentId": "44aa3e8a41",
           "boutId": "UFC-2026-08-01-B03",
@@ -1067,7 +1243,7 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verified_hard_fact/matchup_inference, relevance=general_career_background/direct_current_matchup"
         }
       ],
-      "consideredButZero": 12,
+      "consideredButZero": 10,
       "netLogOdds": -0.06,
       "capNote": null,
       "exploration": {
@@ -1075,12 +1251,12 @@
         "marketPriorA": 0.2559,
         "coreAdjustmentLogOdds": -0.06,
         "coreCentralA": 0.2446,
-        "creativeAdjustmentLogOddsTowardA": -0.1866,
-        "creativeCentralA": 0.2118,
-        "creativeMovePoints": -3.28,
-        "capped": false,
+        "creativeAdjustmentLogOddsTowardA": -0.2,
+        "creativeCentralA": 0.2096,
+        "creativeMovePoints": -3.5,
+        "capped": true,
         "cap": 0.2,
-        "activeHypotheses": 8,
+        "activeHypotheses": 9,
         "hypotheses": [
           {
             "hypothesis": "Daniel Rodriguez — inactivity_layoff: Daniel Rodriguez spent eight months in a prison in Tijuana, Mexico after being arrested at the border for marijuana possession. (against_about)",
@@ -1091,17 +1267,17 @@
               "Daniel Rodriguez is coming back into this fight after spending 8 months in jail in Mexico. He was caught at the US Mexico border with some weed and he spent eight months in Mexico jail for that."
             ],
             "supportingInferences": [
-              "4 independent origin(s), 3 channel(s)"
+              "3 independent origin(s), 4 channel(s)"
             ],
             "verificationStatus": "VERIFIED",
             "causalMechanism": "inactivity_layoff → hurts Daniel Rodriguez",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
-              "independentOrigins": 4,
-              "amplifyingChannels": 3,
+              "independentOrigins": 3,
+              "amplifyingChannels": 4,
               "composition": {
                 "reported": 0,
-                "recorded": 4,
+                "recorded": 3,
                 "analytical": 0,
                 "firsthand": 0,
                 "opinion": 0
@@ -1118,7 +1294,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.423Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1156,7 +1332,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1195,7 +1371,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1203,20 +1379,21 @@
             "fighter": "Daniel Rodriguez",
             "boutTopic": "durability",
             "supportingFacts": [
-              "He's shown good recoverability throughout most of his career, honestly. Notably, in that Kevin Holland fight recently, he was completely done in that fight. He was finished in that fight and he was able to come back."
+              "He's shown good recoverability throughout most of his career, honestly. Notably, in that Kevin Holland fight recently, he was completely done in that fight. He was finished in that fight and he was able to come back.",
+              "He's only ever been tkilled once and subbed once in his entire career."
             ],
             "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
+              "2 independent origin(s), 2 channel(s)"
             ],
             "verificationStatus": "MECHANISTICALLY RELEVANT",
             "causalMechanism": "durability → helps Daniel Rodriguez",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
+              "independentOrigins": 2,
+              "amplifyingChannels": 2,
               "composition": {
                 "reported": 0,
-                "recorded": 0,
+                "recorded": 1,
                 "analytical": 1,
                 "firsthand": 0,
                 "opinion": 0
@@ -1229,11 +1406,11 @@
             "probablyPriced": false,
             "falsificationCondition": "Daniel Rodriguez shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
             "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.0706,
-            "magnitudeBucket": "credible_single_origin",
+            "adjustmentLogOdds": 0.12,
+            "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1272,7 +1449,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1310,7 +1487,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1346,7 +1523,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1384,40 +1561,80 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.424Z",
+            "timestamp": "2026-07-27T04:56:06.603Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Daniel Rodriguez — training_camp: Daniel Rodriguez trained in prison during his time away to keep his tools sharp. (neutral)",
+            "fighter": "Daniel Rodriguez",
+            "boutTopic": "training_camp",
+            "supportingFacts": [
+              "Daniel Rodriguez has been training in prison during his time away to sharpen his skill set, keep his tools sharp"
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "UNVERIFIED BUT PLAUSIBLE",
+            "causalMechanism": "training_camp → hurts Daniel Rodriguez",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 1,
+                "recorded": 0,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Daniel Rodriguez shows no training_camp effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.07,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-1.0.0",
+            "timestamp": "2026-07-27T04:56:06.603Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
         "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
       },
       "uncertainty": {
-        "halfWidthPoints": 6.1,
+        "halfWidthPoints": 6.9,
         "primaryDrivers": [
-          "2 contradicted topic(s)",
+          "3 contradicted topic(s)",
           "long layoff"
         ],
-        "conditionsThatWouldMove": []
+        "conditionsThatWouldMove": [
+          "conflicting factual reports"
+        ]
       },
-      "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 20,
+      "evidenceCoverage": "WELL COVERED",
+      "independentOrigins": 24,
       "originBreakdown": {
         "analysts": 6,
-        "publicRecords": 13,
-        "externalReports": 1,
+        "publicRecords": 16,
+        "externalReports": 2,
         "commentary": 0
       },
-      "contradictions": 2,
+      "contradictions": 3,
       "missingInformation": [
         "wrestling_offense"
       ],
       "limitations": [
         "1 topic(s) rest on dated information",
-        "20 topic(s) have no determinable timeframe"
+        "21 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 1,
       "admission": {
-        "claimsConsidered": 31,
-        "claimsAdmitted": 30,
+        "claimsConsidered": 37,
+        "claimsAdmitted": 36,
         "claimsRejected": 1,
         "rejectedForLeakage": 1,
         "rejectedAsMalformed": 0,
@@ -1436,18 +1653,18 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "9979b99a4896f83a",
-        "baseline": "f5bb7108cdab7e7e",
+        "evidenceEval": "73e802777c0f950e",
+        "baseline": "33d544728905b467",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "31055d278f3c0595",
+      "forecastId": "6f6bc488de0d53a8",
       "boutId": "UFC-2026-08-01-B01",
       "fight": "Mark Vologdin vs Josias Musasa",
       "event": "UFC-2026-08-01",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -1469,8 +1686,8 @@
       }
     },
     {
-      "forecastId": "f75d7e1485bec350",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "974b8f25a34c90d2",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B02",
       "fight": "Jovan Leka vs Max Gimenis",
@@ -1479,7 +1696,7 @@
         "probability": 0.7241,
         "forFighter": "Jovan Leka",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -1511,7 +1728,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "98f4ca9f51292f8f"
+        "baselineHash": "a81aa50494933c0c"
       },
       "systemCentral": {
         "Jovan Leka": 0.7241,
@@ -1602,13 +1819,13 @@
       },
       "dataHashes": {
         "evidenceEval": "3a3de81a508e15e5",
-        "baseline": "e31c67b202fa5a67",
+        "baseline": "0ead177e71aeb5aa",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "afda2cad91992f03",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "f553dc7d6e7935fc",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B05",
       "fight": "Marcin Tybura vs Aleksandar Rakic",
@@ -1616,8 +1833,8 @@
       "marketBaseline": {
         "probability": 0.2693,
         "forFighter": "Marcin Tybura",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1661,22 +1878,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -1686,7 +1903,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "4436523fd2ba880c"
+        "baselineHash": "25b4290585e1bbbc"
       },
       "systemCentral": {
         "Marcin Tybura": 0.2693,
@@ -1782,7 +1999,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.427Z",
+            "timestamp": "2026-07-27T04:56:06.607Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1820,7 +2037,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.427Z",
+            "timestamp": "2026-07-27T04:56:06.607Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1856,7 +2073,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.427Z",
+            "timestamp": "2026-07-27T04:56:06.607Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1906,13 +2123,13 @@
       },
       "dataHashes": {
         "evidenceEval": "e9f6ccdd69092445",
-        "baseline": "d376e11246f7793d",
+        "baseline": "14c8ca25b6ecc9d0",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "35f032fd5d5114ad",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "9cf869e2387377fc",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B06",
       "fight": "Robert Valentin vs Dusko Todorovic",
@@ -1920,8 +2137,8 @@
       "marketBaseline": {
         "probability": 0.5943,
         "forFighter": "Robert Valentin",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1965,22 +2182,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -1990,7 +2207,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "e947f96a7a7c83be"
+        "baselineHash": "55def2d0652f2bd5"
       },
       "systemCentral": {
         "Robert Valentin": 0.5943,
@@ -2088,7 +2305,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.428Z",
+            "timestamp": "2026-07-27T04:56:06.608Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2135,13 +2352,13 @@
       },
       "dataHashes": {
         "evidenceEval": "5b950e33600d6a74",
-        "baseline": "20ccb467f6b01019",
+        "baseline": "c1f1208bc5213926",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "dcaab0305a5cc00c",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "081ffd7abe8f793c",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B07",
       "fight": "Gilbert Urbina vs Vlasto Cepo",
@@ -2149,8 +2366,8 @@
       "marketBaseline": {
         "probability": 0.27,
         "forFighter": "Gilbert Urbina",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2194,22 +2411,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -2219,7 +2436,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "a8ee0f60b23a1711"
+        "baselineHash": "e0985a16d07cef2d"
       },
       "systemCentral": {
         "Gilbert Urbina": 0.27,
@@ -2317,7 +2534,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.430Z",
+            "timestamp": "2026-07-27T04:56:06.610Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2355,7 +2572,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.430Z",
+            "timestamp": "2026-07-27T04:56:06.610Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2393,7 +2610,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.430Z",
+            "timestamp": "2026-07-27T04:56:06.610Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2442,13 +2659,13 @@
       },
       "dataHashes": {
         "evidenceEval": "253c0ecbe033a43c",
-        "baseline": "277652dcf4b49724",
+        "baseline": "5ae626b77392a2e6",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "31e70485f17d3b30",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "c7855936d4c03967",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B08",
       "fight": "Tofiq Musayev vs Ludovit Klein",
@@ -2456,8 +2673,8 @@
       "marketBaseline": {
         "probability": 0.3336,
         "forFighter": "Tofiq Musayev",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2501,22 +2718,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -2526,7 +2743,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "b4d6db8e64bd41f4"
+        "baselineHash": "df9a2caa293c207b"
       },
       "systemCentral": {
         "Tofiq Musayev": 0.3336,
@@ -2624,7 +2841,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.432Z",
+            "timestamp": "2026-07-27T04:56:06.612Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2663,7 +2880,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.432Z",
+            "timestamp": "2026-07-27T04:56:06.612Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2699,7 +2916,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.432Z",
+            "timestamp": "2026-07-27T04:56:06.612Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2747,13 +2964,13 @@
       },
       "dataHashes": {
         "evidenceEval": "f4a1db0268764453",
-        "baseline": "60e867f01b8f5e63",
+        "baseline": "e6a9768b299538c6",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "4c20ce2524ccd12a",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "321542ff80219c89",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B10",
       "fight": "Bogdan Grad vs Dennis Buzukja",
@@ -2762,7 +2979,7 @@
         "probability": 0.7619,
         "forFighter": "Bogdan Grad",
         "timestamp": null,
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -2794,7 +3011,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "14d3b31de7945ae1"
+        "baselineHash": "d6d86a96cbe62372"
       },
       "systemCentral": {
         "Bogdan Grad": 0.7619,
@@ -2892,7 +3109,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.435Z",
+            "timestamp": "2026-07-27T04:56:06.615Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2941,13 +3158,13 @@
       },
       "dataHashes": {
         "evidenceEval": "1510dc34a1b73b71",
-        "baseline": "16a462a7af2382bc",
+        "baseline": "9de2c4714d1eb979",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "b37389aa448cab8a",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "ed3c2662f4234830",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B11",
       "fight": "Nina Milosevic vs Hailey Cowan",
@@ -2955,8 +3172,8 @@
       "marketBaseline": {
         "probability": 0.7637,
         "forFighter": "Nina Milosevic",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -3000,22 +3217,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -3025,7 +3242,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "e0f9744103c85c5d"
+        "baselineHash": "a461a6ad77ef3911"
       },
       "systemCentral": {
         "Nina Milosevic": 0.7637,
@@ -3121,7 +3338,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.436Z",
+            "timestamp": "2026-07-27T04:56:06.616Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -3168,13 +3385,13 @@
       },
       "dataHashes": {
         "evidenceEval": "328d9473f5e52c36",
-        "baseline": "e4f3122695390b6e",
+        "baseline": "9d20445804ed69d6",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "cd389491f0a33c43",
-      "sealedAt": "2026-07-27T04:45:31.403Z",
+      "forecastId": "57c03750d96b8dec",
+      "sealedAt": "2026-07-27T04:56:06.581Z",
       "event": "UFC-2026-08-01",
       "boutId": "UFC-2026-08-01-B12",
       "fight": "Mateusz Rebecki vs Kyle Prepolec",
@@ -3182,8 +3399,8 @@
       "marketBaseline": {
         "probability": 0.7765,
         "forFighter": "Mateusz Rebecki",
-        "timestamp": "2026-07-27T04:45:31.398Z",
-        "forecastTimestamp": "2026-07-27T04:45:31.403Z",
+        "timestamp": "2026-07-27T04:56:06.576Z",
+        "forecastTimestamp": "2026-07-27T04:56:06.581Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -3227,22 +3444,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-07-27T04:45:31.398Z",
+            "observedAt": "2026-07-27T04:56:06.576Z",
             "sourceProvided": null
           }
         ],
@@ -3252,7 +3469,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "d3d73ac06faeb32e"
+        "baselineHash": "2dc02b9cf6ca1cbb"
       },
       "systemCentral": {
         "Mateusz Rebecki": 0.7765,
@@ -3350,7 +3567,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-1.0.0",
-            "timestamp": "2026-07-27T04:45:31.437Z",
+            "timestamp": "2026-07-27T04:56:06.617Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -3398,18 +3615,18 @@
       },
       "dataHashes": {
         "evidenceEval": "667f7dcb525bdae6",
-        "baseline": "ec2b0e56309e2d41",
+        "baseline": "04b9d3253e818d77",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "ae0630df10fca5b5",
+  "contentHash": "5764d23f1d21b9e4",
   "supersedes": {
-    "file": "forecast-2026-08-01.v1785127531440.json",
-    "contentHash": "3797a52cd60cffa0",
-    "sealHash": "95d88cb3028f535e"
+    "file": "forecast-2026-08-01.v1785128166620.json",
+    "contentHash": "ae0630df10fca5b5",
+    "sealHash": "06d856c4eadd1928"
   },
-  "sealHash": "06d856c4eadd1928"
+  "sealHash": "bd5336058ac8d5e1"
 }
