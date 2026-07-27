@@ -295,12 +295,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-07-27T05:08:19.819Z",
-  "scenariosSealedAt": "2026-07-27T05:08:19.955Z",
+  "sealedForecastAt": "2026-07-27T04:56:06.581Z",
+  "scenariosSealedAt": "2026-07-27T04:56:06.712Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "d9c65b7db18c6fc5",
+    "numericalForecastHash": "bd5336058ac8d5e1",
     "numericalForecastFile": "forecast-2026-08-01.json"
   },
   "scenarios": {
@@ -688,6 +688,254 @@
       },
       "hash": "2a7aa60b78485f07"
     },
+    "UFC-2026-08-01-B03": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Uros Medic",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3777,
+          "sharePercent": 37.77,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Daniel Rodriguez do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 37.8% (Uros Medic win 75.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by -12.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "PRIMARY",
+          "winner": "Uros Medic",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2493,
+          "sharePercent": 24.93,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking",
+            "durability"
+          ],
+          "requiredConditions": [
+            "Uros Medic's striking advantage is real and not already in the price",
+            "Uros Medic's durability advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "aa7c9c3877",
+              "mechanism": "striking",
+              "topics": [
+                "power",
+                "speed",
+                "striking_offense",
+                "striking_defense",
+                "striking_offense"
+              ],
+              "independentOrigins": 6
+            },
+            {
+              "adjustmentId": "44aa3e8a41",
+              "mechanism": "durability",
+              "topics": [
+                "durability"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "37580953d8",
+              "mechanism": "durability",
+              "topics": [
+                "durability",
+                "durability",
+                "durability"
+              ],
+              "favours": "Daniel Rodriguez"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 24.9% (Uros Medic win 75.5% x KO/TKO split)",
+            "2 supporting mechanism(s) across 8 independent origin(s): striking, durability"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Uros Medic unable to hurt the opponent",
+            "Daniel Rodriguez wins the striking exchanges in round 1, or the fight is grounded for most of round 1",
+            "Daniel Rodriguez absorbs Uros Medic's best shots without visible damage"
+          ],
+          "evidenceLimitations": [
+            "6 independent origin(s)",
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Uros Medic",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1284,
+          "sharePercent": 12.84,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Daniel Rodriguez do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.8% (Uros Medic win 75.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 12.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Uros Medic"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Daniel Rodriguez",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1223,
+          "sharePercent": 12.23,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Uros Medic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.2% (Daniel Rodriguez win 24.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 12.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Daniel Rodriguez",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0807,
+          "sharePercent": 8.07,
+          "supported": true,
+          "decisiveMechanisms": [
+            "durability"
+          ],
+          "requiredConditions": [
+            "Daniel Rodriguez's durability advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "37580953d8",
+              "mechanism": "durability",
+              "topics": [
+                "durability",
+                "durability",
+                "durability"
+              ],
+              "independentOrigins": 4
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "44aa3e8a41",
+              "mechanism": "durability",
+              "topics": [
+                "durability"
+              ],
+              "favours": "Uros Medic"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 8.1% (Daniel Rodriguez win 24.5% x KO/TKO split)",
+            "1 supporting mechanism(s) across 4 independent origin(s): durability",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 16.9 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Daniel Rodriguez unable to hurt the opponent",
+            "Uros Medic absorbs Daniel Rodriguez's best shots without visible damage"
+          ],
+          "evidenceLimitations": [
+            "4 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Daniel Rodriguez",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0416,
+          "sharePercent": 4.16,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Uros Medic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.2% (Daniel Rodriguez win 24.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 20.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Daniel Rodriguez"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Daniel Rodriguez": 0.2446,
+          "Uros Medic": 0.7554
+        },
+        "treeWinProbs": {
+          "Daniel Rodriguez": 0.2446,
+          "Uros Medic": 0.7554
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "d9d45566874944ec"
+    },
     "UFC-2026-08-01-B01": {
       "scenarios": [],
       "coherence": {
@@ -881,238 +1129,6 @@
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
       "hash": "51965f3cc21a27f1"
-    },
-    "UFC-2026-08-01-B03": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Uros Medic",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.372,
-          "sharePercent": 37.2,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Daniel Rodriguez do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 37.2% (Uros Medic win 74.4% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by KO/TKO) by -12.6 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "PRIMARY",
-          "winner": "Uros Medic",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2456,
-          "sharePercent": 24.56,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
-          "requiredConditions": [
-            "Uros Medic's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "44aa3e8a41",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "37580953d8",
-              "mechanism": "durability",
-              "topics": [
-                "durability",
-                "durability",
-                "durability"
-              ],
-              "favours": "Daniel Rodriguez"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 24.6% (Uros Medic win 74.4% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): durability"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Uros Medic unable to hurt the opponent",
-            "Daniel Rodriguez absorbs Uros Medic's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Daniel Rodriguez",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.128,
-          "sharePercent": 12.8,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Uros Medic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.8% (Daniel Rodriguez win 25.6% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by KO/TKO) by 11.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Uros Medic",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1265,
-          "sharePercent": 12.65,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Daniel Rodriguez do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.7% (Uros Medic win 74.4% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by KO/TKO) by 11.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Uros Medic"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Daniel Rodriguez",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0844,
-          "sharePercent": 8.44,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
-          "requiredConditions": [
-            "Daniel Rodriguez's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "37580953d8",
-              "mechanism": "durability",
-              "topics": [
-                "durability",
-                "durability",
-                "durability"
-              ],
-              "independentOrigins": 4
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "44aa3e8a41",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "favours": "Uros Medic"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 8.4% (Daniel Rodriguez win 25.6% x KO/TKO split)",
-            "1 supporting mechanism(s) across 4 independent origin(s): durability",
-            "ranks below PRIMARY (Uros Medic by KO/TKO) by 16.1 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Daniel Rodriguez unable to hurt the opponent",
-            "Uros Medic absorbs Daniel Rodriguez's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "4 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Daniel Rodriguez",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0435,
-          "sharePercent": 4.35,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Uros Medic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.3% (Daniel Rodriguez win 25.6% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by KO/TKO) by 20.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Daniel Rodriguez"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Daniel Rodriguez": 0.2559,
-          "Uros Medic": 0.7441
-        },
-        "treeWinProbs": {
-          "Daniel Rodriguez": 0.2559,
-          "Uros Medic": 0.7441
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "930e19f2ac0f4df7"
     },
     "UFC-2026-08-01-B05": {
       "scenarios": [
@@ -2419,5 +2435,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "3a030ff1acbc1f44"
+  "scenarioSetHash": "a46d53e9d09e74d1"
 }
