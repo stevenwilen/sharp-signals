@@ -40,9 +40,10 @@ function tzNow() {
 
 function activeCard(receipts) {
   const c = receipts && receipts.lastCard;
-  if (!c) return { eventId: null, eventDate: null, active: false };
-  const bellMs = c.eventDate ? Date.parse(c.eventDate + "T22:00:00Z") : null;   // card is "active" until first bell has passed
-  const active = bellMs ? Date.now() < bellMs + 6 * 3.6e6 : false;              // (+6h margin, matches the post-card tier)
+  if (!c) return { eventId: null, eventDate: null, active: false, bellMs: null };
+  // Real scheduled start from Kalshi (dispatch writes startTime); fall back to the 22:00 convention only if absent.
+  const bellMs = c.startTime ? Date.parse(c.startTime) : (c.eventDate ? Date.parse(c.eventDate + "T22:00:00Z") : null);
+  const active = bellMs ? Date.now() < bellMs + 6 * 3.6e6 : false;              // active until start + 6h (post-card margin)
   return { eventId: c.eventId, eventDate: c.eventDate, active, bellMs };
 }
 

@@ -103,18 +103,24 @@ async function discoverCard(forceTickerDate) {
     const c = cardFromTicker(m.event_ticker);
     if (!c) continue;
     if (forceTickerDate && c.tickerDate !== forceTickerDate) continue;
-    if (!cards.has(c.eventDate)) cards.set(c.eventDate, { ...c, bouts: 0 });
-    cards.get(c.eventDate).bouts++;
+    if (!cards.has(c.eventDate)) cards.set(c.eventDate, { ...c, bouts: 0, startMs: Infinity });
+    const card = cards.get(c.eventDate);
+    card.bouts++;
+    // REAL scheduled fight time from Kalshi (occurrence_datetime), not the 22:00 convention — cards are on
+    // different days AND different times. Take the earliest bout on the card = when the action starts.
+    const occ = Date.parse(m.occurrence_datetime || m.expected_expiration_time || "");
+    if (Number.isFinite(occ) && occ < card.startMs) card.startMs = occ;
   }
   if (!cards.size) return null;
-  // The SOONEST card by event date is the active one — but a card whose bell passed more than 24h ago
-  // is FINISHED, however long Kalshi keeps a rescheduled market open on it. One lingering market used
-  // to pin the prior card active for up to a week, starving the next card of collect/forecast/alerts
-  // while every run exited green (rollover starvation). Grading no longer needs discovery (the
-  // gradedCards sweep grades from disk), so a finished card can simply be released.
-  const live = [...cards.values()].filter((c) => Date.now() < firstBellMs(c.eventDate) + 24 * 3600e3);
+  for (const c of cards.values()) c.startTime = Number.isFinite(c.startMs) ? new Date(c.startMs).toISOString() : null;
+  // The SOONEST card is the active one — but a card whose start passed more than 24h ago is FINISHED,
+  // however long Kalshi keeps a rescheduled market open on it. One lingering market used to pin the prior
+  // card active for up to a week, starving the next card of collect/forecast/alerts while every run exited
+  // green (rollover starvation). Uses the real start time when Kalshi gives one, the 22:00 bell otherwise.
+  const cardBell = (c) => (Number.isFinite(c.startMs) ? c.startMs : firstBellMs(c.eventDate));
+  const live = [...cards.values()].filter((c) => Date.now() < cardBell(c) + 24 * 3600e3);
   if (!live.length) return null;
-  return live.sort((a, b) => firstBellMs(a.eventDate) - firstBellMs(b.eventDate))[0];
+  return live.sort((a, b) => cardBell(a) - cardBell(b))[0];
 }
 
 const readReceipts = () => { try { return JSON.parse(fs.readFileSync(RECEIPTS, "utf8")); } catch { return {}; } };
@@ -190,11 +196,11 @@ async function main() {
   }
 
   if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing else to do."); return 0; }
-  say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, first bell ${new Date(firstBellMs(card.eventDate)).toISOString()}`);
+  say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, starts ${card.startTime || `~${new Date(firstBellMs(card.eventDate)).toISOString()} (22:00 fallback)`}`);
 
   const receipts = readReceipts();
   // remember the active card so its grade can run after its markets close (see above)
-  receipts.lastCard = { eventId: card.eventId, eventDate: card.eventDate, tickerDate: card.tickerDate };
+  receipts.lastCard = { eventId: card.eventId, eventDate: card.eventDate, tickerDate: card.tickerDate, startTime: card.startTime || null };
   // ROLLOVER RECENCY (certification fix): a stage receipt stamped for a DIFFERENT card is not recency
   // for THIS card. Without this, a fresh card inherited the old card's ranAt and waited a full cadence
   // interval before its first collect/forecast — a silent dead window at every rollover.
