@@ -417,7 +417,8 @@ async function main() {
   let cardLive = false;
   try { cardLive = FR.cardIsLive(await k.marketsAll({ series_ticker: "KXUFCFIGHT" }), fc.card.eventDate); }
   catch (e) { say(`  (live card-status check unavailable: ${e.message} — falling back to the 22:00 bell only)`); }
-  if (bellPassed || cardLive) {
+  const fightHasStarted = bellPassed || cardLive;   // referenced again below to gate the news channel + the compact ping
+  if (fightHasStarted) {
     let gated = 0;
     for (const m of messages) {
       if (m.wouldSend && m.verdict !== "WITHDRAWN") { m.wouldSend = false; m.why = "fight has begun — no new betting instructions"; gated++; }
