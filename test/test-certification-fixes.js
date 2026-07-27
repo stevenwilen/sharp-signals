@@ -49,7 +49,7 @@ console.log("\nROLLOVER-SAFE GRADING — the settled card is graded after its ma
   ok("grading waits for bell + 6h (not before the event ends)", /firstBellMs\(d\) \+ 6 \* 3600e3/.test(s));
   ok("the grade receipt is stamped ONLY on success", /if \(okGrade\)/.test(s));
   ok("grading is idempotent per card (gradedCards keyed once)", /!graded\[d\]/.test(s));
-  ok("a finished card is released even if a market lingers open (rollover starvation)", /firstBellMs\(c\.eventDate\) \+ 24 \* 3600e3/.test(s));
+  ok("a finished card is released even if a market lingers open (rollover starvation)", /cardBell\(c\) \+ 24 \* 3600e3/.test(s) && /Number\.isFinite\(c\.startMs\) \? c\.startMs : firstBellMs\(c\.eventDate\)/.test(s));
   ok("a stage receipt from a different card is not recency for this card", /receipts\[st\]\.card !== card\.eventId/.test(s));
 }
 
