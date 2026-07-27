@@ -21,10 +21,8 @@ function base(over = {}) {
       a: { firstSeenAt: ago(2), independentOrigins: 2, amplifierCount: 1, actionStatus: "DASHBOARD_ONLY", boutId: "B01",
         forecastImpact: { lane: "exploration", verificationStatus: "VERIFIED" }, truthStatus: "UNCERTAIN", contradictions: [], actionHistory: [] } } },
     entertainment: { ranAt: ago(1), decisions: [{ classification: "NO BET" }], buyInstructions: [], delivery: { delivered: 0 } },
-    research: { paperModeActivatedAt: ago(48), observations: {}, positions: {}, lastRun: { mode: "PAPER", counts: { funded: 0 } } },
-    bankrolls: { real: { realizedPnl: 0, openExposure: 0 }, paper: { openExposure: 0 } },
+    bankrolls: { real: { realizedPnl: 0, openExposure: 0 } },
     manualBankroll: { bankroll: 100, entries: {} },
-    paperLedger: { positions: {} },
     candidateIndex: { channelsTotal: 70, newestSourceTs: ago(3), liveUnreadable: 0, corpusFreshness: { status: "CURRENT" } },
     coverage: null,
     cardEvidence: { builtAt: ago(1), integrity: { droppedVideos: [] }, selection: { videos: [1, 2, 3] } },
@@ -85,8 +83,8 @@ ok(status({ cardActive: false, receipts: { lastCard: { eventId: "X", eventDate: 
 // 10. Zeroes are shown, not omitted (a zero proves the category was checked).
 {
   const msg = DR.formatTelegram(DR.buildReport(base()));
-  ok(/core BUY 0/.test(msg) && /withdrawn 0/.test(msg) && /funded 0/.test(msg), "10. zero-count categories are rendered, not omitted");
-  ok(/PICKS & SIGNALS/.test(msg) && /SPECULATIVE RESEARCH/.test(msg) && /TODAY'S VERDICT/.test(msg), "10b. all sections present");
+  ok(/core BUY 0/.test(msg) && /withdrawn 0/.test(msg) && /expired 0/.test(msg), "10. zero-count categories are rendered, not omitted");
+  ok(/PICKS & SIGNALS/.test(msg) && /REAL ACTIVITY/.test(msg) && /TODAY'S VERDICT/.test(msg), "10b. all sections present");
   ok(!/undefined|NaN/.test(msg), "10c. no undefined/NaN leaked into the message");
 }
 

@@ -148,19 +148,16 @@ async function load(){
   }
   $('#readonly-line').textContent = u.readsSealedArtifactsOnly;
 
-  // TWO SEPARATE bankrolls, straight from the canonical ledger summary — same source the mobile app uses.
-  if (u.bankrolls && u.bankrolls.real && u.bankrolls.paper) {
+  // THE ONE real bankroll, straight from the canonical ledger summary — same source the mobile app uses.
+  if (u.bankrolls && u.bankrolls.real) {
     const D = (x) => x==null ? '<span class="na">-</span>' : '$'+Number(x).toFixed(2);
-    const R = u.bankrolls.real, P = u.bankrolls.paper;
+    const R = u.bankrolls.real;
     $('#bankrolls').innerHTML = [
       kv('Real Starting', D(R.startingDollars)), kv('Real Account value', D(R.accountValue)),
       kv('Real Available', D(R.availableCash)), kv('Real Open exposure', D(R.openExposure)),
       kv('Real Realized P&L', D(R.realizedPnl)), kv('Real Unconfirmed (not exposure)', String(R.unconfirmed.count)+' · '+D(R.unconfirmed.recommendedExposure)),
-      kv('Paper Starting', D(P.startingDollars)), kv('Paper Account value', D(P.accountValue)),
-      kv('Paper Available', D(P.availableCash)), kv('Paper Open exposure', D(P.openExposure)),
-      kv('Paper Simulated P&L', D(P.realizedPnl)), kv('Paper Prospective start', ts(P.prospectiveStartAt)),
     ].join('');
-    $('#bankrolls-note').innerHTML = 'Real Entertainment ($100, your actual money, only bets you confirmed) and Paper Strategy ($10,000, simulated on formal system BUYs only). Never combined. From the canonical <code>data/bankrolls.json</code>, the same source the Signals mobile app reads, so totals reconcile to the cent.';
+    $('#bankrolls-note').innerHTML = 'Real Entertainment ($100, your actual money, only bets you confirmed). From the canonical <code>data/bankrolls.json</code>, the same source the Signals mobile app reads, so totals reconcile to the cent.';
   } else {
     $('#bankrolls').innerHTML = kv('Bankrolls', '<span class="na">canonical summary not available</span>');
   }

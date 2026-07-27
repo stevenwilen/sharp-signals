@@ -79,14 +79,6 @@ jobs:
           # HUMAN REVIEW send archived). Reversible: unset it to fall back to shadow + the old path.
           FIGHT_INTEL_SEND: ${{ vars.FIGHT_INTEL_SEND }}
           INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
-          # Speculative Research Portfolio (isolated experiment). INERT until RESEARCH_ENABLED=1 is set as a
-          # repository VARIABLE — dispatch only spawns run-research.js when RESEARCH_ENABLED === "1", and
-          # RESEARCH_MODE (OBSERVE|PAPER) decides observe-only vs funded. RESEARCH_EXPLORATION_ENABLED=1 adds
-          # the research-only shadow exploration pass. Reads sealed artifacts, writes only its own ledger; no
-          # Telegram, no order path, never touches real/paper money.
-          RESEARCH_ENABLED: ${{ vars.RESEARCH_ENABLED }}
-          RESEARCH_MODE: ${{ vars.RESEARCH_MODE }}
-          RESEARCH_EXPLORATION_ENABLED: ${{ vars.RESEARCH_EXPLORATION_ENABLED }}
           # Coverage-gated per-fight YouTube search (opt-in, default off). Searches only bouts the roster
           # leaves under COVERAGE_MIN_ORIGINS independent origins, capped at COVERAGE_MAX_BOUTS per run to
           # protect the shared YouTube quota. Inert until COVERAGE_SEARCH_ENABLED=1 is set as a Variable.
