@@ -375,6 +375,17 @@ async function main() {
     for (const m of explorationMessages) messages.push(m);
   }
 
+  // PLACEMENT-AWARE: a bet you have already CONFIRMED PLACED (via the dashboard "I placed this" button)
+  // needs no more BUY / PRICE pings — you hold it, there is nothing to do until it settles. A genuine SELL
+  // (the sweep's WITHDRAWN, i.e. the fight is off) still speaks. This is the definitive stop the button buys.
+  {
+    const placedTickers = new Set(Object.values(MB.load().entries || {})
+      .filter((e) => e.status === MB.STATUS.MANUALLY_PLACED).map((e) => e.ticker));
+    if (placedTickers.size) for (const m of messages) {
+      if (m.wouldSend && m.verdict !== "WITHDRAWN" && placedTickers.has(m.ticker)) { m.wouldSend = false; m.why = "already placed — you hold this bet"; }
+    }
+  }
+
   // ---- WITHDRAWAL SWEEP (certification fix) ----
   // The ledger's `withdrawn` trigger could never fire: shouldSend was only ever called for contracts
   // that are CURRENTLY eligible, so a previously-recommended position whose contract vanished or was

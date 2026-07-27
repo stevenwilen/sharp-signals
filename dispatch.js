@@ -224,6 +224,11 @@ async function main() {
   const evalFile = `data/evidence-eval-${ed}.json`;
   const forecastFile = `data/forecast-${ed}.json`;
 
+  // Apply any placement confirmations the mobile dashboard dropped into data/placements/ BEFORE any alert
+  // path runs, so a just-placed bet is recorded at its exact price and then suppressed this cycle.
+  // Bookkeeping only — no Kalshi write. Non-fatal.
+  run("run-apply-placements.js", [], { allowFail: true });
+
   // FIGHT-WEEK PRICE WATCH — between the ~2h forecasts, a favorable price cross (a priced-out contract's
   // ask falling to/below its ceiling) should ping a BUY promptly, not wait a full cadence. The fight-day
   // sentinel does this on a 15-min loop, but ONLY Fri/Sat — the rest of fight week had no fast price
