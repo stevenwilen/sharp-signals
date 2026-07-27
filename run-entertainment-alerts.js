@@ -457,7 +457,11 @@ async function main() {
   // Compact notifications (opt-in) make unverified-news updates DASHBOARD-ONLY — they never carried a bet,
   // so dropping the phone push loses nothing. Suppressed here, UP FRONT (the same way FIGHT_INTEL_SEND
   // already hands this channel to the lifecycle), so the run's logs and delivery counts stay honest.
-  const intelOwnsNews = process.env.FIGHT_INTEL_SEND === "1";
+  // The fight-intelligence lifecycle owns the unverified-news channel whenever it is ENABLED — it records
+  // every rumour to the dashboard — so the legacy per-rumour Telegram send is redundant then, REGARDLESS of
+  // whether the lifecycle also pushes to Telegram (FIGHT_INTEL_SEND). Keying this on _SEND was the bug:
+  // setting FIGHT_INTEL_SEND=0 (news deliberately dashboard-only) silently re-armed these legacy pings.
+  const intelOwnsNews = process.env.FIGHT_INTEL_ENABLED === "1";
   const reviewsToSend = (intelOwnsNews || fightHasStarted || N.compactEnabled()) ? [] : reviews.filter((r) => AL.shouldSend(r.key, { newsKey: r.key, ...r.meta }).send);
   say(`\n[4] human-review alerts (unverified news): ${reviews.length} found, ${intelOwnsNews ? "0 new (archived — fight-intelligence lifecycle owns this channel)" : N.compactEnabled() ? "0 new (dashboard-only — compact notifications own this channel)" : reviewsToSend.length + " new"}`);
   for (const r of reviews) say(`    ${reviewsToSend.includes(r) ? "NEW " : "seen"} ${r.meta.about}: ${r.meta.why} (${r.meta.origins ?? "?"} origin)`);
