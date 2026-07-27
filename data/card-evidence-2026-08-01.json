@@ -317,7 +317,7 @@
       }
     ]
   },
-  "builtAt": "2026-07-27T17:44:48.064Z",
+  "builtAt": "2026-07-27T19:54:48.324Z",
   "selection": {
     "threshold": 35,
     "videos": [
@@ -350,6 +350,13 @@
         "claims": 58
       },
       {
+        "videoId": "K3Uc8EctNo4",
+        "source": "TCMMA Podcast",
+        "ranges": 2,
+        "chars": 16559,
+        "claims": 11
+      },
+      {
         "videoId": "Gw8FzInAY2s",
         "source": "MMA EXPERTS",
         "ranges": 1,
@@ -378,6 +385,14 @@
         "claims": 47
       },
       {
+        "videoId": "d0dtJzYGQ6k",
+        "source": "JakeGerberMMA",
+        "ranges": 2,
+        "chars": 10573,
+        "claims": 0,
+        "dropped": true
+      },
+      {
         "videoId": "LLWBt1XOklc",
         "source": "Round 3: Prediction Show",
         "ranges": 1,
@@ -401,26 +416,42 @@
     ]
   },
   "integrity": {
-    "rangesRead": 19,
-    "charsRead": 139958,
-    "newChunks": 0,
-    "cachedChunks": 23,
-    "rawClaims": 174,
-    "onCardPct": 56.9,
+    "rangesRead": 23,
+    "charsRead": 167090,
+    "newChunks": 1,
+    "cachedChunks": 27,
+    "rawClaims": 185,
+    "onCardPct": 58.4,
     "buckets": {
-      "other_fight_or_fighter": 75,
-      "target_bout": 73,
-      "card_fighter_no_bout_context": 7,
+      "other_fight_or_fighter": 77,
+      "target_bout": 80,
+      "card_fighter_no_bout_context": 9,
       "historical_vs_other_opponent": 19
     },
     "evidenceTypes": {
-      "off_card": 75,
-      "current_matchup": 11,
-      "general_tendency": 64,
+      "off_card": 77,
+      "current_matchup": 15,
+      "general_tendency": 69,
       "historical_performance": 19,
       "current_health_camp": 5
     },
-    "droppedVideos": []
+    "droppedVideos": [
+      {
+        "videoId": "d0dtJzYGQ6k",
+        "source": "JakeGerberMMA",
+        "bouts": [
+          "UFC-2026-08-01-B04"
+        ],
+        "unprocessed": [
+          [
+            [
+              3889,
+              4573
+            ]
+          ]
+        ]
+      }
+    ]
   },
   "claims": [
     {
@@ -2745,7 +2776,7 @@
       "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
-      "corroborated": false,
+      "corroborated": true,
       "knownBeforeBet": true,
       "rangeBouts": [
         "UFC-2026-08-01-B07",
@@ -2770,15 +2801,33 @@
           "claimClass": "statistical",
           "direction": "against_about",
           "confidence": 1
+        },
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 20081,
+            "endChar": 30640,
+            "approxMinute": 20
+          },
+          "quote": "and Valentin 55% takedown defense.",
+          "claimClass": "statistical",
+          "direction": "against_about",
+          "confidence": 0.9
         }
       ],
-      "mentionCount": 1,
-      "independentSources": 1,
+      "mentionCount": 2,
+      "independentSources": 2,
       "sources": [
-        "DFS BY THE NUMBERS"
+        "DFS BY THE NUMBERS",
+        "TCMMA Podcast"
       ],
       "mentionsPerSource": {
-        "DFS BY THE NUMBERS": 1
+        "DFS BY THE NUMBERS": 1,
+        "TCMMA Podcast": 1
       },
       "directionConflict": false,
       "classSpread": [
@@ -3244,6 +3293,528 @@
       "directionConflict": false,
       "classSpread": [
         "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Todorovic lands 4.7 significant strikes per minute, making him much more active than Valentin.",
+      "about": "Dusko Todorovic",
+      "opponent": "Robert Valentin",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 0.9,
+      "quote": "Now, Todorovic 4.7 significant strikes per minute. He's going to be much more active than 1.3 per minute from Valentin.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 20081,
+        "endChar": 30640,
+        "approxMinute": 20
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B07",
+        "UFC-2026-08-01-B06",
+        "UFC-2026-08-01-B08",
+        "UFC-2026-08-01-B12",
+        "UFC-2026-08-01-B10",
+        "UFC-2026-08-01-B11",
+        "UFC-2026-08-01-B13"
+      ],
+      "boutId": "UFC-2026-08-01-B07",
+      "bucket": "target_bout",
+      "cardEvidence": "current_matchup",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 20081,
+            "endChar": 30640,
+            "approxMinute": 20
+          },
+          "quote": "Now, Todorovic 4.7 significant strikes per minute. He's going to be much more active than 1.3 per minute from Valentin.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Rakic has an 85% takedown defense.",
+      "about": "Aleksandar Rakic",
+      "opponent": "Marcin Tybura",
+      "direction": "favors_about",
+      "evidenceType": "grappling",
+      "claimClass": "statistical",
+      "confidence": 0.9,
+      "quote": "Rakić 85% takedown defense.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 20081,
+        "endChar": 30640,
+        "approxMinute": 20
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B07",
+        "UFC-2026-08-01-B06",
+        "UFC-2026-08-01-B08",
+        "UFC-2026-08-01-B12",
+        "UFC-2026-08-01-B10",
+        "UFC-2026-08-01-B11",
+        "UFC-2026-08-01-B13"
+      ],
+      "boutId": "UFC-2026-08-01-B06",
+      "bucket": "target_bout",
+      "cardEvidence": "current_matchup",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 20081,
+            "endChar": 30640,
+            "approxMinute": 20
+          },
+          "quote": "Rakić 85% takedown defense.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Rakic lands 4.1 significant strikes per minute compared to Tybura's 3.6, giving him a slight edge in speed and volume on the feet.",
+      "about": "Aleksandar Rakic",
+      "opponent": "Marcin Tybura",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 0.9,
+      "quote": "Rakić has a slight edge on the feet. Should be quicker though, too. Landing 4.1 significant strikes per minute to 3.6 for Tybura.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 20081,
+        "endChar": 30640,
+        "approxMinute": 20
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B07",
+        "UFC-2026-08-01-B06",
+        "UFC-2026-08-01-B08",
+        "UFC-2026-08-01-B12",
+        "UFC-2026-08-01-B10",
+        "UFC-2026-08-01-B11",
+        "UFC-2026-08-01-B13"
+      ],
+      "boutId": "UFC-2026-08-01-B06",
+      "bucket": "target_bout",
+      "cardEvidence": "current_matchup",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 20081,
+            "endChar": 30640,
+            "approxMinute": 20
+          },
+          "quote": "Rakić has a slight edge on the feet. Should be quicker though, too. Landing 4.1 significant strikes per minute to 3.6 for Tybura.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Rakic has lost four fights in a row in the light heavyweight division.",
+      "about": "Aleksandar Rakic",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "this guy's lost four in a row. Terms of Rakić, right?",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 20081,
+        "endChar": 30640,
+        "approxMinute": 20
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B07",
+        "UFC-2026-08-01-B06",
+        "UFC-2026-08-01-B08",
+        "UFC-2026-08-01-B12",
+        "UFC-2026-08-01-B10",
+        "UFC-2026-08-01-B11",
+        "UFC-2026-08-01-B13"
+      ],
+      "boutId": "UFC-2026-08-01-B06",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 20081,
+            "endChar": 30640,
+            "approxMinute": 20
+          },
+          "quote": "this guy's lost four in a row. Terms of Rakić, right?",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Jan Blachowicz is 43 years old, making him one of the oldest fighters in the UFC.",
+      "about": "Jan Blachowicz",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Blachowicz 43 years old. One of the older fighters or oldest in the UFC.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 31211,
+        "endChar": 37211,
+        "approxMinute": 31
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": "UFC-2026-08-01-B05",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "Blachowicz 43 years old. One of the older fighters or oldest in the UFC.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Jan Blachowicz is winless in his last four fights, going 0-2-2.",
+      "about": "Jan Blachowicz",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "So, in his last four fights, he's 0-2-2. It's easier to say he's winless in the last four",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 31211,
+        "endChar": 37211,
+        "approxMinute": 31
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": "UFC-2026-08-01-B05",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "So, in his last four fights, he's 0-2-2. It's easier to say he's winless in the last four",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Daniel Rodriguez absorbs over five significant strikes per minute.",
+      "about": "Daniel Rodriguez",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 0.95,
+      "quote": "He's absorbing over five significant strikes a minute",
+      "videoId": "LLWBt1XOklc",
+      "channel": "Round 3: Prediction Show",
+      "publishedAt": "2026-07-26T17:13:43Z",
+      "url": "https://www.youtube.com/watch?v=LLWBt1XOklc",
+      "segment": {
+        "startChar": 0,
+        "endChar": 4543,
+        "approxMinute": 0
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": true,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": "UFC-2026-08-01-B04",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "D-Rod, 7.2 significant strikes per minute.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
+        },
+        {
+          "channel": "Round 3: Prediction Show",
+          "videoId": "LLWBt1XOklc",
+          "url": "https://www.youtube.com/watch?v=LLWBt1XOklc",
+          "publishedAt": "2026-07-26T17:13:43Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 0,
+            "endChar": 4543,
+            "approxMinute": 0
+          },
+          "quote": "He's absorbing over five significant strikes a minute",
+          "claimClass": "statistical",
+          "direction": "against_about",
+          "confidence": 0.95
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 2,
+      "sources": [
+        "TCMMA Podcast",
+        "Round 3: Prediction Show"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1,
+        "Round 3: Prediction Show": 1
+      },
+      "directionConflict": true,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Uroš Medić is coming off three straight first-round knockout wins.",
+      "about": "Uroš Medić",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 1,
+      "quote": "Medić coming off three straight KOs in the first round.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 31211,
+        "endChar": 37211,
+        "approxMinute": 31
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": "UFC-2026-08-01-B04",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "Medić coming off three straight KOs in the first round.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
       ]
     },
     {
@@ -5801,66 +6372,6 @@
       "directionConflict": false,
       "classSpread": [
         "film_study"
-      ]
-    },
-    {
-      "claim": "Daniel Rodriguez absorbs over five significant strikes per minute.",
-      "about": "Daniel Rodriguez",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "striking",
-      "claimClass": "statistical",
-      "confidence": 0.95,
-      "quote": "He's absorbing over five significant strikes a minute",
-      "videoId": "LLWBt1XOklc",
-      "channel": "Round 3: Prediction Show",
-      "publishedAt": "2026-07-26T17:13:43Z",
-      "url": "https://www.youtube.com/watch?v=LLWBt1XOklc",
-      "segment": {
-        "startChar": 0,
-        "endChar": 4543,
-        "approxMinute": 0
-      },
-      "chunkId": "0",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-01-B04"
-      ],
-      "boutId": "UFC-2026-08-01-B04",
-      "bucket": "target_bout",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "Round 3: Prediction Show",
-          "videoId": "LLWBt1XOklc",
-          "url": "https://www.youtube.com/watch?v=LLWBt1XOklc",
-          "publishedAt": "2026-07-26T17:13:43Z",
-          "chunkId": "0",
-          "segment": {
-            "startChar": 0,
-            "endChar": 4543,
-            "approxMinute": 0
-          },
-          "quote": "He's absorbing over five significant strikes a minute",
-          "claimClass": "statistical",
-          "direction": "against_about",
-          "confidence": 0.95
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "Round 3: Prediction Show"
-      ],
-      "mentionsPerSource": {
-        "Round 3: Prediction Show": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "statistical"
       ]
     },
     {
@@ -9208,6 +9719,126 @@
       ]
     },
     {
+      "claim": "Navajo Sterling lands 6.2 significant strikes per minute.",
+      "about": "Navajo Sterling",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 1,
+      "quote": "Sterling 6.2 significant strikes per minute",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 31211,
+        "endChar": 37211,
+        "approxMinute": 31
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "Sterling 6.2 significant strikes per minute",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Navajo Sterling is winning six straight fights in the UFC.",
+      "about": "Navajo Sterling",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Winning six straight in the UFC.",
+      "videoId": "K3Uc8EctNo4",
+      "channel": "TCMMA Podcast",
+      "publishedAt": "2026-07-27T10:00:08Z",
+      "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+      "segment": {
+        "startChar": 31211,
+        "endChar": 37211,
+        "approxMinute": 31
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-01-B04"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "TCMMA Podcast",
+          "videoId": "K3Uc8EctNo4",
+          "url": "https://www.youtube.com/watch?v=K3Uc8EctNo4",
+          "publishedAt": "2026-07-27T10:00:08Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 31211,
+            "endChar": 37211,
+            "approxMinute": 31
+          },
+          "quote": "Winning six straight in the UFC.",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "TCMMA Podcast"
+      ],
+      "mentionsPerSource": {
+        "TCMMA Podcast": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
       "claim": "Navajo Sterling has vulnerability to being taken down in the UFC.",
       "about": "Navajo Sterling",
       "opponent": "Jan Blachowicz",
@@ -10819,13 +11450,14 @@
         "claims": 3,
         "sources": [
           "Greedo Plays MMA",
-          "We Want Picks",
-          "Round 3: Prediction Show"
+          "TCMMA Podcast",
+          "Round 3: Prediction Show",
+          "We Want Picks"
         ],
-        "independentSources": 3,
+        "independentSources": 4,
         "examples": [
           "Danny Rodriguez has not knocked anybody out with one punch in his UFC career.",
-          "Daniel Rodriguez can fade and be hesitant when he is worried about takedowns."
+          "Daniel Rodriguez absorbs over five significant strikes per minute."
         ]
       },
       "crossSource": true
