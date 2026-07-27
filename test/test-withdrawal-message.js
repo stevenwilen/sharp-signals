@@ -12,7 +12,7 @@ const ok = (c, m) => { if (c) { pass++; process.stdout.write(`  PASS  ${m}\n`); 
   ok(t.includes("Valter Walker"), "1. names the fighter (Valter Walker)");
   ok(t.includes("66¢"), "2. shows the recommended price in cents (66¢)");
   ok(!/KXUFCFIGHT|-WAL\b/.test(t), "3. contains NO raw ticker code");
-  ok(t.includes("BET WITHDRAWN") && /Do not place/.test(t), "4. still a clear stand-down");
+  ok(t.includes("RECOMMENDATION PULLED") && /Hold to resolution/.test(t) && !/withdraw/i.test(t), "4. reads as a pulled recommendation + hold guidance, never 'cash out'");
 }
 
 // 2. Price rounds to the nearest cent for display (0.655 -> 66¢, like the rest of the message layer).

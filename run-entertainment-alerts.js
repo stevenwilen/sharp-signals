@@ -381,11 +381,23 @@ async function main() {
     const currentKeys = new Set(messages
       .filter((m) => m.state && AL.ACTIONABLE.has(m.state.classification))
       .map((m) => m.key || `${m.boutId}|${m.ticker}`));
+    // Every contract EVALUATED this run — actionable or not. If a withdrawn candidate is still in here, its
+    // contract is on the board (it only DRIFTED / re-classified); if it's absent, the contract is GONE.
+    const listedKeys = new Set(messages.map((m) => m.key || `${m.boutId}|${m.ticker}`));
     const ledger = AL.load();
     for (const [key, prev] of Object.entries(ledger)) {
       if (key.startsWith("review|")) continue;
       if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
       if (currentKeys.has(key)) continue;
+      // A SPECULATIVE (exploration-lane) bet is a take-the-shot-and-hold play. If it merely DRIFTED out of
+      // the actionable set (price ticked past the ceiling, the forecast wiggled, it got re-ranked) but its
+      // contract is STILL listed, do NOT queue a stand-down: it reads as "cash out", and exiting a placed
+      // speculative bet on drift just burns the entry + exit fees for nothing — the bet rides to resolution.
+      // Only a GENUINE void — the contract is GONE (fight cancelled/rescheduled) — still speaks.
+      if (key.startsWith("explore|") && listedKeys.has(key)) {
+        say(`  · speculative pick ${key} drifted out of actionable but is still listed — holding to resolution, no stand-down sent`);
+        continue;
+      }
       const tk = prev.topTicker || key.split("|").pop();
       // Name the FIGHTER the contract is for, not a ticker code. The bout has usually left the forecast
       // (that is WHY it withdrew), so the current forecast rarely still carries the name — fall back to the

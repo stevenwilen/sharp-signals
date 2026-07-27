@@ -181,7 +181,7 @@ console.log("\n9B: THE OTHER SIX MESSAGE TYPES");
   ok("a price above the max says the position no longer qualifies", /no longer qualifies/.test(pu));
   const w = TM.positionWithdrawn({ recommendedFirst: "Alice Ace vs Bob Bruiser", fight: "A vs B", reason: "conservative EV went negative" });
   ok("a withdrawal states the reason", /conservative EV went negative/.test(w));
-  ok("a withdrawal says do not place the previous recommendation", /Do not place the previous recommendation\./.test(w));
+  ok("a pulled recommendation tells a holder to hold, not cash out", /Hold to resolution/.test(w) && /don't sell/.test(w));
   const n = TM.noBetStatusChange({ fight: "A vs B", contractLabel: "A YES", previousClassification: "NO BET",
     classification: "ACTIONABLE EXPERIMENTAL", reason: "ask fell below the maximum", dashboardRef: "x" });
   ok("a status change shows both states", /Was: NO BET/.test(n) && /Now: ACTIONABLE EXPERIMENTAL/.test(n));
