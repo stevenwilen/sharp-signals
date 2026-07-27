@@ -179,9 +179,9 @@ console.log("\n9B: THE OTHER SIX MESSAGE TYPES");
     maximumAcceptablePrice: 0.45, conservativeValuePoints: -0.4, snapshotTimestamp: "t" });
   ok("a price update shows the move", /43\.0¢ → 47\.0¢/.test(pu));
   ok("a price above the max says the position no longer qualifies", /no longer qualifies/.test(pu));
-  const w = TM.positionWithdrawn({ recommendedFirst: "Alice Ace vs Bob Bruiser", fight: "A vs B", reason: "conservative EV went negative" });
-  ok("a withdrawal states the reason", /conservative EV went negative/.test(w));
-  ok("a pulled recommendation tells a holder to hold, not cash out", /Hold to resolution/.test(w) && /don't sell/.test(w));
+  const w = TM.sellAlert({ recommendedFirst: "Alice Ace vs Bob Bruiser", fight: "A vs B", reason: "the fight is off" });
+  ok("a sell alert states the reason", /the fight is off/.test(w));
+  ok("a sell alert headlines SELL and points to Kalshi", /🔴 SELL/.test(w) && /Sell on Kalshi/.test(w));
   const n = TM.noBetStatusChange({ fight: "A vs B", contractLabel: "A YES", previousClassification: "NO BET",
     classification: "ACTIONABLE EXPERIMENTAL", reason: "ask fell below the maximum", dashboardRef: "x" });
   ok("a status change shows both states", /Was: NO BET/.test(n) && /Now: ACTIONABLE EXPERIMENTAL/.test(n));

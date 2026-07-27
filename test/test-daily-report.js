@@ -80,12 +80,22 @@ ok(status({ runs: [{ conclusion: "success", createdAt: ago(1) }, { conclusion: "
 ok(status({ cardActive: false, receipts: { lastCard: { eventId: "X", eventDate: "2026-07-11" }, collect: { ranAt: ago(200) }, forecast: { ranAt: ago(200) } } })
   !== "SYSTEM FAILED", "9. no active card -> not FAILED for an idle pipeline");
 
-// 10. Zeroes are shown, not omitted (a zero proves the category was checked).
+// 10. Slim STATUS: the phone shows status + next fight + bankroll ONLY. The full sections still live in
+// the report JSON (the dashboard) — they just don't crowd Telegram anymore.
 {
   const msg = DR.formatTelegram(DR.buildReport(base()));
-  ok(/core BUY 0/.test(msg) && /withdrawn 0/.test(msg) && /expired 0/.test(msg), "10. zero-count categories are rendered, not omitted");
-  ok(/PICKS & SIGNALS/.test(msg) && /REAL ACTIVITY/.test(msg) && /TODAY'S VERDICT/.test(msg), "10b. all sections present");
-  ok(!/undefined|NaN/.test(msg), "10c. no undefined/NaN leaked into the message");
+  ok(/🩺 DAILY STATUS/.test(msg), "10. headline is the slim DAILY STATUS");
+  ok(/SYSTEM (HEALTHY|DEGRADED|FAILED)/.test(msg), "10b. shows the one-word health verdict");
+  ok(/🥊 Next fight:/.test(msg) && /💵 Bankroll/.test(msg), "10c. shows the next-fight and bankroll lines");
+  ok(!/PICKS & SIGNALS|TODAY'S VERDICT|SYSTEM QUALITY|SOURCE COLLECTION/.test(msg), "10d. verbose sections are NOT on the phone");
+  ok(/bets? found today/.test(msg), "10e. shows how many bets were found today");
+  ok(!/undefined|NaN/.test(msg), "10f. no undefined/NaN leaked into the message");
+}
+// 10g. With a card scheduled, the next-fight line names it and shows the approx bell.
+{
+  const b = base(); b.card = { eventId: "UFC-2026-08-01", eventDate: "2026-08-01", bellMs: Date.parse("2026-08-01T22:00:00Z") };
+  const msg = DR.formatTelegram(DR.buildReport(b));
+  ok(/Next fight: UFC-2026-08-01 — 2026-08-01/.test(msg) && /first bell ~22:00 UTC/.test(msg), "10g. next-fight names the card + approx bell");
 }
 
 process.stdout.write(`\n${pass}/${pass + fail} passed\n`);

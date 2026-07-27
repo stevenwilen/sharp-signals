@@ -181,14 +181,13 @@ console.log("\nCOMPACT HUMAN REVIEW (unverified news — no price, no instructio
   ok("building one WITH betting language throws (structural, not stylistic)", (() => { try { TM.humanReview({ fight: "A vs B", claim: "buy this at 40¢ now", origins: 1, forecastMoved: false }); return false; } catch { return true; } })());
 }
 
-console.log("\nRECOMMENDATION PULLED");
+console.log("\nSELL — the fight is off");
 {
-  const t = TM.positionWithdrawn({ recommendedFirst: "Dricus Du Plessis vs Kamaru Usman", reason: "the bout was rescheduled" });
-  ok("headlines RECOMMENDATION PULLED (not 'withdraw your money')", /^🚫 RECOMMENDATION PULLED$/m.test(t));
-  ok("names the recommended fight", /Dricus Du Plessis vs Kamaru Usman/.test(t));
+  const t = TM.sellAlert({ recommendedFirst: "Dricus Du Plessis vs Kamaru Usman", reason: "the bout was rescheduled" });
+  ok("headlines SELL — the fight is off", /^🔴 SELL — the fight is off$/m.test(t));
+  ok("names the fight", /Dricus Du Plessis vs Kamaru Usman/.test(t));
   ok("gives a reason", /Reason: the bout was rescheduled/.test(t));
-  ok("tells a holder to HOLD, not cash out", /Hold to resolution/.test(t) && /lose the fees/.test(t));
-  ok("does not read as 'withdraw' anywhere", !/withdraw/i.test(t));
+  ok("says sell if the market is open, else Kalshi settles fair", /Sell on Kalshi/.test(t) && /fair price/.test(t));
   ok("under the 400-char cap", t.length < 400, `len=${t.length}`);
 }
 

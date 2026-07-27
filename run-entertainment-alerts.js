@@ -393,13 +393,13 @@ async function main() {
       if (key.startsWith("review|")) continue;
       if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
       if (currentKeys.has(key)) continue;
-      // A SPECULATIVE (exploration-lane) bet is a take-the-shot-and-hold play. If it merely DRIFTED out of
-      // the actionable set (price ticked past the ceiling, the forecast wiggled, it got re-ranked) but its
-      // contract is STILL listed, do NOT queue a stand-down: it reads as "cash out", and exiting a placed
-      // speculative bet on drift just burns the entry + exit fees for nothing — the bet rides to resolution.
-      // Only a GENUINE void — the contract is GONE (fight cancelled/rescheduled) — still speaks.
-      if (key.startsWith("explore|") && listedKeys.has(key)) {
-        say(`  · speculative pick ${key} drifted out of actionable but is still listed — holding to resolution, no stand-down sent`);
+      // Every bet here is one the operator placed to ride to resolution. If it merely DRIFTED out of the
+      // actionable set (price ticked past the ceiling, the forecast wiggled, it got re-ranked) but its
+      // contract is STILL listed, send NOTHING: exiting on drift just burns the entry + exit fees for
+      // nothing. Only a GENUINE void — the contract is GONE from the board (fight cancelled / a fighter is
+      // out) — speaks, and it speaks as a SELL, because that is the one case worth acting on.
+      if (listedKeys.has(key)) {
+        say(`  · ${key} drifted out of actionable but its contract is still listed — holding to resolution, no alert sent`);
         continue;
       }
       const tk = prev.topTicker || key.split("|").pop();
@@ -411,11 +411,11 @@ async function main() {
       label = label || tk || key;
       messages.push({
         boutId: key.split("|")[0], ticker: tk, key,
-        wouldSend: true, why: "previously recommended, no longer qualifies",
-        text: TM.positionWithdrawn({ recommendedFirst: label, price: prev.ask, reason: "the position no longer qualifies (price, forecast, or listing changed)" }),
+        wouldSend: true, why: "contract no longer listed — the fight is off",
+        text: TM.sellAlert({ recommendedFirst: label, price: prev.ask, reason: "the contract is no longer listed — the fight is off (cancelled, rescheduled, or a fighter is out)" }),
         state: { ...prev, classification: "WITHDRAWN", verdict: "WITHDRAWN" }, verdict: "WITHDRAWN",
       });
-      say(`  ⚠ WITHDRAWN: ${key} was ${prev.classification}, no longer qualifies — standing-down message queued`);
+      say(`  🔴 SELL: ${key} (was ${prev.classification}) — contract gone, the fight is off; sell alert queued`);
     }
   }
 
@@ -483,10 +483,11 @@ async function main() {
     const notify = require("./lib/notify");   // Telegram ONLY. There is no trading API in this build.
     delivery.transport = "telegram (manual instruction + human review)";
     for (const m of toSend) {
-      // Compact notifications (opt-in) replace the full buy/price/withdrawal body with a short
-      // "open the dashboard" ping. All three verdicts PUSH, so `body` is never null here; the guard is
-      // defensive. Legacy mode (default) sends `m.text` unchanged.
       const kind = m.verdict === "PRICE_TOO_HIGH" ? "PRICE_TOO_HIGH" : m.verdict === "WITHDRAWN" ? "WITHDRAWN" : "BUY";
+      // PRICE_TOO_HIGH is a "not buyable yet" state. The operator asked to hear ONLY when a bet is actually
+      // buyable, so we RECORD it — the ledger needs it so the fight-week price-watch can fire the BUY the
+      // moment the ask crosses back below the ceiling — but send NO Telegram. Only BUY and SELL leave here.
+      if (m.verdict === "PRICE_TOO_HIGH") { AL.record(m.key || `${m.boutId}|${m.ticker}`, m.state, "PRICE_TOO_HIGH_SILENT"); continue; }
       const body = N.forSend(m.text, kind);
       if (!body) continue;
       delivery.attempted++;

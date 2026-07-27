@@ -43,7 +43,7 @@ function activeCard(receipts) {
   if (!c) return { eventId: null, eventDate: null, active: false };
   const bellMs = c.eventDate ? Date.parse(c.eventDate + "T22:00:00Z") : null;   // card is "active" until first bell has passed
   const active = bellMs ? Date.now() < bellMs + 6 * 3.6e6 : false;              // (+6h margin, matches the post-card tier)
-  return { eventId: c.eventId, eventDate: c.eventDate, active };
+  return { eventId: c.eventId, eventDate: c.eventDate, active, bellMs };
 }
 
 function telegramSendsToday(intel, ent, reportDate, tz) {
@@ -67,6 +67,7 @@ async function main() {
   const report = DR.buildReport({
     now: nowMs, tz, reportDate,
     cardActive: card.active,
+    card: { eventId: card.eventId, eventDate: card.eventDate, bellMs: card.bellMs },
     expectedRunsToday: 6 * DR.hourIn(nowMs, tz),          // external trigger fires ~every 10 min = 6/hour
     receipts,
     forecast: d ? load(`forecast-${d}.json`) : null,
