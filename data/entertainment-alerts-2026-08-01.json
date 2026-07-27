@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-08-01",
-  "ranAt": "2026-07-27T17:30:35.160Z",
+  "ranAt": "2026-07-27T17:44:56.754Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
-    "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "attempted": 6,
+    "delivered": 6,
+    "buyInstructions": 3,
+    "humanReviews": 3,
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -50,18 +50,18 @@
     "provenance": "chosen by the human as entertainment limits; NOT derived from Kelly, NOT fitted to any result, NOT evidence of edge"
   },
   "contractsListed": {
-    "FIGHTER_WINS": 20
+    "FIGHTER_WINS": 22
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 18,
+    "NO BET": 20,
     "HUMAN REVIEW REQUIRED": 2
   },
-  "forecastHash": "a6c22c00171f3f27",
-  "snapshotTimestamp": "2026-07-27T17:30:35.307Z",
+  "forecastHash": "8f9d58ed974c4697",
+  "snapshotTimestamp": "2026-07-27T17:44:56.852Z",
   "humanReviewAlerts": [
     {
-      "boutId": "UFC-2026-08-01-B08",
+      "boutId": "UFC-2026-08-01-B09",
       "about": "Ludovit Klein",
       "topic": "injury_health",
       "origins": 1,
@@ -69,7 +69,7 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nTofiq Musayev vs Ludovit Klein\n\nReport: Ludovit Klein is coming off an ankle injury win over Mateusz Rebecki where he survived the third round on his back.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
-      "boutId": "UFC-2026-08-01-B04",
+      "boutId": "UFC-2026-08-01-B05",
       "about": "Jan Blachowicz",
       "topic": "injury_health",
       "origins": 1,
@@ -77,7 +77,7 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nNavajo Stirling vs Jan Blachowicz\n\nReport: Jan Blachowicz has had a lot of injuries.\nSources: 1 independent origin\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     },
     {
-      "boutId": "UFC-2026-08-01-B05",
+      "boutId": "UFC-2026-08-01-B06",
       "about": "Alexander Rakic",
       "topic": "injury_health",
       "origins": 1,
@@ -87,16 +87,16 @@
   ],
   "buyInstructions": [
     {
-      "boutId": "UFC-2026-08-01-B04",
+      "boutId": "UFC-2026-08-01-B05",
       "ticker": "KXUFCFIGHT-26AUG01BLASTI-BLA",
-      "key": "explore|UFC-2026-08-01-B04|KXUFCFIGHT-26AUG01BLASTI-BLA",
-      "wouldSend": false,
-      "why": "no material change since the last message",
+      "key": "explore|UFC-2026-08-01-B05|KXUFCFIGHT-26AUG01BLASTI-BLA",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
       "text": "🧪 STRONG SPECULATIVE — $4\n\nJan Blachowicz vs Navajo Stirling\nBuy: Jan Blachowicz YES\n\nCurrent: 25¢\nMaximum: 28¢\nStake: $4 of $100\nApprox contracts: 15\nCard exposure left: $3\n\nWhy: Yan Blachowicz is a very difficult guy to knock out.\nMain risk: Based on 2 uncorroborated origin\nSystem estimate: 31% (range 28%–32%)\n\nPlace only if the displayed average price is 28¢ or less.\n\nFor entertainment use. Manual placement only.",
       "state": {
         "ask": 0.25,
         "maximumAcceptablePrice": 0.2768,
-        "forecastHash": "a6c22c00171f3f27",
+        "forecastHash": "8f9d58ed974c4697",
         "classification": "STRONG SPECULATIVE",
         "lane": "exploration",
         "stakePercent": 4,
@@ -110,16 +110,16 @@
       "verdict": "BUY"
     },
     {
-      "boutId": "UFC-2026-08-01-B12",
+      "boutId": "UFC-2026-08-01-B13",
       "ticker": "KXUFCFIGHT-26AUG01REBPRE-PRE",
-      "key": "explore|UFC-2026-08-01-B12|KXUFCFIGHT-26AUG01REBPRE-PRE",
-      "wouldSend": false,
-      "why": "no material change since the last message",
+      "key": "explore|UFC-2026-08-01-B13|KXUFCFIGHT-26AUG01REBPRE-PRE",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
       "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nKyle Prepolec vs Mateusz Rebecki\nAsk now: 19¢\nYour ceiling: 18.2¢\n\nWait for 18¢ or lower. The system will alert again if it becomes available.",
       "state": {
         "ask": 0.19,
         "maximumAcceptablePrice": 0.1816,
-        "forecastHash": "a6c22c00171f3f27",
+        "forecastHash": "8f9d58ed974c4697",
         "classification": "PRICE_TOO_HIGH",
         "lane": "exploration",
         "stakePercent": 3,
@@ -131,32 +131,76 @@
       },
       "lane": "exploration",
       "verdict": "PRICE_TOO_HIGH"
+    },
+    {
+      "boutId": "explore",
+      "ticker": "KXUFCFIGHT-26AUG01BLASTI-BLA",
+      "key": "explore|UFC-2026-08-01-B04|KXUFCFIGHT-26AUG01BLASTI-BLA",
+      "wouldSend": true,
+      "why": "previously recommended, no longer qualifies",
+      "text": "❌ BET WITHDRAWN\nJan Blachowicz — was buy at 25¢\nReason: the position no longer qualifies (price, forecast, or listing changed)\nDo not place the previous recommendation.",
+      "state": {
+        "ask": 0.25,
+        "maximumAcceptablePrice": 0.2768,
+        "forecastHash": "a6c22c00171f3f27",
+        "classification": "WITHDRAWN",
+        "lane": "exploration",
+        "stakePercent": 4,
+        "topTicker": "KXUFCFIGHT-26AUG01BLASTI-BLA",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "WITHDRAWN",
+        "lastSentAt": "2026-07-27T17:01:09.557Z",
+        "lastType": "BUY_INSTRUCTION",
+        "firstSentAt": "2026-07-27T13:27:51.958Z",
+        "messageCount": 3
+      },
+      "verdict": "WITHDRAWN"
     }
   ],
   "decisions": [
     {
-      "ticker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
-      "bout": "Daniel Rodriguez vs Uros Medic",
+      "ticker": "KXUFCFIGHT-26AUG01JANGUG-JAN",
+      "bout": "Milos Janicic vs Noah Gugnon",
       "classification": "NO BET",
       "rank": 1,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0845 is not favourable after fees and slippage"
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
+    },
+    {
+      "ticker": "KXUFCFIGHT-26AUG01JANGUG-GUG",
+      "bout": "Milos Janicic vs Noah Gugnon",
+      "classification": "NO BET",
+      "rank": 2,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
+    },
+    {
+      "ticker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
+      "bout": "Daniel Rodriguez vs Uros Medic",
+      "classification": "NO BET",
+      "rank": 3,
+      "entertainmentEligible": false,
+      "blockedBy": "research classification",
+      "reason": "conservative EV -0.0751 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26AUG01MEDROD-MED",
       "bout": "Daniel Rodriguez vs Uros Medic",
       "classification": "NO BET",
-      "rank": 2,
+      "rank": 4,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.072 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.0711 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26AUG01RAKTYB-TYB",
       "bout": "Marcin Tybura vs Aleksandar Rakic",
       "classification": "NO BET",
-      "rank": 3,
+      "rank": 5,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -165,7 +209,7 @@
       "ticker": "KXUFCFIGHT-26AUG01RAKTYB-RAK",
       "bout": "Marcin Tybura vs Aleksandar Rakic",
       "classification": "NO BET",
-      "rank": 4,
+      "rank": 6,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -174,7 +218,7 @@
       "ticker": "KXUFCFIGHT-26AUG01TODVAL-VAL",
       "bout": "Robert Valentin vs Dusko Todorovic",
       "classification": "NO BET",
-      "rank": 5,
+      "rank": 7,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -183,7 +227,7 @@
       "ticker": "KXUFCFIGHT-26AUG01TODVAL-TOD",
       "bout": "Robert Valentin vs Dusko Todorovic",
       "classification": "NO BET",
-      "rank": 6,
+      "rank": 8,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -192,7 +236,7 @@
       "ticker": "KXUFCFIGHT-26AUG01CEPURB-URB",
       "bout": "Gilbert Urbina vs Vlasto Cepo",
       "classification": "NO BET",
-      "rank": 7,
+      "rank": 9,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -201,7 +245,7 @@
       "ticker": "KXUFCFIGHT-26AUG01CEPURB-CEP",
       "bout": "Gilbert Urbina vs Vlasto Cepo",
       "classification": "NO BET",
-      "rank": 8,
+      "rank": 10,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -210,7 +254,7 @@
       "ticker": "KXUFCFIGHT-26AUG01KLEMUS-MUS",
       "bout": "Tofiq Musayev vs Ludovit Klein",
       "classification": "NO BET",
-      "rank": 9,
+      "rank": 11,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -219,7 +263,7 @@
       "ticker": "KXUFCFIGHT-26AUG01KLEMUS-KLE",
       "bout": "Tofiq Musayev vs Ludovit Klein",
       "classification": "NO BET",
-      "rank": 10,
+      "rank": 12,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -228,7 +272,7 @@
       "ticker": "KXUFCFIGHT-26AUG01ELLOLI-OLI",
       "bout": "Michael Oliveira vs Oban Elliott",
       "classification": "NO BET",
-      "rank": 11,
+      "rank": 13,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.0737 is not favourable after fees and slippage"
@@ -237,7 +281,7 @@
       "ticker": "KXUFCFIGHT-26AUG01ELLOLI-ELL",
       "bout": "Michael Oliveira vs Oban Elliott",
       "classification": "NO BET",
-      "rank": 12,
+      "rank": 14,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.0419 is not favourable after fees and slippage"
@@ -246,7 +290,7 @@
       "ticker": "KXUFCFIGHT-26AUG01BUZGRA-GRA",
       "bout": "Bogdan Grad vs Dennis Buzukja",
       "classification": "NO BET",
-      "rank": 13,
+      "rank": 15,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -255,7 +299,7 @@
       "ticker": "KXUFCFIGHT-26AUG01BUZGRA-BUZ",
       "bout": "Bogdan Grad vs Dennis Buzukja",
       "classification": "NO BET",
-      "rank": 14,
+      "rank": 16,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -264,7 +308,7 @@
       "ticker": "KXUFCFIGHT-26AUG01MILCOW-MIL",
       "bout": "Nina Milosevic vs Hailey Cowan",
       "classification": "NO BET",
-      "rank": 15,
+      "rank": 17,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -273,7 +317,7 @@
       "ticker": "KXUFCFIGHT-26AUG01MILCOW-COW",
       "bout": "Nina Milosevic vs Hailey Cowan",
       "classification": "NO BET",
-      "rank": 16,
+      "rank": 18,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -282,7 +326,7 @@
       "ticker": "KXUFCFIGHT-26AUG01REBPRE-REB",
       "bout": "Mateusz Rebecki vs Kyle Prepolec",
       "classification": "NO BET",
-      "rank": 17,
+      "rank": 19,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -291,7 +335,7 @@
       "ticker": "KXUFCFIGHT-26AUG01REBPRE-PRE",
       "bout": "Mateusz Rebecki vs Kyle Prepolec",
       "classification": "NO BET",
-      "rank": 18,
+      "rank": 20,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -300,7 +344,7 @@
       "ticker": "KXUFCFIGHT-26AUG01BLASTI-STI",
       "bout": "Navajo Stirling vs Jan Blachowicz",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 19,
+      "rank": 21,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
@@ -309,7 +353,7 @@
       "ticker": "KXUFCFIGHT-26AUG01BLASTI-BLA",
       "bout": "Navajo Stirling vs Jan Blachowicz",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 20,
+      "rank": 22,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
