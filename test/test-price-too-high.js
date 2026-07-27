@@ -47,9 +47,15 @@ try {
   // B: it became BUYABLE (ask fell to/below the ceiling) -> MUST speak.
   ok(AL.shouldSend("pth", BUY({ ask: 0.63 })).send === true,
     "9. priced-out -> ask fell to/below the ceiling -> DOES speak ('it is buyable now')");
-  // C (control): a HELD BUY position, forecast re-sealed -> STILL speaks (suppression is priced-out-only).
-  ok(AL.shouldSend("buy", BUY({ forecastHash: "bbb" })).send === true,
-    "10. a held BUY + forecast re-seal -> still speaks (holder triggers only suppressed while priced out)");
+  // C: a SENT BUY, forecast re-sealed (new hash, same pick/price/stake) -> NOT re-sent. This is the
+  //    duplicate-buy spam: the forecast re-seals EVERY cycle with a fresh hash, and forecast-changed used
+  //    to re-fire the identical buy each time. Holder triggers are now suppressed for any previously-sent
+  //    contract, buy OR priced-out.
+  ok(AL.shouldSend("buy", BUY({ forecastHash: "bbb" })).send === false,
+    "10. a sent BUY + forecast re-seal (hash only) -> NOT re-sent (kills the duplicate-buy spam)");
+  // C2 (control): a sent BUY whose price CROSSES its ceiling is a MATERIAL change -> DOES speak.
+  ok(AL.shouldSend("buy", BUY({ ask: 0.66, verdict: "PRICE_TOO_HIGH", classification: "PRICE_TOO_HIGH" })).send === true,
+    "10b. a sent BUY whose price crosses the ceiling -> DOES speak (material, not a holder trigger)");
   // D: a genuine FIRST sighting of a priced-out contract still sends (prev absent, only `first` fires).
   ok(AL.shouldSend("never-seen", PTH()).send === true,
     "11. first sighting of a priced-out contract STILL sends (suppression never silences a first alert)");
