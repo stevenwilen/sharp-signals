@@ -177,7 +177,7 @@ function buildActionMessage(v, f, opts) {
   }
   // BUY
   const text = TM.buyInstruction({
-    classification: opts.classification, stake: opts.stake, bankroll: EN.BANKROLL.amount,
+    classification: opts.classification, stake: opts.stake, bankroll: opts.bankroll ?? EN.BANKROLL.amount,
     recommendedFirst, buyLine: `${rec} YES`,
     ask: v.topOfBookPrice, maximumAcceptablePrice: v.maximumAcceptablePrice,
     whyOne: opts.whyOne, riskOne: opts.riskOne,
@@ -217,8 +217,12 @@ async function main() {
   const gate = armingGate(fc.card && fc.card.eventId, fc.sealHash);
 
   const nowTs = Date.now();
+  // Bets scale to the CURRENT balance, not a fixed $100 — win and they grow, lose and they shrink, no new
+  // money ever. `scale` feeds the exploration sizer the same way `bankroll` feeds the core sizer.
+  const liveBankroll = (() => { try { return MB.summary(MB.load()).accountValue || EN.BANKROLL.amount; } catch { return EN.BANKROLL.amount; } })();
+  const scale = liveBankroll / EN.BANKROLL.amount;
   say(`ENTERTAINMENT ALERTS — ${fc.card.eventId}`);
-  say(`  bankroll $${EN.BANKROLL.amount} (${EN.BANKROLL.label}) · tiers ${Object.values(EN.TIERS).map((t) => `${t.fraction * 100}%=$${t.dollars}`).join(" / ")}`);
+  say(`  bankroll $${liveBankroll.toFixed(2)} (${EN.BANKROLL.label}) · tiers ${Object.values(EN.TIERS).map((t) => `${t.fraction * 100}%=$${(t.fraction * liveBankroll).toFixed(2)}`).join(" / ")}`);
   say(`  caps: ${EN.CAPS.maxFractionPerFight * 100}% per fight · ${EN.CAPS.maxFractionPerCard * 100}% per card`);
   say(`  alerts: ${ARM.ARMING.ALERTS_ARMED ? "ARMED" : "DISARMED"} (manual instructions only)`);
   say(`  trading: ${ARM.ARMING.TRADING_ENABLED ? "ENABLED" : "NONE — no Kalshi write path exists in this build"}`);
@@ -293,8 +297,8 @@ async function main() {
   for (const s of P.STATUSES) say(`    ${s.padEnd(26)} ${counts[s] || 0}`);
 
   say(`\n[3] entertainment sizing (only on what the research gates already cleared) ...`);
-  for (const r of ranked) r.entertainment = EN.sizeEntertainment(r, { bankroll: EN.BANKROLL.amount, maxSnapshotAgeMs: 30 * 60 * 1000 });
-  const capped = EN.applyEntertainmentCaps(ranked, { bankroll: EN.BANKROLL.amount });
+  for (const r of ranked) r.entertainment = EN.sizeEntertainment(r, { bankroll: liveBankroll, maxSnapshotAgeMs: 30 * 60 * 1000 });
+  const capped = EN.applyEntertainmentCaps(ranked, { bankroll: liveBankroll });
   const eligible = capped.positions.filter((r) => r.entertainment && r.entertainment.eligible && r.entertainment.stake > 0);
   say(`[3] positions the system would instruct you to buy: ${eligible.length}`);
   if (!eligible.length) {
@@ -319,7 +323,7 @@ async function main() {
     const runnerUp = onThisFight.filter((r) => r !== top)[0];
     const { why, against } = TM.reasonsFor(top, f, null);
     const built = buildActionMessage(top, f, {
-      classification: top.entertainment.tierLabel || "EXPERIMENTAL", stake: top.entertainment.stake,
+      classification: top.entertainment.tierLabel || "EXPERIMENTAL", stake: top.entertainment.stake, bankroll: liveBankroll,
       fraction: top.entertainment.percentOfBankroll / 100, lane: "core",
       whyOne: TM.toReasons(why)[0] || "the ranked contract clears the research gates after fees",
       riskOne: TM.toReasons(against)[0] || "the forecast has not demonstrated a prospective edge",
@@ -338,7 +342,7 @@ async function main() {
   // path as core, so dedup / price-cross / withdrawal triggers apply identically.
   const explorationMessages = [];
   if (explorationOn && explorationCandidates.length) {
-    const sized = explorationCandidates.map((cand) => ({ ...cand, sized: XP.classifyAndSize(cand.valued, cand.exploration) }));
+    const sized = explorationCandidates.map((cand) => ({ ...cand, sized: XP.classifyAndSize(cand.valued, cand.exploration, { scale }) }));
     // Keep the single best-tier candidate per bout, then cap exposure.
     const bestByBout = {};
     for (const s of sized) {
@@ -346,7 +350,7 @@ async function main() {
       const cur = bestByBout[s.boutId];
       if (!cur || s.sized.stake > cur.sized.stake) bestByBout[s.boutId] = s;
     }
-    const { positions: capped2, cardExposure } = XP.applyExposureCaps(Object.values(bestByBout));
+    const { positions: capped2, cardExposure } = XP.applyExposureCaps(Object.values(bestByBout), { scale });
     say(`\n[3b] EXPLORATION positions: ${capped2.filter((p) => p.sized.stake > 0).length} tiered, card exposure $${cardExposure} (cap $10)`);
     for (const p of capped2) {
       if (!p.sized || p.sized.stake <= 0) continue;
@@ -358,9 +362,9 @@ async function main() {
         ? p.sized.evidenceAgainst
         : `Based on ${p.sized.independentOrigins} uncorroborated origin`;
       const built = buildActionMessage(v, f, {
-        classification: p.sized.tier, stake: p.sized.stake, fraction: p.sized.fraction, lane: "exploration",
+        classification: p.sized.tier, stake: p.sized.stake, bankroll: liveBankroll, fraction: p.sized.fraction, lane: "exploration",
         whyOne, riskOne, approxContracts: v.maxFillable != null ? Math.floor(p.sized.stake / (v.allInPrice || 1)) : null,
-        cardExposureRemaining: +(XP.RULES.caps_exposure.maxPerCardDollars - cardExposure).toFixed(2),
+        cardExposureRemaining: +((XP.RULES.caps_exposure.maxPerCardDollars * scale) - cardExposure).toFixed(2),
       });
       // A creative candidate that fails the invariants is not sent as anything betting; it just drops.
       if (built.verdict === "FAIL_CLOSED") continue;
@@ -497,7 +501,7 @@ async function main() {
             fight: (fc.forecasts.find((x) => x.boutId === m.boutId) || {}).fight,
             lane: m.lane || "core", classification: m.state.classification,
             recommendedFraction: m.state.stakePercent != null ? m.state.stakePercent / 100 : null,
-            recommendedStakeDollars: m.state.stakePercent != null ? +(EN.BANKROLL.amount * m.state.stakePercent / 100).toFixed(2) : null,
+            recommendedStakeDollars: m.state.stakePercent != null ? +(liveBankroll * m.state.stakePercent / 100).toFixed(2) : null,
             maximumAcceptablePrice: m.state.maximumAcceptablePrice, ask: m.state.ask, forecastHash: fc.sealHash,
           });
           mbTouched = true;
@@ -537,7 +541,7 @@ async function main() {
     delivery,
     alertsArmed: ARM.ARMING.ALERTS_ARMED, tradingEnabled: false, ordersPlaced: 0, orderPathExists: false,
     armingGate: gate,
-    bankroll: EN.BANKROLL, tiers: EN.TIERS, caps: EN.CAPS,
+    bankroll: { ...EN.BANKROLL, amount: +liveBankroll.toFixed(2) }, tiers: EN.TIERS, caps: EN.CAPS,
     contractsListed: byType, onlyOutrightMarketsListed: onlyOutright,
     classificationCounts: counts,
     forecastHash: fc.sealHash, snapshotTimestamp: new Date(snapshotTs).toISOString(),
