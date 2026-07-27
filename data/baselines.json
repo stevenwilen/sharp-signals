@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T13:27:47.216Z",
+  "generatedAt": "2026-07-27T15:36:16.008Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
@@ -8,11 +8,11 @@
       "date": "2026-08-01",
       "bouts": 12,
       "A": 0,
-      "B": 11,
+      "B": 12,
       "C": 0,
-      "D": 1,
-      "priced": 11,
-      "pct": 91.7
+      "D": 0,
+      "priced": 12,
+      "pct": 100
     }
   ],
   "baselines": {
@@ -20,17 +20,52 @@
       {
         "boutId": "UFC-2026-08-01-B01",
         "forecastTimestamp": "2026-08-01T00:00:00.000Z",
-        "status": "BASELINE UNAVAILABLE",
-        "fallbackLevel": "D",
-        "tier": "D_UNAVAILABLE",
-        "probability": null,
+        "forFighter": "Mark Vologdin",
+        "probability": 0.4202,
+        "probabilityOther": 0.5798,
+        "orientation": {
+          "favorite": "Josias Musasa",
+          "underdog": "Mark Vologdin"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Mark Vologdin": "+130",
+            "Josias Musasa": "-150",
+            "rawProbA": 0.4348,
+            "rawProbB": 0.6,
+            "overround": 1.0348
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.4202,
+        "marketDispersion": 0,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
         "missingSourceReasons": [
-          "A: no live multi-book snapshot supplied",
-          "B: no BFO fight row for this bout",
-          "C: no Kalshi quotes supplied"
+          "A: no live multi-book snapshot supplied"
         ],
         "provenance": {
           "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
           "waterfall": [
             "A",
             "B",
@@ -38,7 +73,7 @@
             "D"
           ]
         },
-        "contentHash": "26116f34da6e8b18"
+        "contentHash": "15ca4eeeb741f091"
       },
       {
         "boutId": "UFC-2026-08-01-B02",
@@ -79,7 +114,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.7241,
-        "marketDispersion": 0.47,
+        "marketDispersion": 1.36,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -96,7 +131,7 @@
             "D"
           ]
         },
-        "contentHash": "1dcb5b84b1aec2e1"
+        "contentHash": "f9dd96de50247229"
       },
       {
         "boutId": "UFC-2026-08-01-B03",
@@ -137,7 +172,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.198,
-        "marketDispersion": 4.18,
+        "marketDispersion": 3.32,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -154,7 +189,7 @@
             "D"
           ]
         },
-        "contentHash": "96141eb26d791e79"
+        "contentHash": "2615b6f58e968501"
       },
       {
         "boutId": "UFC-2026-08-01-B04",
@@ -543,7 +578,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.7619,
-        "marketDispersion": 1.75,
+        "marketDispersion": 1.15,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -560,7 +595,7 @@
             "D"
           ]
         },
-        "contentHash": "97791ff869440481"
+        "contentHash": "f6c744dcdeaa90e5"
       },
       {
         "boutId": "UFC-2026-08-01-B11",
@@ -601,7 +636,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.8017,
-        "marketDispersion": 1.13,
+        "marketDispersion": 2.64,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -618,7 +653,7 @@
             "D"
           ]
         },
-        "contentHash": "3ffe6e2c7bedbb70"
+        "contentHash": "1e703f86a80d0c83"
       },
       {
         "boutId": "UFC-2026-08-01-B12",
