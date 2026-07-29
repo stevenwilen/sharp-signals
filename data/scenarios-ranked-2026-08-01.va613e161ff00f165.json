@@ -383,12 +383,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-07-29T08:06:57.091Z",
-  "scenariosSealedAt": "2026-07-29T08:06:57.253Z",
+  "sealedForecastAt": "2026-07-29T05:56:55.405Z",
+  "scenariosSealedAt": "2026-07-29T05:56:55.569Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "2a6bc4455dc17504",
+    "numericalForecastHash": "ded8fd2702c80fee",
     "numericalForecastFile": "forecast-2026-08-01.json"
   },
   "scenarios": {
@@ -463,7 +463,7 @@
                 "inactivity_layoff",
                 "recent_form"
               ],
-              "independentOrigins": 17
+              "independentOrigins": 18
             },
             {
               "adjustmentId": "fdbe79b834",
@@ -476,7 +476,7 @@
                 "striking_defense",
                 "striking_offense"
               ],
-              "independentOrigins": 11
+              "independentOrigins": 12
             },
             {
               "adjustmentId": "bfae948257",
@@ -493,7 +493,8 @@
               "mechanism": "striking",
               "topics": [
                 "striking_offense",
-                "striking_offense"
+                "striking_defense",
+                "power"
               ],
               "favours": "Daniel Rodriguez"
             },
@@ -510,7 +511,7 @@
           ],
           "whyRankedHere": [
             "tree share 27.4% (Uros Medic win 83.0% x KO/TKO split)",
-            "3 supporting mechanism(s) across 28 independent origin(s): activity, striking, durability",
+            "3 supporting mechanism(s) across 30 independent origin(s): activity, striking, durability",
             "ranks below PRIMARY (Uros Medic by Decision) by 14.1 share points"
           ],
           "falsifiedBy": [
@@ -520,8 +521,8 @@
             "Daniel Rodriguez absorbs Uros Medic's best shots without visible damage"
           ],
           "evidenceLimitations": [
-            "17 independent origin(s)",
-            "11 independent origin(s)",
+            "18 independent origin(s)",
+            "12 independent origin(s)",
             "3 independent origin(s)"
           ]
         },
@@ -605,7 +606,8 @@
               "mechanism": "striking",
               "topics": [
                 "striking_offense",
-                "striking_offense"
+                "striking_defense",
+                "power"
               ],
               "independentOrigins": 4
             },
@@ -701,7 +703,7 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "94c6a1ad8c17bc76"
+      "hash": "d56ba87257052b13"
     },
     "UFC-2026-08-01-B15": {
       "scenarios": [
@@ -900,225 +902,6 @@
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
       "hash": "84e51740ec2ad204"
-    },
-    "UFC-2026-08-01-B08": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Navajo Stirling",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3712,
-          "sharePercent": 37.12,
-          "supported": true,
-          "decisiveMechanisms": [
-            "condition"
-          ],
-          "requiredConditions": [
-            "Navajo Stirling's condition advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "a3fc8069c7",
-              "mechanism": "condition",
-              "topics": [
-                "injury_health"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 37.1% (Navajo Stirling win 74.2% x Decision split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): condition"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance",
-            "Jan Blachowicz shows no sign of the reported condition in round 1"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Navajo Stirling",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.245,
-          "sharePercent": 24.5,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
-          "requiredConditions": [
-            "Navajo Stirling's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "c9fb194909",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "a5e8d702ef",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "favours": "Yan Blachowicz"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 24.5% (Navajo Stirling win 74.2% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): durability",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 12.6 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Navajo Stirling unable to hurt the opponent",
-            "Jan Blachowicz absorbs Navajo Stirling's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Jan Blachowicz",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1288,
-          "sharePercent": 12.88,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.9% (Jan Blachowicz win 25.8% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 24.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Navajo Stirling",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1262,
-          "sharePercent": 12.62,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Jan Blachowicz do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.6% (Navajo Stirling win 74.2% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 24.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Navajo Stirling"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Jan Blachowicz",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.085,
-          "sharePercent": 8.5,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.5% (Jan Blachowicz win 25.8% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 28.6 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Jan Blachowicz unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Jan Blachowicz",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0438,
-          "sharePercent": 4.38,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.4% (Jan Blachowicz win 25.8% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 32.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Jan Blachowicz"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Navajo Stirling": 0.7424,
-          "Jan Blachowicz": 0.2576
-        },
-        "treeWinProbs": {
-          "Navajo Stirling": 0.7423,
-          "Jan Blachowicz": 0.2577
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "ddffb82aec221951"
     },
     "UFC-2026-08-01-B13": {
       "scenarios": [
@@ -2689,6 +2472,204 @@
       },
       "hash": "d8d96c1fd819b999"
     },
+    "UFC-2026-08-01-B08": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Navajo Stirling",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3654,
+          "sharePercent": 36.54,
+          "supported": true,
+          "decisiveMechanisms": [
+            "condition"
+          ],
+          "requiredConditions": [
+            "Navajo Stirling's condition advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "a3fc8069c7",
+              "mechanism": "condition",
+              "topics": [
+                "injury_health"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 36.5% (Navajo Stirling win 73.1% x Decision split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): condition"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "Jan Blachowicz shows no sign of the reported condition in round 1"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Navajo Stirling",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2411,
+          "sharePercent": 24.11,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jan Blachowicz do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 24.1% (Navajo Stirling win 73.1% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Navajo Stirling by Decision) by 12.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Navajo Stirling unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Jan Blachowicz",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1346,
+          "sharePercent": 13.46,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Navajo Stirling do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.5% (Jan Blachowicz win 26.9% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Navajo Stirling by Decision) by 23.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Navajo Stirling",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1242,
+          "sharePercent": 12.42,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jan Blachowicz do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.4% (Navajo Stirling win 73.1% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Navajo Stirling by Decision) by 24.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Navajo Stirling"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Jan Blachowicz",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0889,
+          "sharePercent": 8.89,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Navajo Stirling do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.9% (Jan Blachowicz win 26.9% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Navajo Stirling by Decision) by 27.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Jan Blachowicz unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Jan Blachowicz",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0458,
+          "sharePercent": 4.58,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Navajo Stirling do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.6% (Jan Blachowicz win 26.9% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Navajo Stirling by Decision) by 32.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Jan Blachowicz"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Navajo Stirling": 0.7307,
+          "Jan Blachowicz": 0.2693
+        },
+        "treeWinProbs": {
+          "Navajo Stirling": 0.7307,
+          "Jan Blachowicz": 0.2693
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "3b3ded45ec88c950"
+    },
     "UFC-2026-08-01-B10": {
       "scenarios": [
         {
@@ -3647,5 +3628,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "21c76f3935cb5d6f"
+  "scenarioSetHash": "a613e161ff00f165"
 }
