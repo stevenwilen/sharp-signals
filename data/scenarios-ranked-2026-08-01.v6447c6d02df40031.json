@@ -383,12 +383,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-07-29T05:56:55.405Z",
-  "scenariosSealedAt": "2026-07-29T05:56:55.569Z",
+  "sealedForecastAt": "2026-07-29T03:45:23.227Z",
+  "scenariosSealedAt": "2026-07-29T03:45:23.372Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "ded8fd2702c80fee",
+    "numericalForecastHash": "d290f5cf1e7474b5",
     "numericalForecastFile": "forecast-2026-08-01.json"
   },
   "scenarios": {
@@ -397,86 +397,74 @@
         {
           "scenarioId": "B-Decision",
           "rank": 1,
-          "role": "PRIMARY",
+          "role": "SECONDARY",
           "winner": "Uros Medic",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.4149,
-          "sharePercent": 41.49,
-          "supported": true,
-          "decisiveMechanisms": [
-            "condition"
-          ],
+          "share": 0.4106,
+          "sharePercent": 41.06,
+          "supported": false,
+          "decisiveMechanisms": [],
           "requiredConditions": [
-            "Uros Medic's condition advantage is real and not already in the price"
+            "the mechanisms favouring Daniel Rodriguez do not materialise"
           ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "009eb7ed5c",
-              "mechanism": "condition",
-              "topics": [
-                "training_camp",
-                "training_camp"
-              ],
-              "independentOrigins": 4
-            }
-          ],
+          "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 41.5% (Uros Medic win 83.0% x Decision split)",
-            "1 supporting mechanism(s) across 4 independent origin(s): condition"
+            "tree share 41.1% (Uros Medic win 82.1% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by -14.0 share points"
           ],
           "falsifiedBy": [
-            "the fight ends inside the distance",
-            "Daniel Rodriguez shows no sign of the reported condition in round 1"
+            "the fight ends inside the distance"
           ],
           "evidenceLimitations": [
-            "4 independent origin(s)"
+            "no mechanism-level support for this path"
           ]
         },
         {
           "scenarioId": "B-KOTKO",
           "rank": 2,
-          "role": "SECONDARY",
+          "role": "PRIMARY",
           "winner": "Uros Medic",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2738,
-          "sharePercent": 27.38,
+          "share": 0.271,
+          "sharePercent": 27.1,
           "supported": true,
           "decisiveMechanisms": [
-            "activity",
             "striking",
+            "activity",
             "durability"
           ],
           "requiredConditions": [
-            "Uros Medic's activity advantage is real and not already in the price",
             "Uros Medic's striking advantage is real and not already in the price",
+            "Uros Medic's activity advantage is real and not already in the price",
             "Uros Medic's durability advantage is real and not already in the price"
           ],
           "supportingEvidence": [
-            {
-              "adjustmentId": "c6e6f6e358",
-              "mechanism": "activity",
-              "topics": [
-                "recent_form",
-                "inactivity_layoff",
-                "recent_form"
-              ],
-              "independentOrigins": 18
-            },
             {
               "adjustmentId": "fdbe79b834",
               "mechanism": "striking",
               "topics": [
                 "speed",
-                "striking_offense",
                 "power",
                 "power",
                 "striking_defense",
+                "striking_offense",
                 "striking_offense"
               ],
-              "independentOrigins": 12
+              "independentOrigins": 9
+            },
+            {
+              "adjustmentId": "c6e6f6e358",
+              "mechanism": "activity",
+              "topics": [
+                "inactivity_layoff",
+                "recent_form",
+                "recent_form"
+              ],
+              "independentOrigins": 11
             },
             {
               "adjustmentId": "bfae948257",
@@ -489,16 +477,6 @@
           ],
           "contradictingEvidence": [
             {
-              "adjustmentId": "cf2f48ee10",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense",
-                "striking_defense",
-                "power"
-              ],
-              "favours": "Daniel Rodriguez"
-            },
-            {
               "adjustmentId": "532af105f4",
               "mechanism": "durability",
               "topics": [
@@ -510,19 +488,18 @@
             }
           ],
           "whyRankedHere": [
-            "tree share 27.4% (Uros Medic win 83.0% x KO/TKO split)",
-            "3 supporting mechanism(s) across 30 independent origin(s): activity, striking, durability",
-            "ranks below PRIMARY (Uros Medic by Decision) by 14.1 share points"
+            "tree share 27.1% (Uros Medic win 82.1% x KO/TKO split)",
+            "3 supporting mechanism(s) across 20 independent origin(s): striking, activity, durability"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Uros Medic unable to hurt the opponent",
-            "Daniel Rodriguez starts sharply with no visible ring rust",
             "Daniel Rodriguez wins the striking exchanges in round 1, or the fight is grounded for most of round 1",
+            "Daniel Rodriguez starts sharply with no visible ring rust",
             "Daniel Rodriguez absorbs Uros Medic's best shots without visible damage"
           ],
           "evidenceLimitations": [
-            "18 independent origin(s)",
-            "12 independent origin(s)",
+            "9 independent origin(s)",
+            "11 independent origin(s)",
             "3 independent origin(s)"
           ]
         },
@@ -533,8 +510,8 @@
           "winner": "Uros Medic",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1411,
-          "sharePercent": 14.11,
+          "share": 0.1396,
+          "sharePercent": 13.96,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -543,9 +520,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 14.1% (Uros Medic win 83.0% x Submission split)",
+            "tree share 14.0% (Uros Medic win 82.1% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by Decision) by 27.4 share points"
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 13.1 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Uros Medic"
@@ -561,8 +538,8 @@
           "winner": "Daniel Rodriguez",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.0851,
-          "sharePercent": 8.51,
+          "share": 0.0894,
+          "sharePercent": 8.94,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -571,9 +548,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 8.5% (Daniel Rodriguez win 17.0% x Decision split)",
+            "tree share 8.9% (Daniel Rodriguez win 17.9% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by Decision) by 33.0 share points"
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 18.2 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -589,28 +566,16 @@
           "winner": "Daniel Rodriguez",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.0562,
-          "sharePercent": 5.62,
+          "share": 0.059,
+          "sharePercent": 5.9,
           "supported": true,
           "decisiveMechanisms": [
-            "striking",
             "durability"
           ],
           "requiredConditions": [
-            "Daniel Rodriguez's striking advantage is real and not already in the price",
             "Daniel Rodriguez's durability advantage is real and not already in the price"
           ],
           "supportingEvidence": [
-            {
-              "adjustmentId": "cf2f48ee10",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense",
-                "striking_defense",
-                "power"
-              ],
-              "independentOrigins": 4
-            },
             {
               "adjustmentId": "532af105f4",
               "mechanism": "durability",
@@ -619,23 +584,10 @@
                 "durability",
                 "durability"
               ],
-              "independentOrigins": 9
+              "independentOrigins": 5
             }
           ],
           "contradictingEvidence": [
-            {
-              "adjustmentId": "fdbe79b834",
-              "mechanism": "striking",
-              "topics": [
-                "speed",
-                "striking_offense",
-                "power",
-                "power",
-                "striking_defense",
-                "striking_offense"
-              ],
-              "favours": "Uros Medic"
-            },
             {
               "adjustmentId": "bfae948257",
               "mechanism": "durability",
@@ -646,18 +598,16 @@
             }
           ],
           "whyRankedHere": [
-            "tree share 5.6% (Daniel Rodriguez win 17.0% x KO/TKO split)",
-            "2 supporting mechanism(s) across 11 independent origin(s): striking, durability",
-            "ranks below PRIMARY (Uros Medic by Decision) by 35.9 share points"
+            "tree share 5.9% (Daniel Rodriguez win 17.9% x KO/TKO split)",
+            "1 supporting mechanism(s) across 5 independent origin(s): durability",
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 21.2 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Daniel Rodriguez unable to hurt the opponent",
-            "Uros Medic wins the striking exchanges in round 1, or the fight is grounded for most of round 1",
             "Uros Medic absorbs Daniel Rodriguez's best shots without visible damage"
           ],
           "evidenceLimitations": [
-            "4 independent origin(s)",
-            "9 independent origin(s)"
+            "5 independent origin(s)"
           ]
         },
         {
@@ -667,8 +617,8 @@
           "winner": "Daniel Rodriguez",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0289,
-          "sharePercent": 2.89,
+          "share": 0.0304,
+          "sharePercent": 3.04,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -677,9 +627,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 2.9% (Daniel Rodriguez win 17.0% x Submission split)",
+            "tree share 3.0% (Daniel Rodriguez win 17.9% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Uros Medic by Decision) by 38.6 share points"
+            "ranks below PRIMARY (Uros Medic by KO/TKO) by 24.1 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Daniel Rodriguez"
@@ -694,39 +644,39 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Daniel Rodriguez": 0.1702,
-          "Uros Medic": 0.8298
+          "Daniel Rodriguez": 0.1788,
+          "Uros Medic": 0.8212
         },
         "treeWinProbs": {
-          "Daniel Rodriguez": 0.1702,
-          "Uros Medic": 0.8298
+          "Daniel Rodriguez": 0.1788,
+          "Uros Medic": 0.8212
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "d56ba87257052b13"
+      "hash": "00a5ed09ecd61ae5"
     },
-    "UFC-2026-08-01-B15": {
+    "UFC-2026-08-01-B08": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
           "rank": 1,
           "role": "SECONDARY",
-          "winner": "Nina Milosevic",
+          "winner": "Navajo Stirling",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.394,
-          "sharePercent": 39.4,
+          "share": 0.3532,
+          "sharePercent": 35.32,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Hailey Cowan do not materialise"
+            "the mechanisms favouring Jan Blachowicz do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 39.4% (Nina Milosevic win 78.8% x Decision split)",
+            "tree share 35.3% (Navajo Stirling win 70.6% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nina Milosevic by KO/TKO) by -13.4 share points"
+            "ranks below PRIMARY (Jan Blachowicz by KO/TKO) by -25.6 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -738,65 +688,26 @@
         {
           "scenarioId": "A-KOTKO",
           "rank": 2,
-          "role": "PRIMARY",
-          "winner": "Nina Milosevic",
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Navajo Stirling",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.26,
-          "sharePercent": 26,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
-          "requiredConditions": [
-            "Nina Milosevic's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "d47c3d058b",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 3
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 26.0% (Nina Milosevic win 78.8% x KO/TKO split)",
-            "1 supporting mechanism(s) across 3 independent origin(s): durability"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Nina Milosevic unable to hurt the opponent",
-            "Hailey Cowan absorbs Nina Milosevic's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "3 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Nina Milosevic",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.134,
-          "sharePercent": 13.4,
+          "share": 0.2331,
+          "sharePercent": 23.31,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Hailey Cowan do not materialise"
+            "the mechanisms favouring Jan Blachowicz do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 13.4% (Nina Milosevic win 78.8% x Submission split)",
+            "tree share 23.3% (Navajo Stirling win 70.6% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nina Milosevic by KO/TKO) by 12.6 share points"
+            "ranks below PRIMARY (Jan Blachowicz by KO/TKO) by -13.6 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Nina Milosevic"
+            "the fight reaches the final bell with Navajo Stirling unable to hurt the opponent"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
@@ -804,27 +715,55 @@
         },
         {
           "scenarioId": "B-Decision",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Hailey Cowan",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Jan Blachowicz",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.106,
-          "sharePercent": 10.6,
+          "share": 0.1468,
+          "sharePercent": 14.68,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Nina Milosevic do not materialise"
+            "the mechanisms favouring Navajo Stirling do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 10.6% (Hailey Cowan win 21.2% x Decision split)",
+            "tree share 14.7% (Jan Blachowicz win 29.4% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nina Milosevic by KO/TKO) by 15.4 share points"
+            "ranks below PRIMARY (Jan Blachowicz by KO/TKO) by -5.0 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Navajo Stirling",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1201,
+          "sharePercent": 12.01,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jan Blachowicz do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.0% (Navajo Stirling win 70.6% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Jan Blachowicz by KO/TKO) by -2.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Navajo Stirling"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
@@ -833,253 +772,65 @@
         {
           "scenarioId": "B-KOTKO",
           "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Hailey Cowan",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.07,
-          "sharePercent": 7,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Nina Milosevic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 7.0% (Hailey Cowan win 21.2% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nina Milosevic by KO/TKO) by 19.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Hailey Cowan unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Hailey Cowan",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.036,
-          "sharePercent": 3.6,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Nina Milosevic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 3.6% (Hailey Cowan win 21.2% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Nina Milosevic by KO/TKO) by 22.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Hailey Cowan"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Nina Milosevic": 0.788,
-          "Hailey Cowan": 0.212
-        },
-        "treeWinProbs": {
-          "Nina Milosevic": 0.788,
-          "Hailey Cowan": 0.212
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "84e51740ec2ad204"
-    },
-    "UFC-2026-08-01-B13": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Michael Oliveira",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3748,
-          "sharePercent": 37.48,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Oban Elliott do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 37.5% (Michael Oliveira win 75.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by -12.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 2,
           "role": "PRIMARY",
-          "winner": "Michael Oliveira",
+          "winner": "Jan Blachowicz",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2474,
-          "sharePercent": 24.74,
+          "share": 0.0969,
+          "sharePercent": 9.69,
           "supported": true,
           "decisiveMechanisms": [
             "striking"
           ],
           "requiredConditions": [
-            "Michael Oliveira's striking advantage is real and not already in the price"
+            "Jan Blachowicz's striking advantage is real and not already in the price"
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "8b52a59f73",
+              "adjustmentId": "b76b13aaa9",
               "mechanism": "striking",
               "topics": [
-                "speed",
                 "striking_offense"
               ],
-              "independentOrigins": 3
+              "independentOrigins": 2
             }
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 24.7% (Michael Oliveira win 75.0% x KO/TKO split)",
-            "1 supporting mechanism(s) across 3 independent origin(s): striking"
+            "tree share 9.7% (Jan Blachowicz win 29.4% x KO/TKO split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): striking"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with Michael Oliveira unable to hurt the opponent",
-            "Oban Elliott wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+            "the fight reaches the final bell with Jan Blachowicz unable to hurt the opponent",
+            "Navajo Stirling wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
           ],
           "evidenceLimitations": [
-            "3 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Michael Oliveira",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1274,
-          "sharePercent": 12.74,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Oban Elliott do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.7% (Michael Oliveira win 75.0% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 12.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Michael Oliveira"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Oban Elliott",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1252,
-          "sharePercent": 12.52,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.5% (Oban Elliott win 25.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 12.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Oban Elliott",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0826,
-          "sharePercent": 8.26,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.3% (Oban Elliott win 25.0% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 16.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Oban Elliott unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
+            "2 independent origin(s)"
           ]
         },
         {
           "scenarioId": "B-Submission",
           "rank": 6,
           "role": "DOWNWEIGHTED",
-          "winner": "Oban Elliott",
+          "winner": "Jan Blachowicz",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0426,
-          "sharePercent": 4.26,
+          "share": 0.0499,
+          "sharePercent": 4.99,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
+            "the mechanisms favouring Navajo Stirling do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 4.3% (Oban Elliott win 25.0% x Submission split)",
+            "tree share 5.0% (Jan Blachowicz win 29.4% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 20.5 share points"
+            "ranks below PRIMARY (Jan Blachowicz by KO/TKO) by 4.7 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Oban Elliott"
+            "the fight reaches the final bell with no meaningful submission attempt by Jan Blachowicz"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
@@ -1091,270 +842,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Michael Oliveira": 0.7496,
-          "Oban Elliott": 0.2504
+          "Navajo Stirling": 0.7064,
+          "Jan Blachowicz": 0.2936
         },
         "treeWinProbs": {
-          "Michael Oliveira": 0.7496,
-          "Oban Elliott": 0.2504
+          "Navajo Stirling": 0.7064,
+          "Jan Blachowicz": 0.2936
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "a40884e15cbbeec3"
-    },
-    "UFC-2026-08-01-B09": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Aleksandar Rakic",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3725,
-          "sharePercent": 37.25,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Marcin Tybura do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 37.3% (Aleksandar Rakic win 74.5% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Aleksandar Rakic by KO/TKO) by -12.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "PRIMARY",
-          "winner": "Aleksandar Rakic",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2458,
-          "sharePercent": 24.58,
-          "supported": true,
-          "decisiveMechanisms": [
-            "activity",
-            "durability"
-          ],
-          "requiredConditions": [
-            "Aleksandar Rakic's activity advantage is real and not already in the price",
-            "Aleksandar Rakic's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "d500cf6378",
-              "mechanism": "activity",
-              "topics": [
-                "recent_form",
-                "quality_of_opposition"
-              ],
-              "independentOrigins": 3
-            },
-            {
-              "adjustmentId": "18f15e555e",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "b8d59a85c9",
-              "mechanism": "activity",
-              "topics": [
-                "recent_form"
-              ],
-              "favours": "Marcin Tybura"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 24.6% (Aleksandar Rakic win 74.5% x KO/TKO split)",
-            "2 supporting mechanism(s) across 3 independent origin(s): activity, durability"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Aleksandar Rakic unable to hurt the opponent",
-            "Marcin Tybura starts sharply with no visible ring rust",
-            "Marcin Tybura absorbs Aleksandar Rakic's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "3 independent origin(s)",
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Marcin Tybura",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1275,
-          "sharePercent": 12.75,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Aleksandar Rakic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.8% (Marcin Tybura win 25.5% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Aleksandar Rakic by KO/TKO) by 11.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Aleksandar Rakic",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1266,
-          "sharePercent": 12.66,
-          "supported": true,
-          "decisiveMechanisms": [
-            "grappling"
-          ],
-          "requiredConditions": [
-            "Aleksandar Rakic's grappling advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "fcfc76f10e",
-              "mechanism": "grappling",
-              "topics": [
-                "takedown_defense"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.7% (Aleksandar Rakic win 74.5% x Submission split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): grappling",
-            "ranks below PRIMARY (Aleksandar Rakic by KO/TKO) by 11.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Aleksandar Rakic",
-            "Aleksandar Rakic fails to complete a takedown through round 2, or the fight stays standing"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Marcin Tybura",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0842,
-          "sharePercent": 8.42,
-          "supported": true,
-          "decisiveMechanisms": [
-            "activity"
-          ],
-          "requiredConditions": [
-            "Marcin Tybura's activity advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "b8d59a85c9",
-              "mechanism": "activity",
-              "topics": [
-                "recent_form"
-              ],
-              "independentOrigins": 4
-            }
-          ],
-          "contradictingEvidence": [
-            {
-              "adjustmentId": "d500cf6378",
-              "mechanism": "activity",
-              "topics": [
-                "recent_form",
-                "quality_of_opposition"
-              ],
-              "favours": "Aleksandar Rakic"
-            }
-          ],
-          "whyRankedHere": [
-            "tree share 8.4% (Marcin Tybura win 25.5% x KO/TKO split)",
-            "1 supporting mechanism(s) across 4 independent origin(s): activity",
-            "ranks below PRIMARY (Aleksandar Rakic by KO/TKO) by 16.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Marcin Tybura unable to hurt the opponent",
-            "Aleksandar Rakic starts sharply with no visible ring rust"
-          ],
-          "evidenceLimitations": [
-            "4 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Marcin Tybura",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0434,
-          "sharePercent": 4.34,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Aleksandar Rakic do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.3% (Marcin Tybura win 25.5% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Aleksandar Rakic by KO/TKO) by 20.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Marcin Tybura"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Marcin Tybura": 0.2551,
-          "Aleksandar Rakic": 0.7449
-        },
-        "treeWinProbs": {
-          "Marcin Tybura": 0.255,
-          "Aleksandar Rakic": 0.745
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "b21142da29b6fd20"
+      "hash": "cc9562a9b70d86d1"
     },
     "UFC-2026-08-01-B01": {
       "scenarios": [
@@ -2472,95 +1969,27 @@
       },
       "hash": "d8d96c1fd819b999"
     },
-    "UFC-2026-08-01-B08": {
+    "UFC-2026-08-01-B09": {
       "scenarios": [
         {
-          "scenarioId": "A-Decision",
+          "scenarioId": "B-Decision",
           "rank": 1,
           "role": "PRIMARY",
-          "winner": "Navajo Stirling",
+          "winner": "Aleksandar Rakic",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3654,
-          "sharePercent": 36.54,
-          "supported": true,
-          "decisiveMechanisms": [
-            "condition"
-          ],
-          "requiredConditions": [
-            "Navajo Stirling's condition advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "a3fc8069c7",
-              "mechanism": "condition",
-              "topics": [
-                "injury_health"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 36.5% (Navajo Stirling win 73.1% x Decision split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): condition"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance",
-            "Jan Blachowicz shows no sign of the reported condition in round 1"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Navajo Stirling",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2411,
-          "sharePercent": 24.11,
+          "share": 0.3687,
+          "sharePercent": 36.87,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Jan Blachowicz do not materialise"
+            "the mechanisms favouring Marcin Tybura do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 24.1% (Navajo Stirling win 73.1% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 12.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Navajo Stirling unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Jan Blachowicz",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1346,
-          "sharePercent": 13.46,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 13.5% (Jan Blachowicz win 26.9% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 23.1 share points"
+            "tree share 36.9% (Aleksandar Rakic win 73.7% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -2570,56 +1999,56 @@
           ]
         },
         {
-          "scenarioId": "A-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Navajo Stirling",
-          "expectedMethod": "Submission",
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Aleksandar Rakic",
+          "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.1242,
-          "sharePercent": 12.42,
+          "share": 0.2433,
+          "sharePercent": 24.33,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Jan Blachowicz do not materialise"
+            "the mechanisms favouring Marcin Tybura do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.4% (Navajo Stirling win 73.1% x Submission split)",
+            "tree share 24.3% (Aleksandar Rakic win 73.7% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 24.1 share points"
+            "ranks below PRIMARY (Aleksandar Rakic by Decision) by 12.5 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Navajo Stirling"
+            "the fight reaches the final bell with Aleksandar Rakic unable to hurt the opponent"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
           ]
         },
         {
-          "scenarioId": "B-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Jan Blachowicz",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0889,
-          "sharePercent": 8.89,
+          "scenarioId": "A-Decision",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Marcin Tybura",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1313,
+          "sharePercent": 13.13,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
+            "the mechanisms favouring Aleksandar Rakic do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 8.9% (Jan Blachowicz win 26.9% x KO/TKO split)",
+            "tree share 13.1% (Marcin Tybura win 26.3% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 27.6 share points"
+            "ranks below PRIMARY (Aleksandar Rakic by Decision) by 23.7 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with Jan Blachowicz unable to hurt the opponent"
+            "the fight ends inside the distance"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
@@ -2627,27 +2056,83 @@
         },
         {
           "scenarioId": "B-Submission",
-          "rank": 6,
+          "rank": 4,
           "role": "DOWNWEIGHTED",
-          "winner": "Jan Blachowicz",
+          "winner": "Aleksandar Rakic",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0458,
-          "sharePercent": 4.58,
+          "share": 0.1253,
+          "sharePercent": 12.53,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Navajo Stirling do not materialise"
+            "the mechanisms favouring Marcin Tybura do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 4.6% (Jan Blachowicz win 26.9% x Submission split)",
+            "tree share 12.5% (Aleksandar Rakic win 73.7% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Navajo Stirling by Decision) by 32.0 share points"
+            "ranks below PRIMARY (Aleksandar Rakic by Decision) by 24.3 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Jan Blachowicz"
+            "the fight reaches the final bell with no meaningful submission attempt by Aleksandar Rakic"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Marcin Tybura",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0867,
+          "sharePercent": 8.67,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Aleksandar Rakic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.7% (Marcin Tybura win 26.3% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Aleksandar Rakic by Decision) by 28.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Marcin Tybura unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Marcin Tybura",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0447,
+          "sharePercent": 4.47,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Aleksandar Rakic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.5% (Marcin Tybura win 26.3% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Aleksandar Rakic by Decision) by 32.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Marcin Tybura"
           ],
           "evidenceLimitations": [
             "no mechanism-level support for this path"
@@ -2659,16 +2144,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Navajo Stirling": 0.7307,
-          "Jan Blachowicz": 0.2693
+          "Marcin Tybura": 0.2627,
+          "Aleksandar Rakic": 0.7373
         },
         "treeWinProbs": {
-          "Navajo Stirling": 0.7307,
-          "Jan Blachowicz": 0.2693
+          "Marcin Tybura": 0.2627,
+          "Aleksandar Rakic": 0.7373
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "3b3ded45ec88c950"
+      "hash": "9e6d2ccd31c18a70"
     },
     "UFC-2026-08-01-B10": {
       "scenarios": [
@@ -3228,6 +2713,192 @@
       },
       "hash": "99d7e3f25c07856d"
     },
+    "UFC-2026-08-01-B13": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3691,
+          "sharePercent": 36.91,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Oban Elliott do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 36.9% (Michael Oliveira win 73.8% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2436,
+          "sharePercent": 24.36,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Oban Elliott do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 24.4% (Michael Oliveira win 73.8% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by Decision) by 12.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Michael Oliveira unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Oban Elliott",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1309,
+          "sharePercent": 13.09,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.1% (Oban Elliott win 26.2% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by Decision) by 23.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1255,
+          "sharePercent": 12.55,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Oban Elliott do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.6% (Michael Oliveira win 73.8% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by Decision) by 24.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Michael Oliveira"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Oban Elliott",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0864,
+          "sharePercent": 8.64,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.6% (Oban Elliott win 26.2% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by Decision) by 28.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Oban Elliott unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Oban Elliott",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0445,
+          "sharePercent": 4.45,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.5% (Oban Elliott win 26.2% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by Decision) by 32.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Oban Elliott"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Michael Oliveira": 0.7382,
+          "Oban Elliott": 0.2618
+        },
+        "treeWinProbs": {
+          "Michael Oliveira": 0.7382,
+          "Oban Elliott": 0.2618
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "628ec2f671232c3f"
+    },
     "UFC-2026-08-01-B14": {
       "scenarios": [
         {
@@ -3414,28 +3085,27 @@
       },
       "hash": "d673fccb86abca2c"
     },
-    "UFC-2026-08-01-B16": {
+    "UFC-2026-08-01-B15": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
           "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Mateusz Rebecki",
+          "role": "PRIMARY",
+          "winner": "Nina Milosevic",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3989,
-          "sharePercent": 39.89,
+          "share": 0.3819,
+          "sharePercent": 38.19,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
-            "the mechanisms favouring Kyle Prepolec do not materialise"
+            "the mechanisms favouring Hailey Cowan do not materialise"
           ],
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 39.9% (Mateusz Rebecki win 79.8% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mateusz Rebecki by Submission) by -26.3 share points"
+            "tree share 38.2% (Nina Milosevic win 76.4% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -3447,12 +3117,171 @@
         {
           "scenarioId": "A-KOTKO",
           "rank": 2,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mateusz Rebecki",
+          "role": "SECONDARY",
+          "winner": "Nina Milosevic",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2633,
-          "sharePercent": 26.33,
+          "share": 0.252,
+          "sharePercent": 25.2,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Hailey Cowan do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 25.2% (Nina Milosevic win 76.4% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Nina Milosevic by Decision) by 13.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Nina Milosevic unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Nina Milosevic",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1298,
+          "sharePercent": 12.98,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Hailey Cowan do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.0% (Nina Milosevic win 76.4% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Nina Milosevic by Decision) by 25.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Nina Milosevic"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Hailey Cowan",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1181,
+          "sharePercent": 11.81,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Nina Milosevic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 11.8% (Hailey Cowan win 23.6% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Nina Milosevic by Decision) by 26.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Hailey Cowan",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.078,
+          "sharePercent": 7.8,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Nina Milosevic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.8% (Hailey Cowan win 23.6% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Nina Milosevic by Decision) by 30.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Hailey Cowan unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Hailey Cowan",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0402,
+          "sharePercent": 4.02,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Nina Milosevic do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.0% (Hailey Cowan win 23.6% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Nina Milosevic by Decision) by 34.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Hailey Cowan"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Nina Milosevic": 0.7637,
+          "Hailey Cowan": 0.2363
+        },
+        "treeWinProbs": {
+          "Nina Milosevic": 0.7637,
+          "Hailey Cowan": 0.2363
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "e5030b63ee8a1ab2"
+    },
+    "UFC-2026-08-01-B16": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Mateusz Rebecki",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3978,
+          "sharePercent": 39.78,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3461,9 +3290,36 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 26.3% (Mateusz Rebecki win 79.8% x KO/TKO split)",
+            "tree share 39.8% (Mateusz Rebecki win 79.6% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Mateusz Rebecki",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2625,
+          "sharePercent": 26.25,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Kyle Prepolec do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 26.3% (Mateusz Rebecki win 79.6% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mateusz Rebecki by Submission) by -12.8 share points"
+            "ranks below PRIMARY (Mateusz Rebecki by Decision) by 13.5 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Mateusz Rebecki unable to hurt the opponent"
@@ -3475,41 +3331,29 @@
         {
           "scenarioId": "A-Submission",
           "rank": 3,
-          "role": "PRIMARY",
+          "role": "DOWNWEIGHTED",
           "winner": "Mateusz Rebecki",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1356,
-          "sharePercent": 13.56,
-          "supported": true,
-          "decisiveMechanisms": [
-            "grappling"
-          ],
+          "share": 0.1353,
+          "sharePercent": 13.53,
+          "supported": false,
+          "decisiveMechanisms": [],
           "requiredConditions": [
-            "Mateusz Rebecki's grappling advantage is real and not already in the price"
+            "the mechanisms favouring Kyle Prepolec do not materialise"
           ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "456ef48795",
-              "mechanism": "grappling",
-              "topics": [
-                "takedown_defense",
-                "submission_offense"
-              ],
-              "independentOrigins": 3
-            }
-          ],
+          "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 13.6% (Mateusz Rebecki win 79.8% x Submission split)",
-            "1 supporting mechanism(s) across 3 independent origin(s): grappling"
+            "tree share 13.5% (Mateusz Rebecki win 79.6% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mateusz Rebecki by Decision) by 26.2 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Mateusz Rebecki",
-            "Mateusz Rebecki fails to complete a takedown through round 2, or the fight stays standing"
+            "the fight reaches the final bell with no meaningful submission attempt by Mateusz Rebecki"
           ],
           "evidenceLimitations": [
-            "3 independent origin(s)"
+            "no mechanism-level support for this path"
           ]
         },
         {
@@ -3519,8 +3363,8 @@
           "winner": "Kyle Prepolec",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.1011,
-          "sharePercent": 10.11,
+          "share": 0.1022,
+          "sharePercent": 10.22,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3529,9 +3373,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 10.1% (Kyle Prepolec win 20.2% x Decision split)",
+            "tree share 10.2% (Kyle Prepolec win 20.4% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mateusz Rebecki by Submission) by 3.5 share points"
+            "ranks below PRIMARY (Mateusz Rebecki by Decision) by 29.6 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -3547,37 +3391,25 @@
           "winner": "Kyle Prepolec",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.0667,
-          "sharePercent": 6.67,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
+          "share": 0.0675,
+          "sharePercent": 6.75,
+          "supported": false,
+          "decisiveMechanisms": [],
           "requiredConditions": [
-            "Kyle Prepolec's durability advantage is real and not already in the price"
+            "the mechanisms favouring Mateusz Rebecki do not materialise"
           ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "3342722605",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 2
-            }
-          ],
+          "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 6.7% (Kyle Prepolec win 20.2% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): durability",
-            "ranks below PRIMARY (Mateusz Rebecki by Submission) by 6.9 share points"
+            "tree share 6.8% (Kyle Prepolec win 20.4% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mateusz Rebecki by Decision) by 33.0 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with Kyle Prepolec unable to hurt the opponent",
-            "Mateusz Rebecki absorbs Kyle Prepolec's best shots without visible damage"
+            "the fight reaches the final bell with Kyle Prepolec unable to hurt the opponent"
           ],
           "evidenceLimitations": [
-            "2 independent origin(s)"
+            "no mechanism-level support for this path"
           ]
         },
         {
@@ -3587,8 +3419,8 @@
           "winner": "Kyle Prepolec",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0344,
-          "sharePercent": 3.44,
+          "share": 0.0347,
+          "sharePercent": 3.47,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3597,9 +3429,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 3.4% (Kyle Prepolec win 20.2% x Submission split)",
+            "tree share 3.5% (Kyle Prepolec win 20.4% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mateusz Rebecki by Submission) by 10.1 share points"
+            "ranks below PRIMARY (Mateusz Rebecki by Decision) by 36.3 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Kyle Prepolec"
@@ -3614,19 +3446,19 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Mateusz Rebecki": 0.7978,
-          "Kyle Prepolec": 0.2022
+          "Mateusz Rebecki": 0.7956,
+          "Kyle Prepolec": 0.2044
         },
         "treeWinProbs": {
-          "Mateusz Rebecki": 0.7978,
-          "Kyle Prepolec": 0.2022
+          "Mateusz Rebecki": 0.7956,
+          "Kyle Prepolec": 0.2044
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "fd0c7cad64b5e749"
+      "hash": "86c93c38d3c2c763"
     }
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "a613e161ff00f165"
+  "scenarioSetHash": "6447c6d02df40031"
 }
