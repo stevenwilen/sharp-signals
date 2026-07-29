@@ -383,12 +383,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-07-29T02:26:53.576Z",
-  "scenariosSealedAt": "2026-07-29T02:26:53.739Z",
+  "sealedForecastAt": "2026-07-29T00:16:52.799Z",
+  "scenariosSealedAt": "2026-07-29T00:16:52.959Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "0a2e341cd995feb8",
+    "numericalForecastHash": "28fc5bc470eae305",
     "numericalForecastFile": "forecast-2026-08-01.json"
   },
   "scenarios": {
@@ -462,7 +462,7 @@
                 "inactivity_layoff",
                 "recent_form"
               ],
-              "independentOrigins": 15
+              "independentOrigins": 16
             },
             {
               "adjustmentId": "fdbe79b834",
@@ -475,7 +475,7 @@
                 "striking_defense",
                 "striking_offense"
               ],
-              "independentOrigins": 11
+              "independentOrigins": 10
             },
             {
               "adjustmentId": "bfae948257",
@@ -508,7 +508,7 @@
           ],
           "whyRankedHere": [
             "tree share 26.7% (Uros Medic win 80.9% x KO/TKO split)",
-            "3 supporting mechanism(s) across 26 independent origin(s): activity, striking, durability",
+            "3 supporting mechanism(s) across 25 independent origin(s): activity, striking, durability",
             "ranks below PRIMARY (Uros Medic by Decision) by 13.8 share points"
           ],
           "falsifiedBy": [
@@ -518,8 +518,8 @@
             "Daniel Rodriguez absorbs Uros Medic's best shots without visible damage"
           ],
           "evidenceLimitations": [
-            "15 independent origin(s)",
-            "11 independent origin(s)",
+            "16 independent origin(s)",
+            "10 independent origin(s)",
             "3 independent origin(s)"
           ]
         },
@@ -614,7 +614,7 @@
                 "durability",
                 "durability"
               ],
-              "independentOrigins": 8
+              "independentOrigins": 7
             }
           ],
           "contradictingEvidence": [
@@ -642,7 +642,7 @@
           ],
           "whyRankedHere": [
             "tree share 6.3% (Daniel Rodriguez win 19.1% x KO/TKO split)",
-            "2 supporting mechanism(s) across 10 independent origin(s): striking, durability",
+            "2 supporting mechanism(s) across 9 independent origin(s): striking, durability",
             "ranks below PRIMARY (Uros Medic by Decision) by 34.2 share points"
           ],
           "falsifiedBy": [
@@ -652,7 +652,7 @@
           ],
           "evidenceLimitations": [
             "3 independent origin(s)",
-            "8 independent origin(s)"
+            "7 independent origin(s)"
           ]
         },
         {
@@ -698,7 +698,219 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "af308b2b2ca12ba9"
+      "hash": "7fb196d9238f4bc1"
+    },
+    "UFC-2026-08-01-B13": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3875,
+          "sharePercent": 38.75,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Oban Elliott do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 38.8% (Michael Oliveira win 77.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by -13.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 2,
+          "role": "PRIMARY",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2557,
+          "sharePercent": 25.57,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking",
+            "activity"
+          ],
+          "requiredConditions": [
+            "Michael Oliveira's striking advantage is real and not already in the price",
+            "Michael Oliveira's activity advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "8b52a59f73",
+              "mechanism": "striking",
+              "topics": [
+                "speed",
+                "striking_offense"
+              ],
+              "independentOrigins": 3
+            },
+            {
+              "adjustmentId": "97f611bd8e",
+              "mechanism": "activity",
+              "topics": [
+                "recent_form",
+                "recent_form"
+              ],
+              "independentOrigins": 4
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 25.6% (Michael Oliveira win 77.5% x KO/TKO split)",
+            "2 supporting mechanism(s) across 7 independent origin(s): striking, activity"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Michael Oliveira unable to hurt the opponent",
+            "Oban Elliott wins the striking exchanges in round 1, or the fight is grounded for most of round 1",
+            "Oban Elliott starts sharply with no visible ring rust"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)",
+            "4 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Michael Oliveira",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1317,
+          "sharePercent": 13.17,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Oban Elliott do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.2% (Michael Oliveira win 77.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 12.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Michael Oliveira"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Oban Elliott",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1125,
+          "sharePercent": 11.25,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 11.3% (Oban Elliott win 22.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 14.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Oban Elliott",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0743,
+          "sharePercent": 7.43,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.4% (Oban Elliott win 22.5% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 18.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Oban Elliott unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Oban Elliott",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0383,
+          "sharePercent": 3.83,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Michael Oliveira do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 3.8% (Oban Elliott win 22.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 21.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Oban Elliott"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Michael Oliveira": 0.7749,
+          "Oban Elliott": 0.2251
+        },
+        "treeWinProbs": {
+          "Michael Oliveira": 0.775,
+          "Oban Elliott": 0.225
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "b8844610eec67616"
     },
     "UFC-2026-08-01-B15": {
       "scenarios": [
@@ -898,205 +1110,6 @@
       },
       "hash": "84e51740ec2ad204"
     },
-    "UFC-2026-08-01-B13": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Michael Oliveira",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3748,
-          "sharePercent": 37.48,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Oban Elliott do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 37.5% (Michael Oliveira win 75.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by -12.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 2,
-          "role": "PRIMARY",
-          "winner": "Michael Oliveira",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2474,
-          "sharePercent": 24.74,
-          "supported": true,
-          "decisiveMechanisms": [
-            "striking"
-          ],
-          "requiredConditions": [
-            "Michael Oliveira's striking advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "8b52a59f73",
-              "mechanism": "striking",
-              "topics": [
-                "speed",
-                "striking_offense"
-              ],
-              "independentOrigins": 3
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 24.7% (Michael Oliveira win 75.0% x KO/TKO split)",
-            "1 supporting mechanism(s) across 3 independent origin(s): striking"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Michael Oliveira unable to hurt the opponent",
-            "Oban Elliott wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
-          ],
-          "evidenceLimitations": [
-            "3 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Michael Oliveira",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1274,
-          "sharePercent": 12.74,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Oban Elliott do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.7% (Michael Oliveira win 75.0% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 12.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Michael Oliveira"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Oban Elliott",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1252,
-          "sharePercent": 12.52,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.5% (Oban Elliott win 25.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 12.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Oban Elliott",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0826,
-          "sharePercent": 8.26,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.3% (Oban Elliott win 25.0% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 16.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Oban Elliott unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Oban Elliott",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0426,
-          "sharePercent": 4.26,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Michael Oliveira do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.3% (Oban Elliott win 25.0% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Michael Oliveira by KO/TKO) by 20.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Oban Elliott"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Michael Oliveira": 0.7496,
-          "Oban Elliott": 0.2504
-        },
-        "treeWinProbs": {
-          "Michael Oliveira": 0.7496,
-          "Oban Elliott": 0.2504
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "a40884e15cbbeec3"
-    },
     "UFC-2026-08-01-B09": {
       "scenarios": [
         {
@@ -1237,7 +1250,6 @@
               "adjustmentId": "fcfc76f10e",
               "mechanism": "grappling",
               "topics": [
-                "wrestling_offense",
                 "takedown_defense"
               ],
               "independentOrigins": 2
@@ -1350,7 +1362,7 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "c4ffbdc32192865a"
+      "hash": "b21142da29b6fd20"
     },
     "UFC-2026-08-01-B01": {
       "scenarios": [
@@ -3624,5 +3636,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "59c4c0b781ca4bee"
+  "scenarioSetHash": "958f265768e80c1e"
 }
