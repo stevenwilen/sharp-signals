@@ -229,6 +229,13 @@ async function main() {
   // Bookkeeping only — no Kalshi write. Non-fatal.
   run("run-apply-placements.js", [], { allowFail: true });
 
+  // Keep the canonical bankrolls.json the dashboards read in step with the ledger on EVERY run — not only
+  // on the placement/settle flows that call BK.write. A balance change made outside those (a manual
+  // confirm, a cash adjustment, a settlement graded elsewhere) otherwise leaves the summary stale for days
+  // (it did — froze at 07-27). Cheap and rides the same per-run data commit. Best-effort; never fail a
+  // dispatch over the summary.
+  try { require("./lib/bankrolls").write(); } catch (e) { say(`[dispatch] bankrolls refresh skipped: ${e.message}`); }
+
   // FIGHT-WEEK PRICE WATCH — between the ~2h forecasts, a favorable price cross (a priced-out contract's
   // ask falling to/below its ceiling) should ping a BUY promptly, not wait a full cadence. The fight-day
   // sentinel does this on a 15-min loop, but ONLY Fri/Sat — the rest of fight week had no fast price
