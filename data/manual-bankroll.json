@@ -806,12 +806,16 @@
       "askAtRecommendation": 0.15,
       "approxContracts": null,
       "forecastHash": "181be80b12b1b111",
-      "status": "RECOMMENDED_NOT_CONFIRMED",
-      "actualStake": 0,
-      "executionPrice": null,
-      "actualContracts": null,
-      "fees": null,
-      "includedInRealPnl": false,
+      "status": "MANUALLY_PLACED",
+      "actualStake": 3.97,
+      "executionPrice": 0.1589,
+      "actualContracts": 25,
+      "fees": {
+        "amount": 0.24,
+        "basis": "estimated",
+        "feeModelVersion": "2026-07-16"
+      },
+      "includedInRealPnl": true,
       "firstRecommendedAt": "2026-07-29T18:40:39.446Z",
       "lastRecommendedAt": "2026-07-29T18:40:39.446Z",
       "recommendationCount": 1,
@@ -821,10 +825,19 @@
           "to": "RECOMMENDED_NOT_CONFIRMED",
           "reason": "Telegram sent a buy instruction",
           "at": "2026-07-29T18:40:39.446Z"
+        },
+        {
+          "from": "RECOMMENDED_NOT_CONFIRMED",
+          "to": "MANUALLY_PLACED",
+          "reason": "confirmed via dashboard",
+          "at": "2026-07-29T19:40:33.911Z",
+          "executionPrice": 0.1589,
+          "actualStake": 3.97
         }
       ],
       "category": "CONFIRMED_SYSTEM_BET",
-      "paperEligible": true
+      "paperEligible": true,
+      "placedAt": "2026-07-29T19:40:33.911Z"
     },
     "explore|UFC-2026-08-01-B16|KXUFCFIGHT-26AUG01REBPRE-PRE": {
       "key": "explore|UFC-2026-08-01-B16|KXUFCFIGHT-26AUG01REBPRE-PRE",
@@ -873,5 +886,5 @@
       "at": "2026-07-27T18:56:52.755Z"
     }
   ],
-  "updatedAt": "2026-07-29T18:40:39.680Z"
+  "updatedAt": "2026-07-29T19:40:33.914Z"
 }
