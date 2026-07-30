@@ -393,27 +393,29 @@ async function main() {
   // that hole: any ledger entry recorded as actionable that is NOT actionable in the current run gets
   // ONE positionWithdrawn message, and its ledger state moves to WITHDRAWN so it never re-fires.
   {
-    const currentKeys = new Set(messages
+    // Match by TICKER, never by the bout-id-based ledger key. Kalshi RENUMBERS bouts (B04->B05, B12->B13),
+    // so the SAME live contract reappears under a new key each time. Keying "still actionable / still listed"
+    // on the volatile bout id made a renumbered-but-live contract look GONE and fired a false SELL ("the
+    // fight is off") on a fight still on the board. The ticker is the contract's stable identity.
+    const actionableTickers = new Set(messages
       .filter((m) => m.state && AL.ACTIONABLE.has(m.state.classification))
-      .map((m) => m.key || `${m.boutId}|${m.ticker}`));
-    // Every contract EVALUATED this run — actionable or not. If a withdrawn candidate is still in here, its
-    // contract is on the board (it only DRIFTED / re-classified); if it's absent, the contract is GONE.
-    const listedKeys = new Set(messages.map((m) => m.key || `${m.boutId}|${m.ticker}`));
+      .map((m) => m.ticker).filter(Boolean));
+    const listedTickers = new Set(messages.map((m) => m.ticker).filter(Boolean));
     const ledger = AL.load();
     for (const [key, prev] of Object.entries(ledger)) {
       if (key.startsWith("review|")) continue;
       if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
-      if (currentKeys.has(key)) continue;
+      const tk = prev.topTicker || key.split("|").pop();
+      if (actionableTickers.has(tk)) continue;   // still actionable this run (possibly under a renumbered bout id)
       // Every bet here is one the operator placed to ride to resolution. If it merely DRIFTED out of the
       // actionable set (price ticked past the ceiling, the forecast wiggled, it got re-ranked) but its
       // contract is STILL listed, send NOTHING: exiting on drift just burns the entry + exit fees for
       // nothing. Only a GENUINE void — the contract is GONE from the board (fight cancelled / a fighter is
       // out) — speaks, and it speaks as a SELL, because that is the one case worth acting on.
-      if (listedKeys.has(key)) {
-        say(`  · ${key} drifted out of actionable but its contract is still listed — holding to resolution, no alert sent`);
+      if (listedTickers.has(tk)) {
+        say(`  · ${tk} drifted out of actionable but its contract is still listed — holding to resolution, no alert sent`);
         continue;
       }
-      const tk = prev.topTicker || key.split("|").pop();
       // Name the FIGHTER the contract is for, not a ticker code. The bout has usually left the forecast
       // (that is WHY it withdrew), so the current forecast rarely still carries the name — fall back to the
       // live Kalshi contract's fighter (yes_sub_title), and to the ticker only if the market is gone too.
