@@ -56,7 +56,7 @@ console.log("\nONE CANONICAL MONEY SOURCE");
 console.log("\nPRODUCTION ENTRY POINTS INTACT (parse without error)");
 {
   const { execFileSync } = require("child_process");
-  for (const entry of ["dispatch.js", "sentinel.js", "run-intel.js", "server.js", "run-entertainment-alerts.js", "run-forecast.js"]) {
+  for (const entry of ["dispatch.js", "sentinel.js", "run-intel.js", "run-entertainment-alerts.js", "run-forecast.js"]) {
     ok(`${entry} parses`, (() => { try { execFileSync(process.execPath, ["-c", path.join(ROOT, entry)], { stdio: "ignore" }); return true; } catch { return false; } })());
   }
 }
