@@ -1,86 +1,84 @@
 # SharpSignals — for Claude Code sessions
 
-UFC betting research. **It has never demonstrated a predictive edge.** The one evaluation that showed
-one is void (contaminated baseline — it compared a backdated closing line to itself). Everything here
-is built so that fact stays visible rather than getting sanded off.
+UFC betting research, **re-pointed 2026-07-30 from an edge-hunter to an "educated gambler."** The old
+system tried to beat the market and honestly reported that it couldn't (no demonstrated edge). The
+operator decided that was never the goal: they wanted a machine that **watches the UFC content they
+don't have time for, forms a read on each fight the way an informed fan would, and bets that read** —
+"gamble with education," not "beat the market."
 
-## What this repo may and may not do
+**It is not expected to be profitable.** It bets on conviction, on thin reads, deliberately. That trade
+was made with eyes open. Do not re-add the market-beating discipline in the name of making it "smart" —
+that discipline is exactly what was torn out.
 
-- **Alerts: ARMED.** Telegram sends manual instructions a human types into Kalshi themselves.
-- **Trading: does not exist.** There is no Kalshi write call. `lib/kalshi.js` exports `orderbook`,
-  which reads. `lib/arming.js` `assertNoTradingPath()` throws if `createOrder`/`placeOrder`/
-  `submitOrder`/`cancelOrder` ever appear. **Do not add one.** `TRADING_ENABLED: false` is
-  documentation, not a switch — flipping it changes nothing because nothing reads it to place an
-  order.
-- **Numerical rules are frozen at v7.0.0.** Do not tune them. Especially do not tune them because a
-  card produced no bets.
-- **One bankroll (simplified 2026-07-27).** A single real ~$100 gambling bankroll
-  (`data/manual-bankroll.json`, manual placement, bets both confirmed AND speculative tiers). Bets are
-  sized as a % of the CURRENT balance — they compound up when winning, shrink when losing, and no new
-  money is ever added. External deposits/withdrawals are recorded via `manual-bankroll.recordCashAdjustment`
-  so the ledger equals the real Kalshi balance. There is **no paper portfolio and no research portfolio**
-  anymore — both deleted 2026-07-27. **Do not re-add a paper book, a research book, or a combo/parlay
-  engine** (also deleted).
-- **Three Telegram messages, nothing else.** 🟢 BUY (only when actually buyable), 🔴 SELL (the contract
-  is gone / the fight is off — the one stand-down worth acting on), 🩺 STATUS (daily: healthy? + next
-  fight). PRICE-TOO-HIGH pings, drift stand-downs, fight-intel, legacy news pings and combos are silenced
-  or deleted. News/injury discovery (`lib/intel-*`) still feeds the forecast's speculative lane, SILENTLY
-  — `FIGHT_INTEL_ENABLED=1` (records + dashboard) but `FIGHT_INTEL_SEND=0` (no Telegram). Do not turn it
-  back on without asking.
+## What this system is now
 
-## The rule that governs everything
+- **Reads the fight, bets the read.** Discovery pulls fight-week videos → extraction turns them into
+  per-fight hypotheses (who wins and why) → the read (`exploration.creativeCentralA`) drives the bet.
+  The sharp market line is a **sanity check** (a conservative-EV floor), not the thing to beat.
+- **One real ~$100 bankroll** (`data/manual-bankroll.json`, manual placement). Bets are a % of the
+  CURRENT balance, so they compound up/down; no new money is ever added. External deposits/withdrawals
+  are recorded via `recordCashAdjustment` so the ledger equals the real Kalshi balance.
+- **Three Telegram messages, nothing else.** 🟢 BUY (place this — carries the read + an honest "wrong
+  if…" risk), 🔴 SELL (the contract is gone / the fight is off), 🩺 STATUS (daily: healthy? + next fight,
+  at its REAL Kalshi start time, not a 22:00 guess).
+- **Trading does not exist.** There is no Kalshi write call. `lib/arming.js` `assertNoTradingPath()`
+  throws if `createOrder`/`placeOrder`/`submitOrder`/`cancelOrder` ever appear. **Do not add one.**
+  Every alert is a manual instruction a human types into Kalshi themselves.
 
-**Origins, not voices.** Ten channels repeating one injury rumour is ONE origin with ten amplifiers,
-not ten confirmations. The magnitude rules key on independent origin count: 2 → MINOR, 3 → MODERATE,
-5 → MAJOR, **1 → moves the forecast by exactly zero**. This is the rule most likely to be violated by
-accident, because search results and YouTube channels both naturally return the same story many times.
+## The read engine (the heart of it)
 
-## Current state, so you don't rediscover it
+- `config/exploration-rules.json` (v2.0.0-read) is the read lane's config — **deliberately separate from
+  and NOT the frozen v7.0.0 core** in `forecast-rules.json`. It is meant to be tuned; tuning it is not a
+  violation. Its caps are now LOOSE so a strong read can favour an underdog (perBout 1.6 log-odds), the
+  market-beating "only bet what the market hasn't priced" gate is removed, and one credible breakdown is
+  allowed to move the number — an informed fan acts on a single convincing analyst.
+- `lib/contract-value.js`: for the read lane the buy **ceiling is the read's own central** (what you
+  believe it's worth), not the conservative market bound. Core lane unchanged.
+- `run-entertainment-alerts.js`: the read's central can exceed the market-anchored range (that IS the
+  point), so the range is widened to bracket it; the BUY carries the read (`Why:`) and an honest risk
+  (`wrong if …` from the falsification, never internal taxonomy).
 
-- The system says **NO BET on everything** and applies an adjustment on ~1 of 12 bouts. That is the
-  system working, not a bug. Do not go looking for a way around it.
-- The binding constraint is **evidence**, not baselines or fees: ~4 videos across 13 bouts, ~47
-  claims. Live multi-book baselines and the fee model are solved.
-- Fees are **verified in scope only**: KXUFCFIGHT, YES side, single-price taker, price 0.59–0.89,
-  size 3.28–823.81 contracts, as of 2026-07-16. Maker, NO, multi-fill and other series fail closed.
-- The V1 guru track-record board is **archived research, not a signal** — a 24-month backfill graded
-  12,597 picks and found no source with an edge that generalises.
+## What was torn out (do not re-add)
+
+- **Paper Strategy + Research portfolio + Combo engine** — all deleted. One bankroll only.
+- **The laptop dashboard** (`public/*.html`, `server.js`, `lib/dashboard-data.js`) — deleted. The mobile
+  Next.js dashboard (separate repo `sharp-signals-dashboard`, reads `data/*.json` from GitHub raw) is the
+  only board.
+- **The market-beating machinery as a driver** — the origins gate as a blocker, CLV/closing-line grading,
+  the guru track-record board. The market line survives only as a sanity check.
 
 ## Things that have gone wrong here before
 
-Read these before writing code; each cost real time and two of them were the same bug twice.
+Read these before writing code; each cost real time.
 
-- **A synthetic timestamp.** A closing line stamped `sealTs - 2h` passed the leakage guard because the
-  guard checked the fabricated time. Never invent a timestamp. Absence is the truthful value.
-- **A hash computed before its lineage.** `supersedes` attached *after* hashing, so the hash could not
-  cover it. Happened in Phase 7, then I repeated it in Phase 8. Hash last, over everything.
-- **A denominator incremented without rechecking the numerator.** A provenance string said
-  "round-half-up fits 1/5" when it fit 2/5; later "2/7" when it fit 4/7. Both shipped to callers.
-  Recompute tallies, never edit them by hand.
-- **A gate that failed open.** Every check truthiness-guarded, so a missing field skipped its check and
-  returned "verified". Missing data must be a refusal.
-- **A deny-list of one string.** `treatment === "maker"` refused exactly `"maker"`; `"Maker"`,
-  `"limit"`, `"post_only"` all priced at the taker rate. Allowlist, don't deny-list.
-- **Dead config.** `makerRate: 0.0` sat in the fee object and `tradingFee` never read it, so maker
-  orders were charged the full taker rate while the config looked handled.
-- **A tool that couldn't catch its own case.** `verify-fees.js` scored maker examples against the taker
-  formula, and its one maker guard was unreachable.
-- **Git Bash path mangling.** `--live-event=/events/x` arrives as `C:/Program Files/Git/events/x`. A
-  shell artifact that looked exactly like a data outage.
+- **Bout renumbering.** Kalshi renumbers bouts as a card firms up (B04→B05→B08). The alert ledger keys on
+  `boutId`, so the SAME contract reappears under new keys — causing duplicate BUYs, false SELLs ("the
+  fight is off" on a live fight), and a hidden placed-badge. Match on the **ticker** (stable), never the
+  bout id. Patched per-symptom; the clean cure (key the whole ledger by ticker) is still open.
+- **Uncaging one thing, another cage catches it.** The read's central was uncapped, but the range check,
+  the conservative ceiling, and the FAIL-CLOSED invariant each re-blocked it in turn. When you change one
+  gate, trace the value all the way to the sent message.
+- **Rebase-race on data files.** The cloud commits `data/` every run. A local commit that stages data
+  files (`git add -A`) conflicts on every rebase. Commit CODE only; `git checkout origin/main -- data/`
+  before pushing.
+- **A stale summary.** `bankrolls.json` (what the dashboard reads) is regenerated by `BK.write()`;
+  editing the ledger directly leaves it frozen. dispatch now refreshes it every run.
+- **The 22:00 bell was a guess.** Cards run at different times; use Kalshi's `occurrence_datetime`
+  (`dispatch-receipts.lastCard.startTime`), fall back to 22:00 only if absent.
 
-## Verifying news
+## Still-open cleanup (the re-point is functionally done; this is tidying)
 
-`/verify-news` — paste a HUMAN REVIEW alert. (Named to avoid colliding with Claude Code's built-in `verify` skill, which verifies code changes.) It searches for real sources, counts origins (not headlines),
-and runs `run-inject-verified.js` in dry run. Verification **adds** origins; it cannot assert them.
-A block declaring `"origins": 5` is ignored and counted from the sources actually supplied.
-
-Check the market first: if the bout is gone from Kalshi and the sportsbook board, the market already
-acted and there is nothing to bet on. Kalshi's rules — cancelled or rescheduled >2 weeks → *resolves
-to a fair price*. Being right about a withdrawal pays nothing.
+- The extraction PROMPT still captures atomic "claims"; the read is synthesised downstream. Rewriting the
+  prompt to produce a richer read directly is optional polish.
+- Vestigial edge machinery (leakage guard, CLV grading, intel message layer) is no longer in the pick
+  path but still present as unused code — safe to remove carefully; load-bearing pieces (discovery via
+  `candidate-index`/`data/picks`, the forecast's own guards) must stay.
+- The transcript/evidence cache (`data/transcripts`, `data/evidence`) is committed on purpose to keep
+  cloud runs cheap; it CANNOT be gitignored without forcing re-extraction every run.
 
 ## House style
 
-- Tests assert **refusals**, not just happy paths (`test/test-*.js`, ~59 suites); keep them green.
+- Tests assert **refusals**, not just happy paths (`test/test-*.js`); keep them green.
 - A script that exits 0 without producing its artifact is a **failure**.
 - Comments explain the constraint or the bug that forced the code, never what the next line does.
-- Report outcomes faithfully. If it found nothing, say it found nothing.
+- Report outcomes faithfully. If it found nothing, say it found nothing. If a bet is a gamble, say so.
