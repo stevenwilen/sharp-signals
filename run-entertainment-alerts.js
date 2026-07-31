@@ -363,11 +363,13 @@ async function main() {
       if (!p.sized || p.sized.stake <= 0) continue;
       const f = fc.forecasts.find((x) => x.boutId === p.boutId);
       const v = p.valued;
-      // One short reason and one short risk — plain language, no lane names or taxonomy.
+      // The READ, in plain language — one clear reason (like a friend's text) and one honest risk. Never
+      // leak internal taxonomy: evidenceAgainst is often a raw label ("compatible_claims: …"), so clean it;
+      // fall back to what would prove the read wrong, then to a plain "it's a read, not an edge".
+      const cleanRisk = (s) => { if (!s) return null; s = String(s).replace(/\s*\((favors_about|against_about|neutral)\)\s*$/i, "").trim(); return (!s || /compatible_claims|→|_[a-z]{3,}|^none? (recorded|reported)$|^not recorded$/i.test(s)) ? null : s; };
       const whyOne = shortHypothesis(p.sized.hypothesis);
-      const riskOne = p.sized.evidenceAgainst && p.sized.evidenceAgainst !== "none recorded"
-        ? p.sized.evidenceAgainst
-        : `Based on ${p.sized.independentOrigins} uncorroborated origin`;
+      const fals = cleanRisk(p.sized.falsificationCondition);
+      const riskOne = cleanRisk(p.sized.evidenceAgainst) || (fals ? `wrong if ${fals.split(/,| or /)[0].trim()}` : "an analytical read, not a confirmed edge");
       const built = buildActionMessage(v, f, {
         classification: p.sized.tier, stake: p.sized.stake, bankroll: liveBankroll, fraction: p.sized.fraction, lane: "exploration",
         whyOne, riskOne, approxContracts: v.maxFillable != null ? Math.floor(p.sized.stake / (v.allInPrice || 1)) : null,
