@@ -1,46 +1,46 @@
 {
-  "version": "exploration-1.0.0",
-  "_comment": "The EXPLORATION lane's own numbers, deliberately SEPARATE from the frozen v7.0.0 core rules in forecast-rules.json. The core forecast never reads this file and this lane never edits the core. Every number here is a CAP or a threshold for a capped, clearly-labelled, prospectively-graded creative adjustment. Loosened evidence, not loosened mechanics.",
+  "version": "exploration-2.0.0-read",
+  "_comment": "THE READ ENGINE (re-pointed 2026-07-30). This was a capped, market-deviation SIDE lane; it is now the PRIMARY driver. An educated read of the fight content — the LLM-synthesised hypotheses about who wins and why — drives the bet. The market line is a SANITY CHECK (the conservative-EV floor below), not the thing to beat. Loosened DELIBERATELY: this bets on CONVICTION, not on a proven edge. It will bet more, on thinner reads, and it is not expected to be profitable — that is the accepted trade for 'gamble with education'. Still separate from the frozen v7.0.0 core in forecast-rules.json; the core never reads this file.",
 
-  "enabledByDefault": false,
-  "_enabled": "The lane runs only when EXPLORATION_ENABLED=1 in the environment OR this flag is true. Kept off until tests + cloud parity pass; then enabled in production.",
+  "enabledByDefault": true,
+  "_enabled": "The read lane is the engine now, so it is on by default (EXPLORATION_ENABLED still forces it on explicitly for tests/parity).",
 
   "caps": {
-    "perHypothesisLogOdds": 0.12,
-    "perBoutLogOdds": 0.20,
-    "_perBout": "Total creative movement on one bout is capped at 0.20 log-odds (~4.5 points at even money). A single uncertain hypothesis can move the number, but never far.",
-    "maxProbabilityMovePoints": 6.0
+    "perHypothesisLogOdds": 0.35,
+    "perBoutLogOdds": 1.6,
+    "_perBout": "A strong, well-argued read can now move the number a LOT (~35 points at even money) — enough to favour an underdog when the analysis is convincing. That is the whole point of 'process it like I would'. Weak or lone uncertain reads still move it only a little.",
+    "maxProbabilityMovePoints": 40.0
   },
 
   "magnitudeByStrength": {
-    "_comment": "Base creative log-odds by how well-supported the hypothesis is, BEFORE the priced/reliability discounts. One credible origin is allowed to move the forecast — unlike core, which needs 2. Unsupported narrative gets zero.",
-    "strong_multi_signal": 0.12,
-    "credible_single_origin": 0.07,
-    "suggestive": 0.04,
+    "_comment": "How far a read moves the number, by how well-argued it is. ONE credible breakdown is now allowed to matter — an educated fan acts on a single convincing analyst, they do not wait for five.",
+    "strong_multi_signal": 0.35,
+    "credible_single_origin": 0.22,
+    "suggestive": 0.10,
     "unsupported_narrative": 0.0
   },
 
   "discounts": {
-    "probablyPricedMultiplier": 0.4,
-    "_probablyPriced": "If the information is likely already in the market (widely public), its creative weight is cut to 40% — the edge, if any, is in what the market has NOT digested.",
+    "probablyPricedMultiplier": 0.9,
+    "_probablyPriced": "Public info is barely discounted now — an educated fan bets a good read whether or not the market already knows. Beating the market is no longer the goal.",
     "contradictedMultiplier": 0.3,
-    "_contradicted": "A hypothesis with contradictory evidence keeps only 30% of its weight.",
+    "_contradicted": "A read with contradictory evidence keeps only 30% of its weight — honesty about a shaky read stays.",
     "reliabilityBlend": 0.5,
-    "_reliability": "Provisional per-mechanism reliability (shrunk, from data/mechanism-reliability.json) blends in at 50% weight — it nudges, it does not decide, and it is never trusted on its own."
+    "_reliability": "Per-mechanism reliability (shrunk, from data/mechanism-reliability.json) blends in at 50% — it nudges, it never decides alone."
   },
 
   "creativeEligibleTopics": [
     "injury_health", "weight_cut", "training_camp", "coaching_change", "short_notice",
     "inactivity_layoff", "psychological", "external_circumstance", "durability", "cardio",
-    "style_matchup", "striking_defense", "fight_iq"
+    "style_matchup", "striking_defense", "fight_iq", "grappling", "power", "momentum", "experience"
   ],
-  "_creativeEligibleTopics": "The topics where an uncertain, single-origin, hard-to-quantify signal legitimately lives. Statistical/record claims stay in core; those are not what this lane is for.",
+  "_creativeEligibleTopics": "The topics a read legitimately turns on. Broadened from the old edge-hunting set to the full analytical read (grappling, power, momentum, experience) — this is where an educated opinion lives.",
 
   "tiers": {
-    "_comment": "Speculative classifications and the $100 entertainment bankroll stakes. Entertainment overrides, NOT validated Kelly sizing. A larger stake never rescues a worse position.",
-    "CREATIVE SPECULATIVE": { "stake": 3, "fraction": 0.03, "minConservativeEV": -0.20, "minCentralEV": 0.02 },
-    "STRONG SPECULATIVE":   { "stake": 4, "fraction": 0.04, "minConservativeEV": -0.08, "minCentralEV": 0.04 },
-    "BEST EXPERIMENTAL":    { "stake": 5, "fraction": 0.05, "minConservativeEV": 0.0,  "minCentralEV": 0.06 }
+    "_comment": "Read classifications and the bankroll stakes (scaled to the live balance, not a fixed $100). Larger stake never rescues a worse read.",
+    "CREATIVE SPECULATIVE": { "stake": 3, "fraction": 0.03, "minConservativeEV": -0.35, "minCentralEV": 0.0 },
+    "STRONG SPECULATIVE":   { "stake": 4, "fraction": 0.04, "minConservativeEV": -0.25, "minCentralEV": 0.02 },
+    "BEST EXPERIMENTAL":    { "stake": 5, "fraction": 0.05, "minConservativeEV": -0.15, "minCentralEV": 0.04 }
   },
 
   "caps_exposure": {
@@ -50,9 +50,9 @@
   },
 
   "tierRequirements": {
-    "_comment": "What a hypothesis-backed position needs to reach each tier. All tiers require a coherent causal mechanism, an explicit outcome, and that the mechanical gates pass. Higher tiers require stronger/novel support and better after-cost value.",
+    "_comment": "What a read needs to reach each tier. All tiers require a coherent causal mechanism (a REASON, not a vibe) and that the read is not fatally contradicted. The market-beating gate — 'only if the info is novel / not already priced' — is REMOVED: an educated fan bets a good read regardless of whether the market has seen it.",
     "CREATIVE SPECULATIVE": { "minOrigins": 1, "requireMechanism": true, "requireNotFatallyContradicted": true },
-    "STRONG SPECULATIVE":   { "minOrigins": 1, "requireMechanism": true, "requireNovelOrUnderweighted": true, "requireNoFatalContradiction": true },
-    "BEST EXPERIMENTAL":    { "minOrigins": 1, "requireMechanism": true, "requireNovelOrUnderweighted": true, "requireNoFatalContradiction": true, "requireStrongestCombination": true }
+    "STRONG SPECULATIVE":   { "minOrigins": 1, "requireMechanism": true, "requireNoFatalContradiction": true },
+    "BEST EXPERIMENTAL":    { "minOrigins": 1, "requireMechanism": true, "requireNoFatalContradiction": true, "requireStrongestCombination": true }
   }
 }

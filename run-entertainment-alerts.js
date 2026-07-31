@@ -141,10 +141,17 @@ function buildActionMessage(v, f, opts) {
   // unflipped on a fighter-B recommendation is exactly the Du Plessis bug (Usman's 27–38% shown on a
   // Du Plessis buy). The central probability and the max acceptable price are already side-correct
   // (contract-value computed them for the contract's own subject).
-  const range = f.systemRange
+  let range = f.systemRange
     ? (recIsA ? { low: f.systemRange.low, high: f.systemRange.high }
               : { low: +(1 - f.systemRange.high).toFixed(4), high: +(1 - f.systemRange.low).toFixed(4) })
     : { low: null, high: null };
+  // The READ (exploration lane) can legitimately be more confident than the market-anchored range — that IS
+  // the re-point ("bet the read, not the market"). Widen the range to bracket its central so the consistency
+  // guard doesn't read a confident read as an inversion. range.low stays the market-ish floor, so the
+  // conservative-EV sanity check still bites. The core lane keeps its strict range (its inversion guard intact).
+  if (opts.lane === "exploration" && v.systemCentralProbability != null && range.low != null) {
+    range = { low: Math.min(range.low, v.systemCentralProbability), high: Math.max(range.high, v.systemCentralProbability) };
+  }
 
   const fields = {
     recommendedSide: rec, fighterA: A, fighterB: B,
