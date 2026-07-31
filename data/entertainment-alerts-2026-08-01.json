@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-08-01",
-  "ranAt": "2026-07-31T01:50:32.366Z",
+  "ranAt": "2026-07-31T02:00:38.693Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 3,
+    "delivered": 3,
+    "buyInstructions": 3,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -58,7 +58,7 @@
     "HUMAN REVIEW REQUIRED": 4
   },
   "forecastHash": "63237a66b1c9b00c",
-  "snapshotTimestamp": "2026-07-31T01:50:32.462Z",
+  "snapshotTimestamp": "2026-07-31T02:00:38.771Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-08-01-B07",
@@ -94,47 +94,70 @@
       "boutId": "UFC-2026-08-01-B07",
       "ticker": "KXUFCFIGHT-26AUG01MEDROD-MED",
       "key": "explore|UFC-2026-08-01-B07|KXUFCFIGHT-26AUG01MEDROD-MED",
-      "wouldSend": false,
-      "why": "no material change since the last message",
-      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nUros Medic vs Daniel Rodriguez\nAsk now: 78¢\nYour ceiling: 73.4¢\n\nWait for 73¢ or lower. The system will alert again if it becomes available.",
+      "wouldSend": true,
+      "why": "ask 78.0c fell back to or below the maximum acceptable price 86.1c; became actionable: PRICE_TOO_HIGH -> BEST EXPERIMENTAL; verification status changed: PRICE_TOO_HIGH -> BUY",
+      "text": "🧪 BEST EXPERIMENTAL — $5\n\nUros Medic vs Daniel Rodriguez\nBuy: Uros Medic YES\n\nCurrent: 78¢\nMaximum: 86¢\nStake: $5 of $95.67\nApprox contracts: 6\nCard exposure left: $0\n\nWhy: Daniel Rodriguez has durability concerns at 39 years old, having been knocked out and submitted previously.\nMain risk: compatible_claims: Daniel Rodriguez — durability\nSystem estimate: 86% (range 73%–94%)\n\nPlace only if the displayed average price is 86¢ or less.\n\nFor entertainment use. Manual placement only.",
       "state": {
         "ask": 0.78,
-        "maximumAcceptablePrice": 0.7337,
+        "maximumAcceptablePrice": 0.8605,
         "forecastHash": "63237a66b1c9b00c",
-        "classification": "PRICE_TOO_HIGH",
+        "classification": "BEST EXPERIMENTAL",
         "lane": "exploration",
-        "stakePercent": 4,
+        "stakePercent": 5,
         "topTicker": "KXUFCFIGHT-26AUG01MEDROD-MED",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
-        "verdict": "PRICE_TOO_HIGH"
+        "verdict": "BUY"
       },
       "lane": "exploration",
-      "verdict": "PRICE_TOO_HIGH"
+      "verdict": "BUY"
+    },
+    {
+      "boutId": "UFC-2026-08-01-B12",
+      "ticker": "KXUFCFIGHT-26AUG01KLEMUS-KLE",
+      "key": "explore|UFC-2026-08-01-B12|KXUFCFIGHT-26AUG01KLEMUS-KLE",
+      "wouldSend": true,
+      "why": "first time this contract has been seen",
+      "text": "🧪 CREATIVE SPECULATIVE — $3\n\nLudovit Klein vs Tofiq Musayev\nBuy: Ludovit Klein YES\n\nCurrent: 69¢\nMaximum: 71¢\nStake: $3 of $95.67\nApprox contracts: 4\nCard exposure left: $0\n\nWhy: Tofiq Musayev's cardio is lacking and his durability is waning.\nMain risk: Based on 1 uncorroborated origin\nSystem estimate: 71% (range 64%–71%)\n\nPlace only if the displayed average price is 71¢ or less.\n\nFor entertainment use. Manual placement only.",
+      "state": {
+        "ask": 0.69,
+        "maximumAcceptablePrice": 0.708,
+        "forecastHash": "63237a66b1c9b00c",
+        "classification": "CREATIVE SPECULATIVE",
+        "lane": "exploration",
+        "stakePercent": 3,
+        "topTicker": "KXUFCFIGHT-26AUG01KLEMUS-KLE",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "BUY"
+      },
+      "lane": "exploration",
+      "verdict": "BUY"
     },
     {
       "boutId": "UFC-2026-08-01-B13",
       "ticker": "KXUFCFIGHT-26AUG01ELLOLI-OLI",
       "key": "explore|UFC-2026-08-01-B13|KXUFCFIGHT-26AUG01ELLOLI-OLI",
-      "wouldSend": false,
-      "why": "no material change since the last message",
-      "text": "⏸️ PRICE TOO HIGH — DO NOT BUY\n\nMichael Oliveira vs Oban Elliott\nAsk now: 78¢\nYour ceiling: 77.3¢\n\nWait for 77¢ or lower. The system will alert again if it becomes available.",
+      "wouldSend": true,
+      "why": "ask 78.0c fell back to or below the maximum acceptable price 81.2c; became actionable: PRICE_TOO_HIGH -> STRONG SPECULATIVE; verification status changed: PRICE_TOO_HIGH -> BUY",
+      "text": "🧪 STRONG SPECULATIVE — $2\n\nMichael Oliveira vs Oban Elliott\nBuy: Michael Oliveira YES\n\nCurrent: 78¢\nMaximum: 81¢\nStake: $2 of $95.67\nApprox contracts: 2\nCard exposure left: $0\n\nWhy: Oban Elliott was knocked down by Val Woodburn in the first round of his UFC debut.\nMain risk: Based on 2 uncorroborated origin\nSystem estimate: 81% (range 77%–81%)\n\nPlace only if the displayed average price is 81¢ or less.\n\nFor entertainment use. Manual placement only.",
       "state": {
         "ask": 0.78,
-        "maximumAcceptablePrice": 0.7734,
+        "maximumAcceptablePrice": 0.8124,
         "forecastHash": "63237a66b1c9b00c",
-        "classification": "PRICE_TOO_HIGH",
+        "classification": "STRONG SPECULATIVE",
         "lane": "exploration",
-        "stakePercent": 3,
+        "stakePercent": 4,
         "topTicker": "KXUFCFIGHT-26AUG01ELLOLI-OLI",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
-        "verdict": "PRICE_TOO_HIGH"
+        "verdict": "BUY"
       },
       "lane": "exploration",
-      "verdict": "PRICE_TOO_HIGH"
+      "verdict": "BUY"
     }
   ],
   "decisions": [
