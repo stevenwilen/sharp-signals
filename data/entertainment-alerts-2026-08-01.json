@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-08-01",
-  "ranAt": "2026-08-01T19:20:37.598Z",
+  "ranAt": "2026-08-01T19:30:38.792Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 1,
+    "delivered": 1,
+    "buyInstructions": 1,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -54,10 +54,11 @@
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 2
+    "ACTIONABLE EXPERIMENTAL": 1,
+    "NO BET": 1
   },
   "forecastHash": "011b21b41ed077ee",
-  "snapshotTimestamp": "2026-08-01T19:20:37.690Z",
+  "snapshotTimestamp": "2026-08-01T19:30:38.907Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-08-01-B13",
@@ -93,19 +94,40 @@
   "buyInstructions": [
     {
       "boutId": "UFC-2026-08-01-B14",
-      "ticker": "KXUFCFIGHT-26AUG01MEDROD-MED",
-      "key": "explore|UFC-2026-08-01-B14|KXUFCFIGHT-26AUG01MEDROD-MED",
+      "ticker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
       "wouldSend": false,
-      "why": "already placed — you hold this bet",
-      "text": "🧪 BEST EXPERIMENTAL — $5\n\nUros Medic vs Daniel Rodriguez\nBuy: Uros Medic YES\n\nCurrent: 74¢\nMaximum: 95¢\nStake: $5 of $95.67\nApprox contracts: 6\nCard exposure left: $4.79\n\nWhy: Uros Medic has power that carries into the later rounds.\nMain risk: wrong if Uros Medic shows no power effect at the weigh-in / in-fight\nSystem estimate: 95% (range 72%–95%)\n\nPlace only if the displayed average price is 95¢ or less.\n\nFor entertainment use. Manual placement only.",
+      "why": "fight has begun — no new betting instructions",
+      "text": "🧪 strong experimental — $4\n\nDaniel Rodriguez vs Uros Medic\nBuy: Daniel Rodriguez YES\n\nCurrent: 1¢\nMaximum: 5¢\nStake: $4 of $95.67\nApprox contracts: 357\n\nWhy: 19 independent origins support the same activity mechanism\nMain risk: Forecast is CAP LIMITED: net adjustment -0.540 hit the total cap ±0.45\nSystem estimate: 16% (range 5%–28%)\nTop pick because: best conservative value after costs on this fight\n\nPlace only if the displayed average price is 5¢ or less.\n\nFor entertainment use. Manual placement only.",
       "state": {
-        "ask": 0.74,
-        "maximumAcceptablePrice": 0.9513,
+        "ask": 0.01,
+        "maximumAcceptablePrice": 0.047,
         "forecastHash": "011b21b41ed077ee",
-        "classification": "BEST EXPERIMENTAL",
+        "classification": "strong experimental",
+        "lane": "core",
+        "stakePercent": 4,
+        "topTicker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "BUY"
+      },
+      "verdict": "BUY"
+    },
+    {
+      "boutId": "UFC-2026-08-01-B14",
+      "ticker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
+      "key": "explore|UFC-2026-08-01-B14|KXUFCFIGHT-26AUG01MEDROD-ROD",
+      "wouldSend": false,
+      "why": "fight has begun — no new betting instructions",
+      "text": "🧪 STRONG SPECULATIVE — $4\n\nDaniel Rodriguez vs Uros Medic\nBuy: Daniel Rodriguez YES\n\nCurrent: 1¢\nMaximum: 5¢\nStake: $4 of $95.67\nApprox contracts: 357\nCard exposure left: $5.74\n\nWhy: Uros Medic has power that carries into the later rounds.\nMain risk: wrong if Uros Medic shows no power effect at the weigh-in / in-fight\nSystem estimate: 5% (range 5%–28%)\n\nPlace only if the displayed average price is 5¢ or less.\n\nFor entertainment use. Manual placement only.",
+      "state": {
+        "ask": 0.01,
+        "maximumAcceptablePrice": 0.0487,
+        "forecastHash": "011b21b41ed077ee",
+        "classification": "STRONG SPECULATIVE",
         "lane": "exploration",
-        "stakePercent": 5,
-        "topTicker": "KXUFCFIGHT-26AUG01MEDROD-MED",
+        "stakePercent": 4,
+        "topTicker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
         "stale": false,
         "pipelineFailed": false,
         "withinEnvelope": true,
@@ -113,17 +135,43 @@
       },
       "lane": "exploration",
       "verdict": "BUY"
+    },
+    {
+      "boutId": "explore",
+      "ticker": "KXUFCFIGHT-26AUG01MEDROD-MED",
+      "key": "explore|UFC-2026-08-01-B07|KXUFCFIGHT-26AUG01MEDROD-MED",
+      "wouldSend": true,
+      "why": "contract no longer listed — the fight is off",
+      "text": "🔴 SELL — the fight is off\nUros Medic — bought at 78¢\nReason: the contract is no longer listed — the fight is off (cancelled, rescheduled, or a fighter is out)\nSell on Kalshi if the market is still open. If it isn't, Kalshi settles it at a fair price — you don't lose over this.",
+      "state": {
+        "ask": 0.78,
+        "maximumAcceptablePrice": 0.8605,
+        "forecastHash": "63237a66b1c9b00c",
+        "classification": "WITHDRAWN",
+        "lane": "exploration",
+        "stakePercent": 5,
+        "topTicker": "KXUFCFIGHT-26AUG01MEDROD-MED",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "WITHDRAWN",
+        "lastSentAt": "2026-07-31T02:00:41.594Z",
+        "lastType": "BUY_INSTRUCTION",
+        "firstSentAt": "2026-07-29T03:45:28.148Z",
+        "messageCount": 2
+      },
+      "verdict": "WITHDRAWN"
     }
   ],
   "decisions": [
     {
       "ticker": "KXUFCFIGHT-26AUG01MEDROD-ROD",
       "bout": "Daniel Rodriguez vs Uros Medic",
-      "classification": "NO BET",
+      "classification": "ACTIONABLE EXPERIMENTAL",
       "rank": 1,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "conservative EV -0.2265 is not favourable after fees and slippage"
+      "entertainmentEligible": true,
+      "blockedBy": null,
+      "reason": null
     },
     {
       "ticker": "KXUFCFIGHT-26AUG01MEDROD-MED",
@@ -132,7 +180,7 @@
       "rank": 2,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0345 is not favourable after fees and slippage"
+      "reason": "not executable: empty order book on the side required to fill this trade"
     }
   ]
 }
