@@ -2,10 +2,21 @@
 // research halt share. Betting locks the moment ANY bout on THIS card leaves the tradeable set, read from
 // real Kalshi status (not a 22:00 bell), because fight day varies. Refusal-first: fail-closed inputs and a
 // resolved bout on a DIFFERENT card must NOT lock this one, and must NOT wrongly report "live".
-const { cardIsLive, tickerDateFor } = require("../lib/freshness");
+const { cardIsLive, tickerDateFor, fightDayStarted } = require("../lib/freshness");
 
 let pass = 0, fail = 0;
 const ok = (c, m) => { if (c) { pass++; process.stdout.write(`  PASS  ${m}\n`); } else { fail++; process.stdout.write(`  FAIL  ${m}\n`); } };
+
+// FIGHT-DAY LOCK — betting stops for the WHOLE calendar fight day (operator tz), not at a bell/exact time,
+// because Kalshi's occurrence_datetime marks a later bout (it read 3pm when prelims began at 10am).
+const TZ = "America/New_York";
+const at = (iso) => Date.parse(iso);
+ok(fightDayStarted("2026-08-01", at("2026-07-31T20:00:00Z"), TZ) === false, "F1. 4pm ET the day before -> still betting");
+ok(fightDayStarted("2026-08-01", at("2026-08-01T02:00:00Z"), TZ) === false, "F2. 10pm ET night before (still 07-31 ET) -> still betting");
+ok(fightDayStarted("2026-08-01", at("2026-08-01T14:00:00Z"), TZ) === true, "F3. 10am ET fight day (early prelims) -> STOP — the exact bug reported");
+ok(fightDayStarted("2026-08-01", at("2026-08-01T22:00:00Z"), TZ) === true, "F4. 6pm ET main card -> STOP");
+ok(fightDayStarted("2026-08-02", at("2026-08-01T14:00:00Z"), TZ) === false, "F5. a DIFFERENT day's card is not locked");
+ok(fightDayStarted("garbage", at("2026-08-01T14:00:00Z"), TZ) === false, "F6. unparseable eventDate -> false (fail open on garbage, never a bogus lock)");
 
 const M = (ticker, status) => ({ ticker, status });
 const EVENT = "2026-07-25";                 // -> KXUFCFIGHT-26JUL25

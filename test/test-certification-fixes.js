@@ -26,7 +26,7 @@ console.log("\nFIGHT-START GATE — no new betting instruction after the bell");
   const FR = require("../lib/freshness");
   ok("fightStarted flips at 22:00Z on the event date", FR.fightStarted("2026-07-18", Date.parse("2026-07-18T22:00:01Z")) === true && FR.fightStarted("2026-07-18", Date.parse("2026-07-18T21:59:59Z")) === false);
   const s = src("run-entertainment-alerts.js");
-  ok("the runner gates messages on fightStarted", /FIGHT-START GATE/.test(s) && /fightStarted\(fc\.card\.eventDate\)/.test(s));
+  ok("the runner gates betting on the whole FIGHT DAY", /FIGHT DAY/.test(s) && /fightDayStarted\(fc\.card\.eventDate\)/.test(s));
   ok("...blocking everything EXCEPT withdrawals", /m\.verdict !== "WITHDRAWN"/.test(s));
   ok("...and human-review sends are gated too", /intelOwnsNews \|\| fightHasStarted/.test(s));
   ok("run-intel feeds fightStarted to the intel lifecycle (was a hollow flag)", /fightStarted: require\("\.\/lib\/freshness"\)\.fightStarted\(card\)/.test(src("run-intel.js")));

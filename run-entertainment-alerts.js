@@ -446,23 +446,17 @@ async function main() {
   // construction (the sentinel runs DURING the event; a closed market usually yields no ask, but
   // "usually" is not a gate). Withdrawal notices still pass: telling the human to stand down is safety
   // information, not a bet.
-  // The lock fires on EITHER signal: the 22:00 fixed bell OR live Kalshi status (any bout on this card
-  // already resolved). The bell alone is unreliable — cards start at different times, and today's prelims
-  // resolved ~7h before 22:00 — so the live-status read is the real lock; the bell is a fallback for when
-  // Kalshi can't be reached. ORed, so the gate only ever engages EARLIER, never unlocks a live card.
+  // Betting stops for the WHOLE fight day, the moment it becomes the card's calendar date (operator tz) —
+  // before the earliest prelim, whatever hour it starts. A time-based lock let betting run into live early
+  // prelims (Kalshi's occurrence_datetime read 3pm when the prelims actually began at 10am). No market fetch.
   const FR = require("./lib/freshness");
-  const bellPassed = FR.fightStarted(fc.card.eventDate);
-  let cardLive = false;
-  try { cardLive = FR.cardIsLive(await k.marketsAll({ series_ticker: "KXUFCFIGHT" }), fc.card.eventDate); }
-  catch (e) { say(`  (live card-status check unavailable: ${e.message} — falling back to the 22:00 bell only)`); }
-  const fightHasStarted = bellPassed || cardLive;   // referenced again below to gate the news channel + the compact ping
+  const fightHasStarted = FR.fightDayStarted(fc.card.eventDate);   // referenced again below to gate the news channel + the compact ping
   if (fightHasStarted) {
     let gated = 0;
     for (const m of messages) {
-      if (m.wouldSend && m.verdict !== "WITHDRAWN") { m.wouldSend = false; m.why = "fight has begun — no new betting instructions"; gated++; }
+      if (m.wouldSend && m.verdict !== "WITHDRAWN") { m.wouldSend = false; m.why = "it is fight day — no new betting instructions"; gated++; }
     }
-    const why = cardLive ? "a bout on this card has resolved — live Kalshi status" : `${fc.card.eventDate} 22:00Z passed`;
-    say(`\n  ⛔ FIGHT HAS BEGUN (${why}) — ${gated} betting message(s) gated; only withdrawals may send`);
+    say(`\n  ⛔ FIGHT DAY (${fc.card.eventDate}) — betting closed for the day; ${gated} message(s) gated; only withdrawals may send`);
   }
 
   // ---- delivery ----
