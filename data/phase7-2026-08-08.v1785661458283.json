@@ -271,22 +271,32 @@
       }
     ]
   },
-  "sealedAt": "2026-08-02T09:04:18.223Z",
-  "rulesVersion": "7.0.0",
-  "marketSource": "bfo",
+  "phase": 7,
+  "completedAt": "2026-08-02T06:54:21.753Z",
+  "sealedForecastAt": "2026-08-02T06:54:21.691Z",
+  "references": {
+    "numericalForecastHash": "cb448f0a75999ba6",
+    "numericalForecastFile": "forecast-2026-08-08.json",
+    "scenarioHash": "ed06f1a8a8f81ea2",
+    "evidenceHash": "ff4c5f6a3b3d5d4c",
+    "marketSnapshotHash": "934ad4e02685832b",
+    "engineVersion": "phase7-engine-1.0.0",
+    "ruleConfigVersion": "7.0.0"
+  },
+  "capLimited": [],
   "forecasts": [
     {
-      "forecastId": "a79f8ae95c6df7fa",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "141cf5d8eb6e44d4",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B01",
       "fight": "Quillan Salkilld vs Mateusz Gamrot",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.5617,
+        "probability": 0.5446,
         "forFighter": "Quillan Salkilld",
-        "timestamp": "2026-08-02T09:04:18.218Z",
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "timestamp": "2026-08-02T06:54:21.688Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -294,45 +304,45 @@
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.72,
+        "dispersion": 2.67,
         "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
-            "Quillan Salkilld": "-150",
-            "Mateusz Gamrot": "+118",
-            "overround": 1.058716,
-            "deVigged": 0.566724
+            "Quillan Salkilld": "-130",
+            "Mateusz Gamrot": "+102",
+            "overround": 1.060267,
+            "deVigged": 0.533089
           },
           {
             "book": "Caesars",
-            "Quillan Salkilld": "-145",
-            "Mateusz Gamrot": "+122",
-            "overround": 1.042287,
-            "deVigged": 0.567825
+            "Quillan Salkilld": "-140",
+            "Mateusz Gamrot": "+118",
+            "overround": 1.042049,
+            "deVigged": 0.559794
           },
           {
             "book": "BetRivers",
-            "Quillan Salkilld": "-137",
-            "Mateusz Gamrot": "+112",
-            "overround": 1.049757,
-            "deVigged": 0.55066
+            "Quillan Salkilld": "-132",
+            "Mateusz Gamrot": "+107",
+            "overround": 1.052058,
+            "deVigged": 0.540812
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           }
         ],
@@ -342,49 +352,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "bdd30b74be9bf75c"
+        "baselineHash": "82a82476b584d12b"
       },
       "systemCentral": {
-        "Quillan Salkilld": 0.5617,
-        "Mateusz Gamrot": 0.4383
+        "Quillan Salkilld": 0.5446,
+        "Mateusz Gamrot": 0.4554
       },
       "systemRange": {
         "forFighter": "Quillan Salkilld",
-        "low": 0.5117,
-        "high": 0.6117
+        "low": 0.4946,
+        "high": 0.5946
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Quillan Salkilld": {
-          "win": 0.5617,
-          "byKO": 0.1854,
-          "bySubmission": 0.0955,
-          "byDecision": 0.2809,
+          "win": 0.5446,
+          "byKO": 0.1797,
+          "bySubmission": 0.0926,
+          "byDecision": 0.2723,
           "koByRound": {
-            "r1": 0.0834,
-            "r2": 0.0593,
-            "r3": 0.0426
+            "r1": 0.0809,
+            "r2": 0.0575,
+            "r3": 0.0413
           },
           "submissionByRound": {
-            "r1": 0.043,
-            "r2": 0.0306,
-            "r3": 0.022
+            "r1": 0.0417,
+            "r2": 0.0296,
+            "r3": 0.0213
           }
         },
         "Mateusz Gamrot": {
-          "win": 0.4383,
-          "byKO": 0.1446,
-          "bySubmission": 0.0745,
-          "byDecision": 0.2191,
+          "win": 0.4554,
+          "byKO": 0.1503,
+          "bySubmission": 0.0774,
+          "byDecision": 0.2277,
           "koByRound": {
-            "r1": 0.0651,
-            "r2": 0.0463,
-            "r3": 0.0333
+            "r1": 0.0676,
+            "r2": 0.0481,
+            "r3": 0.0346
           },
           "submissionByRound": {
-            "r1": 0.0335,
-            "r2": 0.0238,
-            "r3": 0.0171
+            "r1": 0.0348,
+            "r2": 0.0248,
+            "r3": 0.0178
           }
         }
       },
@@ -433,13 +443,14 @@
       },
       "dataHashes": {
         "evidenceEval": "e5aae89d14d587a4",
-        "baseline": "9a0d1b74eda472df",
+        "baseline": "a5a616fbfaea51a1",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "25f8329fa2812342",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "03ed7a03109d79ff",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B02",
       "fight": "Billy Quarantillo vs Diego Ferreira",
@@ -447,8 +458,8 @@
       "marketBaseline": {
         "probability": 0.3976,
         "forFighter": "Billy Quarantillo",
-        "timestamp": "2026-08-02T09:04:18.218Z",
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "timestamp": "2026-08-02T06:54:21.688Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -484,17 +495,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           }
         ],
@@ -504,7 +515,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "ffdbc3d4e8803c49"
+        "baselineHash": "f0cc685cab146ed8"
       },
       "systemCentral": {
         "Billy Quarantillo": 0.3976,
@@ -595,13 +606,14 @@
       },
       "dataHashes": {
         "evidenceEval": "b889ec6b0c4ed4ad",
-        "baseline": "c378c96ba47fcd8d",
+        "baseline": "d1165b3ff93399c0",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "411cfbdae2cc605b",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "889517b9cb84d484",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B03",
       "fight": "Darren Elkins vs Yadier Delvalle",
@@ -610,7 +622,7 @@
         "probability": 0.2648,
         "forFighter": "Darren Elkins",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -642,7 +654,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "95a296ec27155353"
+        "baselineHash": "aed001c2fead2a7a"
       },
       "systemCentral": {
         "Darren Elkins": 0.2648,
@@ -741,13 +753,14 @@
       },
       "dataHashes": {
         "evidenceEval": "9b6bad25ce419cfa",
-        "baseline": "69176ca2bf78f257",
+        "baseline": "f68dd92d0aac617f",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "484c17f1061d35d4",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "e017f7f92d588ea3",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B04",
       "fight": "Louie Sutherland vs Jose Montanha Da Silva",
@@ -756,12 +769,12 @@
         "probability": 0.5,
         "forFighter": "Louie Sutherland",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "dispersion": 1.67,
+        "dispersion": 1.13,
         "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
@@ -788,7 +801,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "cb9ff00654425a0d"
+        "baselineHash": "cf97a646464da621"
       },
       "systemCentral": {
         "Louie Sutherland": 0.5,
@@ -879,17 +892,18 @@
       },
       "dataHashes": {
         "evidenceEval": "992ba06933cc9159",
-        "baseline": "9e3287e49a20afd0",
+        "baseline": "bc0499b9d2534d49",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "ca937f5c49210fac",
+      "forecastId": "8a67d84d8722c18b",
       "boutId": "UFC-2026-08-08-B05",
       "fight": "Ty Cole Miller vs Billy Goff",
       "event": "UFC-2026-08-08",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -908,15 +922,16 @@
         "evidenceEval": "b7674e00ff14aa68",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "43ee7fdd3054830a",
+      "forecastId": "a7d17a856e8d949b",
       "boutId": "UFC-2026-08-08-B06",
       "fight": "Jessie Rosas vs Miles Johns",
       "event": "UFC-2026-08-08",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -935,11 +950,12 @@
         "evidenceEval": "f5c11b5c3ea77a28",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "e6be1f373ae9716c",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "1f1b5d92f94c12bf",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B07",
       "fight": "Diyar Nurgozhay vs Bruno Lopes",
@@ -947,8 +963,8 @@
       "marketBaseline": {
         "probability": 0.5939,
         "forFighter": "Diyar Nurgozhay",
-        "timestamp": "2026-08-02T09:04:18.218Z",
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "timestamp": "2026-08-02T06:54:21.688Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -984,17 +1000,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           }
         ],
@@ -1004,7 +1020,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "967921ac4b3f3146"
+        "baselineHash": "fb9dcf784ee4084f"
       },
       "systemCentral": {
         "Diyar Nurgozhay": 0.5939,
@@ -1095,13 +1111,14 @@
       },
       "dataHashes": {
         "evidenceEval": "60d7b4b275782d26",
-        "baseline": "af617f29b0147c7d",
+        "baseline": "0c0978751e8374e5",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "6e69da9fe4de0fea",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "bc50278deeb83221",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B08",
       "fight": "Guilherme Pat vs Steven Asplund",
@@ -1109,8 +1126,8 @@
       "marketBaseline": {
         "probability": 0.3233,
         "forFighter": "Guilherme Pat",
-        "timestamp": "2026-08-02T09:04:18.218Z",
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "timestamp": "2026-08-02T06:54:21.688Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1146,17 +1163,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           }
         ],
@@ -1166,7 +1183,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "9faadcef5b2ee4f5"
+        "baselineHash": "41085ea2be64197b"
       },
       "systemCentral": {
         "Guilherme Pat": 0.3233,
@@ -1257,13 +1274,14 @@
       },
       "dataHashes": {
         "evidenceEval": "ff37220ae8f1f260",
-        "baseline": "9babdf923917344f",
+        "baseline": "42e9b62d49f77461",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "e21e547c277d6b45",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "16739ca56c38fdb0",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B09",
       "fight": "Alexia Thainara vs Amanda Lemos",
@@ -1271,8 +1289,8 @@
       "marketBaseline": {
         "probability": 0.6783,
         "forFighter": "Alexia Thainara",
-        "timestamp": "2026-08-02T09:04:18.218Z",
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "timestamp": "2026-08-02T06:54:21.688Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1308,17 +1326,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T09:04:18.218Z",
+            "observedAt": "2026-08-02T06:54:21.688Z",
             "sourceProvided": null
           }
         ],
@@ -1328,7 +1346,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "2a706aaeae07517a"
+        "baselineHash": "93c38f93838a754c"
       },
       "systemCentral": {
         "Alexia Thainara": 0.6783,
@@ -1426,7 +1444,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-02T09:04:18.240Z",
+            "timestamp": "2026-08-02T06:54:21.708Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1464,7 +1482,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-02T09:04:18.240Z",
+            "timestamp": "2026-08-02T06:54:21.708Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1516,13 +1534,14 @@
       },
       "dataHashes": {
         "evidenceEval": "4b631d56fcaf4a94",
-        "baseline": "b50e7a2addcf753f",
+        "baseline": "643e3ececd8d3368",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "fbe459df45439570",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "forecastId": "b49a659298ea6eac",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B10",
       "fight": "Ravena Oliveira Morais vs Juliana Miller",
@@ -1531,7 +1550,7 @@
         "probability": 0.3655,
         "forFighter": "Ravena Oliveira Morais",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T09:04:18.223Z",
+        "forecastTimestamp": "2026-08-02T06:54:21.691Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -1563,7 +1582,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "2a42d690f28720d3"
+        "baselineHash": "1f8c9578a8e20108"
       },
       "systemCentral": {
         "Ravena Oliveira Morais": 0.3655,
@@ -1654,17 +1673,18 @@
       },
       "dataHashes": {
         "evidenceEval": "9d017b252205ea6e",
-        "baseline": "da8d2e43afb141f7",
+        "baseline": "4b26ebfdbe97b59e",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "f938ad1e8dbae22a",
+      "forecastId": "af911a00f121d9a2",
       "boutId": "UFC-2026-08-08-B11",
       "fight": "Manoel Sousa vs Richie Miranda",
       "event": "UFC-2026-08-08",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-08-02T09:04:18.223Z",
+      "sealedAt": "2026-08-02T06:54:21.691Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -1683,16 +1703,390 @@
         "evidenceEval": "32e72c90b7e49dc9",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     }
   ],
-  "sealedBy": "run-forecast.js",
-  "immutable": true,
-  "contentHash": "6443a0c39adbcb77",
-  "supersedes": {
-    "file": "forecast-2026-08-08.v1785661458243.json",
-    "contentHash": "39f8f36c38c3c518",
-    "sealHash": "cb448f0a75999ba6"
+  "scenarios": {
+    "UFC-2026-08-08-B01": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Quillan Salkilld",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Mateusz Gamrot",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B02": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Billy Quarantillo",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Diego Ferreira",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B03": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Darren Elkins",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Yadier Delvalle",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B04": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Louie Sutherland",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Jose Montanha Da Silva",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B05": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Ty Cole Miller",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Billy Goff",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B06": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Jessie Rosas",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Miles Johns",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B07": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Diyar Nurgozhay",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Bruno Lopes",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B08": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Guilherme Pat",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Steven Asplund",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B09": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Alexia Thainara",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Amanda Lemos",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B10": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Ravena Oliveira Morais",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Juliana Miller",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-08-B11": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Manoel Sousa",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Richie Miranda",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "insufficient evidence — no mechanism-level path can be described"
+        ],
+        "generic": true
+      }
+    ]
   },
-  "sealHash": "bd491d1335a6bbb1"
+  "immutable": true,
+  "completedHash": "8e0e4c155c7a7052",
+  "supersedes": {
+    "file": "phase7-2026-08-08.v1785653661755.json",
+    "hash": "f946259266e250ba"
+  }
 }
