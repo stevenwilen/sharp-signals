@@ -271,22 +271,22 @@
       }
     ]
   },
-  "sealedAt": "2026-08-02T13:24:11.369Z",
+  "sealedAt": "2026-08-02T15:34:09.186Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "949481c7b4645ee6",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "19c893c53a91fdc7",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B01",
       "fight": "Quillan Salkilld vs Mateusz Gamrot",
-      "status": "INSUFFICIENT EVIDENCE",
+      "status": "LIMITED EVIDENCE",
       "marketBaseline": {
         "probability": 0.5678,
         "forFighter": "Quillan Salkilld",
-        "timestamp": "2026-08-02T13:24:11.363Z",
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "timestamp": "2026-08-02T15:34:09.182Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -322,17 +322,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           }
         ],
@@ -342,7 +342,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "96ba864418a5a3b0"
+        "baselineHash": "8f541031ee04aa12"
       },
       "systemCentral": {
         "Quillan Salkilld": 0.5678,
@@ -350,8 +350,8 @@
       },
       "systemRange": {
         "forFighter": "Quillan Salkilld",
-        "low": 0.5178,
-        "high": 0.6178
+        "low": 0.5128,
+        "high": 0.6228
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
@@ -390,36 +390,93 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 0,
+      "consideredButZero": 2,
       "netLogOdds": 0,
       "capNote": null,
-      "exploration": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.5678,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.5678,
+        "creativeAdjustmentLogOddsTowardA": 0.1012,
+        "creativeCentralA": 0.5924,
+        "creativeMovePoints": 2.46,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 1,
+        "hypotheses": [
+          {
+            "hypothesis": "Mateusz Gamrot — durability: Mateusz Gamrot has been dropped in six of his 13 UFC fights. (against_about)",
+            "fighter": "Mateusz Gamrot",
+            "boutTopic": "durability",
+            "supportingFacts": [
+              "He has been dropped in six of his 13 UFC fights.",
+              "He is unfortunately pretty chinny. He has been dropped in six of his 13 UFC fights."
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "VERIFIED",
+            "causalMechanism": "durability → hurts Mateusz Gamrot",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Mateusz Gamrot shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.1012,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.197Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
-        "halfWidthPoints": 5,
+        "halfWidthPoints": 5.5,
         "primaryDrivers": [
-          "insufficient evidence"
+          "a single analyst is the only source",
+          "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
-      "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 3,
+      "originBreakdown": {
+        "analysts": 1,
+        "publicRecords": 2,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
         "striking_offense",
         "striking_defense",
-        "wrestling_offense",
         "takedown_defense",
         "cardio",
-        "durability",
         "recent_form"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "3 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 4,
+        "claimsAdmitted": 4,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -432,23 +489,23 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "e5aae89d14d587a4",
-        "baseline": "ffe0a78cbb3013b9",
+        "evidenceEval": "a94d8d907d79c087",
+        "baseline": "7ead3f9a60a3a3c9",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "5e3ad20a14563f32",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "c516c0318306e45a",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B02",
       "fight": "Billy Quarantillo vs Diego Ferreira",
-      "status": "INSUFFICIENT EVIDENCE",
+      "status": "LIMITED EVIDENCE",
       "marketBaseline": {
         "probability": 0.3976,
         "forFighter": "Billy Quarantillo",
-        "timestamp": "2026-08-02T13:24:11.363Z",
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "timestamp": "2026-08-02T15:34:09.182Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -484,17 +541,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           }
         ],
@@ -504,7 +561,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "878a2f22b98e9240"
+        "baselineHash": "d3fba927246060d9"
       },
       "systemCentral": {
         "Billy Quarantillo": 0.3976,
@@ -512,8 +569,8 @@
       },
       "systemRange": {
         "forFighter": "Billy Quarantillo",
-        "low": 0.3476,
-        "high": 0.4476
+        "low": 0.3426,
+        "high": 0.4526
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
@@ -552,36 +609,54 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 0,
+      "consideredButZero": 1,
       "netLogOdds": 0,
       "capNote": null,
-      "exploration": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.3976,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.3976,
+        "creativeAdjustmentLogOddsTowardA": 0,
+        "creativeCentralA": 0.3976,
+        "creativeMovePoints": 0,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 0,
+        "hypotheses": [],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
-        "halfWidthPoints": 5,
+        "halfWidthPoints": 5.5,
         "primaryDrivers": [
-          "insufficient evidence"
+          "a single analyst is the only source",
+          "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
-      "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 3,
+      "originBreakdown": {
+        "analysts": 0,
+        "publicRecords": 3,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
-        "striking_offense",
         "striking_defense",
-        "wrestling_offense",
-        "takedown_defense",
         "cardio",
         "durability",
         "recent_form"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "3 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 3,
+        "claimsAdmitted": 3,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -594,14 +669,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "b889ec6b0c4ed4ad",
-        "baseline": "cce086409c98ef4f",
+        "evidenceEval": "319cad4cccd90ec3",
+        "baseline": "d3263c41ab4126ab",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "b89721397e0fec8c",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "d5483a8919ea4b49",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B03",
       "fight": "Darren Elkins vs Yadier Delvalle",
@@ -610,7 +685,7 @@
         "probability": 0.2648,
         "forFighter": "Darren Elkins",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -642,7 +717,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "868f79e9122a4e14"
+        "baselineHash": "0b3b6c4a245200c8"
       },
       "systemCentral": {
         "Darren Elkins": 0.2648,
@@ -741,13 +816,13 @@
       },
       "dataHashes": {
         "evidenceEval": "9b6bad25ce419cfa",
-        "baseline": "b165658542420733",
+        "baseline": "740120fa9c0c8578",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "5c3d3eccc8c1092b",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "494d32e4ff6bc73a",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B04",
       "fight": "Louie Sutherland vs Jose Montanha Da Silva",
@@ -756,7 +831,7 @@
         "probability": 0.5,
         "forFighter": "Louie Sutherland",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -788,7 +863,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "55b8e14ede9c9487"
+        "baselineHash": "0e6305b3a6dbef3f"
       },
       "systemCentral": {
         "Louie Sutherland": 0.5,
@@ -879,17 +954,17 @@
       },
       "dataHashes": {
         "evidenceEval": "992ba06933cc9159",
-        "baseline": "08a104b060812eec",
+        "baseline": "91445599e29e4aed",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "0ed092a9e92038fb",
+      "forecastId": "ead0ee0c4afee771",
       "boutId": "UFC-2026-08-08-B05",
       "fight": "Ty Cole Miller vs Billy Goff",
       "event": "UFC-2026-08-08",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -911,17 +986,17 @@
       }
     },
     {
-      "forecastId": "6f7354e463c0d883",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "d223fc69bbbdf345",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B06",
       "fight": "Jessie Rosas vs Miles Johns",
-      "status": "INSUFFICIENT EVIDENCE",
+      "status": "LIMITED EVIDENCE",
       "marketBaseline": {
         "probability": 0.4118,
         "forFighter": "Jessie Rosas",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -953,7 +1028,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "7c9ff619ecbf481e"
+        "baselineHash": "cb620427aac7b657"
       },
       "systemCentral": {
         "Jessie Rosas": 0.4118,
@@ -961,8 +1036,8 @@
       },
       "systemRange": {
         "forFighter": "Jessie Rosas",
-        "low": 0.3618,
-        "high": 0.4618
+        "low": 0.3568,
+        "high": 0.4668
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
@@ -1001,36 +1076,130 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 0,
+      "consideredButZero": 3,
       "netLogOdds": 0,
       "capNote": null,
-      "exploration": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.4118,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.4118,
+        "creativeAdjustmentLogOddsTowardA": 0.1217,
+        "creativeCentralA": 0.4416,
+        "creativeMovePoints": 2.98,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 2,
+        "hypotheses": [
+          {
+            "hypothesis": "Miles Johns — power: Miles Johns is a strong, high-level wrestler with heavy hands and explosive speed who wrestled long before his MMA career. (favors_about)",
+            "fighter": "Miles Johns",
+            "boutTopic": "power",
+            "supportingFacts": [
+              "He's a strong wrestler. He's got heavy hands, explosive speed, high-level wrestler. He wrestled in real life long before his MMA career"
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "VERIFIED",
+            "causalMechanism": "power → helps Miles Johns",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Miles Johns shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.1,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.201Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Miles Johns — cardio: Miles Johns's cardio can be questioned, though he goes hard for at least 1.5 rounds. (against_about)",
+            "fighter": "Miles Johns",
+            "boutTopic": "cardio",
+            "supportingFacts": [
+              "His cardio can be questioned, but for at least 1 and 1/2 rounds, that guy gets after and he gets after it hard."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "cardio → hurts Miles Johns",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Miles Johns shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.2217,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.201Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
-        "halfWidthPoints": 5,
+        "halfWidthPoints": 5.5,
         "primaryDrivers": [
-          "insufficient evidence"
+          "a single analyst is the only source",
+          "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
-      "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 3,
+      "originBreakdown": {
+        "analysts": 1,
+        "publicRecords": 2,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
         "striking_offense",
         "striking_defense",
         "wrestling_offense",
         "takedown_defense",
-        "cardio",
-        "durability",
-        "recent_form"
+        "durability"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "1 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 3,
+        "claimsAdmitted": 3,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -1043,14 +1212,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "f5c11b5c3ea77a28",
-        "baseline": "cc19fbb5c1c0feee",
+        "evidenceEval": "f66a8fadd14a2432",
+        "baseline": "421a75d1dca03c71",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "2fcdda91a979daf4",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "de3b7b437c5427c8",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B07",
       "fight": "Diyar Nurgozhay vs Bruno Lopes",
@@ -1058,8 +1227,8 @@
       "marketBaseline": {
         "probability": 0.5939,
         "forFighter": "Diyar Nurgozhay",
-        "timestamp": "2026-08-02T13:24:11.363Z",
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "timestamp": "2026-08-02T15:34:09.182Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1095,17 +1264,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           }
         ],
@@ -1115,7 +1284,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "61ca49e72bf0503d"
+        "baselineHash": "120073549051ba94"
       },
       "systemCentral": {
         "Diyar Nurgozhay": 0.5939,
@@ -1206,22 +1375,22 @@
       },
       "dataHashes": {
         "evidenceEval": "60d7b4b275782d26",
-        "baseline": "56956197bc967efb",
+        "baseline": "3b986dc70917fdb1",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "2b41c3c1751a06ff",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "46d770c47838c5e3",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B08",
       "fight": "Guilherme Pat vs Steven Asplund",
-      "status": "INSUFFICIENT EVIDENCE",
+      "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3233,
+        "probability": 0.3184,
         "forFighter": "Guilherme Pat",
-        "timestamp": "2026-08-02T13:24:11.363Z",
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "timestamp": "2026-08-02T15:34:09.182Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1229,7 +1398,7 @@
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.51,
+        "dispersion": 2.99,
         "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
@@ -1241,10 +1410,10 @@
           },
           {
             "book": "Caesars",
-            "Guilherme Pat": "+205",
-            "Steven Asplund": "-250",
-            "overround": 1.042155,
-            "deVigged": 0.314607
+            "Guilherme Pat": "+220",
+            "Steven Asplund": "-270",
+            "overround": 1.04223,
+            "deVigged": 0.299838
           },
           {
             "book": "BetRivers",
@@ -1257,17 +1426,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           }
         ],
@@ -1277,67 +1446,164 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "64d34352362c2627"
+        "baselineHash": "8a40b5003ccfc0aa"
       },
       "systemCentral": {
-        "Guilherme Pat": 0.3233,
-        "Steven Asplund": 0.6767
+        "Guilherme Pat": 0.3184,
+        "Steven Asplund": 0.6816
       },
       "systemRange": {
         "forFighter": "Guilherme Pat",
-        "low": 0.2733,
-        "high": 0.3733
+        "low": 0.2634,
+        "high": 0.3734
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Guilherme Pat": {
-          "win": 0.3233,
-          "byKO": 0.1067,
-          "bySubmission": 0.055,
-          "byDecision": 0.1616,
+          "win": 0.3184,
+          "byKO": 0.1051,
+          "bySubmission": 0.0541,
+          "byDecision": 0.1592,
           "koByRound": {
-            "r1": 0.048,
-            "r2": 0.0341,
-            "r3": 0.0245
+            "r1": 0.0473,
+            "r2": 0.0336,
+            "r3": 0.0242
           },
           "submissionByRound": {
-            "r1": 0.0248,
-            "r2": 0.0176,
-            "r3": 0.0126
+            "r1": 0.0243,
+            "r2": 0.0173,
+            "r3": 0.0124
           }
         },
         "Steven Asplund": {
-          "win": 0.6767,
-          "byKO": 0.2233,
-          "bySubmission": 0.115,
-          "byDecision": 0.3384,
+          "win": 0.6816,
+          "byKO": 0.2249,
+          "bySubmission": 0.1159,
+          "byDecision": 0.3408,
           "koByRound": {
-            "r1": 0.1005,
-            "r2": 0.0715,
-            "r3": 0.0514
+            "r1": 0.1012,
+            "r2": 0.072,
+            "r3": 0.0517
           },
           "submissionByRound": {
-            "r1": 0.0518,
-            "r2": 0.0368,
-            "r3": 0.0265
+            "r1": 0.0522,
+            "r2": 0.0371,
+            "r3": 0.0267
           }
         }
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 0,
+      "consideredButZero": 3,
       "netLogOdds": 0,
       "capNote": null,
-      "exploration": null,
-      "uncertainty": {
-        "halfWidthPoints": 5,
-        "primaryDrivers": [
-          "insufficient evidence"
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.3184,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.3184,
+        "creativeAdjustmentLogOddsTowardA": -0.32,
+        "creativeCentralA": 0.2533,
+        "creativeMovePoints": -6.51,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 2,
+        "hypotheses": [
+          {
+            "hypothesis": "Steven Asplund — injury_health: Steven Asplund dropped from 500 lbs to 260 lbs naturally without surgery. (favors_about)",
+            "fighter": "Steven Asplund",
+            "boutTopic": "injury_health",
+            "supportingFacts": [
+              "he went from 500 lbs to 260 lbs, and he did it the old-fashioned way. No shot, no surgery, just hard work."
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "VERIFIED",
+            "causalMechanism": "injury_health → helps Steven Asplund",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Steven Asplund shows no injury_health effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.1,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.202Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Steven Asplund — power: Steven Asplund has great cardio, pressure, and good power for a big guy. (favors_about)",
+            "fighter": "Steven Asplund",
+            "boutTopic": "power",
+            "supportingFacts": [
+              "for a big guy, he's got great cardio, he's got great pressure, and he's got good power."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "power → helps Steven Asplund",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Steven Asplund shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.202Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
         ],
-        "conditionsThatWouldMove": []
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
       },
-      "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "uncertainty": {
+        "halfWidthPoints": 5.5,
+        "primaryDrivers": [
+          "a single analyst is the only source",
+          "very few independent analysts"
+        ],
+        "conditionsThatWouldMove": [
+          "potentially new information with a single origin"
+        ]
+      },
+      "evidenceCoverage": "THINLY COVERED",
+      "independentOrigins": 2,
+      "originBreakdown": {
+        "analysts": 1,
+        "publicRecords": 1,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
         "striking_offense",
@@ -1345,16 +1611,16 @@
         "wrestling_offense",
         "takedown_defense",
         "cardio",
-        "durability",
-        "recent_form"
+        "durability"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "2 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 4,
+        "claimsAdmitted": 4,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -1367,23 +1633,23 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "ff37220ae8f1f260",
-        "baseline": "b64df62ac4770c22",
+        "evidenceEval": "4bd0492c6a8a5116",
+        "baseline": "140af86461e70360",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "bb8b6388bdd1a7af",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "4bad3aa6f3547aa4",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B09",
       "fight": "Alexia Thainara vs Amanda Lemos",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.6783,
+        "probability": 0.6823,
         "forFighter": "Alexia Thainara",
-        "timestamp": "2026-08-02T13:24:11.363Z",
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "timestamp": "2026-08-02T15:34:09.182Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1391,7 +1657,7 @@
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 1.51,
+        "dispersion": 2.1,
         "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
@@ -1403,10 +1669,10 @@
           },
           {
             "book": "Caesars",
-            "Alexia Thainara": "-240",
-            "Amanda Lemos": "+200",
-            "overround": 1.039215,
-            "deVigged": 0.679245
+            "Alexia Thainara": "-260",
+            "Amanda Lemos": "+210",
+            "overround": 1.044803,
+            "deVigged": 0.691252
           },
           {
             "book": "BetRivers",
@@ -1419,17 +1685,17 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-02T13:24:11.363Z",
+            "observedAt": "2026-08-02T15:34:09.182Z",
             "sourceProvided": null
           }
         ],
@@ -1439,65 +1705,65 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "8346a6a6f34e94a7"
+        "baselineHash": "fca9dec52db5f136"
       },
       "systemCentral": {
-        "Alexia Thainara": 0.6783,
-        "Amanda Lemos": 0.3217
+        "Alexia Thainara": 0.6823,
+        "Amanda Lemos": 0.3177
       },
       "systemRange": {
         "forFighter": "Alexia Thainara",
-        "low": 0.6233,
-        "high": 0.7333
+        "low": 0.6473,
+        "high": 0.7173
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Alexia Thainara": {
-          "win": 0.6783,
-          "byKO": 0.2238,
-          "bySubmission": 0.1153,
-          "byDecision": 0.3392,
+          "win": 0.6823,
+          "byKO": 0.2252,
+          "bySubmission": 0.116,
+          "byDecision": 0.3412,
           "koByRound": {
-            "r1": 0.1007,
-            "r2": 0.0716,
-            "r3": 0.0515
+            "r1": 0.1013,
+            "r2": 0.0721,
+            "r3": 0.0518
           },
           "submissionByRound": {
-            "r1": 0.0519,
-            "r2": 0.0369,
-            "r3": 0.0265
+            "r1": 0.0522,
+            "r2": 0.0371,
+            "r3": 0.0267
           }
         },
         "Amanda Lemos": {
-          "win": 0.3217,
-          "byKO": 0.1062,
-          "bySubmission": 0.0547,
-          "byDecision": 0.1608,
+          "win": 0.3177,
+          "byKO": 0.1048,
+          "bySubmission": 0.054,
+          "byDecision": 0.1588,
           "koByRound": {
-            "r1": 0.0478,
-            "r2": 0.034,
-            "r3": 0.0244
+            "r1": 0.0472,
+            "r2": 0.0335,
+            "r3": 0.0241
           },
           "submissionByRound": {
-            "r1": 0.0246,
-            "r2": 0.0175,
-            "r3": 0.0126
+            "r1": 0.0243,
+            "r2": 0.0173,
+            "r3": 0.0124
           }
         }
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 2,
+      "consideredButZero": 4,
       "netLogOdds": 0,
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.6783,
+        "marketPriorA": 0.6823,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.6783,
+        "coreCentralA": 0.6823,
         "creativeAdjustmentLogOddsTowardA": 0.4417,
-        "creativeCentralA": 0.7663,
-        "creativeMovePoints": 8.8,
+        "creativeCentralA": 0.7696,
+        "creativeMovePoints": 8.73,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 2,
@@ -1537,7 +1803,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-02T13:24:11.385Z",
+            "timestamp": "2026-08-02T15:34:09.203Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1575,45 +1841,41 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-02T13:24:11.385Z",
+            "timestamp": "2026-08-02T15:34:09.203Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
         "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
       },
       "uncertainty": {
-        "halfWidthPoints": 5.5,
+        "halfWidthPoints": 3.5,
         "primaryDrivers": [
-          "a single analyst is the only source",
           "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
-      "evidenceCoverage": "THINLY COVERED",
-      "independentOrigins": 1,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 3,
       "originBreakdown": {
-        "analysts": 1,
-        "publicRecords": 0,
+        "analysts": 2,
+        "publicRecords": 1,
         "externalReports": 0,
         "commentary": 0
       },
       "contradictions": 0,
       "missingInformation": [
-        "striking_offense",
         "striking_defense",
         "wrestling_offense",
         "takedown_defense",
-        "durability",
-        "recent_form"
+        "durability"
       ],
       "limitations": [
-        "2 topic(s) have no determinable timeframe",
-        "every claim comes from a single analyst — no independent check is possible"
+        "3 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 2,
-        "claimsAdmitted": 2,
+        "claimsConsidered": 4,
+        "claimsAdmitted": 4,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -1626,14 +1888,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "4b631d56fcaf4a94",
-        "baseline": "f6694105197c0224",
+        "evidenceEval": "db591d06bb087220",
+        "baseline": "e6709462e0782b4c",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "169ca72a684c52be",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "a21305fb6dd0d6bd",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B10",
       "fight": "Ravena Oliveira Morais vs Juliana Miller",
@@ -1642,7 +1904,7 @@
         "probability": 0.3655,
         "forFighter": "Ravena Oliveira Morais",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -1674,7 +1936,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "83f3e2fb7f5a4b62"
+        "baselineHash": "73cb4ed5bc01b540"
       },
       "systemCentral": {
         "Ravena Oliveira Morais": 0.3655,
@@ -1682,8 +1944,8 @@
       },
       "systemRange": {
         "forFighter": "Ravena Oliveira Morais",
-        "low": 0.3155,
-        "high": 0.4155
+        "low": 0.2805,
+        "high": 0.4505
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
@@ -1727,14 +1989,22 @@
       "capNote": null,
       "exploration": null,
       "uncertainty": {
-        "halfWidthPoints": 5,
+        "halfWidthPoints": 8.5,
         "primaryDrivers": [
-          "insufficient evidence"
+          "insufficient evidence",
+          "a single analyst is the only source",
+          "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
       "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "independentOrigins": 1,
+      "originBreakdown": {
+        "analysts": 1,
+        "publicRecords": 0,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
         "striking_offense",
@@ -1746,12 +2016,13 @@
         "recent_form"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "1 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 1,
+        "claimsAdmitted": 1,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -1764,23 +2035,23 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "9d017b252205ea6e",
-        "baseline": "3ad250a8e8a5cba9",
+        "evidenceEval": "96aa45d19b83685f",
+        "baseline": "21a5ea50da7912d2",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "192618f713173dab",
-      "sealedAt": "2026-08-02T13:24:11.369Z",
+      "forecastId": "f9e48a94df158c7b",
+      "sealedAt": "2026-08-02T15:34:09.186Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B11",
       "fight": "Manoel Sousa vs Richie Miranda",
-      "status": "INSUFFICIENT EVIDENCE",
+      "status": "LIMITED EVIDENCE",
       "marketBaseline": {
         "probability": 0.801,
         "forFighter": "Manoel Sousa",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-02T13:24:11.369Z",
+        "forecastTimestamp": "2026-08-02T15:34:09.186Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -1812,7 +2083,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "02cb25948e3a8850"
+        "baselineHash": "5f046f1a2b3cc151"
       },
       "systemCentral": {
         "Manoel Sousa": 0.801,
@@ -1820,8 +2091,8 @@
       },
       "systemRange": {
         "forFighter": "Manoel Sousa",
-        "low": 0.751,
-        "high": 0.851
+        "low": 0.746,
+        "high": 0.856
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
@@ -1860,36 +2131,168 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [],
-      "consideredButZero": 0,
+      "consideredButZero": 5,
       "netLogOdds": 0,
       "capNote": null,
-      "exploration": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.801,
+        "coreAdjustmentLogOdds": 0,
+        "coreCentralA": 0.801,
+        "creativeAdjustmentLogOddsTowardA": 0.22,
+        "creativeCentralA": 0.8338,
+        "creativeMovePoints": 3.28,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 3,
+        "hypotheses": [
+          {
+            "hypothesis": "Manuel Sousa — power: Manuel Sousa is a nasty striker with incredible power who sets a relentless pace. (favors_about)",
+            "fighter": "Manuel Sousa",
+            "boutTopic": "power",
+            "supportingFacts": [
+              "Manuel Sousa, nasty striker. He's got incredible power. He sets a relentless pace."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "power → helps Manuel Sousa",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Manuel Sousa shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.205Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Manuel Sousa — fight_iq: Manuel Sousa's fight IQ is not the best and he is continuing to learn. (against_about)",
+            "fighter": "Manuel Sousa",
+            "boutTopic": "fight_iq",
+            "supportingFacts": [
+              "But the fight IQ is not the best, and he is continuing to learn."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "fight_iq → hurts Manuel Sousa",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Manuel Sousa shows no fight_iq effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.205Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Richie Miranda — striking_defense: Richie Miranda can be very hittable on the feet. (against_about)",
+            "fighter": "Richie Miranda",
+            "boutTopic": "striking_defense",
+            "supportingFacts": [
+              "I do hate how hittable Richie can be."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "striking_defense → hurts Richie Miranda",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Richie Miranda shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-02T15:34:09.205Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
       "uncertainty": {
-        "halfWidthPoints": 5,
+        "halfWidthPoints": 5.5,
         "primaryDrivers": [
-          "insufficient evidence"
+          "a single analyst is the only source",
+          "very few independent analysts"
         ],
         "conditionsThatWouldMove": []
       },
-      "evidenceCoverage": "INSUFFICIENT EVIDENCE",
-      "independentOrigins": 0,
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 3,
+      "originBreakdown": {
+        "analysts": 1,
+        "publicRecords": 2,
+        "externalReports": 0,
+        "commentary": 0
+      },
       "contradictions": 0,
       "missingInformation": [
-        "striking_offense",
-        "striking_defense",
         "wrestling_offense",
-        "takedown_defense",
         "cardio",
-        "durability",
-        "recent_form"
+        "durability"
       ],
       "limitations": [
-        "no coverage at all — nothing can be said about this fight"
+        "5 topic(s) have no determinable timeframe",
+        "every claim comes from a single analyst — no independent check is possible"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 0,
-        "claimsAdmitted": 0,
+        "claimsConsidered": 6,
+        "claimsAdmitted": 6,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -1902,19 +2305,19 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "32e72c90b7e49dc9",
-        "baseline": "d35eb5aa8b39495d",
+        "evidenceEval": "e73b6eab21f8277a",
+        "baseline": "ab3420da1a6e725d",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "a800b38a9eefebbf",
+  "contentHash": "6a210fac3579e5b7",
   "supersedes": {
-    "file": "forecast-2026-08-08.v1785677051388.json",
-    "contentHash": "fef484ce024430f0",
-    "sealHash": "08adb7193887813f"
+    "file": "forecast-2026-08-08.v1785684849207.json",
+    "contentHash": "a800b38a9eefebbf",
+    "sealHash": "396c5de837aed3cb"
   },
-  "sealHash": "396c5de837aed3cb"
+  "sealHash": "649427fbdc5099dc"
 }
