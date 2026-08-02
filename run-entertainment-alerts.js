@@ -306,16 +306,21 @@ async function main() {
   say(`\n[3] entertainment sizing (only on what the research gates already cleared) ...`);
   for (const r of ranked) r.entertainment = EN.sizeEntertainment(r, { bankroll: liveBankroll, maxSnapshotAgeMs: 30 * 60 * 1000 });
   const capped = EN.applyEntertainmentCaps(ranked, { bankroll: liveBankroll });
-  const eligible = capped.positions.filter((r) => r.entertainment && r.entertainment.eligible && r.entertainment.stake > 0);
-  say(`[3] positions the system would instruct you to buy: ${eligible.length}`);
-  if (!eligible.length) {
+  // CORE LANE OFF by default under the read re-point. The market-anchored core lane bet the "value"
+  // longshots that lost (it backed Prepolec at 16c while the read favoured the winner, Rebecki). The READ is
+  // the sole engine now; set CORE_LANE_ENABLED=1 to turn the core lane back on (reversible).
+  const coreLaneEnabled = process.env.CORE_LANE_ENABLED === "1";
+  const eligible = coreLaneEnabled
+    ? capped.positions.filter((r) => r.entertainment && r.entertainment.eligible && r.entertainment.stake > 0)
+    : [];
+  say(`[3] core lane ${coreLaneEnabled ? "ENABLED" : "OFF (read-only)"} — core buy instructions: ${eligible.length}`);
+  if (!eligible.length && coreLaneEnabled) {
     const blocked = {};
     for (const r of capped.positions) {
       const b = r.entertainment && r.entertainment.blockedBy;
       if (b) blocked[b] = (blocked[b] || 0) + 1;
     }
-    say(`[3] every contract was refused. Blocked by: ${JSON.stringify(blocked)}`);
-    say(`[3] NO BUY INSTRUCTION WILL BE SENT. That is the correct output, not a failure.`);
+    say(`[3] every core contract was refused. Blocked by: ${JSON.stringify(blocked)}`);
   }
 
   // ---- one message per FIGHT, naming the single highest-ranked eligible contract ----
