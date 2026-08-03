@@ -271,32 +271,31 @@
       }
     ]
   },
-  "sealedAt": "2026-08-03T09:05:54.681Z",
+  "sealedAt": "2026-08-03T06:55:07.382Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "b1b1a8f17070c66c",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "ce22791a777dfad3",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B01",
       "fight": "Quillan Salkilld vs Mateusz Gamrot",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.574,
+        "probability": 0.5756,
         "forFighter": "Quillan Salkilld",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": "2026-08-03T06:55:07.377Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
-          "BetRivers",
-          "BetWay"
+          "BetRivers"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 2.45,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
@@ -318,86 +317,74 @@
             "Mateusz Gamrot": "+120",
             "overround": 1.054545,
             "deVigged": 0.568966
-          },
-          {
-            "book": "BetWay",
-            "Quillan Salkilld": "-150",
-            "Mateusz Gamrot": "+120",
-            "overround": 1.054545,
-            "deVigged": 0.568966
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "2a5c3e9e05d03eae"
+        "baselineHash": "4855fd0caf0c134f"
       },
       "systemCentral": {
-        "Quillan Salkilld": 0.574,
-        "Mateusz Gamrot": 0.426
+        "Quillan Salkilld": 0.5756,
+        "Mateusz Gamrot": 0.4244
       },
       "systemRange": {
         "forFighter": "Quillan Salkilld",
-        "low": 0.519,
-        "high": 0.629
+        "low": 0.5206,
+        "high": 0.6306
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Quillan Salkilld": {
-          "win": 0.574,
-          "byKO": 0.1894,
-          "bySubmission": 0.0976,
-          "byDecision": 0.287,
+          "win": 0.5756,
+          "byKO": 0.1899,
+          "bySubmission": 0.0979,
+          "byDecision": 0.2878,
           "koByRound": {
-            "r1": 0.0852,
-            "r2": 0.0606,
-            "r3": 0.0436
+            "r1": 0.0855,
+            "r2": 0.0608,
+            "r3": 0.0437
           },
           "submissionByRound": {
-            "r1": 0.0439,
-            "r2": 0.0312,
-            "r3": 0.0224
+            "r1": 0.0441,
+            "r2": 0.0313,
+            "r3": 0.0225
           }
         },
         "Mateusz Gamrot": {
-          "win": 0.426,
-          "byKO": 0.1406,
-          "bySubmission": 0.0724,
-          "byDecision": 0.213,
+          "win": 0.4244,
+          "byKO": 0.1401,
+          "bySubmission": 0.0721,
+          "byDecision": 0.2122,
           "koByRound": {
-            "r1": 0.0633,
-            "r2": 0.045,
-            "r3": 0.0323
+            "r1": 0.063,
+            "r2": 0.0448,
+            "r3": 0.0322
           },
           "submissionByRound": {
-            "r1": 0.0326,
-            "r2": 0.0232,
-            "r3": 0.0167
+            "r1": 0.0324,
+            "r2": 0.0231,
+            "r3": 0.0166
           }
         }
       },
@@ -408,11 +395,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.574,
+        "marketPriorA": 0.5756,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.574,
+        "coreCentralA": 0.5756,
         "creativeAdjustmentLogOddsTowardA": 0.1012,
-        "creativeCentralA": 0.5985,
+        "creativeCentralA": 0.6001,
         "creativeMovePoints": 2.45,
         "capped": false,
         "cap": 1.6,
@@ -452,7 +439,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.695Z",
+            "timestamp": "2026-08-03T06:55:07.397Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -503,32 +490,31 @@
       },
       "dataHashes": {
         "evidenceEval": "a94d8d907d79c087",
-        "baseline": "800a9fa3b7b535be",
+        "baseline": "9581ab3e0b10e7e6",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3ea95490ef628ef4",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "79c2cb99d9270a59",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B02",
       "fight": "Billy Quarantillo vs Diego Ferreira",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3835,
+        "probability": 0.3847,
         "forFighter": "Billy Quarantillo",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": "2026-08-03T06:55:07.377Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
-          "BetRivers",
-          "BetWay"
+          "BetRivers"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 2.78,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
@@ -550,84 +536,72 @@
             "Diego Ferreira": "-175",
             "overround": 1.056532,
             "deVigged": 0.397686
-          },
-          {
-            "book": "BetWay",
-            "Billy Quarantillo": "+150",
-            "Diego Ferreira": "-188",
-            "overround": 1.052778,
-            "deVigged": 0.379947
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "dc6e5ad9e87b4c57"
+        "baselineHash": "5b693752ad3c21b2"
       },
       "systemCentral": {
-        "Billy Quarantillo": 0.3835,
-        "Diego Ferreira": 0.6165
+        "Billy Quarantillo": 0.3847,
+        "Diego Ferreira": 0.6153
       },
       "systemRange": {
         "forFighter": "Billy Quarantillo",
-        "low": 0.3285,
-        "high": 0.4385
+        "low": 0.3297,
+        "high": 0.4397
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Billy Quarantillo": {
-          "win": 0.3835,
-          "byKO": 0.1266,
-          "bySubmission": 0.0652,
-          "byDecision": 0.1918,
+          "win": 0.3847,
+          "byKO": 0.127,
+          "bySubmission": 0.0654,
+          "byDecision": 0.1924,
           "koByRound": {
-            "r1": 0.057,
-            "r2": 0.0405,
-            "r3": 0.0291
+            "r1": 0.0571,
+            "r2": 0.0406,
+            "r3": 0.0292
           },
           "submissionByRound": {
-            "r1": 0.0293,
+            "r1": 0.0294,
             "r2": 0.0209,
             "r3": 0.015
           }
         },
         "Diego Ferreira": {
-          "win": 0.6165,
-          "byKO": 0.2034,
-          "bySubmission": 0.1048,
-          "byDecision": 0.3083,
+          "win": 0.6153,
+          "byKO": 0.203,
+          "bySubmission": 0.1046,
+          "byDecision": 0.3076,
           "koByRound": {
-            "r1": 0.0915,
-            "r2": 0.0651,
-            "r3": 0.0468
+            "r1": 0.0914,
+            "r2": 0.065,
+            "r3": 0.0467
           },
           "submissionByRound": {
-            "r1": 0.0472,
+            "r1": 0.0471,
             "r2": 0.0335,
             "r3": 0.0241
           }
@@ -640,11 +614,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.3835,
+        "marketPriorA": 0.3847,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.3835,
+        "coreCentralA": 0.3847,
         "creativeAdjustmentLogOddsTowardA": 0,
-        "creativeCentralA": 0.3835,
+        "creativeCentralA": 0.3847,
         "creativeMovePoints": 0,
         "capped": false,
         "cap": 1.6,
@@ -696,13 +670,13 @@
       },
       "dataHashes": {
         "evidenceEval": "319cad4cccd90ec3",
-        "baseline": "c3d04351a3fe4a04",
+        "baseline": "f60fb457ef51d1db",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "a0441a92862b6665",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "06a1db9248a58ec1",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B03",
       "fight": "Darren Elkins vs Yadier Delvalle",
@@ -711,7 +685,7 @@
         "probability": 0.2648,
         "forFighter": "Darren Elkins",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -743,7 +717,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "05ec4ca2bfe402c3"
+        "baselineHash": "81c4e52f1f9a3671"
       },
       "systemCentral": {
         "Darren Elkins": 0.2648,
@@ -839,7 +813,7 @@
             "magnitudeBucket": "unsupported_narrative",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.698Z",
+            "timestamp": "2026-08-03T06:55:07.400Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -887,13 +861,13 @@
       },
       "dataHashes": {
         "evidenceEval": "384fd5b9251972cb",
-        "baseline": "02c044dbc31821cc",
+        "baseline": "7d3c8699ae9e3126",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "bda6cce5f71b7767",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "7098462f446dd306",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B04",
       "fight": "Louie Sutherland vs Jose Montanha Da Silva",
@@ -902,12 +876,12 @@
         "probability": 0.5,
         "forFighter": "Louie Sutherland",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "dispersion": 1.83,
+        "dispersion": 1.05,
         "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
@@ -934,7 +908,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "c8a8df58c901d6ad"
+        "baselineHash": "99bd9ed7b75412b5"
       },
       "systemCentral": {
         "Louie Sutherland": 0.5,
@@ -1025,17 +999,17 @@
       },
       "dataHashes": {
         "evidenceEval": "992ba06933cc9159",
-        "baseline": "5cda52f02ab29e29",
+        "baseline": "b6025b76dd54569c",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "c2659d355b417364",
+      "forecastId": "da61d96c4647c218",
       "boutId": "UFC-2026-08-08-B05",
       "fight": "Ty Cole Miller vs Billy Goff",
       "event": "UFC-2026-08-08",
       "status": "BASELINE UNAVAILABLE",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "reason": "no admissible pre-seal market price for this bout — refusing to invent one",
       "marketBaseline": null,
       "systemCentral": null,
@@ -1051,109 +1025,96 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "0bb9adabb489486b",
+        "evidenceEval": "5bc070aff3db9d65",
         "baseline": null,
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "68c627f1b76e12da",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "1451c2ac32863023",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B06",
       "fight": "Jessie Rosas vs Miles Johns",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.4105,
+        "probability": 0.4118,
         "forFighter": "Jessie Rosas",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
-          "Caesars",
-          "BetWay"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
-        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 0.35,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 2 independent books, de-vigged per book before combining",
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 0.54,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
-            "book": "Caesars",
+            "book": "BestFightOdds opening consensus",
             "Jessie Rosas": "+135",
-            "Miles Johns": "-160",
-            "overround": 1.040917,
-            "deVigged": 0.408805
-          },
-          {
-            "book": "BetWay",
-            "Jessie Rosas": "+130",
-            "Miles Johns": "-163",
-            "overround": 1.054555,
-            "deVigged": 0.41229
+            "Miles Johns": "-155",
+            "rawProbA": 0.4255,
+            "rawProbB": 0.6078,
+            "overround": 1.0334
           }
         ],
         "priceTimestamps": [
           {
-            "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
           }
         ],
-        "clockBasis": "WALL_CLOCK",
-        "derivedFrom": "live multi-book consensus",
-        "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
-        "fallbackLevel": "A",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
         "missingSourceReasons": [
-          "thin consensus: 2 books (prefer >= 3)"
+          "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "f71aad948182e827"
+        "baselineHash": "255a4de0f73524fb"
       },
       "systemCentral": {
-        "Jessie Rosas": 0.4105,
-        "Miles Johns": 0.5895
+        "Jessie Rosas": 0.4118,
+        "Miles Johns": 0.5882
       },
       "systemRange": {
         "forFighter": "Jessie Rosas",
-        "low": 0.3555,
-        "high": 0.4655
+        "low": 0.3568,
+        "high": 0.4668
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Jessie Rosas": {
-          "win": 0.4105,
-          "byKO": 0.1355,
-          "bySubmission": 0.0698,
-          "byDecision": 0.2052,
+          "win": 0.4118,
+          "byKO": 0.1359,
+          "bySubmission": 0.07,
+          "byDecision": 0.2059,
           "koByRound": {
-            "r1": 0.061,
-            "r2": 0.0434,
-            "r3": 0.0312
+            "r1": 0.0612,
+            "r2": 0.0435,
+            "r3": 0.0313
           },
           "submissionByRound": {
-            "r1": 0.0314,
-            "r2": 0.0223,
+            "r1": 0.0315,
+            "r2": 0.0224,
             "r3": 0.0161
           }
         },
         "Miles Johns": {
-          "win": 0.5895,
-          "byKO": 0.1945,
-          "bySubmission": 0.1002,
-          "byDecision": 0.2948,
+          "win": 0.5882,
+          "byKO": 0.1941,
+          "bySubmission": 0.1,
+          "byDecision": 0.2941,
           "koByRound": {
-            "r1": 0.0875,
-            "r2": 0.0622,
-            "r3": 0.0447
+            "r1": 0.0873,
+            "r2": 0.0621,
+            "r3": 0.0446
           },
           "submissionByRound": {
-            "r1": 0.0451,
-            "r2": 0.0321,
+            "r1": 0.045,
+            "r2": 0.032,
             "r3": 0.023
           }
         }
@@ -1165,12 +1126,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.4105,
+        "marketPriorA": 0.4118,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.4105,
+        "coreCentralA": 0.4118,
         "creativeAdjustmentLogOddsTowardA": 0.1217,
-        "creativeCentralA": 0.4402,
-        "creativeMovePoints": 2.97,
+        "creativeCentralA": 0.4416,
+        "creativeMovePoints": 2.98,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 2,
@@ -1208,7 +1169,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.700Z",
+            "timestamp": "2026-08-03T06:55:07.402Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1246,7 +1207,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.700Z",
+            "timestamp": "2026-08-03T06:55:07.402Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1297,32 +1258,31 @@
       },
       "dataHashes": {
         "evidenceEval": "f66a8fadd14a2432",
-        "baseline": "14da001aa35c5df4",
+        "baseline": "cb7118221b0a1601",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "85a8763bd96c0c3e",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "9289bfa7902f9e7f",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B07",
       "fight": "Diyar Nurgozhay vs Bruno Lopes",
       "status": "INSUFFICIENT EVIDENCE",
       "marketBaseline": {
-        "probability": 0.5848,
+        "probability": 0.5838,
         "forFighter": "Diyar Nurgozhay",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": "2026-08-03T06:55:07.377Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
-          "BetRivers",
-          "BetWay"
+          "BetRivers"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 1.65,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
@@ -1344,86 +1304,74 @@
             "Bruno Lopes": "+132",
             "overround": 1.053676,
             "deVigged": 0.590924
-          },
-          {
-            "book": "BetWay",
-            "Diyar Nurgozhay": "-163",
-            "Bruno Lopes": "+130",
-            "overround": 1.054555,
-            "deVigged": 0.58771
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "f10ce79aa73e05ad"
+        "baselineHash": "0effa102751bfd98"
       },
       "systemCentral": {
-        "Diyar Nurgozhay": 0.5848,
-        "Bruno Lopes": 0.4152
+        "Diyar Nurgozhay": 0.5838,
+        "Bruno Lopes": 0.4162
       },
       "systemRange": {
         "forFighter": "Diyar Nurgozhay",
-        "low": 0.5348,
-        "high": 0.6348
+        "low": 0.5338,
+        "high": 0.6338
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Diyar Nurgozhay": {
-          "win": 0.5848,
-          "byKO": 0.193,
-          "bySubmission": 0.0994,
-          "byDecision": 0.2924,
+          "win": 0.5838,
+          "byKO": 0.1927,
+          "bySubmission": 0.0992,
+          "byDecision": 0.2919,
           "koByRound": {
-            "r1": 0.0869,
-            "r2": 0.0618,
-            "r3": 0.0444
+            "r1": 0.0867,
+            "r2": 0.0617,
+            "r3": 0.0443
           },
           "submissionByRound": {
-            "r1": 0.0447,
-            "r2": 0.0318,
-            "r3": 0.0229
+            "r1": 0.0446,
+            "r2": 0.0317,
+            "r3": 0.0228
           }
         },
         "Bruno Lopes": {
-          "win": 0.4152,
-          "byKO": 0.137,
-          "bySubmission": 0.0706,
-          "byDecision": 0.2076,
+          "win": 0.4162,
+          "byKO": 0.1373,
+          "bySubmission": 0.0708,
+          "byDecision": 0.2081,
           "koByRound": {
-            "r1": 0.0617,
-            "r2": 0.0438,
-            "r3": 0.0315
+            "r1": 0.0618,
+            "r2": 0.0439,
+            "r3": 0.0316
           },
           "submissionByRound": {
-            "r1": 0.0318,
-            "r2": 0.0226,
-            "r3": 0.0162
+            "r1": 0.0319,
+            "r2": 0.0227,
+            "r3": 0.0163
           }
         }
       },
@@ -1472,32 +1420,31 @@
       },
       "dataHashes": {
         "evidenceEval": "60d7b4b275782d26",
-        "baseline": "8460b8d132a7eaec",
+        "baseline": "f1a6b566ced5c1e5",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "1dbc99cfae83ab44",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "ebcf400b513ff648",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B08",
       "fight": "Guilherme Pat vs Steven Asplund",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3124,
+        "probability": 0.3147,
         "forFighter": "Guilherme Pat",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": "2026-08-03T06:55:07.377Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
-          "BetRivers",
-          "BetWay"
+          "BetRivers"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 2.99,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
@@ -1519,86 +1466,74 @@
             "Steven Asplund": "-240",
             "overround": 1.053104,
             "deVigged": 0.329713
-          },
-          {
-            "book": "BetWay",
-            "Guilherme Pat": "+210",
-            "Steven Asplund": "-275",
-            "overround": 1.055914,
-            "deVigged": 0.305499
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "7ebb1dd0570e3ae4"
+        "baselineHash": "9359a81ea25dba90"
       },
       "systemCentral": {
-        "Guilherme Pat": 0.3124,
-        "Steven Asplund": 0.6876
+        "Guilherme Pat": 0.3147,
+        "Steven Asplund": 0.6853
       },
       "systemRange": {
         "forFighter": "Guilherme Pat",
-        "low": 0.2924,
-        "high": 0.3324
+        "low": 0.2947,
+        "high": 0.3347
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Guilherme Pat": {
-          "win": 0.3124,
-          "byKO": 0.1031,
-          "bySubmission": 0.0531,
-          "byDecision": 0.1562,
+          "win": 0.3147,
+          "byKO": 0.1039,
+          "bySubmission": 0.0535,
+          "byDecision": 0.1573,
           "koByRound": {
-            "r1": 0.0464,
-            "r2": 0.033,
-            "r3": 0.0237
+            "r1": 0.0468,
+            "r2": 0.0332,
+            "r3": 0.0239
           },
           "submissionByRound": {
-            "r1": 0.0239,
-            "r2": 0.017,
-            "r3": 0.0122
+            "r1": 0.0241,
+            "r2": 0.0171,
+            "r3": 0.0123
           }
         },
         "Steven Asplund": {
-          "win": 0.6876,
-          "byKO": 0.2269,
-          "bySubmission": 0.1169,
-          "byDecision": 0.3438,
+          "win": 0.6853,
+          "byKO": 0.2261,
+          "bySubmission": 0.1165,
+          "byDecision": 0.3427,
           "koByRound": {
-            "r1": 0.1021,
-            "r2": 0.0726,
-            "r3": 0.0522
+            "r1": 0.1017,
+            "r2": 0.0724,
+            "r3": 0.052
           },
           "submissionByRound": {
-            "r1": 0.0526,
-            "r2": 0.0374,
-            "r3": 0.0269
+            "r1": 0.0524,
+            "r2": 0.0373,
+            "r3": 0.0268
           }
         }
       },
@@ -1609,11 +1544,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.3124,
+        "marketPriorA": 0.3147,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.3124,
+        "coreCentralA": 0.3147,
         "creativeAdjustmentLogOddsTowardA": 0,
-        "creativeCentralA": 0.3124,
+        "creativeCentralA": 0.3147,
         "creativeMovePoints": 0,
         "capped": false,
         "cap": 1.6,
@@ -1652,7 +1587,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.702Z",
+            "timestamp": "2026-08-03T06:55:07.404Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1688,7 +1623,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.702Z",
+            "timestamp": "2026-08-03T06:55:07.404Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1726,12 +1661,12 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.702Z",
+            "timestamp": "2026-08-03T06:55:07.404Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
-            "hypothesis": "Guerme Pat — power: Guerme Pat is lacking power in his striking. (against_about)",
-            "fighter": "Guerme Pat",
+            "hypothesis": "Guier May Pat — power: Guier May Pat is lacking power in his striking. (against_about)",
+            "fighter": "Guier May Pat",
             "boutTopic": "power",
             "supportingFacts": [
               "Very confident with his striking to walk people down but lacking the power."
@@ -1740,7 +1675,7 @@
               "1 independent origin(s), 1 channel(s)"
             ],
             "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "power → hurts Guerme Pat",
+            "causalMechanism": "power → hurts Guier May Pat",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
               "independentOrigins": 1,
@@ -1758,13 +1693,13 @@
             "alternativeExplanation": "the signal may be noise or already reflected in the line",
             "novelty": "NOVEL",
             "probablyPriced": false,
-            "falsificationCondition": "Guerme Pat shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "falsificationCondition": "Guier May Pat shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
             "directionTowardSubject": false,
             "adjustmentLogOdds": 0.22,
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.702Z",
+            "timestamp": "2026-08-03T06:55:07.404Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1813,33 +1748,32 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "34e9e6ccff6af072",
-        "baseline": "11b16c11ebed1adc",
+        "evidenceEval": "c8f46c11f780c588",
+        "baseline": "0e2e23a2708bf7b8",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "e7757ac5dd77c7c3",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "789454bff8407796",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B09",
       "fight": "Alexia Thainara vs Amanda Lemos",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.6822,
+        "probability": 0.6823,
         "forFighter": "Alexia Thainara",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": "2026-08-03T06:55:07.377Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
-          "BetRivers",
-          "BetWay"
+          "BetRivers"
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
         "dispersion": 2.1,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "note": "A_MULTIBOOK_LIVE (fallback A); 3 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
@@ -1861,64 +1795,52 @@
             "Amanda Lemos": "+188",
             "overround": 1.053104,
             "deVigged": 0.670287
-          },
-          {
-            "book": "BetWay",
-            "Alexia Thainara": "-250",
-            "Amanda Lemos": "+200",
-            "overround": 1.047619,
-            "deVigged": 0.681818
           }
         ],
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
+            "observedAt": "2026-08-03T06:55:07.377Z",
             "sourceProvided": null
           }
         ],
         "clockBasis": "WALL_CLOCK",
         "derivedFrom": "live multi-book consensus",
         "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
+        "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "b56f5a5c91873647"
+        "baselineHash": "cce494e9391ab441"
       },
       "systemCentral": {
-        "Alexia Thainara": 0.6822,
-        "Amanda Lemos": 0.3178
+        "Alexia Thainara": 0.6823,
+        "Amanda Lemos": 0.3177
       },
       "systemRange": {
         "forFighter": "Alexia Thainara",
-        "low": 0.6472,
-        "high": 0.7172
+        "low": 0.6473,
+        "high": 0.7173
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Alexia Thainara": {
-          "win": 0.6822,
-          "byKO": 0.2251,
+          "win": 0.6823,
+          "byKO": 0.2252,
           "bySubmission": 0.116,
-          "byDecision": 0.3411,
+          "byDecision": 0.3412,
           "koByRound": {
             "r1": 0.1013,
-            "r2": 0.072,
+            "r2": 0.0721,
             "r3": 0.0518
           },
           "submissionByRound": {
@@ -1928,13 +1850,13 @@
           }
         },
         "Amanda Lemos": {
-          "win": 0.3178,
-          "byKO": 0.1049,
+          "win": 0.3177,
+          "byKO": 0.1048,
           "bySubmission": 0.054,
-          "byDecision": 0.1589,
+          "byDecision": 0.1588,
           "koByRound": {
             "r1": 0.0472,
-            "r2": 0.0336,
+            "r2": 0.0335,
             "r3": 0.0241
           },
           "submissionByRound": {
@@ -1951,11 +1873,11 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.6822,
+        "marketPriorA": 0.6823,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.6822,
+        "coreCentralA": 0.6823,
         "creativeAdjustmentLogOddsTowardA": 0.4417,
-        "creativeCentralA": 0.7695,
+        "creativeCentralA": 0.7696,
         "creativeMovePoints": 8.73,
         "capped": false,
         "cap": 1.6,
@@ -1996,7 +1918,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.703Z",
+            "timestamp": "2026-08-03T06:55:07.405Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2034,7 +1956,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.704Z",
+            "timestamp": "2026-08-03T06:55:07.405Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2082,13 +2004,13 @@
       },
       "dataHashes": {
         "evidenceEval": "db591d06bb087220",
-        "baseline": "2d61ca915d77931e",
+        "baseline": "82ac3e39eca5d4fc",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "73744d416a3ae557",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "e6c994ee9c1d0ce8",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B10",
       "fight": "Ravena Oliveira Morais vs Juliana Miller",
@@ -2097,7 +2019,7 @@
         "probability": 0.3655,
         "forFighter": "Ravena Oliveira Morais",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -2129,7 +2051,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "8be0e3520529184f"
+        "baselineHash": "47dde565d4e0fc36"
       },
       "systemCentral": {
         "Ravena Oliveira Morais": 0.3655,
@@ -2225,7 +2147,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.705Z",
+            "timestamp": "2026-08-03T06:55:07.407Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2261,7 +2183,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.705Z",
+            "timestamp": "2026-08-03T06:55:07.407Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2310,109 +2232,96 @@
       },
       "dataHashes": {
         "evidenceEval": "3faa9a4b5199e375",
-        "baseline": "1c15fcfec72c56ee",
+        "baseline": "b25543a715657302",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "db46ea53d1d531a9",
-      "sealedAt": "2026-08-03T09:05:54.681Z",
+      "forecastId": "b7478de81c01e438",
+      "sealedAt": "2026-08-03T06:55:07.382Z",
       "event": "UFC-2026-08-08",
       "boutId": "UFC-2026-08-08-B11",
       "fight": "Manoel Sousa vs Richie Miranda",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.6865,
+        "probability": 0.801,
         "forFighter": "Manoel Sousa",
-        "timestamp": "2026-08-03T09:05:54.676Z",
-        "forecastTimestamp": "2026-08-03T09:05:54.681Z",
+        "timestamp": null,
+        "forecastTimestamp": "2026-08-03T06:55:07.382Z",
         "sportsbooks": [
-          "Caesars",
-          "BetWay"
+          "BestFightOdds opening consensus"
         ],
-        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
-        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 0.94,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 2 independent books, de-vigged per book before combining",
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "dispersion": 0.79,
+        "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
-            "book": "Caesars",
-            "Manoel Sousa": "-260",
-            "Richie Miranda": "+210",
-            "overround": 1.044803,
-            "deVigged": 0.691252
-          },
-          {
-            "book": "BetWay",
-            "Manoel Sousa": "-250",
-            "Richie Miranda": "+200",
-            "overround": 1.047619,
-            "deVigged": 0.681818
+            "book": "BestFightOdds opening consensus",
+            "Manoel Sousa": "-500",
+            "Richie Miranda": "+383",
+            "rawProbA": 0.8333,
+            "rawProbB": 0.207,
+            "overround": 1.0404
           }
         ],
         "priceTimestamps": [
           {
-            "book": "Caesars",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-03T09:05:54.676Z",
-            "sourceProvided": null
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
           }
         ],
-        "clockBasis": "WALL_CLOCK",
-        "derivedFrom": "live multi-book consensus",
-        "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": -0.001,
-        "fallbackLevel": "A",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "oldestPriceAgeHours": null,
+        "fallbackLevel": "B",
         "missingSourceReasons": [
-          "thin consensus: 2 books (prefer >= 3)"
+          "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "74f62a07329a7c3a"
+        "baselineHash": "9d25143f5454f09c"
       },
       "systemCentral": {
-        "Manoel Sousa": 0.6865,
-        "Richie Miranda": 0.3135
+        "Manoel Sousa": 0.801,
+        "Richie Miranda": 0.199
       },
       "systemRange": {
         "forFighter": "Manoel Sousa",
-        "low": 0.6315,
-        "high": 0.7415
+        "low": 0.746,
+        "high": 0.856
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Manoel Sousa": {
-          "win": 0.6865,
-          "byKO": 0.2265,
-          "bySubmission": 0.1167,
-          "byDecision": 0.3432,
+          "win": 0.801,
+          "byKO": 0.2643,
+          "bySubmission": 0.1362,
+          "byDecision": 0.4005,
           "koByRound": {
-            "r1": 0.1019,
-            "r2": 0.0725,
-            "r3": 0.0521
+            "r1": 0.1189,
+            "r2": 0.0846,
+            "r3": 0.0608
           },
           "submissionByRound": {
-            "r1": 0.0525,
-            "r2": 0.0373,
-            "r3": 0.0268
+            "r1": 0.0613,
+            "r2": 0.0436,
+            "r3": 0.0313
           }
         },
         "Richie Miranda": {
-          "win": 0.3135,
-          "byKO": 0.1035,
-          "bySubmission": 0.0533,
-          "byDecision": 0.1568,
+          "win": 0.199,
+          "byKO": 0.0657,
+          "bySubmission": 0.0338,
+          "byDecision": 0.0995,
           "koByRound": {
-            "r1": 0.0466,
-            "r2": 0.0331,
-            "r3": 0.0238
+            "r1": 0.0296,
+            "r2": 0.021,
+            "r3": 0.0151
           },
           "submissionByRound": {
-            "r1": 0.024,
-            "r2": 0.0171,
-            "r3": 0.0123
+            "r1": 0.0152,
+            "r2": 0.0108,
+            "r3": 0.0078
           }
         }
       },
@@ -2423,12 +2332,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.6865,
+        "marketPriorA": 0.801,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.6865,
+        "coreCentralA": 0.801,
         "creativeAdjustmentLogOddsTowardA": 0.22,
-        "creativeCentralA": 0.7318,
-        "creativeMovePoints": 4.53,
+        "creativeCentralA": 0.8338,
+        "creativeMovePoints": 3.28,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 3,
@@ -2468,7 +2377,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.707Z",
+            "timestamp": "2026-08-03T06:55:07.408Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2506,7 +2415,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.707Z",
+            "timestamp": "2026-08-03T06:55:07.408Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2544,7 +2453,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-03T09:05:54.707Z",
+            "timestamp": "2026-08-03T06:55:07.408Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2593,18 +2502,18 @@
       },
       "dataHashes": {
         "evidenceEval": "e73b6eab21f8277a",
-        "baseline": "52195c2e436df815",
+        "baseline": "2cc728fa05611c78",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "0f956f5d0d93bd5e",
+  "contentHash": "dcd164804459f004",
   "supersedes": {
-    "file": "forecast-2026-08-08.v1785747954709.json",
-    "contentHash": "dcd164804459f004",
-    "sealHash": "75ebcbc532853fcc"
+    "file": "forecast-2026-08-08.v1785740107411.json",
+    "contentHash": "85e93ead539cc3bb",
+    "sealHash": "12af59cbc966ccbb"
   },
-  "sealHash": "2f6289d8e9c4244f"
+  "sealHash": "75ebcbc532853fcc"
 }
