@@ -271,30 +271,32 @@
       }
     ]
   },
-  "evaluatedAt": "2026-08-02T21:59:50.780Z",
+  "evaluatedAt": "2026-08-03T00:14:27.842Z",
   "source": "card-evidence-2026-08-08.json",
   "bouts": [
     {
       "boutId": "UFC-2026-08-08-B05",
       "fight": "Ty Cole Miller vs Billy Goff",
       "coverage": "PARTIALLY COVERED",
-      "relevantClaims": 6,
-      "topicCount": 6,
-      "independentOrigins": 5,
+      "relevantClaims": 8,
+      "topicCount": 8,
+      "independentOrigins": 7,
       "originBreakdown": {
-        "analysts": 4,
-        "publicRecords": 1,
+        "analysts": 5,
+        "publicRecords": 2,
         "externalReports": 0,
         "commentary": 0
       },
       "originIdentities": [
         "record:activity.ago.almost.billy.dwcs.finish.four.goff.happening.lacks.ray.years",
         "analyst:jakegerbermma",
+        "record:billy ray goff:n:116,n:96",
+        "analyst:greedo plays mma",
         "analyst:kunath",
         "analyst:lucrative james",
         "analyst:dfs by the numbers"
       ],
-      "channels": 4,
+      "channels": 5,
       "strongestFactual": [
         {
           "topic": "recent_form",
@@ -305,6 +307,16 @@
           "amplifiers": 1,
           "claim": "Billy Ray Goff lacks activity, with his DWCS finish happening almost four years ago.",
           "quote": "getting the finish almost four years ago on DWCS. He hasn't been that active, right?"
+        },
+        {
+          "topic": "striking_offense",
+          "about": "Billy Ray Goff",
+          "direction": "favors_about",
+          "strength": "moderate",
+          "origins": 1,
+          "amplifiers": 1,
+          "claim": "Billy Ray Goff lands 116 significant strikes on Waters compared to 96 for Waters.",
+          "quote": "Billy Ray Gooff lands 116 significant strikes on Waters compared to the the 96, excuse me, that Waters lands."
         }
       ],
       "strongestMatchupObservations": [
@@ -367,9 +379,34 @@
           "origins": 1
         }
       ],
-      "contradictions": [],
+      "contradictions": [
+        {
+          "proposition": "Billy Ray Goff — quality_of_opposition",
+          "disagreementType": "compatible_claims",
+          "bothCanBeTrue": true,
+          "supporting": {
+            "position": "favors Billy Ray Goff",
+            "claims": 1,
+            "independentOrigins": 1,
+            "amplifiers": 1,
+            "strength": "moderate",
+            "examples": [
+              "Billy Ray Goff has the level of competition advantage over Ty Miller based on his experience against fighters like Trey Waters and Ramiz Brahimaj."
+            ]
+          },
+          "opposing": {
+            "position": "against Billy Ray Goff",
+            "claims": 1,
+            "independentOrigins": 1,
+            "amplifiers": 1,
+            "strength": "weak",
+            "examples": [
+              "Regional fighters in the New England region do not make great UFC fighters."
+            ]
+          }
+        }
+      ],
       "missingInformation": [
-        "striking_offense",
         "striking_defense",
         "wrestling_offense",
         "takedown_defense",
@@ -377,7 +414,7 @@
       ],
       "limitations": [
         "1 topic(s) rest on dated information",
-        "4 topic(s) have no determinable timeframe"
+        "6 topic(s) have no determinable timeframe"
       ],
       "reviewItems": [],
       "topics": [
@@ -547,6 +584,176 @@
               "mentionCount": 1,
               "sources": [
                 "JakeGerberMMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Billy Ray Goff",
+          "topic": "striking_offense",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:billy ray goff:n:116,n:96"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:billy ray goff:n:116,n:96": [
+                "Greedo Plays MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "unknown",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Billy Ray Goff lands 116 significant strikes on Waters compared to 96 for Waters.",
+              "quote": "Billy Ray Gooff lands 116 significant strikes on Waters compared to the the 96, excuse me, that Waters lands.",
+              "channel": "Greedo Plays MMA",
+              "videoId": "8l_4FSJbXq8",
+              "segment": {
+                "startChar": 36329,
+                "endChar": 45522,
+                "approxMinute": 36
+              },
+              "kind": "verifiable_statistical_claim",
+              "claimClass": "statistical",
+              "relevance": "opponent_specific_historical",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T21:00:09Z",
+              "about": "Billy Ray Goff",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Greedo Plays MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Billy Ray Goff",
+          "topic": "quality_of_opposition",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "unsupported_narrative"
+          ],
+          "relevance": [
+            "weakly_relevant"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "commentary",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:greedo plays mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 1
+            },
+            "amplifiersByOrigin": {
+              "analyst:greedo plays mma": [
+                "Greedo Plays MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "0 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "unknown",
+          "strength": "weak",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "weak",
+            "_plus": 3,
+            "_minus": 2
+          },
+          "claims": [
+            {
+              "claim": "Regional fighters in the New England region do not make great UFC fighters.",
+              "quote": "the New England region of America doesn't usually result in the best UFC fighters.",
+              "channel": "Greedo Plays MMA",
+              "videoId": "8l_4FSJbXq8",
+              "segment": {
+                "startChar": 36329,
+                "endChar": 45522,
+                "approxMinute": 36
+              },
+              "kind": "unsupported_narrative",
+              "claimClass": "unsupported_narrative",
+              "relevance": "weakly_relevant",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T21:00:09Z",
+              "about": "Billy Ray Goff",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "opponent_quality",
+              "mentionCount": 1,
+              "sources": [
+                "Greedo Plays MMA"
               ]
             }
           ]
