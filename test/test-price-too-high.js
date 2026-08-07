@@ -56,9 +56,11 @@ try {
   // C2 (control): a sent BUY whose price CROSSES its ceiling is a MATERIAL change -> DOES speak.
   ok(AL.shouldSend("buy", BUY({ ask: 0.66, verdict: "PRICE_TOO_HIGH", classification: "PRICE_TOO_HIGH" })).send === true,
     "10b. a sent BUY whose price crosses the ceiling -> DOES speak (material, not a holder trigger)");
-  // D: a genuine FIRST sighting of a priced-out contract still sends (prev absent, only `first` fires).
-  ok(AL.shouldSend("never-seen", PTH()).send === true,
-    "11. first sighting of a priced-out contract STILL sends (suppression never silences a first alert)");
+  // D: a genuine FIRST sighting of a priced-out contract still sends. It must be a NEW contract — an
+  //    UNSEEN ticker — because the ticker-stable fallback (bout-renumber dedup) treats a new key that
+  //    carries an already-seen ticker as the SAME contract, not a first sighting.
+  ok(AL.shouldSend("never-seen", PTH({ topTicker: "T-UNSEEN" })).send === true,
+    "11. first sighting of a NEW contract (unseen ticker) STILL sends (suppression never silences a first alert)");
 } finally {
   if (backup != null) fs.writeFileSync(FILE, backup); else if (fs.existsSync(FILE)) fs.unlinkSync(FILE);
 }

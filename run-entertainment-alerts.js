@@ -384,7 +384,10 @@ async function main() {
       if (built.verdict === "FAIL_CLOSED") continue;
       const key = `explore|${p.boutId}|${p.ticker}`;
       const decision = AL.shouldSend(key, built.state);
-      explorationMessages.push({ boutId: p.boutId, ticker: p.ticker, key, wouldSend: decision.send, why: decision.why, text: built.text, state: built.state, lane: "exploration", verdict: built.verdict });
+      // Carry the ACTUAL price-scaled dollar stake (what the BUY text shows) so the real-money ledger records
+      // the same number. The tier `fraction` is un-scaled, so recording `fraction × bankroll` would overstate
+      // a price-scaled read (a 20c longshot sent as ~$1.20 was recorded as $3.00). stakeDollars is the truth.
+      explorationMessages.push({ boutId: p.boutId, ticker: p.ticker, key, wouldSend: decision.send, why: decision.why, text: built.text, state: built.state, lane: "exploration", verdict: built.verdict, stakeDollars: p.sized.stake });
     }
     for (const m of explorationMessages) messages.push(m);
   }
@@ -414,13 +417,21 @@ async function main() {
     const actionableTickers = new Set(messages
       .filter((m) => m.state && AL.ACTIONABLE.has(m.state.classification))
       .map((m) => m.ticker).filter(Boolean));
-    const listedTickers = new Set(messages.map((m) => m.ticker).filter(Boolean));
+    // "Still listed" MUST be read from the live Kalshi board, NOT from this run's `messages`. A contract
+    // that merely drifted out of the actionable set (its read went to NO BET on a price tick, or the core
+    // lane is disabled) emits no message — yet it is still on the board and the fight is still on. Keying
+    // "listed" on `messages` made every such drift look like a delist and fired a false SELL ("the fight is
+    // off") on a live fight. rawMarkets is the actual board; a ticker still active there is still listed.
+    const listedTickers = new Set(rawMarkets.filter((m) => m.status === "active").map((m) => m.ticker).filter(Boolean));
     const ledger = AL.load();
+    const sweptTickers = new Set();   // one decision per TICKER — legacy renumbered rows must not each fire a SELL
     for (const [key, prev] of Object.entries(ledger)) {
       if (key.startsWith("review|")) continue;
       if (!prev || !AL.ACTIONABLE.has(prev.classification)) continue;
       const tk = prev.topTicker || key.split("|").pop();
       if (actionableTickers.has(tk)) continue;   // still actionable this run (possibly under a renumbered bout id)
+      if (sweptTickers.has(tk)) continue;         // already decided this ticker (hold or SELL) from a sibling row
+      sweptTickers.add(tk);
       // Every bet here is one the operator placed to ride to resolution. If it merely DRIFTED out of the
       // actionable set (price ticked past the ceiling, the forecast wiggled, it got re-ranked) but its
       // contract is STILL listed, send NOTHING: exiting on drift just burns the entry + exit fees for
@@ -522,8 +533,11 @@ async function main() {
             key: m.key || `${m.boutId}|${m.ticker}`, boutId: m.boutId, ticker: m.ticker,
             fight: (fc.forecasts.find((x) => x.boutId === m.boutId) || {}).fight,
             lane: m.lane || "core", classification: m.state.classification,
-            recommendedFraction: m.state.stakePercent != null ? m.state.stakePercent / 100 : null,
-            recommendedStakeDollars: m.state.stakePercent != null ? +(liveBankroll * m.state.stakePercent / 100).toFixed(2) : null,
+            // Prefer the actual price-scaled dollar stake (exploration carries it); fall back to the tier
+            // fraction only for lanes that don't (core). Both figures derive from the same source so the
+            // recorded fraction and dollars can't disagree with each other or with the BUY the operator saw.
+            recommendedFraction: m.stakeDollars != null && liveBankroll > 0 ? +(m.stakeDollars / liveBankroll).toFixed(4) : (m.state.stakePercent != null ? m.state.stakePercent / 100 : null),
+            recommendedStakeDollars: m.stakeDollars != null ? +Number(m.stakeDollars).toFixed(2) : (m.state.stakePercent != null ? +(liveBankroll * m.state.stakePercent / 100).toFixed(2) : null),
             maximumAcceptablePrice: m.state.maximumAcceptablePrice, ask: m.state.ask, forecastHash: fc.sealHash,
           });
           mbTouched = true;

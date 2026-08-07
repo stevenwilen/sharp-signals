@@ -19,6 +19,11 @@ console.log("WITHDRAWAL SWEEP — a vanished/demoted recommendation stands the h
   ok("the runner sweeps the ledger for previously-actionable keys", /WITHDRAWAL SWEEP/.test(s) && /AL\.ACTIONABLE\.has\(prev\.classification\)/.test(s));
   ok("a swept position is re-recorded as WITHDRAWN (fires once, never loops)", /classification: "WITHDRAWN"/.test(s));
   ok("review keys are excluded from the sweep", /key\.startsWith\("review\|"\)/.test(s));
+  // A contract that merely DRIFTED out of the actionable set but is still LIVE on Kalshi must not be
+  // called "the fight is off". "Still listed" MUST read the real board (rawMarkets), never this run's
+  // `messages` (which exclude every NO-BET / disabled-lane contract) — else a live fight gets a false SELL.
+  ok("'still listed' is read from the live Kalshi board, not this run's messages", /const listedTickers = new Set\(rawMarkets\.filter\(\(m\) => m\.status === "active"\)/.test(s));
+  ok("the sweep fires at most one SELL per ticker (renumbered legacy rows don't each fire)", /sweptTickers/.test(s) && /one decision per TICKER/.test(s));
 }
 
 console.log("\nFIGHT-START GATE — no new betting instruction after the bell");
@@ -68,6 +73,14 @@ console.log("\nVOCABULARY + DEDUP + IDENTITY (verdict fixes)");
     AL.ACTIONABLE.has("standard experimental") && AL.ACTIONABLE.has("strong experimental") && AL.ACTIONABLE.has("rare maximum"));
   const ra = src("run-entertainment-alerts.js");
   ok("dedup state is refreshed from origin BEFORE shouldSend decisions", ra.indexOf("CROSS-RUNNER DEDUP REFRESH") < ra.indexOf("[1] inspecting"));
+  const al = src("lib/alert-ledger-v2.js");
+  ok("shouldSend falls back to the SAME ticker+lane on a bout renumber (no duplicate BUY)",
+    /TICKER-STABLE FALLBACK/.test(al) && /e\.topTicker !== state\.topTicker/.test(al) && /\(e\.lane \|\| null\) !== \(state\.lane \|\| null\)/.test(al));
+  // Price-scaled sizing multiplies the tier stake by a price factor; the tier FRACTION is left un-scaled.
+  // The real-money ledger must record the ACTUAL sized dollars (what the BUY shows), not fraction×bankroll,
+  // or a price-scaled read is recorded/dashboarded at several times the stake the operator was told to place.
+  ok("the ledger records the actual price-scaled stake, not the un-scaled fraction",
+    /recommendedStakeDollars: m\.stakeDollars != null \? \+Number\(m\.stakeDollars\)/.test(ra) && /stakeDollars: p\.sized\.stake/.test(ra));
   const ri = src("run-intel.js");
   ok("run-intel refuses a positional-boutId join when the fight names disagree", /identity refusal/.test(ri) && /eb\.fight === f\.fight/.test(ri));
   const wf = src(".github/workflows/fight-day-sentinel.yml");

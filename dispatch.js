@@ -195,6 +195,16 @@ async function main() {
     }
   }
 
+  // SETTLE + REFRESH THE BALANCE — card-independent, so it runs BEFORE the no-card return. A placed bet
+  // resolves on Kalshi's own schedule, which does not care whether a NEW card is active yet; coupling
+  // settlement to card discovery is exactly how a finished fight's bet can sit "open" with results already
+  // in (the 08-01 card did, for a week). Both are read-only / bookkeeping (no order path) and no-ops when
+  // nothing changed. Best-effort — a stuck summary must never fail the whole dispatch.
+  if (!dry) {
+    run("run-settle-from-market.js", [], { allowFail: true });
+    try { require("./lib/bankrolls").write(); } catch (e) { say(`[dispatch] bankrolls refresh skipped: ${e.message}`); }
+  }
+
   if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing else to do."); return 0; }
   say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, starts ${card.startTime || `~${new Date(firstBellMs(card.eventDate)).toISOString()} (22:00 fallback)`}`);
 
@@ -229,12 +239,9 @@ async function main() {
   // Bookkeeping only — no Kalshi write. Non-fatal.
   run("run-apply-placements.js", [], { allowFail: true });
 
-  // Settle real placed bets from Kalshi results EVERY run — nothing else did, so finished fights sat as
-  // "open exposure / confirmed placed" for a week with results already in. Reads Kalshi (no order path),
-  // settles only bets whose market has finalized; a no-op when nothing has resolved. Best-effort.
-  run("run-settle-from-market.js", [], { allowFail: true });
-
-  // Keep the canonical bankrolls.json the dashboards read in step with the ledger on EVERY run — not only
+  // Settlement already ran unconditionally above (before the no-card return). Here, after apply-placements
+  // may have recorded a just-confirmed placement, refresh the canonical bankrolls.json the dashboards read —
+  // keep it in step with the ledger on EVERY run — not only
   // on the placement/settle flows that call BK.write. A balance change made outside those (a manual
   // confirm, a cash adjustment, a settlement graded elsewhere) otherwise leaves the summary stale for days
   // (it did — froze at 07-27). Cheap and rides the same per-run data commit. Best-effort; never fail a
