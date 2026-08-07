@@ -1,6 +1,6 @@
 {
   "card": "2026-08-08",
-  "updatedAt": "2026-08-07T15:26:47.936Z",
+  "updatedAt": "2026-08-07T16:35:45.435Z",
   "records": {
     "intel_a094f39b836b": {
       "intelligenceId": "intel_a094f39b836b",
@@ -15,26 +15,28 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T04:44:24.336Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:dfs by the numbers",
       "originType": "commentary",
       "sourceRelationship": "unknown",
       "firsthandClaimed": false,
-      "independentOrigins": 5,
+      "independentOrigins": 6,
       "originIds": [
         "analyst:mma experts",
         "analyst:hoppermma",
         "record:ago.chinned.darren.elkins.erosa.julianna.loss.recent.violently.year",
         "analyst:artem mma",
+        "analyst:the mike finch show",
         "analyst:dfs by the numbers"
       ],
       "amplifiers": [
         "DFS BY THE NUMBERS",
         "Artem MMA",
         "HopperMMA",
-        "MMA EXPERTS"
+        "MMA EXPERTS",
+        "The Mike Finch Show"
       ],
-      "amplifierCount": 4,
+      "amplifierCount": 5,
       "quotes": [
         {
           "quote": "This guy's taken damage. He's 42 and a half years old. He's 170 years old in fight years. Darren Elkins shouldn't be fighting.",
@@ -60,10 +62,15 @@
           "quote": "Darren Elkins can't take a punch.",
           "channel": "DFS BY THE NUMBERS",
           "publishedAt": "2026-08-06T16:17:36Z"
+        },
+        {
+          "quote": "Darren Elkins has 400,000 miles on a [__] car.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
         }
       ],
       "reportType": "ANALYTICAL",
-      "truthStatus": "LIKELY_TRUE",
+      "truthStatus": "STALE",
       "accessRelevance": "analyst_only",
       "specificity": "specific",
       "recency": "dated",
@@ -79,8 +86,8 @@
         "helps": "Yadier Delvalle"
       },
       "novel": false,
-      "probablyPriced": false,
-      "marketAwareness": "public_but_possibly_underweighted",
+      "probablyPriced": true,
+      "marketAwareness": "widely_public_probably_in_the_market",
       "sportsbookBefore": {
         "consensus": 0.2648,
         "ts": "2026-08-02T04:44:24.336Z"
@@ -357,6 +364,10 @@
         {
           "consensus": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -627,6 +638,10 @@
         {
           "ask": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -634,25 +649,25 @@
         "intelIds": [
           "intel_a094f39b836b"
         ],
-        "truthStatus": "LIKELY_TRUE",
-        "independentOrigins": 5,
+        "truthStatus": "STALE",
+        "independentOrigins": 6,
         "accessRelevance": "analyst_only",
         "mechanism": "durability → hurts Darren Elkins",
-        "adjustmentLogOdds": 0.35,
+        "adjustmentLogOdds": 0.3186,
         "magnitudeBucket": "strong_multi_signal",
         "verificationStatus": "VERIFIED",
         "contradicted": false,
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
-      "actionStatus": "FORECAST_UPDATED",
+      "actionStatus": "IGNORE",
       "telegramLineage": [],
       "forecastVersions": [
         "f32b4091ac55f019",
@@ -722,7 +737,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -749,19 +765,31 @@
           "status": "LIKELY_TRUE",
           "action": "FORECAST_UPDATED",
           "note": "status UNCERTAIN → LIKELY_TRUE"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "STALE",
+          "action": "FORECAST_UPDATED",
+          "note": "status LIKELY_TRUE → STALE"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "STALE",
+          "action": "IGNORE",
+          "note": "stale and already public"
         }
       ],
       "factors": {
-        "independentOrigins": 5,
-        "amplifiers": 4,
+        "independentOrigins": 6,
+        "amplifiers": 5,
         "accessRelevance": "analyst_only",
         "specificity": "specific",
         "recency": "dated",
         "plausibility": "moderate",
         "corroborated": true,
-        "marketAwareness": "public_but_possibly_underweighted",
+        "marketAwareness": "widely_public_probably_in_the_market",
         "novel": false,
-        "probablyPriced": false,
+        "probablyPriced": true,
         "mechanismStrength": "weak",
         "strength": "moderate",
         "contradiction": null
@@ -783,7 +811,7 @@
       "topic": "recent_form",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T04:44:24.336Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:appearances.billy.experience.goff.higher.level.miller.possesses.tai.ufc",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -890,7 +918,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -1143,7 +1172,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T04:44:24.336Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:dfs by the numbers",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -1260,7 +1289,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -1309,7 +1339,7 @@
       "topic": "fight_iq",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T04:44:24.336Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:lucrative james",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -1631,6 +1661,10 @@
         {
           "consensus": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -1901,6 +1935,10 @@
         {
           "ask": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -1919,10 +1957,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -1996,7 +2034,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -2045,7 +2084,7 @@
       "topic": "cardio",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T04:44:24.336Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:lucrative james",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -2372,6 +2411,10 @@
         {
           "consensus": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -2642,6 +2685,10 @@
         {
           "ask": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -2660,10 +2707,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -2737,7 +2784,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -2786,7 +2834,7 @@
       "topic": "quality_of_opposition",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T06:54:25.536Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:lucrative james",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -2902,7 +2950,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -3158,7 +3207,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:mateusz gamrot:n:13",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -3467,6 +3516,10 @@
         {
           "consensus": 0.4553,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -3717,6 +3770,10 @@
         {
           "ask": 0.4553,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -3807,7 +3864,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -4483,7 +4541,7 @@
       "topic": "takedown_defense",
       "direction": "neutral",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:diego ferreira:n:57%",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -4778,6 +4836,10 @@
         {
           "consensus": 0.3494,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -5028,6 +5090,10 @@
         {
           "ask": 0.3494,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -5118,7 +5184,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -5167,7 +5234,7 @@
       "topic": "power",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:before.career.explosive.hands.heavy.high.johns.level.long.miles.mma.speed.strong",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -5454,6 +5521,10 @@
         {
           "consensus": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -5696,6 +5767,10 @@
         {
           "ask": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -5784,7 +5859,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -5833,7 +5909,7 @@
       "topic": "cardio",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -6120,6 +6196,10 @@
         {
           "consensus": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -6362,6 +6442,10 @@
         {
           "ask": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -6450,7 +6534,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -6499,7 +6584,7 @@
       "topic": "recent_form",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:coming.daniel.johns.loss.marcos.miles.off.submission",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -6520,12 +6605,14 @@
         }
       ],
       "reportType": "PUBLIC_HISTORY",
-      "truthStatus": "PROBABLY_ALREADY_PRICED",
+      "truthStatus": "CONFLICTING",
       "accessRelevance": "unknown",
       "specificity": "specific",
       "recency": "recent",
       "plausibility": "moderate",
-      "contradictions": [],
+      "contradictions": [
+        "factual_disagreement"
+      ],
       "confirmations": [],
       "disproofs": [],
       "mechanism": "activity",
@@ -6786,6 +6873,10 @@
         {
           "consensus": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -7028,6 +7119,10 @@
         {
           "ask": 0.4007,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -7035,7 +7130,7 @@
         "intelIds": [
           "intel_691600aadd8d"
         ],
-        "truthStatus": "PROBABLY_ALREADY_PRICED",
+        "truthStatus": "CONFLICTING",
         "independentOrigins": 1,
         "accessRelevance": "unknown",
         "mechanism": "activity",
@@ -7116,7 +7211,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -7131,6 +7227,12 @@
           "status": "PROBABLY_ALREADY_PRICED",
           "action": "DASHBOARD_ONLY",
           "note": "already public / probably priced"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "status PROBABLY_ALREADY_PRICED → CONFLICTING"
         }
       ],
       "factors": {
@@ -7146,7 +7248,7 @@
         "probablyPriced": true,
         "mechanismStrength": "weak",
         "strength": "moderate",
-        "contradiction": null
+        "contradiction": "factual_disagreement"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -8020,7 +8122,7 @@
       "topic": "striking_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -8324,6 +8426,10 @@
         {
           "consensus": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -8574,6 +8680,10 @@
         {
           "ask": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -8592,10 +8702,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Amanda Lemos",
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -8664,7 +8774,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -8713,15 +8824,13 @@
       "topic": "recent_form",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:amanda.coming.gillian.lemos.loss.off.robertson",
       "originType": "public_record",
       "sourceRelationship": "unknown",
       "firsthandClaimed": false,
-      "independentOrigins": 3,
+      "independentOrigins": 1,
       "originIds": [
-        "record:amanda.career.lemos.losses.submission.two",
-        "record:amanda.bad.getting.lemos.losing.older.streak",
         "record:amanda lemos:n:40"
       ],
       "amplifiers": [
@@ -8753,10 +8862,10 @@
         }
       ],
       "reportType": "PUBLIC_HISTORY",
-      "truthStatus": "LIKELY_FALSE",
+      "truthStatus": "CONFLICTING",
       "accessRelevance": "unknown",
       "specificity": "specific",
-      "recency": "dated",
+      "recency": "unknown",
       "plausibility": "moderate",
       "contradictions": [
         "factual_disagreement"
@@ -8821,6 +8930,10 @@
         {
           "consensus": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -8863,6 +8976,10 @@
         {
           "ask": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -8870,8 +8987,8 @@
         "intelIds": [
           "intel_44a76840daed"
         ],
-        "truthStatus": "LIKELY_FALSE",
-        "independentOrigins": 3,
+        "truthStatus": "CONFLICTING",
+        "independentOrigins": 1,
         "accessRelevance": "unknown",
         "mechanism": "activity",
         "adjustmentLogOdds": null,
@@ -8881,10 +8998,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -8901,7 +9018,8 @@
         "75ebcbc532853fcc",
         "2f6289d8e9c4244f",
         "e4cecb7bb1e16d77",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -8922,21 +9040,27 @@
           "status": "LIKELY_FALSE",
           "action": "DASHBOARD_ONLY",
           "note": "status PROBABLY_ALREADY_PRICED → LIKELY_FALSE"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "status LIKELY_FALSE → CONFLICTING"
         }
       ],
       "factors": {
-        "independentOrigins": 3,
-        "amplifiers": 2,
+        "independentOrigins": 1,
+        "amplifiers": 1,
         "accessRelevance": "unknown",
         "specificity": "specific",
-        "recency": "dated",
+        "recency": "unknown",
         "plausibility": "moderate",
-        "corroborated": true,
+        "corroborated": false,
         "marketAwareness": "widely_public_probably_in_the_market",
         "novel": false,
         "probablyPriced": true,
         "mechanismStrength": "weak",
-        "strength": "strong",
+        "strength": "moderate",
         "contradiction": "factual_disagreement"
       },
       "researchSources": [],
@@ -9163,7 +9287,7 @@
       "topic": "power",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -9465,6 +9589,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -9715,6 +9843,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -9733,10 +9865,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Manuel Sousa",
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -9805,7 +9937,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -9854,7 +9987,7 @@
       "topic": "recent_form",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:knockout.manuel.mauricio.ruffi.sousa.win",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -10149,6 +10282,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -10399,6 +10536,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -10417,10 +10558,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Manuel Sousa",
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -10489,7 +10630,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -10538,7 +10680,7 @@
       "topic": "fight_iq",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -10833,6 +10975,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -11083,6 +11229,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -11101,10 +11251,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": null,
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -11173,7 +11323,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -11222,7 +11373,7 @@
       "topic": "striking_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:able.aoki.balaji.down.fight.manuel.sousa.take",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -11517,6 +11668,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -11767,6 +11922,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -11785,10 +11944,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": null,
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -11857,7 +12016,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -11906,7 +12066,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -12201,6 +12361,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -12451,6 +12615,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -12469,10 +12637,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": null,
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -12541,7 +12709,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -12590,7 +12759,7 @@
       "topic": "striking_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T15:34:13.315Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -12885,6 +13054,10 @@
         {
           "consensus": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -13135,6 +13308,10 @@
         {
           "ask": 0.801,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -13153,10 +13330,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Manoel Sousa",
-        "impactPointsTowardHelps": -6.45,
+        "impactPointsTowardHelps": -6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -13225,7 +13402,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -13274,23 +13452,25 @@
       "topic": "recent_form",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:activity.ago.almost.billy.dwcs.finish.four.goff.happening.lacks.ray.years",
       "originType": "public_record",
       "sourceRelationship": "unknown",
       "firsthandClaimed": false,
-      "independentOrigins": 3,
+      "independentOrigins": 4,
       "originIds": [
         "record:billy.decision.goff.lost.ray.trey.waters",
+        "record:against.billy.brahimaj.fights.giles.goff.lost.ramiz.ray.recent.trevin",
         "record:activity.ago.almost.billy.dwcs.finish.four.goff.happening.lacks.ray.years",
         "record:billy ray goff:n:1,n:2,n:4,n:9"
       ],
       "amplifiers": [
         "JakeGerberMMA",
         "HopperMMA",
-        "Greedo Plays MMA"
+        "Greedo Plays MMA",
+        "The Mike Finch Show"
       ],
-      "amplifierCount": 3,
+      "amplifierCount": 4,
       "quotes": [
         {
           "quote": "getting the finish almost four years ago on DWCS. He hasn't been that active, right?",
@@ -13306,13 +13486,18 @@
           "quote": "nine and four professionally but one and two in the UFC",
           "channel": "Greedo Plays MMA",
           "publishedAt": "2026-08-06T23:00:24Z"
+        },
+        {
+          "quote": "coming off of the Rami Ramiz Brahimaj, where he got smashed by Ramiz Brahimaj, lost to Trevin Giles as well.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
         }
       ],
       "reportType": "PUBLIC_HISTORY",
-      "truthStatus": "STALE",
+      "truthStatus": "PROBABLY_ALREADY_PRICED",
       "accessRelevance": "unknown",
       "specificity": "specific",
-      "recency": "dated",
+      "recency": "recent",
       "plausibility": "moderate",
       "contradictions": [],
       "confirmations": [],
@@ -13333,7 +13518,7 @@
       "kalshiAfter": [],
       "forecastImpact": null,
       "contractImpact": null,
-      "actionStatus": "IGNORE",
+      "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
         "023ef4805076162a",
@@ -13395,7 +13580,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -13410,21 +13596,33 @@
           "status": "STALE",
           "action": "IGNORE",
           "note": "stale and already public"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PROBABLY_ALREADY_PRICED",
+          "action": "IGNORE",
+          "note": "status STALE → PROBABLY_ALREADY_PRICED"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PROBABLY_ALREADY_PRICED",
+          "action": "DASHBOARD_ONLY",
+          "note": "already public / probably priced"
         }
       ],
       "factors": {
-        "independentOrigins": 3,
-        "amplifiers": 3,
+        "independentOrigins": 4,
+        "amplifiers": 4,
         "accessRelevance": "unknown",
         "specificity": "specific",
-        "recency": "dated",
+        "recency": "recent",
         "plausibility": "moderate",
         "corroborated": true,
         "marketAwareness": "widely_public_probably_in_the_market",
         "novel": false,
         "probablyPriced": true,
         "mechanismStrength": "weak",
-        "strength": "moderate",
+        "strength": "strong",
         "contradiction": null
       },
       "researchSources": [],
@@ -13444,7 +13642,7 @@
       "topic": "power",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:jakegerbermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -13551,7 +13749,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -13600,7 +13799,7 @@
       "topic": "training_camp",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:kunath",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -13707,7 +13906,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -13756,14 +13956,15 @@
       "topic": "durability",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:kunath",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
       "firsthandClaimed": false,
-      "independentOrigins": 2,
+      "independentOrigins": 3,
       "originIds": [
         "analyst:hoppermma",
+        "analyst:mma experts",
         "analyst:kunath"
       ],
       "amplifiers": [
@@ -13792,16 +13993,22 @@
           "quote": "Billy Ray Goff's fairly durable on the feet",
           "channel": "HopperMMA",
           "publishedAt": "2026-08-04T18:00:04Z"
+        },
+        {
+          "quote": "Billy Ray Golf has been kind of durable in the past",
+          "channel": "MMA EXPERTS",
+          "publishedAt": "2026-08-07T02:32:05Z"
         }
       ],
       "reportType": "ANALYTICAL",
-      "truthStatus": "UNCERTAIN",
+      "truthStatus": "LIKELY_TRUE",
       "accessRelevance": "analyst_only",
       "specificity": "specific",
       "recency": "unknown",
       "plausibility": "moderate",
       "contradictions": [
-        "different_interpretations_of_the_same_fact"
+        "different_interpretations_of_the_same_fact",
+        "compatible_claims"
       ],
       "confirmations": [],
       "disproofs": [],
@@ -13814,7 +14021,7 @@
       },
       "novel": false,
       "probablyPriced": false,
-      "marketAwareness": "niche_analytical_interpretation",
+      "marketAwareness": "public_but_possibly_underweighted",
       "sportsbookBefore": null,
       "kalshiBefore": null,
       "sportsbookAfter": [],
@@ -13883,7 +14090,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -13910,22 +14118,28 @@
           "status": "UNCERTAIN",
           "action": "DASHBOARD_ONLY",
           "note": "status LIKELY_TRUE → UNCERTAIN"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "LIKELY_TRUE",
+          "action": "DASHBOARD_ONLY",
+          "note": "status UNCERTAIN → LIKELY_TRUE"
         }
       ],
       "factors": {
-        "independentOrigins": 2,
-        "amplifiers": 2,
+        "independentOrigins": 3,
+        "amplifiers": 3,
         "accessRelevance": "analyst_only",
         "specificity": "specific",
         "recency": "unknown",
         "plausibility": "moderate",
         "corroborated": true,
-        "marketAwareness": "niche_analytical_interpretation",
+        "marketAwareness": "public_but_possibly_underweighted",
         "novel": false,
         "probablyPriced": false,
         "mechanismStrength": "weak",
         "strength": "moderate",
-        "contradiction": "different_interpretations_of_the_same_fact"
+        "contradiction": "compatible_claims"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -13944,24 +14158,31 @@
       "topic": "psychological",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:jakegerbermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
       "firsthandClaimed": false,
-      "independentOrigins": 1,
+      "independentOrigins": 2,
       "originIds": [
-        "analyst:jakegerbermma"
+        "analyst:jakegerbermma",
+        "analyst:mma experts"
       ],
       "amplifiers": [
-        "JakeGerberMMA"
+        "JakeGerberMMA",
+        "MMA EXPERTS"
       ],
-      "amplifierCount": 1,
+      "amplifierCount": 2,
       "quotes": [
         {
           "quote": "GM Pat has talent, but he just doesn't use it, man.",
           "channel": "JakeGerberMMA",
           "publishedAt": "2026-08-02T19:30:23Z"
+        },
+        {
+          "quote": "Pat being soft. Aspen, I think, has a lot more heart.",
+          "channel": "MMA EXPERTS",
+          "publishedAt": "2026-08-07T02:32:05Z"
         }
       ],
       "reportType": "LOW_VALUE",
@@ -14227,6 +14448,10 @@
         {
           "consensus": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -14465,6 +14690,10 @@
         {
           "ask": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -14473,7 +14702,7 @@
           "intel_7f88622cfc14"
         ],
         "truthStatus": "UNCERTAIN",
-        "independentOrigins": 1,
+        "independentOrigins": 2,
         "accessRelevance": "analyst_only",
         "mechanism": "psychological → hurts Pat",
         "adjustmentLogOdds": 0.1,
@@ -14483,10 +14712,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": null,
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -14552,7 +14781,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -14570,13 +14800,13 @@
         }
       ],
       "factors": {
-        "independentOrigins": 1,
-        "amplifiers": 1,
+        "independentOrigins": 2,
+        "amplifiers": 2,
         "accessRelevance": "analyst_only",
         "specificity": "specific",
         "recency": "unknown",
         "plausibility": "low",
-        "corroborated": false,
+        "corroborated": true,
         "marketAwareness": "niche_analytical_interpretation",
         "novel": false,
         "probablyPriced": false,
@@ -14601,7 +14831,7 @@
       "topic": "quality_of_opposition",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:kunath",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -14884,6 +15114,10 @@
         {
           "consensus": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -15122,6 +15356,10 @@
         {
           "ask": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -15140,10 +15378,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": null,
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -15209,7 +15447,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -15270,7 +15509,7 @@
       "topic": "striking_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:jakegerbermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -15553,6 +15792,10 @@
         {
           "consensus": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -15791,6 +16034,10 @@
         {
           "ask": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -15878,7 +16125,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -15933,7 +16181,7 @@
       "topic": "other",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:jakegerbermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -16216,6 +16464,10 @@
         {
           "consensus": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -16454,6 +16706,10 @@
         {
           "ask": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -16541,7 +16797,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -16596,7 +16853,7 @@
       "topic": "cardio",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-02T21:59:59.702Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:jakegerbermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -16879,6 +17136,10 @@
         {
           "consensus": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -17117,6 +17378,10 @@
         {
           "ask": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -17204,7 +17469,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -17253,7 +17519,7 @@
       "topic": "striking_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-03T00:14:37.230Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy ray goff:n:116,n:96",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -17361,7 +17627,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -17391,7 +17658,7 @@
         "probablyPriced": false,
         "mechanismStrength": "weak",
         "strength": "moderate",
-        "contradiction": null
+        "contradiction": "different_interpretations_of_the_same_fact"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -17410,7 +17677,7 @@
       "topic": "quality_of_opposition",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T00:14:37.230Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:greedo plays mma",
       "originType": "commentary",
       "sourceRelationship": "unknown",
@@ -17518,7 +17785,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -17567,7 +17835,7 @@
       "topic": "wrestling_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:averages.delval.elkins.every.gets.one.per.round.rounds.takedown.three.while",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -17845,6 +18113,10 @@
         {
           "consensus": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -18071,6 +18343,10 @@
         {
           "ask": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -18089,10 +18365,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Darren Elkins",
-        "impactPointsTowardHelps": -11.56,
+        "impactPointsTowardHelps": -11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -18155,7 +18431,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -18210,7 +18487,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:darren elkins:n:56%",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -18481,6 +18758,10 @@
         {
           "consensus": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -18707,6 +18988,10 @@
         {
           "ask": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -18725,10 +19010,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -18791,7 +19076,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -19026,7 +19312,7 @@
     "intel_ad0aa2189212": {
       "intelligenceId": "intel_ad0aa2189212",
       "eventId": "2026-08-08",
-      "boutId": "UFC-2026-08-08-B05",
+      "boutId": "UFC-2026-08-08-B08",
       "fighter": "Billy Ray Goff",
       "fight": "Ty Cole Miller vs Billy Goff",
       "claim": "Billy Ray Goff struggles with distance against Tai Miller due to being shorter with a substantial reach disadvantage.",
@@ -19036,24 +19322,30 @@
       "topic": "size_reach",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-03T06:55:11.479Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
       "firsthandClaimed": false,
       "independentOrigins": 1,
       "originIds": [
-        "analyst:mma experts"
+        "analyst:bookie beatdown"
       ],
       "amplifiers": [
-        "MMA EXPERTS"
+        "MMA EXPERTS",
+        "Bookie Beatdown"
       ],
-      "amplifierCount": 1,
+      "amplifierCount": 2,
       "quotes": [
         {
           "quote": "golf struggles with the distance of Tai Miller 4 in shorter with a pretty substantial 5-in reach disadvantage too",
           "channel": "MMA EXPERTS",
           "publishedAt": "2026-08-03T00:33:40Z"
+        },
+        {
+          "quote": "he's given up a lot in the reach department.",
+          "channel": "Bookie Beatdown",
+          "publishedAt": "2026-08-05T20:48:47Z"
         }
       ],
       "reportType": "ANALYTICAL",
@@ -19085,7 +19377,8 @@
       "telegramLineage": [],
       "forecastVersions": [
         "12af59cbc966ccbb",
-        "75ebcbc532853fcc"
+        "75ebcbc532853fcc",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -19134,7 +19427,7 @@
       "topic": "wrestling_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -19191,7 +19484,8 @@
       "forecastVersions": [
         "12af59cbc966ccbb",
         "75ebcbc532853fcc",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -19240,7 +19534,7 @@
       "topic": "inactivity_layoff",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy.goff.layoff.ray.returning.year",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -19296,7 +19590,8 @@
       "forecastVersions": [
         "12af59cbc966ccbb",
         "75ebcbc532853fcc",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -19433,7 +19728,7 @@
     "intel_fdb5be62355b": {
       "intelligenceId": "intel_fdb5be62355b",
       "eventId": "2026-08-08",
-      "boutId": "UFC-2026-08-08-B05",
+      "boutId": "UFC-2026-08-08-B08",
       "fighter": "Billy Ray Goff",
       "fight": "Ty Cole Miller vs Billy Goff",
       "claim": "Tai Miller is too precise down the center line for Billy Ray Goff to survive all three rounds.",
@@ -19443,24 +19738,30 @@
       "topic": "striking_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T04:44:47.127Z",
-      "lastUpdatedAt": "2026-08-03T06:55:11.479Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
       "firsthandClaimed": false,
       "independentOrigins": 1,
       "originIds": [
-        "analyst:mma experts"
+        "analyst:bookie beatdown"
       ],
       "amplifiers": [
-        "MMA EXPERTS"
+        "MMA EXPERTS",
+        "Bookie Beatdown"
       ],
-      "amplifierCount": 1,
+      "amplifierCount": 2,
       "quotes": [
         {
           "quote": "Tai Miller is too precise down the center line for G to, you know, survive all three.",
           "channel": "MMA EXPERTS",
           "publishedAt": "2026-08-03T00:33:40Z"
+        },
+        {
+          "quote": "Billy Gooff kind of comes out there and just fights so recklessly in so many of his fights",
+          "channel": "Bookie Beatdown",
+          "publishedAt": "2026-08-05T20:48:47Z"
         }
       ],
       "reportType": "ANALYTICAL",
@@ -19494,7 +19795,8 @@
       "telegramLineage": [],
       "forecastVersions": [
         "12af59cbc966ccbb",
-        "75ebcbc532853fcc"
+        "75ebcbc532853fcc",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -19523,7 +19825,7 @@
         "novel": false,
         "probablyPriced": false,
         "mechanismStrength": "weak",
-        "strength": "weak",
+        "strength": "moderate",
         "contradiction": "different_interpretations_of_the_same_fact"
       },
       "researchSources": [],
@@ -19678,7 +19980,7 @@
       "topic": "power",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T09:06:27.143Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -19941,6 +20243,10 @@
         {
           "consensus": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -20159,6 +20465,10 @@
         {
           "ask": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -20177,10 +20487,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": null,
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -20241,7 +20551,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -20296,7 +20607,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -20551,6 +20862,10 @@
         {
           "consensus": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -20761,6 +21076,10 @@
         {
           "ask": 0.7213,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -20779,10 +21098,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -20841,7 +21160,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -20890,7 +21210,7 @@
       "topic": "wrestling_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy quarantillo:n:24%",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -21145,6 +21465,10 @@
         {
           "consensus": 0.3494,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -21355,6 +21679,10 @@
         {
           "ask": 0.3494,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -21435,7 +21763,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -21484,7 +21813,7 @@
       "topic": "short_notice",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:darren elkins:n:42",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -21739,6 +22068,10 @@
         {
           "consensus": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -21949,6 +22282,10 @@
         {
           "ask": 0.2648,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -21967,10 +22304,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -22029,7 +22366,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -22078,7 +22416,7 @@
       "topic": "striking_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:artem mma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -22178,7 +22516,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -22227,7 +22566,7 @@
       "topic": "inactivity_layoff",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy.goff.inactive.inconsistent.ufc",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -22327,7 +22666,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -22376,7 +22716,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -22631,6 +22971,10 @@
         {
           "consensus": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -22841,6 +23185,10 @@
         {
           "ask": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -22859,10 +23207,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Guilherme Pat",
-        "impactPointsTowardHelps": 21.05,
+        "impactPointsTowardHelps": 10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -22921,7 +23269,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -22970,7 +23319,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -23225,6 +23574,10 @@
         {
           "consensus": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -23435,6 +23788,10 @@
         {
           "ask": 0.3498,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -23453,10 +23810,10 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": null,
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
@@ -23515,7 +23872,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -23564,7 +23922,7 @@
       "topic": "style_matchup",
       "direction": "against_about",
       "firstSeenAt": "2026-08-03T13:25:12.475Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:we want picks",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -23821,6 +24179,10 @@
         {
           "consensus": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "kalshiAfter": [
@@ -24031,6 +24393,10 @@
         {
           "ask": 0.3655,
           "ts": "2026-08-07T15:26:47.936Z"
+        },
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
         }
       ],
       "forecastImpact": {
@@ -24111,7 +24477,8 @@
         "a7c7b619a81dcf9c",
         "7b37f53c65764061",
         "82bdd0360da81905",
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25059,14 +25426,13 @@
       "topic": "style_matchup",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
       "firsthandClaimed": false,
-      "independentOrigins": 2,
+      "independentOrigins": 1,
       "originIds": [
-        "analyst:mma experts",
         "analyst:hoppermma"
       ],
       "amplifiers": [
@@ -25089,7 +25455,7 @@
       "reportType": "ANALYTICAL",
       "truthStatus": "UNCERTAIN",
       "accessRelevance": "analyst_only",
-      "specificity": "specific",
+      "specificity": "vague",
       "recency": "dated",
       "plausibility": "moderate",
       "contradictions": [],
@@ -25113,35 +25479,46 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
           "intel_f5f3ab4e3051"
         ],
         "truthStatus": "UNCERTAIN",
-        "independentOrigins": 2,
+        "independentOrigins": 1,
         "accessRelevance": "analyst_only",
         "mechanism": "style_matchup → hurts Amanda Lemos",
-        "adjustmentLogOdds": 0.35,
-        "magnitudeBucket": "strong_multi_signal",
+        "adjustmentLogOdds": 0.22,
+        "magnitudeBucket": "credible_single_origin",
         "verificationStatus": "MECHANISTICALLY RELEVANT",
         "contradicted": false,
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25159,18 +25536,18 @@
         }
       ],
       "factors": {
-        "independentOrigins": 2,
-        "amplifiers": 2,
+        "independentOrigins": 1,
+        "amplifiers": 1,
         "accessRelevance": "analyst_only",
-        "specificity": "specific",
+        "specificity": "vague",
         "recency": "dated",
         "plausibility": "moderate",
-        "corroborated": true,
+        "corroborated": false,
         "marketAwareness": "niche_analytical_interpretation",
         "novel": false,
         "probablyPriced": false,
         "mechanismStrength": "weak",
-        "strength": "moderate",
+        "strength": "weak",
         "contradiction": null
       },
       "researchSources": [],
@@ -25190,7 +25567,7 @@
       "topic": "wrestling_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:amanda.caliber.dominated.fights.grapplers.high.lemos.lost.row.three.weili.wrestl",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -25237,8 +25614,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -25255,17 +25642,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25314,7 +25702,7 @@
       "topic": "other",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -25361,8 +25749,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -25379,17 +25777,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Thainara",
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25438,7 +25837,7 @@
       "topic": "striking_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:amanda.dominated.fight.lemos.title.weili.zhang",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -25487,8 +25886,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -25505,17 +25914,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25564,7 +25974,7 @@
       "topic": "recent_form",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:amanda.dern.lemos.mackenzie.win",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -25585,7 +25995,7 @@
         }
       ],
       "reportType": "PUBLIC_HISTORY",
-      "truthStatus": "LIKELY_FALSE",
+      "truthStatus": "CONFLICTING",
       "accessRelevance": "unknown",
       "specificity": "specific",
       "recency": "dated",
@@ -25613,14 +26023,24 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
           "intel_48cc9b8dcd04"
         ],
-        "truthStatus": "LIKELY_FALSE",
+        "truthStatus": "CONFLICTING",
         "independentOrigins": 1,
         "accessRelevance": "unknown",
         "mechanism": "activity",
@@ -25631,17 +26051,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Amanda Lemos",
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25656,6 +26077,12 @@
           "status": "LIKELY_FALSE",
           "action": "DASHBOARD_ONLY",
           "note": "the disconfirming version is better sourced"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "status LIKELY_FALSE → CONFLICTING"
         }
       ],
       "factors": {
@@ -25690,14 +26117,14 @@
       "topic": "pressure_pace",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:against.back.fights.grapplers.high.lemos.level.losses.lost.pressure.recent.stron",
       "originType": "public_record",
       "sourceRelationship": "unknown",
       "firsthandClaimed": false,
       "independentOrigins": 1,
       "originIds": [
-        "record:against.back.fights.grapplers.high.lemos.level.losses.lost.pressure.recent.stron"
+        "record:against.amanda.back.fights.grapplers.lemos.lost.pressure.strong"
       ],
       "amplifiers": [
         "MMA EXPERTS"
@@ -25737,8 +26164,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -25755,17 +26192,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25814,7 +26252,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -25861,8 +26299,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -25879,17 +26327,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Alexia Thainara",
-        "impactPointsTowardHelps": 14.81,
+        "impactPointsTowardHelps": 13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -25938,7 +26387,7 @@
       "topic": "other",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:amen lemos:n:39",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -25985,8 +26434,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26003,17 +26462,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": null,
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26062,7 +26522,7 @@
       "topic": "takedown_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:theweasle",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -26109,8 +26569,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26127,17 +26597,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": null,
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26186,7 +26657,7 @@
       "topic": "quality_of_opposition",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:winning in the shadows",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -26233,8 +26704,18 @@
         "ask": 0.7213,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.7213,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26251,17 +26732,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7448,
-        "probabilityAfterA": 0.8929,
-        "aMovePoints": 14.81,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
         "helps": "Amanda Lemos",
-        "impactPointsTowardHelps": -14.81,
+        "impactPointsTowardHelps": -13.5,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26310,7 +26792,7 @@
       "topic": "inactivity_layoff",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:darren elkins:n:42",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -26374,8 +26856,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26392,17 +26884,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26451,7 +26944,7 @@
       "topic": "recent_form",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:career.charles.darren.elkins.oliveira.once.only.submitted",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -26479,12 +26972,14 @@
         }
       ],
       "reportType": "PUBLIC_HISTORY",
-      "truthStatus": "PROBABLY_ALREADY_PRICED",
+      "truthStatus": "CONFLICTING",
       "accessRelevance": "unknown",
       "specificity": "specific",
       "recency": "recent",
       "plausibility": "moderate",
-      "contradictions": [],
+      "contradictions": [
+        "factual_disagreement"
+      ],
       "confirmations": [],
       "disproofs": [],
       "mechanism": "activity",
@@ -26505,14 +27000,24 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
           "intel_11829970699a"
         ],
-        "truthStatus": "PROBABLY_ALREADY_PRICED",
+        "truthStatus": "CONFLICTING",
         "independentOrigins": 2,
         "accessRelevance": "unknown",
         "mechanism": "activity",
@@ -26523,17 +27028,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Darren Elkins",
-        "impactPointsTowardHelps": -11.56,
+        "impactPointsTowardHelps": -11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26548,11 +27054,17 @@
           "status": "PROBABLY_ALREADY_PRICED",
           "action": "DASHBOARD_ONLY",
           "note": "already public / probably priced"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "status PROBABLY_ALREADY_PRICED → CONFLICTING"
         }
       ],
       "factors": {
         "independentOrigins": 2,
-        "amplifiers": 2,
+        "amplifiers": 3,
         "accessRelevance": "unknown",
         "specificity": "specific",
         "recency": "recent",
@@ -26563,7 +27075,7 @@
         "probablyPriced": true,
         "mechanismStrength": "weak",
         "strength": "strong",
-        "contradiction": null
+        "contradiction": "factual_disagreement"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -26582,7 +27094,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -26629,8 +27141,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26640,24 +27162,25 @@
         "independentOrigins": 1,
         "accessRelevance": "analyst_only",
         "mechanism": "durability → hurts Darren Elkins",
-        "adjustmentLogOdds": 0.35,
+        "adjustmentLogOdds": 0.3186,
         "magnitudeBucket": "strong_multi_signal",
         "verificationStatus": "VERIFIED",
         "contradicted": false,
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26706,7 +27229,7 @@
       "topic": "cardio",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -26753,8 +27276,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26771,17 +27304,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Darren Elkins",
-        "impactPointsTowardHelps": -11.56,
+        "impactPointsTowardHelps": -11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26830,7 +27364,7 @@
       "topic": "durability",
       "direction": "neutral",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -26877,8 +27411,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -26888,24 +27432,25 @@
         "independentOrigins": 1,
         "accessRelevance": "analyst_only",
         "mechanism": "durability → hurts Darren Elkins",
-        "adjustmentLogOdds": 0.35,
+        "adjustmentLogOdds": 0.3186,
         "magnitudeBucket": "strong_multi_signal",
         "verificationStatus": "VERIFIED",
         "contradicted": false,
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": null,
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -26954,7 +27499,7 @@
       "topic": "quality_of_opposition",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:darren elkins:n:6",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -27001,8 +27546,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27019,17 +27574,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27078,7 +27634,7 @@
       "topic": "other",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:theweasle",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27125,8 +27681,18 @@
         "ask": 0.2648,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.2648,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27143,17 +27709,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.2495,
-        "probabilityAfterA": 0.1339,
-        "aMovePoints": -11.56,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
         "helps": "Yadier Delvalle",
-        "impactPointsTowardHelps": 11.56,
+        "impactPointsTowardHelps": 11.19,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27202,7 +27769,7 @@
       "topic": "wrestling_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27249,8 +27816,18 @@
         "ask": 0.4553,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27277,7 +27854,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27326,7 +27904,7 @@
       "topic": "recent_form",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:arman.beat.gamrot.mateusz.tsarukyan",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -27373,8 +27951,18 @@
         "ask": 0.4553,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27401,7 +27989,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27450,7 +28039,7 @@
       "topic": "other",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:charles.gamrot.last.mateusz.oliveira.submitted.year",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -27497,8 +28086,18 @@
         "ask": 0.4553,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27525,7 +28124,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27574,7 +28174,7 @@
       "topic": "durability",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:dfs by the numbers",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27623,8 +28223,18 @@
         "ask": 0.4553,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.4553,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27651,7 +28261,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27700,7 +28311,7 @@
       "topic": "durability",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27726,7 +28337,9 @@
       "specificity": "vague",
       "recency": "unknown",
       "plausibility": "moderate",
-      "contradictions": [],
+      "contradictions": [
+        "compatible_claims"
+      ],
       "confirmations": [],
       "disproofs": [],
       "mechanism": "durability",
@@ -27747,8 +28360,18 @@
         "ask": 0.801,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27765,17 +28388,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Richie Miranda",
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27805,7 +28429,7 @@
         "probablyPriced": false,
         "mechanismStrength": "weak",
         "strength": "moderate",
-        "contradiction": null
+        "contradiction": "compatible_claims"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -27824,7 +28448,7 @@
       "topic": "cardio",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27871,8 +28495,18 @@
         "ask": 0.801,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -27889,17 +28523,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Richie Miranda",
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -27948,7 +28583,7 @@
       "topic": "striking_offense",
       "direction": "neutral",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -27995,8 +28630,18 @@
         "ask": 0.801,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28013,17 +28658,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": null,
-        "impactPointsTowardHelps": 6.45,
+        "impactPointsTowardHelps": 6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28072,7 +28718,7 @@
       "topic": "other",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:down.lewis.lfa.miranda.multiple.richie.taken.times",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -28119,8 +28765,18 @@
         "ask": 0.801,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.801,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28137,17 +28793,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.7913,
-        "probabilityAfterA": 0.7268,
-        "aMovePoints": -6.45,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
         "helps": "Manoel Sousa",
-        "impactPointsTowardHelps": -6.45,
+        "impactPointsTowardHelps": -6.4,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28196,7 +28853,7 @@
       "topic": "pressure_pace",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -28243,8 +28900,18 @@
         "ask": 0.4007,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.4007,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28271,7 +28938,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28320,7 +28988,7 @@
       "topic": "recent_form",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:diego ferreira:n:41",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -28374,8 +29042,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28402,7 +29080,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28451,7 +29130,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -28498,8 +29177,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28526,7 +29215,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28575,7 +29265,7 @@
       "topic": "inactivity_layoff",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy quarantillo:n:2024",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -28629,8 +29319,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28657,7 +29357,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28706,7 +29407,7 @@
       "topic": "style_matchup",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:hoppermma",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -28753,8 +29454,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28781,7 +29492,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28830,7 +29542,7 @@
       "topic": "size_reach",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:dfs by the numbers",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -28877,8 +29589,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -28905,7 +29627,8 @@
       "actionStatus": "IGNORE",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -28954,7 +29677,7 @@
       "topic": "power",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:dfs by the numbers",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29001,8 +29724,18 @@
         "ask": 0.3494,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3494,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -29029,7 +29762,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29078,7 +29812,7 @@
       "topic": "striking_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:the mike finch show",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29125,8 +29859,18 @@
         "ask": 0.5,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.5,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.5,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -29153,7 +29897,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29202,7 +29947,7 @@
       "topic": "other",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:the mike finch show",
       "originType": "commentary",
       "sourceRelationship": "unknown",
@@ -29249,8 +29994,18 @@
         "ask": 0.5,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.5,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.5,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -29277,7 +30032,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29326,7 +30082,7 @@
       "topic": "wrestling_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29376,7 +30132,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29425,7 +30182,7 @@
       "topic": "submission_offense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:battle.billy.brutally.bryan.goff.ray.submitted",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -29473,7 +30230,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29522,7 +30280,7 @@
       "topic": "pressure_pace",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:theweasle",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29570,7 +30328,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29619,7 +30378,7 @@
       "topic": "striking_defense",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:winning in the shadows",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29667,7 +30426,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29716,34 +30476,42 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:billy.body.goff.hurt.previously.ray",
       "originType": "public_record",
       "sourceRelationship": "unknown",
       "firsthandClaimed": false,
-      "independentOrigins": 1,
+      "independentOrigins": 2,
       "originIds": [
+        "analyst:bookie beatdown",
         "record:billy.body.goff.hurt.previously.ray"
       ],
       "amplifiers": [
-        "Winning In The Shadows"
+        "Winning In The Shadows",
+        "Bookie Beatdown"
       ],
-      "amplifierCount": 1,
+      "amplifierCount": 2,
       "quotes": [
         {
           "quote": "he's been hurt to the body before.",
           "channel": "Winning In The Shadows",
           "publishedAt": "2026-08-06T02:58:18Z"
+        },
+        {
+          "quote": "I don't think he's his durability is all that great.",
+          "channel": "Bookie Beatdown",
+          "publishedAt": "2026-08-05T20:48:47Z"
         }
       ],
-      "reportType": "PUBLIC_HISTORY",
+      "reportType": "ANALYTICAL",
       "truthStatus": "UNCERTAIN",
-      "accessRelevance": "unknown",
+      "accessRelevance": "analyst_only",
       "specificity": "specific",
       "recency": "unknown",
       "plausibility": "moderate",
       "contradictions": [
-        "different_interpretations_of_the_same_fact"
+        "different_interpretations_of_the_same_fact",
+        "compatible_claims"
       ],
       "confirmations": [],
       "disproofs": [],
@@ -29756,7 +30524,7 @@
       },
       "novel": false,
       "probablyPriced": false,
-      "marketAwareness": "unknown",
+      "marketAwareness": "niche_analytical_interpretation",
       "sportsbookBefore": null,
       "kalshiBefore": null,
       "sportsbookAfter": [],
@@ -29766,7 +30534,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29784,19 +30553,19 @@
         }
       ],
       "factors": {
-        "independentOrigins": 1,
-        "amplifiers": 1,
-        "accessRelevance": "unknown",
+        "independentOrigins": 2,
+        "amplifiers": 2,
+        "accessRelevance": "analyst_only",
         "specificity": "specific",
         "recency": "unknown",
         "plausibility": "moderate",
-        "corroborated": false,
-        "marketAwareness": "unknown",
+        "corroborated": true,
+        "marketAwareness": "niche_analytical_interpretation",
         "novel": false,
         "probablyPriced": false,
         "mechanismStrength": "weak",
         "strength": "moderate",
-        "contradiction": "different_interpretations_of_the_same_fact"
+        "contradiction": "compatible_claims"
       },
       "researchSources": [],
       "researchSummaries": [],
@@ -29815,7 +30584,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29862,8 +30631,18 @@
         "ask": 0.3371,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3371,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3371,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -29890,7 +30669,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -29939,7 +30719,7 @@
       "topic": "striking_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -29986,8 +30766,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -30004,17 +30794,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Guilherme Pat",
-        "impactPointsTowardHelps": 21.05,
+        "impactPointsTowardHelps": 10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -30063,7 +30854,7 @@
       "topic": "recent_form",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:decision.dropped.fight.guilherme.lost.majority.pat.petersen.recent.shorter.thoma",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -30110,8 +30901,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -30128,17 +30929,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Steven Asplund",
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -30187,7 +30989,7 @@
       "topic": "striking_offense",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -30234,8 +31036,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -30252,17 +31064,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Asplund",
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -30311,7 +31124,7 @@
       "topic": "durability",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -30358,8 +31171,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -30376,17 +31199,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Steven Asplund",
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -31179,7 +32003,7 @@
       "topic": "weight_cut",
       "direction": "neutral",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "record:stephen asplund:n:500",
       "originType": "public_record",
       "sourceRelationship": "unknown",
@@ -31226,8 +32050,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -31244,17 +32078,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": null,
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -31303,7 +32138,7 @@
       "topic": "speed",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:theweasle",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -31350,8 +32185,18 @@
         "ask": 0.3498,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3498,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -31368,17 +32213,18 @@
         "boutCap": 1.6,
         "capped": false,
         "probabilityBeforeA": 0.3498,
-        "probabilityAfterA": 0.5603,
-        "aMovePoints": 21.05,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
         "helps": "Gear Pat",
-        "impactPointsTowardHelps": -21.05,
+        "impactPointsTowardHelps": -10.04,
         "effectOnContracts": null
       },
       "contractImpact": null,
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -31427,7 +32273,7 @@
       "topic": "quality_of_opposition",
       "direction": "against_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "commentary",
       "sourceRelationship": "unknown",
@@ -31474,8 +32320,18 @@
         "ask": 0.3655,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -31502,7 +32358,8 @@
       "actionStatus": "DASHBOARD_ONLY",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -31551,7 +32408,7 @@
       "topic": "style_matchup",
       "direction": "favors_about",
       "firstSeenAt": "2026-08-07T15:26:47.936Z",
-      "lastUpdatedAt": "2026-08-07T15:26:47.936Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
       "originalOrigin": "analyst:mma experts",
       "originType": "independent_analysis",
       "sourceRelationship": "analyst_only",
@@ -31600,8 +32457,18 @@
         "ask": 0.3655,
         "ts": "2026-08-07T15:26:47.936Z"
       },
-      "sportsbookAfter": [],
-      "kalshiAfter": [],
+      "sportsbookAfter": [
+        {
+          "consensus": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
+      "kalshiAfter": [
+        {
+          "ask": 0.3655,
+          "ts": "2026-08-07T16:35:45.435Z"
+        }
+      ],
       "forecastImpact": {
         "lane": "exploration",
         "intelIds": [
@@ -31628,7 +32495,8 @@
       "actionStatus": "FORECAST_UPDATED",
       "telegramLineage": [],
       "forecastVersions": [
-        "166c00174b187cfd"
+        "166c00174b187cfd",
+        "ff45d1e6350fd967"
       ],
       "positionVersions": [],
       "actionHistory": [
@@ -31659,6 +32527,1232 @@
         "mechanismStrength": "weak",
         "strength": "moderate",
         "contradiction": "compatible_claims"
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_ad3a14b2dd89": {
+      "intelligenceId": "intel_ad3a14b2dd89",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B11",
+      "fighter": "Amanda Lemos",
+      "fight": "Alexia Thainara vs Amanda Lemos",
+      "claim": "Amanda Lemos is 39 years old.",
+      "rawWording": "a 39-year-old Lemos",
+      "proposition": "topic:other:against_about",
+      "normalizedClaim": "amanda lemos — topic:other:against_about",
+      "topic": "other",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "record:amanda lemos:n:39",
+      "originType": "independent_analysis",
+      "sourceRelationship": "analyst_only",
+      "firsthandClaimed": false,
+      "independentOrigins": 2,
+      "originIds": [
+        "record:amanda lemos:n:39",
+        "analyst:the mike finch show"
+      ],
+      "amplifiers": [
+        "MMA EXPERTS",
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 2,
+      "quotes": [
+        {
+          "quote": "a 39-year-old Lemos",
+          "channel": "MMA EXPERTS",
+          "publishedAt": "2026-08-04T03:56:40Z"
+        },
+        {
+          "quote": "She doesn't do well against good grapplers. You could check the Tatiana Suarez fight. You could check a lot of her fights. She gets taken down.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "ANALYTICAL",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "analyst_only",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": null,
+      "mechanismStrength": "none",
+      "outcomeAffected": {
+        "fighter": "Amanda Lemos",
+        "direction": "against_about",
+        "helps": "Alexia Thainara"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "niche_analytical_interpretation",
+      "sportsbookBefore": {
+        "consensus": 0.7213,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.7213,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_ad3a14b2dd89"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 2,
+        "accessRelevance": "analyst_only",
+        "mechanism": null,
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.7448,
+        "probabilityAfterA": 0.8798,
+        "aMovePoints": 13.5,
+        "helps": "Alexia Thainara",
+        "impactPointsTowardHelps": 13.5,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "FORECAST_UPDATED",
+          "note": "analytical hypothesis moved the speculative forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 2,
+        "amplifiers": 2,
+        "accessRelevance": "analyst_only",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": true,
+        "marketAwareness": "niche_analytical_interpretation",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "none",
+        "strength": "moderate",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_0d420f8fbc85": {
+      "intelligenceId": "intel_0d420f8fbc85",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B06",
+      "fighter": "Darren Elkins",
+      "fight": "Darren Elkins vs Yadier Delvalle",
+      "claim": "Darren Elkins is 42 years old.",
+      "rawWording": "Darren Elkins is 42.",
+      "proposition": "topic:recent_form:against_about",
+      "normalizedClaim": "darren elkins — topic:recent_form:against_about",
+      "topic": "recent_form",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "record:darren elkins:n:42",
+      "originType": "public_record",
+      "sourceRelationship": "unknown",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "record:darren elkins:n:42"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "Darren Elkins is 42.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "PUBLIC_HISTORY",
+      "truthStatus": "CONFLICTING",
+      "accessRelevance": "unknown",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [
+        "factual_disagreement"
+      ],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "activity",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Darren Elkins",
+        "direction": "against_about",
+        "helps": "Yadier Delvalle"
+      },
+      "novel": false,
+      "probablyPriced": true,
+      "marketAwareness": "widely_public_probably_in_the_market",
+      "sportsbookBefore": {
+        "consensus": 0.2648,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.2648,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_0d420f8fbc85"
+        ],
+        "truthStatus": "CONFLICTING",
+        "independentOrigins": 1,
+        "accessRelevance": "unknown",
+        "mechanism": "activity",
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.2495,
+        "probabilityAfterA": 0.1376,
+        "aMovePoints": -11.19,
+        "helps": "Yadier Delvalle",
+        "impactPointsTowardHelps": 11.19,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "DASHBOARD_ONLY",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "public history, context not signal"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "unknown",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "widely_public_probably_in_the_market",
+        "novel": false,
+        "probablyPriced": true,
+        "mechanismStrength": "weak",
+        "strength": "moderate",
+        "contradiction": "factual_disagreement"
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_4796cdb7874d": {
+      "intelligenceId": "intel_4796cdb7874d",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B13",
+      "fighter": "Richie Miranda",
+      "fight": "Manoel Sousa vs Richie Miranda",
+      "claim": "Richie Miranda's boxing is not good and he lacks pop on his shots.",
+      "rawWording": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
+      "proposition": "topic:durability:against_about",
+      "normalizedClaim": "richie miranda — topic:durability:against_about",
+      "topic": "durability",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "analyst:the mike finch show",
+      "originType": "independent_analysis",
+      "sourceRelationship": "analyst_only",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "analyst:the mike finch show"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "ANALYTICAL",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "analyst_only",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [
+        "compatible_claims"
+      ],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "durability",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Richie Miranda",
+        "direction": "against_about",
+        "helps": "Manoel Sousa"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "niche_analytical_interpretation",
+      "sportsbookBefore": {
+        "consensus": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_4796cdb7874d"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 1,
+        "accessRelevance": "analyst_only",
+        "mechanism": "durability → helps Richie Miranda",
+        "adjustmentLogOdds": 0.2225,
+        "magnitudeBucket": "credible_single_origin",
+        "verificationStatus": "MECHANISTICALLY RELEVANT",
+        "contradicted": false,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.7913,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
+        "helps": "Manoel Sousa",
+        "impactPointsTowardHelps": -6.4,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "FORECAST_UPDATED",
+          "note": "analytical hypothesis moved the speculative forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "analyst_only",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "niche_analytical_interpretation",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "weak",
+        "strength": "moderate",
+        "contradiction": "compatible_claims"
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_06163f95320b": {
+      "intelligenceId": "intel_06163f95320b",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B13",
+      "fighter": "Manel Sousa",
+      "fight": "Manoel Sousa vs Richie Miranda",
+      "claim": "Manel Sousa is too explosive for Richie Miranda.",
+      "rawWording": "I think Manel Sousa is too damn explosive for Richie Miranda.",
+      "proposition": "topic:speed:favors_about",
+      "normalizedClaim": "manel sousa — topic:speed:favors_about",
+      "topic": "speed",
+      "direction": "favors_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "analyst:the mike finch show",
+      "originType": "independent_analysis",
+      "sourceRelationship": "analyst_only",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "analyst:the mike finch show"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "I think Manel Sousa is too damn explosive for Richie Miranda.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "ANALYTICAL",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "analyst_only",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "striking",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Manel Sousa",
+        "direction": "favors_about",
+        "helps": "Manel Sousa"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "niche_analytical_interpretation",
+      "sportsbookBefore": {
+        "consensus": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_06163f95320b"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 1,
+        "accessRelevance": "analyst_only",
+        "mechanism": "striking",
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.7913,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
+        "helps": "Manel Sousa",
+        "impactPointsTowardHelps": 6.4,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "FORECAST_UPDATED",
+          "note": "analytical hypothesis moved the speculative forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "analyst_only",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "niche_analytical_interpretation",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "weak",
+        "strength": "weak",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_47f052b44baa": {
+      "intelligenceId": "intel_47f052b44baa",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B13",
+      "fighter": "Richie Miranda",
+      "fight": "Manoel Sousa vs Richie Miranda",
+      "claim": "Richie Miranda trains at Bloodline with good talent.",
+      "rawWording": "Richie Miranda has been training at Bloodline, which I happen to think is a good team.",
+      "proposition": "topic:training_camp:favors_about",
+      "normalizedClaim": "richie miranda — topic:training_camp:favors_about",
+      "topic": "training_camp",
+      "direction": "favors_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "report:anon:bloodline.good.miranda.richie.talent.trains",
+      "originType": "external_report",
+      "sourceRelationship": "firsthand",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "report:anon:bloodline.good.miranda.richie.talent.trains"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "Richie Miranda has been training at Bloodline, which I happen to think is a good team.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "CURRENT_CONDITION",
+      "truthStatus": "PLAUSIBLE",
+      "accessRelevance": "firsthand",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "high",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "condition",
+      "mechanismStrength": "moderate",
+      "outcomeAffected": {
+        "fighter": "Richie Miranda",
+        "direction": "favors_about",
+        "helps": "Richie Miranda"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "unknown",
+      "sportsbookBefore": {
+        "consensus": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_47f052b44baa"
+        ],
+        "truthStatus": "PLAUSIBLE",
+        "independentOrigins": 1,
+        "accessRelevance": "firsthand",
+        "mechanism": "training_camp → helps Richie Miranda",
+        "adjustmentLogOdds": 0.22,
+        "magnitudeBucket": "credible_single_origin",
+        "verificationStatus": "POSSIBLY TRUE",
+        "contradicted": false,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.7913,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
+        "helps": "Richie Miranda",
+        "impactPointsTowardHelps": 6.4,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PLAUSIBLE",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PLAUSIBLE",
+          "action": "FORECAST_UPDATED",
+          "note": "materially changed the forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "firsthand",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "high",
+        "corroborated": false,
+        "marketAwareness": "unknown",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "moderate",
+        "strength": "weak",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_77e6cc9acd5b": {
+      "intelligenceId": "intel_77e6cc9acd5b",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B13",
+      "fighter": "Richie Miranda",
+      "fight": "Manoel Sousa vs Richie Miranda",
+      "claim": "Richie Miranda lacks the wrestling to get the fight to the ground.",
+      "rawWording": "I don't think he has the wrestling to be able to get it there.",
+      "proposition": "topic:wrestling_offense:against_about",
+      "normalizedClaim": "richie miranda — topic:wrestling_offense:against_about",
+      "topic": "wrestling_offense",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "analyst:the mike finch show",
+      "originType": "independent_analysis",
+      "sourceRelationship": "analyst_only",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "analyst:the mike finch show"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "I don't think he has the wrestling to be able to get it there.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "ANALYTICAL",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "analyst_only",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "grappling",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Richie Miranda",
+        "direction": "against_about",
+        "helps": "Manoel Sousa"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "niche_analytical_interpretation",
+      "sportsbookBefore": {
+        "consensus": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.801,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_77e6cc9acd5b"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 1,
+        "accessRelevance": "analyst_only",
+        "mechanism": "grappling",
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.7913,
+        "probabilityAfterA": 0.7273,
+        "aMovePoints": -6.4,
+        "helps": "Manoel Sousa",
+        "impactPointsTowardHelps": -6.4,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "FORECAST_UPDATED",
+          "note": "analytical hypothesis moved the speculative forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "analyst_only",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "niche_analytical_interpretation",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "weak",
+        "strength": "weak",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_1def3749c81b": {
+      "intelligenceId": "intel_1def3749c81b",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B02",
+      "fighter": "Miles Johns",
+      "fight": "Gianni Vazquez vs Miles Johns",
+      "claim": "Miles Johns has been fighting in the UFC since 2019.",
+      "rawWording": "Miles Johns has been fighting in the UFC since 2019",
+      "proposition": "topic:recent_form:favors_about",
+      "normalizedClaim": "miles johns — topic:recent_form:favors_about",
+      "topic": "recent_form",
+      "direction": "favors_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "record:miles johns:n:2019",
+      "originType": "public_record",
+      "sourceRelationship": "unknown",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "record:miles johns:n:2019"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "Miles Johns has been fighting in the UFC since 2019",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "PUBLIC_HISTORY",
+      "truthStatus": "CONFLICTING",
+      "accessRelevance": "unknown",
+      "specificity": "specific",
+      "recency": "dated",
+      "plausibility": "moderate",
+      "contradictions": [
+        "factual_disagreement"
+      ],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "activity",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Miles Johns",
+        "direction": "favors_about",
+        "helps": "Miles Johns"
+      },
+      "novel": false,
+      "probablyPriced": true,
+      "marketAwareness": "widely_public_probably_in_the_market",
+      "sportsbookBefore": {
+        "consensus": 0.4007,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.4007,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_1def3749c81b"
+        ],
+        "truthStatus": "CONFLICTING",
+        "independentOrigins": 1,
+        "accessRelevance": "unknown",
+        "mechanism": "activity",
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.4007,
+        "probabilityAfterA": 0.4302,
+        "aMovePoints": 2.95,
+        "helps": "Miles Johns",
+        "impactPointsTowardHelps": -2.95,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "DASHBOARD_ONLY",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "CONFLICTING",
+          "action": "DASHBOARD_ONLY",
+          "note": "public history, context not signal"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "unknown",
+        "specificity": "specific",
+        "recency": "dated",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "widely_public_probably_in_the_market",
+        "novel": false,
+        "probablyPriced": true,
+        "mechanismStrength": "weak",
+        "strength": "moderate",
+        "contradiction": "factual_disagreement"
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_0a792dd376af": {
+      "intelligenceId": "intel_0a792dd376af",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B02",
+      "fighter": "Miles Johns",
+      "fight": "Gianni Vazquez vs Miles Johns",
+      "claim": "Miles Johns is 32 years old and still in his prime.",
+      "rawWording": "Miles Johns is 32, still absolutely in his prime.",
+      "proposition": "topic:other:favors_about",
+      "normalizedClaim": "miles johns — topic:other:favors_about",
+      "topic": "other",
+      "direction": "favors_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "record:miles johns:n:32",
+      "originType": "public_record",
+      "sourceRelationship": "unknown",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "record:miles johns:n:32"
+      ],
+      "amplifiers": [
+        "The Mike Finch Show"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "Miles Johns is 32, still absolutely in his prime.",
+          "channel": "The Mike Finch Show",
+          "publishedAt": "2026-08-04T17:12:09Z"
+        }
+      ],
+      "reportType": "PUBLIC_HISTORY",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "unknown",
+      "specificity": "specific",
+      "recency": "dated",
+      "plausibility": "moderate",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": null,
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Miles Johns",
+        "direction": "favors_about",
+        "helps": "Miles Johns"
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "unknown",
+      "sportsbookBefore": {
+        "consensus": 0.4007,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.4007,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_0a792dd376af"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 1,
+        "accessRelevance": "unknown",
+        "mechanism": null,
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.4007,
+        "probabilityAfterA": 0.4302,
+        "aMovePoints": 2.95,
+        "helps": "Miles Johns",
+        "impactPointsTowardHelps": -2.95,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "DASHBOARD_ONLY",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "DASHBOARD_ONLY",
+          "note": "public history, context not signal"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "unknown",
+        "specificity": "specific",
+        "recency": "dated",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "unknown",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "weak",
+        "strength": "moderate",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_5e93a1f2871f": {
+      "intelligenceId": "intel_5e93a1f2871f",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B08",
+      "fighter": "Billy Ray Goff",
+      "fight": "Ty Cole Miller vs Billy Goff",
+      "claim": "Billy Ray Goff hardly fights at all, which suggests he must have injuries.",
+      "rawWording": "he must have injuries cuz he hardly fights at all.",
+      "proposition": "topic:injury_health:against_about",
+      "normalizedClaim": "billy ray goff — topic:injury_health:against_about",
+      "topic": "injury_health",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "report:anon:billy.fights.goff.hardly.injuries.ray.suggests.which",
+      "originType": "external_report",
+      "sourceRelationship": "firsthand",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "report:anon:billy.fights.goff.hardly.injuries.ray.suggests.which"
+      ],
+      "amplifiers": [
+        "Bookie Beatdown"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "he must have injuries cuz he hardly fights at all.",
+          "channel": "Bookie Beatdown",
+          "publishedAt": "2026-08-05T20:48:47Z"
+        }
+      ],
+      "reportType": "CURRENT_CONDITION",
+      "truthStatus": "PLAUSIBLE",
+      "accessRelevance": "firsthand",
+      "specificity": "specific",
+      "recency": "unknown",
+      "plausibility": "high",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "condition",
+      "mechanismStrength": "moderate",
+      "outcomeAffected": {
+        "fighter": "Billy Ray Goff",
+        "direction": "against_about",
+        "helps": null
+      },
+      "novel": true,
+      "probablyPriced": false,
+      "marketAwareness": "newly_emerging",
+      "sportsbookBefore": null,
+      "kalshiBefore": null,
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": null,
+      "contractImpact": null,
+      "actionStatus": "WATCH",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PLAUSIBLE",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "PLAUSIBLE",
+          "action": "WATCH",
+          "note": "plausible and potentially meaningful, no bet yet"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "firsthand",
+        "specificity": "specific",
+        "recency": "unknown",
+        "plausibility": "high",
+        "corroborated": false,
+        "marketAwareness": "newly_emerging",
+        "novel": true,
+        "probablyPriced": false,
+        "mechanismStrength": "moderate",
+        "strength": "weak",
+        "contradiction": null
+      },
+      "researchSources": [],
+      "researchSummaries": [],
+      "inaccessible": null
+    },
+    "intel_15fb683eccba": {
+      "intelligenceId": "intel_15fb683eccba",
+      "eventId": "2026-08-08",
+      "boutId": "UFC-2026-08-08-B10",
+      "fighter": "Geronimo Pat",
+      "fight": "Guilherme Pat vs Steven Asplund",
+      "claim": "Geronimo Pat has bad takedown defense.",
+      "rawWording": "Geronimo Pat has bad takedown defense.",
+      "proposition": "topic:takedown_defense:against_about",
+      "normalizedClaim": "geronimo pat — topic:takedown_defense:against_about",
+      "topic": "takedown_defense",
+      "direction": "against_about",
+      "firstSeenAt": "2026-08-07T16:35:45.435Z",
+      "lastUpdatedAt": "2026-08-07T16:35:45.435Z",
+      "originalOrigin": "analyst:mma experts",
+      "originType": "independent_analysis",
+      "sourceRelationship": "analyst_only",
+      "firsthandClaimed": false,
+      "independentOrigins": 1,
+      "originIds": [
+        "analyst:mma experts"
+      ],
+      "amplifiers": [
+        "MMA EXPERTS"
+      ],
+      "amplifierCount": 1,
+      "quotes": [
+        {
+          "quote": "Geronimo Pat has bad takedown defense.",
+          "channel": "MMA EXPERTS",
+          "publishedAt": "2026-08-04T03:56:40Z"
+        }
+      ],
+      "reportType": "ANALYTICAL",
+      "truthStatus": "UNCERTAIN",
+      "accessRelevance": "analyst_only",
+      "specificity": "vague",
+      "recency": "unknown",
+      "plausibility": "moderate",
+      "contradictions": [],
+      "confirmations": [],
+      "disproofs": [],
+      "mechanism": "grappling",
+      "mechanismStrength": "weak",
+      "outcomeAffected": {
+        "fighter": "Geronimo Pat",
+        "direction": "against_about",
+        "helps": null
+      },
+      "novel": false,
+      "probablyPriced": false,
+      "marketAwareness": "niche_analytical_interpretation",
+      "sportsbookBefore": {
+        "consensus": 0.3498,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "kalshiBefore": {
+        "ask": 0.3498,
+        "ts": "2026-08-07T16:35:45.435Z"
+      },
+      "sportsbookAfter": [],
+      "kalshiAfter": [],
+      "forecastImpact": {
+        "lane": "exploration",
+        "intelIds": [
+          "intel_15fb683eccba"
+        ],
+        "truthStatus": "UNCERTAIN",
+        "independentOrigins": 1,
+        "accessRelevance": "analyst_only",
+        "mechanism": "grappling",
+        "adjustmentLogOdds": null,
+        "magnitudeBucket": null,
+        "verificationStatus": null,
+        "contradicted": null,
+        "boutCap": 1.6,
+        "capped": false,
+        "probabilityBeforeA": 0.3498,
+        "probabilityAfterA": 0.4502,
+        "aMovePoints": 10.04,
+        "helps": null,
+        "impactPointsTowardHelps": -10.04,
+        "effectOnContracts": null
+      },
+      "contractImpact": null,
+      "actionStatus": "FORECAST_UPDATED",
+      "telegramLineage": [],
+      "forecastVersions": [
+        "ff45d1e6350fd967"
+      ],
+      "positionVersions": [],
+      "actionHistory": [
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": null,
+          "note": "first seen"
+        },
+        {
+          "at": "2026-08-07T16:35:45.435Z",
+          "status": "UNCERTAIN",
+          "action": "FORECAST_UPDATED",
+          "note": "analytical hypothesis moved the speculative forecast"
+        }
+      ],
+      "factors": {
+        "independentOrigins": 1,
+        "amplifiers": 1,
+        "accessRelevance": "analyst_only",
+        "specificity": "vague",
+        "recency": "unknown",
+        "plausibility": "moderate",
+        "corroborated": false,
+        "marketAwareness": "niche_analytical_interpretation",
+        "novel": false,
+        "probablyPriced": false,
+        "mechanismStrength": "weak",
+        "strength": "moderate",
+        "contradiction": null
       },
       "researchSources": [],
       "researchSummaries": [],

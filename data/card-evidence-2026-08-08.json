@@ -315,7 +315,7 @@
       }
     ]
   },
-  "builtAt": "2026-08-07T15:26:37.707Z",
+  "builtAt": "2026-08-07T16:35:32.403Z",
   "selection": {
     "threshold": 35,
     "videos": [
@@ -345,7 +345,7 @@
         "source": "MMA EXPERTS",
         "ranges": 5,
         "chars": 33149,
-        "claims": 40
+        "claims": 29
       },
       {
         "videoId": "2BGJeqkCgqg",
@@ -353,6 +353,20 @@
         "ranges": 1,
         "chars": 6000,
         "claims": 12
+      },
+      {
+        "videoId": "k3tOwASelgQ",
+        "source": "Bookie Beatdown",
+        "ranges": 1,
+        "chars": 9320,
+        "claims": 9
+      },
+      {
+        "videoId": "FgkjleTMlpM",
+        "source": "The Mike Finch Show",
+        "ranges": 1,
+        "chars": 9381,
+        "claims": 26
       },
       {
         "videoId": "K5jHiWhORzg",
@@ -395,6 +409,13 @@
         "ranges": 2,
         "chars": 16923,
         "claims": 19
+      },
+      {
+        "videoId": "hSsWCvhowmw",
+        "source": "Half The Battle",
+        "ranges": 1,
+        "chars": 6000,
+        "claims": 7
       },
       {
         "videoId": "Vy6OuG5-WuY",
@@ -451,28 +472,35 @@
         "ranges": 1,
         "chars": 6000,
         "claims": 8
+      },
+      {
+        "videoId": "Hj-V-pc2DyM",
+        "source": "MMA EXPERTS",
+        "ranges": 1,
+        "chars": 6000,
+        "claims": 8
       }
     ]
   },
   "integrity": {
-    "rangesRead": 26,
-    "charsRead": 187287,
-    "newChunks": 4,
-    "cachedChunks": 26,
-    "rawClaims": 214,
-    "onCardPct": 57.5,
+    "rangesRead": 30,
+    "charsRead": 217988,
+    "newChunks": 1,
+    "cachedChunks": 33,
+    "rawClaims": 253,
+    "onCardPct": 54.2,
     "buckets": {
-      "card_fighter_no_bout_context": 37,
-      "other_fight_or_fighter": 91,
-      "target_bout": 43,
-      "historical_vs_other_opponent": 43
+      "card_fighter_no_bout_context": 41,
+      "other_fight_or_fighter": 116,
+      "target_bout": 51,
+      "historical_vs_other_opponent": 45
     },
     "evidenceTypes": {
-      "general_tendency": 67,
-      "current_matchup": 12,
-      "off_card": 91,
-      "historical_performance": 43,
-      "current_health_camp": 1
+      "general_tendency": 75,
+      "current_matchup": 14,
+      "off_card": 116,
+      "historical_performance": 45,
+      "current_health_camp": 3
     },
     "droppedVideos": []
   },
@@ -624,7 +652,7 @@
       "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
-      "corroborated": false,
+      "corroborated": true,
       "knownBeforeBet": true,
       "rangeBouts": [
         "UFC-2026-08-08-B13",
@@ -651,19 +679,38 @@
           "claimClass": "hard_fact",
           "direction": "favors_about",
           "confidence": 1
+        },
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Darren Elkins has been submitted once in his whole in his whole whole mixed martial arts career.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 1
         }
       ],
-      "mentionCount": 1,
-      "independentSources": 1,
+      "mentionCount": 2,
+      "independentSources": 2,
       "sources": [
-        "MMA EXPERTS"
+        "MMA EXPERTS",
+        "The Mike Finch Show"
       ],
       "mentionsPerSource": {
-        "MMA EXPERTS": 1
+        "MMA EXPERTS": 1,
+        "The Mike Finch Show": 1
       },
       "directionConflict": false,
       "classSpread": [
-        "hard_fact"
+        "hard_fact",
+        "statistical"
       ]
     },
     {
@@ -935,6 +982,22 @@
         },
         {
           "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Billy Ray Goff hasn't fought in over a year",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        },
+        {
+          "channel": "The Mike Finch Show",
           "videoId": "Vy6OuG5-WuY",
           "url": "https://www.youtube.com/watch?v=Vy6OuG5-WuY",
           "publishedAt": "2026-08-05T18:28:46Z",
@@ -948,9 +1011,25 @@
           "claimClass": "hard_fact",
           "direction": "against_about",
           "confidence": 0.9
+        },
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "he hasn't fought in a while",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 0.9
         }
       ],
-      "mentionCount": 3,
+      "mentionCount": 5,
       "independentSources": 3,
       "sources": [
         "MMA EXPERTS",
@@ -958,9 +1037,9 @@
         "The Mike Finch Show"
       ],
       "mentionsPerSource": {
-        "MMA EXPERTS": 1,
+        "MMA EXPERTS": 2,
         "HopperMMA": 1,
-        "The Mike Finch Show": 1
+        "The Mike Finch Show": 2
       },
       "directionConflict": false,
       "classSpread": [
@@ -968,22 +1047,22 @@
       ]
     },
     {
-      "claim": "Amanda Lemos is 39 years old and has a history of losing to grapplers.",
+      "claim": "Amanda Lemos is 39 years old.",
       "about": "Amanda Lemos",
-      "opponent": null,
+      "opponent": "Alexa Grasso",
       "direction": "against_about",
-      "evidenceType": "grappling",
-      "claimClass": "matchup_analysis",
-      "confidence": 0.9,
-      "quote": "she's 39 years old and she loses to grapplers",
-      "videoId": "25UyPbYPaKM",
+      "evidenceType": "other",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "a 39-year-old Lemos",
+      "videoId": "fHG_uzzQxtc",
       "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-05T18:53:40Z",
-      "url": "https://www.youtube.com/watch?v=25UyPbYPaKM",
+      "publishedAt": "2026-08-04T03:56:40Z",
+      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
-        "startChar": 6773,
-        "endChar": 18749,
-        "approxMinute": 7
+        "startChar": 51461,
+        "endChar": 60610,
+        "approxMinute": 51
       },
       "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
@@ -991,14 +1070,11 @@
       "corroborated": false,
       "knownBeforeBet": true,
       "rangeBouts": [
-        "UFC-2026-08-08-B13",
-        "UFC-2026-08-08-B10",
-        "UFC-2026-08-08-B11",
-        "UFC-2026-08-08-B08"
+        "UFC-2026-08-08-B10"
       ],
       "boutId": "UFC-2026-08-08-B11",
-      "bucket": "target_bout",
-      "cardEvidence": "current_matchup",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
       "occurrences": [
         {
           "channel": "MMA EXPERTS",
@@ -1015,19 +1091,36 @@
           "claimClass": "matchup_analysis",
           "direction": "against_about",
           "confidence": 0.9
+        },
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "fHG_uzzQxtc",
+          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
+          "publishedAt": "2026-08-04T03:56:40Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 51461,
+            "endChar": 60610,
+            "approxMinute": 51
+          },
+          "quote": "a 39-year-old Lemos",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
         }
       ],
-      "mentionCount": 1,
+      "mentionCount": 2,
       "independentSources": 1,
       "sources": [
         "MMA EXPERTS"
       ],
       "mentionsPerSource": {
-        "MMA EXPERTS": 1
+        "MMA EXPERTS": 2
       },
       "directionConflict": false,
       "classSpread": [
-        "matchup_analysis"
+        "matchup_analysis",
+        "hard_fact"
       ]
     },
     {
@@ -1721,27 +1814,27 @@
       ]
     },
     {
-      "claim": "Billy Ray Goff is fairly durable on the feet.",
+      "claim": "Billy Ray Goff has been durable in the past.",
       "about": "Billy Ray Goff",
       "opponent": null,
       "direction": "favors_about",
       "evidenceType": "durability",
       "claimClass": "film_study",
-      "confidence": 0.7,
-      "quote": "Billy Ray Goff's fairly durable on the feet",
-      "videoId": "tW0DYtKeZU0",
-      "channel": "HopperMMA",
-      "publishedAt": "2026-08-04T18:00:04Z",
-      "url": "https://www.youtube.com/watch?v=tW0DYtKeZU0",
+      "confidence": 0.8,
+      "quote": "Billy Ray Golf has been kind of durable in the past",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
       "segment": {
-        "startChar": 11055,
-        "endChar": 17055,
-        "approxMinute": 11
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
       },
       "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
-      "corroborated": false,
+      "corroborated": true,
       "knownBeforeBet": true,
       "rangeBouts": [
         "UFC-2026-08-08-B08"
@@ -1765,15 +1858,33 @@
           "claimClass": "film_study",
           "direction": "favors_about",
           "confidence": 0.7
+        },
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "Billy Ray Golf has been kind of durable in the past",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.8
         }
       ],
-      "mentionCount": 1,
-      "independentSources": 1,
+      "mentionCount": 2,
+      "independentSources": 2,
       "sources": [
-        "HopperMMA"
+        "HopperMMA",
+        "MMA EXPERTS"
       ],
       "mentionsPerSource": {
-        "HopperMMA": 1
+        "HopperMMA": 1,
+        "MMA EXPERTS": 1
       },
       "directionConflict": false,
       "classSpread": [
@@ -2681,7 +2792,7 @@
       ]
     },
     {
-      "claim": "Lemos has lost back-to-back fights against strong pressure grapplers and recent losses to high-level grapplers.",
+      "claim": "Amanda Lemos has lost back-to-back fights against strong pressure grapplers.",
       "about": "Amanda Lemos",
       "opponent": "Alexa Grasso",
       "direction": "against_about",
@@ -2695,10 +2806,10 @@
       "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
         "startChar": 51461,
-        "endChar": 55564,
+        "endChar": 60610,
         "approxMinute": 51
       },
-      "chunkId": "0.0",
+      "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
       "corroborated": false,
@@ -2715,10 +2826,10 @@
           "videoId": "fHG_uzzQxtc",
           "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
           "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.0",
+          "chunkId": "0",
           "segment": {
             "startChar": 51461,
-            "endChar": 55564,
+            "endChar": 60610,
             "approxMinute": 51
           },
           "quote": "Lemos has lost back-to-back fights against strong pressure grapplers.",
@@ -2741,7 +2852,7 @@
       ]
     },
     {
-      "claim": "Amanda Lemos has okay takedown defense but never really puts it all together against grapplers.",
+      "claim": "Amanda Lemos has okay takedown defense and knows how to split the legs and get wrist control, but never puts it all together.",
       "about": "Amanda Lemos",
       "opponent": "Alexa Grasso",
       "direction": "against_about",
@@ -2755,10 +2866,10 @@
       "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
         "startChar": 51461,
-        "endChar": 55564,
+        "endChar": 60610,
         "approxMinute": 51
       },
-      "chunkId": "0.0",
+      "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
       "corroborated": false,
@@ -2775,10 +2886,10 @@
           "videoId": "fHG_uzzQxtc",
           "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
           "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.0",
+          "chunkId": "0",
           "segment": {
             "startChar": 51461,
-            "endChar": 55564,
+            "endChar": 60610,
             "approxMinute": 51
           },
           "quote": "She has okay takedown defense. She knows how to split the legs and face the face the hand and get some wrist control, but she never really puts it all together.",
@@ -2801,144 +2912,24 @@
       ]
     },
     {
-      "claim": "Amanda Lemos has two career submission losses.",
-      "about": "Amanda Lemos",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "record",
-      "claimClass": "hard_fact",
-      "confidence": 0.9,
-      "quote": "Something to note about Amanda Lemosh as a pro, two submission losses",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 51461,
-        "endChar": 55564,
-        "approxMinute": 51
-      },
-      "chunkId": "0.0",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B11",
-      "bucket": "card_fighter_no_bout_context",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.0",
-          "segment": {
-            "startChar": 51461,
-            "endChar": 55564,
-            "approxMinute": 51
-          },
-          "quote": "Something to note about Amanda Lemosh as a pro, two submission losses",
-          "claimClass": "hard_fact",
-          "direction": "against_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "hard_fact"
-      ]
-    },
-    {
-      "claim": "Amanda Lemos is getting older and is on a bad losing streak.",
-      "about": "Amanda Lemos",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "record",
-      "claimClass": "hard_fact",
-      "confidence": 0.9,
-      "quote": "She's not getting any younger. She's on a bad streak.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B11",
-      "bucket": "card_fighter_no_bout_context",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "She's not getting any younger. She's on a bad streak.",
-          "claimClass": "hard_fact",
-          "direction": "against_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "hard_fact"
-      ]
-    },
-    {
-      "claim": "Guilherme Pat keeps his chin too high and fights with too much karate movement.",
+      "claim": "Guilherme Pat keeps his chin up high and does too much karate.",
       "about": "Guilherme Pat",
-      "opponent": null,
+      "opponent": "Steven Asplund",
       "direction": "against_about",
       "evidenceType": "striking",
       "claimClass": "film_study",
-      "confidence": 0.9,
+      "confidence": 0.8,
       "quote": "Guilherme Pat with that chin up high, doing too much karate.",
       "videoId": "fHG_uzzQxtc",
       "channel": "MMA EXPERTS",
       "publishedAt": "2026-08-04T03:56:40Z",
       "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
+        "startChar": 51461,
+        "endChar": 60610,
+        "approxMinute": 51
       },
-      "chunkId": "0.1",
+      "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
       "corroborated": false,
@@ -2948,80 +2939,20 @@
       ],
       "boutId": "UFC-2026-08-08-B10",
       "bucket": "target_bout",
-      "cardEvidence": "general_tendency",
+      "cardEvidence": "current_matchup",
       "occurrences": [
         {
           "channel": "MMA EXPERTS",
           "videoId": "fHG_uzzQxtc",
           "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
           "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
+          "chunkId": "0",
           "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
+            "startChar": 51461,
+            "endChar": 60610,
+            "approxMinute": 51
           },
           "quote": "Guilherme Pat with that chin up high, doing too much karate.",
-          "claimClass": "film_study",
-          "direction": "against_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Guilherme Pat lacks punching power and is too hittable.",
-      "about": "Guilherme Pat",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "striking",
-      "claimClass": "film_study",
-      "confidence": 0.8,
-      "quote": "Geronimo Pat's too hittable. I don't think he has power. I think he's a feather fist",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "target_bout",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "Geronimo Pat's too hittable. I don't think he has power. I think he's a feather fist",
           "claimClass": "film_study",
           "direction": "against_about",
           "confidence": 0.8
@@ -3041,204 +2972,24 @@
       ]
     },
     {
-      "claim": "Guilherme Pat has poor takedown defense.",
-      "about": "Guilherme Pat",
-      "opponent": null,
+      "claim": "Geronimo Pat has bad takedown defense.",
+      "about": "Geronimo Pat",
+      "opponent": "Steven Asplund",
       "direction": "against_about",
       "evidenceType": "grappling",
       "claimClass": "film_study",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "quote": "Geronimo Pat has bad takedown defense.",
       "videoId": "fHG_uzzQxtc",
       "channel": "MMA EXPERTS",
       "publishedAt": "2026-08-04T03:56:40Z",
       "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "target_bout",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "Geronimo Pat has bad takedown defense.",
-          "claimClass": "film_study",
-          "direction": "against_about",
-          "confidence": 0.7
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Steven Asplund is a good boxer with nasty hands.",
-      "about": "Steven Asplund",
-      "opponent": null,
-      "direction": "favors_about",
-      "evidenceType": "striking",
-      "claimClass": "film_study",
-      "confidence": 0.9,
-      "quote": "Steven Asplund, he's a good [laughter] boxer, bro. His hands are nasty.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 59297,
+        "startChar": 51461,
         "endChar": 60610,
-        "approxMinute": 59
+        "approxMinute": 51
       },
-      "chunkId": "0.2",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "target_bout",
-      "cardEvidence": "general_tendency",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.2",
-          "segment": {
-            "startChar": 59297,
-            "endChar": 60610,
-            "approxMinute": 59
-          },
-          "quote": "Steven Asplund, he's a good [laughter] boxer, bro. His hands are nasty.",
-          "claimClass": "film_study",
-          "direction": "favors_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Jeremy Pat lacks rhythm, which led to him being dropped badly by Peter Griffin.",
-      "about": "Jeremy Pat",
-      "opponent": "Peter Griffin",
-      "direction": "against_about",
-      "evidenceType": "striking",
-      "claimClass": "film_study",
-      "confidence": 0.85,
-      "quote": "Jeremy Pat, he doesn't have the rhythm. And that's why he got dropped bad by Peter Griffin, man.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 59297,
-        "endChar": 60610,
-        "approxMinute": 59
-      },
-      "chunkId": "0.2",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "historical_vs_other_opponent",
-      "cardEvidence": "historical_performance",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.2",
-          "segment": {
-            "startChar": 59297,
-            "endChar": 60610,
-            "approxMinute": 59
-          },
-          "quote": "Jeremy Pat, he doesn't have the rhythm. And that's why he got dropped bad by Peter Griffin, man.",
-          "claimClass": "film_study",
-          "direction": "against_about",
-          "confidence": 0.85
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Steven Asplund lacks athleticism and fights like a tough brawler comparable to Tank Abbott.",
-      "about": "Steven Asplund",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "other",
-      "claimClass": "matchup_analysis",
-      "confidence": 0.8,
-      "quote": "I don't really see athleticism. All I see is a tough brawler. All I see is Tank Abbott.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 59297,
-        "endChar": 60610,
-        "approxMinute": 59
-      },
-      "chunkId": "0.2",
+      "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
       "corroborated": false,
@@ -3255,14 +3006,14 @@
           "videoId": "fHG_uzzQxtc",
           "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
           "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.2",
+          "chunkId": "0",
           "segment": {
-            "startChar": 59297,
+            "startChar": 51461,
             "endChar": 60610,
-            "approxMinute": 59
+            "approxMinute": 51
           },
-          "quote": "I don't really see athleticism. All I see is a tough brawler. All I see is Tank Abbott.",
-          "claimClass": "matchup_analysis",
+          "quote": "Geronimo Pat has bad takedown defense.",
+          "claimClass": "film_study",
           "direction": "against_about",
           "confidence": 0.8
         }
@@ -3277,127 +3028,7 @@
       },
       "directionConflict": false,
       "classSpread": [
-        "matchup_analysis"
-      ]
-    },
-    {
-      "claim": "Steven Asplund lacks the level of power that Tank Abbott had in 1999.",
-      "about": "Steven Asplund",
-      "opponent": null,
-      "direction": "against_about",
-      "evidenceType": "striking",
-      "claimClass": "matchup_analysis",
-      "confidence": 0.75,
-      "quote": "And without the power, Tank Abbott had more power back in 1999. Steven Asplund overrated.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 59297,
-        "endChar": 60610,
-        "approxMinute": 59
-      },
-      "chunkId": "0.2",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "target_bout",
-      "cardEvidence": "current_matchup",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.2",
-          "segment": {
-            "startChar": 59297,
-            "endChar": 60610,
-            "approxMinute": 59
-          },
-          "quote": "And without the power, Tank Abbott had more power back in 1999. Steven Asplund overrated.",
-          "claimClass": "matchup_analysis",
-          "direction": "against_about",
-          "confidence": 0.75
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "matchup_analysis"
-      ]
-    },
-    {
-      "claim": "Patrino previously butchered Steven Asplund in a fight.",
-      "about": "Steven Asplund",
-      "opponent": "Patrino",
-      "direction": "against_about",
-      "evidenceType": "record",
-      "claimClass": "hard_fact",
-      "confidence": 0.9,
-      "quote": "And Patrino butchered him.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 59297,
-        "endChar": 60610,
-        "approxMinute": 59
-      },
-      "chunkId": "0.2",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": "UFC-2026-08-08-B10",
-      "bucket": "historical_vs_other_opponent",
-      "cardEvidence": "historical_performance",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.2",
-          "segment": {
-            "startChar": 59297,
-            "endChar": 60610,
-            "approxMinute": 59
-          },
-          "quote": "And Patrino butchered him.",
-          "claimClass": "hard_fact",
-          "direction": "against_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "hard_fact"
+        "film_study"
       ]
     },
     {
@@ -4354,6 +3985,888 @@
       ],
       "mentionsPerSource": {
         "Artem MMA": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Billy Ray Goff is giving up a lot in the reach department against Tai Miller.",
+      "about": "Billy Ray Goff",
+      "opponent": "Tai Miller",
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "he's given up a lot in the reach department.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B08",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "he's given up a lot in the reach department.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Billy Ray Goff's durability is not all that great.",
+      "about": "Billy Ray Goff",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "durability",
+      "claimClass": "film_study",
+      "confidence": 0.7,
+      "quote": "I don't think he's his durability is all that great.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B08",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "I don't think he's his durability is all that great.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.7
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Billy Ray Goff fights recklessly in so many of his fights.",
+      "about": "Billy Ray Goff",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.8,
+      "quote": "Billy Gooff kind of comes out there and just fights so recklessly in so many of his fights",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B08",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "Billy Gooff kind of comes out there and just fights so recklessly in so many of his fights",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Billy Ray Goff hardly fights at all, which suggests he must have injuries.",
+      "about": "Billy Ray Goff",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "injury",
+      "claimClass": "injury_health",
+      "confidence": 0.6,
+      "quote": "he must have injuries cuz he hardly fights at all.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B08",
+      "bucket": "target_bout",
+      "cardEvidence": "current_health_camp",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "he must have injuries cuz he hardly fights at all.",
+          "claimClass": "injury_health",
+          "direction": "against_about",
+          "confidence": 0.6
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "injury_health"
+      ]
+    },
+    {
+      "claim": "Darren Elkins is 42 years old.",
+      "about": "Darren Elkins",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 0.9,
+      "quote": "Darren Elkins is 42.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B06",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Darren Elkins is 42.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Miles Johns has been fighting in the UFC since 2019.",
+      "about": "Miles Johns",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Miles Johns has been fighting in the UFC since 2019",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B02",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Miles Johns has been fighting in the UFC since 2019",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Miles Johns is 32 years old and still in his prime.",
+      "about": "Miles Johns",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "other",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Miles Johns is 32, still absolutely in his prime.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B02",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Miles Johns is 32, still absolutely in his prime.",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Richie Miranda's boxing is not good and he lacks pop on his shots.",
+      "about": "Richie Miranda",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.8,
+      "quote": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B13",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.8
+        },
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "his boxing's not good and he doesn't have pop on his shots.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 2
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Manel Sousa is too explosive for Richie Miranda.",
+      "about": "Manel Sousa",
+      "opponent": "Richie Miranda",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "I think Manel Sousa is too damn explosive for Richie Miranda.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B13",
+      "bucket": "target_bout",
+      "cardEvidence": "current_matchup",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "I think Manel Sousa is too damn explosive for Richie Miranda.",
+          "claimClass": "matchup_analysis",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Richie Miranda trains at Bloodline with good talent.",
+      "about": "Richie Miranda",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "camp",
+      "claimClass": "training_camp",
+      "confidence": 0.9,
+      "quote": "Richie Miranda has been training at Bloodline, which I happen to think is a good team.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B13",
+      "bucket": "target_bout",
+      "cardEvidence": "current_health_camp",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Richie Miranda has been training at Bloodline, which I happen to think is a good team.",
+          "claimClass": "training_camp",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "training_camp"
+      ]
+    },
+    {
+      "claim": "Richie Miranda lacks the wrestling to get the fight to the ground.",
+      "about": "Richie Miranda",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "grappling",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.8,
+      "quote": "I don't think he has the wrestling to be able to get it there.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B13",
+      "bucket": "target_bout",
+      "cardEvidence": "current_matchup",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "I don't think he has the wrestling to be able to get it there.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Billy Ray Goff lost his recent fights against Ramiz Brahimaj and Trevin Giles.",
+      "about": "Billy Ray Goff",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "coming off of the Rami Ramiz Brahimaj, where he got smashed by Ramiz Brahimaj, lost to Trevin Giles as well.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B08",
+      "bucket": "target_bout",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "coming off of the Rami Ramiz Brahimaj, where he got smashed by Ramiz Brahimaj, lost to Trevin Giles as well.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Darren Elkins has accumulated a massive amount of wear and tear over his career.",
+      "about": "Darren Elkins",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "durability",
+      "claimClass": "unsupported_narrative",
+      "confidence": 0.9,
+      "quote": "Darren Elkins has 400,000 miles on a [__] car.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B06",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Darren Elkins has 400,000 miles on a [__] car.",
+          "claimClass": "unsupported_narrative",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "unsupported_narrative"
+      ]
+    },
+    {
+      "claim": "Amanda Lemos struggles against good grapplers and gets taken down.",
+      "about": "Amanda Lemos",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "grappling",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "She doesn't do well against good grapplers. You could check the Tatiana Suarez fight. You could check a lot of her fights. She gets taken down.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B11",
+      "bucket": "card_fighter_no_bout_context",
+      "cardEvidence": "general_tendency",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "She doesn't do well against good grapplers. You could check the Tatiana Suarez fight. You could check a lot of her fights. She gets taken down.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.9
+        },
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.2",
+          "segment": {
+            "startChar": 8573,
+            "endChar": 9609,
+            "approxMinute": 9
+          },
+          "quote": "she doesn't do well against good grapplers. You could check the Tatiana Suarez fight. ... She gets taken down.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 2,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 2
       },
       "directionConflict": false,
       "classSpread": [
@@ -7787,6 +8300,66 @@
       "classSpread": [
         "film_study"
       ]
+    },
+    {
+      "claim": "Pat is soft compared to Aspen, who has a lot more heart.",
+      "about": "Pat",
+      "opponent": "Stephen Aspen",
+      "direction": "against_about",
+      "evidenceType": "motivation",
+      "claimClass": "psychological",
+      "confidence": 0.7,
+      "quote": "Pat being soft. Aspen, I think, has a lot more heart.",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": "UFC-2026-08-08-B10",
+      "bucket": "historical_vs_other_opponent",
+      "cardEvidence": "historical_performance",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "Pat being soft. Aspen, I think, has a lot more heart.",
+          "claimClass": "psychological",
+          "direction": "against_about",
+          "confidence": 0.7
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "psychological"
+      ]
     }
   ],
   "offCard": [
@@ -9264,24 +9837,24 @@
       ]
     },
     {
-      "claim": "Grasso has the style to give Lemos trouble with takedowns and will control the fight.",
+      "claim": "Alexa Grasso has the style to give Amanda Lemos trouble with takedowns.",
       "about": "Alexa Grasso",
       "opponent": "Amanda Lemos",
       "direction": "favors_about",
       "evidenceType": "grappling",
       "claimClass": "matchup_analysis",
       "confidence": 0.9,
-      "quote": "Grasso is a good athletic prospect. Yeah, I know. She's 10 years younger. And I feel like she's got the style to give Lemos, a 39-year-old Lemos, a lot of trouble with takedowns.",
+      "quote": "she's got the style to give Lemos, a 39-year-old Lemos, a lot of trouble with takedowns.",
       "videoId": "fHG_uzzQxtc",
       "channel": "MMA EXPERTS",
       "publishedAt": "2026-08-04T03:56:40Z",
       "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
       "segment": {
         "startChar": 51461,
-        "endChar": 55564,
+        "endChar": 60610,
         "approxMinute": 51
       },
-      "chunkId": "0.0",
+      "chunkId": "0",
       "model": "gemini-3.5-flash-lite",
       "promptVersion": "77739782e3db",
       "corroborated": false,
@@ -9298,13 +9871,13 @@
           "videoId": "fHG_uzzQxtc",
           "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
           "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.0",
+          "chunkId": "0",
           "segment": {
             "startChar": 51461,
-            "endChar": 55564,
+            "endChar": 60610,
             "approxMinute": 51
           },
-          "quote": "Grasso is a good athletic prospect. Yeah, I know. She's 10 years younger. And I feel like she's got the style to give Lemos, a 39-year-old Lemos, a lot of trouble with takedowns.",
+          "quote": "she's got the style to give Lemos, a 39-year-old Lemos, a lot of trouble with takedowns.",
           "claimClass": "matchup_analysis",
           "direction": "favors_about",
           "confidence": 0.9
@@ -9321,246 +9894,6 @@
       "directionConflict": false,
       "classSpread": [
         "matchup_analysis"
-      ]
-    },
-    {
-      "claim": "Thayanara has strong top control once she gets her opponent down.",
-      "about": "Thayanara",
-      "opponent": "Amanda Lemos",
-      "direction": "favors_about",
-      "evidenceType": "grappling",
-      "claimClass": "film_study",
-      "confidence": 0.8,
-      "quote": "And if Thayanara gets on top, she stays on top.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": null,
-      "bucket": "other_fight_or_fighter",
-      "cardEvidence": "off_card",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "And if Thayanara gets on top, she stays on top.",
-          "claimClass": "film_study",
-          "direction": "favors_about",
-          "confidence": 0.8
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Steven Asplin has heavy hands and good combination punching.",
-      "about": "Steven Asplin",
-      "opponent": "Guilherme Pat",
-      "direction": "favors_about",
-      "evidenceType": "striking",
-      "claimClass": "film_study",
-      "confidence": 0.9,
-      "quote": "Steven Asplin with heavy hands going to give him problems with the combos.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": null,
-      "bucket": "other_fight_or_fighter",
-      "cardEvidence": "off_card",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "Steven Asplin with heavy hands going to give him problems with the combos.",
-          "claimClass": "film_study",
-          "direction": "favors_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Steven Asplin has good cardio.",
-      "about": "Steven Asplin",
-      "opponent": null,
-      "direction": "favors_about",
-      "evidenceType": "cardio",
-      "claimClass": "film_study",
-      "confidence": 0.7,
-      "quote": "Asplund is is a he actually has cardio.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": null,
-      "bucket": "other_fight_or_fighter",
-      "cardEvidence": "off_card",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "Asplund is is a he actually has cardio.",
-          "claimClass": "film_study",
-          "direction": "favors_about",
-          "confidence": 0.7
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "film_study"
-      ]
-    },
-    {
-      "claim": "Steven Asplin previously dropped Patrino multiple times in a fight.",
-      "about": "Steven Asplin",
-      "opponent": "Patrino",
-      "direction": "favors_about",
-      "evidenceType": "striking",
-      "claimClass": "hard_fact",
-      "confidence": 0.9,
-      "quote": "Patrino got dropped multiple times in that fight.",
-      "videoId": "fHG_uzzQxtc",
-      "channel": "MMA EXPERTS",
-      "publishedAt": "2026-08-04T03:56:40Z",
-      "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-      "segment": {
-        "startChar": 55329,
-        "endChar": 59542,
-        "approxMinute": 55
-      },
-      "chunkId": "0.1",
-      "model": "gemini-3.5-flash-lite",
-      "promptVersion": "77739782e3db",
-      "corroborated": false,
-      "knownBeforeBet": true,
-      "rangeBouts": [
-        "UFC-2026-08-08-B10"
-      ],
-      "boutId": null,
-      "bucket": "other_fight_or_fighter",
-      "cardEvidence": "off_card",
-      "occurrences": [
-        {
-          "channel": "MMA EXPERTS",
-          "videoId": "fHG_uzzQxtc",
-          "url": "https://www.youtube.com/watch?v=fHG_uzzQxtc",
-          "publishedAt": "2026-08-04T03:56:40Z",
-          "chunkId": "0.1",
-          "segment": {
-            "startChar": 55329,
-            "endChar": 59542,
-            "approxMinute": 55
-          },
-          "quote": "Patrino got dropped multiple times in that fight.",
-          "claimClass": "hard_fact",
-          "direction": "favors_about",
-          "confidence": 0.9
-        }
-      ],
-      "mentionCount": 1,
-      "independentSources": 1,
-      "sources": [
-        "MMA EXPERTS"
-      ],
-      "mentionsPerSource": {
-        "MMA EXPERTS": 1
-      },
-      "directionConflict": false,
-      "classSpread": [
-        "hard_fact"
       ]
     },
     {
@@ -10299,6 +10632,1038 @@
       "directionConflict": false,
       "classSpread": [
         "film_study"
+      ]
+    },
+    {
+      "claim": "Tai Miller is very patient and landed 59 significant strikes in round one against Fugat.",
+      "about": "Tai Miller",
+      "opponent": "Adam Fugat",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "statistical",
+      "confidence": 0.9,
+      "quote": "very very patient and wow, 59 significant strikes landed in round one.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "very very patient and wow, 59 significant strikes landed in round one.",
+          "claimClass": "statistical",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "statistical"
+      ]
+    },
+    {
+      "claim": "Tai Miller has a massive size advantage and knows how to use his boxing.",
+      "about": "Tai Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "He's got massive size advantage here and he knows how to use that, you know, that boxing that he's got.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "He's got massive size advantage here and he knows how to use that, you know, that boxing that he's got.",
+          "claimClass": "matchup_analysis",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Tai Miller is a fit NHB guy under Tom Vaughn who works well with long rangy strikers.",
+      "about": "Tai Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "camp",
+      "claimClass": "training_camp",
+      "confidence": 0.9,
+      "quote": "he's a fit NHB guy under Tom Vaughn. Tom Vaughn knows what to do with these long rangy strikers",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "he's a fit NHB guy under Tom Vaughn. Tom Vaughn knows what to do with these long rangy strikers",
+          "claimClass": "training_camp",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "training_camp"
+      ]
+    },
+    {
+      "claim": "Tai Miller has a beautiful left hand down the pipe, elbows, and knees up the middle.",
+      "about": "Tai Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "He's got a beautiful left hand down the pipe. He's got elbows. He's got knees up the middle.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "He's got a beautiful left hand down the pipe. He's got elbows. He's got knees up the middle.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Tai Miller is able to keep up high volume and pace himself excellently through 15 minutes.",
+      "about": "Tai Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "cardio",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Miller's able to keep up high volume. He's able to pace himself excellent through the 15 minutes.",
+      "videoId": "k3tOwASelgQ",
+      "channel": "Bookie Beatdown",
+      "publishedAt": "2026-08-05T20:48:47Z",
+      "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+      "segment": {
+        "startChar": 45489,
+        "endChar": 54809,
+        "approxMinute": 45
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Bookie Beatdown",
+          "videoId": "k3tOwASelgQ",
+          "url": "https://www.youtube.com/watch?v=k3tOwASelgQ",
+          "publishedAt": "2026-08-05T20:48:47Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 45489,
+            "endChar": 54809,
+            "approxMinute": 45
+          },
+          "quote": "Miller's able to keep up high volume. He's able to pace himself excellent through the 15 minutes.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Bookie Beatdown"
+      ],
+      "mentionsPerSource": {
+        "Bookie Beatdown": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Islam Dulatov pulled out of his fight because he was sick.",
+      "about": "Islam Dulatov",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "injury",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Islam Dulatov ate some bad burrito or something. Did he pull a Joe Pyfer? I don't know. But he pulled out of his fight cuz he was sick.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Islam Dulatov ate some bad burrito or something. Did he pull a Joe Pyfer? I don't know. But he pulled out of his fight cuz he was sick.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Alexia Taynara will be able to out-grapple Amanda Lemosh dominantly.",
+      "about": "Alexia Taynara",
+      "opponent": "Amanda Lemosh",
+      "direction": "favors_about",
+      "evidenceType": "grappling",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "I believe Alexia Taynara is going to be able to out-grapple Amanda Lemosh dominantly.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "I believe Alexia Taynara is going to be able to out-grapple Amanda Lemosh dominantly.",
+          "claimClass": "matchup_analysis",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Billy Ray Gallop has been out of action for a year.",
+      "about": "Billy Ray Gallop",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "layoff",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "BILLY Ray Gallop has been out for a year",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "BILLY Ray Gallop has been out for a year",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Billy Ray Gallop won't be able to strike with Ty Miller.",
+      "about": "Billy Ray Gallop",
+      "opponent": "Ty Miller",
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "and he won't be able to strike with Ty.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "and he won't be able to strike with Ty.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Manuel Souza is way more explosive than Richie Miranda.",
+      "about": "Manuel Souza",
+      "opponent": "Richie Miranda",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Manuel Souza is way more explosive than Richie Miranda",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Manuel Souza is way more explosive than Richie Miranda",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Jesse Rosas has low level of punching power and couldn't hurt his previous opponent.",
+      "about": "Jesse Rosas",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Jesse Rosas couldn't hurt him at all. It was amazing the the low level of punching power Jesse Rosas has.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "Jesse Rosas couldn't hurt him at all. It was amazing the the low level of punching power Jesse Rosas has.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Jesse Rosas has built his record fighting low-level competition.",
+      "about": "Jesse Rosas",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "other",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "This is This is how he built his record. He hasn't fought anybody, anybody.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 228,
+        "endChar": 4850,
+        "approxMinute": 0
+      },
+      "chunkId": "0.0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.0",
+          "segment": {
+            "startChar": 228,
+            "endChar": 4850,
+            "approxMinute": 0
+          },
+          "quote": "This is This is how he built his record. He hasn't fought anybody, anybody.",
+          "claimClass": "matchup_analysis",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
+      ]
+    },
+    {
+      "claim": "Ty Miller is tall and long with a 6'2 height and 77 and 1/2 inch reach.",
+      "about": "Ty Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "Ty Miller very, very good with his straight punches, very good kicker. Ty Miller could do it all. 6'2, 77 and 1/2 inch reach.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Ty Miller very, very good with his straight punches, very good kicker. Ty Miller could do it all. 6'2, 77 and 1/2 inch reach.",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Yair Del Valle has an excellent submission game and excels at taking the back.",
+      "about": "Yair Del Valle",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "grappling",
+      "claimClass": "film_study",
+      "confidence": 0.8,
+      "quote": "Yair Del Valle is like a magnet to the back. He gets right to the back... Yair Del Valle's submission game should be excellent.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Yair Del Valle is like a magnet to the back. He gets right to the back... Yair Del Valle's submission game should be excellent.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Yair Del Valle's boxing is slow and subpar.",
+      "about": "Yair Del Valle",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.8,
+      "quote": "Yair Del Valle's boxing is slow and kind of bad.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 4389,
+        "endChar": 9079,
+        "approxMinute": 4
+      },
+      "chunkId": "0.1",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.1",
+          "segment": {
+            "startChar": 4389,
+            "endChar": 9079,
+            "approxMinute": 4
+          },
+          "quote": "Yair Del Valle's boxing is slow and kind of bad.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.8
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Darrion Caldwell is 42 years old and has accumulated significant damage in his career.",
+      "about": "Darrion Caldwell",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "durability",
+      "claimClass": "hard_fact",
+      "confidence": 0.9,
+      "quote": "fading the 42-year-old damaged Darrion Caldwell.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 8573,
+        "endChar": 9609,
+        "approxMinute": 9
+      },
+      "chunkId": "0.2",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.2",
+          "segment": {
+            "startChar": 8573,
+            "endChar": 9609,
+            "approxMinute": 9
+          },
+          "quote": "fading the 42-year-old damaged Darrion Caldwell.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Alexa Grasso will be able to take Amanda Lemos down and control the fight.",
+      "about": "Alexa Grasso",
+      "opponent": "Amanda Lemos",
+      "direction": "favors_about",
+      "evidenceType": "grappling",
+      "claimClass": "matchup_analysis",
+      "confidence": 0.9,
+      "quote": "Alexa Grasso should be able to take her down in the first round, beat her up.",
+      "videoId": "FgkjleTMlpM",
+      "channel": "The Mike Finch Show",
+      "publishedAt": "2026-08-04T17:12:09Z",
+      "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+      "segment": {
+        "startChar": 8573,
+        "endChar": 9609,
+        "approxMinute": 9
+      },
+      "chunkId": "0.2",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B13",
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "The Mike Finch Show",
+          "videoId": "FgkjleTMlpM",
+          "url": "https://www.youtube.com/watch?v=FgkjleTMlpM",
+          "publishedAt": "2026-08-04T17:12:09Z",
+          "chunkId": "0.2",
+          "segment": {
+            "startChar": 8573,
+            "endChar": 9609,
+            "approxMinute": 9
+          },
+          "quote": "Alexa Grasso should be able to take her down in the first round, beat her up.",
+          "claimClass": "matchup_analysis",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "The Mike Finch Show"
+      ],
+      "mentionsPerSource": {
+        "The Mike Finch Show": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "matchup_analysis"
       ]
     },
     {
@@ -11561,6 +12926,426 @@
       "directionConflict": false,
       "classSpread": [
         "statistical"
+      ]
+    },
+    {
+      "claim": "Tinara is mature for her age, well-rounded, and can compete in all aspects of MMA.",
+      "about": "Tinara",
+      "opponent": "Amanda Lamos",
+      "direction": "favors_about",
+      "evidenceType": "other",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "what I've seen from Tinara is that she's mature for her age. She's well-rounded and she can take the fight anywhere.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "what I've seen from Tinara is that she's mature for her age. She's well-rounded and she can take the fight anywhere.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Amanda Lamos has one-hitter-quitter knockout power and is very strong.",
+      "about": "Amanda Lamos",
+      "opponent": "Tinara",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Amanda Lamos, what she's known for is she's one of the few women that's got that one hitter quitter knockout power. She's very strong.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "Amanda Lamos, what she's known for is she's one of the few women that's got that one hitter quitter knockout power. She's very strong.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Amanda Lamos's historical weakness has been getting put on her back.",
+      "about": "Amanda Lamos",
+      "opponent": null,
+      "direction": "against_about",
+      "evidenceType": "grappling",
+      "claimClass": "film_study",
+      "confidence": 0.85,
+      "quote": "Her weakness has always been if you can put her on her back.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "Her weakness has always been if you can put her on her back.",
+          "claimClass": "film_study",
+          "direction": "against_about",
+          "confidence": 0.85
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Tai Miller has a long body type and a diverse array of striking weapons including elbows, combinations, knees, kicks, and straight punches.",
+      "about": "Tai Miller",
+      "opponent": "Billy Ray Goff",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Tai Miller kind of reminds me of like the new school Carlos Cond means hybrid. He's got that long body type. He's got all kinds of shots at his disposal. Elbows, combinations, knees, kicks, nice straight punches.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "Tai Miller kind of reminds me of like the new school Carlos Cond means hybrid. He's got that long body type. He's got all kinds of shots at his disposal. Elbows, combinations, knees, kicks, nice straight punches.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Tai Miller has not shown cardio issues or falling off a cliff in fights.",
+      "about": "Tai Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "cardio",
+      "claimClass": "film_study",
+      "confidence": 0.85,
+      "quote": "I haven't seen some kind of cardio issue from Tai Miller. I haven't seen this guy fall off a cliff.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "I haven't seen some kind of cardio issue from Tai Miller. I haven't seen this guy fall off a cliff.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.85
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Adam Fugat was able to hurt Tai Miller in his previous fight.",
+      "about": "Tai Miller",
+      "opponent": "Adam Fugat",
+      "direction": "against_about",
+      "evidenceType": "durability",
+      "claimClass": "hard_fact",
+      "confidence": 0.9,
+      "quote": "you saw in that last fight, Adam Fugat hurt this guy.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "you saw in that last fight, Adam Fugat hurt this guy.",
+          "claimClass": "hard_fact",
+          "direction": "against_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Isaac Dulgarian threw his fight against Yadier Delvi.",
+      "about": "Isaac Dulgarian",
+      "opponent": "Yadier Delvi",
+      "direction": "against_about",
+      "evidenceType": "other",
+      "claimClass": "rumor",
+      "confidence": 0.7,
+      "quote": "It was Isaac Dulgaren that threw the fight.",
+      "videoId": "hSsWCvhowmw",
+      "channel": "Half The Battle",
+      "publishedAt": "2026-08-06T20:38:07Z",
+      "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+      "segment": {
+        "startChar": 10232,
+        "endChar": 16232,
+        "approxMinute": 10
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "Half The Battle",
+          "videoId": "hSsWCvhowmw",
+          "url": "https://www.youtube.com/watch?v=hSsWCvhowmw",
+          "publishedAt": "2026-08-06T20:38:07Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 10232,
+            "endChar": 16232,
+            "approxMinute": 10
+          },
+          "quote": "It was Isaac Dulgaren that threw the fight.",
+          "claimClass": "rumor",
+          "direction": "against_about",
+          "confidence": 0.7
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "Half The Battle"
+      ],
+      "mentionsPerSource": {
+        "Half The Battle": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "rumor"
       ]
     },
     {
@@ -13242,9 +15027,373 @@
       "classSpread": [
         "film_study"
       ]
+    },
+    {
+      "claim": "Stephen Aspen is a future top 15 heavyweight in the UFC.",
+      "about": "Stephen Aspen",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "other",
+      "claimClass": "prediction",
+      "confidence": 0.9,
+      "quote": "Stephen Asplan is a future top 15 heavyweight in the [...] UFC.",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "Stephen Asplan is a future top 15 heavyweight in the [...] UFC.",
+          "claimClass": "prediction",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "prediction"
+      ]
+    },
+    {
+      "claim": "Stephen Aspen has heavy fists and should get a knockout.",
+      "about": "Stephen Aspen",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "prediction",
+      "confidence": 0.9,
+      "quote": "Aspel with heavy fist should get a KO.",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "Aspel with heavy fist should get a KO.",
+          "claimClass": "prediction",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "prediction"
+      ]
+    },
+    {
+      "claim": "Ty Miller has a 5-inch reach advantage and good boxing from the outside.",
+      "about": "Ty Miller",
+      "opponent": "Billy Ray Goff",
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "film_study",
+      "confidence": 0.9,
+      "quote": "Ty Miller is a nasty prospect. 5-in reach advantage. Good boxing from the outside, undefeated.",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "Ty Miller is a nasty prospect. 5-in reach advantage. Good boxing from the outside, undefeated.",
+          "claimClass": "film_study",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "film_study"
+      ]
+    },
+    {
+      "claim": "Ty Miller is an undefeated prospect.",
+      "about": "Ty Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "record",
+      "claimClass": "hard_fact",
+      "confidence": 1,
+      "quote": "undefeated. What more I need to say?",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "undefeated. What more I need to say?",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 1
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
+    },
+    {
+      "claim": "Ty Miller is coming off a first-round knockout.",
+      "about": "Ty Miller",
+      "opponent": null,
+      "direction": "favors_about",
+      "evidenceType": "striking",
+      "claimClass": "hard_fact",
+      "confidence": 0.9,
+      "quote": "his opponent's coming off of a pretty sweet first round KO",
+      "videoId": "Hj-V-pc2DyM",
+      "channel": "MMA EXPERTS",
+      "publishedAt": "2026-08-07T02:32:05Z",
+      "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+      "segment": {
+        "startChar": 41234,
+        "endChar": 47234,
+        "approxMinute": 41
+      },
+      "chunkId": "0",
+      "model": "gemini-3.5-flash-lite",
+      "promptVersion": "77739782e3db",
+      "corroborated": false,
+      "knownBeforeBet": true,
+      "rangeBouts": [
+        "UFC-2026-08-08-B08"
+      ],
+      "boutId": null,
+      "bucket": "other_fight_or_fighter",
+      "cardEvidence": "off_card",
+      "occurrences": [
+        {
+          "channel": "MMA EXPERTS",
+          "videoId": "Hj-V-pc2DyM",
+          "url": "https://www.youtube.com/watch?v=Hj-V-pc2DyM",
+          "publishedAt": "2026-08-07T02:32:05Z",
+          "chunkId": "0",
+          "segment": {
+            "startChar": 41234,
+            "endChar": 47234,
+            "approxMinute": 41
+          },
+          "quote": "his opponent's coming off of a pretty sweet first round KO",
+          "claimClass": "hard_fact",
+          "direction": "favors_about",
+          "confidence": 0.9
+        }
+      ],
+      "mentionCount": 1,
+      "independentSources": 1,
+      "sources": [
+        "MMA EXPERTS"
+      ],
+      "mentionsPerSource": {
+        "MMA EXPERTS": 1
+      },
+      "directionConflict": false,
+      "classSpread": [
+        "hard_fact"
+      ]
     }
   ],
   "conflictTopics": [
+    {
+      "boutId": "UFC-2026-08-08-B06",
+      "proposition": "Darren Elkins — record",
+      "about": "Darren Elkins",
+      "topic": "record",
+      "favorPosition": {
+        "claims": 2,
+        "sources": [
+          "MMA EXPERTS",
+          "The Mike Finch Show",
+          "HopperMMA"
+        ],
+        "independentSources": 3,
+        "examples": [
+          "Darren Elkins has only been submitted once in his career by Charles Oliveira.",
+          "Darren Elkins has won three of his last five fights."
+        ]
+      },
+      "againstPosition": {
+        "claims": 3,
+        "sources": [
+          "MMA EXPERTS",
+          "The Mike Finch Show"
+        ],
+        "independentSources": 2,
+        "examples": [
+          "Darren Elkins is 42 years old and coming off a really bad loss to Julian Erosa where he was destroyed in the first round.",
+          "Darren Elkins is coming off a terrible loss to Julianna Pena Rosa and hasn't fought in over a year."
+        ]
+      },
+      "crossSource": false
+    },
+    {
+      "boutId": "UFC-2026-08-08-B08",
+      "proposition": "Billy Ray Goff — durability",
+      "about": "Billy Ray Goff",
+      "topic": "durability",
+      "favorPosition": {
+        "claims": 2,
+        "sources": [
+          "HopperMMA",
+          "MMA EXPERTS",
+          "Kunath"
+        ],
+        "independentSources": 3,
+        "examples": [
+          "Billy Ray Goff has been durable in the past.",
+          "Billy Ray Goff possesses good durability and is not afraid of size differences, willing to get on the inside and chop at opponents' legs."
+        ]
+      },
+      "againstPosition": {
+        "claims": 2,
+        "sources": [
+          "Bookie Beatdown",
+          "Winning In The Shadows"
+        ],
+        "independentSources": 2,
+        "examples": [
+          "Billy Ray Goff's durability is not all that great.",
+          "Billy Ray Goff has been hurt to the body previously."
+        ]
+      },
+      "crossSource": true
+    },
     {
       "boutId": "UFC-2026-08-08-B08",
       "proposition": "Billy Ray Goff — striking",
@@ -13263,48 +15412,19 @@
         ]
       },
       "againstPosition": {
-        "claims": 2,
+        "claims": 4,
         "sources": [
+          "Bookie Beatdown",
           "TheWeasle",
           "Winning In The Shadows"
         ],
-        "independentSources": 2,
+        "independentSources": 3,
         "examples": [
-          "Billy Ray Goff fights high-energy with constant movement and heavy pressure combos, but fights very riskily.",
-          "Billy Ray Goff has poor striking defense."
+          "Billy Ray Goff is giving up a lot in the reach department against Tai Miller.",
+          "Billy Ray Goff fights recklessly in so many of his fights."
         ]
       },
       "crossSource": true
-    },
-    {
-      "boutId": "UFC-2026-08-08-B06",
-      "proposition": "Darren Elkins — record",
-      "about": "Darren Elkins",
-      "topic": "record",
-      "favorPosition": {
-        "claims": 2,
-        "sources": [
-          "MMA EXPERTS",
-          "HopperMMA"
-        ],
-        "independentSources": 2,
-        "examples": [
-          "Darren Elkins has only been submitted once in his career by Charles Oliveira.",
-          "Darren Elkins has won three of his last five fights."
-        ]
-      },
-      "againstPosition": {
-        "claims": 2,
-        "sources": [
-          "MMA EXPERTS"
-        ],
-        "independentSources": 1,
-        "examples": [
-          "Darren Elkins is 42 years old and coming off a really bad loss to Julian Erosa where he was destroyed in the first round.",
-          "Darren Elkins is coming off a terrible loss to Julianna Pena Rosa and hasn't fought in over a year."
-        ]
-      },
-      "crossSource": false
     },
     {
       "boutId": "UFC-2026-08-08-B08",
@@ -13336,33 +15456,33 @@
       "crossSource": false
     },
     {
-      "boutId": "UFC-2026-08-08-B08",
-      "proposition": "Billy Ray Goff — durability",
-      "about": "Billy Ray Goff",
-      "topic": "durability",
+      "boutId": "UFC-2026-08-08-B13",
+      "proposition": "Richie Miranda — grappling",
+      "about": "Richie Miranda",
+      "topic": "grappling",
       "favorPosition": {
-        "claims": 2,
-        "sources": [
-          "HopperMMA",
-          "Kunath"
-        ],
-        "independentSources": 2,
-        "examples": [
-          "Billy Ray Goff is fairly durable on the feet.",
-          "Billy Ray Goff possesses good durability and is not afraid of size differences, willing to get on the inside and chop at opponents' legs."
-        ]
-      },
-      "againstPosition": {
         "claims": 1,
         "sources": [
-          "Winning In The Shadows"
+          "MMA EXPERTS"
         ],
         "independentSources": 1,
         "examples": [
-          "Billy Ray Goff has been hurt to the body previously."
+          "Richie Miranda has capable jiu-jitsu and durability."
         ]
       },
-      "crossSource": true
+      "againstPosition": {
+        "claims": 2,
+        "sources": [
+          "MMA EXPERTS",
+          "The Mike Finch Show"
+        ],
+        "independentSources": 2,
+        "examples": [
+          "Richie Miranda was taken down multiple times by Richie Lewis in LFA.",
+          "Richie Miranda lacks the wrestling to get the fight to the ground."
+        ]
+      },
+      "crossSource": false
     },
     {
       "boutId": "UFC-2026-08-08-B11",
@@ -13389,35 +15509,6 @@
         "independentSources": 1,
         "examples": [
           "Amanda Lemos was dominated by Zhang Weili in their title fight."
-        ]
-      },
-      "crossSource": true
-    },
-    {
-      "boutId": "UFC-2026-08-08-B11",
-      "proposition": "Amanda Lemos — record",
-      "about": "Amanda Lemos",
-      "topic": "record",
-      "favorPosition": {
-        "claims": 1,
-        "sources": [
-          "HopperMMA"
-        ],
-        "independentSources": 1,
-        "examples": [
-          "Amanda Lemos has a win over Mackenzie Dern."
-        ]
-      },
-      "againstPosition": {
-        "claims": 3,
-        "sources": [
-          "MMA EXPERTS",
-          "DFS BY THE NUMBERS"
-        ],
-        "independentSources": 2,
-        "examples": [
-          "Amanda Lemos has two career submission losses.",
-          "Amanda Lemos is getting older and is on a bad losing streak."
         ]
       },
       "crossSource": true
@@ -13496,71 +15587,43 @@
         ]
       },
       "againstPosition": {
-        "claims": 2,
+        "claims": 1,
         "sources": [
           "MMA EXPERTS"
         ],
         "independentSources": 1,
         "examples": [
-          "Guilherme Pat keeps his chin too high and fights with too much karate movement.",
-          "Guilherme Pat lacks punching power and is too hittable."
+          "Guilherme Pat keeps his chin up high and does too much karate."
         ]
       },
       "crossSource": false
     },
     {
-      "boutId": "UFC-2026-08-08-B13",
-      "proposition": "Richie Miranda — grappling",
-      "about": "Richie Miranda",
-      "topic": "grappling",
+      "boutId": "UFC-2026-08-08-B11",
+      "proposition": "Amanda Lemos — record",
+      "about": "Amanda Lemos",
+      "topic": "record",
       "favorPosition": {
         "claims": 1,
         "sources": [
-          "MMA EXPERTS"
+          "HopperMMA"
         ],
         "independentSources": 1,
         "examples": [
-          "Richie Miranda has capable jiu-jitsu and durability."
+          "Amanda Lemos has a win over Mackenzie Dern."
         ]
       },
       "againstPosition": {
         "claims": 1,
         "sources": [
-          "MMA EXPERTS"
+          "DFS BY THE NUMBERS"
         ],
         "independentSources": 1,
         "examples": [
-          "Richie Miranda was taken down multiple times by Richie Lewis in LFA."
+          "Amanda Lemos is almost 40 years old."
         ]
       },
-      "crossSource": false
-    },
-    {
-      "boutId": "UFC-2026-08-08-B10",
-      "proposition": "Steven Asplund — striking",
-      "about": "Steven Asplund",
-      "topic": "striking",
-      "favorPosition": {
-        "claims": 1,
-        "sources": [
-          "MMA EXPERTS"
-        ],
-        "independentSources": 1,
-        "examples": [
-          "Steven Asplund is a good boxer with nasty hands."
-        ]
-      },
-      "againstPosition": {
-        "claims": 1,
-        "sources": [
-          "MMA EXPERTS"
-        ],
-        "independentSources": 1,
-        "examples": [
-          "Steven Asplund lacks the level of power that Tank Abbott had in 1999."
-        ]
-      },
-      "crossSource": false
+      "crossSource": true
     },
     {
       "boutId": "UFC-2026-08-08-B08",
