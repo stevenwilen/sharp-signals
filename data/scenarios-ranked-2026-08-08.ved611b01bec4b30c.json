@@ -155,6 +155,31 @@
       {
         "boutId": "UFC-2026-08-08-B07",
         "a": {
+          "name": "Jessie Rosas",
+          "norm": "jessie rosas",
+          "first": "jessie",
+          "surname": "rosas",
+          "ambiguous": true,
+          "ambiguousWith": [
+            "rosas",
+            "raul rosas"
+          ],
+          "aliases": []
+        },
+        "b": {
+          "name": "Miles Johns",
+          "norm": "miles johns",
+          "first": "miles",
+          "surname": "johns",
+          "ambiguous": false,
+          "ambiguousWith": [],
+          "aliases": []
+        },
+        "date": "2026-08-08"
+      },
+      {
+        "boutId": "UFC-2026-08-08-B08",
+        "a": {
           "name": "Diyar Nurgozhay",
           "norm": "diyar nurgozhay",
           "first": "diyar",
@@ -177,7 +202,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B08",
+        "boutId": "UFC-2026-08-08-B09",
         "a": {
           "name": "Guilherme Pat",
           "norm": "guilherme pat",
@@ -199,7 +224,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B09",
+        "boutId": "UFC-2026-08-08-B10",
         "a": {
           "name": "Alexia Thainara",
           "norm": "alexia thainara",
@@ -221,7 +246,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B10",
+        "boutId": "UFC-2026-08-08-B11",
         "a": {
           "name": "Ravena Oliveira Morais",
           "norm": "ravena oliveira morais",
@@ -245,7 +270,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B11",
+        "boutId": "UFC-2026-08-08-B12",
         "a": {
           "name": "Manoel Sousa",
           "norm": "manoel sousa",
@@ -268,16 +293,16 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-08-07T02:34:53.103Z",
-  "scenariosSealedAt": "2026-08-07T02:34:53.227Z",
+  "sealedForecastAt": "2026-08-07T01:24:32.210Z",
+  "scenariosSealedAt": "2026-08-07T01:24:32.335Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "98f3f3b7d4c47f08",
+    "numericalForecastHash": "a069b9448f6abfdb",
     "numericalForecastFile": "forecast-2026-08-08.json"
   },
   "scenarios": {
-    "UFC-2026-08-08-B09": {
+    "UFC-2026-08-08-B10": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
@@ -297,7 +322,7 @@
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "7695d4bd13",
+              "adjustmentId": "02c154010a",
               "mechanism": "cardio",
               "topics": [
                 "cardio"
@@ -473,7 +498,7 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "a1f53d2d85926f0b"
+      "hash": "83e00783c58751f6"
     },
     "UFC-2026-08-08-B01": {
       "scenarios": [],
@@ -1265,6 +1290,192 @@
           "scenarioId": "B-Decision",
           "rank": 1,
           "role": "PRIMARY",
+          "winner": "Miles Johns",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2941,
+          "sharePercent": 29.41,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jessie Rosas do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 29.4% (Miles Johns win 58.8% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Jessie Rosas",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2059,
+          "sharePercent": 20.59,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Miles Johns do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 20.6% (Jessie Rosas win 41.2% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Miles Johns by Decision) by 8.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Miles Johns",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1941,
+          "sharePercent": 19.41,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jessie Rosas do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 19.4% (Miles Johns win 58.8% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Miles Johns by Decision) by 10.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Miles Johns unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Jessie Rosas",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1359,
+          "sharePercent": 13.59,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Miles Johns do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.6% (Jessie Rosas win 41.2% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Miles Johns by Decision) by 15.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Jessie Rosas unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Miles Johns",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1,
+          "sharePercent": 10,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Jessie Rosas do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 10.0% (Miles Johns win 58.8% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Miles Johns by Decision) by 19.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Miles Johns"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Jessie Rosas",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.07,
+          "sharePercent": 7,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Miles Johns do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.0% (Jessie Rosas win 41.2% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Miles Johns by Decision) by 22.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Jessie Rosas"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Jessie Rosas": 0.4118,
+          "Miles Johns": 0.5882
+        },
+        "treeWinProbs": {
+          "Jessie Rosas": 0.4118,
+          "Miles Johns": 0.5882
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "ff97ec8123825274"
+    },
+    "UFC-2026-08-08-B08": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
           "winner": "Bruno Lopes",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
@@ -1445,7 +1656,7 @@
       },
       "hash": "ff481bdb5da8252d"
     },
-    "UFC-2026-08-08-B08": {
+    "UFC-2026-08-08-B09": {
       "scenarios": [
         {
           "scenarioId": "B-Decision",
@@ -1631,7 +1842,7 @@
       },
       "hash": "23ebfb6d5597eec5"
     },
-    "UFC-2026-08-08-B10": {
+    "UFC-2026-08-08-B11": {
       "scenarios": [
         {
           "scenarioId": "B-Decision",
@@ -1817,7 +2028,7 @@
       },
       "hash": "6e5f846d99921a5f"
     },
-    "UFC-2026-08-08-B11": {
+    "UFC-2026-08-08-B12": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
@@ -2006,5 +2217,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "48de55e506145317"
+  "scenarioSetHash": "ed611b01bec4b30c"
 }
