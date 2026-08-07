@@ -54,7 +54,15 @@ Read these before writing code; each cost real time.
 - **Bout renumbering.** Kalshi renumbers bouts as a card firms up (B04→B05→B08). The alert ledger keys on
   `boutId`, so the SAME contract reappears under new keys — causing duplicate BUYs, false SELLs ("the
   fight is off" on a live fight), and a hidden placed-badge. Match on the **ticker** (stable), never the
-  bout id. Patched per-symptom; the clean cure (key the whole ledger by ticker) is still open.
+  bout id. Now guarded three ways: the placed-badge and the withdrawal sweep match on ticker, and
+  `shouldSend` falls back to the most-recent prior entry for the same **ticker+lane** when the exact key
+  misses (so a renumber can't re-fire a duplicate BUY). This is read-only — no re-key, no migration — so it
+  can't race the concurrent sentinel writer. The clean cure (physically key the whole ledger by ticker) is
+  still open, but the symptoms are covered; `test-ledger-renumber.js` pins it.
+- **The withdrawal sweep must read the real board.** "Still listed / the fight is still on" is decided from
+  `rawMarkets` (Kalshi, status `active`), NEVER from this run's `messages` — those exclude every NO-BET /
+  disabled-lane contract, so keying "listed" on them fired a false 🔴 SELL on a live fight that merely
+  drifted out of the actionable set.
 - **Uncaging one thing, another cage catches it.** The read's central was uncapped, but the range check,
   the conservative ceiling, and the FAIL-CLOSED invariant each re-blocked it in turn. When you change one
   gate, trace the value all the way to the sent message.
