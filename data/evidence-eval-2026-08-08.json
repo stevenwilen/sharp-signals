@@ -315,7 +315,7 @@
       }
     ]
   },
-  "evaluatedAt": "2026-08-07T17:44:33.370Z",
+  "evaluatedAt": "2026-08-07T18:55:30.154Z",
   "source": "card-evidence-2026-08-08.json",
   "bouts": [
     {
@@ -2543,11 +2543,11 @@
       "boutId": "UFC-2026-08-08-B11",
       "fight": "Alexia Thainara vs Amanda Lemos",
       "coverage": "PARTIALLY COVERED",
-      "relevantClaims": 20,
+      "relevantClaims": 21,
       "topicCount": 15,
-      "independentOrigins": 15,
+      "independentOrigins": 16,
       "originBreakdown": {
-        "analysts": 8,
+        "analysts": 9,
         "publicRecords": 7,
         "externalReports": 0,
         "commentary": 0
@@ -2561,6 +2561,7 @@
         "record:amanda.dern.lemos.mackenzie.win",
         "analyst:hoppermma",
         "record:against.amanda.back.fights.grapplers.lemos.lost.pressure.strong",
+        "analyst:topside mma",
         "analyst:we want picks",
         "analyst:lucrative james",
         "analyst:dfs by the numbers",
@@ -2569,7 +2570,7 @@
         "record:amen lemos:n:39",
         "analyst:theweasle"
       ],
-      "channels": 9,
+      "channels": 10,
       "strongestFactual": [
         {
           "topic": "wrestling_offense",
@@ -2582,6 +2583,16 @@
           "quote": "three losses in a row to high-caliber grapplers and her championship effort against Weili Zhang, she was dominated in wrestling."
         },
         {
+          "topic": "pressure_pace",
+          "about": "Amanda Lemos",
+          "direction": "against_about",
+          "strength": "moderate",
+          "origins": 2,
+          "amplifiers": 2,
+          "claim": "Amanda Lemos has lost back-to-back fights against strong pressure grapplers.",
+          "quote": "Lemos has lost back-to-back fights against strong pressure grapplers."
+        },
+        {
           "topic": "cardio",
           "about": "Amanda Lemos",
           "direction": "against_about",
@@ -2590,16 +2601,6 @@
           "amplifiers": 2,
           "claim": "Amanda Lemos is 39 years old and slowing down in her career.",
           "quote": "Lamsha is 39 years old now. She's slowing down obviously in her career"
-        },
-        {
-          "topic": "other",
-          "about": "Amanda Lemos",
-          "direction": "against_about",
-          "strength": "moderate",
-          "origins": 1,
-          "amplifiers": 1,
-          "claim": "Amanda Lemos is 39 years old.",
-          "quote": "a 39-year-old Lemos"
         }
       ],
       "strongestMatchupObservations": [
@@ -2649,6 +2650,12 @@
           "about": "Amanda Lemos",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 1
+        },
+        {
+          "topic": "pressure_pace",
+          "about": "Amanda Lemos",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 2
         },
         {
           "topic": "takedown_defense",
@@ -3300,43 +3307,49 @@
           "about": "Amanda Lemos",
           "topic": "pressure_pace",
           "direction": "against_about",
-          "claimCount": 1,
+          "claimCount": 2,
           "kinds": [
-            "verified_hard_fact"
+            "verified_hard_fact",
+            "matchup_inference"
           ],
           "relevance": [
-            "opponent_specific_historical"
+            "opponent_specific_historical",
+            "direct_current_matchup"
           ],
           "freshness": [
             "unknown_timeframe"
           ],
           "origin": {
-            "originType": "public_record",
-            "independentOrigins": 1,
+            "originType": "independent_analysis",
+            "independentOrigins": 2,
             "originIds": [
-              "record:against.amanda.back.fights.grapplers.lemos.lost.pressure.strong"
+              "record:against.amanda.back.fights.grapplers.lemos.lost.pressure.strong",
+              "analyst:topside mma"
             ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 0,
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
+            "independentObservations": 1,
             "citedOrigins": [],
             "composition": {
               "reported": 0,
               "recorded": 1,
-              "analytical": 0,
+              "analytical": 1,
               "firsthand": 0,
               "opinion": 0
             },
             "amplifiersByOrigin": {
               "record:against.amanda.back.fights.grapplers.lemos.lost.pressure.strong": [
                 "MMA EXPERTS"
+              ],
+              "analyst:topside mma": [
+                "Topside MMA"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 1 channel(s)",
+            "reportingChain": "1 independent analyst(s)",
             "note": null
           },
-          "marketAwareness": "unknown",
+          "marketAwareness": "niche_analytical_interpretation",
           "strength": "moderate",
           "credibilityComponents": {
             "hasExactQuote": true,
@@ -3346,12 +3359,12 @@
             "checkableAgainstFootageOrRecord": true,
             "specific": true,
             "givesSupportingExample": true,
-            "independentlyCorroborated": false,
+            "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
             "recency": "unknown_timeframe",
             "strength": "moderate",
-            "_plus": 5,
+            "_plus": 6,
             "_minus": 1
           },
           "claims": [
@@ -3377,6 +3390,30 @@
               "mentionCount": 1,
               "sources": [
                 "MMA EXPERTS"
+              ]
+            },
+            {
+              "claim": "Amanda Lemos will lack the space and distance across three rounds to do enough to beat Alexa Grasso.",
+              "quote": "I just don't see her having the space and distance across a full three rounds to be able to do enough to beat Alexa Grasso.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 26387,
+                "endChar": 35658,
+                "approxMinute": 26
+              },
+              "kind": "matchup_inference",
+              "claimClass": "matchup_analysis",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Amanda Lemos",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B11",
+              "evidenceType": "other",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
               ]
             }
           ]
@@ -5497,36 +5534,40 @@
     {
       "boutId": "UFC-2026-08-08-B05",
       "fight": "Billy Quarantillo vs Diego Ferreira",
-      "coverage": "PARTIALLY COVERED",
-      "relevantClaims": 10,
-      "topicCount": 8,
-      "independentOrigins": 9,
+      "coverage": "WELL COVERED",
+      "relevantClaims": 16,
+      "topicCount": 12,
+      "independentOrigins": 13,
       "originBreakdown": {
-        "analysts": 3,
-        "publicRecords": 6,
+        "analysts": 4,
+        "publicRecords": 9,
         "externalReports": 0,
         "commentary": 0
       },
       "originIdentities": [
         "record:diego ferreira:n:41",
         "record:alexander.diego.ferreira.fight.got.hernandez.knocked.losing.out.streak.two",
+        "record:ago.bad.coming.diego.ferreira.knockout.loss.off.year",
         "analyst:mma experts",
         "record:billy quarantillo:n:2024",
+        "record:billy.bringing.close.coming.concerns.layoff.long.off.quarantillo.ring.rust.two.y",
         "record:billy quarantillo:n:2",
         "analyst:hoppermma",
+        "record:against.ago.bad.billy.cub.knockout.loss.quarantillo.suffered.swanson.two.years",
+        "analyst:topside mma",
         "analyst:dfs by the numbers",
         "record:billy quarantillo:n:24%",
         "record:diego ferreira:n:57%"
       ],
-      "channels": 4,
+      "channels": 5,
       "strongestFactual": [
         {
           "topic": "recent_form",
           "about": "Diego Ferreira",
           "direction": "against_about",
-          "strength": "moderate",
-          "origins": 2,
-          "amplifiers": 2,
+          "strength": "strong",
+          "origins": 3,
+          "amplifiers": 3,
           "claim": "Diego Ferreira has not won a fight in two years and is 41 years old.",
           "quote": "Diego Ferreira's got pretty good Muay Thai, and he's got high-level jiu-jitsu, but hasn't won in 2 years. He's 40 now."
         },
@@ -5535,20 +5576,20 @@
           "about": "Billy Quarantillo",
           "direction": "against_about",
           "strength": "moderate",
-          "origins": 2,
-          "amplifiers": 2,
+          "origins": 3,
+          "amplifiers": 3,
           "claim": "Billy Quarantillo hasn't fought since December of 2024 when he got knocked out by Cub Swanson.",
           "quote": "And he hasn't fought since December of 2024 when he got knocked out by Cub Swanson."
         },
         {
-          "topic": "wrestling_offense",
+          "topic": "recent_form",
           "about": "Billy Quarantillo",
           "direction": "against_about",
-          "strength": "moderate",
+          "strength": "strong",
           "origins": 1,
           "amplifiers": 1,
-          "claim": "Billy Quarantillo has a 24% takedown accuracy.",
-          "quote": "He only has a 24% takedown accuracy"
+          "claim": "Billy Quarantillo suffered a bad knockout loss against Cub Swanson about two years ago.",
+          "quote": "Billy Quarantillo, same thing there. He's coming off of a bad knockout loss, but it was about two-ish years ago against Cub Swanson"
         }
       ],
       "strongestMatchupObservations": [
@@ -5567,11 +5608,11 @@
           "claim": "Diego Ferreira only really loses to elite grapplers such as Gamrot and Dawson."
         },
         {
-          "topic": "size_reach",
+          "topic": "weight_cut",
           "about": "Billy Quarantillo",
-          "direction": "against_about",
+          "direction": "favors_about",
           "independentObservations": 1,
-          "claim": "Billy Quarantillo no longer has a chin and has taken a ton of damage throughout his career."
+          "claim": "Billy Quarantillo moving up a weight class will help his durability and chin."
         }
       ],
       "currentCondition": [],
@@ -5579,6 +5620,7 @@
       "widelyKnown": [
         "Diego Ferreira: recent_form",
         "Billy Quarantillo: inactivity_layoff",
+        "Billy Quarantillo: recent_form",
         "Billy Quarantillo: size_reach"
       ],
       "potentiallyNovel": [
@@ -5595,6 +5637,24 @@
           "origins": 1
         },
         {
+          "topic": "weight_cut",
+          "about": "Billy Quarantillo",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "submission_offense",
+          "about": "Diego Ferreira",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "striking_defense",
+          "about": "Billy Quarantillo",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
           "topic": "power",
           "about": "Diego Ferreira",
           "marketAwareness": "niche_analytical_interpretation",
@@ -5604,12 +5664,11 @@
       "contradictions": [],
       "missingInformation": [
         "striking_offense",
-        "striking_defense",
         "cardio"
       ],
       "limitations": [
         "1 topic(s) rest on dated information",
-        "5 topic(s) have no determinable timeframe"
+        "7 topic(s) have no determinable timeframe"
       ],
       "reviewItems": [],
       "topics": [
@@ -5617,7 +5676,7 @@
           "about": "Diego Ferreira",
           "topic": "recent_form",
           "direction": "against_about",
-          "claimCount": 2,
+          "claimCount": 3,
           "kinds": [
             "verified_hard_fact"
           ],
@@ -5626,22 +5685,24 @@
             "opponent_specific_historical"
           ],
           "freshness": [
-            "unknown_timeframe"
+            "unknown_timeframe",
+            "recent_fights"
           ],
           "origin": {
             "originType": "public_record",
-            "independentOrigins": 2,
+            "independentOrigins": 3,
             "originIds": [
               "record:diego ferreira:n:41",
-              "record:alexander.diego.ferreira.fight.got.hernandez.knocked.losing.out.streak.two"
+              "record:alexander.diego.ferreira.fight.got.hernandez.knocked.losing.out.streak.two",
+              "record:ago.bad.coming.diego.ferreira.knockout.loss.off.year"
             ],
-            "amplifyingChannels": 2,
-            "totalMentions": 2,
+            "amplifyingChannels": 3,
+            "totalMentions": 3,
             "independentObservations": 0,
             "citedOrigins": [],
             "composition": {
               "reported": 0,
-              "recorded": 2,
+              "recorded": 3,
               "analytical": 0,
               "firsthand": 0,
               "opinion": 0
@@ -5652,14 +5713,17 @@
               ],
               "record:alexander.diego.ferreira.fight.got.hernandez.knocked.losing.out.streak.two": [
                 "HopperMMA"
+              ],
+              "record:ago.bad.coming.diego.ferreira.knockout.loss.off.year": [
+                "Topside MMA"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 2 channel(s)",
-            "note": null
+            "reportingChain": "public record -> 3 channel(s)",
+            "note": "3 channels cite the same public record — one origin, not 3 confirmations"
           },
           "marketAwareness": "widely_public_probably_in_the_market",
-          "strength": "moderate",
+          "strength": "strong",
           "credibilityComponents": {
             "hasExactQuote": true,
             "firsthand": false,
@@ -5671,10 +5735,10 @@
             "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
+            "recency": "recent_fights",
+            "strength": "strong",
             "_plus": 5,
-            "_minus": 1
+            "_minus": 0
           },
           "claims": [
             {
@@ -5723,6 +5787,30 @@
               "mentionCount": 1,
               "sources": [
                 "HopperMMA"
+              ]
+            },
+            {
+              "claim": "Diego Ferreira is coming off a bad knockout loss a year ago.",
+              "quote": "Diego Ferreira, although he's coming off of a bad knockout loss, he has had a year to kind of, you know, recover the chin a bit.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "general_career_background",
+              "freshness": "recent_fights",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Diego Ferreira",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
               ]
             }
           ]
@@ -5816,7 +5904,7 @@
           "about": "Billy Quarantillo",
           "topic": "inactivity_layoff",
           "direction": "against_about",
-          "claimCount": 2,
+          "claimCount": 3,
           "kinds": [
             "verified_hard_fact"
           ],
@@ -5830,18 +5918,19 @@
           ],
           "origin": {
             "originType": "public_record",
-            "independentOrigins": 2,
+            "independentOrigins": 3,
             "originIds": [
               "record:billy quarantillo:n:2024",
+              "record:billy.bringing.close.coming.concerns.layoff.long.off.quarantillo.ring.rust.two.y",
               "record:billy quarantillo:n:2"
             ],
-            "amplifyingChannels": 2,
-            "totalMentions": 2,
+            "amplifyingChannels": 3,
+            "totalMentions": 3,
             "independentObservations": 0,
             "citedOrigins": [],
             "composition": {
               "reported": 0,
-              "recorded": 2,
+              "recorded": 3,
               "analytical": 0,
               "firsthand": 0,
               "opinion": 0
@@ -5850,13 +5939,16 @@
               "record:billy quarantillo:n:2024": [
                 "HopperMMA"
               ],
+              "record:billy.bringing.close.coming.concerns.layoff.long.off.quarantillo.ring.rust.two.y": [
+                "Topside MMA"
+              ],
               "record:billy quarantillo:n:2": [
                 "DFS BY THE NUMBERS"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 2 channel(s)",
-            "note": null
+            "reportingChain": "public record -> 3 channel(s)",
+            "note": "3 channels cite the same public record — one origin, not 3 confirmations"
           },
           "marketAwareness": "widely_public_probably_in_the_market",
           "strength": "moderate",
@@ -5899,6 +5991,30 @@
               "mentionCount": 1,
               "sources": [
                 "HopperMMA"
+              ]
+            },
+            {
+              "claim": "Billy Quarantillo is coming off a long layoff of close to two years, bringing ring rust concerns.",
+              "quote": "He is coming off of a long layoff, too. Like I said, not quite 2 years, but just about couple months shy of it. Um and you know, there could be some ring rust concerns for Billy Q in this spot.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "general_career_background",
+              "freshness": "recent_fights",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Billy Quarantillo",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "layoff",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
               ]
             },
             {
@@ -6008,6 +6124,346 @@
               "mentionCount": 1,
               "sources": [
                 "HopperMMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Billy Quarantillo",
+          "topic": "recent_form",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "recent_fights"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:against.ago.bad.billy.cub.knockout.loss.quarantillo.suffered.swanson.two.years"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:against.ago.bad.billy.cub.knockout.loss.quarantillo.suffered.swanson.two.years": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "widely_public_probably_in_the_market",
+          "strength": "strong",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "recent_fights",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "claims": [
+            {
+              "claim": "Billy Quarantillo suffered a bad knockout loss against Cub Swanson about two years ago.",
+              "quote": "Billy Quarantillo, same thing there. He's coming off of a bad knockout loss, but it was about two-ish years ago against Cub Swanson",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "opponent_specific_historical",
+              "freshness": "recent_fights",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Billy Quarantillo",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Billy Quarantillo",
+          "topic": "weight_cut",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "matchup_inference"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "weak",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "weak",
+            "_plus": 2,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Billy Quarantillo moving up a weight class will help his durability and chin.",
+              "quote": "I think with Billy Q moving up a weight class for this fight, I think the chin could look a bit better.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "matchup_inference",
+              "claimClass": "matchup_analysis",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Billy Quarantillo",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "weight_cut",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Diego Ferreira",
+          "topic": "submission_offense",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Diego Ferreira is the more dangerous submission grappler in the matchup.",
+              "quote": "you could make a decent argument for Diego Ferreira. You could say he's the more dangerous submission grappler.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Diego Ferreira",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Billy Quarantillo",
+          "topic": "striking_defense",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Billy Quarantillo is extremely vulnerable defensively on the feet.",
+              "quote": "I think Billy Q is extremely vulnerable on the feet defensively.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Billy Quarantillo",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
               ]
             }
           ]
@@ -6344,6 +6800,1382 @@
               "about": "Diego Ferreira",
               "direction": "neutral",
               "boutId": "UFC-2026-08-08-B05",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "boutId": "UFC-2026-08-08-B13",
+      "fight": "Manoel Sousa vs Richie Miranda",
+      "coverage": "PARTIALLY COVERED",
+      "relevantClaims": 16,
+      "topicCount": 13,
+      "independentOrigins": 8,
+      "originBreakdown": {
+        "analysts": 4,
+        "publicRecords": 4,
+        "externalReports": 0,
+        "commentary": 0
+      },
+      "originIdentities": [
+        "analyst:mma experts",
+        "analyst:we want picks",
+        "record:career.knocked.miranda.never.out.richie",
+        "record:down.lewis.lfa.miranda.multiple.richie.taken.times",
+        "analyst:the mike finch show",
+        "analyst:topside mma",
+        "record:knockout.manuel.mauricio.ruffi.sousa.win",
+        "record:able.aoki.balaji.down.fight.manuel.sousa.take"
+      ],
+      "channels": 4,
+      "strongestFactual": [
+        {
+          "topic": "durability",
+          "about": "Richie Miranda",
+          "direction": "favors_about",
+          "strength": "strong",
+          "origins": 2,
+          "amplifiers": 2,
+          "claim": "Richie Miranda has capable jiu-jitsu and durability.",
+          "quote": "As much as I think Miranda has a chance with his jiu-jitsu and his durability"
+        },
+        {
+          "topic": "other",
+          "about": "Richie Miranda",
+          "direction": "against_about",
+          "strength": "moderate",
+          "origins": 1,
+          "amplifiers": 1,
+          "claim": "Richie Miranda was taken down multiple times by Richie Lewis in LFA.",
+          "quote": "he's getting taken down multiple times in that fight"
+        },
+        {
+          "topic": "recent_form",
+          "about": "Manuel Sousa",
+          "direction": "favors_about",
+          "strength": "moderate",
+          "origins": 1,
+          "amplifiers": 1,
+          "claim": "Manuel Sousa has a knockout win over Mauricio Ruffi.",
+          "quote": "He has 15 fights in his career. He even has a knockout win over Mauricio Ruffi."
+        }
+      ],
+      "strongestMatchupObservations": [
+        {
+          "topic": "power",
+          "about": "Manuel Sousa",
+          "direction": "favors_about",
+          "independentObservations": 2,
+          "claim": "Manuel Sousa is a powerful striker with explosive punching combinations and a dangerous overhand."
+        },
+        {
+          "topic": "striking_defense",
+          "about": "Richie Miranda",
+          "direction": "against_about",
+          "independentObservations": 2,
+          "claim": "Richie Miranda is defensively vulnerable and his striking defense is not particularly good."
+        },
+        {
+          "topic": "durability",
+          "about": "Richie Miranda",
+          "direction": "favors_about",
+          "independentObservations": 1,
+          "claim": "Richie Miranda has capable jiu-jitsu and durability."
+        }
+      ],
+      "currentCondition": [],
+      "rumorsAndUnresolved": [],
+      "widelyKnown": [
+        "Manuel Sousa: recent_form"
+      ],
+      "potentiallyNovel": [
+        {
+          "topic": "power",
+          "about": "Manuel Sousa",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 2
+        },
+        {
+          "topic": "durability",
+          "about": "Richie Miranda",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 2
+        },
+        {
+          "topic": "cardio",
+          "about": "Richie Miranda",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "striking_offense",
+          "about": "Manuel Sousa",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "durability",
+          "about": "Richie Miranda",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "speed",
+          "about": "Manel Sousa",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "striking_defense",
+          "about": "Richie Miranda",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 2
+        },
+        {
+          "topic": "striking_offense",
+          "about": "Richie Miranda",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "fight_iq",
+          "about": "Manuel Sousa",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "takedown_defense",
+          "about": "Manuel Sousa",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        }
+      ],
+      "contradictions": [
+        {
+          "proposition": "Richie Miranda — durability",
+          "disagreementType": "compatible_claims",
+          "bothCanBeTrue": true,
+          "supporting": {
+            "position": "favors Richie Miranda",
+            "claims": 2,
+            "independentOrigins": 2,
+            "amplifiers": 2,
+            "strength": "strong",
+            "examples": [
+              "Richie Miranda has capable jiu-jitsu and durability.",
+              "Richie Miranda has never been knocked out in his career."
+            ]
+          },
+          "opposing": {
+            "position": "against Richie Miranda",
+            "claims": 1,
+            "independentOrigins": 1,
+            "amplifiers": 1,
+            "strength": "moderate",
+            "examples": [
+              "Richie Miranda lacks good boxing and doesn't have pop on his shots."
+            ]
+          }
+        }
+      ],
+      "missingInformation": [
+        "wrestling_offense"
+      ],
+      "limitations": [
+        "11 topic(s) have no determinable timeframe"
+      ],
+      "reviewItems": [],
+      "topics": [
+        {
+          "about": "Manuel Sousa",
+          "topic": "power",
+          "direction": "favors_about",
+          "claimCount": 2,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 2,
+            "originIds": [
+              "analyst:mma experts",
+              "analyst:we want picks"
+            ],
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
+            "independentObservations": 2,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 2,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ],
+              "analyst:we want picks": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "2 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Manuel Sousa is a powerful striker with explosive punching combinations and a dangerous overhand.",
+              "quote": "Manuel Sousa is an absolute powerhouse, a demolition man on the feet with explosive punching combinations, and I think just a winging overhand",
+              "channel": "MMA EXPERTS",
+              "videoId": "25UyPbYPaKM",
+              "segment": {
+                "startChar": 16686,
+                "endChar": 28659,
+                "approxMinute": 17
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-05T18:53:40Z",
+              "about": "Manuel Sousa",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            },
+            {
+              "claim": "Manuel Sousa is a nasty striker with incredible power who sets a relentless pace.",
+              "quote": "Manuel Sousa, nasty striker. He's got incredible power. He sets a relentless pace.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Manuel Sousa",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "durability",
+          "direction": "favors_about",
+          "claimCount": 2,
+          "kinds": [
+            "film_study_observation",
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "general_career_background"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 2,
+            "originIds": [
+              "analyst:mma experts",
+              "record:career.knocked.miranda.never.out.richie"
+            ],
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ],
+              "record:career.knocked.miranda.never.out.richie": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "strong",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 6,
+            "_minus": 0
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda has capable jiu-jitsu and durability.",
+              "quote": "As much as I think Miranda has a chance with his jiu-jitsu and his durability",
+              "channel": "MMA EXPERTS",
+              "videoId": "25UyPbYPaKM",
+              "segment": {
+                "startChar": 16686,
+                "endChar": 28659,
+                "approxMinute": 17
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-05T18:53:40Z",
+              "about": "Richie Miranda",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            },
+            {
+              "claim": "Richie Miranda has never been knocked out in his career.",
+              "quote": "we've never seen him knocked out. We haven't really seen his chin be a real problem in the past.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 60336,
+                "endChar": 69701,
+                "approxMinute": 60
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "general_career_background",
+              "freshness": "long_term_tendency",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Richie Miranda",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "cardio",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:mma experts"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda has a good chin, good jiu-jitsu, and good five-round cardio.",
+              "quote": "Richie Miranda's got a good chin. He's got a good jiu-jitsu game. He's got a good five-round cardio.",
+              "channel": "MMA EXPERTS",
+              "videoId": "fHG_uzzQxtc",
+              "segment": {
+                "startChar": 38891,
+                "endChar": 44891,
+                "approxMinute": 39
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T03:56:40Z",
+              "about": "Richie Miranda",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manuel Sousa",
+          "topic": "striking_offense",
+          "direction": "neutral",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:mma experts"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Manuel Sousa is a wild brawler who can crack.",
+              "quote": "Sousa can crack for sure, but he's a [...] wild brawler.",
+              "channel": "MMA EXPERTS",
+              "videoId": "fHG_uzzQxtc",
+              "segment": {
+                "startChar": 38891,
+                "endChar": 44891,
+                "approxMinute": 39
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T03:56:40Z",
+              "about": "Manuel Sousa",
+              "direction": "neutral",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "other",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "general_career_background"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:down.lewis.lfa.miranda.multiple.richie.taken.times"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:down.lewis.lfa.miranda.multiple.richie.taken.times": [
+                "MMA EXPERTS"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "unknown",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda was taken down multiple times by Richie Lewis in LFA.",
+              "quote": "he's getting taken down multiple times in that fight",
+              "channel": "MMA EXPERTS",
+              "videoId": "fHG_uzzQxtc",
+              "segment": {
+                "startChar": 38891,
+                "endChar": 44891,
+                "approxMinute": 39
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "general_career_background",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T03:56:40Z",
+              "about": "Richie Miranda",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "durability",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:the mike finch show"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:the mike finch show": [
+                "The Mike Finch Show"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda lacks good boxing and doesn't have pop on his shots.",
+              "quote": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
+              "channel": "The Mike Finch Show",
+              "videoId": "FgkjleTMlpM",
+              "segment": {
+                "startChar": 228,
+                "endChar": 9609,
+                "approxMinute": 0
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T17:12:09Z",
+              "about": "Richie Miranda",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "The Mike Finch Show"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manel Sousa",
+          "topic": "speed",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "matchup_inference"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:the mike finch show"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:the mike finch show": [
+                "The Mike Finch Show"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "weak",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "weak",
+            "_plus": 2,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Manel Sousa is too explosive for Richie Miranda and will likely get a TKO finish.",
+              "quote": "I think Manel Sousa is just going to be able to clip him, hurt him and probably get him out of there, guys.",
+              "channel": "The Mike Finch Show",
+              "videoId": "FgkjleTMlpM",
+              "segment": {
+                "startChar": 228,
+                "endChar": 9609,
+                "approxMinute": 0
+              },
+              "kind": "matchup_inference",
+              "claimClass": "matchup_analysis",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T17:12:09Z",
+              "about": "Manel Sousa",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "The Mike Finch Show"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "striking_defense",
+          "direction": "against_about",
+          "claimCount": 2,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 2,
+            "originIds": [
+              "analyst:topside mma",
+              "analyst:we want picks"
+            ],
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
+            "independentObservations": 2,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 2,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ],
+              "analyst:we want picks": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "2 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda is defensively vulnerable and his striking defense is not particularly good.",
+              "quote": "I think on the feet, he's very defen- defensively vulnerable. I think his striking defense is not particularly good",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 60336,
+                "endChar": 69701,
+                "approxMinute": 60
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Richie Miranda",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            },
+            {
+              "claim": "Richie Miranda can be very hittable on the feet.",
+              "quote": "I do hate how hittable Richie can be.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Richie Miranda",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Richie Miranda",
+          "topic": "striking_offense",
+          "direction": "neutral",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Richie Miranda is predominantly a striker who is comfortable standing and trading.",
+              "quote": "the man is more than comfortable to just stand and trade on the feet. He likes to box.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 60336,
+                "endChar": 69701,
+                "approxMinute": 60
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Richie Miranda",
+              "direction": "neutral",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manuel Sousa",
+          "topic": "recent_form",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "long_term_tendency"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:knockout.manuel.mauricio.ruffi.sousa.win"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:knockout.manuel.mauricio.ruffi.sousa.win": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "widely_public_probably_in_the_market",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 0
+          },
+          "claims": [
+            {
+              "claim": "Manuel Sousa has a knockout win over Mauricio Ruffi.",
+              "quote": "He has 15 fights in his career. He even has a knockout win over Mauricio Ruffi.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "stable_historical_tendency",
+              "freshness": "long_term_tendency",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Manuel Sousa",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "record",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manuel Sousa",
+          "topic": "fight_iq",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:we want picks"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:we want picks": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Manuel Sousa's fight IQ is not the best and he is continuing to learn.",
+              "quote": "But the fight IQ is not the best, and he is continuing to learn.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Manuel Sousa",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "other",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manuel Sousa",
+          "topic": "striking_offense",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:able.aoki.balaji.down.fight.manuel.sousa.take"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:able.aoki.balaji.down.fight.manuel.sousa.take": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "unknown",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Balaji Aoki was able to take down Manuel Sousa in their fight.",
+              "quote": "Balaji Aoki, who is a striker, was able to take down Manuel Sousa in that fight.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "opponent_specific_historical",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Manuel Sousa",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Manuel Sousa",
+          "topic": "takedown_defense",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:we want picks"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:we want picks": [
+                "We Want Picks"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Manuel Sousa's sole MMA loss showed that takedown defense is what failed him.",
+              "quote": "his sole MMA loss go to that one in the 14 and one and you saw the takedown defense is what failed him in that fight.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 4743,
+                "endChar": 10743,
+                "approxMinute": 5
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Manuel Sousa",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B13",
               "evidenceType": "grappling",
               "mentionCount": 1,
               "sources": [
@@ -7552,11 +9384,11 @@
       ]
     },
     {
-      "boutId": "UFC-2026-08-08-B13",
-      "fight": "Manoel Sousa vs Richie Miranda",
+      "boutId": "UFC-2026-08-08-B04",
+      "fight": "Quillan Salkilld vs Mateusz Gamrot",
       "coverage": "PARTIALLY COVERED",
-      "relevantClaims": 13,
-      "topicCount": 12,
+      "relevantClaims": 8,
+      "topicCount": 7,
       "independentOrigins": 6,
       "originBreakdown": {
         "analysts": 3,
@@ -7566,281 +9398,173 @@
       },
       "originIdentities": [
         "analyst:mma experts",
-        "analyst:we want picks",
-        "record:down.lewis.lfa.miranda.multiple.richie.taken.times",
-        "analyst:the mike finch show",
-        "record:knockout.manuel.mauricio.ruffi.sousa.win",
-        "record:able.aoki.balaji.down.fight.manuel.sousa.take"
+        "record:arman.beat.gamrot.mateusz.tsarukyan",
+        "record:charles.gamrot.last.mateusz.oliveira.submitted.year",
+        "record:mateusz gamrot:n:13",
+        "analyst:topside mma",
+        "analyst:dfs by the numbers"
       ],
-      "channels": 3,
+      "channels": 5,
       "strongestFactual": [
         {
-          "topic": "other",
-          "about": "Richie Miranda",
+          "topic": "durability",
+          "about": "Mateusz Gamrot",
           "direction": "against_about",
           "strength": "moderate",
-          "origins": 1,
-          "amplifiers": 1,
-          "claim": "Richie Miranda was taken down multiple times by Richie Lewis in LFA.",
-          "quote": "he's getting taken down multiple times in that fight"
+          "origins": 2,
+          "amplifiers": 2,
+          "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
+          "quote": "And we've seen Gamrot buckle before."
         },
         {
           "topic": "recent_form",
-          "about": "Manuel Sousa",
+          "about": "Mateusz Gamrot",
           "direction": "favors_about",
           "strength": "moderate",
           "origins": 1,
           "amplifiers": 1,
-          "claim": "Manuel Sousa has a knockout win over Mauricio Ruffi.",
-          "quote": "He has 15 fights in his career. He even has a knockout win over Mauricio Ruffi."
+          "claim": "Mateusz Gamrot beat Arman Tsarukyan.",
+          "quote": "main evented against Arman Tsarukyan, beat Arman Tsarukyan."
         },
         {
-          "topic": "striking_offense",
-          "about": "Manuel Sousa",
+          "topic": "other",
+          "about": "Mateusz Gamrot",
           "direction": "against_about",
           "strength": "moderate",
           "origins": 1,
           "amplifiers": 1,
-          "claim": "Balaji Aoki was able to take down Manuel Sousa in their fight.",
-          "quote": "Balaji Aoki, who is a striker, was able to take down Manuel Sousa in that fight."
+          "claim": "Mateusz Gamrot was submitted by Charles Oliveira last year.",
+          "quote": "just last year got submitted by Charles Oliveira."
         }
       ],
       "strongestMatchupObservations": [
         {
-          "topic": "power",
-          "about": "Manuel Sousa",
-          "direction": "favors_about",
-          "independentObservations": 2,
-          "claim": "Manuel Sousa is a powerful striker with explosive punching combinations and a dangerous overhand."
+          "topic": "wrestling_offense",
+          "about": "Mateusz Gamrot",
+          "direction": "against_about",
+          "independentObservations": 1,
+          "claim": "Mateusz Gamrot is not a damaging striker, a great ground-and-pound specialist, or a strong control threat who struggles to keep people down."
         },
         {
           "topic": "durability",
-          "about": "Richie Miranda",
-          "direction": "favors_about",
+          "about": "Mateusz Gamrot",
+          "direction": "against_about",
           "independentObservations": 1,
-          "claim": "Richie Miranda has capable jiu-jitsu and durability."
+          "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights."
         },
         {
-          "topic": "cardio",
-          "about": "Richie Miranda",
-          "direction": "favors_about",
+          "topic": "fight_iq",
+          "about": "Mateusz Gamrot",
+          "direction": "against_about",
           "independentObservations": 1,
-          "claim": "Richie Miranda has a good chin, good jiu-jitsu, and good five-round cardio."
+          "claim": "Mateusz Gamrot abandoned his game plan and fought with poor fight IQ in his recent bout."
         }
       ],
       "currentCondition": [],
       "rumorsAndUnresolved": [],
       "widelyKnown": [
-        "Manuel Sousa: recent_form"
+        "Mateusz Gamrot: recent_form"
       ],
       "potentiallyNovel": [
         {
-          "topic": "power",
-          "about": "Manuel Sousa",
+          "topic": "wrestling_offense",
+          "about": "Mateusz Gamrot",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        },
+        {
+          "topic": "durability",
+          "about": "Mateusz Gamrot",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 2
         },
         {
-          "topic": "durability",
-          "about": "Richie Miranda",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
-          "topic": "cardio",
-          "about": "Richie Miranda",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
-          "topic": "striking_offense",
-          "about": "Manuel Sousa",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
-          "topic": "durability",
-          "about": "Richie Miranda",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
-          "topic": "speed",
-          "about": "Manel Sousa",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
           "topic": "fight_iq",
-          "about": "Manuel Sousa",
+          "about": "Mateusz Gamrot",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 1
         },
         {
-          "topic": "takedown_defense",
-          "about": "Manuel Sousa",
+          "topic": "other",
+          "about": "Mateusz Gamrot",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 1
         },
         {
-          "topic": "striking_defense",
-          "about": "Richie Miranda",
+          "topic": "durability",
+          "about": "Mateusz Gamrot",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 1
         }
       ],
       "contradictions": [
         {
-          "proposition": "Richie Miranda — durability",
+          "proposition": "Mateusz Gamrot — durability",
           "disagreementType": "compatible_claims",
           "bothCanBeTrue": true,
           "supporting": {
-            "position": "favors Richie Miranda",
+            "position": "favors Mateusz Gamrot",
             "claims": 1,
             "independentOrigins": 1,
             "amplifiers": 1,
             "strength": "moderate",
             "examples": [
-              "Richie Miranda has capable jiu-jitsu and durability."
+              "Mateusz Gamrot is very tough to finish."
             ]
           },
           "opposing": {
-            "position": "against Richie Miranda",
+            "position": "against Mateusz Gamrot",
+            "claims": 2,
+            "independentOrigins": 2,
+            "amplifiers": 2,
+            "strength": "moderate",
+            "examples": [
+              "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
+              "Mateusz Gamrot has been dropped in six of his 13 UFC fights."
+            ]
+          }
+        },
+        {
+          "proposition": "Mateusz Gamrot — other",
+          "disagreementType": "different_interpretations_of_the_same_fact",
+          "bothCanBeTrue": false,
+          "supporting": {
+            "position": "favors Mateusz Gamrot",
             "claims": 1,
             "independentOrigins": 1,
             "amplifiers": 1,
             "strength": "moderate",
             "examples": [
-              "Richie Miranda lacks good boxing and doesn't have pop on his shots."
+              "Mateusz Gamrot has shown high-level grappling even against elite grapplers."
+            ]
+          },
+          "opposing": {
+            "position": "against Mateusz Gamrot",
+            "claims": 1,
+            "independentOrigins": 1,
+            "amplifiers": 1,
+            "strength": "moderate",
+            "examples": [
+              "Mateusz Gamrot was submitted by Charles Oliveira last year."
             ]
           }
         }
       ],
       "missingInformation": [
-        "wrestling_offense"
+        "striking_offense",
+        "striking_defense",
+        "takedown_defense",
+        "cardio"
       ],
       "limitations": [
-        "11 topic(s) have no determinable timeframe"
+        "7 topic(s) have no determinable timeframe"
       ],
       "reviewItems": [],
       "topics": [
         {
-          "about": "Manuel Sousa",
-          "topic": "power",
-          "direction": "favors_about",
-          "claimCount": 2,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 2,
-            "originIds": [
-              "analyst:mma experts",
-              "analyst:we want picks"
-            ],
-            "amplifyingChannels": 2,
-            "totalMentions": 2,
-            "independentObservations": 2,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 2,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ],
-              "analyst:we want picks": [
-                "We Want Picks"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "2 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Manuel Sousa is a powerful striker with explosive punching combinations and a dangerous overhand.",
-              "quote": "Manuel Sousa is an absolute powerhouse, a demolition man on the feet with explosive punching combinations, and I think just a winging overhand",
-              "channel": "MMA EXPERTS",
-              "videoId": "25UyPbYPaKM",
-              "segment": {
-                "startChar": 16686,
-                "endChar": 28659,
-                "approxMinute": 17
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-05T18:53:40Z",
-              "about": "Manuel Sousa",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
-              ]
-            },
-            {
-              "claim": "Manuel Sousa is a nasty striker with incredible power who sets a relentless pace.",
-              "quote": "Manuel Sousa, nasty striker. He's got incredible power. He sets a relentless pace.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
-              "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Manuel Sousa",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "We Want Picks"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Richie Miranda",
-          "topic": "durability",
-          "direction": "favors_about",
+          "about": "Mateusz Gamrot",
+          "topic": "wrestling_offense",
+          "direction": "against_about",
           "claimCount": 1,
           "kinds": [
             "film_study_observation"
@@ -7897,8 +9621,8 @@
           },
           "claims": [
             {
-              "claim": "Richie Miranda has capable jiu-jitsu and durability.",
-              "quote": "As much as I think Miranda has a chance with his jiu-jitsu and his durability",
+              "claim": "Mateusz Gamrot is not a damaging striker, a great ground-and-pound specialist, or a strong control threat who struggles to keep people down.",
+              "quote": "he is not a damaging striker, nor is he a great ground-and-pound specialist or the best control control threat. We've seen him land a lot of takedowns, good chain wrestling, but sometimes he has a hard time keeping people down.",
               "channel": "MMA EXPERTS",
               "videoId": "25UyPbYPaKM",
               "segment": {
@@ -7911,9 +9635,9 @@
               "relevance": "stable_historical_tendency",
               "freshness": "unknown_timeframe",
               "publishedAt": "2026-08-05T18:53:40Z",
-              "about": "Richie Miranda",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
+              "about": "Mateusz Gamrot",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B04",
               "evidenceType": "grappling",
               "mentionCount": 1,
               "sources": [
@@ -7923,185 +9647,15 @@
           ]
         },
         {
-          "about": "Richie Miranda",
-          "topic": "cardio",
+          "about": "Mateusz Gamrot",
+          "topic": "recent_form",
           "direction": "favors_about",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:mma experts"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Richie Miranda has a good chin, good jiu-jitsu, and good five-round cardio.",
-              "quote": "Richie Miranda's got a good chin. He's got a good jiu-jitsu game. He's got a good five-round cardio.",
-              "channel": "MMA EXPERTS",
-              "videoId": "fHG_uzzQxtc",
-              "segment": {
-                "startChar": 38891,
-                "endChar": 44891,
-                "approxMinute": 39
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T03:56:40Z",
-              "about": "Richie Miranda",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "durability",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Manuel Sousa",
-          "topic": "striking_offense",
-          "direction": "neutral",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:mma experts"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Manuel Sousa is a wild brawler who can crack.",
-              "quote": "Sousa can crack for sure, but he's a [...] wild brawler.",
-              "channel": "MMA EXPERTS",
-              "videoId": "fHG_uzzQxtc",
-              "segment": {
-                "startChar": 38891,
-                "endChar": 44891,
-                "approxMinute": 39
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T03:56:40Z",
-              "about": "Manuel Sousa",
-              "direction": "neutral",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Richie Miranda",
-          "topic": "other",
-          "direction": "against_about",
           "claimCount": 1,
           "kinds": [
             "verified_hard_fact"
           ],
           "relevance": [
-            "general_career_background"
+            "opponent_specific_historical"
           ],
           "freshness": [
             "unknown_timeframe"
@@ -8110,7 +9664,7 @@
             "originType": "public_record",
             "independentOrigins": 1,
             "originIds": [
-              "record:down.lewis.lfa.miranda.multiple.richie.taken.times"
+              "record:arman.beat.gamrot.mateusz.tsarukyan"
             ],
             "amplifyingChannels": 1,
             "totalMentions": 1,
@@ -8124,8 +9678,93 @@
               "opinion": 0
             },
             "amplifiersByOrigin": {
-              "record:down.lewis.lfa.miranda.multiple.richie.taken.times": [
-                "MMA EXPERTS"
+              "record:arman.beat.gamrot.mateusz.tsarukyan": [
+                "HopperMMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "public record -> 1 channel(s)",
+            "note": null
+          },
+          "marketAwareness": "widely_public_probably_in_the_market",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Mateusz Gamrot beat Arman Tsarukyan.",
+              "quote": "main evented against Arman Tsarukyan, beat Arman Tsarukyan.",
+              "channel": "HopperMMA",
+              "videoId": "tW0DYtKeZU0",
+              "segment": {
+                "startChar": 18394,
+                "endChar": 24394,
+                "approxMinute": 18
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "opponent_specific_historical",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T18:00:04Z",
+              "about": "Mateusz Gamrot",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B04",
+              "evidenceType": "record",
+              "mentionCount": 1,
+              "sources": [
+                "HopperMMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Mateusz Gamrot",
+          "topic": "other",
+          "direction": "against_about",
+          "claimCount": 1,
+          "kinds": [
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "public_record",
+            "independentOrigins": 1,
+            "originIds": [
+              "record:charles.gamrot.last.mateusz.oliveira.submitted.year"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 0,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 1,
+              "analytical": 0,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "record:charles.gamrot.last.mateusz.oliveira.submitted.year": [
+                "HopperMMA"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
@@ -8152,65 +9791,71 @@
           },
           "claims": [
             {
-              "claim": "Richie Miranda was taken down multiple times by Richie Lewis in LFA.",
-              "quote": "he's getting taken down multiple times in that fight",
-              "channel": "MMA EXPERTS",
-              "videoId": "fHG_uzzQxtc",
+              "claim": "Mateusz Gamrot was submitted by Charles Oliveira last year.",
+              "quote": "just last year got submitted by Charles Oliveira.",
+              "channel": "HopperMMA",
+              "videoId": "tW0DYtKeZU0",
               "segment": {
-                "startChar": 38891,
-                "endChar": 44891,
-                "approxMinute": 39
+                "startChar": 18394,
+                "endChar": 24394,
+                "approxMinute": 18
               },
               "kind": "verified_hard_fact",
               "claimClass": "hard_fact",
-              "relevance": "general_career_background",
+              "relevance": "opponent_specific_historical",
               "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T03:56:40Z",
-              "about": "Richie Miranda",
+              "publishedAt": "2026-08-04T18:00:04Z",
+              "about": "Mateusz Gamrot",
               "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
+              "boutId": "UFC-2026-08-08-B04",
               "evidenceType": "grappling",
               "mentionCount": 1,
               "sources": [
-                "MMA EXPERTS"
+                "HopperMMA"
               ]
             }
           ]
         },
         {
-          "about": "Richie Miranda",
+          "about": "Mateusz Gamrot",
           "topic": "durability",
           "direction": "against_about",
-          "claimCount": 1,
+          "claimCount": 2,
           "kinds": [
-            "film_study_observation"
+            "film_study_observation",
+            "verifiable_statistical_claim"
           ],
           "relevance": [
-            "direct_current_matchup"
+            "opponent_specific_historical",
+            "stable_historical_tendency"
           ],
           "freshness": [
             "unknown_timeframe"
           ],
           "origin": {
             "originType": "independent_analysis",
-            "independentOrigins": 1,
+            "independentOrigins": 2,
             "originIds": [
-              "analyst:the mike finch show"
+              "analyst:mma experts",
+              "record:mateusz gamrot:n:13"
             ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
             "independentObservations": 1,
             "citedOrigins": [],
             "composition": {
               "reported": 0,
-              "recorded": 0,
+              "recorded": 1,
               "analytical": 1,
               "firsthand": 0,
               "opinion": 0
             },
             "amplifiersByOrigin": {
-              "analyst:the mike finch show": [
-                "The Mike Finch Show"
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ],
+              "record:mateusz gamrot:n:13": [
+                "We Want Picks"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
@@ -8223,49 +9868,73 @@
             "hasExactQuote": true,
             "firsthand": false,
             "secondhand": false,
-            "verifiable": false,
+            "verifiable": true,
             "checkableAgainstFootageOrRecord": true,
             "specific": true,
             "givesSupportingExample": false,
-            "independentlyCorroborated": false,
+            "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
             "recency": "unknown_timeframe",
             "strength": "moderate",
-            "_plus": 3,
+            "_plus": 5,
             "_minus": 1
           },
           "claims": [
             {
-              "claim": "Richie Miranda lacks good boxing and doesn't have pop on his shots.",
-              "quote": "I'm watching his striking and he just he his boxing's not good and he doesn't have pop on his shots.",
-              "channel": "The Mike Finch Show",
-              "videoId": "FgkjleTMlpM",
+              "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
+              "quote": "And we've seen Gamrot buckle before.",
+              "channel": "MMA EXPERTS",
+              "videoId": "fHG_uzzQxtc",
               "segment": {
-                "startChar": 228,
-                "endChar": 9609,
-                "approxMinute": 0
+                "startChar": 106640,
+                "endChar": 112640,
+                "approxMinute": 107
               },
               "kind": "film_study_observation",
               "claimClass": "film_study",
-              "relevance": "direct_current_matchup",
+              "relevance": "opponent_specific_historical",
               "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T17:12:09Z",
-              "about": "Richie Miranda",
+              "publishedAt": "2026-08-04T03:56:40Z",
+              "about": "Mateusz Gamrot",
               "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
+              "boutId": "UFC-2026-08-08-B04",
+              "evidenceType": "durability",
               "mentionCount": 1,
               "sources": [
-                "The Mike Finch Show"
+                "MMA EXPERTS"
+              ]
+            },
+            {
+              "claim": "Mateusz Gamrot has been dropped in six of his 13 UFC fights.",
+              "quote": "He is unfortunately pretty chinny. He has been dropped in six of his 13 UFC fights.",
+              "channel": "We Want Picks",
+              "videoId": "c8WD9GeGt1c",
+              "segment": {
+                "startChar": 24622,
+                "endChar": 35545,
+                "approxMinute": 25
+              },
+              "kind": "verifiable_statistical_claim",
+              "claimClass": "statistical",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-02T14:00:04Z",
+              "about": "Mateusz Gamrot",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B04",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
               ]
             }
           ]
         },
         {
-          "about": "Manel Sousa",
-          "topic": "speed",
-          "direction": "favors_about",
+          "about": "Mateusz Gamrot",
+          "topic": "fight_iq",
+          "direction": "against_about",
           "claimCount": 1,
           "kinds": [
             "matchup_inference"
@@ -8280,7 +9949,7 @@
             "originType": "independent_analysis",
             "independentOrigins": 1,
             "originIds": [
-              "analyst:the mike finch show"
+              "analyst:topside mma"
             ],
             "amplifyingChannels": 1,
             "totalMentions": 1,
@@ -8294,8 +9963,8 @@
               "opinion": 0
             },
             "amplifiersByOrigin": {
-              "analyst:the mike finch show": [
-                "The Mike Finch Show"
+              "analyst:topside mma": [
+                "Topside MMA"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
@@ -8322,290 +9991,35 @@
           },
           "claims": [
             {
-              "claim": "Manel Sousa is too explosive for Richie Miranda and will likely get a TKO finish.",
-              "quote": "I think Manel Sousa is just going to be able to clip him, hurt him and probably get him out of there, guys.",
-              "channel": "The Mike Finch Show",
-              "videoId": "FgkjleTMlpM",
+              "claim": "Mateusz Gamrot abandoned his game plan and fought with poor fight IQ in his recent bout.",
+              "quote": "He did not fight to a smart game plan. He ended up going to a split there... his fight IQ was horrendous",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
               "segment": {
-                "startChar": 228,
-                "endChar": 9609,
-                "approxMinute": 0
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
               },
               "kind": "matchup_inference",
               "claimClass": "matchup_analysis",
               "relevance": "direct_current_matchup",
               "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T17:12:09Z",
-              "about": "Manel Sousa",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "The Mike Finch Show"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Manuel Sousa",
-          "topic": "recent_form",
-          "direction": "favors_about",
-          "claimCount": 1,
-          "kinds": [
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "long_term_tendency"
-          ],
-          "origin": {
-            "originType": "public_record",
-            "independentOrigins": 1,
-            "originIds": [
-              "record:knockout.manuel.mauricio.ruffi.sousa.win"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 0,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 1,
-              "analytical": 0,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "record:knockout.manuel.mauricio.ruffi.sousa.win": [
-                "We Want Picks"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 1 channel(s)",
-            "note": null
-          },
-          "marketAwareness": "widely_public_probably_in_the_market",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 0
-          },
-          "claims": [
-            {
-              "claim": "Manuel Sousa has a knockout win over Mauricio Ruffi.",
-              "quote": "He has 15 fights in his career. He even has a knockout win over Mauricio Ruffi.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
-              "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
-              },
-              "kind": "verified_hard_fact",
-              "claimClass": "hard_fact",
-              "relevance": "stable_historical_tendency",
-              "freshness": "long_term_tendency",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Manuel Sousa",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "record",
-              "mentionCount": 1,
-              "sources": [
-                "We Want Picks"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Manuel Sousa",
-          "topic": "fight_iq",
-          "direction": "against_about",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:we want picks"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:we want picks": [
-                "We Want Picks"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Manuel Sousa's fight IQ is not the best and he is continuing to learn.",
-              "quote": "But the fight IQ is not the best, and he is continuing to learn.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
-              "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Manuel Sousa",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Mateusz Gamrot",
               "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
+              "boutId": "UFC-2026-08-08-B04",
               "evidenceType": "other",
               "mentionCount": 1,
               "sources": [
-                "We Want Picks"
+                "Topside MMA"
               ]
             }
           ]
         },
         {
-          "about": "Manuel Sousa",
-          "topic": "striking_offense",
-          "direction": "against_about",
-          "claimCount": 1,
-          "kinds": [
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "public_record",
-            "independentOrigins": 1,
-            "originIds": [
-              "record:able.aoki.balaji.down.fight.manuel.sousa.take"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 0,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 1,
-              "analytical": 0,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "record:able.aoki.balaji.down.fight.manuel.sousa.take": [
-                "We Want Picks"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 1 channel(s)",
-            "note": null
-          },
-          "marketAwareness": "unknown",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Balaji Aoki was able to take down Manuel Sousa in their fight.",
-              "quote": "Balaji Aoki, who is a striker, was able to take down Manuel Sousa in that fight.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
-              "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
-              },
-              "kind": "verified_hard_fact",
-              "claimClass": "hard_fact",
-              "relevance": "opponent_specific_historical",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Manuel Sousa",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "grappling",
-              "mentionCount": 1,
-              "sources": [
-                "We Want Picks"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Manuel Sousa",
-          "topic": "takedown_defense",
-          "direction": "against_about",
+          "about": "Mateusz Gamrot",
+          "topic": "other",
+          "direction": "favors_about",
           "claimCount": 1,
           "kinds": [
             "film_study_observation"
@@ -8620,7 +10034,7 @@
             "originType": "independent_analysis",
             "independentOrigins": 1,
             "originIds": [
-              "analyst:we want picks"
+              "analyst:topside mma"
             ],
             "amplifyingChannels": 1,
             "totalMentions": 1,
@@ -8634,8 +10048,8 @@
               "opinion": 0
             },
             "amplifiersByOrigin": {
-              "analyst:we want picks": [
-                "We Want Picks"
+              "analyst:topside mma": [
+                "Topside MMA"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
@@ -8662,35 +10076,35 @@
           },
           "claims": [
             {
-              "claim": "Manuel Sousa's sole MMA loss showed that takedown defense is what failed him.",
-              "quote": "his sole MMA loss go to that one in the 14 and one and you saw the takedown defense is what failed him in that fight.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
+              "claim": "Mateusz Gamrot has shown high-level grappling even against elite grapplers.",
+              "quote": "we've seen his grappling has looked damn good even against very high-level grapplers.",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
               "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
+                "startChar": 8584,
+                "endChar": 14584,
+                "approxMinute": 9
               },
               "kind": "film_study_observation",
               "claimClass": "film_study",
               "relevance": "stable_historical_tendency",
               "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Manuel Sousa",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Mateusz Gamrot",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B04",
               "evidenceType": "grappling",
               "mentionCount": 1,
               "sources": [
-                "We Want Picks"
+                "Topside MMA"
               ]
             }
           ]
         },
         {
-          "about": "Richie Miranda",
-          "topic": "striking_defense",
-          "direction": "against_about",
+          "about": "Mateusz Gamrot",
+          "topic": "durability",
+          "direction": "favors_about",
           "claimCount": 1,
           "kinds": [
             "film_study_observation"
@@ -8705,7 +10119,7 @@
             "originType": "independent_analysis",
             "independentOrigins": 1,
             "originIds": [
-              "analyst:we want picks"
+              "analyst:dfs by the numbers"
             ],
             "amplifyingChannels": 1,
             "totalMentions": 1,
@@ -8719,8 +10133,8 @@
               "opinion": 0
             },
             "amplifiersByOrigin": {
-              "analyst:we want picks": [
-                "We Want Picks"
+              "analyst:dfs by the numbers": [
+                "DFS BY THE NUMBERS"
               ]
             },
             "maxAmplifiersOnOneOrigin": 1,
@@ -8747,27 +10161,27 @@
           },
           "claims": [
             {
-              "claim": "Richie Miranda can be very hittable on the feet.",
-              "quote": "I do hate how hittable Richie can be.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
+              "claim": "Mateusz Gamrot is very tough to finish.",
+              "quote": "Gamrot's very tough to finish. You know, he can be dropped, but you got to kill him to get him out of there.",
+              "channel": "DFS BY THE NUMBERS",
+              "videoId": "K5jHiWhORzg",
               "segment": {
-                "startChar": 4743,
-                "endChar": 10743,
-                "approxMinute": 5
+                "startChar": 9656,
+                "endChar": 14797,
+                "approxMinute": 10
               },
               "kind": "film_study_observation",
               "claimClass": "film_study",
               "relevance": "stable_historical_tendency",
               "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Richie Miranda",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B13",
-              "evidenceType": "striking",
+              "publishedAt": "2026-08-06T16:17:36Z",
+              "about": "Mateusz Gamrot",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B04",
+              "evidenceType": "durability",
               "mentionCount": 1,
               "sources": [
-                "We Want Picks"
+                "DFS BY THE NUMBERS"
               ]
             }
           ]
@@ -9330,603 +10744,6 @@
               "mentionCount": 1,
               "sources": [
                 "We Want Picks"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "boutId": "UFC-2026-08-08-B04",
-      "fight": "Quillan Salkilld vs Mateusz Gamrot",
-      "coverage": "PARTIALLY COVERED",
-      "relevantClaims": 6,
-      "topicCount": 5,
-      "independentOrigins": 5,
-      "originBreakdown": {
-        "analysts": 2,
-        "publicRecords": 3,
-        "externalReports": 0,
-        "commentary": 0
-      },
-      "originIdentities": [
-        "analyst:mma experts",
-        "record:arman.beat.gamrot.mateusz.tsarukyan",
-        "record:charles.gamrot.last.mateusz.oliveira.submitted.year",
-        "record:mateusz gamrot:n:13",
-        "analyst:dfs by the numbers"
-      ],
-      "channels": 4,
-      "strongestFactual": [
-        {
-          "topic": "durability",
-          "about": "Mateusz Gamrot",
-          "direction": "against_about",
-          "strength": "moderate",
-          "origins": 2,
-          "amplifiers": 2,
-          "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
-          "quote": "And we've seen Gamrot buckle before."
-        },
-        {
-          "topic": "recent_form",
-          "about": "Mateusz Gamrot",
-          "direction": "favors_about",
-          "strength": "moderate",
-          "origins": 1,
-          "amplifiers": 1,
-          "claim": "Mateusz Gamrot beat Arman Tsarukyan.",
-          "quote": "main evented against Arman Tsarukyan, beat Arman Tsarukyan."
-        },
-        {
-          "topic": "other",
-          "about": "Mateusz Gamrot",
-          "direction": "against_about",
-          "strength": "moderate",
-          "origins": 1,
-          "amplifiers": 1,
-          "claim": "Mateusz Gamrot was submitted by Charles Oliveira last year.",
-          "quote": "just last year got submitted by Charles Oliveira."
-        }
-      ],
-      "strongestMatchupObservations": [
-        {
-          "topic": "wrestling_offense",
-          "about": "Mateusz Gamrot",
-          "direction": "against_about",
-          "independentObservations": 1,
-          "claim": "Mateusz Gamrot is not a damaging striker, a great ground-and-pound specialist, or a strong control threat who struggles to keep people down."
-        },
-        {
-          "topic": "durability",
-          "about": "Mateusz Gamrot",
-          "direction": "against_about",
-          "independentObservations": 1,
-          "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights."
-        },
-        {
-          "topic": "durability",
-          "about": "Mateusz Gamrot",
-          "direction": "favors_about",
-          "independentObservations": 1,
-          "claim": "Mateusz Gamrot is very tough to finish."
-        }
-      ],
-      "currentCondition": [],
-      "rumorsAndUnresolved": [],
-      "widelyKnown": [
-        "Mateusz Gamrot: recent_form"
-      ],
-      "potentiallyNovel": [
-        {
-          "topic": "wrestling_offense",
-          "about": "Mateusz Gamrot",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        },
-        {
-          "topic": "durability",
-          "about": "Mateusz Gamrot",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 2
-        },
-        {
-          "topic": "durability",
-          "about": "Mateusz Gamrot",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        }
-      ],
-      "contradictions": [
-        {
-          "proposition": "Mateusz Gamrot — durability",
-          "disagreementType": "compatible_claims",
-          "bothCanBeTrue": true,
-          "supporting": {
-            "position": "favors Mateusz Gamrot",
-            "claims": 1,
-            "independentOrigins": 1,
-            "amplifiers": 1,
-            "strength": "moderate",
-            "examples": [
-              "Mateusz Gamrot is very tough to finish."
-            ]
-          },
-          "opposing": {
-            "position": "against Mateusz Gamrot",
-            "claims": 2,
-            "independentOrigins": 2,
-            "amplifiers": 2,
-            "strength": "moderate",
-            "examples": [
-              "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
-              "Mateusz Gamrot has been dropped in six of his 13 UFC fights."
-            ]
-          }
-        }
-      ],
-      "missingInformation": [
-        "striking_offense",
-        "striking_defense",
-        "takedown_defense",
-        "cardio"
-      ],
-      "limitations": [
-        "5 topic(s) have no determinable timeframe"
-      ],
-      "reviewItems": [],
-      "topics": [
-        {
-          "about": "Mateusz Gamrot",
-          "topic": "wrestling_offense",
-          "direction": "against_about",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:mma experts"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Mateusz Gamrot is not a damaging striker, a great ground-and-pound specialist, or a strong control threat who struggles to keep people down.",
-              "quote": "he is not a damaging striker, nor is he a great ground-and-pound specialist or the best control control threat. We've seen him land a lot of takedowns, good chain wrestling, but sometimes he has a hard time keeping people down.",
-              "channel": "MMA EXPERTS",
-              "videoId": "25UyPbYPaKM",
-              "segment": {
-                "startChar": 16686,
-                "endChar": 28659,
-                "approxMinute": 17
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-05T18:53:40Z",
-              "about": "Mateusz Gamrot",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "grappling",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Mateusz Gamrot",
-          "topic": "recent_form",
-          "direction": "favors_about",
-          "claimCount": 1,
-          "kinds": [
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "public_record",
-            "independentOrigins": 1,
-            "originIds": [
-              "record:arman.beat.gamrot.mateusz.tsarukyan"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 0,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 1,
-              "analytical": 0,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "record:arman.beat.gamrot.mateusz.tsarukyan": [
-                "HopperMMA"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 1 channel(s)",
-            "note": null
-          },
-          "marketAwareness": "widely_public_probably_in_the_market",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Mateusz Gamrot beat Arman Tsarukyan.",
-              "quote": "main evented against Arman Tsarukyan, beat Arman Tsarukyan.",
-              "channel": "HopperMMA",
-              "videoId": "tW0DYtKeZU0",
-              "segment": {
-                "startChar": 18394,
-                "endChar": 24394,
-                "approxMinute": 18
-              },
-              "kind": "verified_hard_fact",
-              "claimClass": "hard_fact",
-              "relevance": "opponent_specific_historical",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T18:00:04Z",
-              "about": "Mateusz Gamrot",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "record",
-              "mentionCount": 1,
-              "sources": [
-                "HopperMMA"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Mateusz Gamrot",
-          "topic": "other",
-          "direction": "against_about",
-          "claimCount": 1,
-          "kinds": [
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "opponent_specific_historical"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "public_record",
-            "independentOrigins": 1,
-            "originIds": [
-              "record:charles.gamrot.last.mateusz.oliveira.submitted.year"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 0,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 1,
-              "analytical": 0,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "record:charles.gamrot.last.mateusz.oliveira.submitted.year": [
-                "HopperMMA"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "public record -> 1 channel(s)",
-            "note": null
-          },
-          "marketAwareness": "unknown",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Mateusz Gamrot was submitted by Charles Oliveira last year.",
-              "quote": "just last year got submitted by Charles Oliveira.",
-              "channel": "HopperMMA",
-              "videoId": "tW0DYtKeZU0",
-              "segment": {
-                "startChar": 18394,
-                "endChar": 24394,
-                "approxMinute": 18
-              },
-              "kind": "verified_hard_fact",
-              "claimClass": "hard_fact",
-              "relevance": "opponent_specific_historical",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T18:00:04Z",
-              "about": "Mateusz Gamrot",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "grappling",
-              "mentionCount": 1,
-              "sources": [
-                "HopperMMA"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Mateusz Gamrot",
-          "topic": "durability",
-          "direction": "against_about",
-          "claimCount": 2,
-          "kinds": [
-            "film_study_observation",
-            "verifiable_statistical_claim"
-          ],
-          "relevance": [
-            "opponent_specific_historical",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 2,
-            "originIds": [
-              "analyst:mma experts",
-              "record:mateusz gamrot:n:13"
-            ],
-            "amplifyingChannels": 2,
-            "totalMentions": 2,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 1,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ],
-              "record:mateusz gamrot:n:13": [
-                "We Want Picks"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.",
-              "quote": "And we've seen Gamrot buckle before.",
-              "channel": "MMA EXPERTS",
-              "videoId": "fHG_uzzQxtc",
-              "segment": {
-                "startChar": 106640,
-                "endChar": 112640,
-                "approxMinute": 107
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "opponent_specific_historical",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T03:56:40Z",
-              "about": "Mateusz Gamrot",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "durability",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
-              ]
-            },
-            {
-              "claim": "Mateusz Gamrot has been dropped in six of his 13 UFC fights.",
-              "quote": "He is unfortunately pretty chinny. He has been dropped in six of his 13 UFC fights.",
-              "channel": "We Want Picks",
-              "videoId": "c8WD9GeGt1c",
-              "segment": {
-                "startChar": 24622,
-                "endChar": 35545,
-                "approxMinute": 25
-              },
-              "kind": "verifiable_statistical_claim",
-              "claimClass": "statistical",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-02T14:00:04Z",
-              "about": "Mateusz Gamrot",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "durability",
-              "mentionCount": 1,
-              "sources": [
-                "We Want Picks"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Mateusz Gamrot",
-          "topic": "durability",
-          "direction": "favors_about",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:dfs by the numbers"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:dfs by the numbers": [
-                "DFS BY THE NUMBERS"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Mateusz Gamrot is very tough to finish.",
-              "quote": "Gamrot's very tough to finish. You know, he can be dropped, but you got to kill him to get him out of there.",
-              "channel": "DFS BY THE NUMBERS",
-              "videoId": "K5jHiWhORzg",
-              "segment": {
-                "startChar": 9656,
-                "endChar": 14797,
-                "approxMinute": 10
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-06T16:17:36Z",
-              "about": "Mateusz Gamrot",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-08-B04",
-              "evidenceType": "durability",
-              "mentionCount": 1,
-              "sources": [
-                "DFS BY THE NUMBERS"
               ]
             }
           ]
@@ -10563,6 +11380,272 @@
       ]
     },
     {
+      "boutId": "UFC-2026-08-08-B09",
+      "fight": "Diyar Nurgozhay vs Bruno Lopes",
+      "coverage": "THINLY COVERED",
+      "relevantClaims": 3,
+      "topicCount": 2,
+      "independentOrigins": 2,
+      "originBreakdown": {
+        "analysts": 2,
+        "publicRecords": 0,
+        "externalReports": 0,
+        "commentary": 0
+      },
+      "originIdentities": [
+        "analyst:mma experts",
+        "analyst:topside mma"
+      ],
+      "channels": 2,
+      "strongestFactual": [],
+      "strongestMatchupObservations": [
+        {
+          "topic": "durability",
+          "about": "Bruno Lopes",
+          "direction": "against_about",
+          "independentObservations": 2,
+          "claim": "Bruno Lopes gets dropped easily and has a weak chin."
+        },
+        {
+          "topic": "submission_offense",
+          "about": "Bruno Lopes",
+          "direction": "favors_about",
+          "independentObservations": 1,
+          "claim": "Bruno Lopes is a BJJ black belt who can submit Diur Nurgaze if he takes the fight to the ground."
+        }
+      ],
+      "currentCondition": [],
+      "rumorsAndUnresolved": [],
+      "widelyKnown": [],
+      "potentiallyNovel": [
+        {
+          "topic": "durability",
+          "about": "Bruno Lopes",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 2
+        },
+        {
+          "topic": "submission_offense",
+          "about": "Bruno Lopes",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
+        }
+      ],
+      "contradictions": [],
+      "missingInformation": [
+        "striking_offense",
+        "striking_defense",
+        "wrestling_offense",
+        "takedown_defense",
+        "cardio",
+        "recent_form"
+      ],
+      "limitations": [
+        "2 topic(s) have no determinable timeframe"
+      ],
+      "reviewItems": [],
+      "topics": [
+        {
+          "about": "Bruno Lopes",
+          "topic": "durability",
+          "direction": "against_about",
+          "claimCount": 2,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 2,
+            "originIds": [
+              "analyst:mma experts",
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 2,
+            "totalMentions": 2,
+            "independentObservations": 2,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 2,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:mma experts": [
+                "MMA EXPERTS"
+              ],
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "2 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Bruno Lopes gets dropped easily and has a weak chin.",
+              "quote": "Bruno Lopes's chin is sauce, man. He gets dropped by a Jacoby jab.",
+              "channel": "MMA EXPERTS",
+              "videoId": "fHG_uzzQxtc",
+              "segment": {
+                "startChar": 61703,
+                "endChar": 67703,
+                "approxMinute": 62
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T03:56:40Z",
+              "about": "Bruno Lopes",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B09",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "MMA EXPERTS"
+              ]
+            },
+            {
+              "claim": "Bruno Lopes has chin concerns if the fight stays on the feet.",
+              "quote": "Bruno Lopes' chin is no bueno either. So, we have a real chin concern versus a real submission defense concern",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 26387,
+                "endChar": 35658,
+                "approxMinute": 26
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Bruno Lopes",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-08-B09",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Bruno Lopes",
+          "topic": "submission_offense",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "matchup_inference"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:topside mma"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:topside mma": [
+                "Topside MMA"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "weak",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "weak",
+            "_plus": 2,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Bruno Lopes is a BJJ black belt who can submit Diur Nurgaze if he takes the fight to the ground.",
+              "quote": "What is Bruno Lopes? A BJJ black belt. 1 + 1 = 2 here. If Bruno Lopes can take this fight to the ground, he should be able to submit Diur Nurgaze",
+              "channel": "Topside MMA",
+              "videoId": "2qkiE_mTsLo",
+              "segment": {
+                "startChar": 26387,
+                "endChar": 35658,
+                "approxMinute": 26
+              },
+              "kind": "matchup_inference",
+              "claimClass": "matchup_analysis",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-04T02:24:12Z",
+              "about": "Bruno Lopes",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-08-B09",
+              "evidenceType": "grappling",
+              "mentionCount": 1,
+              "sources": [
+                "Topside MMA"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "boutId": "UFC-2026-08-08-B07",
       "fight": "Louie Sutherland vs Jose Montanha Da Silva",
       "coverage": "THINLY COVERED",
@@ -10782,146 +11865,6 @@
               "mentionCount": 1,
               "sources": [
                 "The Mike Finch Show"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "boutId": "UFC-2026-08-08-B09",
-      "fight": "Diyar Nurgozhay vs Bruno Lopes",
-      "coverage": "THINLY COVERED",
-      "relevantClaims": 1,
-      "topicCount": 1,
-      "independentOrigins": 1,
-      "originBreakdown": {
-        "analysts": 1,
-        "publicRecords": 0,
-        "externalReports": 0,
-        "commentary": 0
-      },
-      "originIdentities": [
-        "analyst:mma experts"
-      ],
-      "channels": 1,
-      "strongestFactual": [],
-      "strongestMatchupObservations": [
-        {
-          "topic": "durability",
-          "about": "Bruno Lopes",
-          "direction": "against_about",
-          "independentObservations": 1,
-          "claim": "Bruno Lopes gets dropped easily and has a weak chin."
-        }
-      ],
-      "currentCondition": [],
-      "rumorsAndUnresolved": [],
-      "widelyKnown": [],
-      "potentiallyNovel": [
-        {
-          "topic": "durability",
-          "about": "Bruno Lopes",
-          "marketAwareness": "niche_analytical_interpretation",
-          "origins": 1
-        }
-      ],
-      "contradictions": [],
-      "missingInformation": [
-        "striking_offense",
-        "striking_defense",
-        "wrestling_offense",
-        "takedown_defense",
-        "cardio",
-        "recent_form"
-      ],
-      "limitations": [
-        "1 topic(s) have no determinable timeframe",
-        "every claim comes from a single analyst — no independent check is possible"
-      ],
-      "reviewItems": [],
-      "topics": [
-        {
-          "about": "Bruno Lopes",
-          "topic": "durability",
-          "direction": "against_about",
-          "claimCount": 1,
-          "kinds": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 1,
-            "originIds": [
-              "analyst:mma experts"
-            ],
-            "amplifyingChannels": 1,
-            "totalMentions": 1,
-            "independentObservations": 1,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 1,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:mma experts": [
-                "MMA EXPERTS"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "1 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "niche_analytical_interpretation",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": false,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Bruno Lopes gets dropped easily and has a weak chin.",
-              "quote": "Bruno Lopes's chin is sauce, man. He gets dropped by a Jacoby jab.",
-              "channel": "MMA EXPERTS",
-              "videoId": "fHG_uzzQxtc",
-              "segment": {
-                "startChar": 61703,
-                "endChar": 67703,
-                "approxMinute": 62
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "stable_historical_tendency",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-04T03:56:40Z",
-              "about": "Bruno Lopes",
-              "direction": "against_about",
-              "boutId": "UFC-2026-08-08-B09",
-              "evidenceType": "durability",
-              "mentionCount": 1,
-              "sources": [
-                "MMA EXPERTS"
               ]
             }
           ]
