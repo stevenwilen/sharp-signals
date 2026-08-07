@@ -229,6 +229,11 @@ async function main() {
   // Bookkeeping only — no Kalshi write. Non-fatal.
   run("run-apply-placements.js", [], { allowFail: true });
 
+  // Settle real placed bets from Kalshi results EVERY run — nothing else did, so finished fights sat as
+  // "open exposure / confirmed placed" for a week with results already in. Reads Kalshi (no order path),
+  // settles only bets whose market has finalized; a no-op when nothing has resolved. Best-effort.
+  run("run-settle-from-market.js", [], { allowFail: true });
+
   // Keep the canonical bankrolls.json the dashboards read in step with the ledger on EVERY run — not only
   // on the placement/settle flows that call BK.write. A balance change made outside those (a manual
   // confirm, a cash adjustment, a settlement graded elsewhere) otherwise leaves the summary stale for days
