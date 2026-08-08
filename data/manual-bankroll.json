@@ -1336,12 +1336,16 @@
       "askAtRecommendation": 0.57,
       "approxContracts": null,
       "forecastHash": "2edc3ef55e70b92c",
-      "status": "RECOMMENDED_NOT_CONFIRMED",
-      "actualStake": 0,
-      "executionPrice": null,
-      "actualContracts": null,
-      "fees": null,
-      "includedInRealPnl": false,
+      "status": "MANUALLY_PLACED",
+      "actualStake": 19.72,
+      "executionPrice": 0.58,
+      "actualContracts": 34,
+      "fees": {
+        "amount": 0.58,
+        "basis": "estimated",
+        "feeModelVersion": "2026-07-16"
+      },
+      "includedInRealPnl": true,
       "firstRecommendedAt": "2026-08-04T20:20:39.351Z",
       "lastRecommendedAt": "2026-08-04T20:20:39.351Z",
       "recommendationCount": 1,
@@ -1351,10 +1355,19 @@
           "to": "RECOMMENDED_NOT_CONFIRMED",
           "reason": "Telegram sent a buy instruction",
           "at": "2026-08-04T20:20:39.351Z"
+        },
+        {
+          "from": "RECOMMENDED_NOT_CONFIRMED",
+          "to": "MANUALLY_PLACED",
+          "reason": "confirmed via dashboard",
+          "at": "2026-08-08T13:30:36.919Z",
+          "executionPrice": 0.58,
+          "actualStake": 19.72
         }
       ],
       "category": "SPECULATIVE_BET",
-      "paperEligible": false
+      "paperEligible": false,
+      "placedAt": "2026-08-08T13:30:36.920Z"
     },
     "explore|UFC-2026-08-08-B07|KXUFCFIGHT-26AUG08JOHROS-ROS": {
       "key": "explore|UFC-2026-08-08-B07|KXUFCFIGHT-26AUG08JOHROS-ROS",
@@ -1631,5 +1644,5 @@
       "at": "2026-07-27T18:56:52.755Z"
     }
   ],
-  "updatedAt": "2026-08-08T03:05:33.037Z"
+  "updatedAt": "2026-08-08T13:30:36.924Z"
 }
