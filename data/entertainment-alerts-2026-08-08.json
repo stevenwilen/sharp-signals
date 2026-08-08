@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-08-08",
-  "ranAt": "2026-08-08T22:10:30.782Z",
+  "ranAt": "2026-08-08T22:20:31.518Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 0,
-    "delivered": 0,
-    "buyInstructions": 0,
+    "attempted": 1,
+    "delivered": 1,
+    "buyInstructions": 1,
     "humanReviews": 0,
-    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
+    "transport": "telegram (manual instruction + human review)"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -50,16 +50,16 @@
     "provenance": "chosen by the human as entertainment limits; NOT derived from Kelly, NOT fitted to any result, NOT evidence of edge"
   },
   "contractsListed": {
-    "FIGHTER_WINS": 20
+    "FIGHTER_WINS": 18
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 16,
+    "NO BET": 14,
     "UNPRICED": 2,
     "HUMAN REVIEW REQUIRED": 2
   },
   "forecastHash": "670babad07fbedf2",
-  "snapshotTimestamp": "2026-08-08T22:10:30.953Z",
+  "snapshotTimestamp": "2026-08-08T22:20:31.602Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-08-08-B07",
@@ -91,30 +91,6 @@
     }
   ],
   "buyInstructions": [
-    {
-      "boutId": "UFC-2026-08-08-B02",
-      "ticker": "KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
-      "key": "explore|UFC-2026-08-08-B02|KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
-      "wouldSend": false,
-      "why": "no material change since the last message",
-      "text": "🧪 STRONG SPECULATIVE — $0\n\nGianni Vazquez vs Miles Johns\nBuy: Gianni Vazquez YES\n\nCurrent: 1¢\nMaximum: 39¢\nStake: $0 of $88.66\nApprox contracts: 7\nCard exposure left: $0\n\nWhy: Miles Johns's cardio can be questioned, though he goes hard for at least 1.5 rounds.\nMain risk: wrong if Miles Johns shows no cardio effect at the weigh-in / in-fight\nSystem estimate: 39% (range 31%–40%)\n\nPlace only if the displayed average price is 39¢ or less.\n\nFor entertainment use. Manual placement only.",
-      "state": {
-        "ask": 0.01,
-        "maximumAcceptablePrice": 0.3855,
-        "forecastHash": "670babad07fbedf2",
-        "classification": "STRONG SPECULATIVE",
-        "lane": "exploration",
-        "stakePercent": 4,
-        "topTicker": "KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
-        "stale": false,
-        "pipelineFailed": false,
-        "withinEnvelope": true,
-        "verdict": "BUY"
-      },
-      "lane": "exploration",
-      "verdict": "BUY",
-      "stakeDollars": 0.08
-    },
     {
       "boutId": "UFC-2026-08-08-B03",
       "ticker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
@@ -185,33 +161,41 @@
       },
       "lane": "exploration",
       "verdict": "BUY",
-      "stakeDollars": 0.8060000000000009
+      "stakeDollars": 0.8860000000000001
+    },
+    {
+      "boutId": "explore",
+      "ticker": "KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
+      "key": "explore|UFC-2026-08-08-B02|KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
+      "wouldSend": true,
+      "why": "contract no longer listed — the fight is off",
+      "text": "🔴 SELL — the fight is off\nGianni Vazquez — bought at 39¢\nReason: the contract is no longer listed — the fight is off (cancelled, rescheduled, or a fighter is out)\nSell on Kalshi if the market is still open. If it isn't, Kalshi settles it at a fair price — you don't lose over this.",
+      "state": {
+        "ask": 0.39,
+        "maximumAcceptablePrice": 0.423,
+        "forecastHash": "3a2a117278f6a5f2",
+        "classification": "WITHDRAWN",
+        "lane": "exploration",
+        "stakePercent": 3,
+        "topTicker": "KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
+        "stale": false,
+        "pipelineFailed": false,
+        "withinEnvelope": true,
+        "verdict": "WITHDRAWN",
+        "lastSentAt": "2026-08-08T03:05:32.599Z",
+        "lastType": "BUY_INSTRUCTION",
+        "firstSentAt": "2026-08-08T03:05:32.599Z",
+        "messageCount": 1
+      },
+      "verdict": "WITHDRAWN"
     }
   ],
   "decisions": [
     {
-      "ticker": "KXUFCFIGHT-26AUG08JOHVAZ-VAZ",
-      "bout": "Gianni Vazquez vs Miles Johns",
-      "classification": "NO BET",
-      "rank": 1,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
-    },
-    {
-      "ticker": "KXUFCFIGHT-26AUG08JOHVAZ-JOH",
-      "bout": "Jessie Rosas vs Miles Johns",
-      "classification": "NO BET",
-      "rank": 2,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
-    },
-    {
       "ticker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
       "bout": "Quillan Salkilld vs Mateusz Gamrot",
       "classification": "NO BET",
-      "rank": 3,
+      "rank": 1,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.0594 is not favourable after fees and slippage"
@@ -220,7 +204,7 @@
       "ticker": "KXUFCFIGHT-26AUG08GAMSAL-GAM",
       "bout": "Quillan Salkilld vs Mateusz Gamrot",
       "classification": "NO BET",
-      "rank": 4,
+      "rank": 2,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.067 is not favourable after fees and slippage"
@@ -229,7 +213,7 @@
       "ticker": "KXUFCFIGHT-26AUG08FERQUA-QUA",
       "bout": "Billy Quarantillo vs Diego Ferreira",
       "classification": "NO BET",
-      "rank": 5,
+      "rank": 3,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -238,7 +222,7 @@
       "ticker": "KXUFCFIGHT-26AUG08FERQUA-FER",
       "bout": "Billy Quarantillo vs Diego Ferreira",
       "classification": "NO BET",
-      "rank": 6,
+      "rank": 4,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -247,7 +231,7 @@
       "ticker": "KXUFCFIGHT-26AUG08ELKDEL-ELK",
       "bout": "Darren Elkins vs Yadier Delvalle",
       "classification": "NO BET",
-      "rank": 7,
+      "rank": 5,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -256,7 +240,7 @@
       "ticker": "KXUFCFIGHT-26AUG08ELKDEL-DEL",
       "bout": "Darren Elkins vs Yadier Delvalle",
       "classification": "NO BET",
-      "rank": 8,
+      "rank": 6,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -265,7 +249,7 @@
       "ticker": "KXUFCFIGHT-26AUG08SUTMON-SUT",
       "bout": "Louie Sutherland vs Jose Montanha Da Silva",
       "classification": "NO BET",
-      "rank": 9,
+      "rank": 7,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -274,7 +258,7 @@
       "ticker": "KXUFCFIGHT-26AUG08SUTMON-MON",
       "bout": "Louie Sutherland vs Jose Montanha Da Silva",
       "classification": "NO BET",
-      "rank": 10,
+      "rank": 8,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast's prior is an OPENING line (LOGICAL_OPEN) but this contract trades at a CURRENT price. Any difference between them is the market's move since the open, not an edge. A live position requires a wall-clock baseline (tier A/C) contemporaneous with the traded price."
@@ -283,7 +267,7 @@
       "ticker": "KXUFCFIGHT-26AUG08NURLOP-NUR",
       "bout": "Diyar Nurgozhay vs Bruno Lopes",
       "classification": "NO BET",
-      "rank": 11,
+      "rank": 9,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.0466 is not favourable after fees and slippage"
@@ -292,7 +276,7 @@
       "ticker": "KXUFCFIGHT-26AUG08NURLOP-LOP",
       "bout": "Diyar Nurgozhay vs Bruno Lopes",
       "classification": "NO BET",
-      "rank": 12,
+      "rank": 10,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "conservative EV -0.0672 is not favourable after fees and slippage"
@@ -301,7 +285,7 @@
       "ticker": "KXUFCFIGHT-26AUG08ASPPAT-PAT",
       "bout": "Guilherme Pat vs Steven Asplund",
       "classification": "NO BET",
-      "rank": 13,
+      "rank": 11,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -310,7 +294,7 @@
       "ticker": "KXUFCFIGHT-26AUG08ASPPAT-ASP",
       "bout": "Guilherme Pat vs Steven Asplund",
       "classification": "NO BET",
-      "rank": 14,
+      "rank": 12,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the forecast applied zero adjustments: the system holds no view on this fight and merely restates its baseline. A gap to the market here is price movement, not a disagreement worth betting."
@@ -319,25 +303,25 @@
       "ticker": "KXUFCFIGHT-26AUG08SOUMIR-SOU",
       "bout": "Manoel Sousa vs Richie Miranda",
       "classification": "NO BET",
-      "rank": 15,
+      "rank": 13,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0664 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.0857 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26AUG08SOUMIR-MIR",
       "bout": "Manoel Sousa vs Richie Miranda",
       "classification": "NO BET",
-      "rank": 16,
+      "rank": 14,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0256 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.0152 is not favourable after fees and slippage"
     },
     {
       "ticker": "KXUFCFIGHT-26AUG08MILGOF-MIL",
       "bout": "Ty Cole Miller vs Billy Goff",
       "classification": "UNPRICED",
-      "rank": 17,
+      "rank": 15,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "incoherent outcome tree: no tree"
@@ -346,7 +330,7 @@
       "ticker": "KXUFCFIGHT-26AUG08MILGOF-GOF",
       "bout": "Ty Cole Miller vs Billy Goff",
       "classification": "UNPRICED",
-      "rank": 18,
+      "rank": 16,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "incoherent outcome tree: no tree"
@@ -355,7 +339,7 @@
       "ticker": "KXUFCFIGHT-26AUG08LEMTHA-THA",
       "bout": "Alexia Thainara vs Amanda Lemos",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 19,
+      "rank": 17,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
@@ -364,7 +348,7 @@
       "ticker": "KXUFCFIGHT-26AUG08LEMTHA-LEM",
       "bout": "Alexia Thainara vs Amanda Lemos",
       "classification": "HUMAN REVIEW REQUIRED",
-      "rank": 20,
+      "rank": 18,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
       "reason": "the underlying forecast is flagged HUMAN REVIEW REQUIRED"
