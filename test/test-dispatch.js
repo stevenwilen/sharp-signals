@@ -28,7 +28,7 @@ console.log("CADENCE TIERS BY TIME TO FIRST BELL");
 console.log("\nA COLD START RUNS EVERYTHING DUE FOR THE TIER");
 {
   const p = D.decideDueStages(ED, at(120), {});   // fight week, no receipts
-  ok("collect/forecast/alerts are due on a cold start", due(p).join() === "alerts,collect,forecast");
+  ok("collect/forecast/confidence are due on a cold start", due(p).join() === "collect,confidence,forecast");
   ok("grade is not due before the card", p.due.grade === false);
 }
 
@@ -61,11 +61,11 @@ console.log("\nCOLLECT AND FORECAST ARE GATED INDEPENDENTLY BY THEIR OWN RECEIPT
   ok("collect NOT due after 40min on fight day (1h cadence)", p.due.collect === false);
 }
 
-console.log("\nALERTS PIGGYBACK ON FORECAST; GRADE IS POST-CARD ONLY");
+console.log("\nCONFIDENCE PIGGYBACKS ON FORECAST; GRADE IS POST-CARD ONLY");
 {
-  ok("alerts are due exactly when forecast is", (() => {
+  ok("confidence is due exactly when forecast is", (() => {
     const p = D.decideDueStages(ED, at(120), { forecast: { ranAt: new Date(at(120) - 1 * H).toISOString() } });
-    return p.due.alerts === p.due.forecast;
+    return p.due.confidence === p.due.forecast;
   })());
   const post = D.decideDueStages(ED, at(-8), {});
   ok("grade is due 8h after bell", post.due.grade === true);

@@ -76,8 +76,8 @@ function decideDueStages(eventDate, nowMs, receipts) {
   due.collect = tier !== "post-card" && since("collect") >= evidenceEveryH;
   // forecast (eval -> seal -> attest) — at the forecast cadence, and never post-card.
   due.forecast = tier !== "post-card" && since("forecast") >= forecastEveryH;
-  // alerts — whenever a forecast is (re)sealed. Piggybacks on forecast.
-  due.alerts = due.forecast;
+  // confidence — the pick engine reruns whenever a forecast is (re)sealed (it needs the card's bouts).
+  due.confidence = due.forecast;
   // grade — post-card only, once, after first bell + a settlement margin.
   due.grade = tier === "post-card" && hoursToBell < -3 && since("grade") >= 24;
 
@@ -195,16 +195,6 @@ async function main() {
     }
   }
 
-  // SETTLE + REFRESH THE BALANCE — card-independent, so it runs BEFORE the no-card return. A placed bet
-  // resolves on Kalshi's own schedule, which does not care whether a NEW card is active yet; coupling
-  // settlement to card discovery is exactly how a finished fight's bet can sit "open" with results already
-  // in (the 08-01 card did, for a week). Both are read-only / bookkeeping (no order path) and no-ops when
-  // nothing changed. Best-effort — a stuck summary must never fail the whole dispatch.
-  if (!dry) {
-    run("run-settle-from-market.js", [], { allowFail: true });
-    try { require("./lib/bankrolls").write(); } catch (e) { say(`[dispatch] bankrolls refresh skipped: ${e.message}`); }
-  }
-
   if (!card) { say("[dispatch] no open KXUFCFIGHT card found — nothing else to do."); return 0; }
   say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, starts ${card.startTime || `~${new Date(firstBellMs(card.eventDate)).toISOString()} (22:00 fallback)`}`);
 
@@ -214,16 +204,15 @@ async function main() {
   // ROLLOVER RECENCY (certification fix): a stage receipt stamped for a DIFFERENT card is not recency
   // for THIS card. Without this, a fresh card inherited the old card's ranAt and waited a full cadence
   // interval before its first collect/forecast — a silent dead window at every rollover.
-  for (const st of ["collect", "forecast", "alerts", "grade"]) {
+  for (const st of ["collect", "forecast", "confidence", "grade"]) {
     if (receipts[st] && receipts[st].card && receipts[st].card !== card.eventId) delete receipts[st];
   }
   persistReceipts(receipts);
   const plan = decideDueStages(card.eventDate, nowMs, receipts);
   const dueList = force ? [force] : Object.entries(plan.due).filter(([, v]) => v).map(([k2]) => k2);
-  // Alerts always follow a forecast: a re-sealed forecast may have changed the decision, and the alert
-  // ledger must get the chance to fire a price/withdrawal/supersede update. This holds whether the
-  // forecast was due or forced.
-  if (dueList.includes("forecast") && !dueList.includes("alerts")) dueList.push("alerts");
+  // Confidence always follows a forecast: a re-sealed forecast (or freshly extracted picks) can change
+  // the consensus, so the pick engine reruns whenever the forecast does — due or forced.
+  if (dueList.includes("forecast") && !dueList.includes("confidence")) dueList.push("confidence");
   say(`[dispatch] tier ${plan.tier} · ${plan.hoursToBell}h to bell · due: ${dueList.length ? dueList.join(", ") : "nothing"}${force ? ` (forced: ${force})` : ""}`);
 
   if (dry) { say(`[dispatch] --dry: would run [${dueList.join(", ")}]. Nothing executed.`); return 0; }
@@ -234,37 +223,9 @@ async function main() {
   const evalFile = `data/evidence-eval-${ed}.json`;
   const forecastFile = `data/forecast-${ed}.json`;
 
-  // Apply any placement confirmations the mobile dashboard dropped into data/placements/ BEFORE any alert
-  // path runs, so a just-placed bet is recorded at its exact price and then suppressed this cycle.
-  // Bookkeeping only — no Kalshi write. Non-fatal.
-  run("run-apply-placements.js", [], { allowFail: true });
-
-  // Settlement already ran unconditionally above (before the no-card return). Here, after apply-placements
-  // may have recorded a just-confirmed placement, refresh the canonical bankrolls.json the dashboards read —
-  // keep it in step with the ledger on EVERY run — not only
-  // on the placement/settle flows that call BK.write. A balance change made outside those (a manual
-  // confirm, a cash adjustment, a settlement graded elsewhere) otherwise leaves the summary stale for days
-  // (it did — froze at 07-27). Cheap and rides the same per-run data commit. Best-effort; never fail a
-  // dispatch over the summary.
-  try { require("./lib/bankrolls").write(); } catch (e) { say(`[dispatch] bankrolls refresh skipped: ${e.message}`); }
-
-  // FIGHT-WEEK PRICE WATCH — between the ~2h forecasts, a favorable price cross (a priced-out contract's
-  // ask falling to/below its ceiling) should ping a BUY promptly, not wait a full cadence. The fight-day
-  // sentinel does this on a 15-min loop, but ONLY Fri/Sat — the rest of fight week had no fast price
-  // check, so a cross could sit unseen for up to a forecast interval. On any cycle where nothing on the
-  // forecast cadence is due, re-run the alert path against LIVE Kalshi prices and let the ledger fire its
-  // cross / favourable-again / withdrawn triggers. Cheap: NO Gemini, NO re-forecast — the sealed forecast
-  // is fixed; only prices move. Opt-in via PRICE_WATCH_ENABLED; non-fatal; an expired attestation
-  // self-reports TEST mode and sends nothing.
-  if (!dueList.length) {
-    if (process.env.PRICE_WATCH_ENABLED === "1" && plan.tier !== "post-card" && fs.existsSync(path.join(ROOT, forecastFile))) {
-      say("[dispatch] price-watch: re-checking live prices for a favorable cross (nothing on cadence due)");
-      run("run-entertainment-alerts.js", [forecastFile, `--eval=${evalFile}`, "--send"], { allowFail: true });
-    } else {
-      say("[dispatch] nothing due this run.");
-    }
-    return 0;
-  }
+  // Nothing on the forecast cadence is due. Confidence rides the forecast stage (it needs fresh picks and
+  // the sealed bouts), so there is nothing to produce between forecasts.
+  if (!dueList.length) { say("[dispatch] nothing due this run."); return 0; }
 
   // COLLECT — card selection + evidence extraction (Gemini). The expensive stage; caches transcripts
   // and extractions so a re-forecast does not re-pay.
@@ -308,25 +269,13 @@ async function main() {
     stamp(receipts, "forecast", { card: card.eventId, seal });
   }
 
-  // ALERTS — the unified decision + Telegram. --send is honoured only if the 3-gate arming clears
-  // (ALERTS_ARMED + matching attestation + SHARP_PRODUCTION); otherwise it self-reports TEST mode.
-  if (dueList.includes("alerts")) {
-    run("run-entertainment-alerts.js", [forecastFile, `--eval=${evalFile}`, "--send"]);
-    stamp(receipts, "alerts", { card: card.eventId });
-  }
-
-  // FIGHT INTELLIGENCE (shadow) — the automated report lifecycle, on the SAME cached evidence and sealed
-  // forecast (no re-extraction, so it honours the recheck cadence cheaply). In shadow it records +
-  // dashboards only and sends NO Telegram, so it cannot touch the production alert path. Non-fatal: it
-  // may never break the forecast/alerts pipeline while it is being validated. Off unless
-  // FIGHT_INTEL_ENABLED=1; --send is deliberately NOT passed until the shadow is switched to production.
-  if (process.env.FIGHT_INTEL_ENABLED === "1" && (dueList.includes("alerts") || dueList.includes("forecast"))) {
-    const intelArgs = [forecastFile, `--eval=${evalFile}`];
-    // TWO gates, both reversible repo variables: FIGHT_INTEL_ENABLED=1 shadows (records only);
-    // FIGHT_INTEL_SEND=1 promotes it to production (adds --send, and the legacy HUMAN REVIEW send is
-    // suppressed in run-entertainment-alerts). run-intel still requires SHARP_PRODUCTION to actually send.
-    if (process.env.FIGHT_INTEL_SEND === "1") intelArgs.push("--send");
-    run("run-intel.js", intelArgs, { allowFail: true });
+  // CONFIDENCE — the pick engine. On every (re)forecast, rebuild the rank-weighted consensus for the card
+  // from the pick corpus and write data/card-confidence-<date>.json (pick, calibrated %, coverage, tier,
+  // why, who) for the dashboard. This is the system's only output surface — no Telegram, no price, no
+  // stake, no order path. Reads the sealed bouts + evidence-eval + the channel ranking off disk.
+  if (dueList.includes("confidence")) {
+    run("run-confidence.js", [ed]);
+    stamp(receipts, "confidence", { card: card.eventId });
   }
 
   // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
@@ -341,6 +290,8 @@ async function main() {
     const scen = `data/scenarios-ranked-${ed}.json`;
     if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
     run("run-convergence-eval.js", ["--write"], { allowFail: true });   // update the read-only convergence record
+    // Refit the confidence calibration and refresh the scoreboard now that another card's results are in.
+    run("run-fit-calibration.js", [], { allowFail: true });
     if (okGrade) {
       stamp(receipts, "grade", { card: card.eventId });
       (receipts.gradedCards = receipts.gradedCards || {})[ed] = new Date().toISOString();
