@@ -82,7 +82,7 @@ async function getPredictions(cfg) {
   const picksCache = require("./lib/picks-cache");
   const FP = promptFingerprint();
   // SPORT GATE: only scan sources whose domain is enabled in config.sports (default UFC/MMA only).
-  const sports = cfg.sports || ["mma", "boxing"];
+  const sports = cfg.sports || ["mma"];
   const all = (readJson(paths.sources, { sources: [] }).sources || [])
     .filter((s) => s.handle && sports.includes(s.domain));
   const preds = [];

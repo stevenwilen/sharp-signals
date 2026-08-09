@@ -25,12 +25,11 @@ const YT_ONLY = process.argv.includes("--yt-only");
 
 (async () => {
   const cfg = readJson(paths.config, {});
-  // SPORT GATE: only scan sources whose domain is enabled in config.sports (default UFC/MMA only).
-  // This is what keeps boxing channels — and their Gemini extraction cost — out of the backfill.
-  const sports = cfg.sports || ["mma", "boxing"];
+  // SPORT GATE: only scan sources whose domain is enabled in config.sports (UFC/MMA only).
+  const sports = cfg.sports || ["mma"];
   const everySource = readJson(paths.sources, { sources: [] }).sources || [];
   const all = everySource.filter((s) => sports.includes(s.domain));
-  log(`sports enabled: ${sports.join(", ")} — scanning ${all.length} of ${everySource.length} sources (boxing excluded)`);
+  log(`sports enabled: ${sports.join(", ")} — scanning ${all.length} of ${everySource.length} sources`);
   const xSources = all.filter((s) => s.platform === "x" && s.handle);
   const ytSources = all.filter((s) => s.platform === "youtube" && s.handle);
   const since = Math.floor(Date.parse(SINCE_ISO) / 1000);
@@ -38,7 +37,7 @@ const YT_ONLY = process.argv.includes("--yt-only");
 
   // name tokens (to pre-filter tweets cheaply)
   log("loading Kalshi settled markets...");
-  const settled = [...(await settledFor("mma")), ...(await settledFor("boxing"))];
+  const settled = await settledFor("mma");
   const nameTokens = new Set();
   for (const m of settled) for (const t of norm(m.yes_sub_title || "").split(" ")) if (t.length >= 4) nameTokens.add(t);
   log(`  ${settled.length} settled markets, ${nameTokens.size} name-tokens`);
