@@ -126,28 +126,6 @@
       {
         "boutId": "UFC-2026-08-08-B06",
         "a": {
-          "name": "Guilherme Pat",
-          "norm": "guilherme pat",
-          "first": "guilherme",
-          "surname": "pat",
-          "ambiguous": false,
-          "ambiguousWith": [],
-          "aliases": []
-        },
-        "b": {
-          "name": "Steven Asplund",
-          "norm": "steven asplund",
-          "first": "steven",
-          "surname": "asplund",
-          "ambiguous": false,
-          "ambiguousWith": [],
-          "aliases": []
-        },
-        "date": "2026-08-08"
-      },
-      {
-        "boutId": "UFC-2026-08-08-B07",
-        "a": {
           "name": "Ravena Oliveira Morais",
           "norm": "ravena oliveira morais",
           "first": "ravena",
@@ -170,7 +148,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B08",
+        "boutId": "UFC-2026-08-08-B07",
         "a": {
           "name": "Manoel Sousa",
           "norm": "manoel sousa",
@@ -192,7 +170,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B09",
+        "boutId": "UFC-2026-08-08-B08",
         "a": {
           "name": "Quillan Salkilld",
           "norm": "quillan salkilld",
@@ -216,7 +194,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B10",
+        "boutId": "UFC-2026-08-08-B09",
         "a": {
           "name": "Billy Quarantillo",
           "norm": "billy quarantillo",
@@ -244,7 +222,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B11",
+        "boutId": "UFC-2026-08-08-B10",
         "a": {
           "name": "Darren Elkins",
           "norm": "darren elkins",
@@ -268,7 +246,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B12",
+        "boutId": "UFC-2026-08-08-B11",
         "a": {
           "name": "Ty Cole Miller",
           "norm": "ty cole miller",
@@ -292,7 +270,7 @@
         "date": "2026-08-08"
       },
       {
-        "boutId": "UFC-2026-08-08-B13",
+        "boutId": "UFC-2026-08-08-B12",
         "a": {
           "name": "Alexia Thainara",
           "norm": "alexia thainara",
@@ -315,16 +293,16 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-08-09T01:15:09.168Z",
-  "scenariosSealedAt": "2026-08-09T01:15:09.314Z",
+  "sealedForecastAt": "2026-08-09T00:06:10.552Z",
+  "scenariosSealedAt": "2026-08-09T00:06:10.696Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "ae32bf1836f18d0d",
+    "numericalForecastHash": "0266a63f5038e556",
     "numericalForecastFile": "forecast-2026-08-08.json"
   },
   "scenarios": {
-    "UFC-2026-08-08-B13": {
+    "UFC-2026-08-08-B12": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
@@ -333,50 +311,49 @@
           "winner": "Alexia Thainara",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3717,
-          "sharePercent": 37.17,
+          "share": 0.3691,
+          "sharePercent": 36.91,
           "supported": true,
           "decisiveMechanisms": [
-            "style",
-            "cardio"
+            "cardio",
+            "style"
           ],
           "requiredConditions": [
-            "Alexia Thainara's style advantage is real and not already in the price",
-            "Alexia Thainara's cardio advantage is real and not already in the price"
+            "Alexia Thainara's cardio advantage is real and not already in the price",
+            "Alexia Thainara's style advantage is real and not already in the price"
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "b828b0cb89",
+              "adjustmentId": "60411cd894",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio",
+                "pressure_pace"
+              ],
+              "independentOrigins": 3
+            },
+            {
+              "adjustmentId": "6933186fa3",
               "mechanism": "style",
               "topics": [
                 "style_matchup",
                 "fight_iq"
               ],
               "independentOrigins": 3
-            },
-            {
-              "adjustmentId": "1a35cd2e51",
-              "mechanism": "cardio",
-              "topics": [
-                "pressure_pace",
-                "cardio"
-              ],
-              "independentOrigins": 4
             }
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 37.2% (Alexia Thainara win 74.3% x Decision split)",
-            "2 supporting mechanism(s) across 6 independent origin(s): style, cardio"
+            "tree share 36.9% (Alexia Thainara win 73.8% x Decision split)",
+            "2 supporting mechanism(s) across 5 independent origin(s): cardio, style"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance",
-            "the stylistic pattern does not appear in the first two rounds",
-            "the fight ends inside round 1 — a cardio edge never gets to matter"
+            "the fight ends inside round 1 — a cardio edge never gets to matter",
+            "the stylistic pattern does not appear in the first two rounds"
           ],
           "evidenceLimitations": [
-            "3 independent origin(s)",
-            "4 independent origin(s)"
+            "3 independent origin(s)"
           ]
         },
         {
@@ -386,8 +363,8 @@
           "winner": "Alexia Thainara",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2453,
-          "sharePercent": 24.53,
+          "share": 0.2436,
+          "sharePercent": 24.36,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -396,9 +373,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 24.5% (Alexia Thainara win 74.3% x KO/TKO split)",
+            "tree share 24.4% (Alexia Thainara win 73.8% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Alexia Thainara by Decision) by 12.6 share points"
+            "ranks below PRIMARY (Alexia Thainara by Decision) by 12.5 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Alexia Thainara unable to hurt the opponent"
@@ -414,8 +391,8 @@
           "winner": "Amanda Lemos",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.1283,
-          "sharePercent": 12.83,
+          "share": 0.1309,
+          "sharePercent": 13.09,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -424,9 +401,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.8% (Amanda Lemos win 25.7% x Decision split)",
+            "tree share 13.1% (Amanda Lemos win 26.2% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Alexia Thainara by Decision) by 24.3 share points"
+            "ranks below PRIMARY (Alexia Thainara by Decision) by 23.8 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -442,8 +419,8 @@
           "winner": "Alexia Thainara",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1264,
-          "sharePercent": 12.64,
+          "share": 0.1255,
+          "sharePercent": 12.55,
           "supported": true,
           "decisiveMechanisms": [
             "grappling"
@@ -453,28 +430,27 @@
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "0b8d951a9b",
+              "adjustmentId": "648603d416",
               "mechanism": "grappling",
               "topics": [
                 "wrestling_offense",
-                "takedown_defense",
                 "takedown_defense"
               ],
-              "independentOrigins": 5
+              "independentOrigins": 3
             }
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.6% (Alexia Thainara win 74.3% x Submission split)",
-            "1 supporting mechanism(s) across 5 independent origin(s): grappling",
-            "ranks below PRIMARY (Alexia Thainara by Decision) by 24.5 share points"
+            "tree share 12.6% (Alexia Thainara win 73.8% x Submission split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): grappling",
+            "ranks below PRIMARY (Alexia Thainara by Decision) by 24.4 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Alexia Thainara",
             "Alexia Thainara fails to complete a takedown through round 2, or the fight stays standing"
           ],
           "evidenceLimitations": [
-            "5 independent origin(s)"
+            "3 independent origin(s)"
           ]
         },
         {
@@ -484,37 +460,25 @@
           "winner": "Amanda Lemos",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.0847,
-          "sharePercent": 8.47,
-          "supported": true,
-          "decisiveMechanisms": [
-            "striking"
-          ],
+          "share": 0.0864,
+          "sharePercent": 8.64,
+          "supported": false,
+          "decisiveMechanisms": [],
           "requiredConditions": [
-            "Amanda Lemos's striking advantage is real and not already in the price"
+            "the mechanisms favouring Alexia Thainara do not materialise"
           ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "232715111c",
-              "mechanism": "striking",
-              "topics": [
-                "striking_offense"
-              ],
-              "independentOrigins": 2
-            }
-          ],
+          "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 8.5% (Amanda Lemos win 25.7% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): striking",
-            "ranks below PRIMARY (Alexia Thainara by Decision) by 28.7 share points"
+            "tree share 8.6% (Amanda Lemos win 26.2% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Alexia Thainara by Decision) by 28.3 share points"
           ],
           "falsifiedBy": [
-            "the fight reaches the final bell with Amanda Lemos unable to hurt the opponent",
-            "Alexia Thainara wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+            "the fight reaches the final bell with Amanda Lemos unable to hurt the opponent"
           ],
           "evidenceLimitations": [
-            "2 independent origin(s)"
+            "no mechanism-level support for this path"
           ]
         },
         {
@@ -524,8 +488,8 @@
           "winner": "Amanda Lemos",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0436,
-          "sharePercent": 4.36,
+          "share": 0.0445,
+          "sharePercent": 4.45,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -534,9 +498,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 4.4% (Amanda Lemos win 25.7% x Submission split)",
+            "tree share 4.5% (Amanda Lemos win 26.2% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Alexia Thainara by Decision) by 32.8 share points"
+            "ranks below PRIMARY (Alexia Thainara by Decision) by 32.5 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Amanda Lemos"
@@ -551,18 +515,18 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Alexia Thainara": 0.7434,
-          "Amanda Lemos": 0.2566
+          "Alexia Thainara": 0.7382,
+          "Amanda Lemos": 0.2618
         },
         "treeWinProbs": {
-          "Alexia Thainara": 0.7434,
-          "Amanda Lemos": 0.2566
+          "Alexia Thainara": 0.7381,
+          "Amanda Lemos": 0.2619
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "59117930449aeb76"
+      "hash": "fe2c065df008a035"
     },
-    "UFC-2026-08-08-B11": {
+    "UFC-2026-08-08-B10": {
       "scenarios": [
         {
           "scenarioId": "B-Decision",
@@ -610,7 +574,7 @@
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "63e4997f3d",
+              "adjustmentId": "aca45d6e18",
               "mechanism": "durability",
               "topics": [
                 "durability"
@@ -733,7 +697,7 @@
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "f150d74cec",
+              "adjustmentId": "cb13d490d1",
               "mechanism": "grappling",
               "topics": [
                 "wrestling_offense"
@@ -770,205 +734,7 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "b55709ab76564897"
-    },
-    "UFC-2026-08-08-B09": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Quillan Salkilld",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2922,
-          "sharePercent": 29.22,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mateusz Gamrot do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 29.2% (Quillan Salkilld win 58.4% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by -9.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 2,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Mateusz Gamrot",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2078,
-          "sharePercent": 20.78,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Quillan Salkilld do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 20.8% (Mateusz Gamrot win 41.6% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by -1.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 3,
-          "role": "PRIMARY",
-          "winner": "Quillan Salkilld",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1928,
-          "sharePercent": 19.28,
-          "supported": true,
-          "decisiveMechanisms": [
-            "durability"
-          ],
-          "requiredConditions": [
-            "Quillan Salkilld's durability advantage is real and not already in the price"
-          ],
-          "supportingEvidence": [
-            {
-              "adjustmentId": "ea50749aab",
-              "mechanism": "durability",
-              "topics": [
-                "durability"
-              ],
-              "independentOrigins": 2
-            }
-          ],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 19.3% (Quillan Salkilld win 58.4% x KO/TKO split)",
-            "1 supporting mechanism(s) across 2 independent origin(s): durability"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Quillan Salkilld unable to hurt the opponent",
-            "Mateusz Gamrot absorbs Quillan Salkilld's best shots without visible damage"
-          ],
-          "evidenceLimitations": [
-            "2 independent origin(s)"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mateusz Gamrot",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1372,
-          "sharePercent": 13.72,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Quillan Salkilld do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 13.7% (Mateusz Gamrot win 41.6% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 5.6 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Mateusz Gamrot unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Quillan Salkilld",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0993,
-          "sharePercent": 9.93,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mateusz Gamrot do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 9.9% (Quillan Salkilld win 58.4% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 9.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Quillan Salkilld"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mateusz Gamrot",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0707,
-          "sharePercent": 7.07,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Quillan Salkilld do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 7.1% (Mateusz Gamrot win 41.6% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 12.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Mateusz Gamrot"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Quillan Salkilld": 0.5843,
-          "Mateusz Gamrot": 0.4157
-        },
-        "treeWinProbs": {
-          "Quillan Salkilld": 0.5843,
-          "Mateusz Gamrot": 0.4157
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "c51f1073e21160e6"
+      "hash": "67ec3fbf27209a1c"
     },
     "UFC-2026-08-08-B05": {
       "scenarios": [
@@ -1740,192 +1506,6 @@
           "scenarioId": "B-Decision",
           "rank": 1,
           "role": "PRIMARY",
-          "winner": "Steven Asplund",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3614,
-          "sharePercent": 36.14,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Guilherme Pat do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 36.1% (Steven Asplund win 72.3% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Steven Asplund",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2386,
-          "sharePercent": 23.86,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Guilherme Pat do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 23.9% (Steven Asplund win 72.3% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Steven Asplund by Decision) by 12.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Steven Asplund unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Guilherme Pat",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1386,
-          "sharePercent": 13.86,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Steven Asplund do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 13.9% (Guilherme Pat win 27.7% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Steven Asplund by Decision) by 22.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Steven Asplund",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1229,
-          "sharePercent": 12.29,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Guilherme Pat do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.3% (Steven Asplund win 72.3% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Steven Asplund by Decision) by 23.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Steven Asplund"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Guilherme Pat",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0914,
-          "sharePercent": 9.14,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Steven Asplund do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 9.1% (Guilherme Pat win 27.7% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Steven Asplund by Decision) by 27.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Guilherme Pat unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Guilherme Pat",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0471,
-          "sharePercent": 4.71,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Steven Asplund do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.7% (Guilherme Pat win 27.7% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Steven Asplund by Decision) by 31.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Guilherme Pat"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Guilherme Pat": 0.2771,
-          "Steven Asplund": 0.7229
-        },
-        "treeWinProbs": {
-          "Guilherme Pat": 0.2771,
-          "Steven Asplund": 0.7229
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "a6c4d64d13c751de"
-    },
-    "UFC-2026-08-08-B07": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
           "winner": "Juliana Miller",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
@@ -2106,7 +1686,7 @@
       },
       "hash": "6e5f846d99921a5f"
     },
-    "UFC-2026-08-08-B08": {
+    "UFC-2026-08-08-B07": {
       "scenarios": [
         {
           "scenarioId": "A-Decision",
@@ -2154,7 +1734,7 @@
           ],
           "supportingEvidence": [
             {
-              "adjustmentId": "13dff537e2",
+              "adjustmentId": "b2d98338a2",
               "mechanism": "striking",
               "topics": [
                 "striking_defense",
@@ -2165,7 +1745,7 @@
           ],
           "contradictingEvidence": [
             {
-              "adjustmentId": "4b6289e78e",
+              "adjustmentId": "3d015d40f3",
               "mechanism": "striking",
               "topics": [
                 "power"
@@ -2312,9 +1892,219 @@
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "1c6ce48a7558a494"
+      "hash": "1e90b9dc8c204129"
     },
-    "UFC-2026-08-08-B10": {
+    "UFC-2026-08-08-B08": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Quillan Salkilld",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2804,
+          "sharePercent": 28.04,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mateusz Gamrot do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 28.0% (Quillan Salkilld win 56.1% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by -9.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 2,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Mateusz Gamrot",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2196,
+          "sharePercent": 21.96,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Quillan Salkilld do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 22.0% (Mateusz Gamrot win 43.9% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by -3.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 3,
+          "role": "PRIMARY",
+          "winner": "Quillan Salkilld",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1851,
+          "sharePercent": 18.51,
+          "supported": true,
+          "decisiveMechanisms": [
+            "durability"
+          ],
+          "requiredConditions": [
+            "Quillan Salkilld's durability advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "335b63c74f",
+              "mechanism": "durability",
+              "topics": [
+                "durability"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 18.5% (Quillan Salkilld win 56.1% x KO/TKO split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): durability"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Quillan Salkilld unable to hurt the opponent",
+            "Mateusz Gamrot absorbs Quillan Salkilld's best shots without visible damage"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Mateusz Gamrot",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1449,
+          "sharePercent": 14.49,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Quillan Salkilld do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 14.5% (Mateusz Gamrot win 43.9% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 4.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Mateusz Gamrot unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Quillan Salkilld",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0954,
+          "sharePercent": 9.54,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mateusz Gamrot do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 9.5% (Quillan Salkilld win 56.1% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 9.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Quillan Salkilld"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Mateusz Gamrot",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0746,
+          "sharePercent": 7.46,
+          "supported": true,
+          "decisiveMechanisms": [
+            "grappling"
+          ],
+          "requiredConditions": [
+            "Mateusz Gamrot's grappling advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "59df46e2b1",
+              "mechanism": "grappling",
+              "topics": [
+                "wrestling_offense"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.5% (Mateusz Gamrot win 43.9% x Submission split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): grappling",
+            "ranks below PRIMARY (Quillan Salkilld by KO/TKO) by 11.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Mateusz Gamrot",
+            "Mateusz Gamrot fails to complete a takedown through round 2, or the fight stays standing"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Quillan Salkilld": 0.5609,
+          "Mateusz Gamrot": 0.4391
+        },
+        "treeWinProbs": {
+          "Quillan Salkilld": 0.5609,
+          "Mateusz Gamrot": 0.4391
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "8eb26ca3c27b6ee7"
+    },
+    "UFC-2026-08-08-B09": {
       "scenarios": [
         {
           "scenarioId": "B-Decision",
@@ -2500,7 +2290,7 @@
       },
       "hash": "55e17f904c8a1356"
     },
-    "UFC-2026-08-08-B12": {
+    "UFC-2026-08-08-B11": {
       "scenarios": [],
       "coherence": {
         "ok": false,
@@ -2511,5 +2301,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "e7d4e248354e7945"
+  "scenarioSetHash": "0e90f68dfc49c813"
 }
