@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-09T15:54:10.473Z",
+  "generatedAt": "2026-08-09T18:04:30.955Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
     {
       "card": "26AUG15",
       "date": "2026-08-15",
-      "bouts": 11,
+      "bouts": 12,
       "A": 0,
-      "B": 11,
+      "B": 12,
       "C": 0,
       "D": 0,
-      "priced": 11,
+      "priced": 12,
       "pct": 100
     }
   ],
@@ -19,6 +19,64 @@
     "26AUG15": [
       {
         "boutId": "UFC-2026-08-15-B01",
+        "forecastTimestamp": "2026-08-15T00:00:00.000Z",
+        "forFighter": "Jose Ochoa",
+        "probability": 0.7148,
+        "probabilityOther": 0.2852,
+        "orientation": {
+          "favorite": "Jose Ochoa",
+          "underdog": "Charles Johnson"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Jose Ochoa": "-290",
+            "Charles Johnson": "+237",
+            "rawProbA": 0.7436,
+            "rawProbB": 0.2967,
+            "overround": 1.0403
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.7148,
+        "marketDispersion": 1.6,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "6ccf2b46c7b95a2c"
+      },
+      {
+        "boutId": "UFC-2026-08-15-B02",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Ian Machado Garry",
         "probability": 0.2252,
@@ -56,7 +114,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.2252,
-        "marketDispersion": 2.03,
+        "marketDispersion": 1.32,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -73,10 +131,10 @@
             "D"
           ]
         },
-        "contentHash": "dd04452b8eb5db4f"
+        "contentHash": "111c12709711d9a3"
       },
       {
-        "boutId": "UFC-2026-08-15-B02",
+        "boutId": "UFC-2026-08-15-B03",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Gillian Robertson",
         "probability": 0.3441,
@@ -131,10 +189,10 @@
             "D"
           ]
         },
-        "contentHash": "2642aaaa3b3e832e"
+        "contentHash": "bd50edb742b80ace"
       },
       {
-        "boutId": "UFC-2026-08-15-B03",
+        "boutId": "UFC-2026-08-15-B04",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Jalin Turner",
         "probability": 0.6462,
@@ -172,7 +230,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.6462,
-        "marketDispersion": 2.36,
+        "marketDispersion": 2.31,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -189,10 +247,10 @@
             "D"
           ]
         },
-        "contentHash": "f441dd739707835a"
+        "contentHash": "b8e3e698f045e349"
       },
       {
-        "boutId": "UFC-2026-08-15-B04",
+        "boutId": "UFC-2026-08-15-B05",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Dustin Stoltzfus",
         "probability": 0.1669,
@@ -247,10 +305,10 @@
             "D"
           ]
         },
-        "contentHash": "1894d40281abcd84"
+        "contentHash": "3e1c0a1772e6fb98"
       },
       {
-        "boutId": "UFC-2026-08-15-B05",
+        "boutId": "UFC-2026-08-15-B06",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Esteban Ribovics",
         "probability": 0.7213,
@@ -288,7 +346,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.7213,
-        "marketDispersion": 1.98,
+        "marketDispersion": 3.33,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -305,10 +363,10 @@
             "D"
           ]
         },
-        "contentHash": "b8f6d5649cc7dfdf"
+        "contentHash": "dc70d8d710c5c447"
       },
       {
-        "boutId": "UFC-2026-08-15-B06",
+        "boutId": "UFC-2026-08-15-B07",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Jeremiah Wells",
         "probability": 0.2648,
@@ -346,7 +404,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.2648,
-        "marketDispersion": 4.64,
+        "marketDispersion": 5.28,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -363,10 +421,10 @@
             "D"
           ]
         },
-        "contentHash": "a6384b47627ac24b"
+        "contentHash": "52e81bad925ef579"
       },
       {
-        "boutId": "UFC-2026-08-15-B07",
+        "boutId": "UFC-2026-08-15-B08",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Chidi Njokuani",
         "probability": 0.2787,
@@ -421,10 +479,10 @@
             "D"
           ]
         },
-        "contentHash": "12b54ef00d9820b2"
+        "contentHash": "a562e81fc397a6a7"
       },
       {
-        "boutId": "UFC-2026-08-15-B08",
+        "boutId": "UFC-2026-08-15-B09",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Neil Magny",
         "probability": 0.4675,
@@ -479,10 +537,10 @@
             "D"
           ]
         },
-        "contentHash": "ff921693649ef467"
+        "contentHash": "c9181d3d2ce7f9a0"
       },
       {
-        "boutId": "UFC-2026-08-15-B09",
+        "boutId": "UFC-2026-08-15-B10",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Vicente Luque",
         "probability": 0.5,
@@ -520,7 +578,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.5,
-        "marketDispersion": 4.83,
+        "marketDispersion": 4.45,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -537,10 +595,10 @@
             "D"
           ]
         },
-        "contentHash": "f47c44e7f650af22"
+        "contentHash": "6797894c37c3e2e5"
       },
       {
-        "boutId": "UFC-2026-08-15-B10",
+        "boutId": "UFC-2026-08-15-B11",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Rafael Tobias",
         "probability": 0.3494,
@@ -578,7 +636,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.3494,
-        "marketDispersion": 7.38,
+        "marketDispersion": 7.95,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -595,10 +653,10 @@
             "D"
           ]
         },
-        "contentHash": "990f7c788a5699e2"
+        "contentHash": "c6f4519dc86b4a94"
       },
       {
-        "boutId": "UFC-2026-08-15-B11",
+        "boutId": "UFC-2026-08-15-B12",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Eric McConico",
         "probability": 0.3332,
@@ -636,7 +694,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.3332,
-        "marketDispersion": 1.55,
+        "marketDispersion": 1.93,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -653,7 +711,7 @@
             "D"
           ]
         },
-        "contentHash": "0b01b8f99b69ef61"
+        "contentHash": "3eec0562e4a9428f"
       }
     ]
   }
