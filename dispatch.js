@@ -264,7 +264,6 @@ async function main() {
     run("run-forecast.js", [evalFile, "--seal=auto", "--live"]);
     run("run-phase7-seal.js", [forecastFile, evalFile], { allowFail: true });
     run("run-seal-scenarios.js", [forecastFile, evalFile], { allowFail: true });
-    run("run-phase8-shadow.js", [forecastFile], { allowFail: true });
     run("run-attest.js", [forecastFile, `--eval=${evalFile}`, "--ttl-hours=12", "--write"]);
     stamp(receipts, "forecast", { card: card.eventId, seal });
   }

@@ -43,29 +43,13 @@ console.log("\nARCHIVE HOLDS NO RUNNABLE CODE (docs only)");
   ok("archived V1 docs are present (history preserved)", fs.existsSync(path.join(ROOT, "archive/docs-v1/README.md")));
 }
 
-console.log("\nONE CANONICAL MONEY SOURCE");
-{
-  const MONEY = require("../config/bankroll.json");
-  const EN = require("../lib/entertainment");
-  const XR = require("../config/exploration-rules.json");
-  ok("bankroll.json is the source ($100, $3/$4/$5, $5/$10)", MONEY.bankrollDollars === 100 && MONEY.tiers.tier1.dollars === 3 && MONEY.maxPerFightDollars === 5 && MONEY.maxPerCardDollars === 10);
-  ok("entertainment lane derives from it", EN.BANKROLL.amount === MONEY.bankrollDollars && EN.TIERS.STANDARD.dollars === MONEY.tiers.tier1.dollars);
-  ok("exploration lane matches it (no drift)", XR.caps_exposure.bankrollDollars === MONEY.bankrollDollars && XR.tiers["CREATIVE SPECULATIVE"].stake === MONEY.tiers.tier1.dollars);
-}
-
 console.log("\nPRODUCTION ENTRY POINTS INTACT (parse without error)");
 {
   const { execFileSync } = require("child_process");
-  for (const entry of ["dispatch.js", "sentinel.js", "run-intel.js", "run-entertainment-alerts.js", "run-forecast.js"]) {
+  // The confidence pipeline's entry points — betting/Telegram entry points were torn out.
+  for (const entry of ["dispatch.js", "run-forecast.js", "run-confidence.js", "run-fit-calibration.js"]) {
     ok(`${entry} parses`, (() => { try { execFileSync(process.execPath, ["-c", path.join(ROOT, entry)], { stdio: "ignore" }); return true; } catch { return false; } })());
   }
-}
-
-console.log("\nV1 IS SENSING-ONLY: its paper-summary Telegram is opt-in, not default");
-{
-  const src = read("pipeline.js");
-  ok("the V1 paper-summary send is gated behind V1_PAPER_SUMMARY", /V1_PAPER_SUMMARY\s*===\s*["']1["']/.test(src));
-  ok("watch.yml's 15-min schedule is disabled", /#\s*-\s*cron:\s*"\*\/15/.test(read(".github/workflows/watch.yml")));
 }
 
 console.log(`\n${pass}/${pass + fail} passed`);

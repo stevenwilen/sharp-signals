@@ -86,10 +86,10 @@ console.log("\nIT IS NOT CONNECTED TO ANY LIVE DECISION");
 {
   const fs = require("fs"), path = require("path");
   const src = fs.readFileSync(path.join(__dirname, "..", "lib", "convergence.js"), "utf8").replace(/\r/g, "");
-  ok("convergence.js does not require the forecast, alerts, or positions", !/require\(["'][^"']*(forecast|entertainment|positions|arming)/.test(src));
+  ok("convergence.js does not require the forecast, confidence, or positions", !/require\(["'][^"']*(forecast|entertainment|confidence|positions|arming)/.test(src));
   // And no production script on the decision path imports it.
-  const runner = fs.readFileSync(path.join(__dirname, "..", "run-entertainment-alerts.js"), "utf8");
-  ok("the alert runner does not import convergence", !/require\(["'][^"']*convergence/.test(runner));
+  const runner = fs.readFileSync(path.join(__dirname, "..", "run-confidence.js"), "utf8");
+  ok("the confidence runner does not import convergence", !/require\(["'][^"']*convergence/.test(runner));
 }
 
 console.log(`\n${pass}/${pass + fail} passed`);
