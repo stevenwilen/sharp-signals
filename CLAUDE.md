@@ -1,86 +1,93 @@
 # SharpSignals — for Claude Code sessions
 
-UFC betting research, **re-pointed 2026-07-30 from an edge-hunter to an "educated gambler."** The old
-system tried to beat the market and honestly reported that it couldn't (no demonstrated edge). The
-operator decided that was never the goal: they wanted a machine that **watches the UFC content they
-don't have time for, forms a read on each fight the way an informed fan would, and bets that read** —
-"gamble with education," not "beat the market."
+UFC prediction research, **re-pointed 2026-08-09 from an "educated gambler" that placed sized bets to a
+CONFIDENCE ENGINE.** The operator no longer wants the machine to size bets or chase a market edge — they
+place their own bets on Kalshi and control the stakes. All the system does now is answer, for each fight
+on the card, **who wins and how confident we should be** — a rank-weighted consensus of the UFC channels
+they don't have time to watch. No prices, no bet sizes, no profit/loss, no Telegram.
 
-**It is not expected to be profitable.** It bets on conviction, on thin reads, deliberately. That trade
-was made with eyes open. Do not re-add the market-beating discipline in the name of making it "smart" —
-that discipline is exactly what was torn out.
+**It does not try to beat the market.** A consensus of good analysts mostly agrees with the betting
+favourite, and that is fine — it is a "who wins" aid the operator uses to decide their own bets (and to
+build parlays), not an edge. The old market-beating machinery is gone; do not re-add it.
 
 ## What this system is now
 
-- **Reads the fight, bets the read.** Discovery pulls fight-week videos → extraction turns them into
-  per-fight hypotheses (who wins and why) → the read (`exploration.creativeCentralA`) drives the bet.
-  The sharp market line is a **sanity check** (a conservative-EV floor), not the thing to beat.
-- **One real ~$100 bankroll** (`data/manual-bankroll.json`, manual placement). Bets are a % of the
-  CURRENT balance, so they compound up/down; no new money is ever added. External deposits/withdrawals
-  are recorded via `recordCashAdjustment` so the ledger equals the real Kalshi balance.
-- **Three Telegram messages, nothing else.** 🟢 BUY (place this — carries the read + an honest "wrong
-  if…" risk), 🔴 SELL (the contract is gone / the fight is off), 🩺 STATUS (daily: healthy? + next fight,
-  at its REAL Kalshi start time, not a 22:00 guess).
-- **Trading does not exist.** There is no Kalshi write call. `lib/arming.js` `assertNoTradingPath()`
-  throws if `createOrder`/`placeOrder`/`submitOrder`/`cancelOrder` ever appear. **Do not add one.**
-  Every alert is a manual instruction a human types into Kalshi themselves.
+- **Scrape → rank-weighted consensus → calibrated confidence.** Discovery pulls fight-week videos →
+  extraction turns them into each channel's explicit pick per fight (`data/picks/*.json`) → the confidence
+  engine tallies who each ranked channel picked, weighted by the channel's track record, and calibrates the
+  consensus into an honest win-%.
+- **The output is one file per card:** `data/card-confidence-<date>.json` — per fight: the pick, a
+  calibrated `confidencePct`, a tier `label` (STRONG/LEAN/SLIGHT/TOSS-UP/UNDER-COVERED/NO-READ), `coverage`
+  (how many ranked channels), the `why` (reasons the pick wins) + an honest `counterpoint`, and the `who`
+  (the ranked channels behind it, with their tier). `run-confidence.js` writes it; the dashboard renders it.
+- **Channel weight = track record.** `lib/channel-weights.js` turns the graded record
+  (`data/sources_graded.json`) into a per-channel weight (tier A/B/C/D, shrunk by sample). Honest: below
+  tier A the edge signal is mostly noise, so weights are coarse and a thin sample can never dominate.
+- **Calibration is fitted to outcomes.** `lib/confidence-calibration.js` shrinks the consensus share to a
+  real win-% (a lopsided but thinly-covered read is NOT "certain"; capped at 0.85). `run-fit-calibration.js`
+  rebuilds past cards' consensus, looks up who actually won (Kalshi, read-only), fits the shrink slope, and
+  writes `data/confidence-history.json` — the calibration scoreboard that REPLACED profit/loss.
+- **The dashboard is the ONLY surface.** Separate Next.js repo `sharp-signals-dashboard`, reads `data/*.json`
+  from GitHub raw. It shows the per-fight confidence (%, tier, coverage, why, who), a parlay helper (true
+  combined odds), the calibration scoreboard, and a health card (is it running + next fight time). No
+  Telegram, no notifications — the operator looks when they want.
+- **Trading does not exist, and neither does bet sizing.** There is no Kalshi write call. `lib/arming.js`
+  `assertNoTradingPath()` throws if `createOrder`/`placeOrder`/`submitOrder`/`cancelOrder` ever appear.
+  **Do not add one, and do not re-add stake sizing** — the operator sizes their own bets.
 
-## The read engine (the heart of it)
+## The confidence engine (the heart of it)
 
-- `config/exploration-rules.json` (v2.0.0-read) is the read lane's config — **deliberately separate from
-  and NOT the frozen v7.0.0 core** in `forecast-rules.json`. It is meant to be tuned; tuning it is not a
-  violation. Its caps are now LOOSE so a strong read can favour an underdog (perBout 1.6 log-odds), the
-  market-beating "only bet what the market hasn't priced" gate is removed, and one credible breakdown is
-  allowed to move the number — an informed fan acts on a single convincing analyst.
-- `lib/contract-value.js`: for the read lane the buy **ceiling is the read's own central** (what you
-  believe it's worth), not the conservative market bound. Core lane unchanged.
-- `run-entertainment-alerts.js`: the read's central can exceed the market-anchored range (that IS the
-  point), so the range is widened to bracket it; the BUY carries the read (`Why:`) and an honest risk
-  (`wrong if …` from the falsification, never internal taxonomy).
+- `lib/confidence.js` — per bout, a rank-weighted consensus over the whole pick corpus (windowed to the
+  card so a fighter's PRIOR fights don't leak in). Picks are matched to bouts by a fuzzy surname-PAIR match
+  (`del Valle`/`Delvalle` joins; the pair disambiguates two same-surname fights on one card) so a pick is
+  neither dropped nor mis-joined. Yields pick + share + coverage; refuses (NO-READ) when nothing covers it.
+- `lib/channel-weights.js` — the weighting, from the graded track record (not a tunable config).
+- `lib/confidence-calibration.js` — share → honest win-%, fitted when there are ≥40 graded fights.
+- `dispatch.js` runs `run-confidence.js` on the forecast cadence (the `confidence` stage, formerly
+  `alerts`); the grade stage refits calibration. The forecast pipeline still runs — the confidence engine
+  reads its sealed bouts + `evidence-eval-<date>.json` (for the `why`). `config/exploration-rules.json`
+  still feeds the forecast's creative read; it no longer sizes anything.
 
 ## What was torn out (do not re-add)
 
-- **Paper Strategy + Research portfolio + Combo engine** — all deleted. One bankroll only.
-- **The laptop dashboard** (`public/*.html`, `server.js`, `lib/dashboard-data.js`) — deleted. The mobile
-  Next.js dashboard (separate repo `sharp-signals-dashboard`, reads `data/*.json` from GitHub raw) is the
-  only board.
-- **The market-beating machinery as a driver** — the origins gate as a blocker, CLV/closing-line grading,
-  the guru track-record board. The market line survives only as a sanity check.
+- **Bet sizing, bankroll, settlement, P&L** — manual-bankroll, bankrolls, settle-grader, contract-value,
+  the entertainment/exploration SIZING, apply/confirm-placement. The operator sizes bets themselves now.
+- **The entire Telegram layer** — notify, notification, telegram-messages, the daily report, the fight-day
+  sentinel, the intel lifecycle. The system sends nothing; the dashboard is the only output.
+- **The market-beating machinery** — CLV/closing-line grading as a driver, the priced-out gate. The market
+  is not even a sanity check anymore; confidence comes purely from the ranked consensus.
+- **Paper Strategy + Research portfolio + Combo engine + the laptop dashboard** — deleted earlier, stay gone.
 
 ## Things that have gone wrong here before
 
 Read these before writing code; each cost real time.
 
-- **Bout renumbering.** Kalshi renumbers bouts as a card firms up (B04→B05→B08). The alert ledger keys on
-  `boutId`, so the SAME contract reappears under new keys — causing duplicate BUYs, false SELLs ("the
-  fight is off" on a live fight), and a hidden placed-badge. Match on the **ticker** (stable), never the
-  bout id. Now guarded three ways: the placed-badge and the withdrawal sweep match on ticker, and
-  `shouldSend` falls back to the most-recent prior entry for the same **ticker+lane** when the exact key
-  misses (so a renumber can't re-fire a duplicate BUY). This is read-only — no re-key, no migration — so it
-  can't race the concurrent sentinel writer. The clean cure (physically key the whole ledger by ticker) is
-  still open, but the symptoms are covered; `test-ledger-renumber.js` pins it.
-- **The withdrawal sweep must read the real board.** "Still listed / the fight is still on" is decided from
-  `rawMarkets` (Kalshi, status `active`), NEVER from this run's `messages` — those exclude every NO-BET /
-  disabled-lane contract, so keying "listed" on them fired a false 🔴 SELL on a live fight that merely
-  drifted out of the actionable set.
-- **Uncaging one thing, another cage catches it.** The read's central was uncapped, but the range check,
-  the conservative ceiling, and the FAIL-CLOSED invariant each re-blocked it in turn. When you change one
-  gate, trace the value all the way to the sent message.
+- **Pick→bout name matching.** The confidence engine joins a channel's pick to a card bout by a fuzzy
+  surname-**PAIR** match (`lib/confidence.js` `whichSide`). Two real traps: (1) both names can drift —
+  "Yair del Valle" (channel) vs "Yadier Delvalle" (forecast) — so a naive surname compare DROPS the pick;
+  the `surnameEq` substring test catches it. (2) The card can list two same-surname fights (Ty **Miller** vs
+  Goff AND Juliana **Miller** vs Oliveira); a single-name match would collide, so the PAIR is required. Do
+  not loosen it to a single-name match, and keep `surnameEq` fuzzy.
+- **Confidence must never over-promise.** A lopsided consensus among FEW channels is not high confidence.
+  `lib/confidence-calibration.js` shrinks the share by coverage and caps at 0.85, and the tier label tracks
+  the calibrated %, not the raw share. If you touch calibration, keep the coverage shrink + the cap, and
+  check `data/confidence-history.json` — a "%" has to mean "won ~that often".
+- **Window the pick corpus.** `gatherAllPicks` scans the WHOLE corpus but filters picks to a window around
+  the card. Without it, a fighter's PRIOR-fight picks (a rematch, or a coincidental same-surname pair months
+  back) leak into this card's consensus. Keep the window.
 - **Rebase-race on data files.** The cloud commits `data/` every run. A local commit that stages data
   files (`git add -A`) conflicts on every rebase. Commit CODE only; `git checkout origin/main -- data/`
-  before pushing.
-- **A stale summary.** `bankrolls.json` (what the dashboard reads) is regenerated by `BK.write()`;
-  editing the ledger directly leaves it frozen. dispatch now refreshes it every run.
-- **The 22:00 bell was a guess.** Cards run at different times; use Kalshi's `occurrence_datetime`
-  (`dispatch-receipts.lastCard.startTime`), fall back to 22:00 only if absent.
+  before pushing (data files the confidence engine writes — `card-confidence-*`, `confidence-history` — are
+  regenerated by the cloud, so let it own them).
+- **The 22:00 bell was a guess.** Cards run at different times; the health card's "next fight" uses Kalshi's
+  `occurrence_datetime` (`dispatch-receipts.lastCard.startTime`), falling back to 22:00 only if absent.
 
 ## Still-open cleanup (the re-point is functionally done; this is tidying)
 
-- The extraction PROMPT still captures atomic "claims"; the read is synthesised downstream. Rewriting the
-  prompt to produce a richer read directly is optional polish.
-- Vestigial edge machinery (leakage guard, CLV grading, intel message layer) is no longer in the pick
-  path but still present as unused code — safe to remove carefully; load-bearing pieces (discovery via
-  `candidate-index`/`data/picks`, the forecast's own guards) must stay.
+- **`sources_graded.json` (the channel ranking the weights read) can go stale.** It is refreshed by the
+  grading path; if the weights look wrong, check its `fittedAt`/recency and that grading is running.
+- **Vestigial bet-sizing in `lib/exploration.js`** (`classifyAndSize`, `applyExposureCaps`) is dead — the
+  forecast uses only `creativeAdjustment`/`creativeCentral`. Safe to trim; leave the read-synthesis alone.
 - The transcript/evidence cache (`data/transcripts`, `data/evidence`) is committed on purpose to keep
   cloud runs cheap; it CANNOT be gitignored without forcing re-extraction every run.
 
