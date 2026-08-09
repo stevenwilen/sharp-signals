@@ -1,13 +1,13 @@
 {
   "card": "UFC-2026-08-08",
-  "ranAt": "2026-08-09T02:25:16.507Z",
+  "ranAt": "2026-08-09T02:30:38.956Z",
   "mode": "SEND (manual instruction)",
   "delivery": {
-    "attempted": 1,
-    "delivered": 1,
-    "buyInstructions": 1,
+    "attempted": 0,
+    "delivered": 0,
+    "buyInstructions": 0,
     "humanReviews": 0,
-    "transport": "telegram (manual instruction + human review)"
+    "transport": "none loaded — nothing qualified and no new news, so there was nothing to deliver"
   },
   "alertsArmed": true,
   "tradingEnabled": false,
@@ -54,10 +54,11 @@
   },
   "onlyOutrightMarketsListed": true,
   "classificationCounts": {
-    "NO BET": 2
+    "ACTIONABLE EXPERIMENTAL": 1,
+    "NO BET": 1
   },
   "forecastHash": "5161640bea3c782f",
-  "snapshotTimestamp": "2026-08-09T02:25:16.638Z",
+  "snapshotTimestamp": "2026-08-09T02:30:39.049Z",
   "humanReviewAlerts": [
     {
       "boutId": "UFC-2026-08-08-B06",
@@ -88,76 +89,25 @@
       "text": "🔎 UNVERIFIED FIGHT UPDATE\n\nJessie Rosas vs Miles Johns\n\nReport: undefined\nSources: origin count not available\nForecast impact: None\n\nVerify before acting.\nFor entertainment use."
     }
   ],
-  "buyInstructions": [
-    {
-      "boutId": "UFC-2026-08-08-B13",
-      "ticker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
-      "key": "explore|UFC-2026-08-08-B13|KXUFCFIGHT-26AUG08GAMSAL-SAL",
-      "wouldSend": false,
-      "why": "no material change since the last message",
-      "text": "🧪 BEST EXPERIMENTAL — $4\n\nQuillan Salkilld vs Mateusz Gamrot\nBuy: Quillan Salkilld YES\n\nCurrent: 61¢\nMaximum: 69¢\nStake: $4 of $88.66\nApprox contracts: 7\nCard exposure left: $4.44\n\nWhy: Mateusz Gamrot has shown vulnerability to being buckled by strikes in past fights.\nMain risk: wrong if Mateusz Gamrot shows no durability effect at the weigh-in / in-fight\nSystem estimate: 69% (range 57%–69%)\n\nPlace only if the displayed average price is 69¢ or less.\n\nFor entertainment use. Manual placement only.",
-      "state": {
-        "ask": 0.61,
-        "maximumAcceptablePrice": 0.6861,
-        "forecastHash": "5161640bea3c782f",
-        "classification": "BEST EXPERIMENTAL",
-        "lane": "exploration",
-        "stakePercent": 5,
-        "topTicker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
-        "stale": false,
-        "pipelineFailed": false,
-        "withinEnvelope": true,
-        "verdict": "BUY"
-      },
-      "lane": "exploration",
-      "verdict": "BUY",
-      "stakeDollars": 4.43
-    },
-    {
-      "boutId": "explore",
-      "ticker": "KXUFCFIGHT-26AUG08FERQUA-FER",
-      "key": "explore|UFC-2026-08-08-B05|KXUFCFIGHT-26AUG08FERQUA-FER",
-      "wouldSend": true,
-      "why": "contract no longer listed — the fight is off",
-      "text": "🔴 SELL — the fight is off\nDiego Ferreira — bought at 62¢\nReason: the contract is no longer listed — the fight is off (cancelled, rescheduled, or a fighter is out)\nSell on Kalshi if the market is still open. If it isn't, Kalshi settles it at a fair price — you don't lose over this.",
-      "state": {
-        "ask": 0.62,
-        "maximumAcceptablePrice": 0.7306,
-        "forecastHash": "3a2a117278f6a5f2",
-        "classification": "WITHDRAWN",
-        "lane": "exploration",
-        "stakePercent": 4,
-        "topTicker": "KXUFCFIGHT-26AUG08FERQUA-FER",
-        "stale": false,
-        "pipelineFailed": false,
-        "withinEnvelope": true,
-        "verdict": "WITHDRAWN",
-        "lastSentAt": "2026-08-08T03:05:33.036Z",
-        "lastType": "BUY_INSTRUCTION",
-        "firstSentAt": "2026-08-08T03:05:33.036Z",
-        "messageCount": 1
-      },
-      "verdict": "WITHDRAWN"
-    }
-  ],
+  "buyInstructions": [],
   "decisions": [
     {
-      "ticker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
+      "ticker": "KXUFCFIGHT-26AUG08GAMSAL-GAM",
       "bout": "Quillan Salkilld vs Mateusz Gamrot",
-      "classification": "NO BET",
+      "classification": "ACTIONABLE EXPERIMENTAL",
       "rank": 1,
-      "entertainmentEligible": false,
-      "blockedBy": "research classification",
-      "reason": "conservative EV -0.0558 is not favourable after fees and slippage"
+      "entertainmentEligible": true,
+      "blockedBy": null,
+      "reason": null
     },
     {
-      "ticker": "KXUFCFIGHT-26AUG08GAMSAL-GAM",
+      "ticker": "KXUFCFIGHT-26AUG08GAMSAL-SAL",
       "bout": "Quillan Salkilld vs Mateusz Gamrot",
       "classification": "NO BET",
       "rank": 2,
       "entertainmentEligible": false,
       "blockedBy": "research classification",
-      "reason": "conservative EV -0.0597 is not favourable after fees and slippage"
+      "reason": "conservative EV -0.1729 is not favourable after fees and slippage"
     }
   ]
 }
