@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-12T20:44:31.768Z",
+  "generatedAt": "2026-08-12T22:51:15.896Z",
   "module": "market-baseline@1.0.0",
   "rosterSource": "kalshi KXUFCFIGHT (independent of the price source)",
   "report": [
     {
       "card": "26AUG15",
       "date": "2026-08-15",
-      "bouts": 12,
+      "bouts": 13,
       "A": 0,
-      "B": 12,
+      "B": 13,
       "C": 0,
       "D": 0,
-      "priced": 12,
+      "priced": 13,
       "pct": 100
     }
   ],
@@ -78,6 +78,64 @@
       {
         "boutId": "UFC-2026-08-15-B02",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
+        "forFighter": "Charles Johnson",
+        "probability": 0.5526,
+        "probabilityOther": 0.4474,
+        "orientation": {
+          "favorite": "Charles Johnson",
+          "underdog": "Eduardo Henrique Da Silva Dos Santos"
+        },
+        "fallbackLevel": "B",
+        "tier": "B_OPEN_CONSENSUS",
+        "tierMeaning": "BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
+        "clockBasis": "LOGICAL_OPEN",
+        "derivedFrom": "opening line",
+        "staleCheckEnforceable": false,
+        "sourceBooks": [
+          "BestFightOdds opening consensus"
+        ],
+        "bookCount": 1,
+        "rawPrices": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "Charles Johnson": "-135",
+            "Eduardo Henrique Da Silva Dos Santos": "+115",
+            "rawProbA": 0.5745,
+            "rawProbB": 0.4651,
+            "overround": 1.0396
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "BestFightOdds opening consensus",
+            "observedAt": null,
+            "note": "BFO does not publish when the line opened; this price is the market's FIRST price and is used as a logical 'as of market open' prior, not as a wall-clock observation"
+          }
+        ],
+        "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+        "deViggedProbability": 0.5526,
+        "marketDispersion": 0,
+        "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
+        "oldestPriceAgeMs": null,
+        "oldestPriceAgeHours": null,
+        "missingSourceReasons": [
+          "A: no live multi-book snapshot supplied"
+        ],
+        "provenance": {
+          "module": "market-baseline@1.0.0",
+          "deVig": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
+          "waterfall": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "contentHash": "00ce5c9c6ec24abb"
+      },
+      {
+        "boutId": "UFC-2026-08-15-B03",
+        "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Ian Machado Garry",
         "probability": 0.2252,
         "probabilityOther": 0.7748,
@@ -131,10 +189,10 @@
             "D"
           ]
         },
-        "contentHash": "d2e2ad7c4d37bc3b"
+        "contentHash": "693ad2f4c2ad560c"
       },
       {
-        "boutId": "UFC-2026-08-15-B03",
+        "boutId": "UFC-2026-08-15-B04",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Gillian Robertson",
         "probability": 0.3441,
@@ -189,10 +247,10 @@
             "D"
           ]
         },
-        "contentHash": "25f0296fe0d1aed8"
+        "contentHash": "fb143a40aba22bdf"
       },
       {
-        "boutId": "UFC-2026-08-15-B04",
+        "boutId": "UFC-2026-08-15-B05",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Jalin Turner",
         "probability": 0.6462,
@@ -247,10 +305,10 @@
             "D"
           ]
         },
-        "contentHash": "382ae5312dd4e52a"
+        "contentHash": "252fae6cd1f6f8df"
       },
       {
-        "boutId": "UFC-2026-08-15-B05",
+        "boutId": "UFC-2026-08-15-B06",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Dustin Stoltzfus",
         "probability": 0.1669,
@@ -305,10 +363,10 @@
             "D"
           ]
         },
-        "contentHash": "b78594d6dcf2dfad"
+        "contentHash": "cef5e9ef50444769"
       },
       {
-        "boutId": "UFC-2026-08-15-B06",
+        "boutId": "UFC-2026-08-15-B07",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Esteban Ribovics",
         "probability": 0.7213,
@@ -346,7 +404,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.7213,
-        "marketDispersion": 2.54,
+        "marketDispersion": 5.4,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -363,10 +421,10 @@
             "D"
           ]
         },
-        "contentHash": "8a05cbdbe73d3052"
+        "contentHash": "86b63e4e78cfa486"
       },
       {
-        "boutId": "UFC-2026-08-15-B07",
+        "boutId": "UFC-2026-08-15-B08",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Jeremiah Wells",
         "probability": 0.2648,
@@ -421,10 +479,10 @@
             "D"
           ]
         },
-        "contentHash": "d4c5bae277128d5f"
+        "contentHash": "f1549b86a5990f8c"
       },
       {
-        "boutId": "UFC-2026-08-15-B08",
+        "boutId": "UFC-2026-08-15-B09",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Chidi Njokuani",
         "probability": 0.2787,
@@ -462,7 +520,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.2787,
-        "marketDispersion": 3.27,
+        "marketDispersion": 5.01,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -479,10 +537,10 @@
             "D"
           ]
         },
-        "contentHash": "ea0cf316786aa2c1"
+        "contentHash": "85d5a4168c189074"
       },
       {
-        "boutId": "UFC-2026-08-15-B09",
+        "boutId": "UFC-2026-08-15-B10",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Neil Magny",
         "probability": 0.4675,
@@ -520,7 +578,7 @@
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
         "deViggedProbability": 0.4675,
-        "marketDispersion": 4.55,
+        "marketDispersion": 4.75,
         "dispersionBasis": "width of the closing cross-book range (a width, not a level — carries no directional information)",
         "oldestPriceAgeMs": null,
         "oldestPriceAgeHours": null,
@@ -537,10 +595,10 @@
             "D"
           ]
         },
-        "contentHash": "d0350cf21319ef92"
+        "contentHash": "25e1d893d5c15f26"
       },
       {
-        "boutId": "UFC-2026-08-15-B10",
+        "boutId": "UFC-2026-08-15-B11",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Vicente Luque",
         "probability": 0.5,
@@ -595,10 +653,10 @@
             "D"
           ]
         },
-        "contentHash": "7c2188a0ae2c0fa6"
+        "contentHash": "da164e737204fb21"
       },
       {
-        "boutId": "UFC-2026-08-15-B11",
+        "boutId": "UFC-2026-08-15-B12",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Rafael Tobias",
         "probability": 0.3494,
@@ -653,10 +711,10 @@
             "D"
           ]
         },
-        "contentHash": "52a7589b2aa610d7"
+        "contentHash": "d97e893f949e1c8f"
       },
       {
-        "boutId": "UFC-2026-08-15-B12",
+        "boutId": "UFC-2026-08-15-B13",
         "forecastTimestamp": "2026-08-15T00:00:00.000Z",
         "forFighter": "Eric McConico",
         "probability": 0.3332,
@@ -711,7 +769,7 @@
             "D"
           ]
         },
-        "contentHash": "7f554bf6609efb41"
+        "contentHash": "a9b1824c0356a996"
       }
     ]
   }
