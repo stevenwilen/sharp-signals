@@ -230,6 +230,11 @@ async function main() {
   // COLLECT — card selection + evidence extraction (Gemini). The expensive stage; caches transcripts
   // and extractions so a re-forecast does not re-pay.
   if (dueList.includes("collect")) {
+    // INGEST FIRST — discover + transcribe + extract NEW prediction videos into data/picks, so selection
+    // scans a FRESH corpus. Without this the dispatcher just re-processed a frozen set and the confidence
+    // never changed (the ingest was lost when the old pipeline was torn out). Key-free (RSS) + cached, so
+    // it is cheap; non-fatal so a discovery hiccup never blocks the rest of collect.
+    run("run-ingest.js", [], { allowFail: true });
     run("make-card-selection.js", [td, ed, sel]);
     run("run-card-evidence.js", [sel]);
 
