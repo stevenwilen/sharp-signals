@@ -320,12 +320,12 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-08-13T12:16:31.818Z",
-  "scenariosSealedAt": "2026-08-13T12:16:32.050Z",
+  "sealedForecastAt": "2026-08-13T10:07:25.851Z",
+  "scenariosSealedAt": "2026-08-13T10:07:26.075Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "e3dc9c6fae9ca38e",
+    "numericalForecastHash": "cee294351b474d58",
     "numericalForecastFile": "forecast-2026-08-15.json"
   },
   "scenarios": {
@@ -908,42 +908,14 @@
     "UFC-2026-08-15-B10": {
       "scenarios": [
         {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "SECONDARY",
-          "winner": "Ramiz Brahimaj",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2521,
-          "sharePercent": 25.21,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Neil Magny do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 25.2% (Ramiz Brahimaj win 50.4% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Neil Magny by Decision) by -0.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
           "scenarioId": "A-Decision",
-          "rank": 2,
+          "rank": 1,
           "role": "PRIMARY",
           "winner": "Neil Magny",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.2479,
-          "sharePercent": 24.79,
+          "share": 0.2533,
+          "sharePercent": 25.33,
           "supported": true,
           "decisiveMechanisms": [
             "physical",
@@ -973,7 +945,7 @@
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 24.8% (Neil Magny win 49.6% x Decision split)",
+            "tree share 25.3% (Neil Magny win 50.6% x Decision split)",
             "2 supporting mechanism(s) across 7 independent origin(s): physical, style"
           ],
           "falsifiedBy": [
@@ -987,14 +959,70 @@
           ]
         },
         {
-          "scenarioId": "B-KOTKO",
+          "scenarioId": "B-Decision",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Ramiz Brahimaj",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2467,
+          "sharePercent": 24.67,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Neil Magny do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 24.7% (Ramiz Brahimaj win 49.4% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by 0.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
           "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Neil Magny",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1672,
+          "sharePercent": 16.72,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Ramiz Brahimaj do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 16.7% (Neil Magny win 50.6% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by 8.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Neil Magny unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 4,
           "role": "UPSET_OR_ALTERNATIVE",
           "winner": "Ramiz Brahimaj",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.1664,
-          "sharePercent": 16.64,
+          "share": 0.1628,
+          "sharePercent": 16.28,
           "supported": true,
           "decisiveMechanisms": [
             "durability",
@@ -1026,9 +1054,9 @@
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 16.6% (Ramiz Brahimaj win 50.4% x KO/TKO split)",
+            "tree share 16.3% (Ramiz Brahimaj win 49.4% x KO/TKO split)",
             "2 supporting mechanism(s) across 7 independent origin(s): durability, striking",
-            "ranks below PRIMARY (Neil Magny by Decision) by 8.2 share points"
+            "ranks below PRIMARY (Neil Magny by Decision) by 9.1 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Ramiz Brahimaj unable to hurt the opponent",
@@ -1041,70 +1069,14 @@
           ]
         },
         {
-          "scenarioId": "A-KOTKO",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Neil Magny",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1636,
-          "sharePercent": 16.36,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ramiz Brahimaj do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 16.4% (Neil Magny win 49.6% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Neil Magny by Decision) by 8.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Neil Magny unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
+          "scenarioId": "A-Submission",
           "rank": 5,
           "role": "DOWNWEIGHTED",
-          "winner": "Ramiz Brahimaj",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0857,
-          "sharePercent": 8.57,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Neil Magny do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.6% (Ramiz Brahimaj win 50.4% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Neil Magny by Decision) by 16.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Ramiz Brahimaj"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
           "winner": "Neil Magny",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0843,
-          "sharePercent": 8.43,
+          "share": 0.0861,
+          "sharePercent": 8.61,
           "supported": true,
           "decisiveMechanisms": [
             "grappling"
@@ -1125,9 +1097,9 @@
           ],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 8.4% (Neil Magny win 49.6% x Submission split)",
+            "tree share 8.6% (Neil Magny win 50.6% x Submission split)",
             "1 supporting mechanism(s) across 4 independent origin(s): grappling",
-            "ranks below PRIMARY (Neil Magny by Decision) by 16.4 share points"
+            "ranks below PRIMARY (Neil Magny by Decision) by 16.7 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Neil Magny",
@@ -1136,6 +1108,34 @@
           "evidenceLimitations": [
             "4 independent origin(s)"
           ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Ramiz Brahimaj",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0839,
+          "sharePercent": 8.39,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Neil Magny do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.4% (Ramiz Brahimaj win 49.4% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by 16.9 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Ramiz Brahimaj"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
         }
       ],
       "coherence": {
@@ -1143,16 +1143,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Neil Magny": 0.4958,
-          "Ramiz Brahimaj": 0.5042
+          "Neil Magny": 0.5066,
+          "Ramiz Brahimaj": 0.4934
         },
         "treeWinProbs": {
-          "Neil Magny": 0.4958,
-          "Ramiz Brahimaj": 0.5042
+          "Neil Magny": 0.5065,
+          "Ramiz Brahimaj": 0.4935
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "b35de224857b1210"
+      "hash": "baf675b306abb50c"
     },
     "UFC-2026-08-15-B12": {
       "scenarios": [
@@ -2981,8 +2981,8 @@
           "winner": "Joel Alvarez",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.3614,
-          "sharePercent": 36.14,
+          "share": 0.357,
+          "sharePercent": 35.7,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -2991,7 +2991,7 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 36.1% (Joel Alvarez win 72.3% x Decision split)",
+            "tree share 35.7% (Joel Alvarez win 71.4% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices"
           ],
           "falsifiedBy": [
@@ -3008,8 +3008,8 @@
           "winner": "Joel Alvarez",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.2385,
-          "sharePercent": 23.85,
+          "share": 0.2357,
+          "sharePercent": 23.57,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3018,9 +3018,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 23.8% (Joel Alvarez win 72.3% x KO/TKO split)",
+            "tree share 23.6% (Joel Alvarez win 71.4% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Joel Alvarez by Decision) by 12.3 share points"
+            "ranks below PRIMARY (Joel Alvarez by Decision) by 12.1 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Joel Alvarez unable to hurt the opponent"
@@ -3036,8 +3036,8 @@
           "winner": "Chidi Njokuani",
           "expectedMethod": "Decision",
           "expectedRoundRange": "goes the distance",
-          "share": 0.1386,
-          "sharePercent": 13.86,
+          "share": 0.143,
+          "sharePercent": 14.3,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3046,9 +3046,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 13.9% (Chidi Njokuani win 27.7% x Decision split)",
+            "tree share 14.3% (Chidi Njokuani win 28.6% x Decision split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Joel Alvarez by Decision) by 22.3 share points"
+            "ranks below PRIMARY (Joel Alvarez by Decision) by 21.4 share points"
           ],
           "falsifiedBy": [
             "the fight ends inside the distance"
@@ -3064,8 +3064,8 @@
           "winner": "Joel Alvarez",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.1229,
-          "sharePercent": 12.29,
+          "share": 0.1214,
+          "sharePercent": 12.14,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3074,9 +3074,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 12.3% (Joel Alvarez win 72.3% x Submission split)",
+            "tree share 12.1% (Joel Alvarez win 71.4% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Joel Alvarez by Decision) by 23.8 share points"
+            "ranks below PRIMARY (Joel Alvarez by Decision) by 23.6 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Joel Alvarez"
@@ -3092,8 +3092,8 @@
           "winner": "Chidi Njokuani",
           "expectedMethod": "KO/TKO",
           "expectedRoundRange": "1-3",
-          "share": 0.0915,
-          "sharePercent": 9.15,
+          "share": 0.0943,
+          "sharePercent": 9.43,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3102,9 +3102,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 9.2% (Chidi Njokuani win 27.7% x KO/TKO split)",
+            "tree share 9.4% (Chidi Njokuani win 28.6% x KO/TKO split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Joel Alvarez by Decision) by 27.0 share points"
+            "ranks below PRIMARY (Joel Alvarez by Decision) by 26.3 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with Chidi Njokuani unable to hurt the opponent"
@@ -3120,8 +3120,8 @@
           "winner": "Chidi Njokuani",
           "expectedMethod": "Submission",
           "expectedRoundRange": "1-3",
-          "share": 0.0471,
-          "sharePercent": 4.71,
+          "share": 0.0486,
+          "sharePercent": 4.86,
           "supported": false,
           "decisiveMechanisms": [],
           "requiredConditions": [
@@ -3130,9 +3130,9 @@
           "supportingEvidence": [],
           "contradictingEvidence": [],
           "whyRankedHere": [
-            "tree share 4.7% (Chidi Njokuani win 27.7% x Submission split)",
+            "tree share 4.9% (Chidi Njokuani win 28.6% x Submission split)",
             "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Joel Alvarez by Decision) by 31.4 share points"
+            "ranks below PRIMARY (Joel Alvarez by Decision) by 30.8 share points"
           ],
           "falsifiedBy": [
             "the fight reaches the final bell with no meaningful submission attempt by Chidi Njokuani"
@@ -3147,16 +3147,16 @@
         "errors": [],
         "sharesSumTo": 1,
         "perFighterShares": {
-          "Chidi Njokuani": 0.2772,
-          "Joel Alvarez": 0.7228
+          "Chidi Njokuani": 0.2859,
+          "Joel Alvarez": 0.7141
         },
         "treeWinProbs": {
-          "Chidi Njokuani": 0.2772,
-          "Joel Alvarez": 0.7228
+          "Chidi Njokuani": 0.2859,
+          "Joel Alvarez": 0.7141
         },
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
-      "hash": "b48b5bf7990723cf"
+      "hash": "73a7b121b0cad855"
     },
     "UFC-2026-08-15-B13": {
       "scenarios": [
@@ -3347,5 +3347,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "bf1e1e4a3422e14e"
+  "scenarioSetHash": "b63d484f5e5179f4"
 }
