@@ -320,13 +320,44 @@
       }
     ]
   },
-  "sealedAt": "2026-08-13T10:07:25.851Z",
-  "rulesVersion": "7.0.0",
-  "marketSource": "bfo",
+  "phase": 7,
+  "completedAt": "2026-08-13T07:57:42.068Z",
+  "sealedForecastAt": "2026-08-13T07:57:41.912Z",
+  "references": {
+    "numericalForecastHash": "5f61d6aef65d06b6",
+    "numericalForecastFile": "forecast-2026-08-15.json",
+    "scenarioHash": "63ece205ef61c8d8",
+    "evidenceHash": "4bacd50ef56b38a3",
+    "marketSnapshotHash": "f6070680c1976a22",
+    "engineVersion": "phase7-engine-1.0.0",
+    "ruleConfigVersion": "7.0.0"
+  },
+  "capLimited": [
+    {
+      "boutId": "UFC-2026-08-15-B03",
+      "fight": "Ian Machado Garry vs Islam Makhachev",
+      "uncappedLogOdds": -0.8,
+      "uncappedProbability": 0.1381,
+      "appliedCaps": "net adjustment -0.800 hit the total cap ±0.45",
+      "finalProbability": 0.1852,
+      "mechanismsResponsible": [
+        "physical",
+        "style",
+        "condition",
+        "striking",
+        "cardio",
+        "grappling",
+        "durability"
+      ],
+      "causedBySingleMechanism": false,
+      "probabilityWithoutStrongestMechanism": 0.1852,
+      "strongestMechanism": "physical"
+    }
+  ],
   "forecasts": [
     {
-      "forecastId": "a603d4b314fbdacb",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "565312225ae92068",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B03",
       "fight": "Ian Machado Garry vs Islam Makhachev",
@@ -334,8 +365,8 @@
       "marketBaseline": {
         "probability": 0.2628,
         "forFighter": "Ian Machado Garry",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -379,22 +410,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -404,7 +435,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "a145b4b0fa70c826"
+        "baselineHash": "32d86ef2d74cd581"
       },
       "systemCentral": {
         "Ian Machado Garry": 0.1852,
@@ -513,70 +544,6 @@
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
           "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "42ae844fe5",
-          "boutId": "UFC-2026-08-15-B03",
-          "fighterFavored": "Ian Garry",
-          "outcomeAffected": "win",
-          "mechanism": "style",
-          "evidenceTopics": [
-            "fight_iq",
-            "style_matchup"
-          ],
-          "supportingEvidenceIds": [
-            "DS37guDApFQ#29976",
-            "DS37guDApFQ#26922",
-            "Ia2leQgNVj0#0",
-            "Ia2leQgNVj0#0",
-            "uKQxfull4q4#40343",
-            "Ia2leQgNVj0#0",
-            "Ia2leQgNVj0#0"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "analyst:hoppermma",
-            "analyst:james lynch"
-          ],
-          "evidenceTypes": [
-            "film_study_observation",
-            "matchup_inference"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Ian Garry",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
         },
         {
           "adjustmentId": "832053de5c",
@@ -710,6 +677,154 @@
           "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=film_study_observation/matchup_inference/verifiable_statistical_claim, relevance=stable_historical_tendency/direct_current_matchup"
         },
         {
+          "adjustmentId": "70f90ce861",
+          "boutId": "UFC-2026-08-15-B03",
+          "fighterFavored": "Islam Makhachev",
+          "outcomeAffected": "win",
+          "mechanism": "grappling",
+          "evidenceTopics": [
+            "wrestling_offense",
+            "submission_offense",
+            "takedown_defense"
+          ],
+          "supportingEvidenceIds": [
+            "-ncyOwr8MqQ#10000",
+            "-ncyOwr8MqQ#29321",
+            "-ncyOwr8MqQ#19748",
+            "-ncyOwr8MqQ#19748",
+            "uL2vHqaBcCM#44795",
+            "82HzA9kez-0#0",
+            "82HzA9kez-0#0",
+            "XnzSnzhc418#0",
+            "Ia2leQgNVj0#7172",
+            "Ia2leQgNVj0#7172",
+            "Ia2leQgNVj0#7172",
+            "uL2vHqaBcCM#49347",
+            "uL2vHqaBcCM#49347",
+            "uL2vHqaBcCM#49347",
+            "uL2vHqaBcCM#49347",
+            "uL2vHqaBcCM#49347"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 7,
+          "originIds": [
+            "analyst:dominick cruz",
+            "analyst:kunath",
+            "analyst:138 mma",
+            "record:islam makhachev:n:15",
+            "analyst:round 3 prediction show",
+            "report:anon:ever.extremely.fought.islam.makhachev.people.person.physically.reporting.strong.",
+            "analyst:james lynch"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "film_study_observation",
+            "verifiable_statistical_claim",
+            "rumor"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency",
+            "general_career_background"
+          ],
+          "freshness": [
+            "long_term_tendency",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "difficult_to_verify",
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Islam Makhachev",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "7 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation/verifiable_statistical_claim/rumor, relevance=direct_current_matchup/stable_historical_tendency/general_career_background"
+        },
+        {
+          "adjustmentId": "42ae844fe5",
+          "boutId": "UFC-2026-08-15-B03",
+          "fighterFavored": "Ian Garry",
+          "outcomeAffected": "win",
+          "mechanism": "style",
+          "evidenceTopics": [
+            "fight_iq",
+            "style_matchup"
+          ],
+          "supportingEvidenceIds": [
+            "DS37guDApFQ#29976",
+            "DS37guDApFQ#26922",
+            "Ia2leQgNVj0#0",
+            "Ia2leQgNVj0#0",
+            "uKQxfull4q4#40343",
+            "Ia2leQgNVj0#0",
+            "Ia2leQgNVj0#0"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 2,
+          "originIds": [
+            "analyst:hoppermma",
+            "analyst:james lynch"
+          ],
+          "evidenceTypes": [
+            "film_study_observation",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Ian Garry",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
+        },
+        {
           "adjustmentId": "a1773ee96a",
           "boutId": "UFC-2026-08-15-B03",
           "fighterFavored": "Islam Makhachev",
@@ -769,92 +884,6 @@
           "finalAppliedLogOdds": 0.06,
           "capOrReductionReason": null,
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verified_hard_fact/film_study_observation, relevance=general_career_background/stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "70f90ce861",
-          "boutId": "UFC-2026-08-15-B03",
-          "fighterFavored": "Islam Makhachev",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "wrestling_offense",
-            "submission_offense",
-            "takedown_defense"
-          ],
-          "supportingEvidenceIds": [
-            "-ncyOwr8MqQ#10000",
-            "-ncyOwr8MqQ#29321",
-            "-ncyOwr8MqQ#19748",
-            "-ncyOwr8MqQ#19748",
-            "cMhkAfo11QE#0",
-            "82HzA9kez-0#0",
-            "82HzA9kez-0#0",
-            "XnzSnzhc418#0",
-            "Ia2leQgNVj0#7172",
-            "Ia2leQgNVj0#7172",
-            "Ia2leQgNVj0#7172",
-            "uL2vHqaBcCM#39372",
-            "uL2vHqaBcCM#49347",
-            "uL2vHqaBcCM#49347",
-            "uL2vHqaBcCM#49347",
-            "uL2vHqaBcCM#49347",
-            "uL2vHqaBcCM#49347"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 7,
-          "originIds": [
-            "analyst:dominick cruz",
-            "analyst:kunath",
-            "record:islam makhachev:n:15",
-            "analyst:round 3 prediction show",
-            "report:anon:ever.extremely.fought.islam.makhachev.people.person.physically.reporting.strong.",
-            "analyst:james lynch",
-            "analyst:138 mma"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "film_study_observation",
-            "verifiable_statistical_claim",
-            "rumor"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency",
-            "general_career_background"
-          ],
-          "freshness": [
-            "long_term_tendency",
-            "unknown_timeframe",
-            "current_fight_week"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "difficult_to_verify",
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Islam Makhachev",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "7 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation/verifiable_statistical_claim/rumor, relevance=direct_current_matchup/stable_historical_tendency/general_career_background"
         },
         {
           "adjustmentId": "facfccb306",
@@ -1048,7 +1077,7 @@
           "supportingEvidenceIds": [
             "Ia2leQgNVj0#7172",
             "gGEtFSH4g2c#24105",
-            "uL2vHqaBcCM#39372"
+            "uL2vHqaBcCM#44795"
           ],
           "contradictoryEvidenceIds": [],
           "informationOriginCount": 3,
@@ -1097,7 +1126,7 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
         }
       ],
-      "consideredButZero": 13,
+      "consideredButZero": 12,
       "netLogOdds": -0.45,
       "capNote": "net adjustment -0.800 hit the total cap ±0.45",
       "exploration": {
@@ -1110,7 +1139,7 @@
         "creativeMovePoints": -14.13,
         "capped": true,
         "cap": 1.6,
-        "activeHypotheses": 13,
+        "activeHypotheses": 12,
         "hypotheses": [
           {
             "hypothesis": "Ian Garry — fight_iq: Ian Garry possesses elite fight IQ and striking. (favors_about)",
@@ -1148,7 +1177,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.886Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1187,7 +1216,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.886Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1226,7 +1255,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.886Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1262,7 +1291,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.886Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1301,7 +1330,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.886Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1339,7 +1368,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1378,7 +1407,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1417,7 +1446,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1456,7 +1485,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1494,11 +1523,11 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
-            "hypothesis": "Ian Machado Garry — durability: Ian Garry backs up with his chin down, though it hasn't cost him due to his durability and fast recovery. (against_about)",
+            "hypothesis": "Ian Machado Garry — durability: Ian Garry sometimes backs up with his chin down, though he recovers extremely fast. (neutral)",
             "fighter": "Ian Machado Garry",
             "boutTopic": "durability",
             "supportingFacts": [
@@ -1532,15 +1561,15 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
-            "hypothesis": "Islam Makhachev — inactivity_layoff: Islam Makhachev has high striking defense aided by his range control and feints that force opponent inactivity. (favors_about)",
+            "hypothesis": "Islam Makhachev — inactivity_layoff: Islam Makhachev forces inactivity out of his opponents by mixing striking and takedown feints. (favors_about)",
             "fighter": "Islam Makhachev",
             "boutTopic": "inactivity_layoff",
             "supportingFacts": [
-              "he doesn't get enough credit for his striking because I think a lot of it comes defensively and what he forces out of his opponent... because he's controlling the range, he's controlling the activity, and people just aren't hitting him.",
+              "he has a good mix of both striking and takedown faints. And when he when he uses those, he forces inactivity out of his opponents.",
               "he has a good mix of both striking and takedown faints. And when he when he uses those, he forces inactivity out of his opponents."
             ],
             "supportingInferences": [
@@ -1571,43 +1600,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Ian Machado Garry — durability: Ian Machado Garry went five rounds with Shavkat Rakhmonov and spent most of the fight on his back. (neutral)",
-            "fighter": "Ian Machado Garry",
-            "boutTopic": "durability",
-            "supportingFacts": [
-              "Gary goes five with Shavkat, doesn't get finished by laying on his back most of the fight."
-            ],
-            "supportingInferences": [],
-            "verificationStatus": "VERIFIED",
-            "causalMechanism": "durability → hurts Ian Machado Garry",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 1,
-                "analytical": 0,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "not novel",
-            "probablyPriced": false,
-            "falsificationCondition": "Ian Machado Garry shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.1012,
-            "magnitudeBucket": "suggestive",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.887Z",
+            "timestamp": "2026-08-13T07:57:41.947Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1624,10 +1617,10 @@
         ]
       },
       "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 25,
+      "independentOrigins": 24,
       "originBreakdown": {
         "analysts": 8,
-        "publicRecords": 16,
+        "publicRecords": 15,
         "externalReports": 1,
         "commentary": 0
       },
@@ -1636,12 +1629,12 @@
       "limitations": [
         "2 topic(s) are picks with no supporting reasoning — recorded, not counted as evidence",
         "2 topic(s) rest on dated information",
-        "34 topic(s) have no determinable timeframe"
+        "33 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 1,
       "admission": {
-        "claimsConsidered": 83,
-        "claimsAdmitted": 82,
+        "claimsConsidered": 81,
+        "claimsAdmitted": 80,
         "claimsRejected": 1,
         "rejectedForLeakage": 1,
         "rejectedAsMalformed": 0,
@@ -1660,14 +1653,33 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "f3d54da24352a040",
-        "baseline": "b6d6c932b090754d",
+        "evidenceEval": "696ec6b2e6b80d0f",
+        "baseline": "18666f90d06b8744",
         "rules": "22a3275b9ea3fea9"
+      },
+      "capLimited": true,
+      "capDetail": {
+        "uncappedLogOdds": -0.8,
+        "uncappedProbability": 0.1381,
+        "appliedCaps": "net adjustment -0.800 hit the total cap ±0.45",
+        "finalProbability": 0.1852,
+        "mechanismsResponsible": [
+          "physical",
+          "style",
+          "condition",
+          "striking",
+          "cardio",
+          "grappling",
+          "durability"
+        ],
+        "causedBySingleMechanism": false,
+        "probabilityWithoutStrongestMechanism": 0.1852,
+        "strongestMechanism": "physical"
       }
     },
     {
-      "forecastId": "b00ababf414e06c7",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "6df46ff67494ec7f",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B04",
       "fight": "Gillian Robertson vs Mackenzie Dern",
@@ -1675,8 +1687,8 @@
       "marketBaseline": {
         "probability": 0.339,
         "forFighter": "Gillian Robertson",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1720,22 +1732,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -1745,7 +1757,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "70c49ef24ded9417"
+        "baselineHash": "c24cc01d1982f02b"
       },
       "systemCentral": {
         "Gillian Robertson": 0.2834,
@@ -1753,8 +1765,8 @@
       },
       "systemRange": {
         "forFighter": "Gillian Robertson",
-        "low": 0.1864,
-        "high": 0.3804
+        "low": 0.2024,
+        "high": 0.3644
       },
       "marketDisagreementPoints": -5.56,
       "outcomeTree": {
@@ -1794,6 +1806,72 @@
       "treeCoherent": true,
       "appliedAdjustments": [
         {
+          "adjustmentId": "a636afc3ec",
+          "boutId": "UFC-2026-08-15-B04",
+          "fighterFavored": "Mackenzie Dern",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "striking_offense"
+          ],
+          "supportingEvidenceIds": [
+            "-ncyOwr8MqQ#29321",
+            "cMhkAfo11QE#0",
+            "cMhkAfo11QE#9993",
+            "uKQxfull4q4#27225",
+            "7gLuajLAdIE#7066",
+            "FrVp12heryk#48288"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 6,
+          "originIds": [
+            "analyst:dominick cruz",
+            "analyst:kunath",
+            "analyst:james lynch",
+            "analyst:sean brady steadypicks",
+            "analyst:belal muhammad",
+            "analyst:the mma analysis"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Mackenzie Dern",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "6 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
           "adjustmentId": "e97fa70a21",
           "boutId": "UFC-2026-08-15-B04",
           "fighterFavored": "Gillian Robertson",
@@ -1802,21 +1880,24 @@
           "evidenceTopics": [
             "inactivity_layoff",
             "recent_form",
+            "recent_form",
             "recent_form"
           ],
           "supportingEvidenceIds": [
             "DS37guDApFQ#24515",
             "DS37guDApFQ#24515",
             "7gLuajLAdIE#7066",
-            "82HzA9kez-0#0"
+            "82HzA9kez-0#0",
+            "FrVp12heryk#48288"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
+          "informationOriginCount": 5,
           "originIds": [
             "record:mackenzie dern:n:2025",
             "record:amanda.andrade.dern.jessica.lemos.lost.mackenzie",
             "analyst:belal muhammad",
-            "record:jillian robertson:n:12,n:15"
+            "record:jillian robertson:n:12,n:15",
+            "record:combined.last.opponents.record.robertson.thirteen.three.two"
           ],
           "evidenceTypes": [
             "verified_hard_fact",
@@ -1867,20 +1948,17 @@
           "outcomeAffected": "win",
           "mechanism": "grappling",
           "evidenceTopics": [
-            "submission_offense",
-            "wrestling_offense"
+            "submission_offense"
           ],
           "supportingEvidenceIds": [
             "DS37guDApFQ#24515",
-            "-ncyOwr8MqQ#29321",
-            "uL2vHqaBcCM#39372"
+            "-ncyOwr8MqQ#29321"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
+          "informationOriginCount": 2,
           "originIds": [
             "analyst:hoppermma",
-            "analyst:dominick cruz",
-            "analyst:138 mma"
+            "analyst:dominick cruz"
           ],
           "evidenceTypes": [
             "matchup_inference",
@@ -1922,205 +2000,19 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
         },
         {
-          "adjustmentId": "4d18158a96",
-          "boutId": "UFC-2026-08-15-B04",
-          "fighterFavored": "Gillian Robertson",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "wrestling_offense",
-            "submission_offense",
-            "wrestling_offense"
-          ],
-          "supportingEvidenceIds": [
-            "-ncyOwr8MqQ#29321",
-            "uL2vHqaBcCM#39372",
-            "uL2vHqaBcCM#39372",
-            "uL2vHqaBcCM#39372",
-            "FrVp12heryk#46356"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "analyst:dominick cruz",
-            "analyst:138 mma",
-            "analyst:the mma analysis"
-          ],
-          "evidenceTypes": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Gillian Robertson",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "a636afc3ec",
-          "boutId": "UFC-2026-08-15-B04",
-          "fighterFavored": "Mackenzie Dern",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "striking_offense"
-          ],
-          "supportingEvidenceIds": [
-            "-ncyOwr8MqQ#29321",
-            "cMhkAfo11QE#0",
-            "cMhkAfo11QE#9993",
-            "uKQxfull4q4#27225",
-            "7gLuajLAdIE#7066",
-            "uL2vHqaBcCM#39372"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 6,
-          "originIds": [
-            "analyst:dominick cruz",
-            "analyst:kunath",
-            "analyst:james lynch",
-            "analyst:sean brady steadypicks",
-            "analyst:belal muhammad",
-            "analyst:138 mma"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Mackenzie Dern",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "6 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "25deaef6d8",
-          "boutId": "UFC-2026-08-15-B04",
-          "fighterFavored": "Mackenzie Dern",
-          "outcomeAffected": "win",
-          "mechanism": "durability",
-          "evidenceTopics": [
-            "durability"
-          ],
-          "supportingEvidenceIds": [
-            "uKQxfull4q4#27225",
-            "uL2vHqaBcCM#39372"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "record:career.dern.mackenzie.never.submitted",
-            "analyst:138 mma"
-          ],
-          "evidenceTypes": [
-            "verified_hard_fact",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "general_career_background",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "long_term_tendency",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "strong",
-            "_plus": 5,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Mackenzie Dern",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=verified_hard_fact/film_study_observation, relevance=general_career_background/stable_historical_tendency"
-        },
-        {
           "adjustmentId": "4085f20df6",
           "boutId": "UFC-2026-08-15-B04",
           "fighterFavored": "Mackenzie Dern",
           "outcomeAffected": "win",
           "mechanism": "style",
           "evidenceTopics": [
+            "style_matchup",
             "style_matchup"
           ],
           "supportingEvidenceIds": [
             "uKQxfull4q4#40343",
-            "FrVp12heryk#46656"
+            "FrVp12heryk#46656",
+            "FrVp12heryk#48288"
           ],
           "contradictoryEvidenceIds": [],
           "informationOriginCount": 2,
@@ -2232,12 +2124,12 @@
         "marketPriorA": 0.339,
         "coreAdjustmentLogOdds": -0.26,
         "coreCentralA": 0.2834,
-        "creativeAdjustmentLogOddsTowardA": 0.145,
-        "creativeCentralA": 0.3137,
-        "creativeMovePoints": 3.03,
+        "creativeAdjustmentLogOddsTowardA": -0.0487,
+        "creativeCentralA": 0.2736,
+        "creativeMovePoints": -0.98,
         "capped": false,
         "cap": 1.6,
-        "activeHypotheses": 13,
+        "activeHypotheses": 11,
         "hypotheses": [
           {
             "hypothesis": "Mackenzie Dern — inactivity_layoff: Mackenzie Dern hasn't fought since October of 2025. (against_about)",
@@ -2272,7 +2164,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2310,7 +2202,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2348,7 +2240,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2356,22 +2248,19 @@
             "fighter": "Mackenzie Dern",
             "boutTopic": "durability",
             "supportingFacts": [
-              "never been submitted.",
-              "her durability is there. She's tough. You're never going to see Mackenzie Dern just kind of like wilt."
+              "never been submitted."
             ],
-            "supportingInferences": [
-              "2 independent origin(s), 2 channel(s)"
-            ],
+            "supportingInferences": [],
             "verificationStatus": "VERIFIED",
             "causalMechanism": "durability → helps Mackenzie Dern",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
-              "independentOrigins": 2,
-              "amplifyingChannels": 2,
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
               "composition": {
                 "reported": 0,
                 "recorded": 1,
-                "analytical": 1,
+                "analytical": 0,
                 "firsthand": 0,
                 "opinion": 0
               },
@@ -2379,15 +2268,15 @@
             },
             "evidenceAgainst": "different_interpretations_of_the_same_fact: Mackenzie Dern — durability",
             "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
+            "novelty": "not novel",
             "probablyPriced": false,
             "falsificationCondition": "Mackenzie Dern shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
             "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.35,
-            "magnitudeBucket": "strong_multi_signal",
+            "adjustmentLogOdds": 0.1012,
+            "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2426,7 +2315,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2464,7 +2353,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2503,7 +2392,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2541,83 +2430,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Gillian Robertson — durability: Gillian Robertson is durable and can take a punch. (favors_about)",
-            "fighter": "Gillian Robertson",
-            "boutTopic": "durability",
-            "supportingFacts": [
-              "She's durable as well. She can take a punch"
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "durability → helps Gillian Robertson",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Gillian Robertson shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.2225,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Mackenzie Dern — striking_defense: Mackenzie Dern's striking defense is not good at all. (against_about)",
-            "fighter": "Mackenzie Dern",
-            "boutTopic": "striking_defense",
-            "supportingFacts": [
-              "striking defense isn't good at all. Not at all."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "striking_defense → hurts Mackenzie Dern",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mackenzie Dern shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2656,21 +2469,21 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
-            "hypothesis": "Gillian Robertson — style_matchup: Gillian Robertson needs a takedown to establish top position against Mackenzie Dern to win. (neutral)",
-            "fighter": "Gillian Robertson",
+            "hypothesis": "Mackenzie Dern — style_matchup: Mackenzie Dern holds a grappling advantage over her opponent. (favors_about)",
+            "fighter": "Mackenzie Dern",
             "boutTopic": "style_matchup",
             "supportingFacts": [
-              "she literally in this fight is going to have to have a takedown to where she's on top and being able to put damage on Mackenzie Dern"
+              "she's a better grappler."
             ],
             "supportingInferences": [
               "1 independent origin(s), 1 channel(s)"
             ],
             "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "style_matchup → hurts Gillian Robertson",
+            "causalMechanism": "style_matchup → helps Mackenzie Dern",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
               "independentOrigins": 1,
@@ -2684,17 +2497,17 @@
               },
               "citedOrigins": []
             },
-            "evidenceAgainst": "compatible_claims: Gillian Robertson — style_matchup",
+            "evidenceAgainst": "none recorded",
             "alternativeExplanation": "the signal may be noise or already reflected in the line",
             "novelty": "NOVEL",
             "probablyPriced": false,
-            "falsificationCondition": "Gillian Robertson shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
+            "falsificationCondition": "Mackenzie Dern shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
             "adjustmentLogOdds": 0.22,
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2732,16 +2545,16 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.899Z",
+            "timestamp": "2026-08-13T07:57:41.955Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
         "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
       },
       "uncertainty": {
-        "halfWidthPoints": 9.7,
+        "halfWidthPoints": 8.1,
         "primaryDrivers": [
-          "4 contradicted topic(s)",
+          "2 contradicted topic(s)",
           "unverified current-condition report",
           "long layoff"
         ],
@@ -2749,28 +2562,29 @@
           "high-impact injury rumor"
         ]
       },
-      "evidenceCoverage": "WELL COVERED",
+      "evidenceCoverage": "PARTIALLY COVERED",
       "independentOrigins": 19,
       "originBreakdown": {
-        "analysts": 10,
-        "publicRecords": 6,
+        "analysts": 9,
+        "publicRecords": 7,
         "externalReports": 3,
         "commentary": 0
       },
-      "contradictions": 4,
+      "contradictions": 2,
       "missingInformation": [
+        "striking_defense",
         "takedown_defense",
         "cardio"
       ],
       "limitations": [
         "2 topic(s) are picks with no supporting reasoning — recorded, not counted as evidence",
         "1 topic(s) rest on dated information",
-        "24 topic(s) have no determinable timeframe"
+        "18 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 44,
-        "claimsAdmitted": 44,
+        "claimsConsidered": 37,
+        "claimsAdmitted": 37,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -2783,23 +2597,24 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "cb000b0fb8f6c3a1",
-        "baseline": "8a4dba26f83c825c",
+        "evidenceEval": "fa5ea2a342f3628f",
+        "baseline": "34189c58a3933eb4",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "fd25182bbfd3dd9b",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "ece8ac77482fa49e",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B10",
       "fight": "Neil Magny vs Ramiz Brahimaj",
       "status": "COMPLETE",
       "marketBaseline": {
-        "probability": 0.4517,
+        "probability": 0.4559,
         "forFighter": "Neil Magny",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2813,10 +2628,10 @@
         "rawPrices": [
           {
             "book": "FanDuel",
-            "Neil Magny": "+114",
-            "Ramiz Brahimaj": "-146",
-            "overround": 1.060786,
-            "deVigged": 0.440513
+            "Neil Magny": "+106",
+            "Ramiz Brahimaj": "-136",
+            "overround": 1.061708,
+            "deVigged": 0.457223
           },
           {
             "book": "Caesars",
@@ -2843,22 +2658,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -2868,49 +2683,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "ec0dd26223a8db46"
+        "baselineHash": "8a0c0beaf885d9a8"
       },
       "systemCentral": {
-        "Neil Magny": 0.5065,
-        "Ramiz Brahimaj": 0.4935
+        "Neil Magny": 0.5108,
+        "Ramiz Brahimaj": 0.4892
       },
       "systemRange": {
         "forFighter": "Neil Magny",
-        "low": 0.4785,
-        "high": 0.5345
+        "low": 0.4828,
+        "high": 0.5388
       },
-      "marketDisagreementPoints": 5.48,
+      "marketDisagreementPoints": 5.49,
       "outcomeTree": {
         "Neil Magny": {
-          "win": 0.5065,
-          "byKO": 0.1672,
-          "bySubmission": 0.0861,
-          "byDecision": 0.2533,
+          "win": 0.5108,
+          "byKO": 0.1686,
+          "bySubmission": 0.0868,
+          "byDecision": 0.2554,
           "koByRound": {
-            "r1": 0.0752,
-            "r2": 0.0535,
-            "r3": 0.0385
+            "r1": 0.0759,
+            "r2": 0.054,
+            "r3": 0.0388
           },
           "submissionByRound": {
-            "r1": 0.0387,
-            "r2": 0.0276,
-            "r3": 0.0198
+            "r1": 0.0391,
+            "r2": 0.0278,
+            "r3": 0.02
           }
         },
         "Ramiz Brahimaj": {
-          "win": 0.4935,
-          "byKO": 0.1628,
-          "bySubmission": 0.0839,
-          "byDecision": 0.2467,
+          "win": 0.4892,
+          "byKO": 0.1614,
+          "bySubmission": 0.0832,
+          "byDecision": 0.2446,
           "koByRound": {
-            "r1": 0.0733,
-            "r2": 0.0521,
-            "r3": 0.0374
+            "r1": 0.0726,
+            "r2": 0.0516,
+            "r3": 0.0371
           },
           "submissionByRound": {
-            "r1": 0.0378,
-            "r2": 0.0268,
-            "r3": 0.0193
+            "r1": 0.0374,
+            "r2": 0.0266,
+            "r3": 0.0191
           }
         }
       },
@@ -2928,16 +2743,14 @@
           "supportingEvidenceIds": [
             "cMhkAfo11QE#24509",
             "uKQxfull4q4#2267",
-            "cSUbCeV75Ok#3780",
-            "j47M8Uv_zLc#625"
+            "cSUbCeV75Ok#3780"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
+          "informationOriginCount": 3,
           "originIds": [
             "analyst:kunath",
             "analyst:james lynch",
-            "record:advantage.eight.holds.inch.magny.neil.reach",
-            "analyst:round 3 prediction show"
+            "record:advantage.eight.holds.inch.magny.neil.reach"
           ],
           "evidenceTypes": [
             "matchup_inference",
@@ -2976,7 +2789,7 @@
           "shrunkMagnitudeLogOdds": 0.14,
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
-          "magnitudeReason": "4 independent origin(s), strength=moderate, kinds=matchup_inference/verified_hard_fact, relevance=direct_current_matchup/general_career_background"
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/verified_hard_fact, relevance=direct_current_matchup/general_career_background"
         },
         {
           "adjustmentId": "9d27292cf5",
@@ -3113,16 +2926,14 @@
           "supportingEvidenceIds": [
             "uKQxfull4q4#2267",
             "bFC-6JYoLe4#13101",
-            "j47M8Uv_zLc#625",
             "WC_pX3a_WkI#38102",
             "FrVp12heryk#18278"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 5,
+          "informationOriginCount": 4,
           "originIds": [
             "analyst:james lynch",
             "analyst:jakegerbermma",
-            "analyst:round 3 prediction show",
             "analyst:half the battle",
             "record:brahimaj.career.finished.one.only.ramiz.time"
           ],
@@ -3166,7 +2977,7 @@
           "shrunkMagnitudeLogOdds": 0.14,
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
-          "magnitudeReason": "4 independent origin(s), strength=strong, kinds=film_study_observation/psychological_interpretation, relevance=stable_historical_tendency/general_career_background"
+          "magnitudeReason": "3 independent origin(s), strength=strong, kinds=film_study_observation/psychological_interpretation, relevance=stable_historical_tendency/general_career_background"
         },
         {
           "adjustmentId": "f75ec65826",
@@ -3235,12 +3046,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.4517,
+        "marketPriorA": 0.4559,
         "coreAdjustmentLogOdds": 0.22,
-        "coreCentralA": 0.5065,
+        "coreCentralA": 0.5108,
         "creativeAdjustmentLogOddsTowardA": -0.3194,
-        "creativeCentralA": 0.4272,
-        "creativeMovePoints": -7.93,
+        "creativeCentralA": 0.4314,
+        "creativeMovePoints": -7.94,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 6,
@@ -3280,7 +3091,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3319,7 +3130,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3331,18 +3142,18 @@
               "Magny's chin is is very much compromised these days. He's very hitable."
             ],
             "supportingInferences": [
-              "4 independent origin(s), 4 channel(s)"
+              "3 independent origin(s), 3 channel(s)"
             ],
             "verificationStatus": "MECHANISTICALLY RELEVANT",
             "causalMechanism": "durability → hurts Neil Magny",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
-              "independentOrigins": 4,
-              "amplifyingChannels": 4,
+              "independentOrigins": 3,
+              "amplifyingChannels": 3,
               "composition": {
                 "reported": 0,
                 "recorded": 0,
-                "analytical": 4,
+                "analytical": 3,
                 "firsthand": 0,
                 "opinion": 0
               },
@@ -3358,7 +3169,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3396,7 +3207,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3432,7 +3243,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3470,7 +3281,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.916Z",
+            "timestamp": "2026-08-13T07:57:41.974Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -3484,9 +3295,9 @@
         "conditionsThatWouldMove": []
       },
       "evidenceCoverage": "WELL COVERED",
-      "independentOrigins": 23,
+      "independentOrigins": 22,
       "originBreakdown": {
-        "analysts": 16,
+        "analysts": 15,
         "publicRecords": 7,
         "externalReports": 0,
         "commentary": 0
@@ -3502,8 +3313,8 @@
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 33,
-        "claimsAdmitted": 33,
+        "claimsConsidered": 31,
+        "claimsAdmitted": 31,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -3516,23 +3327,24 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "c01e44a48a4e3742",
-        "baseline": "5c72333ba4b5512d",
+        "evidenceEval": "ee26944ca8c5bca3",
+        "baseline": "e9c0795a46dba558",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "a1848e3f3c56f6d1",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "04d23c9c058dcce3",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B12",
       "fight": "Rafael Tobias vs Lucas Fernando",
       "status": "HUMAN REVIEW REQUIRED",
       "marketBaseline": {
-        "probability": 0.2913,
+        "probability": 0.2925,
         "forFighter": "Rafael Tobias",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -3541,15 +3353,15 @@
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 2.4,
+        "dispersion": 2.38,
         "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
             "book": "FanDuel",
-            "Rafael Tobias": "+235",
-            "Lucas Fernando": "-320",
-            "overround": 1.060412,
-            "deVigged": 0.281501
+            "Rafael Tobias": "+230",
+            "Lucas Fernando": "-310",
+            "overround": 1.059128,
+            "deVigged": 0.286113
           },
           {
             "book": "Caesars",
@@ -3576,22 +3388,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -3601,48 +3413,48 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "f723702a06bccfea"
+        "baselineHash": "fb66bd348eefe663"
       },
       "systemCentral": {
-        "Rafael Tobias": 0.237,
-        "Lucas Fernando": 0.763
+        "Rafael Tobias": 0.2381,
+        "Lucas Fernando": 0.7619
       },
       "systemRange": {
         "forFighter": "Rafael Tobias",
-        "low": 0.177,
-        "high": 0.297
+        "low": 0.1781,
+        "high": 0.2981
       },
-      "marketDisagreementPoints": -5.43,
+      "marketDisagreementPoints": -5.44,
       "outcomeTree": {
         "Rafael Tobias": {
-          "win": 0.237,
-          "byKO": 0.0782,
-          "bySubmission": 0.0403,
-          "byDecision": 0.1185,
+          "win": 0.2381,
+          "byKO": 0.0786,
+          "bySubmission": 0.0405,
+          "byDecision": 0.119,
           "koByRound": {
-            "r1": 0.0352,
-            "r2": 0.025,
-            "r3": 0.018
+            "r1": 0.0354,
+            "r2": 0.0252,
+            "r3": 0.0181
           },
           "submissionByRound": {
-            "r1": 0.0181,
-            "r2": 0.0129,
+            "r1": 0.0182,
+            "r2": 0.013,
             "r3": 0.0093
           }
         },
         "Lucas Fernando": {
-          "win": 0.763,
-          "byKO": 0.2518,
-          "bySubmission": 0.1297,
-          "byDecision": 0.3815,
+          "win": 0.7619,
+          "byKO": 0.2514,
+          "bySubmission": 0.1295,
+          "byDecision": 0.381,
           "koByRound": {
-            "r1": 0.1133,
-            "r2": 0.0806,
-            "r3": 0.0579
+            "r1": 0.1131,
+            "r2": 0.0804,
+            "r3": 0.0578
           },
           "submissionByRound": {
-            "r1": 0.0584,
-            "r2": 0.0415,
+            "r1": 0.0583,
+            "r2": 0.0414,
             "r3": 0.0298
           }
         }
@@ -3659,8 +3471,7 @@
             "striking_offense",
             "striking_offense",
             "power",
-            "power",
-            "speed"
+            "power"
           ],
           "supportingEvidenceIds": [
             "DS37guDApFQ#0",
@@ -3676,11 +3487,10 @@
             "FtfEeC3tfOY#14100",
             "FtfEeC3tfOY#14100",
             "bFC-6JYoLe4#13101",
-            "YIYbz6nEsiE#9942",
-            "j47M8Uv_zLc#625"
+            "YIYbz6nEsiE#9942"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 11,
+          "informationOriginCount": 10,
           "originIds": [
             "analyst:hoppermma",
             "analyst:artem mma",
@@ -3691,8 +3501,7 @@
             "analyst:winning in the shadows",
             "analyst:kennyokoyemma",
             "analyst:michael chiesa",
-            "analyst:we want picks",
-            "analyst:round 3 prediction show"
+            "analyst:we want picks"
           ],
           "evidenceTypes": [
             "film_study_observation",
@@ -3728,7 +3537,7 @@
           "direction": "favors Lucas Fernando",
           "rawMagnitudeClass": "MODERATE",
           "liftedTo": "MAJOR",
-          "liftReason": "3 supporting topics across 11 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
+          "liftReason": "3 supporting topics across 10 INDEPENDENT origins lifted MODERATE -> MAJOR (one step only; correlated support never multiplies)",
           "shrunkMagnitudeLogOdds": 0.28,
           "finalAppliedLogOdds": 0.28,
           "capOrReductionReason": null,
@@ -3885,26 +3694,22 @@
           "supportingEvidenceIds": [
             "YIYbz6nEsiE#9942",
             "6cSewXl2J40#2383",
-            "LQEt_YFL4hY#38773",
-            "j47M8Uv_zLc#625"
+            "LQEt_YFL4hY#38773"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
+          "informationOriginCount": 3,
           "originIds": [
             "analyst:we want picks",
             "analyst:dfs by the numbers",
-            "record:belt.black.grappling.jitsu.jiu.legitimate.offering.raphael.tobias.upside",
-            "analyst:round 3 prediction show"
+            "record:belt.black.grappling.jitsu.jiu.legitimate.offering.raphael.tobias.upside"
           ],
           "evidenceTypes": [
             "film_study_observation",
-            "verified_hard_fact",
-            "matchup_inference"
+            "verified_hard_fact"
           ],
           "relevance": [
             "stable_historical_tendency",
-            "general_career_background",
-            "direct_current_matchup"
+            "general_career_background"
           ],
           "freshness": [
             "unknown_timeframe"
@@ -3929,13 +3734,13 @@
             "niche_analytical_interpretation"
           ],
           "direction": "favors Raphael Tobias",
-          "rawMagnitudeClass": "MODERATE",
+          "rawMagnitudeClass": "MINOR",
           "liftedTo": null,
           "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
           "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact/matchup_inference, relevance=stable_historical_tendency/general_career_background/direct_current_matchup"
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact, relevance=stable_historical_tendency/general_career_background"
         },
         {
           "adjustmentId": "5e2d66d6cd",
@@ -3951,17 +3756,15 @@
           ],
           "supportingEvidenceIds": [
             "i3kCMoEgBRE#48578",
-            "j47M8Uv_zLc#625",
             "YIYbz6nEsiE#9942",
             "6cSewXl2J40#4857",
             "LQEt_YFL4hY#40755",
             "LQEt_YFL4hY#40755"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 6,
+          "informationOriginCount": 5,
           "originIds": [
             "analyst:we want picks",
-            "record:career.coming.fight.last.loss.off.raphael.second.tobias.ufc",
             "record:coming.debut.decision.deion.eight.loss.nurgail.off.raphael.takedowns.tobias.two.",
             "record:debut.fernando.making.promotional",
             "record:fernando.koya.lfa.lost.lucas",
@@ -3989,13 +3792,13 @@
             "verifiable": true,
             "checkableAgainstFootageOrRecord": true,
             "specific": true,
-            "givesSupportingExample": true,
+            "givesSupportingExample": false,
             "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
             "recency": "recent_fights",
             "strength": "strong",
-            "_plus": 6,
+            "_plus": 5,
             "_minus": 0
           },
           "marketAwareness": [
@@ -4003,13 +3806,13 @@
             "unknown"
           ],
           "direction": "favors Rafael Tobias",
-          "rawMagnitudeClass": "MODERATE",
+          "rawMagnitudeClass": "MINOR",
           "liftedTo": null,
           "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
           "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=strong, kinds=matchup_inference/verified_hard_fact, relevance=direct_current_matchup/general_career_background"
+          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=matchup_inference/verified_hard_fact, relevance=direct_current_matchup/general_career_background"
         }
       ],
       "consideredButZero": 15,
@@ -4017,12 +3820,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.2913,
+        "marketPriorA": 0.2925,
         "coreAdjustmentLogOdds": -0.28,
-        "coreCentralA": 0.237,
+        "coreCentralA": 0.2381,
         "creativeAdjustmentLogOddsTowardA": -0.1137,
-        "creativeCentralA": 0.2171,
-        "creativeMovePoints": -1.99,
+        "creativeCentralA": 0.2181,
+        "creativeMovePoints": -2,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 13,
@@ -4062,7 +3865,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4100,7 +3903,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4138,7 +3941,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4176,7 +3979,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4214,7 +4017,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4252,7 +4055,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4290,7 +4093,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4326,7 +4129,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4364,7 +4167,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4402,7 +4205,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4438,7 +4241,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4476,7 +4279,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4514,7 +4317,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.935Z",
+            "timestamp": "2026-08-13T07:57:41.992Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -4530,10 +4333,10 @@
         ]
       },
       "evidenceCoverage": "WELL COVERED",
-      "independentOrigins": 34,
+      "independentOrigins": 31,
       "originBreakdown": {
-        "analysts": 16,
-        "publicRecords": 17,
+        "analysts": 15,
+        "publicRecords": 15,
         "externalReports": 1,
         "commentary": 0
       },
@@ -4544,12 +4347,12 @@
       "limitations": [
         "1 topic(s) look widely agreed but trace to ONE origin (amplification, not confirmation)",
         "2 topic(s) rest on dated information",
-        "31 topic(s) have no determinable timeframe"
+        "30 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 60,
-        "claimsAdmitted": 60,
+        "claimsConsidered": 56,
+        "claimsAdmitted": 56,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -4562,14 +4365,15 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "a9006aff1b172377",
-        "baseline": "1afcf37ee974dbae",
+        "evidenceEval": "9716cde55de1a6db",
+        "baseline": "ec5c373db55a917f",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "850b1c40677460f3",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "c3281a7ae57e9615",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B06",
       "fight": "Dustin Stoltzfus vs Mansur Abdul-Malik",
@@ -4577,8 +4381,8 @@
       "marketBaseline": {
         "probability": 0.1643,
         "forFighter": "Dustin Stoltzfus",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -4622,22 +4426,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -4647,7 +4451,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "552defcd42c7c7bc"
+        "baselineHash": "f0f50a524a2614e0"
       },
       "systemCentral": {
         "Dustin Stoltzfus": 0.1294,
@@ -4695,64 +4499,6 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [
-        {
-          "adjustmentId": "854e8346f8",
-          "boutId": "UFC-2026-08-15-B06",
-          "fighterFavored": "Mansur Abdul-Malik",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "striking_offense"
-          ],
-          "supportingEvidenceIds": [
-            "DS37guDApFQ#19070",
-            "uL2vHqaBcCM#31105"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "analyst:hoppermma",
-            "analyst:138 mma"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Mansur Abdul-Malik",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
-        },
         {
           "adjustmentId": "3dc04875fb",
           "boutId": "UFC-2026-08-15-B06",
@@ -4875,6 +4621,64 @@
           "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact, relevance=stable_historical_tendency/general_career_background"
         },
         {
+          "adjustmentId": "854e8346f8",
+          "boutId": "UFC-2026-08-15-B06",
+          "fighterFavored": "Mansur Abdul-Malik",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "striking_offense"
+          ],
+          "supportingEvidenceIds": [
+            "DS37guDApFQ#19070",
+            "uL2vHqaBcCM#31105"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 2,
+          "originIds": [
+            "analyst:hoppermma",
+            "analyst:138 mma"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Mansur Abdul-Malik",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
           "adjustmentId": "875df48851",
           "boutId": "UFC-2026-08-15-B06",
           "fighterFavored": "Dustin Stoltzfus",
@@ -4987,7 +4791,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5023,7 +4827,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5061,7 +4865,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5099,7 +4903,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5137,7 +4941,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5175,7 +4979,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5213,7 +5017,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5249,7 +5053,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.904Z",
+            "timestamp": "2026-08-13T07:57:41.963Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -5294,13 +5098,14 @@
       },
       "dataHashes": {
         "evidenceEval": "ee8f46f44bec20c3",
-        "baseline": "a10342a0a9d8b9a6",
+        "baseline": "43084754af645d60",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "f20e0b89f3e4806e",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "9f26a1a6efbf34af",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B11",
       "fight": "Vicente Luque vs Tresean Gore",
@@ -5308,8 +5113,8 @@
       "marketBaseline": {
         "probability": 0.4798,
         "forFighter": "Vicente Luque",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -5353,22 +5158,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -5378,7 +5183,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "76f72b50fab8caf5"
+        "baselineHash": "6ccdd14ceef8f402"
       },
       "systemCentral": {
         "Vicente Luque": 0.445,
@@ -5490,69 +5295,6 @@
           "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=film_study_observation/verified_hard_fact, relevance=stable_historical_tendency/general_career_background"
         },
         {
-          "adjustmentId": "177caf7176",
-          "boutId": "UFC-2026-08-15-B11",
-          "fighterFavored": "Tresean Gore",
-          "outcomeAffected": "win",
-          "mechanism": "activity",
-          "evidenceTopics": [
-            "recent_form",
-            "recent_form"
-          ],
-          "supportingEvidenceIds": [
-            "cMhkAfo11QE#24509",
-            "6cSewXl2J40#2383",
-            "cSUbCeV75Ok#3780"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "record:fights.giles.losses.luque.total.trevin.vicente",
-            "analyst:dfs by the numbers",
-            "record:after.april.azam.beating.gataev.gore.momentum.tresean"
-          ],
-          "evidenceTypes": [
-            "verifiable_statistical_claim",
-            "unsupported_narrative",
-            "verified_hard_fact"
-          ],
-          "relevance": [
-            "stable_historical_tendency",
-            "weakly_relevant",
-            "general_career_background"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Tresean Gore",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verifiable_statistical_claim/unsupported_narrative, relevance=stable_historical_tendency/weakly_relevant"
-        },
-        {
           "adjustmentId": "f8959cfb52",
           "boutId": "UFC-2026-08-15-B11",
           "fighterFavored": "Tresean Gore",
@@ -5635,18 +5377,16 @@
             "r1vAvvZ7-0o#6245",
             "uL2vHqaBcCM#2555",
             "LQEt_YFL4hY#36426",
-            "j47M8Uv_zLc#625",
             "WC_pX3a_WkI#38102",
             "FrVp12heryk#18278",
             "FrVp12heryk#27686"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 5,
+          "informationOriginCount": 4,
           "originIds": [
             "report:anon:against.bleeding.brain.fight.internal.jeff.luque.neil.suffered.vicente",
             "report:anon:bleed.brain.luque.previously.suffered.vicente",
             "report:anon:brain.career.fight.geoff.impacts.injury.longevity.luque.neal.significant.suffere",
-            "report:anon:brain.fighting.luque.post.surgery.vicente",
             "analyst:the mma analysis"
           ],
           "evidenceTypes": [
@@ -5688,7 +5428,70 @@
           "shrunkMagnitudeLogOdds": 0.14,
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
-          "magnitudeReason": "4 independent origin(s), strength=moderate, kinds=current_condition_report, relevance=current_fighter_condition"
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=current_condition_report, relevance=current_fighter_condition"
+        },
+        {
+          "adjustmentId": "177caf7176",
+          "boutId": "UFC-2026-08-15-B11",
+          "fighterFavored": "Tresean Gore",
+          "outcomeAffected": "win",
+          "mechanism": "activity",
+          "evidenceTopics": [
+            "recent_form",
+            "recent_form"
+          ],
+          "supportingEvidenceIds": [
+            "cMhkAfo11QE#24509",
+            "6cSewXl2J40#2383",
+            "cSUbCeV75Ok#3780"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 3,
+          "originIds": [
+            "record:fights.giles.losses.luque.total.trevin.vicente",
+            "analyst:dfs by the numbers",
+            "record:after.april.azam.beating.gataev.gore.momentum.tresean"
+          ],
+          "evidenceTypes": [
+            "verifiable_statistical_claim",
+            "unsupported_narrative",
+            "verified_hard_fact"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "weakly_relevant",
+            "general_career_background"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Tresean Gore",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verifiable_statistical_claim/unsupported_narrative, relevance=stable_historical_tendency/weakly_relevant"
         },
         {
           "adjustmentId": "299a542c9f",
@@ -5752,7 +5555,7 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
         }
       ],
-      "consideredButZero": 20,
+      "consideredButZero": 19,
       "netLogOdds": -0.14,
       "capNote": null,
       "exploration": {
@@ -5800,7 +5603,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5839,7 +5642,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5877,7 +5680,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5889,16 +5692,16 @@
               "He had a brain injury at some point as well around this period of time... and he just has not looked like the same guy since."
             ],
             "supportingInferences": [
-              "4 independent origin(s), 6 channel(s)"
+              "3 independent origin(s), 5 channel(s)"
             ],
             "verificationStatus": "LIKELY TRUE",
             "causalMechanism": "injury_health → hurts Vicente Luque",
             "outcomeAffected": "fighter win probability",
             "originInformation": {
-              "independentOrigins": 4,
-              "amplifyingChannels": 6,
+              "independentOrigins": 3,
+              "amplifyingChannels": 5,
               "composition": {
-                "reported": 4,
+                "reported": 3,
                 "recorded": 0,
                 "analytical": 0,
                 "firsthand": 0,
@@ -5916,7 +5719,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5955,7 +5758,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5993,7 +5796,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6031,7 +5834,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6067,7 +5870,7 @@
             "magnitudeBucket": "unsupported_narrative",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6105,7 +5908,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6143,7 +5946,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6181,7 +5984,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6219,7 +6022,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6257,7 +6060,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6295,7 +6098,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6333,7 +6136,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.983Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6371,7 +6174,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.984Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6409,7 +6212,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.926Z",
+            "timestamp": "2026-08-13T07:57:41.984Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6425,11 +6228,11 @@
         ]
       },
       "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 26,
+      "independentOrigins": 24,
       "originBreakdown": {
-        "analysts": 15,
+        "analysts": 14,
         "publicRecords": 6,
-        "externalReports": 5,
+        "externalReports": 4,
         "commentary": 0
       },
       "contradictions": 4,
@@ -6438,12 +6241,12 @@
         "takedown_defense"
       ],
       "limitations": [
-        "27 topic(s) have no determinable timeframe"
+        "26 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 50,
-        "claimsAdmitted": 50,
+        "claimsConsidered": 48,
+        "claimsAdmitted": 48,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -6456,14 +6259,15 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "3ec3fc2f17bafd26",
-        "baseline": "a9938bc589d6741e",
+        "evidenceEval": "291cb2d097411d39",
+        "baseline": "aceca9486f4c1bf5",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "00669674b3c5a7e2",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "7b7aae9928ff4339",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B02",
       "fight": "Charles Johnson vs Eduardo Henrique Da Silva Dos Santos",
@@ -6472,7 +6276,7 @@
         "probability": 0.5526,
         "forFighter": "Charles Johnson",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -6504,7 +6308,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "ca09e9c39ffdeaa7"
+        "baselineHash": "9baa4a7c8a2f3e4b"
       },
       "systemCentral": {
         "Charles Johnson": 0.5674,
@@ -6783,7 +6587,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.870Z",
+            "timestamp": "2026-08-13T07:57:41.931Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6822,7 +6626,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.870Z",
+            "timestamp": "2026-08-13T07:57:41.931Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6860,7 +6664,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.870Z",
+            "timestamp": "2026-08-13T07:57:41.931Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6907,13 +6711,14 @@
       },
       "dataHashes": {
         "evidenceEval": "9d95f68831380d69",
-        "baseline": "1e1412c40b0ff382",
+        "baseline": "af441cd46caeaf35",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "f63750a8f7669cce",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "de8185a6a9c528f9",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B05",
       "fight": "Jalin Turner vs Kaue Fernandes",
@@ -6921,8 +6726,8 @@
       "marketBaseline": {
         "probability": 0.5892,
         "forFighter": "Jalin Turner",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -6966,22 +6771,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -6991,7 +6796,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "55b8b069409b4ea6"
+        "baselineHash": "a23d7926ce317da0"
       },
       "systemCentral": {
         "Jalin Turner": 0.5746,
@@ -7147,7 +6952,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.901Z",
+            "timestamp": "2026-08-13T07:57:41.959Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7185,7 +6990,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.901Z",
+            "timestamp": "2026-08-13T07:57:41.959Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7224,7 +7029,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.901Z",
+            "timestamp": "2026-08-13T07:57:41.959Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7260,7 +7065,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.901Z",
+            "timestamp": "2026-08-13T07:57:41.959Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -7314,13 +7119,14 @@
       },
       "dataHashes": {
         "evidenceEval": "34072628345113b3",
-        "baseline": "2650b54f024e8109",
+        "baseline": "342ee8827a73e8dc",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "96d74e3b15230b29",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "2769f33d899400aa",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B01",
       "fight": "Jose Ochoa vs Charles Johnson",
@@ -7329,7 +7135,7 @@
         "probability": 0.7148,
         "forFighter": "Jose Ochoa",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -7361,7 +7167,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "c95c1ca1290dbefc"
+        "baselineHash": "e17930ff01cae18e"
       },
       "systemCentral": {
         "Jose Ochoa": 0.7269,
@@ -7525,7 +7331,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.864Z",
+            "timestamp": "2026-08-13T07:57:41.925Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -7573,13 +7379,14 @@
       },
       "dataHashes": {
         "evidenceEval": "0c73658b471892f8",
-        "baseline": "dd4b6c4fa3adf73c",
+        "baseline": "025629ed54ff5386",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "20c231e3a89eaab2",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "e970c1bef3418ab7",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B07",
       "fight": "Esteban Ribovics vs Edson Barboza",
@@ -7587,8 +7394,8 @@
       "marketBaseline": {
         "probability": 0.8255,
         "forFighter": "Esteban Ribovics",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7632,22 +7439,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -7657,7 +7464,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "73d3aee0ef7ca149"
+        "baselineHash": "a02c52bebf3ea8cf"
       },
       "systemCentral": {
         "Esteban Ribovics": 0.8367,
@@ -7705,67 +7512,6 @@
       },
       "treeCoherent": true,
       "appliedAdjustments": [
-        {
-          "adjustmentId": "99caf8eb5e",
-          "boutId": "UFC-2026-08-15-B07",
-          "fighterFavored": "Edson Barboza",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "striking_offense",
-            "power"
-          ],
-          "supportingEvidenceIds": [
-            "DS37guDApFQ#19070",
-            "FrVp12heryk#38806",
-            "FrVp12heryk#36406"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "analyst:hoppermma",
-            "analyst:the mma analysis"
-          ],
-          "evidenceTypes": [
-            "unsupported_narrative",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "weakly_relevant",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "stale_or_dated",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Edson Barboza",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=unsupported_narrative/film_study_observation, relevance=weakly_relevant/stable_historical_tendency"
-        },
         {
           "adjustmentId": "81db8cf2e8",
           "boutId": "UFC-2026-08-15-B07",
@@ -7832,6 +7578,67 @@
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
           "magnitudeReason": "3 independent origin(s), strength=strong, kinds=verified_hard_fact/film_study_observation, relevance=general_career_background/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "99caf8eb5e",
+          "boutId": "UFC-2026-08-15-B07",
+          "fighterFavored": "Edson Barboza",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "striking_offense",
+            "power"
+          ],
+          "supportingEvidenceIds": [
+            "DS37guDApFQ#19070",
+            "FrVp12heryk#38806",
+            "FrVp12heryk#36406"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 2,
+          "originIds": [
+            "analyst:hoppermma",
+            "analyst:the mma analysis"
+          ],
+          "evidenceTypes": [
+            "unsupported_narrative",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "weakly_relevant",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "stale_or_dated",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Edson Barboza",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=unsupported_narrative/film_study_observation, relevance=weakly_relevant/stable_historical_tendency"
         }
       ],
       "consideredButZero": 3,
@@ -7884,7 +7691,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.907Z",
+            "timestamp": "2026-08-13T07:57:41.965Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7920,7 +7727,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.907Z",
+            "timestamp": "2026-08-13T07:57:41.965Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7958,7 +7765,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.907Z",
+            "timestamp": "2026-08-13T07:57:41.965Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -8009,13 +7816,14 @@
       },
       "dataHashes": {
         "evidenceEval": "9c577c3c05fb6406",
-        "baseline": "3715b6758634e5bb",
+        "baseline": "1598aecada2bd89f",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "96f7cd806755205e",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "7e2505de0ea61ec2",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B08",
       "fight": "Jeremiah Wells vs Myktybek Orolbay Uulu",
@@ -8024,12 +7832,12 @@
         "probability": 0.2648,
         "forFighter": "Jeremiah Wells",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "dispersion": 2.24,
+        "dispersion": 2.99,
         "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
@@ -8056,7 +7864,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "2f0ca82eaa41ce90"
+        "baselineHash": "040854b5a0ef3d02"
       },
       "systemCentral": {
         "Jeremiah Wells": 0.2648,
@@ -8267,7 +8075,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.909Z",
+            "timestamp": "2026-08-13T07:57:41.967Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8305,7 +8113,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.909Z",
+            "timestamp": "2026-08-13T07:57:41.967Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8343,7 +8151,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.909Z",
+            "timestamp": "2026-08-13T07:57:41.967Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -8397,22 +8205,23 @@
       },
       "dataHashes": {
         "evidenceEval": "d81145e27b99da6c",
-        "baseline": "3368e843cd772a4e",
+        "baseline": "b947f7ba2ab871ed",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "9675092818bd10ed",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "bf3fa5008c9e860b",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B09",
       "fight": "Chidi Njokuani vs Joel Alvarez",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.2859,
+        "probability": 0.2915,
         "forFighter": "Chidi Njokuani",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -8440,10 +8249,10 @@
           },
           {
             "book": "BetRivers",
-            "Chidi Njokuani": "+240",
-            "Joel Alvarez": "-315",
-            "overround": 1.053154,
-            "deVigged": 0.279273
+            "Chidi Njokuani": "+215",
+            "Joel Alvarez": "-278",
+            "overround": 1.05291,
+            "deVigged": 0.301507
           },
           {
             "book": "BetWay",
@@ -8456,22 +8265,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -8481,49 +8290,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "6c3cff183955b265"
+        "baselineHash": "b920cc8ecc26b61f"
       },
       "systemCentral": {
-        "Chidi Njokuani": 0.2859,
-        "Joel Alvarez": 0.7141
+        "Chidi Njokuani": 0.2915,
+        "Joel Alvarez": 0.7085
       },
       "systemRange": {
         "forFighter": "Chidi Njokuani",
-        "low": 0.2409,
-        "high": 0.3309
+        "low": 0.2465,
+        "high": 0.3365
       },
       "marketDisagreementPoints": 0,
       "outcomeTree": {
         "Chidi Njokuani": {
-          "win": 0.2859,
-          "byKO": 0.0943,
-          "bySubmission": 0.0486,
-          "byDecision": 0.143,
+          "win": 0.2915,
+          "byKO": 0.0962,
+          "bySubmission": 0.0496,
+          "byDecision": 0.1457,
           "koByRound": {
-            "r1": 0.0424,
-            "r2": 0.0302,
-            "r3": 0.0217
+            "r1": 0.0433,
+            "r2": 0.0308,
+            "r3": 0.0221
           },
           "submissionByRound": {
-            "r1": 0.0219,
-            "r2": 0.0156,
-            "r3": 0.0112
+            "r1": 0.0223,
+            "r2": 0.0159,
+            "r3": 0.0114
           }
         },
         "Joel Alvarez": {
-          "win": 0.7141,
-          "byKO": 0.2357,
-          "bySubmission": 0.1214,
-          "byDecision": 0.357,
+          "win": 0.7085,
+          "byKO": 0.2338,
+          "bySubmission": 0.1204,
+          "byDecision": 0.3543,
           "koByRound": {
-            "r1": 0.1061,
-            "r2": 0.0754,
-            "r3": 0.0542
+            "r1": 0.1052,
+            "r2": 0.0748,
+            "r3": 0.0538
           },
           "submissionByRound": {
-            "r1": 0.0546,
-            "r2": 0.0388,
-            "r3": 0.0279
+            "r1": 0.0542,
+            "r2": 0.0385,
+            "r3": 0.0277
           }
         }
       },
@@ -8534,12 +8343,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.2859,
+        "marketPriorA": 0.2915,
         "coreAdjustmentLogOdds": 0,
-        "coreCentralA": 0.2859,
+        "coreCentralA": 0.2915,
         "creativeAdjustmentLogOddsTowardA": -0.1424,
-        "creativeCentralA": 0.2577,
-        "creativeMovePoints": -2.82,
+        "creativeCentralA": 0.263,
+        "creativeMovePoints": -2.85,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 7,
@@ -8580,7 +8389,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8618,7 +8427,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8654,7 +8463,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8690,7 +8499,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8726,7 +8535,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8764,7 +8573,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -8802,7 +8611,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.911Z",
+            "timestamp": "2026-08-13T07:57:41.969Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -8852,13 +8661,14 @@
       },
       "dataHashes": {
         "evidenceEval": "6357e54c8f17376e",
-        "baseline": "9504312964d7f471",
+        "baseline": "33afe1b24ebe0115",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     },
     {
-      "forecastId": "7b06a418ec2296d5",
-      "sealedAt": "2026-08-13T10:07:25.851Z",
+      "forecastId": "f49fb18f65a4a444",
+      "sealedAt": "2026-08-13T07:57:41.912Z",
       "event": "UFC-2026-08-15",
       "boutId": "UFC-2026-08-15-B13",
       "fight": "Eric McConico vs Donte Johnson",
@@ -8866,8 +8676,8 @@
       "marketBaseline": {
         "probability": 0.3136,
         "forFighter": "Eric McConico",
-        "timestamp": "2026-08-13T10:07:25.842Z",
-        "forecastTimestamp": "2026-08-13T10:07:25.851Z",
+        "timestamp": "2026-08-13T07:57:41.903Z",
+        "forecastTimestamp": "2026-08-13T07:57:41.912Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -8911,22 +8721,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-13T10:07:25.842Z",
+            "observedAt": "2026-08-13T07:57:41.903Z",
             "sourceProvided": null
           }
         ],
@@ -8936,7 +8746,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "d75c03345de08841"
+        "baselineHash": "170d31b75ec0ac96"
       },
       "systemCentral": {
         "Eric McConico": 0.3136,
@@ -9034,7 +8844,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-13T10:07:25.937Z",
+            "timestamp": "2026-08-13T07:57:41.994Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -9080,18 +8890,1130 @@
       },
       "dataHashes": {
         "evidenceEval": "f5cf9b40bbda7814",
-        "baseline": "aa1991e4ebd3cc48",
+        "baseline": "38c34fc7470eb845",
         "rules": "22a3275b9ea3fea9"
-      }
+      },
+      "capLimited": false
     }
   ],
-  "sealedBy": "run-forecast.js",
-  "immutable": true,
-  "contentHash": "3a3fcad682ff538d",
-  "supersedes": {
-    "file": "forecast-2026-08-15.v1786615645943.json",
-    "contentHash": "c3186082ef859b1d",
-    "sealHash": "5f61d6aef65d06b6"
+  "scenarios": {
+    "UFC-2026-08-15-B03": [
+      {
+        "scenarioId": "PHYSICAL-B",
+        "winner": "Ian Garry",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the physical edge is usable at range",
+          "Ian Garry's physical advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "c506da277e"
+        ],
+        "supportingTopics": [
+          "size_reach"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ian Machado Garry denies the mechanism entirely (the physical edge is usable at range never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-B",
+        "winner": "Ian Garry",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Ian Garry's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "832053de5c"
+        ],
+        "supportingTopics": [
+          "weight_cut"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ian Machado Garry denies the mechanism entirely (the reported condition is real and matters on the night never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Ian Garry",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Ian Garry's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "fed877abf3"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "speed"
+        ],
+        "informationOrigins": 6,
+        "contradictoryMechanismIds": [
+          "3e6f4bad40"
+        ],
+        "mainFailureMode": "Ian Machado Garry wins the same exchange: striking_defense/striking_offense cuts the other way",
+        "evidenceLimitations": [
+          "6 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-B",
+        "winner": "Islam Makhachev",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Islam Makhachev's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "70f90ce861"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "submission_offense",
+          "takedown_defense"
+        ],
+        "informationOrigins": 7,
+        "contradictoryMechanismIds": [
+          "6777304d9b"
+        ],
+        "mainFailureMode": "Ian Machado Garry wins the same exchange: wrestling_offense/takedown_defense cuts the other way",
+        "evidenceLimitations": [
+          "7 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STYLE-B",
+        "winner": "Ian Garry",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the stylistic edge holds for the full fight",
+          "Ian Garry's style advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "42ae844fe5"
+        ],
+        "supportingTopics": [
+          "fight_iq",
+          "style_matchup"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [
+          "ca3a769639"
+        ],
+        "mainFailureMode": "Ian Machado Garry wins the same exchange: style_matchup cuts the other way",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Islam Makhachev",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Islam Makhachev's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a1773ee96a"
+        ],
+        "supportingTopics": [
+          "cardio",
+          "pressure_pace"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ian Machado Garry denies the mechanism entirely (the fight reaches deep water never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B04": [
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Mackenzie Dern",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Mackenzie Dern's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a636afc3ec"
+        ],
+        "supportingTopics": [
+          "striking_offense"
+        ],
+        "informationOrigins": 6,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Gillian Robertson denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "6 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-A",
+        "winner": "Gillian Robertson",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Gillian Robertson's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "e97fa70a21"
+        ],
+        "supportingTopics": [
+          "inactivity_layoff",
+          "recent_form",
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 5,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Mackenzie Dern denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "5 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-B",
+        "winner": "Mackenzie Dern",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Mackenzie Dern's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "dc33817e6c"
+        ],
+        "supportingTopics": [
+          "submission_offense"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Gillian Robertson denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STYLE-B",
+        "winner": "Mackenzie Dern",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the stylistic edge holds for the full fight",
+          "Mackenzie Dern's style advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "4085f20df6"
+        ],
+        "supportingTopics": [
+          "style_matchup",
+          "style_matchup"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Gillian Robertson denies the mechanism entirely (the stylistic edge holds for the full fight never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-B",
+        "winner": "Jillian Robertson",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Jillian Robertson's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "d23229efdf"
+        ],
+        "supportingTopics": [
+          "training_camp"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Gillian Robertson denies the mechanism entirely (the reported condition is real and matters on the night never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B10": [
+      {
+        "scenarioId": "PHYSICAL-A",
+        "winner": "Neil Magny",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the physical edge is usable at range",
+          "Neil Magny's physical advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "6276ca12b5"
+        ],
+        "supportingTopics": [
+          "size_reach"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ramiz Brahimaj denies the mechanism entirely (the physical edge is usable at range never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STYLE-A",
+        "winner": "Neil Magny",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the stylistic edge holds for the full fight",
+          "Neil Magny's style advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "9d27292cf5"
+        ],
+        "supportingTopics": [
+          "style_matchup"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ramiz Brahimaj denies the mechanism entirely (the stylistic edge holds for the full fight never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Neil Magny",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Neil Magny's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "c6f7ec9e22"
+        ],
+        "supportingTopics": [
+          "submission_offense",
+          "wrestling_offense"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Ramiz Brahimaj denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Ramiz Brahimaj",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Ramiz Brahimaj's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "38812d3a68"
+        ],
+        "supportingTopics": [
+          "durability",
+          "durability"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Neil Magny denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Ramiz Brahimaj",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Ramiz Brahimaj's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "f75ec65826"
+        ],
+        "supportingTopics": [
+          "power",
+          "striking_offense"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Neil Magny denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B12": [
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Lucas Fernando",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Lucas Fernando's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "50f972db8d"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "striking_offense",
+          "power",
+          "power"
+        ],
+        "informationOrigins": 10,
+        "contradictoryMechanismIds": [
+          "f079d287f1"
+        ],
+        "mainFailureMode": "Rafael Tobias wins the same exchange: striking_offense/striking_offense/striking_defense/power/striking_defense cuts the other way",
+        "evidenceLimitations": [
+          "10 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "PHYSICAL-B",
+        "winner": "Lucas Fernando",
+        "method": "decision",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the physical edge is usable at range",
+          "Lucas Fernando's physical advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "92f739e2f6"
+        ],
+        "supportingTopics": [
+          "size_reach"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Rafael Tobias denies the mechanism entirely (the physical edge is usable at range never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Rafael Tobias",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Rafael Tobias's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "f079d287f1"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "striking_offense",
+          "striking_defense",
+          "power",
+          "striking_defense"
+        ],
+        "informationOrigins": 6,
+        "contradictoryMechanismIds": [
+          "50f972db8d"
+        ],
+        "mainFailureMode": "Lucas Fernando wins the same exchange: striking_offense/striking_offense/power/power cuts the other way",
+        "evidenceLimitations": [
+          "6 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-B",
+        "winner": "Raphael Tobias",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Raphael Tobias's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "0ecdaef8cc"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "submission_offense"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Rafael Tobias denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-A",
+        "winner": "Rafael Tobias",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Rafael Tobias's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "5e2d66d6cd"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form",
+          "recent_form",
+          "quality_of_opposition"
+        ],
+        "informationOrigins": 5,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Lucas Fernando denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "5 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B06": [
+      {
+        "scenarioId": "ACTIVITY-B",
+        "winner": "Mansur Abdul-Malik",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Mansur Abdul-Malik's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "3dc04875fb"
+        ],
+        "supportingTopics": [
+          "recent_form"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Dustin Stoltzfus denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Mansur Abdul-Malik",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Mansur Abdul-Malik's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "760da631e9"
+        ],
+        "supportingTopics": [
+          "durability"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Dustin Stoltzfus denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Mansur Abdul-Malik",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Mansur Abdul-Malik's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "854e8346f8"
+        ],
+        "supportingTopics": [
+          "striking_offense"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Dustin Stoltzfus denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Dustin Stoltzfus",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Dustin Stoltzfus's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "875df48851"
+        ],
+        "supportingTopics": [
+          "wrestling_offense",
+          "submission_offense"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Mansur Abdul-Malik denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B11": [
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Vicente Luque",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Vicente Luque's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "d03f745534"
+        ],
+        "supportingTopics": [
+          "submission_offense",
+          "wrestling_offense"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Tresean Gore denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Tresean Gore",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Tresean Gore's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "f8959cfb52"
+        ],
+        "supportingTopics": [
+          "durability",
+          "durability"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Vicente Luque denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CONDITION-B",
+        "winner": "Tresean Gore",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the reported condition is real and matters on the night",
+          "Tresean Gore's condition advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "a89fd17930"
+        ],
+        "supportingTopics": [
+          "injury_health",
+          "weight_cut"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Vicente Luque denies the mechanism entirely (the reported condition is real and matters on the night never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "ACTIVITY-B",
+        "winner": "Tresean Gore",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Tresean Gore's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "177caf7176"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Vicente Luque denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Vicente Luque",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Vicente Luque's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "299a542c9f"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "power",
+          "power"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Tresean Gore denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B02": [
+      {
+        "scenarioId": "DURABILITY-A",
+        "winner": "Charles Johnson",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Charles Johnson's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "c496a9c881"
+        ],
+        "supportingTopics": [
+          "durability"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Eduardo Henrique Da Silva Dos Santos denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Eduardo Henrique Da Silva Dos Santos",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Eduardo Henrique Da Silva Dos Santos's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "41ea1c3ea1"
+        ],
+        "supportingTopics": [
+          "cardio"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [
+          "cfc3585114"
+        ],
+        "mainFailureMode": "Charles Johnson wins the same exchange: pressure_pace/cardio cuts the other way",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "CARDIO-A",
+        "winner": "Charles Johnson",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Charles Johnson's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "cfc3585114"
+        ],
+        "supportingTopics": [
+          "pressure_pace",
+          "cardio"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [
+          "41ea1c3ea1"
+        ],
+        "mainFailureMode": "Eduardo Henrique Da Silva Dos Santos wins the same exchange: cardio cuts the other way",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B05": [
+      {
+        "scenarioId": "DURABILITY-B",
+        "winner": "Kaue Fernandes",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the opponent is made to absorb real damage",
+          "Kaue Fernandes's durability advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "518636a183"
+        ],
+        "supportingTopics": [
+          "durability"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Jalin Turner denies the mechanism entirely (the opponent is made to absorb real damage never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "RESIDUAL-A",
+        "winner": "Jalin Turner",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the mechanisms favouring Kaue Fernandes do not materialise"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [
+          "518636a183"
+        ],
+        "mainFailureMode": "no positive evidence describes this path; it is the residual the market already prices",
+        "evidenceLimitations": [
+          "no mechanism-level support was found for this fighter"
+        ],
+        "generic": false,
+        "residual": true
+      }
+    ],
+    "UFC-2026-08-15-B01": [
+      {
+        "scenarioId": "STRIKING-A",
+        "winner": "Jose Ochoa",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Jose Ochoa's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "9ddf23dd9c"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "power"
+        ],
+        "informationOrigins": 3,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Charles Johnson denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "3 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "RESIDUAL-B",
+        "winner": "Charles Johnson",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "the mechanisms favouring Jose Ochoa do not materialise"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [
+          "9ddf23dd9c"
+        ],
+        "mainFailureMode": "no positive evidence describes this path; it is the residual the market already prices",
+        "evidenceLimitations": [
+          "no mechanism-level support was found for this fighter"
+        ],
+        "generic": false,
+        "residual": true
+      }
+    ],
+    "UFC-2026-08-15-B07": [
+      {
+        "scenarioId": "ACTIVITY-A",
+        "winner": "Esteban Ribovics",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "ring rust shows early, or does not",
+          "Esteban Ribovics's activity advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "81db8cf2e8"
+        ],
+        "supportingTopics": [
+          "recent_form",
+          "recent_form"
+        ],
+        "informationOrigins": 4,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Edson Barboza denies the mechanism entirely (ring rust shows early, or does not never happens)",
+        "evidenceLimitations": [
+          "4 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "STRIKING-B",
+        "winner": "Edson Barboza",
+        "method": "KO/TKO",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "lands cleanly before the opponent establishes their own game",
+          "Edson Barboza's striking advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "99caf8eb5e"
+        ],
+        "supportingTopics": [
+          "striking_offense",
+          "power"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Esteban Ribovics denies the mechanism entirely (lands cleanly before the opponent establishes their own game never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B08": [
+      {
+        "scenarioId": "CARDIO-B",
+        "winner": "Myktybek Orolbay Uulu",
+        "method": "late TKO or decision",
+        "roundRange": "2-3",
+        "requiredConditions": [
+          "the fight reaches deep water",
+          "Myktybek Orolbay Uulu's cardio advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "990e426861"
+        ],
+        "supportingTopics": [
+          "pressure_pace",
+          "cardio"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Jeremiah Wells denies the mechanism entirely (the fight reaches deep water never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      },
+      {
+        "scenarioId": "GRAPPLING-A",
+        "winner": "Jeremiah Wells",
+        "method": "decision or submission",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "gets the fight to the mat and keeps it there",
+          "Jeremiah Wells's grappling advantage is real and not already in the price"
+        ],
+        "supportingMechanismIds": [
+          "841e9fa830"
+        ],
+        "supportingTopics": [
+          "submission_offense"
+        ],
+        "informationOrigins": 2,
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "Myktybek Orolbay Uulu denies the mechanism entirely (gets the fight to the mat and keeps it there never happens)",
+        "evidenceLimitations": [
+          "2 independent origin(s)",
+          "some supporting evidence has no determinable timeframe"
+        ],
+        "generic": false
+      }
+    ],
+    "UFC-2026-08-15-B09": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Chidi Njokuani",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Joel Alvarez",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ],
+    "UFC-2026-08-15-B13": [
+      {
+        "scenarioId": "GEN-A",
+        "winner": "Eric McConico",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      },
+      {
+        "scenarioId": "GEN-B",
+        "winner": "Donte Johnson",
+        "method": "any",
+        "roundRange": "1-3",
+        "requiredConditions": [
+          "no specific mechanism identified"
+        ],
+        "supportingMechanismIds": [],
+        "contradictoryMechanismIds": [],
+        "mainFailureMode": "unknown — there is no evidence to describe a path",
+        "evidenceLimitations": [
+          "evidence exists but no mechanism cleared the magnitude rules, so no path is supported"
+        ],
+        "generic": true
+      }
+    ]
   },
-  "sealHash": "cee294351b474d58"
+  "immutable": true,
+  "completedHash": "0bd33eaa12a3f897",
+  "supersedes": {
+    "file": "phase7-2026-08-15.v1786607862079.json",
+    "hash": "a7fd67420f6bbc1f"
+  }
 }
