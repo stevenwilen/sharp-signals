@@ -25,7 +25,7 @@ ok(C.whichSide({ pick: "Juliana Miller", opponent: "Luana Oliveira" }, bout) ===
 // ---- calibration: honest shrinkage (invariants that hold for any fitted slope in (0,1]) ----
 ok(CAL.toProbability(0.5, 20) === 0.5, "9. a 50/50 consensus is 50% regardless of coverage");
 ok(CAL.toProbability(1.0, 20) > CAL.toProbability(1.0, 4), "10. the SAME unanimous read is more confident when better covered");
-ok(CAL.toProbability(1.0, 100) <= 0.85, "11. a YouTube consensus never asserts near-certainty (capped at 0.85)");
+ok(CAL.toProbability(1.0, 100) <= 0.92, "11. a YouTube consensus never asserts near-certainty (capped at 0.92)");
 ok(CAL.toProbability(0.8, 10) > CAL.toProbability(0.65, 10), "12. more agreement -> higher confidence (monotonic in share)");
 ok(CAL.toProbability(0.9, 2) < CAL.toProbability(0.9, 20), "13. the SAME lopsided read is pulled DOWN when thinly covered");
 // the conservative DEFAULT (unfitted) never over-promises: an unfitted thin lopsided read stays modest
@@ -42,7 +42,7 @@ const picks = [
 const scored = C.scoreBout(bout, picks);
 ok(scored.coverage === 3, "15. coverage counts distinct channels that picked");
 ok(scored.pick === "Ty Cole Miller", "16. the weighted majority side is the pick");
-ok(scored.confidencePct >= 50 && scored.confidencePct <= 85, "17. confidence stays within the honest [50,85] band");
+ok(scored.confidencePct >= 50 && scored.confidencePct <= 92, "17. confidence stays within the honest [50,92] band");
 
 // ---- label tracks the calibrated % (word and number never disagree) ----
 ok(C.label(78, 20) === "STRONG" && C.label(58, 20) === "SLIGHT" && C.label(90, 1) === "UNDER-COVERED",

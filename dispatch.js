@@ -171,27 +171,9 @@ async function main() {
       say(`[dispatch] grading past card ${d} (settled; discovery not required)`);
       if (dry) continue;
       const okGrade = run("run-grade-card.js", [`data/forecast-${d}.json`, "--write"], { allowFail: true });
-      const scen = `data/scenarios-ranked-${d}.json`;
-      if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
-      run("run-convergence-eval.js", ["--write"], { allowFail: true });
+      if (okGrade) run("run-fit-calibration.js", [], { allowFail: true });   // refit the % calibration on the new results
       // stamp ONLY on success — a failed grade (settlement not in) must stay due, not look done
       if (okGrade) { const r2 = readReceipts(); (r2.gradedCards = r2.gradedCards || {})[d] = new Date().toISOString(); persistReceipts(r2); }
-    }
-  }
-
-  // DAILY SYSTEM ACTIVITY REPORT — an end-of-day health RECEIPT (not a bet). Fires once per report-TZ
-  // calendar day, INDEPENDENT of the card stages, so it reports even when no card is active and nothing
-  // else is due (hence it sits before the no-card / nothing-due returns). Opt-in + fail-closed via
-  // DAILY_REPORT_ENABLED; non-fatal. run-daily-report.js is read-only and has no order path. Double-
-  // guarded against a duplicate send: the dispatch receipt below AND the report file's own telegramSentAt.
-  if (process.env.DAILY_REPORT_ENABLED === "1" && !dry) {
-    const rtz = process.env.REPORT_TZ || "America/New_York";
-    const rDay = new Intl.DateTimeFormat("en-CA", { timeZone: rtz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(nowMs));
-    const rHour = Number(new Intl.DateTimeFormat("en-US", { timeZone: rtz, hour: "2-digit", hour12: false }).formatToParts(new Date(nowMs)).find((p) => p.type === "hour").value) % 24;
-    const r = readReceipts();
-    if (rHour >= Number(process.env.REPORT_HOUR || 23) && (r.dailyReport || {}).reportDate !== rDay) {
-      const okReport = run("run-daily-report.js", ["--send"], { allowFail: true });
-      if (okReport) { const r2 = readReceipts(); r2.dailyReport = { reportDate: rDay, ranAt: new Date().toISOString() }; persistReceipts(r2); }
     }
   }
 
@@ -267,9 +249,8 @@ async function main() {
     // provably predates it. Passing a fixed dispatch-start time would make the later live fetch look
     // post-seal and the leakage guard would (correctly) refuse it.
     run("run-forecast.js", [evalFile, "--seal=auto", "--live"]);
-    run("run-phase7-seal.js", [forecastFile, evalFile], { allowFail: true });
-    run("run-seal-scenarios.js", [forecastFile, evalFile], { allowFail: true });
-    run("run-attest.js", [forecastFile, `--eval=${evalFile}`, "--ttl-hours=12", "--write"]);
+    // (removed: phase7-seal / seal-scenarios / attest — those sealed the forecast for the old betting
+    //  integrity/alert-gate path. The confidence engine reads only the bout list run-forecast writes.)
     stamp(receipts, "forecast", { card: card.eventId, seal });
   }
 
@@ -291,9 +272,6 @@ async function main() {
     // failed grade must stay due, not look done. A settlement that isn't in yet is exactly that case.
     let okGrade = false;
     if (fs.existsSync(path.join(ROOT, forecastFile))) okGrade = run("run-grade-card.js", [forecastFile, "--write"], { allowFail: true });
-    const scen = `data/scenarios-ranked-${ed}.json`;
-    if (fs.existsSync(path.join(ROOT, scen))) run("run-scenario-eval.js", [scen], { allowFail: true });
-    run("run-convergence-eval.js", ["--write"], { allowFail: true });   // update the read-only convergence record
     // Refit the confidence calibration and refresh the scoreboard now that another card's results are in.
     run("run-fit-calibration.js", [], { allowFail: true });
     if (okGrade) {
