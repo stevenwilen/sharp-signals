@@ -320,15 +320,1467 @@
       }
     ]
   },
-  "sealedForecastAt": "2026-08-12T22:51:17.045Z",
-  "scenariosSealedAt": "2026-08-12T22:51:17.166Z",
+  "sealedForecastAt": "2026-08-13T01:14:54.389Z",
+  "scenariosSealedAt": "2026-08-13T01:14:54.574Z",
   "module": "scenarios-ranked@1.0.0",
   "rulesVersion": "7.0.0",
   "references": {
-    "numericalForecastHash": "35a23f1b1e19d639",
+    "numericalForecastHash": "a7417a3b33379c3a",
     "numericalForecastFile": "forecast-2026-08-15.json"
   },
   "scenarios": {
+    "UFC-2026-08-15-B03": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Islam Makhachev",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.4074,
+          "sharePercent": 40.74,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Ian Machado Garry do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 40.7% (Islam Makhachev win 81.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Islam Makhachev by KO/TKO) by -13.9 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "PRIMARY",
+          "winner": "Islam Makhachev",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2689,
+          "sharePercent": 26.89,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking"
+          ],
+          "requiredConditions": [
+            "Islam Makhachev's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "3e6f4bad40",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "fed877abf3",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense"
+              ],
+              "favours": "Ian Garry"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 26.9% (Islam Makhachev win 81.5% x KO/TKO split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): striking"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Islam Makhachev unable to hurt the opponent",
+            "Ian Machado Garry wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Islam Makhachev",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1385,
+          "sharePercent": 13.85,
+          "supported": true,
+          "decisiveMechanisms": [
+            "grappling"
+          ],
+          "requiredConditions": [
+            "Islam Makhachev's grappling advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "70f90ce861",
+              "mechanism": "grappling",
+              "topics": [
+                "wrestling_offense",
+                "submission_defense"
+              ],
+              "independentOrigins": 5
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "6777304d9b",
+              "mechanism": "grappling",
+              "topics": [
+                "wrestling_offense"
+              ],
+              "favours": "Ian Machado Garry"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 13.9% (Islam Makhachev win 81.5% x Submission split)",
+            "1 supporting mechanism(s) across 5 independent origin(s): grappling",
+            "ranks below PRIMARY (Islam Makhachev by KO/TKO) by 13.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Islam Makhachev",
+            "Islam Makhachev fails to complete a takedown through round 2, or the fight stays standing"
+          ],
+          "evidenceLimitations": [
+            "5 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Ian Machado Garry",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.0926,
+          "sharePercent": 9.26,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Islam Makhachev do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 9.3% (Ian Machado Garry win 18.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Islam Makhachev by KO/TKO) by 17.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Ian Machado Garry",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0611,
+          "sharePercent": 6.11,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Islam Makhachev do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 6.1% (Ian Machado Garry win 18.5% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Islam Makhachev by KO/TKO) by 20.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Ian Machado Garry unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Ian Machado Garry",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0315,
+          "sharePercent": 3.15,
+          "supported": true,
+          "decisiveMechanisms": [
+            "grappling"
+          ],
+          "requiredConditions": [
+            "Ian Machado Garry's grappling advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "6777304d9b",
+              "mechanism": "grappling",
+              "topics": [
+                "wrestling_offense"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "70f90ce861",
+              "mechanism": "grappling",
+              "topics": [
+                "wrestling_offense",
+                "submission_defense"
+              ],
+              "favours": "Islam Makhachev"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 3.1% (Ian Machado Garry win 18.5% x Submission split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): grappling",
+            "ranks below PRIMARY (Islam Makhachev by KO/TKO) by 23.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Ian Machado Garry",
+            "Ian Machado Garry fails to complete a takedown through round 2, or the fight stays standing"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Ian Machado Garry": 0.1852,
+          "Islam Makhachev": 0.8148
+        },
+        "treeWinProbs": {
+          "Ian Machado Garry": 0.1852,
+          "Islam Makhachev": 0.8148
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "700206be695b657f"
+    },
+    "UFC-2026-08-15-B02": {
+      "scenarios": [
+        {
+          "scenarioId": "A-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Charles Johnson",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2935,
+          "sharePercent": 29.35,
+          "supported": true,
+          "decisiveMechanisms": [
+            "cardio"
+          ],
+          "requiredConditions": [
+            "Charles Johnson's cardio advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "cfc3585114",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio",
+                "pressure_pace"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "41ea1c3ea1",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio"
+              ],
+              "favours": "Eduardo Henrique Da Silva Dos Santos"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 29.3% (Charles Johnson win 58.7% x Decision split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): cardio"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "the fight ends inside round 1 — a cardio edge never gets to matter"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Decision",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Eduardo Henrique Da Silva Dos Santos",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2065,
+          "sharePercent": 20.65,
+          "supported": true,
+          "decisiveMechanisms": [
+            "cardio"
+          ],
+          "requiredConditions": [
+            "Eduardo Henrique Da Silva Dos Santos's cardio advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "41ea1c3ea1",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "cfc3585114",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio",
+                "pressure_pace"
+              ],
+              "favours": "Charles Johnson"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 20.6% (Eduardo Henrique Da Silva Dos Santos win 41.3% x Decision split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): cardio",
+            "ranks below PRIMARY (Charles Johnson by Decision) by 8.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "the fight ends inside round 1 — a cardio edge never gets to matter"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Charles Johnson",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1937,
+          "sharePercent": 19.37,
+          "supported": true,
+          "decisiveMechanisms": [
+            "durability"
+          ],
+          "requiredConditions": [
+            "Charles Johnson's durability advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "c496a9c881",
+              "mechanism": "durability",
+              "topics": [
+                "durability"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 19.4% (Charles Johnson win 58.7% x KO/TKO split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): durability",
+            "ranks below PRIMARY (Charles Johnson by Decision) by 10.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Charles Johnson unable to hurt the opponent",
+            "Eduardo Henrique Da Silva Dos Santos absorbs Charles Johnson's best shots without visible damage"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Eduardo Henrique Da Silva Dos Santos",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1363,
+          "sharePercent": 13.63,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Charles Johnson do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 13.6% (Eduardo Henrique Da Silva Dos Santos win 41.3% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Charles Johnson by Decision) by 15.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Eduardo Henrique Da Silva Dos Santos unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Charles Johnson",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0998,
+          "sharePercent": 9.98,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Eduardo Henrique Da Silva Dos Santos do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 10.0% (Charles Johnson win 58.7% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Charles Johnson by Decision) by 19.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Charles Johnson"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Eduardo Henrique Da Silva Dos Santos",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0702,
+          "sharePercent": 7.02,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Charles Johnson do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.0% (Eduardo Henrique Da Silva Dos Santos win 41.3% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Charles Johnson by Decision) by 22.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Eduardo Henrique Da Silva Dos Santos"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Charles Johnson": 0.587,
+          "Eduardo Henrique Da Silva Dos Santos": 0.413
+        },
+        "treeWinProbs": {
+          "Charles Johnson": 0.5869,
+          "Eduardo Henrique Da Silva Dos Santos": 0.4131
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "901b38fef0a157a3"
+    },
+    "UFC-2026-08-15-B04": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Mackenzie Dern",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3458,
+          "sharePercent": 34.58,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Gillian Robertson do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 34.6% (Mackenzie Dern win 69.2% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mackenzie Dern by KO/TKO) by -11.8 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "PRIMARY",
+          "winner": "Mackenzie Dern",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2282,
+          "sharePercent": 22.82,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking"
+          ],
+          "requiredConditions": [
+            "Mackenzie Dern's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "a636afc3ec",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense"
+              ],
+              "independentOrigins": 4
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 22.8% (Mackenzie Dern win 69.2% x KO/TKO split)",
+            "1 supporting mechanism(s) across 4 independent origin(s): striking"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Mackenzie Dern unable to hurt the opponent",
+            "Gillian Robertson wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "4 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Gillian Robertson",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1542,
+          "sharePercent": 15.42,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mackenzie Dern do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 15.4% (Gillian Robertson win 30.8% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mackenzie Dern by KO/TKO) by 7.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Mackenzie Dern",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.1176,
+          "sharePercent": 11.76,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Gillian Robertson do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 11.8% (Mackenzie Dern win 69.2% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mackenzie Dern by KO/TKO) by 11.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Mackenzie Dern"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Gillian Robertson",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1018,
+          "sharePercent": 10.18,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mackenzie Dern do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 10.2% (Gillian Robertson win 30.8% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mackenzie Dern by KO/TKO) by 12.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Gillian Robertson unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Gillian Robertson",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0524,
+          "sharePercent": 5.24,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Mackenzie Dern do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 5.2% (Gillian Robertson win 30.8% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Mackenzie Dern by KO/TKO) by 17.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Gillian Robertson"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Gillian Robertson": 0.3084,
+          "Mackenzie Dern": 0.6916
+        },
+        "treeWinProbs": {
+          "Gillian Robertson": 0.3084,
+          "Mackenzie Dern": 0.6916
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "05a4104a266c47fe"
+    },
+    "UFC-2026-08-15-B10": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "SECONDARY",
+          "winner": "Ramiz Brahimaj",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2571,
+          "sharePercent": 25.71,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Neil Magny do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 25.7% (Ramiz Brahimaj win 51.4% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by -1.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 2,
+          "role": "PRIMARY",
+          "winner": "Neil Magny",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2429,
+          "sharePercent": 24.29,
+          "supported": true,
+          "decisiveMechanisms": [
+            "style",
+            "physical",
+            "cardio"
+          ],
+          "requiredConditions": [
+            "Neil Magny's style advantage is real and not already in the price",
+            "Neil Magny's physical advantage is real and not already in the price",
+            "Neil Magny's cardio advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "9d27292cf5",
+              "mechanism": "style",
+              "topics": [
+                "style_matchup"
+              ],
+              "independentOrigins": 3
+            },
+            {
+              "adjustmentId": "6276ca12b5",
+              "mechanism": "physical",
+              "topics": [
+                "size_reach"
+              ],
+              "independentOrigins": 2
+            },
+            {
+              "adjustmentId": "07118b2576",
+              "mechanism": "cardio",
+              "topics": [
+                "cardio"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 24.3% (Neil Magny win 48.6% x Decision split)",
+            "3 supporting mechanism(s) across 7 independent origin(s): style, physical, cardio"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "the stylistic pattern does not appear in the first two rounds",
+            "Ramiz Brahimaj closes distance freely and neutralises the physical edge",
+            "the fight ends inside round 1 — a cardio edge never gets to matter"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)",
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Ramiz Brahimaj",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1697,
+          "sharePercent": 16.97,
+          "supported": true,
+          "decisiveMechanisms": [
+            "durability",
+            "striking"
+          ],
+          "requiredConditions": [
+            "Ramiz Brahimaj's durability advantage is real and not already in the price",
+            "Ramiz Brahimaj's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "38812d3a68",
+              "mechanism": "durability",
+              "topics": [
+                "durability"
+              ],
+              "independentOrigins": 3
+            },
+            {
+              "adjustmentId": "f75ec65826",
+              "mechanism": "striking",
+              "topics": [
+                "power",
+                "striking_offense"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 17.0% (Ramiz Brahimaj win 51.4% x KO/TKO split)",
+            "2 supporting mechanism(s) across 5 independent origin(s): durability, striking",
+            "ranks below PRIMARY (Neil Magny by Decision) by 7.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Ramiz Brahimaj unable to hurt the opponent",
+            "Neil Magny absorbs Ramiz Brahimaj's best shots without visible damage",
+            "Neil Magny wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Neil Magny",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1603,
+          "sharePercent": 16.03,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Ramiz Brahimaj do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 16.0% (Neil Magny win 48.6% x KO/TKO split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by 8.3 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Neil Magny unable to hurt the opponent"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Ramiz Brahimaj",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0874,
+          "sharePercent": 8.74,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Neil Magny do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.7% (Ramiz Brahimaj win 51.4% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Neil Magny by Decision) by 15.6 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Ramiz Brahimaj"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Neil Magny",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.0826,
+          "sharePercent": 8.26,
+          "supported": true,
+          "decisiveMechanisms": [
+            "grappling"
+          ],
+          "requiredConditions": [
+            "Neil Magny's grappling advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "c6f7ec9e22",
+              "mechanism": "grappling",
+              "topics": [
+                "submission_offense",
+                "wrestling_offense"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 8.3% (Neil Magny win 48.6% x Submission split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): grappling",
+            "ranks below PRIMARY (Neil Magny by Decision) by 16.0 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Neil Magny",
+            "Neil Magny fails to complete a takedown through round 2, or the fight stays standing"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Neil Magny": 0.4858,
+          "Ramiz Brahimaj": 0.5142
+        },
+        "treeWinProbs": {
+          "Neil Magny": 0.4858,
+          "Ramiz Brahimaj": 0.5142
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "38e0ea4f1b1c98fb"
+    },
+    "UFC-2026-08-15-B11": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Tresean Gore",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2676,
+          "sharePercent": 26.76,
+          "supported": true,
+          "decisiveMechanisms": [
+            "condition"
+          ],
+          "requiredConditions": [
+            "Tresean Gore's condition advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "a89fd17930",
+              "mechanism": "condition",
+              "topics": [
+                "injury_health"
+              ],
+              "independentOrigins": 2
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 26.8% (Tresean Gore win 53.5% x Decision split)",
+            "1 supporting mechanism(s) across 2 independent origin(s): condition"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "Vicente Luque shows no sign of the reported condition in round 1"
+          ],
+          "evidenceLimitations": [
+            "2 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Vicente Luque",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.2324,
+          "sharePercent": 23.24,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Tresean Gore do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 23.2% (Vicente Luque win 46.5% x Decision split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Tresean Gore by Decision) by 3.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 3,
+          "role": "DOWNWEIGHTED",
+          "winner": "Tresean Gore",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1766,
+          "sharePercent": 17.66,
+          "supported": true,
+          "decisiveMechanisms": [
+            "durability"
+          ],
+          "requiredConditions": [
+            "Tresean Gore's durability advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "f8959cfb52",
+              "mechanism": "durability",
+              "topics": [
+                "durability",
+                "durability"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 17.7% (Tresean Gore win 53.5% x KO/TKO split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): durability",
+            "ranks below PRIMARY (Tresean Gore by Decision) by 9.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Tresean Gore unable to hurt the opponent",
+            "Vicente Luque absorbs Tresean Gore's best shots without visible damage"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 4,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Vicente Luque",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.1534,
+          "sharePercent": 15.34,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking"
+          ],
+          "requiredConditions": [
+            "Vicente Luque's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "299a542c9f",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense",
+                "power",
+                "striking_offense"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 15.3% (Vicente Luque win 46.5% x KO/TKO split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): striking",
+            "ranks below PRIMARY (Tresean Gore by Decision) by 11.4 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Vicente Luque unable to hurt the opponent",
+            "Tresean Gore wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Tresean Gore",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.091,
+          "sharePercent": 9.1,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Vicente Luque do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 9.1% (Tresean Gore win 53.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Tresean Gore by Decision) by 17.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Tresean Gore"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Vicente Luque",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.079,
+          "sharePercent": 7.9,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Tresean Gore do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 7.9% (Vicente Luque win 46.5% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Tresean Gore by Decision) by 18.9 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Vicente Luque"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Vicente Luque": 0.4648,
+          "Tresean Gore": 0.5352
+        },
+        "treeWinProbs": {
+          "Vicente Luque": 0.4648,
+          "Tresean Gore": 0.5352
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "b324459697eb3442"
+    },
+    "UFC-2026-08-15-B12": {
+      "scenarios": [
+        {
+          "scenarioId": "B-Decision",
+          "rank": 1,
+          "role": "PRIMARY",
+          "winner": "Lucas Fernando",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.3558,
+          "sharePercent": 35.58,
+          "supported": true,
+          "decisiveMechanisms": [
+            "physical"
+          ],
+          "requiredConditions": [
+            "Lucas Fernando's physical advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "92f739e2f6",
+              "mechanism": "physical",
+              "topics": [
+                "size_reach"
+              ],
+              "independentOrigins": 4
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 35.6% (Lucas Fernando win 71.2% x Decision split)",
+            "1 supporting mechanism(s) across 4 independent origin(s): physical"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "Rafael Tobias closes distance freely and neutralises the physical edge"
+          ],
+          "evidenceLimitations": [
+            "4 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-KOTKO",
+          "rank": 2,
+          "role": "SECONDARY",
+          "winner": "Lucas Fernando",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.2348,
+          "sharePercent": 23.48,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking"
+          ],
+          "requiredConditions": [
+            "Lucas Fernando's striking advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "50f972db8d",
+              "mechanism": "striking",
+              "topics": [
+                "power",
+                "striking_offense",
+                "power",
+                "striking_offense"
+              ],
+              "independentOrigins": 7
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "f079d287f1",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense",
+                "striking_offense",
+                "striking_defense",
+                "power"
+              ],
+              "favours": "Rafael Tobias"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 23.5% (Lucas Fernando win 71.2% x KO/TKO split)",
+            "1 supporting mechanism(s) across 7 independent origin(s): striking",
+            "ranks below PRIMARY (Lucas Fernando by Decision) by 12.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Lucas Fernando unable to hurt the opponent",
+            "Rafael Tobias wins the striking exchanges in round 1, or the fight is grounded for most of round 1"
+          ],
+          "evidenceLimitations": [
+            "7 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Decision",
+          "rank": 3,
+          "role": "UPSET_OR_ALTERNATIVE",
+          "winner": "Rafael Tobias",
+          "expectedMethod": "Decision",
+          "expectedRoundRange": "goes the distance",
+          "share": 0.1442,
+          "sharePercent": 14.42,
+          "supported": true,
+          "decisiveMechanisms": [
+            "style"
+          ],
+          "requiredConditions": [
+            "Rafael Tobias's style advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "ef5ba4cf48",
+              "mechanism": "style",
+              "topics": [
+                "style_matchup",
+                "fight_iq"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 14.4% (Rafael Tobias win 28.8% x Decision split)",
+            "1 supporting mechanism(s) across 3 independent origin(s): style",
+            "ranks below PRIMARY (Lucas Fernando by Decision) by 21.2 share points"
+          ],
+          "falsifiedBy": [
+            "the fight ends inside the distance",
+            "the stylistic pattern does not appear in the first two rounds"
+          ],
+          "evidenceLimitations": [
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "B-Submission",
+          "rank": 4,
+          "role": "DOWNWEIGHTED",
+          "winner": "Lucas Fernando",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.121,
+          "sharePercent": 12.1,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Rafael Tobias do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 12.1% (Lucas Fernando win 71.2% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Lucas Fernando by Decision) by 23.5 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Lucas Fernando"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        },
+        {
+          "scenarioId": "A-KOTKO",
+          "rank": 5,
+          "role": "DOWNWEIGHTED",
+          "winner": "Rafael Tobias",
+          "expectedMethod": "KO/TKO",
+          "expectedRoundRange": "1-3",
+          "share": 0.0952,
+          "sharePercent": 9.52,
+          "supported": true,
+          "decisiveMechanisms": [
+            "striking",
+            "activity"
+          ],
+          "requiredConditions": [
+            "Rafael Tobias's striking advantage is real and not already in the price",
+            "Rafael Tobias's activity advantage is real and not already in the price"
+          ],
+          "supportingEvidence": [
+            {
+              "adjustmentId": "f079d287f1",
+              "mechanism": "striking",
+              "topics": [
+                "striking_offense",
+                "striking_offense",
+                "striking_defense",
+                "power"
+              ],
+              "independentOrigins": 5
+            },
+            {
+              "adjustmentId": "5e2d66d6cd",
+              "mechanism": "activity",
+              "topics": [
+                "recent_form",
+                "recent_form"
+              ],
+              "independentOrigins": 3
+            }
+          ],
+          "contradictingEvidence": [
+            {
+              "adjustmentId": "50f972db8d",
+              "mechanism": "striking",
+              "topics": [
+                "power",
+                "striking_offense",
+                "power",
+                "striking_offense"
+              ],
+              "favours": "Lucas Fernando"
+            }
+          ],
+          "whyRankedHere": [
+            "tree share 9.5% (Rafael Tobias win 28.8% x KO/TKO split)",
+            "2 supporting mechanism(s) across 7 independent origin(s): striking, activity",
+            "ranks below PRIMARY (Lucas Fernando by Decision) by 26.1 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with Rafael Tobias unable to hurt the opponent",
+            "Lucas Fernando wins the striking exchanges in round 1, or the fight is grounded for most of round 1",
+            "Lucas Fernando starts sharply with no visible ring rust"
+          ],
+          "evidenceLimitations": [
+            "5 independent origin(s)",
+            "3 independent origin(s)"
+          ]
+        },
+        {
+          "scenarioId": "A-Submission",
+          "rank": 6,
+          "role": "DOWNWEIGHTED",
+          "winner": "Rafael Tobias",
+          "expectedMethod": "Submission",
+          "expectedRoundRange": "1-3",
+          "share": 0.049,
+          "sharePercent": 4.9,
+          "supported": false,
+          "decisiveMechanisms": [],
+          "requiredConditions": [
+            "the mechanisms favouring Lucas Fernando do not materialise"
+          ],
+          "supportingEvidence": [],
+          "contradictingEvidence": [],
+          "whyRankedHere": [
+            "tree share 4.9% (Rafael Tobias win 28.8% x Submission split)",
+            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
+            "ranks below PRIMARY (Lucas Fernando by Decision) by 30.7 share points"
+          ],
+          "falsifiedBy": [
+            "the fight reaches the final bell with no meaningful submission attempt by Rafael Tobias"
+          ],
+          "evidenceLimitations": [
+            "no mechanism-level support for this path"
+          ]
+        }
+      ],
+      "coherence": {
+        "ok": true,
+        "errors": [],
+        "sharesSumTo": 1,
+        "perFighterShares": {
+          "Rafael Tobias": 0.2884,
+          "Lucas Fernando": 0.7116
+        },
+        "treeWinProbs": {
+          "Rafael Tobias": 0.2884,
+          "Lucas Fernando": 0.7116
+        },
+        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
+      },
+      "hash": "cbcdc52b7b91b050"
+    },
     "UFC-2026-08-15-B01": {
       "scenarios": [
         {
@@ -514,564 +1966,6 @@
         "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
       },
       "hash": "67796799eb81f275"
-    },
-    "UFC-2026-08-15-B02": {
-      "scenarios": [
-        {
-          "scenarioId": "A-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Charles Johnson",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2763,
-          "sharePercent": 27.63,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Eduardo Henrique Da Silva Dos Santos do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 27.6% (Charles Johnson win 55.3% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Decision",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Eduardo Henrique Da Silva Dos Santos",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2237,
-          "sharePercent": 22.37,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Charles Johnson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 22.4% (Eduardo Henrique Da Silva Dos Santos win 44.7% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Charles Johnson by Decision) by 5.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Charles Johnson",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1824,
-          "sharePercent": 18.24,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Eduardo Henrique Da Silva Dos Santos do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 18.2% (Charles Johnson win 55.3% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Charles Johnson by Decision) by 9.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Charles Johnson unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Eduardo Henrique Da Silva Dos Santos",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1476,
-          "sharePercent": 14.76,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Charles Johnson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 14.8% (Eduardo Henrique Da Silva Dos Santos win 44.7% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Charles Johnson by Decision) by 12.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Eduardo Henrique Da Silva Dos Santos unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Charles Johnson",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0939,
-          "sharePercent": 9.39,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Eduardo Henrique Da Silva Dos Santos do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 9.4% (Charles Johnson win 55.3% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Charles Johnson by Decision) by 18.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Charles Johnson"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Eduardo Henrique Da Silva Dos Santos",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0761,
-          "sharePercent": 7.61,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Charles Johnson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 7.6% (Eduardo Henrique Da Silva Dos Santos win 44.7% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Charles Johnson by Decision) by 20.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Eduardo Henrique Da Silva Dos Santos"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Charles Johnson": 0.5526,
-          "Eduardo Henrique Da Silva Dos Santos": 0.4474
-        },
-        "treeWinProbs": {
-          "Charles Johnson": 0.5526,
-          "Eduardo Henrique Da Silva Dos Santos": 0.4474
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "9f17de188cc2eae2"
-    },
-    "UFC-2026-08-15-B03": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Islam Makhachev",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3686,
-          "sharePercent": 36.86,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ian Machado Garry do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 36.9% (Islam Makhachev win 73.7% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Islam Makhachev",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2433,
-          "sharePercent": 24.33,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ian Machado Garry do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 24.3% (Islam Makhachev win 73.7% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Islam Makhachev by Decision) by 12.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Islam Makhachev unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Ian Machado Garry",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1314,
-          "sharePercent": 13.14,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Islam Makhachev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 13.1% (Ian Machado Garry win 26.3% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Islam Makhachev by Decision) by 23.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Islam Makhachev",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1253,
-          "sharePercent": 12.53,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ian Machado Garry do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.5% (Islam Makhachev win 73.7% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Islam Makhachev by Decision) by 24.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Islam Makhachev"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Ian Machado Garry",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0867,
-          "sharePercent": 8.67,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Islam Makhachev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.7% (Ian Machado Garry win 26.3% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Islam Makhachev by Decision) by 28.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Ian Machado Garry unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Ian Machado Garry",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0447,
-          "sharePercent": 4.47,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Islam Makhachev do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 4.5% (Ian Machado Garry win 26.3% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Islam Makhachev by Decision) by 32.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Ian Machado Garry"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Ian Machado Garry": 0.2628,
-          "Islam Makhachev": 0.7372
-        },
-        "treeWinProbs": {
-          "Ian Machado Garry": 0.2628,
-          "Islam Makhachev": 0.7372
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "153940aca7f97cad"
-    },
-    "UFC-2026-08-15-B04": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Mackenzie Dern",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.332,
-          "sharePercent": 33.2,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Gillian Robertson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 33.2% (Mackenzie Dern win 66.4% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Mackenzie Dern",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2191,
-          "sharePercent": 21.91,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Gillian Robertson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 21.9% (Mackenzie Dern win 66.4% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mackenzie Dern by Decision) by 11.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Mackenzie Dern unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Gillian Robertson",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.168,
-          "sharePercent": 16.8,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mackenzie Dern do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 16.8% (Gillian Robertson win 33.6% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mackenzie Dern by Decision) by 16.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Mackenzie Dern",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1129,
-          "sharePercent": 11.29,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Gillian Robertson do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 11.3% (Mackenzie Dern win 66.4% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mackenzie Dern by Decision) by 21.9 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Mackenzie Dern"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Gillian Robertson",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1109,
-          "sharePercent": 11.09,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mackenzie Dern do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 11.1% (Gillian Robertson win 33.6% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mackenzie Dern by Decision) by 22.1 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Gillian Robertson unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Gillian Robertson",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0571,
-          "sharePercent": 5.71,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Mackenzie Dern do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 5.7% (Gillian Robertson win 33.6% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Mackenzie Dern by Decision) by 27.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Gillian Robertson"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Gillian Robertson": 0.336,
-          "Mackenzie Dern": 0.664
-        },
-        "treeWinProbs": {
-          "Gillian Robertson": 0.336,
-          "Mackenzie Dern": 0.664
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "3a6b3fc83990a7a7"
     },
     "UFC-2026-08-15-B05": {
       "scenarios": [
@@ -2003,564 +2897,6 @@
       },
       "hash": "cc087af6ba109303"
     },
-    "UFC-2026-08-15-B10": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Ramiz Brahimaj",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2721,
-          "sharePercent": 27.21,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Neil Magny do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 27.2% (Ramiz Brahimaj win 54.4% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Neil Magny",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2279,
-          "sharePercent": 22.79,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ramiz Brahimaj do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 22.8% (Neil Magny win 45.6% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Ramiz Brahimaj by Decision) by 4.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Ramiz Brahimaj",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1796,
-          "sharePercent": 17.96,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Neil Magny do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 18.0% (Ramiz Brahimaj win 54.4% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Ramiz Brahimaj by Decision) by 9.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Ramiz Brahimaj unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Neil Magny",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1504,
-          "sharePercent": 15.04,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ramiz Brahimaj do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 15.0% (Neil Magny win 45.6% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Ramiz Brahimaj by Decision) by 12.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Neil Magny unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Ramiz Brahimaj",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0925,
-          "sharePercent": 9.25,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Neil Magny do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 9.3% (Ramiz Brahimaj win 54.4% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Ramiz Brahimaj by Decision) by 18.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Ramiz Brahimaj"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Neil Magny",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0775,
-          "sharePercent": 7.75,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Ramiz Brahimaj do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 7.8% (Neil Magny win 45.6% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Ramiz Brahimaj by Decision) by 19.5 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Neil Magny"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Neil Magny": 0.4558,
-          "Ramiz Brahimaj": 0.5442
-        },
-        "treeWinProbs": {
-          "Neil Magny": 0.4559,
-          "Ramiz Brahimaj": 0.5441
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "d16c45112fffcbe2"
-    },
-    "UFC-2026-08-15-B11": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Tresean Gore",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2601,
-          "sharePercent": 26.01,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Vicente Luque do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 26.0% (Tresean Gore win 52.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Vicente Luque",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.2399,
-          "sharePercent": 23.99,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Tresean Gore do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 24.0% (Vicente Luque win 48.0% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Tresean Gore by Decision) by 2.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 3,
-          "role": "DOWNWEIGHTED",
-          "winner": "Tresean Gore",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1717,
-          "sharePercent": 17.17,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Vicente Luque do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 17.2% (Tresean Gore win 52.0% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Tresean Gore by Decision) by 8.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Tresean Gore unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 4,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Vicente Luque",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.1583,
-          "sharePercent": 15.83,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Tresean Gore do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 15.8% (Vicente Luque win 48.0% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Tresean Gore by Decision) by 10.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Vicente Luque unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Tresean Gore",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0884,
-          "sharePercent": 8.84,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Vicente Luque do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.8% (Tresean Gore win 52.0% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Tresean Gore by Decision) by 17.2 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Tresean Gore"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Vicente Luque",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0816,
-          "sharePercent": 8.16,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Tresean Gore do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 8.2% (Vicente Luque win 48.0% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Tresean Gore by Decision) by 17.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Vicente Luque"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Vicente Luque": 0.4798,
-          "Tresean Gore": 0.5202
-        },
-        "treeWinProbs": {
-          "Vicente Luque": 0.4798,
-          "Tresean Gore": 0.5202
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "7f8a2508422a71b4"
-    },
-    "UFC-2026-08-15-B12": {
-      "scenarios": [
-        {
-          "scenarioId": "B-Decision",
-          "rank": 1,
-          "role": "PRIMARY",
-          "winner": "Lucas Fernando",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.3538,
-          "sharePercent": 35.38,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Rafael Tobias do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 35.4% (Lucas Fernando win 70.8% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-KOTKO",
-          "rank": 2,
-          "role": "SECONDARY",
-          "winner": "Lucas Fernando",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.2335,
-          "sharePercent": 23.35,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Rafael Tobias do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 23.4% (Lucas Fernando win 70.8% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Lucas Fernando by Decision) by 12.0 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Lucas Fernando unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Decision",
-          "rank": 3,
-          "role": "UPSET_OR_ALTERNATIVE",
-          "winner": "Rafael Tobias",
-          "expectedMethod": "Decision",
-          "expectedRoundRange": "goes the distance",
-          "share": 0.1462,
-          "sharePercent": 14.62,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Lucas Fernando do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 14.6% (Rafael Tobias win 29.3% x Decision split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Lucas Fernando by Decision) by 20.8 share points"
-          ],
-          "falsifiedBy": [
-            "the fight ends inside the distance"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "B-Submission",
-          "rank": 4,
-          "role": "DOWNWEIGHTED",
-          "winner": "Lucas Fernando",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.1203,
-          "sharePercent": 12.03,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Rafael Tobias do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 12.0% (Lucas Fernando win 70.8% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Lucas Fernando by Decision) by 23.3 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Lucas Fernando"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-KOTKO",
-          "rank": 5,
-          "role": "DOWNWEIGHTED",
-          "winner": "Rafael Tobias",
-          "expectedMethod": "KO/TKO",
-          "expectedRoundRange": "1-3",
-          "share": 0.0965,
-          "sharePercent": 9.65,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Lucas Fernando do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 9.7% (Rafael Tobias win 29.3% x KO/TKO split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Lucas Fernando by Decision) by 25.7 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with Rafael Tobias unable to hurt the opponent"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        },
-        {
-          "scenarioId": "A-Submission",
-          "rank": 6,
-          "role": "DOWNWEIGHTED",
-          "winner": "Rafael Tobias",
-          "expectedMethod": "Submission",
-          "expectedRoundRange": "1-3",
-          "share": 0.0497,
-          "sharePercent": 4.97,
-          "supported": false,
-          "decisiveMechanisms": [],
-          "requiredConditions": [
-            "the mechanisms favouring Lucas Fernando do not materialise"
-          ],
-          "supportingEvidence": [],
-          "contradictingEvidence": [],
-          "whyRankedHere": [
-            "tree share 5.0% (Rafael Tobias win 29.3% x Submission split)",
-            "no mechanism in the evidence argues for this path — it is the residual the market already prices",
-            "ranks below PRIMARY (Lucas Fernando by Decision) by 30.4 share points"
-          ],
-          "falsifiedBy": [
-            "the fight reaches the final bell with no meaningful submission attempt by Rafael Tobias"
-          ],
-          "evidenceLimitations": [
-            "no mechanism-level support for this path"
-          ]
-        }
-      ],
-      "coherence": {
-        "ok": true,
-        "errors": [],
-        "sharesSumTo": 1,
-        "perFighterShares": {
-          "Rafael Tobias": 0.2924,
-          "Lucas Fernando": 0.7076
-        },
-        "treeWinProbs": {
-          "Rafael Tobias": 0.2925,
-          "Lucas Fernando": 0.7075
-        },
-        "checkedAgainst": "the sealed outcome tree — shares are its cells, not new numbers"
-      },
-      "hash": "3d2e7850450e3a2e"
-    },
     "UFC-2026-08-15-B13": {
       "scenarios": [
         {
@@ -2750,5 +3086,5 @@
   },
   "immutable": true,
   "outcomesLoaded": false,
-  "scenarioSetHash": "5061f58d6683abeb"
+  "scenarioSetHash": "28755fd44db96ae5"
 }
