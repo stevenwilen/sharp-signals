@@ -20,6 +20,13 @@ build parlays), not an edge. The old market-beating machinery is gone; do not re
   calibrated `confidencePct`, a tier `label` (STRONG/LEAN/SLIGHT/TOSS-UP/UNDER-COVERED/NO-READ), `coverage`
   (how many ranked channels), the `why` (reasons the pick wins) + an honest `counterpoint`, and the `who`
   (the ranked channels behind it, with their tier). `run-confidence.js` writes it; the dashboard renders it.
+- **`evidenceBalance` + `watchFor` + `liveWatchProtocol` (2026-08-17)** — the operator WATCHES the fights,
+  and sees things the corpus cannot. `evidenceBalance.oneSided` flags a read where nobody argued the other
+  side (UFC 330's 92% Njokuani/Alvarez had four reasons FOR and an empty counterpoint, and lost);
+  `watchFor` turns each counter-claim into an observable cue via a fixed topic→cue table; the card-level
+  `liveWatchProtocol` carries the standing checks the pick corpus structurally cannot supply. **None of
+  it feeds a confidence number and none of it mentions stakes or trading** — it exists so what the
+  operator sees live has something concrete to be checked against.
 - **Channel weight = track record.** `lib/channel-weights.js` turns the graded record
   (`data/sources_graded.json`) into a per-channel weight (tier A/B/C/D, shrunk by sample). Honest: below
   tier A the edge signal is mostly noise, so weights are coarse and a thin sample can never dominate.
@@ -96,6 +103,12 @@ Read these before writing code; each cost real time.
   vote on that same fight inflates the scoreboard by ~1-4 points and is how this project has twice
   convinced itself of an edge it did not have. `confidence-history.evaluation` records how many cards
   were genuinely walk-forward — if it ever says `mixed`, the headline accuracy is flattered.
+- **The corpus is nearly blind to intangibles, and pretending otherwise is the trap.** Across 1,700
+  evaluated claims on six cards, 21 were tagged `psychological` (~1%). A technically better favourite who
+  fights reluctantly — too much respect, no urgency, countering instead of initiating — is invisible to a
+  consensus of pre-fight breakdowns. Do NOT try to model it from the transcripts; the signal is not there.
+  The answer is `watchFor`/`liveWatchProtocol`: hand the operator the falsifiers so their own eyes do the
+  part the corpus cannot. Never let that path leak into `confidencePct`.
 - **Window the pick corpus.** `gatherAllPicks` scans the WHOLE corpus but filters picks to a window around
   the card. Without it, a fighter's PRIOR-fight picks (a rematch, or a coincidental same-surname pair months
   back) leak into this card's consensus. Keep the window.
