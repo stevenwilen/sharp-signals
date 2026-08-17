@@ -171,6 +171,7 @@ async function main() {
       say(`[dispatch] grading past card ${d} (settled; discovery not required)`);
       if (dry) continue;
       const okGrade = run("run-grade-card.js", [`data/forecast-${d}.json`, "--write"], { allowFail: true });
+      if (okGrade) run("run-grade-channels.js", [], { allowFail: true });    // re-rank the CHANNELS on the new results
       if (okGrade) run("run-fit-calibration.js", [], { allowFail: true });   // refit the % calibration on the new results
       // stamp ONLY on success — a failed grade (settlement not in) must stay due, not look done
       if (okGrade) { const r2 = readReceipts(); (r2.gradedCards = r2.gradedCards || {})[d] = new Date().toISOString(); persistReceipts(r2); }
@@ -191,6 +192,12 @@ async function main() {
   }
   persistReceipts(receipts);
   const plan = decideDueStages(card.eventDate, nowMs, receipts);
+  // A --force value that names no real stage used to sail straight through: dueList was ["alerts"],
+  // nothing matched it, and the run reported "done" having executed nothing. The workflow's own input
+  // description still offered `alerts` months after that stage was renamed `confidence`, so the one
+  // documented way to force a re-run was a silent no-op. Fail loudly instead.
+  const STAGES = ["collect", "forecast", "confidence", "grade"];
+  if (force && !STAGES.includes(force)) fail(`--force=${force} is not a stage. Valid: ${STAGES.join(" | ")}`);
   const dueList = force ? [force] : Object.entries(plan.due).filter(([, v]) => v).map(([k2]) => k2);
   // Confidence always follows a forecast: a re-sealed forecast (or freshly extracted picks) can change
   // the consensus, so the pick engine reruns whenever the forecast does — due or forced.
@@ -254,6 +261,21 @@ async function main() {
     stamp(receipts, "forecast", { card: card.eventId, seal });
   }
 
+  // SELF-HEAL THE CHANNEL RECORD. The weights read `edge`/`edgeLcb` (edge vs the field). A record
+  // written by the old ROI-vs-the-line grading has neither, so every channel would silently fall to
+  // tier D and the consensus would go flat — a degradation with no error anywhere. Rather than ship a
+  // regenerated data file (the cloud owns data/, and a local data commit conflicts on every rebase),
+  // the dispatcher notices the incompatible record and rebuilds it once. Normally a no-op.
+  {
+    let rec = null;
+    try { rec = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "sources_graded.json"), "utf8")); } catch { /* missing == needs building */ }
+    const entries = rec ? Object.values(rec) : [];
+    if (!entries.length || !entries.some((e) => e && e.edge != null)) {
+      say("[dispatch] channel record is missing or predates edge-vs-field grading — rebuilding it once");
+      run("run-grade-channels.js", [], { allowFail: true });
+    }
+  }
+
   // CONFIDENCE — the pick engine. On every (re)forecast, rebuild the rank-weighted consensus for the card
   // from the pick corpus and write data/card-confidence-<date>.json (pick, calibrated %, coverage, tier,
   // why, who) for the dashboard. This is the system's only output surface — no Telegram, no price, no
@@ -263,16 +285,21 @@ async function main() {
     stamp(receipts, "confidence", { card: card.eventId });
   }
 
-  // GRADE — post-fight. Append-only. Grades the SEALED forecast against real Kalshi outcomes (log
-  // loss vs the market prior — did the forecast improve on the market, not just "did the pick win").
-  // Also runs the scenario grader if a sealed scenario set exists. Both verify the seal before reading
-  // any outcome, so a grade can never be an artifact of hindsight.
+  // GRADE — post-fight. Append-only. THREE things learn from a settled card, and for a month only two
+  // of them were wired:
+  //   1. the FORECAST is graded against real Kalshi outcomes    (run-grade-card)
+  //   2. the CHANNELS are re-ranked on who actually called it   (run-grade-channels)
+  //   3. the CALIBRATION is refit so "%" keeps meaning "won about that often" (run-fit-calibration)
+  // (2) was the missing one: data/sources_graded.json — the file that decides how much each channel's
+  // vote is worth — was last written 2026-07-16, so six settled cards changed no weights at all. Every
+  // grade verifies the seal before reading any outcome, so none of this is hindsight.
   if (dueList.includes("grade")) {
     // Stamp the receipt (and the per-card graded record) ONLY when the grade actually succeeded — a
     // failed grade must stay due, not look done. A settlement that isn't in yet is exactly that case.
     let okGrade = false;
     if (fs.existsSync(path.join(ROOT, forecastFile))) okGrade = run("run-grade-card.js", [forecastFile, "--write"], { allowFail: true });
-    // Refit the confidence calibration and refresh the scoreboard now that another card's results are in.
+    // Re-rank the channels, then refit the calibration, now that another card's results are in.
+    run("run-grade-channels.js", [], { allowFail: true });
     run("run-fit-calibration.js", [], { allowFail: true });
     if (okGrade) {
       stamp(receipts, "grade", { card: card.eventId });

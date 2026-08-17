@@ -1,7 +1,7 @@
 name: Sharp Signals — Unified V2
 
 # THE UNIFIED PRODUCTION PIPELINE. One hourly dispatcher decides what work is due for the active card
-# (discovery / evidence / forecast / alerts / grade) and runs the SAME tested scripts the manual path
+# (collect / forecast / confidence / grade) and runs the SAME tested scripts the manual path
 # uses — there is no second, simplified cloud implementation. Missed crons self-heal: the next
 # invocation sees the overdue stage and runs it (GitHub cron fires ~14-40% of schedule on a public
 # repo, so the dispatcher must not assume a run landed).
@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       force:
-        description: "Force a stage (collect | forecast | alerts | grade), or leave blank for the schedule to decide"
+        description: "Force a stage (collect | forecast | confidence | grade), or leave blank for the schedule to decide"
         required: false
         default: ""
       dry:
@@ -25,7 +25,6 @@ on:
 
 permissions:
   contents: write               # commit sealed forecasts + state back to the repo
-  actions: read                 # daily report counts today's workflow runs (gh run list)
 
 concurrency:
   # Its OWN group, separate from the V1 workflows. They write disjoint files (V1: signals/pick-ledger/
@@ -57,47 +56,29 @@ jobs:
           key: sharp-caches-${{ github.run_id }}
           restore-keys: sharp-caches-
 
+      # The refusal tests are the only thing standing between a bad edit and a confidently wrong number,
+      # and until now NOTHING ran them — there was no runner and no CI step, so "keep them green" was an
+      # article of faith. They need no keys and no network and finish in ~30s, so every run gates on them.
+      - name: Tests (refusal suite)
+        run: npm test
+
       - name: Run the unified dispatcher
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           EXTRACT_MODEL: ${{ secrets.EXTRACT_MODEL }}
           # discovery is key-free now (YouTube RSS feeds) — no YOUTUBE_API_KEY needed
           BLOTATO_API_KEY: ${{ secrets.BLOTATO_API_KEY }}
-          TWITTERAPI_KEY: ${{ secrets.TWITTERAPI_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          BANKROLL: ${{ vars.BANKROLL }}
-          # SHARP_PRODUCTION gates the actual Telegram SEND. It is a repository VARIABLE (not a secret),
-          # set only after review. Absent -> the alert path runs in TEST mode and sends nothing.
-          SHARP_PRODUCTION: ${{ vars.SHARP_PRODUCTION }}
-          EXPLORATION_ENABLED: ${{ vars.EXPLORATION_ENABLED }}
-          # FIGHT_INTEL_ENABLED turns on the automated intelligence lifecycle (records + dashboard). In
-          # shadow it never sends Telegram; run-intel is invoked WITHOUT --send until it is promoted to
-          # production. INTEL_WEB_SEARCH gates the grounded web search — off by default in shadow.
-          FIGHT_INTEL_ENABLED: ${{ vars.FIGHT_INTEL_ENABLED }}
-          # FIGHT_INTEL_SEND=1 promotes the lifecycle from shadow to production (Telegram on, legacy
-          # HUMAN REVIEW send archived). Reversible: unset it to fall back to shadow + the old path.
-          FIGHT_INTEL_SEND: ${{ vars.FIGHT_INTEL_SEND }}
-          INTEL_WEB_SEARCH: ${{ vars.INTEL_WEB_SEARCH }}
           # Coverage-gated per-fight YouTube search (opt-in, default off). Searches only bouts the roster
           # leaves under COVERAGE_MIN_ORIGINS independent origins, capped at COVERAGE_MAX_BOUTS per run to
           # protect the shared YouTube quota. Inert until COVERAGE_SEARCH_ENABLED=1 is set as a Variable.
           COVERAGE_SEARCH_ENABLED: ${{ vars.COVERAGE_SEARCH_ENABLED }}
           COVERAGE_MIN_ORIGINS: ${{ vars.COVERAGE_MIN_ORIGINS }}
           COVERAGE_MAX_BOUTS: ${{ vars.COVERAGE_MAX_BOUTS }}
-          # Daily System Activity Report — an end-of-day health RECEIPT to Telegram (not a bet). Opt-in +
-          # fail-closed: inert until DAILY_REPORT_ENABLED=1 is set as a Variable. REPORT_TZ (default
-          # America/New_York) and REPORT_HOUR (default 23) define the calendar day and when it fires; it
-          # sends once per that day. GH_TOKEN lets the report count today's workflow runs (needs actions:read).
-          DAILY_REPORT_ENABLED: ${{ vars.DAILY_REPORT_ENABLED }}
-          REPORT_TZ: ${{ vars.REPORT_TZ }}
-          REPORT_HOUR: ${{ vars.REPORT_HOUR }}
-          GH_TOKEN: ${{ github.token }}
-          # Fight-week price watch. When nothing on the forecast cadence is due, re-check LIVE Kalshi
-          # prices so a favorable cross (a priced-out contract falling to/below its ceiling) pings a BUY
-          # within a dispatch cycle instead of up to a full ~2h forecast interval. No Gemini, no
-          # re-forecast. Inert until PRICE_WATCH_ENABLED=1 is set as a Variable.
-          PRICE_WATCH_ENABLED: ${{ vars.PRICE_WATCH_ENABLED }}
+          # (removed: TWITTERAPI_KEY, TELEGRAM_*, BANKROLL, SHARP_PRODUCTION, EXPLORATION_ENABLED,
+          #  FIGHT_INTEL_*, INTEL_WEB_SEARCH, DAILY_REPORT_*/REPORT_*, GH_TOKEN, PRICE_WATCH_ENABLED.
+          #  Every one fed the Telegram layer, bet sizing, the intel lifecycle or the price watch — all
+          #  torn out. A Variable left behind for a system that no longer exists reads as a live feature
+          #  flag, and someone eventually sets it.)
         run: |
           node dispatch.js \
             ${{ github.event.inputs.force && format('--force={0}', github.event.inputs.force) || '' }} \

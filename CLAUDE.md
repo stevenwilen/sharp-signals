@@ -23,6 +23,12 @@ build parlays), not an edge. The old market-beating machinery is gone; do not re
 - **Channel weight = track record.** `lib/channel-weights.js` turns the graded record
   (`data/sources_graded.json`) into a per-channel weight (tier A/B/C/D, shrunk by sample). Honest: below
   tier A the edge signal is mostly noise, so weights are coarse and a thin sample can never dominate.
+  The record is rebuilt by `run-grade-channels.js` after every settled card (2026-08-17): a channel is
+  scored on **edge vs the FIELD** — `mean(won - fieldShare)`, where fieldShare is the share of the OTHER
+  channels on that fight who took the same side (`lib/channel-grade.js`). Echoing the crowd scores 0;
+  being wrong about an obvious favourite is expensive. Bounded to [-1,+1], so no single lucky longshot
+  can buy a tier the way ROI-vs-the-line once did. **Tier A is currently EMPTY and that is the correct
+  answer** — a tier requires the whole confidence interval to clear the field, and nobody's does.
 - **Calibration is fitted to outcomes.** `lib/confidence-calibration.js` shrinks the consensus share to a
   real win-% (a lopsided but thinly-covered read is NOT "certain"; capped at 0.85). `run-fit-calibration.js`
   rebuilds past cards' consensus, looks up who actually won (Kalshi, read-only), fits the shrink slope, and
@@ -44,9 +50,16 @@ build parlays), not an edge. The old market-beating machinery is gone; do not re
 - `lib/channel-weights.js` — the weighting, from the graded track record (not a tunable config).
 - `lib/confidence-calibration.js` — share → honest win-%, fitted when there are ≥40 graded fights.
 - `dispatch.js` runs `run-confidence.js` on the forecast cadence (the `confidence` stage, formerly
-  `alerts`); the grade stage refits calibration. The forecast pipeline still runs — the confidence engine
-  reads its sealed bouts + `evidence-eval-<date>.json` (for the `why`). `config/exploration-rules.json`
-  still feeds the forecast's creative read; it no longer sizes anything.
+  `alerts`). The **grade stage does three things, and all three are now wired**: grade the forecast
+  (`run-grade-card`), re-rank the channels (`run-grade-channels`), refit the calibration
+  (`run-fit-calibration`). The forecast pipeline still runs — the confidence engine reads its sealed
+  bouts + `evidence-eval-<date>.json` (for the `why`). `config/exploration-rules.json` still feeds the
+  forecast's creative read; it no longer sizes anything.
+- `data/channel-results.json` is the **outcome ledger**: every settled fight, who won, and which side
+  each channel took. It exists because Kalshi only serves ~2 months of settled markets — grading off
+  that window alone caps everyone below the tier bar forever. Append-only; votes stored raw so shares
+  are recomputed (and improve) as coverage grows. Do not regenerate it from scratch, and do not gitignore
+  it — it IS the channel history now.
 
 ## What was torn out (do not re-add)
 
@@ -69,9 +82,20 @@ Read these before writing code; each cost real time.
   Goff AND Juliana **Miller** vs Oliveira); a single-name match would collide, so the PAIR is required. Do
   not loosen it to a single-name match, and keep `surnameEq` fuzzy.
 - **Confidence must never over-promise.** A lopsided consensus among FEW channels is not high confidence.
-  `lib/confidence-calibration.js` shrinks the share by coverage and caps at 0.85, and the tier label tracks
+  `lib/confidence-calibration.js` shrinks the share by coverage and caps at 0.92, and the tier label tracks
   the calibrated %, not the raw share. If you touch calibration, keep the coverage shrink + the cap, and
   check `data/confidence-history.json` — a "%" has to mean "won ~that often".
+- **The scoreboard must show every read.** The bucket table in `run-fit-calibration.js` once ended at
+  `[70, 86)`, written when the cap was 0.85. Raising the cap to 0.92 left 24 of 71 graded reads — the
+  ENTIRE high-confidence band — in no bucket at all, still counted in `accuracy`/`brier` but invisible
+  on the dashboard, exactly where the operator most needs to check the number. The top bucket is now
+  open-ended and an invariant exits 1 if any read falls outside the table. Do not close it again.
+- **Never score a card with weights that already know how it ended.** `run-fit-calibration.js` rebuilds
+  each past card with the channel weights as of THAT card (`CG.rowsFromLedger({before})` →
+  `W.buildFrom` → `C.buildCard(date, {weights})`). Grading a channel on a fight and then scoring its
+  vote on that same fight inflates the scoreboard by ~1-4 points and is how this project has twice
+  convinced itself of an edge it did not have. `confidence-history.evaluation` records how many cards
+  were genuinely walk-forward — if it ever says `mixed`, the headline accuracy is flattered.
 - **Window the pick corpus.** `gatherAllPicks` scans the WHOLE corpus but filters picks to a window around
   the card. Without it, a fighter's PRIOR-fight picks (a rematch, or a coincidental same-surname pair months
   back) leak into this card's consensus. Keep the window.
@@ -84,12 +108,33 @@ Read these before writing code; each cost real time.
 
 ## Still-open cleanup (the re-point is functionally done; this is tidying)
 
-- **`sources_graded.json` (the channel ranking the weights read) can go stale.** It is refreshed by the
-  grading path; if the weights look wrong, check its `fittedAt`/recency and that grading is running.
-- **Vestigial bet-sizing in `lib/exploration.js`** (`classifyAndSize`, `applyExposureCaps`) is dead — the
-  forecast uses only `creativeAdjustment`/`creativeCentral`. Safe to trim; leave the read-synthesis alone.
 - The transcript/evidence cache (`data/transcripts`, `data/evidence`) is committed on purpose to keep
   cloud runs cheap; it CANNOT be gitignored without forcing re-extraction every run.
+- `data/predictions.json` (11k market-priced rows from the old backfill) is now read ONCE, for outcomes
+  only, to bootstrap the ledger. Nothing writes it. Once the ledger has a couple more cards it is inert
+  history and can go.
+- The channel record has ~630 covered fights but effN tops out around 240 after recency weighting, and
+  **no channel has a positive `edgeLcb`** — nobody has proven they beat the field. Do not "fix" this by
+  loosening the tier bar; it is the finding, not a bug.
+
+## Done 2026-08-17 (the unfinished wiring)
+
+The re-point left three loops open. All three are closed; do not reopen them.
+
+- **The grade stage never re-ranked the channels.** `sources_graded.json` was last written 2026-07-16 by
+  a deleted backfill, so six settled cards (including a 6/10 one) changed no weights. `run-grade-channels.js`
+  now runs in the grade stage. The old ROI-vs-the-line grading is gone with `lib/grade.js`.
+- **The scoreboard hid the top confidence band** (see the bucket note above).
+- **Nothing ran the tests.** There was no runner and no CI step — "keep them green" was unenforced.
+  `npm test` (`test/run-all.js`) runs all 31 files in ~30s with no keys, and the workflow gates on it.
+
+Deleted as dead in the same pass (all verified to have zero live dependents): `holdout.js`, `prune.js`,
+`regrade.js`, `regrade-close.js`, `verify-fees.js`, `domains.js`, `worldcup.js`, and `lib/`
+`grade` `sizing` `portfolio` `positions` `message-invariants` `pick-ledger` `mock` `history` `sources`
+`contracts` `scenarios` `scenarios-ranked`. Also trimmed: `classifyAndSize`/`applyExposureCaps` from
+`lib/exploration.js`, and every torn-out env var from the workflow (TELEGRAM_*, BANKROLL,
+SHARP_PRODUCTION, FIGHT_INTEL_*, DAILY_REPORT_*, PRICE_WATCH_ENABLED, GH_TOKEN, TWITTERAPI_KEY) — a
+Variable left behind for a system that no longer exists reads as a live feature flag.
 
 ## House style
 
