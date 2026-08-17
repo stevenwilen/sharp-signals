@@ -27,8 +27,20 @@ const TRAPS = [
     want: "ramirez", why: "praise for Hooper, but the conclusion favours Ramirez" },
 ];
 
+// EXIT 3 = SKIPPED, and the runner reports it as such. This is a LIVE model check: it spends real
+// Gemini calls and answers "is this model safe to extract with", which is a question about the model,
+// not about the code. With no key there is no answer — and answering "FAIL" would be a lie that, now
+// that CI gates the pipeline on the suite, would block every dispatch run over a missing secret.
+// Refusing to give a verdict is the honest outcome; a silent exit 0 would be the dishonest one.
+const NO_KEY = !process.env.GEMINI_API_KEY && !process.env.ANTHROPIC_API_KEY;
+
 (async () => {
   const model = process.env.EXTRACT_MODEL || "gemini-3.5-flash-lite";
+  if (NO_KEY) {
+    console.log(`SKIPPED: no GEMINI_API_KEY/ANTHROPIC_API_KEY — cannot judge ${model}.`);
+    console.log("This is a live model check. Run it manually before changing EXTRACT_MODEL.");
+    process.exit(3);
+  }
   console.log(`MODEL: ${model}\n`);
   let pass = 0;
   for (const t of TRAPS) {
