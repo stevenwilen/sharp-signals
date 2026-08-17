@@ -77,6 +77,8 @@ build parlays), not an edge. The old market-beating machinery is gone; do not re
 - **The market-beating machinery** — CLV/closing-line grading as a driver, the priced-out gate. The market
   is not even a sanity check anymore; confidence comes purely from the ranked consensus.
 - **Paper Strategy + Research portfolio + Combo engine + the laptop dashboard** — deleted earlier, stay gone.
+  The laptop dashboard (`server.js` on localhost:4400) went in `89069e57`; its launcher `Start-Dashboard.cmd`
+  and crash log lingered as gitignored local files until 2026-08-17. There is ONE dashboard: the web app.
 
 ## Things that have gone wrong here before
 
