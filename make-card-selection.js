@@ -98,8 +98,22 @@ async function main() {
   say(`[4] selection: ${vids.length} videos, ${Object.values(byVideo).flat().length} ranges, ${(rangeChars / 1000).toFixed(0)}k chars -> ~${Math.ceil(rangeChars / 10000)} chunks`);
   const boutsCovered = new Set(include.map((r) => r.boutId)).size;
   say(`[4] bouts with at least one qualifying video: ${boutsCovered}/${card.bouts.length}`);
-  if (!vids.length) fail(`NOTHING SELECTED: 0 videos scored >= ${THRESHOLD} for this card. That is a real ` +
-    `answer about coverage, but there is nothing to extract.`);
+  // EXIT 4 = THIS CARD IS NOT COVERED, which is an ANSWER, not a crash.
+  //
+  // Kalshi lists Dana White's Contender Series under the same KXUFCFIGHT series as UFC cards. DWCS is a
+  // five-fight prospect showcase that essentially no prediction channel previews, so selection correctly
+  // finds nothing — and because that exited 2, the dispatcher died on it, the workflow went red on every
+  // run for six hours, and the REAL card four days out got no forecast the whole time. A card the roster
+  // does not cover is a fact to record and move past, not a failure to retry forever.
+  //
+  // Distinct from exit 2 (a genuine fault: bad args, no bouts, unreadable corpus) so the dispatcher can
+  // tell "nobody covers this" from "something is broken".
+  if (!vids.length) {
+    say(`
+NO COVERAGE: 0 videos scored >= ${THRESHOLD} for this card. That is a real answer about ` +
+      `coverage, not a fault — there is simply nothing to extract.`);
+    process.exit(4);
+  }
 
   writeJson(out, { card, threshold: THRESHOLD, include, byVideo,
     // Freshness travels WITH the selection so every downstream consumer (evidence, dashboard, health)

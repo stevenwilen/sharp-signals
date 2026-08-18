@@ -83,5 +83,33 @@ console.log("\nTICKER PARSING");
   ok("returns null on garbage", D.cardFromTicker("nonsense") === null);
 }
 
+console.log("\nWHICH CARD IS OURS (uncoverable cards are skipped, not crashed on)");
+{
+  const NOW = Date.parse("2026-08-18T21:00:00Z");
+  // The real shape of the outage: a 5-bout DWCS card tonight, the real 13-bout UFC card on Saturday.
+  const dwcs = { eventDate: "2026-08-18", eventId: "UFC-2026-08-18", bouts: 5, startMs: Date.parse("2026-08-19T04:00:00Z") };
+  const ufc = { eventDate: "2026-08-22", eventId: "UFC-2026-08-22", bouts: 13, startMs: Date.parse("2026-08-23T02:00:00Z") };
+
+  ok("the soonest live card wins when nothing is skipped",
+    D.pickActiveCard([ufc, dwcs], NOW, {}).eventId === "UFC-2026-08-18");
+
+  // THE FIX: once a card is recorded as uncoverable, the dispatcher moves to the next one instead of
+  // dying on it every run and starving the card the operator actually bets on.
+  ok("an uncoverable card is skipped for the next real one",
+    D.pickActiveCard([ufc, dwcs], NOW, { "2026-08-18": { reason: "no coverage" } }).eventId === "UFC-2026-08-22");
+
+  ok("a card whose bell passed >24h ago is finished, not active",
+    D.pickActiveCard([{ ...dwcs, startMs: NOW - 30 * 3600e3 }, ufc], NOW, {}).eventId === "UFC-2026-08-22");
+
+  // REFUSAL: skipping must never invent a card. If every open card is uncoverable, say nothing is active.
+  ok("all cards uncoverable -> null, never a fabricated fallback",
+    D.pickActiveCard([ufc, dwcs], NOW, { "2026-08-18": {}, "2026-08-22": {} }) === null);
+  ok("no cards at all -> null", D.pickActiveCard([], NOW, {}) === null);
+
+  // The skip list is keyed by event DATE; an unrelated entry must not shadow a live card.
+  ok("an unrelated skip entry does not affect this card",
+    D.pickActiveCard([ufc], NOW, { "2026-07-11": {} }).eventId === "UFC-2026-08-22");
+}
+
 console.log(`\n${pass}/${pass + fail} passed`);
 process.exit(fail ? 1 : 0);

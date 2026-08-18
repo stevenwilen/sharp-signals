@@ -118,9 +118,27 @@ async function discoverCard(forceTickerDate) {
   // card active for up to a week, starving the next card of collect/forecast/alerts while every run exited
   // green (rollover starvation). Uses the real start time when Kalshi gives one, the 22:00 bell otherwise.
   const cardBell = (c) => (Number.isFinite(c.startMs) ? c.startMs : firstBellMs(c.eventDate));
-  const live = [...cards.values()].filter((c) => Date.now() < cardBell(c) + 24 * 3600e3);
-  if (!live.length) return null;
-  return live.sort((a, b) => cardBell(a) - cardBell(b))[0];
+  const uncoverable = forceTickerDate ? {} : (readReceipts().uncoverableCards || {});
+  return pickActiveCard([...cards.values()], Date.now(), uncoverable, cardBell);
+}
+
+// WHICH OPEN CARD IS OURS. Pure so it is unit-testable without Kalshi or the clock.
+//
+// The soonest live card wins — EXCEPT one already recorded as uncoverable. Kalshi lists Dana White’s
+// Contender Series under the same KXUFCFIGHT series as UFC cards, and DWCS is a five-fight prospect
+// showcase that essentially no prediction channel previews. Taking it as active starved the REAL card
+// four days out and failed every run for six hours, because selection (correctly) had nothing to select.
+// Skipping it is not a special case for DWCS: this system reads cards its channels talk about, and a card
+// with no coverage is one it has nothing to say about, whatever it is called.
+function pickActiveCard(all, nowMs, uncoverable = {}, bellOf = null) {
+  const bell = bellOf || ((c) => (Number.isFinite(c.startMs) ? c.startMs : firstBellMs(c.eventDate)));
+  // A card whose start passed more than 24h ago is FINISHED, however long Kalshi keeps a rescheduled
+  // market open on it (one lingering market used to pin the prior card active for a week).
+  const live = [...all]
+    .filter((c) => nowMs < bell(c) + 24 * 3600e3)
+    .filter((c) => !uncoverable[c.eventDate])
+    .sort((a, b) => bell(a) - bell(b));
+  return live.length ? live[0] : null;
 }
 
 const readReceipts = () => { try { return JSON.parse(fs.readFileSync(RECEIPTS, "utf8")); } catch { return {}; } };
@@ -136,6 +154,15 @@ function persistReceipts(receipts) {
 // Run a tested production script. Inherits stdio so its output is in the workflow log. Throws on a
 // non-zero exit so a failed stage fails the dispatcher (which fails the workflow) — a stage that
 // dies must never look like success.
+// Run a script and hand back its EXIT CODE rather than throwing. Needed where a non-zero exit is a
+// meaningful answer instead of a fault — make-card-selection exits 4 for "the roster does not cover this
+// card" — which run() cannot express: it either throws or swallows the code entirely.
+function runCode(script, args) {
+  say(`\n[run] node ${script} ${args.join(" ")}`);
+  try { execFileSync(process.execPath, [path.join(ROOT, script), ...args], { cwd: ROOT, stdio: "inherit" }); return 0; }
+  catch (e) { return typeof e.status === "number" ? e.status : 1; }
+}
+
 function run(script, args, { allowFail = false } = {}) {
   say(`\n[run] node ${script} ${args.join(" ")}`);
   try { execFileSync(process.execPath, [path.join(ROOT, script), ...args], { cwd: ROOT, stdio: "inherit" }); return true; }
@@ -182,7 +209,10 @@ async function main() {
   say(`[dispatch] active card: ${card.eventId} (${card.tickerDate}), ${card.bouts} bouts, starts ${card.startTime || `~${new Date(firstBellMs(card.eventDate)).toISOString()} (22:00 fallback)`}`);
 
   const receipts = readReceipts();
-  // remember the active card so its grade can run after its markets close (see above)
+  // remember the active card so its grade can run after its markets close (see above). Kept so the
+  // uncoverable path below can put it BACK: the dashboard reads lastCard to decide which card's
+  // confidence file to fetch, so pointing it at a card that will never have one blanks the board.
+  const prevLastCard = receipts.lastCard || null;
   receipts.lastCard = { eventId: card.eventId, eventDate: card.eventDate, tickerDate: card.tickerDate, startTime: card.startTime || null };
   // ROLLOVER RECENCY (certification fix): a stage receipt stamped for a DIFFERENT card is not recency
   // for THIS card. Without this, a fresh card inherited the old card's ranAt and waited a full cadence
@@ -224,7 +254,29 @@ async function main() {
     // never changed (the ingest was lost when the old pipeline was torn out). Key-free (RSS) + cached, so
     // it is cheap; non-fatal so a discovery hiccup never blocks the rest of collect.
     run("run-ingest.js", [], { allowFail: true });
-    run("make-card-selection.js", [td, ed, sel]);
+
+    // SELECTION EXIT 4 = the roster does not cover this card at all. Not a fault, so do not die on it:
+    // record the card and stand down. The next cron sees it on the skip list, moves to the next open card
+    // and gets on with the real one. Failing here instead cost six hours of red runs AND left the actual
+    // card four days out with no forecast, because the dispatcher only ever works one card at a time.
+    const NO_COVERAGE = 4;
+    const selCode = runCode("make-card-selection.js", [td, ed, sel]);
+    if (selCode === NO_COVERAGE) {
+      const r = readReceipts();
+      (r.uncoverableCards = r.uncoverableCards || {})[ed] = {
+        at: new Date().toISOString(), eventId: card.eventId, bouts: card.bouts,
+        reason: "no roster video scored above the selection threshold",
+      };
+      // Put lastCard back. The dashboard resolves the board from lastCard.eventDate, so leaving it on a
+      // card that will never get a confidence file shows the operator an empty board days before the
+      // card they actually bet on — which is exactly what happened here.
+      if (prevLastCard) r.lastCard = prevLastCard; else delete r.lastCard;
+      persistReceipts(r);
+      say(`\n[dispatch] ${card.eventId} has NO roster coverage (${card.bouts} bouts) — recorded and skipped.`);
+      say("[dispatch] the next cycle moves on to the next open card. Nothing is broken; nobody previews this one.");
+      return 0;
+    }
+    if (selCode !== 0) fail(`make-card-selection.js exited ${selCode}`);
     run("run-card-evidence.js", [sel]);
 
     // COVERAGE-GATED PER-FIGHT SEARCH (opt-in, shadow; default OFF). For each bout the ~50-channel roster
@@ -319,4 +371,4 @@ if (require.main === module) {
     .catch((e) => { say(`\nFATAL: ${e.message}`); process.exit(1); });
 }
 
-module.exports = { decideDueStages, cardFromTicker, firstBellMs };
+module.exports = { decideDueStages, cardFromTicker, firstBellMs, pickActiveCard };

@@ -111,6 +111,16 @@ Read these before writing code; each cost real time.
   consensus of pre-fight breakdowns. Do NOT try to model it from the transcripts; the signal is not there.
   The answer is `watchFor`/`liveWatchProtocol`: hand the operator the falsifiers so their own eyes do the
   part the corpus cannot. Never let that path leak into `confidencePct`.
+- **Kalshi's KXUFCFIGHT series is not only UFC cards.** Dana White's Contender Series sits in the same
+  series: a 5-fight Tuesday prospect showcase that essentially no prediction channel previews. The
+  dispatcher takes the SOONEST open card, so on 2026-08-18 it took DWCS, `make-card-selection` correctly
+  found 0 qualifying videos and exited fatally, and every run went red for six hours while the REAL card
+  four days out got no forecast at all (the dispatcher only works one card at a time) and the dashboard
+  showed an empty board because `lastCard` pointed at a card that would never have a confidence file.
+  Selection now exits **4** for "no coverage" (distinct from 2 = a real fault); the dispatcher records the
+  card in `receipts.uncoverableCards`, rolls `lastCard` back, and stands down green. The next cycle skips
+  it (`pickActiveCard`) and moves on. Do NOT special-case DWCS by name — the rule is that this system
+  reads cards its channels talk about, and coverage is measured, not assumed.
 - **Window the pick corpus.** `gatherAllPicks` scans the WHOLE corpus but filters picks to a window around
   the card. Without it, a fighter's PRIOR-fight picks (a rematch, or a coincidental same-surname pair months
   back) leak into this card's consensus. Keep the window.
