@@ -1,7 +1,7 @@
 {
   "card": "2026-08-22",
   "event": "UFC-2026-08-22",
-  "generatedAt": "2026-08-18T21:56:26.820Z",
+  "generatedAt": "2026-08-19T00:05:26.765Z",
   "channelsWithARead": 15,
   "calibration": {
     "method": "fitted-least-squares",
@@ -12,10 +12,10 @@
     "reliability": "fitted to 71 graded fights (Brier 0.153)"
   },
   "reads": 11,
+  "liveWatchPrinciple": "One moment is not a pattern. Every fight contains a takedown, a hard shot, a bad thirty seconds — none of that breaks a read on its own. A signal only counts when it REPEATS or PERSISTS, and each fight's watch item says exactly what that bar is. If the pick is losing exchanges but still doing the thing he was picked for, the read is intact.",
   "liveWatchProtocol": [
-    "Walkout and staredown: does the favourite look reluctant or deferential toward someone he has said he respects? A favourite who does not want to hurt his opponent is not the favourite the numbers describe.",
-    "First 90 seconds: is the favourite INITIATING, or only countering and waiting? The consensus assumes he imposes himself. If he is being passive, the read is already off its assumption.",
-    "Is the underdog landing the specific thing the evidence said he does well? (see each fight's watchFor)",
+    "Walkout and staredown: does the favourite look reluctant or deferential toward someone he has said he respects? A favourite who does not want to hurt his opponent is not the favourite the numbers describe. This is the one that beat us at UFC 330.",
+    "First 90 seconds: is the favourite INITIATING, or only countering and waiting? The consensus assumes he imposes himself — a passive favourite is off that assumption before anything has even gone wrong.",
     "Between rounds: is the corner asking for urgency? A corner begging for output is telling you what they can see and the pre-fight breakdowns could not."
   ],
   "fights": [
@@ -71,24 +71,39 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Lerryan Douglas makes Jamall Emmers’s best shots miss",
+        "because": "Lerone Douglas has improved his striking defense.",
+        "topic": "striking_defense",
+        "origins": 1
+      },
       "watchFor": [
         {
-          "signal": "Jamall Emmers: he shoots and the fight hits the mat",
+          "rank": "primary",
+          "signal": "Jamall Emmers gets the fight to the mat",
+          "confirms": "it STAYS there — a sustained period of control, or it goes straight back down next round",
+          "dismisses": "a single takedown Lerryan Douglas pops right back up from",
           "because": "Jamall Emmers relies on a persistent wrestling attack, landing seven takedowns in his recent win over Haider Amil.",
           "topic": "wrestling_offense",
           "origins": 2
         },
         {
-          "signal": "Jamall Emmers: he looks like the fighter of his recent run",
-          "because": "Jamall Emmers holds a win over previously undefeated Hussein Askhabov.",
-          "topic": "recent_form",
-          "origins": 2
-        },
-        {
-          "signal": "Jamall Emmers: the size or reach is dictating the range",
+          "rank": "secondary",
+          "signal": "Jamall Emmers uses size or reach to dictate the range",
+          "confirms": "Lerryan Douglas cannot get inside for a whole round",
+          "dismisses": "being kept at range early while finding a way in",
           "because": "Jamall Emmers is going to be bigger than Leron Douglas.",
           "topic": "size_reach",
           "origins": 1
+        },
+        {
+          "rank": "secondary",
+          "signal": "Jamall Emmers fights like their recent run, not their record",
+          "confirms": "it holds up past the first round",
+          "dismisses": "a good opening two minutes",
+          "because": "Jamall Emmers holds a win over previously undefeated Hussein Askhabov.",
+          "topic": "recent_form",
+          "origins": 2
         }
       ],
       "who": {
@@ -258,6 +273,12 @@
         "oneSided": true,
         "note": "No channel made a case for Elise Reed. That is one-directional evidence, not a stress-tested read: treat this % as less settled than it looks, however high it is."
       },
+      "expect": {
+        "signal": "Shanelle Dyer uses size or reach to dictate the range",
+        "because": "Chanel Dyer has a height advantage of two to three inches and a two-inch reach advantage over Elise Reed.",
+        "topic": "size_reach",
+        "origins": 4
+      },
       "watchFor": [],
       "who": {
         "tierCounts": {
@@ -400,9 +421,18 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Reinier de Ridder shows the stylistic edge",
+        "because": "Reinier de Ridder has superior grappling and ground skills compared to Roman Dolidze.",
+        "topic": "style_matchup",
+        "origins": 2
+      },
       "watchFor": [
         {
-          "signal": "Roman Dolidze: he visibly hurts him early",
+          "rank": "primary",
+          "signal": "Roman Dolidze visibly hurts Reinier de Ridder",
+          "confirms": "it happens twice, or Reinier de Ridder never gets their composure back",
+          "dismisses": "one flash knockdown cleared within seconds",
           "because": "Roman Dolidze is very powerful and can definitely hurt Reinier de Ridder.",
           "topic": "power",
           "origins": 1
@@ -590,9 +620,18 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Anthony Hernandez eats Gregory Rodrigues’s best shot and walks through it",
+        "because": "Anthony Hernandez has a pretty decent chin.",
+        "topic": "durability",
+        "origins": 4
+      },
       "watchFor": [
         {
-          "signal": "Gregory Rodrigues: he visibly hurts him early",
+          "rank": "primary",
+          "signal": "Gregory Rodrigues visibly hurts Anthony Hernandez",
+          "confirms": "it happens twice, or Anthony Hernandez never gets their composure back",
+          "dismisses": "one flash knockdown cleared within seconds",
           "because": "Gregory Rodrigues has heavy power in his strikes.",
           "topic": "power",
           "origins": 3
@@ -693,6 +732,12 @@
         "oneSided": true,
         "note": "No channel made a case for Nasrat Haqparast. That is one-directional evidence, not a stress-tested read: treat this % as less settled than it looks, however high it is."
       },
+      "expect": {
+        "signal": "Christopher Padilla eats Nasrat Haqparast’s best shot and walks through it",
+        "because": "Nasrat Haqparast has accumulated so much damage throughout his career that his chin is completely gone.",
+        "topic": "durability",
+        "origins": 2
+      },
       "watchFor": [],
       "who": {
         "tierCounts": {
@@ -785,6 +830,7 @@
         "oneSided": false,
         "note": null
       },
+      "expect": null,
       "watchFor": [],
       "who": {
         "tierCounts": {
@@ -860,9 +906,18 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Vitor Petrino visibly hurts Serghei Spivac",
+        "because": "Vitor Petrino is able to maintain his power while fighting at a 15-minute pace at heavyweight.",
+        "topic": "power",
+        "origins": 2
+      },
       "watchFor": [
         {
-          "signal": "Serghei Spivac: he looks like the fighter of his recent run",
+          "rank": "primary",
+          "signal": "Serghei Spivac fights like their recent run, not their record",
+          "confirms": "it holds up past the first round",
+          "dismisses": "a good opening two minutes",
           "because": "Petrino was knocked out by Dustin Jacoby at the end of 2024.",
           "topic": "recent_form",
           "origins": 1
@@ -973,15 +1028,27 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Jackson McVey lands clean at range",
+        "because": "Jackson McVey is better on the feet than West Schultz.",
+        "topic": "striking_offense",
+        "origins": 4
+      },
       "watchFor": [
         {
-          "signal": "Wesley Schultz: he is still pushing the pace late",
+          "rank": "primary",
+          "signal": "Wesley Schultz is still there late while Jackson McVey fades",
+          "confirms": "Jackson McVey’s output drops round on round and stays down",
+          "dismisses": "heavy breathing between rounds",
           "because": "Jackson McVey has bad cardio.",
           "topic": "cardio",
           "origins": 3
         },
         {
-          "signal": "Wesley Schultz: the takedowns keep getting stuffed",
+          "rank": "secondary",
+          "signal": "Wesley Schultz stuffs Jackson McVey’s takedowns",
+          "confirms": "three or four failed attempts, and Jackson McVey stops shooting altogether",
+          "dismisses": "one stuffed shot early",
           "because": "Jackson McVey's takedown defense remains seriously in question.",
           "topic": "takedown_defense",
           "origins": 3
@@ -1106,9 +1173,18 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Mason Jones eats Marquel Mederos’s best shot and walks through it",
+        "because": "Mason Jones has never been finished in his 20 professional fights.",
+        "topic": "durability",
+        "origins": 1
+      },
       "watchFor": [
         {
-          "signal": "Marquel Mederos: the good shots keep missing",
+          "rank": "primary",
+          "signal": "Marquel Mederos makes Mason Jones’s best shots miss",
+          "confirms": "a full round of Mason Jones swinging at air",
+          "dismisses": "a few misses while Mason Jones finds the range",
           "because": "Mason Jones is extremely hittable and lacks care for defense or head movement.",
           "topic": "striking_defense",
           "origins": 1
@@ -1151,6 +1227,7 @@
         "oneSided": false,
         "note": null
       },
+      "expect": null,
       "watchFor": [],
       "who": {
         "tierCounts": {
@@ -1221,21 +1298,36 @@
         "oneSided": false,
         "note": null
       },
+      "expect": {
+        "signal": "Kennedy Nzechukwu eats Shamil Gaziev’s best shot and walks through it",
+        "because": "Shamil Gaziev took a significant amount of damage and was knocked out just three months ago against Branko Pericic.",
+        "topic": "durability",
+        "origins": 3
+      },
       "watchFor": [
         {
-          "signal": "Shamil Gaziev: he shoots and the fight hits the mat",
+          "rank": "primary",
+          "signal": "Shamil Gaziev gets the fight to the mat",
+          "confirms": "it STAYS there — a sustained period of control, or it goes straight back down next round",
+          "dismisses": "a single takedown Kennedy Nzechukwu pops right back up from",
           "because": "Shamil Gaziev is significantly better with his wrestling than Kennedy Nzechukwu.",
           "topic": "wrestling_offense",
           "origins": 1
         },
         {
+          "rank": "secondary",
           "signal": "Shamil Gaziev: Kennedy Nzechukwu is a slow starter who takes a round or two to get going.",
+          "confirms": "it keeps happening, or it lasts",
+          "dismisses": "a single isolated instance",
           "because": "Kennedy Nzechukwu is a slow starter who takes a round or two to get going.",
           "topic": "other",
           "origins": 1
         },
         {
-          "signal": "Shamil Gaziev: he visibly hurts him early",
+          "rank": "secondary",
+          "signal": "Shamil Gaziev visibly hurts Kennedy Nzechukwu",
+          "confirms": "it happens twice, or Kennedy Nzechukwu never gets their composure back",
+          "dismisses": "one flash knockdown cleared within seconds",
           "because": "Gaziev possesses significant heavyweight power.",
           "topic": "power",
           "origins": 1
