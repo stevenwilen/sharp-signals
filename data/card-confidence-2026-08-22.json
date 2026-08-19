@@ -1,7 +1,7 @@
 {
   "card": "2026-08-22",
   "event": "UFC-2026-08-22",
-  "generatedAt": "2026-08-19T00:05:26.765Z",
+  "generatedAt": "2026-08-19T02:16:26.300Z",
   "channelsWithARead": 15,
   "calibration": {
     "method": "fitted-least-squares",
@@ -252,7 +252,7 @@
         },
         {
           "topic": "durability",
-          "claim": "Elise Reed's durability is not good overall.",
+          "claim": "Elise Reed's overall durability is not good.",
           "origins": 4
         },
         {
@@ -1012,19 +1012,24 @@
       ],
       "counterpoint": [
         {
-          "topic": "cardio",
-          "claim": "Jackson McVey has bad cardio.",
-          "origins": 3
-        },
-        {
           "topic": "takedown_defense",
           "claim": "Jackson McVey's takedown defense remains seriously in question.",
           "origins": 3
+        },
+        {
+          "topic": "recent_form",
+          "claim": "Wes Schultz defeated Jackson McVey by submission in 41 seconds when they fought as amateurs.",
+          "origins": 2
+        },
+        {
+          "topic": "cardio",
+          "claim": "Jackson McVey has bad cardio and tends to death-gas after the first round.",
+          "origins": 2
         }
       ],
       "evidenceBalance": {
         "for": 2,
-        "against": 2,
+        "against": 3,
         "oneSided": false,
         "note": null
       },
@@ -1037,21 +1042,30 @@
       "watchFor": [
         {
           "rank": "primary",
-          "signal": "Wesley Schultz is still there late while Jackson McVey fades",
-          "confirms": "Jackson McVey’s output drops round on round and stays down",
-          "dismisses": "heavy breathing between rounds",
-          "because": "Jackson McVey has bad cardio.",
-          "topic": "cardio",
-          "origins": 3
-        },
-        {
-          "rank": "secondary",
           "signal": "Wesley Schultz stuffs Jackson McVey’s takedowns",
           "confirms": "three or four failed attempts, and Jackson McVey stops shooting altogether",
           "dismisses": "one stuffed shot early",
           "because": "Jackson McVey's takedown defense remains seriously in question.",
           "topic": "takedown_defense",
           "origins": 3
+        },
+        {
+          "rank": "secondary",
+          "signal": "Wesley Schultz is still there late while Jackson McVey fades",
+          "confirms": "Jackson McVey’s output drops round on round and stays down",
+          "dismisses": "heavy breathing between rounds",
+          "because": "Jackson McVey has bad cardio and tends to death-gas after the first round.",
+          "topic": "cardio",
+          "origins": 2
+        },
+        {
+          "rank": "secondary",
+          "signal": "Wesley Schultz fights like their recent run, not their record",
+          "confirms": "it holds up past the first round",
+          "dismisses": "a good opening two minutes",
+          "because": "Wes Schultz defeated Jackson McVey by submission in 41 seconds when they fought as amateurs.",
+          "topic": "recent_form",
+          "origins": 2
         }
       ],
       "who": {
