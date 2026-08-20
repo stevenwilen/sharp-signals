@@ -83,10 +83,8 @@
           "norm": "gregory rodrigues",
           "first": "gregory",
           "surname": "rodrigues",
-          "ambiguous": true,
-          "ambiguousWith": [
-            "douglas rodrigues"
-          ],
+          "ambiguous": false,
+          "ambiguousWith": [],
           "aliases": []
         },
         "b": {
@@ -342,22 +340,22 @@
       }
     ]
   },
-  "sealedAt": "2026-08-20T21:27:17.518Z",
+  "sealedAt": "2026-08-20T19:21:09.410Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "fb4b0c0d20a4a9aa",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "ac95fa0df6ca8d3f",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
-      "boutId": "UFC-2026-08-22-B04",
-      "fight": "Gregory Rodrigues vs Anthony Hernandez",
+      "boutId": "UFC-2026-08-22-B03",
+      "fight": "Roman Dolidze vs Reinier de Ridder",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.3827,
-        "forFighter": "Gregory Rodrigues",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "probability": 0.2354,
+        "forFighter": "Roman Dolidze",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -366,7 +364,779 @@
         ],
         "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
         "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 4.04,
+        "dispersion": 2.7,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "rawPrices": [
+          {
+            "book": "FanDuel",
+            "Roman Dolidze": "+285",
+            "Reinier de Ridder": "-400",
+            "overround": 1.05974,
+            "deVigged": 0.245098
+          },
+          {
+            "book": "Caesars",
+            "Roman Dolidze": "+340",
+            "Reinier de Ridder": "-440",
+            "overround": 1.042088,
+            "deVigged": 0.218094
+          },
+          {
+            "book": "BetRivers",
+            "Roman Dolidze": "+295",
+            "Reinier de Ridder": "-400",
+            "overround": 1.053165,
+            "deVigged": 0.240385
+          },
+          {
+            "book": "BetWay",
+            "Roman Dolidze": "+300",
+            "Reinier de Ridder": "-400",
+            "overround": 1.05,
+            "deVigged": 0.238095
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "FanDuel",
+            "observedAt": "2026-08-20T19:21:09.401Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "Caesars",
+            "observedAt": "2026-08-20T19:21:09.401Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "BetRivers",
+            "observedAt": "2026-08-20T19:21:09.401Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "BetWay",
+            "observedAt": "2026-08-20T19:21:09.401Z",
+            "sourceProvided": null
+          }
+        ],
+        "clockBasis": "WALL_CLOCK",
+        "derivedFrom": "live multi-book consensus",
+        "staleCheckEnforceable": true,
+        "oldestPriceAgeHours": 0,
+        "fallbackLevel": "A",
+        "missingSourceReasons": [],
+        "baselineHash": "3ef3aedd183131ab"
+      },
+      "systemCentral": {
+        "Roman Dolidze": 0.1711,
+        "Reinier de Ridder": 0.8289
+      },
+      "systemRange": {
+        "forFighter": "Roman Dolidze",
+        "low": 0.1511,
+        "high": 0.1911
+      },
+      "marketDisagreementPoints": -6.43,
+      "outcomeTree": {
+        "Roman Dolidze": {
+          "win": 0.1711,
+          "byKO": 0.0565,
+          "bySubmission": 0.0291,
+          "byDecision": 0.0855,
+          "koByRound": {
+            "r1": 0.0254,
+            "r2": 0.0181,
+            "r3": 0.013
+          },
+          "submissionByRound": {
+            "r1": 0.0131,
+            "r2": 0.0093,
+            "r3": 0.0067
+          }
+        },
+        "Reinier de Ridder": {
+          "win": 0.8289,
+          "byKO": 0.2735,
+          "bySubmission": 0.1409,
+          "byDecision": 0.4145,
+          "koByRound": {
+            "r1": 0.1231,
+            "r2": 0.0875,
+            "r3": 0.0629
+          },
+          "submissionByRound": {
+            "r1": 0.0634,
+            "r2": 0.0451,
+            "r3": 0.0324
+          }
+        }
+      },
+      "treeCoherent": true,
+      "appliedAdjustments": [
+        {
+          "adjustmentId": "208a1fc442",
+          "boutId": "UFC-2026-08-22-B03",
+          "fighterFavored": "Reinier de Ridder",
+          "outcomeAffected": "win",
+          "mechanism": "activity",
+          "evidenceTopics": [
+            "recent_form"
+          ],
+          "supportingEvidenceIds": [
+            "RVsjMDb-Ovk#57114",
+            "2_v7Xe_e9Fo#19101",
+            "2_v7Xe_e9Fo#22805",
+            "_-lkzydc_gM#23956",
+            "9wvrUyQGbZQ#6620",
+            "7F7ThDSNxuQ#26473"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 4,
+          "originIds": [
+            "record:anthony.back.borralho.caio.coming.decision.dolidze.hernandez.losses.off.roman.su",
+            "analyst:mma jawn",
+            "analyst:the mike finch show",
+            "record:roman dolidze:n:38"
+          ],
+          "evidenceTypes": [
+            "verified_hard_fact",
+            "film_study_observation",
+            "matchup_inference",
+            "psychological_interpretation"
+          ],
+          "relevance": [
+            "general_career_background",
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "recent_fights",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "recent_fights",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Reinier de Ridder",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "4 independent origin(s), strength=strong, kinds=verified_hard_fact/film_study_observation/matchup_inference/psychological_interpretation, relevance=general_career_background/stable_historical_tendency/direct_current_matchup"
+        },
+        {
+          "adjustmentId": "525f8d0548",
+          "boutId": "UFC-2026-08-22-B03",
+          "fighterFavored": "Reinier de Ridder",
+          "outcomeAffected": "win",
+          "mechanism": "style",
+          "evidenceTopics": [
+            "style_matchup"
+          ],
+          "supportingEvidenceIds": [
+            "RVsjMDb-Ovk#57114",
+            "_-lkzydc_gM#23956"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 3,
+          "originIds": [
+            "analyst:greedo plays mma",
+            "analyst:kunath",
+            "analyst:the mike finch show"
+          ],
+          "evidenceTypes": [
+            "matchup_inference"
+          ],
+          "relevance": [
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe",
+            "long_term_tendency"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": false,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Reinier de Ridder",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
+        },
+        {
+          "adjustmentId": "df84ae438d",
+          "boutId": "UFC-2026-08-22-B03",
+          "fighterFavored": "Reinier de Ridder",
+          "outcomeAffected": "win",
+          "mechanism": "grappling",
+          "evidenceTopics": [
+            "submission_offense",
+            "takedown_defense"
+          ],
+          "supportingEvidenceIds": [
+            "_-lkzydc_gM#15129",
+            "6daTPUJwhkc#13473",
+            "9wvrUyQGbZQ#6620"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 3,
+          "originIds": [
+            "analyst:the mike finch show",
+            "record:reinier de ridder:n:14",
+            "record:roman dolidze:n:32%"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation",
+            "unknown"
+          ],
+          "direction": "favors Reinier de Ridder",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/verifiable_statistical_claim, relevance=direct_current_matchup/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "bb03dd4655",
+          "boutId": "UFC-2026-08-22-B03",
+          "fighterFavored": "Reinier de Ridder",
+          "outcomeAffected": "win",
+          "mechanism": "striking",
+          "evidenceTopics": [
+            "striking_offense"
+          ],
+          "supportingEvidenceIds": [
+            "_-lkzydc_gM#15129",
+            "A_ym0sOW3R4#33431"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 2,
+          "originIds": [
+            "analyst:the mike finch show",
+            "analyst:we want picks"
+          ],
+          "evidenceTypes": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Reinier de Ridder",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
+        }
+      ],
+      "consideredButZero": 6,
+      "netLogOdds": -0.4,
+      "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.2354,
+        "coreAdjustmentLogOdds": -0.4,
+        "coreCentralA": 0.1711,
+        "creativeAdjustmentLogOddsTowardA": 0.09,
+        "creativeCentralA": 0.1842,
+        "creativeMovePoints": 1.31,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 9,
+        "hypotheses": [
+          {
+            "hypothesis": "Reinier de Ridder — style_matchup: Reinier de Ridder has superior grappling and ground skills compared to Roman Dolidze. (favors_about)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "style_matchup",
+            "supportingFacts": [
+              "I don't think Dolidze is good enough to strike with Reinier Reinier de Ridder. And I don't think he's able to out-scramble Reinier de Ridder, as well.",
+              "I'M GOING TO TAKE REINIER de Ridder being better at everything than Roman Dolidze, and also just having some having some life in his career still."
+            ],
+            "supportingInferences": [
+              "3 independent origin(s), 3 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "style_matchup → helps Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 3,
+              "amplifyingChannels": 3,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 3,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.35,
+            "magnitudeBucket": "strong_multi_signal",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Roman Dolidze — power: Roman Dolidze is very powerful and can definitely hurt Reinier de Ridder. (favors_about)",
+            "fighter": "Roman Dolidze",
+            "boutTopic": "power",
+            "supportingFacts": [
+              "he's very live in this one. He's very powerful. He can definitely hurt de Ridder."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "power → helps Roman Dolidze",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Roman Dolidze shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Reinier de Ridder — weight_cut: Reinier de Ridder's cardio will be slightly better at light heavyweight (205) because he was dropping so much weight for his previous division. (favors_about)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "weight_cut",
+            "supportingFacts": [
+              "definitely now that he's at 205, I think his cardio should be slightly better, right? Considering he was dropping so much weight for uh the last division"
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "weight_cut → helps Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Reinier de Ridder — cardio: Reinier de Ridder's previous problem was gassing out and poor cardio against Brendan Allen. (against_about)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "cardio",
+            "supportingFacts": [
+              "Reinier de Ridder's problem was that cardio, the gassing out against Brendan Allen."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "cardio → hurts Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.2217,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Reinier de Ridder — training_camp: De Ridder left Kill Cliff due to some issues over there and went to ATT. (neutral)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "training_camp",
+            "supportingFacts": [
+              "He actually left Kill Cliff. I guess there were some issues over there."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "POSSIBLY TRUE",
+            "causalMechanism": "training_camp → hurts Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 1,
+                "recorded": 0,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no training_camp effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Roman Dolidze — weight_cut: Roman Dolidze's past issues have been related to his weight cut. (against_about)",
+            "fighter": "Roman Dolidze",
+            "boutTopic": "weight_cut",
+            "supportingFacts": [
+              "I think a lot of his issues that he's had were weight cut related"
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "WEAKLY SUPPORTED",
+            "causalMechanism": "weight_cut → hurts Roman Dolidze",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Roman Dolidze shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.1,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Reinier de Ridder — weight_cut: Reinier de Ridder is moving up to light heavyweight after suffering losses to Caio Borralho and Brendan Allen at middleweight. (neutral)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "weight_cut",
+            "supportingFacts": [
+              "Now, D Ridder is moving up. Why? Because he lost to Caio Borralho by decision and Brendan Allen fourth-round TKO."
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "VERIFIED",
+            "causalMechanism": "weight_cut → hurts Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 0,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "not novel",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.1,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Reinier de Ridder — striking_defense: Reinier de Ridder has problematic striking defense. (against_about)",
+            "fighter": "Reinier de Ridder",
+            "boutTopic": "striking_defense",
+            "supportingFacts": [
+              "that striking defense leaves a lot to be desired"
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "striking_defense → hurts Reinier de Ridder",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Reinier de Ridder shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Roman Dolidze — cardio: Roman Dolidze can fade as fights go on. (against_about)",
+            "fighter": "Roman Dolidze",
+            "boutTopic": "cardio",
+            "supportingFacts": [
+              "he can absolutely fade as fights go on."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "cardio → hurts Roman Dolidze",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Roman Dolidze shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.2217,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-20T19:21:09.431Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
+      "uncertainty": {
+        "halfWidthPoints": 2,
+        "primaryDrivers": [],
+        "conditionsThatWouldMove": []
+      },
+      "evidenceCoverage": "PARTIALLY COVERED",
+      "independentOrigins": 13,
+      "originBreakdown": {
+        "analysts": 7,
+        "publicRecords": 5,
+        "externalReports": 1,
+        "commentary": 0
+      },
+      "contradictions": 0,
+      "missingInformation": [
+        "wrestling_offense",
+        "durability"
+      ],
+      "limitations": [
+        "14 topic(s) have no determinable timeframe"
+      ],
+      "leakageRejected": 0,
+      "admission": {
+        "claimsConsidered": 24,
+        "claimsAdmitted": 24,
+        "claimsRejected": 0,
+        "rejectedForLeakage": 0,
+        "rejectedAsMalformed": 0,
+        "rejections": [],
+        "allRejected": false
+      },
+      "versions": {
+        "rules": "7.0.0",
+        "evaluator": "phase6",
+        "extractor": "phase5"
+      },
+      "dataHashes": {
+        "evidenceEval": "91a6f2cad922c744",
+        "baseline": "bc4fa920254e140e",
+        "rules": "22a3275b9ea3fea9"
+      }
+    },
+    {
+      "forecastId": "27625007b0d5caeb",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
+      "event": "UFC-2026-08-22",
+      "boutId": "UFC-2026-08-22-B04",
+      "fight": "Gregory Rodrigues vs Anthony Hernandez",
+      "status": "LIMITED EVIDENCE",
+      "marketBaseline": {
+        "probability": 0.3847,
+        "forFighter": "Gregory Rodrigues",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
+        "sportsbooks": [
+          "FanDuel",
+          "Caesars",
+          "BetRivers",
+          "BetWay"
+        ],
+        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
+        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
+        "dispersion": 3.23,
         "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
         "rawPrices": [
           {
@@ -378,10 +1148,10 @@
           },
           {
             "book": "Caesars",
-            "Gregory Rodrigues": "+170",
-            "Anthony Hernandez": "-205",
-            "overround": 1.042501,
-            "deVigged": 0.355271
+            "Gregory Rodrigues": "+165",
+            "Anthony Hernandez": "-195",
+            "overround": 1.038375,
+            "deVigged": 0.363412
           },
           {
             "book": "BetRivers",
@@ -401,22 +1171,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -426,49 +1196,49 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "041714e5e62daf01"
+        "baselineHash": "784a0860577c6abf"
       },
       "systemCentral": {
-        "Gregory Rodrigues": 0.3191,
-        "Anthony Hernandez": 0.6809
+        "Gregory Rodrigues": 0.3209,
+        "Anthony Hernandez": 0.6791
       },
       "systemRange": {
         "forFighter": "Gregory Rodrigues",
-        "low": 0.2991,
-        "high": 0.3391
+        "low": 0.3009,
+        "high": 0.3409
       },
-      "marketDisagreementPoints": -6.36,
+      "marketDisagreementPoints": -6.38,
       "outcomeTree": {
         "Gregory Rodrigues": {
-          "win": 0.3191,
-          "byKO": 0.1053,
-          "bySubmission": 0.0542,
-          "byDecision": 0.1595,
+          "win": 0.3209,
+          "byKO": 0.1059,
+          "bySubmission": 0.0546,
+          "byDecision": 0.1604,
           "koByRound": {
-            "r1": 0.0474,
-            "r2": 0.0337,
-            "r3": 0.0242
+            "r1": 0.0477,
+            "r2": 0.0339,
+            "r3": 0.0244
           },
           "submissionByRound": {
-            "r1": 0.0244,
-            "r2": 0.0173,
-            "r3": 0.0125
+            "r1": 0.0246,
+            "r2": 0.0175,
+            "r3": 0.0126
           }
         },
         "Anthony Hernandez": {
-          "win": 0.6809,
-          "byKO": 0.2247,
-          "bySubmission": 0.1158,
-          "byDecision": 0.3405,
+          "win": 0.6791,
+          "byKO": 0.2241,
+          "bySubmission": 0.1154,
+          "byDecision": 0.3396,
           "koByRound": {
-            "r1": 0.1011,
-            "r2": 0.0719,
-            "r3": 0.0517
+            "r1": 0.1008,
+            "r2": 0.0717,
+            "r3": 0.0515
           },
           "submissionByRound": {
-            "r1": 0.0521,
-            "r2": 0.0371,
-            "r3": 0.0266
+            "r1": 0.0519,
+            "r2": 0.0369,
+            "r3": 0.0265
           }
         }
       },
@@ -730,12 +1500,12 @@
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.3827,
+        "marketPriorA": 0.3847,
         "coreAdjustmentLogOdds": -0.28,
-        "coreCentralA": 0.3191,
+        "coreCentralA": 0.3209,
         "creativeAdjustmentLogOddsTowardA": -0.38,
-        "creativeCentralA": 0.2427,
-        "creativeMovePoints": -7.64,
+        "creativeCentralA": 0.2442,
+        "creativeMovePoints": -7.67,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 6,
@@ -773,7 +1543,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -812,7 +1582,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -850,7 +1620,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -889,7 +1659,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -928,7 +1698,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -967,7 +1737,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.546Z",
+            "timestamp": "2026-08-20T19:21:09.438Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1011,785 +1781,13 @@
       },
       "dataHashes": {
         "evidenceEval": "d8fe91ea54e3d306",
-        "baseline": "c65dbf6f9cd1a711",
+        "baseline": "8096492532693f8a",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "b928ac94c538fbe0",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
-      "event": "UFC-2026-08-22",
-      "boutId": "UFC-2026-08-22-B03",
-      "fight": "Roman Dolidze vs Reinier de Ridder",
-      "status": "LIMITED EVIDENCE",
-      "marketBaseline": {
-        "probability": 0.2303,
-        "forFighter": "Roman Dolidze",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
-        "sportsbooks": [
-          "FanDuel",
-          "Caesars",
-          "BetRivers",
-          "BetWay"
-        ],
-        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
-        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 2.23,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
-        "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Roman Dolidze": "+320",
-            "Reinier de Ridder": "-460",
-            "overround": 1.059524,
-            "deVigged": 0.224719
-          },
-          {
-            "book": "Caesars",
-            "Roman Dolidze": "+340",
-            "Reinier de Ridder": "-440",
-            "overround": 1.042088,
-            "deVigged": 0.218094
-          },
-          {
-            "book": "BetRivers",
-            "Roman Dolidze": "+295",
-            "Reinier de Ridder": "-400",
-            "overround": 1.053165,
-            "deVigged": 0.240385
-          },
-          {
-            "book": "BetWay",
-            "Roman Dolidze": "+300",
-            "Reinier de Ridder": "-400",
-            "overround": 1.05,
-            "deVigged": 0.238095
-          }
-        ],
-        "priceTimestamps": [
-          {
-            "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
-            "sourceProvided": null
-          }
-        ],
-        "clockBasis": "WALL_CLOCK",
-        "derivedFrom": "live multi-book consensus",
-        "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": 0,
-        "fallbackLevel": "A",
-        "missingSourceReasons": [],
-        "baselineHash": "cdb2dc8b2bb99f3b"
-      },
-      "systemCentral": {
-        "Roman Dolidze": 0.1671,
-        "Reinier de Ridder": 0.8329
-      },
-      "systemRange": {
-        "forFighter": "Roman Dolidze",
-        "low": 0.1471,
-        "high": 0.1871
-      },
-      "marketDisagreementPoints": -6.32,
-      "outcomeTree": {
-        "Roman Dolidze": {
-          "win": 0.1671,
-          "byKO": 0.0551,
-          "bySubmission": 0.0284,
-          "byDecision": 0.0835,
-          "koByRound": {
-            "r1": 0.0248,
-            "r2": 0.0176,
-            "r3": 0.0127
-          },
-          "submissionByRound": {
-            "r1": 0.0128,
-            "r2": 0.0091,
-            "r3": 0.0065
-          }
-        },
-        "Reinier de Ridder": {
-          "win": 0.8329,
-          "byKO": 0.2749,
-          "bySubmission": 0.1416,
-          "byDecision": 0.4165,
-          "koByRound": {
-            "r1": 0.1237,
-            "r2": 0.088,
-            "r3": 0.0632
-          },
-          "submissionByRound": {
-            "r1": 0.0637,
-            "r2": 0.0453,
-            "r3": 0.0326
-          }
-        }
-      },
-      "treeCoherent": true,
-      "appliedAdjustments": [
-        {
-          "adjustmentId": "208a1fc442",
-          "boutId": "UFC-2026-08-22-B03",
-          "fighterFavored": "Reinier de Ridder",
-          "outcomeAffected": "win",
-          "mechanism": "activity",
-          "evidenceTopics": [
-            "recent_form"
-          ],
-          "supportingEvidenceIds": [
-            "RVsjMDb-Ovk#57114",
-            "2_v7Xe_e9Fo#19101",
-            "2_v7Xe_e9Fo#22805",
-            "_-lkzydc_gM#23956",
-            "9wvrUyQGbZQ#6620",
-            "7F7ThDSNxuQ#26473"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 4,
-          "originIds": [
-            "record:anthony.back.borralho.caio.coming.decision.dolidze.hernandez.losses.off.roman.su",
-            "analyst:mma jawn",
-            "analyst:the mike finch show",
-            "record:roman dolidze:n:38"
-          ],
-          "evidenceTypes": [
-            "verified_hard_fact",
-            "film_study_observation",
-            "matchup_inference",
-            "psychological_interpretation"
-          ],
-          "relevance": [
-            "general_career_background",
-            "stable_historical_tendency",
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "recent_fights",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "recent_fights",
-            "strength": "strong",
-            "_plus": 5,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Reinier de Ridder",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "4 independent origin(s), strength=strong, kinds=verified_hard_fact/film_study_observation/matchup_inference/psychological_interpretation, relevance=general_career_background/stable_historical_tendency/direct_current_matchup"
-        },
-        {
-          "adjustmentId": "525f8d0548",
-          "boutId": "UFC-2026-08-22-B03",
-          "fighterFavored": "Reinier de Ridder",
-          "outcomeAffected": "win",
-          "mechanism": "style",
-          "evidenceTopics": [
-            "style_matchup"
-          ],
-          "supportingEvidenceIds": [
-            "RVsjMDb-Ovk#57114",
-            "_-lkzydc_gM#23956"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "analyst:greedo plays mma",
-            "analyst:kunath",
-            "analyst:the mike finch show"
-          ],
-          "evidenceTypes": [
-            "matchup_inference"
-          ],
-          "relevance": [
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe",
-            "long_term_tendency"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": false,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "moderate",
-            "_plus": 3,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "public_but_possibly_underweighted"
-          ],
-          "direction": "favors Reinier de Ridder",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference, relevance=direct_current_matchup"
-        },
-        {
-          "adjustmentId": "df84ae438d",
-          "boutId": "UFC-2026-08-22-B03",
-          "fighterFavored": "Reinier de Ridder",
-          "outcomeAffected": "win",
-          "mechanism": "grappling",
-          "evidenceTopics": [
-            "submission_offense",
-            "takedown_defense"
-          ],
-          "supportingEvidenceIds": [
-            "_-lkzydc_gM#15129",
-            "6daTPUJwhkc#13473",
-            "9wvrUyQGbZQ#6620"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "analyst:the mike finch show",
-            "record:reinier de ridder:n:14",
-            "record:roman dolidze:n:32%"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "verifiable_statistical_claim"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation",
-            "unknown"
-          ],
-          "direction": "favors Reinier de Ridder",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=matchup_inference/verifiable_statistical_claim, relevance=direct_current_matchup/stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "bb03dd4655",
-          "boutId": "UFC-2026-08-22-B03",
-          "fighterFavored": "Reinier de Ridder",
-          "outcomeAffected": "win",
-          "mechanism": "striking",
-          "evidenceTopics": [
-            "striking_offense"
-          ],
-          "supportingEvidenceIds": [
-            "_-lkzydc_gM#15129",
-            "A_ym0sOW3R4#33431"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "analyst:the mike finch show",
-            "analyst:we want picks"
-          ],
-          "evidenceTypes": [
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Reinier de Ridder",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=film_study_observation, relevance=stable_historical_tendency"
-        }
-      ],
-      "consideredButZero": 6,
-      "netLogOdds": -0.4,
-      "capNote": null,
-      "exploration": {
-        "lane": "exploration",
-        "marketPriorA": 0.2303,
-        "coreAdjustmentLogOdds": -0.4,
-        "coreCentralA": 0.1671,
-        "creativeAdjustmentLogOddsTowardA": 0.09,
-        "creativeCentralA": 0.18,
-        "creativeMovePoints": 1.29,
-        "capped": false,
-        "cap": 1.6,
-        "activeHypotheses": 9,
-        "hypotheses": [
-          {
-            "hypothesis": "Reinier de Ridder — style_matchup: Reinier de Ridder has superior grappling and ground skills compared to Roman Dolidze. (favors_about)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "style_matchup",
-            "supportingFacts": [
-              "I don't think Dolidze is good enough to strike with Reinier Reinier de Ridder. And I don't think he's able to out-scramble Reinier de Ridder, as well.",
-              "I'M GOING TO TAKE REINIER de Ridder being better at everything than Roman Dolidze, and also just having some having some life in his career still."
-            ],
-            "supportingInferences": [
-              "3 independent origin(s), 3 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "style_matchup → helps Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 3,
-              "amplifyingChannels": 3,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 3,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "not novel",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no style_matchup effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.35,
-            "magnitudeBucket": "strong_multi_signal",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Roman Dolidze — power: Roman Dolidze is very powerful and can definitely hurt Reinier de Ridder. (favors_about)",
-            "fighter": "Roman Dolidze",
-            "boutTopic": "power",
-            "supportingFacts": [
-              "he's very live in this one. He's very powerful. He can definitely hurt de Ridder."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "power → helps Roman Dolidze",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Roman Dolidze shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Reinier de Ridder — weight_cut: Reinier de Ridder's cardio will be slightly better at light heavyweight (205) because he was dropping so much weight for his previous division. (favors_about)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "weight_cut",
-            "supportingFacts": [
-              "definitely now that he's at 205, I think his cardio should be slightly better, right? Considering he was dropping so much weight for uh the last division"
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "weight_cut → helps Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Reinier de Ridder — cardio: Reinier de Ridder's previous problem was gassing out and poor cardio against Brendan Allen. (against_about)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "cardio",
-            "supportingFacts": [
-              "Reinier de Ridder's problem was that cardio, the gassing out against Brendan Allen."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "cardio → hurts Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.2217,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Reinier de Ridder — training_camp: De Ridder left Kill Cliff due to some issues over there and went to ATT. (neutral)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "training_camp",
-            "supportingFacts": [
-              "He actually left Kill Cliff. I guess there were some issues over there."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "POSSIBLY TRUE",
-            "causalMechanism": "training_camp → hurts Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 1,
-                "recorded": 0,
-                "analytical": 0,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "not novel",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no training_camp effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Roman Dolidze — weight_cut: Roman Dolidze's past issues have been related to his weight cut. (against_about)",
-            "fighter": "Roman Dolidze",
-            "boutTopic": "weight_cut",
-            "supportingFacts": [
-              "I think a lot of his issues that he's had were weight cut related"
-            ],
-            "supportingInferences": [],
-            "verificationStatus": "WEAKLY SUPPORTED",
-            "causalMechanism": "weight_cut → hurts Roman Dolidze",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Roman Dolidze shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.1,
-            "magnitudeBucket": "suggestive",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Reinier de Ridder — weight_cut: Reinier de Ridder is moving up to light heavyweight after suffering losses to Caio Borralho and Brendan Allen at middleweight. (neutral)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "weight_cut",
-            "supportingFacts": [
-              "Now, D Ridder is moving up. Why? Because he lost to Caio Borralho by decision and Brendan Allen fourth-round TKO."
-            ],
-            "supportingInferences": [],
-            "verificationStatus": "VERIFIED",
-            "causalMechanism": "weight_cut → hurts Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 1,
-                "analytical": 0,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "not novel",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no weight_cut effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.1,
-            "magnitudeBucket": "suggestive",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Reinier de Ridder — striking_defense: Reinier de Ridder has problematic striking defense. (against_about)",
-            "fighter": "Reinier de Ridder",
-            "boutTopic": "striking_defense",
-            "supportingFacts": [
-              "that striking defense leaves a lot to be desired"
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "striking_defense → hurts Reinier de Ridder",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Reinier de Ridder shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Roman Dolidze — cardio: Roman Dolidze can fade as fights go on. (against_about)",
-            "fighter": "Roman Dolidze",
-            "boutTopic": "cardio",
-            "supportingFacts": [
-              "he can absolutely fade as fights go on."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "cardio → hurts Roman Dolidze",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Roman Dolidze shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.2217,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.539Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          }
-        ],
-        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
-      },
-      "uncertainty": {
-        "halfWidthPoints": 2,
-        "primaryDrivers": [],
-        "conditionsThatWouldMove": []
-      },
-      "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 13,
-      "originBreakdown": {
-        "analysts": 7,
-        "publicRecords": 5,
-        "externalReports": 1,
-        "commentary": 0
-      },
-      "contradictions": 0,
-      "missingInformation": [
-        "wrestling_offense",
-        "durability"
-      ],
-      "limitations": [
-        "14 topic(s) have no determinable timeframe"
-      ],
-      "leakageRejected": 0,
-      "admission": {
-        "claimsConsidered": 24,
-        "claimsAdmitted": 24,
-        "claimsRejected": 0,
-        "rejectedForLeakage": 0,
-        "rejectedAsMalformed": 0,
-        "rejections": [],
-        "allRejected": false
-      },
-      "versions": {
-        "rules": "7.0.0",
-        "evaluator": "phase6",
-        "extractor": "phase5"
-      },
-      "dataHashes": {
-        "evidenceEval": "91a6f2cad922c744",
-        "baseline": "16410ef366b6ac04",
-        "rules": "22a3275b9ea3fea9"
-      }
-    },
-    {
-      "forecastId": "05e43b7f9f8d0690",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "25539a82464474fc",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B06",
       "fight": "Marquel Mederos vs Mason Jones",
@@ -1797,8 +1795,8 @@
       "marketBaseline": {
         "probability": 0.2907,
         "forFighter": "Marquel Mederos",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1842,22 +1840,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -1867,7 +1865,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "eb72a0d4953f9ec1"
+        "baselineHash": "40bbd333acca5352"
       },
       "systemCentral": {
         "Marquel Mederos": 0.2401,
@@ -2144,7 +2142,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.554Z",
+            "timestamp": "2026-08-20T19:21:09.444Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2180,7 +2178,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.554Z",
+            "timestamp": "2026-08-20T19:21:09.444Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2218,7 +2216,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.554Z",
+            "timestamp": "2026-08-20T19:21:09.444Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2256,7 +2254,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.554Z",
+            "timestamp": "2026-08-20T19:21:09.444Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2294,7 +2292,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.554Z",
+            "timestamp": "2026-08-20T19:21:09.444Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -2337,13 +2335,13 @@
       },
       "dataHashes": {
         "evidenceEval": "55a9bf0ab563a684",
-        "baseline": "656bda3671d3e673",
+        "baseline": "3784ad9daf1e4d08",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "ba091668e31fbcde",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "05978c763551bed9",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B09",
       "fight": "Kennedy Nzechukwu vs Shamil Gaziev",
@@ -2351,8 +2349,8 @@
       "marketBaseline": {
         "probability": 0.4403,
         "forFighter": "Kennedy Nzechukwu",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2396,22 +2394,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -2421,7 +2419,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "ce7d1520c58e8e37"
+        "baselineHash": "e18654c4960cb470"
       },
       "systemCentral": {
         "Kennedy Nzechukwu": 0.49,
@@ -2754,7 +2752,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2792,7 +2790,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2830,7 +2828,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2868,7 +2866,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2907,7 +2905,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2946,7 +2944,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2984,7 +2982,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3022,7 +3020,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3060,7 +3058,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3096,7 +3094,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3132,7 +3130,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.564Z",
+            "timestamp": "2026-08-20T19:21:09.455Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -3186,22 +3184,22 @@
       },
       "dataHashes": {
         "evidenceEval": "269b5ab03f901a52",
-        "baseline": "0bbc67082d5c5656",
+        "baseline": "3eb6bc1a820eae6a",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "2bbf754ae53dd295",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "1b58e57d7049fad1",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B14",
       "fight": "Elise Reed vs Shanelle Dyer",
       "status": "HUMAN REVIEW REQUIRED",
       "marketBaseline": {
-        "probability": 0.139,
+        "probability": 0.1403,
         "forFighter": "Elise Reed",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -3215,10 +3213,10 @@
         "rawPrices": [
           {
             "book": "FanDuel",
-            "Elise Reed": "+570",
-            "Shanelle Dyer": "-900",
-            "overround": 1.049254,
-            "deVigged": 0.142248
+            "Elise Reed": "+540",
+            "Shanelle Dyer": "-950",
+            "overround": 1.061012,
+            "deVigged": 0.147265
           },
           {
             "book": "Caesars",
@@ -3245,22 +3243,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -3270,28 +3268,28 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "c37ef7310bd7f22f"
+        "baselineHash": "db1f23a46df2007a"
       },
       "systemCentral": {
-        "Elise Reed": 0.0933,
-        "Shanelle Dyer": 0.9067
+        "Elise Reed": 0.0943,
+        "Shanelle Dyer": 0.9057
       },
       "systemRange": {
         "forFighter": "Elise Reed",
-        "low": 0.01,
-        "high": 0.1773
+        "low": 0.0103,
+        "high": 0.1783
       },
-      "marketDisagreementPoints": -4.57,
+      "marketDisagreementPoints": -4.6,
       "outcomeTree": {
         "Elise Reed": {
-          "win": 0.0933,
-          "byKO": 0.0308,
-          "bySubmission": 0.0159,
-          "byDecision": 0.0467,
+          "win": 0.0943,
+          "byKO": 0.0311,
+          "bySubmission": 0.016,
+          "byDecision": 0.0471,
           "koByRound": {
-            "r1": 0.0139,
-            "r2": 0.0099,
-            "r3": 0.0071
+            "r1": 0.014,
+            "r2": 0.01,
+            "r3": 0.0072
           },
           "submissionByRound": {
             "r1": 0.0072,
@@ -3300,14 +3298,14 @@
           }
         },
         "Shanelle Dyer": {
-          "win": 0.9067,
-          "byKO": 0.2992,
-          "bySubmission": 0.1541,
-          "byDecision": 0.4533,
+          "win": 0.9057,
+          "byKO": 0.2989,
+          "bySubmission": 0.154,
+          "byDecision": 0.4529,
           "koByRound": {
-            "r1": 0.1346,
-            "r2": 0.0957,
-            "r3": 0.0688
+            "r1": 0.1345,
+            "r2": 0.0956,
+            "r3": 0.0687
           },
           "submissionByRound": {
             "r1": 0.0693,
@@ -3334,19 +3332,17 @@
             "krtBAhmABiw#84975",
             "6FjxTf75tCo#0",
             "0vDik7YV1Ls#2647",
-            "B7O6aJE0TRs#1222",
             "Lfu1xdric1Y#5126",
             "usl_fIv7VGc#0"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 8,
+          "informationOriginCount": 7,
           "originIds": [
             "analyst:greedo plays mma",
             "analyst:mma experts",
             "analyst:topside mma",
             "analyst:uselyis",
             "analyst:we want picks",
-            "analyst:kennyokoyemma",
             "analyst:the mike finch show",
             "analyst:sean brady steadypicks"
           ],
@@ -3378,8 +3374,7 @@
             "_minus": 1
           },
           "marketAwareness": [
-            "public_but_possibly_underweighted",
-            "widely_public_probably_in_the_market"
+            "public_but_possibly_underweighted"
           ],
           "direction": "favors Chanel Dyer",
           "rawMagnitudeClass": "MODERATE",
@@ -3906,12 +3901,12 @@
       "capNote": "net adjustment -0.840 hit the total cap ±0.45",
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.139,
+        "marketPriorA": 0.1403,
         "coreAdjustmentLogOdds": -0.45,
-        "coreCentralA": 0.0933,
+        "coreCentralA": 0.0943,
         "creativeAdjustmentLogOddsTowardA": -0.1149,
-        "creativeCentralA": 0.0841,
-        "creativeMovePoints": -0.92,
+        "creativeCentralA": 0.0849,
+        "creativeMovePoints": -0.94,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 11,
@@ -3952,7 +3947,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3988,7 +3983,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4026,7 +4021,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4064,7 +4059,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4103,7 +4098,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4141,7 +4136,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4180,7 +4175,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4218,7 +4213,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4254,7 +4249,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4292,7 +4287,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4330,7 +4325,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.588Z",
+            "timestamp": "2026-08-20T19:21:09.478Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -4348,9 +4343,9 @@
         ]
       },
       "evidenceCoverage": "WELL COVERED",
-      "independentOrigins": 44,
+      "independentOrigins": 43,
       "originBreakdown": {
-        "analysts": 17,
+        "analysts": 16,
         "publicRecords": 27,
         "externalReports": 0,
         "commentary": 0
@@ -4365,8 +4360,8 @@
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 70,
-        "claimsAdmitted": 70,
+        "claimsConsidered": 69,
+        "claimsAdmitted": 69,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -4379,14 +4374,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "f1e85603a23c9399",
-        "baseline": "847a64cedf166e83",
+        "evidenceEval": "831aa48c9a386fec",
+        "baseline": "4613d7ed5daff2d3",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "f282db722f5e119c",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "be1cbd038be86c28",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B08",
       "fight": "Jamall Emmers vs Lerryan Douglas",
@@ -4394,8 +4389,8 @@
       "marketBaseline": {
         "probability": 0.2372,
         "forFighter": "Jamall Emmers",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -4439,22 +4434,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -4464,7 +4459,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "c654252d3262e4bd"
+        "baselineHash": "581de1cc6eacc999"
       },
       "systemCentral": {
         "Jamall Emmers": 0.2596,
@@ -4681,7 +4676,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4717,7 +4712,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4755,7 +4750,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4791,7 +4786,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4829,7 +4824,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4865,7 +4860,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.559Z",
+            "timestamp": "2026-08-20T19:21:09.450Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -4912,22 +4907,22 @@
       },
       "dataHashes": {
         "evidenceEval": "e94577126eff5d15",
-        "baseline": "453cdf9b8f11e44a",
+        "baseline": "de85417ea61dfae4",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "157ddc46e04fdd43",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "89f0eb595b7cf104",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B11",
       "fight": "Ryan Kuse vs Marcio Barbosa",
       "status": "LIMITED EVIDENCE",
       "marketBaseline": {
-        "probability": 0.1345,
+        "probability": 0.1356,
         "forFighter": "Ryan Kuse",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -4941,10 +4936,10 @@
         "rawPrices": [
           {
             "book": "FanDuel",
-            "Ryan Kuse": "+560",
-            "Marcio Barbosa": "-1000",
-            "overround": 1.060606,
-            "deVigged": 0.142857
+            "Ryan Kuse": "+540",
+            "Marcio Barbosa": "-950",
+            "overround": 1.061012,
+            "deVigged": 0.147265
           },
           {
             "book": "Caesars",
@@ -4971,22 +4966,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -4996,48 +4991,48 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "2ca327951f170d43"
+        "baselineHash": "76ed87332817d6bc"
       },
       "systemCentral": {
-        "Ryan Kuse": 0.1129,
-        "Marcio Barbosa": 0.8871
+        "Ryan Kuse": 0.1138,
+        "Marcio Barbosa": 0.8862
       },
       "systemRange": {
         "forFighter": "Ryan Kuse",
-        "low": 0.0929,
-        "high": 0.1329
+        "low": 0.0938,
+        "high": 0.1338
       },
-      "marketDisagreementPoints": -2.16,
+      "marketDisagreementPoints": -2.18,
       "outcomeTree": {
         "Ryan Kuse": {
-          "win": 0.1129,
-          "byKO": 0.0372,
-          "bySubmission": 0.0192,
-          "byDecision": 0.0564,
+          "win": 0.1138,
+          "byKO": 0.0376,
+          "bySubmission": 0.0193,
+          "byDecision": 0.0569,
           "koByRound": {
-            "r1": 0.0167,
-            "r2": 0.0119,
+            "r1": 0.0169,
+            "r2": 0.012,
             "r3": 0.0086
           },
           "submissionByRound": {
-            "r1": 0.0086,
-            "r2": 0.0061,
+            "r1": 0.0087,
+            "r2": 0.0062,
             "r3": 0.0044
           }
         },
         "Marcio Barbosa": {
-          "win": 0.8871,
-          "byKO": 0.2928,
-          "bySubmission": 0.1508,
-          "byDecision": 0.4436,
+          "win": 0.8862,
+          "byKO": 0.2924,
+          "bySubmission": 0.1507,
+          "byDecision": 0.4431,
           "koByRound": {
-            "r1": 0.1318,
-            "r2": 0.0937,
+            "r1": 0.1316,
+            "r2": 0.0936,
             "r3": 0.0673
           },
           "submissionByRound": {
-            "r1": 0.0679,
-            "r2": 0.0483,
+            "r1": 0.0678,
+            "r2": 0.0482,
             "r3": 0.0347
           }
         }
@@ -5164,17 +5159,17 @@
           "magnitudeReason": "2 independent origin(s), strength=moderate, kinds=verifiable_statistical_claim, relevance=stable_historical_tendency"
         }
       ],
-      "consideredButZero": 3,
+      "consideredButZero": 2,
       "netLogOdds": -0.2,
       "capNote": null,
       "exploration": {
         "lane": "exploration",
-        "marketPriorA": 0.1345,
+        "marketPriorA": 0.1356,
         "coreAdjustmentLogOdds": -0.2,
-        "coreCentralA": 0.1129,
+        "coreCentralA": 0.1138,
         "creativeAdjustmentLogOddsTowardA": -0.2183,
-        "creativeCentralA": 0.0928,
-        "creativeMovePoints": -2.01,
+        "creativeCentralA": 0.0936,
+        "creativeMovePoints": -2.02,
         "capped": false,
         "cap": 1.6,
         "activeHypotheses": 3,
@@ -5214,7 +5209,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.568Z",
+            "timestamp": "2026-08-20T19:21:09.458Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5252,7 +5247,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.568Z",
+            "timestamp": "2026-08-20T19:21:09.458Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5290,7 +5285,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.568Z",
+            "timestamp": "2026-08-20T19:21:09.458Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -5302,10 +5297,10 @@
         "conditionsThatWouldMove": []
       },
       "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 7,
+      "independentOrigins": 6,
       "originBreakdown": {
         "analysts": 4,
-        "publicRecords": 3,
+        "publicRecords": 2,
         "externalReports": 0,
         "commentary": 0
       },
@@ -5317,12 +5312,12 @@
         "durability"
       ],
       "limitations": [
-        "6 topic(s) have no determinable timeframe"
+        "5 topic(s) have no determinable timeframe"
       ],
       "leakageRejected": 0,
       "admission": {
-        "claimsConsidered": 9,
-        "claimsAdmitted": 9,
+        "claimsConsidered": 8,
+        "claimsAdmitted": 8,
         "claimsRejected": 0,
         "rejectedForLeakage": 0,
         "rejectedAsMalformed": 0,
@@ -5335,14 +5330,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "6b59f712814089ba",
-        "baseline": "6c444b0a1356efd5",
+        "evidenceEval": "a6e86eacc7788558",
+        "baseline": "a2a964a0780480e8",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "2a1fead880ce3fe2",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "11ab2a8b37ffae33",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B10",
       "fight": "Christopher Padilla vs Nasrat Haqparast",
@@ -5351,12 +5346,12 @@
         "probability": 0.4118,
         "forFighter": "Christopher Padilla",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
         "deVigMethod": "proportional normalisation: pA/(pA+pB), both sides' vig-included implied probabilities",
-        "dispersion": 2.38,
+        "dispersion": 2.88,
         "note": "B_OPEN_CONSENSUS (fallback B); BFO opening consensus line, both sides, de-vigged; cross-book dispersion from the closing range",
         "rawPrices": [
           {
@@ -5383,7 +5378,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "d7dcdd79a78a5c43"
+        "baselineHash": "932901cc515b7089"
       },
       "systemCentral": {
         "Christopher Padilla": 0.4264,
@@ -5542,7 +5537,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.567Z",
+            "timestamp": "2026-08-20T19:21:09.457Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5582,7 +5577,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.567Z",
+            "timestamp": "2026-08-20T19:21:09.457Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5618,7 +5613,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.567Z",
+            "timestamp": "2026-08-20T19:21:09.457Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5656,7 +5651,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.567Z",
+            "timestamp": "2026-08-20T19:21:09.457Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -5704,13 +5699,13 @@
       },
       "dataHashes": {
         "evidenceEval": "d0c73abf1a3476f7",
-        "baseline": "85200130cca0b582",
+        "baseline": "bf4e7734bea1a4f8",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "854b091cd9361aaf",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "76f242e46c18c4ba",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B13",
       "fight": "Wesley Schultz vs Jackson McVey",
@@ -5719,7 +5714,7 @@
         "probability": 0.3571,
         "forFighter": "Wesley Schultz",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -5751,7 +5746,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "918341242b6eacdc"
+        "baselineHash": "a6918e9a4babc3cc"
       },
       "systemCentral": {
         "Wesley Schultz": 0.371,
@@ -5907,19 +5902,17 @@
             "A_ym0sOW3R4#23442",
             "tRqmUuGULyA#1791",
             "tRqmUuGULyA#11714",
-            "B7O6aJE0TRs#1222",
             "Ff2ez7G1k2o#30633",
             "BlNtPGk8sdc#52808"
           ],
           "contradictoryEvidenceIds": [],
-          "informationOriginCount": 8,
+          "informationOriginCount": 7,
           "originIds": [
             "analyst:greedo plays mma",
             "analyst:mma jawn",
             "analyst:the mike finch show",
             "record:jackson mcvey:n:4,n:6",
             "analyst:jakegerbermma",
-            "analyst:kennyokoyemma",
             "analyst:we want picks",
             "analyst:lucrative james"
           ],
@@ -5963,7 +5956,7 @@
           "shrunkMagnitudeLogOdds": 0.14,
           "finalAppliedLogOdds": 0.14,
           "capOrReductionReason": null,
-          "magnitudeReason": "6 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation/verified_hard_fact, relevance=direct_current_matchup/stable_historical_tendency/general_career_background"
+          "magnitudeReason": "5 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation/verified_hard_fact, relevance=direct_current_matchup/stable_historical_tendency/general_career_background"
         },
         {
           "adjustmentId": "89b14b8beb",
@@ -6453,7 +6446,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6491,7 +6484,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6530,7 +6523,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6569,7 +6562,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6608,7 +6601,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6646,7 +6639,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6682,7 +6675,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6720,7 +6713,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.579Z",
+            "timestamp": "2026-08-20T19:21:09.469Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6734,9 +6727,9 @@
         "conditionsThatWouldMove": []
       },
       "evidenceCoverage": "PARTIALLY COVERED",
-      "independentOrigins": 34,
+      "independentOrigins": 33,
       "originBreakdown": {
-        "analysts": 16,
+        "analysts": 15,
         "publicRecords": 18,
         "externalReports": 0,
         "commentary": 0
@@ -6750,8 +6743,8 @@
       ],
       "leakageRejected": 1,
       "admission": {
-        "claimsConsidered": 64,
-        "claimsAdmitted": 63,
+        "claimsConsidered": 63,
+        "claimsAdmitted": 62,
         "claimsRejected": 1,
         "rejectedForLeakage": 1,
         "rejectedAsMalformed": 0,
@@ -6770,14 +6763,14 @@
         "extractor": "phase5"
       },
       "dataHashes": {
-        "evidenceEval": "4d42b19f14203838",
-        "baseline": "ecf4a6fb2fc24726",
+        "evidenceEval": "bcd66cfa291dfd4f",
+        "baseline": "e459275ae919d16f",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3ab7d49c2375f590",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "1bef5d331446503f",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B01",
       "fight": "Gauge Young vs Kody Steele",
@@ -6786,7 +6779,7 @@
         "probability": 0.6462,
         "forFighter": "Gauge Young",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -6818,7 +6811,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "b82ed183e2bd3aae"
+        "baselineHash": "3971adf43d608f55"
       },
       "systemCentral": {
         "Gauge Young": 0.6462,
@@ -6909,13 +6902,13 @@
       },
       "dataHashes": {
         "evidenceEval": "0b58be9f56ffde1c",
-        "baseline": "389791f12c4edfbb",
+        "baseline": "06b91a9405e30422",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "a2779160dcb3a482",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "8766fd2591677386",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B02",
       "fight": "Anthony Wint vs Terrance Chatman",
@@ -6924,7 +6917,7 @@
         "probability": 0.8812,
         "forFighter": "Anthony Wint",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -6956,7 +6949,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "3c20e91ef94895ed"
+        "baselineHash": "f426794d751ff536"
       },
       "systemCentral": {
         "Anthony Wint": 0.8812,
@@ -7067,13 +7060,13 @@
       },
       "dataHashes": {
         "evidenceEval": "ece3eab6c600e463",
-        "baseline": "323c3e96135b3279",
+        "baseline": "fc9f4bd54dff20b3",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "cd622edf0777fc2f",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "5bf42edf363aa406",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B05",
       "fight": "Serghei Spivac vs Vitor Petrino",
@@ -7081,8 +7074,8 @@
       "marketBaseline": {
         "probability": 0.4202,
         "forFighter": "Serghei Spivac",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7126,22 +7119,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -7151,7 +7144,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "92c670a667787239"
+        "baselineHash": "64e0c5585bdce0aa"
       },
       "systemCentral": {
         "Serghei Spivac": 0.4202,
@@ -7365,7 +7358,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.550Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7401,7 +7394,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7439,7 +7432,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7478,7 +7471,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7517,7 +7510,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7553,7 +7546,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7589,7 +7582,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.551Z",
+            "timestamp": "2026-08-20T19:21:09.442Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -7636,13 +7629,13 @@
       },
       "dataHashes": {
         "evidenceEval": "7150565cef805432",
-        "baseline": "0411c9063f8c96fb",
+        "baseline": "4f03cbf3a40ee815",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "106154153f8b7fd8",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "8925dfc37f548ea5",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B07",
       "fight": "Carli Judice vs Jeisla Chaves",
@@ -7650,8 +7643,8 @@
       "marketBaseline": {
         "probability": 0.8144,
         "forFighter": "Carli Judice",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7695,22 +7688,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -7720,7 +7713,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "7bd380ec34de3141"
+        "baselineHash": "d2e04a848b4a7f16"
       },
       "systemCentral": {
         "Carli Judice": 0.8144,
@@ -7816,7 +7809,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-20T21:27:17.555Z",
+            "timestamp": "2026-08-20T19:21:09.446Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -7863,13 +7856,13 @@
       },
       "dataHashes": {
         "evidenceEval": "4eea0ee49b607c9e",
-        "baseline": "2d86a346fe5d65bc",
+        "baseline": "38dfa9b9d47dc708",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "87fb9b19e1b65ce7",
-      "sealedAt": "2026-08-20T21:27:17.518Z",
+      "forecastId": "9e6e85bee226f5e1",
+      "sealedAt": "2026-08-20T19:21:09.410Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B12",
       "fight": "Gauge Young vs Stanley Dorsainvil",
@@ -7877,8 +7870,8 @@
       "marketBaseline": {
         "probability": 0.5774,
         "forFighter": "Gauge Young",
-        "timestamp": "2026-08-20T21:27:17.510Z",
-        "forecastTimestamp": "2026-08-20T21:27:17.518Z",
+        "timestamp": "2026-08-20T19:21:09.401Z",
+        "forecastTimestamp": "2026-08-20T19:21:09.410Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7922,22 +7915,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-20T21:27:17.510Z",
+            "observedAt": "2026-08-20T19:21:09.401Z",
             "sourceProvided": null
           }
         ],
@@ -7947,7 +7940,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "5f5e165a7a7870ab"
+        "baselineHash": "c4a257f0fef5fcfe"
       },
       "systemCentral": {
         "Gauge Young": 0.5774,
@@ -8038,18 +8031,18 @@
       },
       "dataHashes": {
         "evidenceEval": "fb638dd2ea7283f1",
-        "baseline": "2d2eef86ffe6e76c",
+        "baseline": "2db513c80955cd61",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "f79d9bcb5029d014",
+  "contentHash": "26ad2d0a1b8143b8",
   "supersedes": {
-    "file": "forecast-2026-08-22.v1787261237593.json",
-    "contentHash": "26ad2d0a1b8143b8",
-    "sealHash": "d02b8d0e8192864d"
+    "file": "forecast-2026-08-22.v1787253669484.json",
+    "contentHash": "f0fde0851168c45d",
+    "sealHash": "074ebff1af1a2b80"
   },
-  "sealHash": "88638aa73516f149"
+  "sealHash": "d02b8d0e8192864d"
 }
