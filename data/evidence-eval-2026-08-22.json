@@ -342,19 +342,19 @@
       }
     ]
   },
-  "evaluatedAt": "2026-08-19T23:53:26.026Z",
+  "evaluatedAt": "2026-08-20T02:06:52.308Z",
   "source": "card-evidence-2026-08-22.json",
   "bouts": [
     {
       "boutId": "UFC-2026-08-22-B14",
       "fight": "Elise Reed vs Shanelle Dyer",
       "coverage": "WELL COVERED",
-      "relevantClaims": 55,
+      "relevantClaims": 59,
       "topicCount": 34,
-      "independentOrigins": 32,
+      "independentOrigins": 33,
       "originBreakdown": {
         "analysts": 14,
-        "publicRecords": 18,
+        "publicRecords": 19,
         "externalReports": 0,
         "commentary": 0
       },
@@ -377,6 +377,7 @@
         "analyst:bookie beatdown",
         "record:chanelle.dyer.eight.elise.older.reed.years",
         "analyst:we want picks",
+        "analyst:uselyis",
         "analyst:artem mma",
         "record:chanel dyer:n:8%",
         "record:elise reed:n:0,n:2",
@@ -387,8 +388,8 @@
         "analyst:sean brady steadypicks",
         "analyst:dfs by the numbers",
         "record:against.carol.chanelle.dropped.dyer.fight.foro.three.times",
-        "analyst:uselyis",
         "record:chanel.dyer.losses.submission.wins",
+        "record:carol.chanel.dyer.foro.loss.one.only",
         "record:decision.elise.fight.lost.never.reed",
         "analyst:138 mma"
       ],
@@ -405,6 +406,16 @@
           "quote": "a lot of Reed's fights recently, it's been her getting taken down."
         },
         {
+          "topic": "other",
+          "about": "Elise Reed",
+          "direction": "against_about",
+          "strength": "moderate",
+          "origins": 5,
+          "amplifiers": 5,
+          "claim": "Elise Reed is not the most physical fighter at 115 pounds.",
+          "quote": "at 115 pounds, she's just not the most physical girl going."
+        },
+        {
           "topic": "size_reach",
           "about": "Chanel Dyer",
           "direction": "favors_about",
@@ -413,19 +424,16 @@
           "amplifiers": 3,
           "claim": "Chanel Dyer has a height advantage of two to three inches and a two-inch reach advantage over Elise Reed.",
           "quote": "She's got the height advantage, two, three inches taller, two inch reach advantage"
-        },
-        {
-          "topic": "other",
-          "about": "Elise Reed",
-          "direction": "against_about",
-          "strength": "moderate",
-          "origins": 4,
-          "amplifiers": 4,
-          "claim": "Elise Reed is not the most physical fighter at 115 pounds.",
-          "quote": "at 115 pounds, she's just not the most physical girl going."
         }
       ],
       "strongestMatchupObservations": [
+        {
+          "topic": "striking_offense",
+          "about": "Chanel Dyer",
+          "direction": "favors_about",
+          "independentObservations": 4,
+          "claim": "Chanel Dyer is heavy and very fast with her kicks upstairs and downstairs."
+        },
         {
           "topic": "power",
           "about": "Chanel Dyer",
@@ -439,13 +447,6 @@
           "direction": "favors_about",
           "independentObservations": 3,
           "claim": "Chanel Dyer has a height advantage of two to three inches and a two-inch reach advantage over Elise Reed."
-        },
-        {
-          "topic": "other",
-          "about": "Elise Reed",
-          "direction": "against_about",
-          "independentObservations": 3,
-          "claim": "Elise Reed is not the most physical fighter at 115 pounds."
         }
       ],
       "currentCondition": [],
@@ -454,6 +455,7 @@
         "Elise Reed: recent_form",
         "Elise Reed: recent_form",
         "Chanel Dyer: size_reach",
+        "Elise Reed: other",
         "Elise Reed: durability",
         "Chanelle Dyer: size_reach",
         "Chanel Dyer: recent_form",
@@ -610,6 +612,32 @@
           }
         },
         {
+          "proposition": "Chanel Dyer — striking_offense",
+          "disagreementType": "compatible_claims",
+          "bothCanBeTrue": true,
+          "supporting": {
+            "position": "favors Chanel Dyer",
+            "claims": 4,
+            "independentOrigins": 4,
+            "amplifiers": 4,
+            "strength": "moderate",
+            "examples": [
+              "Chanel Dyer is heavy and very fast with her kicks upstairs and downstairs.",
+              "Chanel Dyer is a significantly better striker than Elise Reed."
+            ]
+          },
+          "opposing": {
+            "position": "against Chanel Dyer",
+            "claims": 1,
+            "independentOrigins": 1,
+            "amplifiers": 1,
+            "strength": "moderate",
+            "examples": [
+              "Chanel Dyer got knocked down three times against Carol Forro."
+            ]
+          }
+        },
+        {
           "proposition": "Elise Reed — durability",
           "disagreementType": "compatible_claims",
           "bothCanBeTrue": true,
@@ -625,39 +653,13 @@
           },
           "opposing": {
             "position": "against Elise Reed",
-            "claims": 5,
+            "claims": 6,
             "independentOrigins": 4,
             "amplifiers": 5,
             "strength": "strong",
             "examples": [
               "Elise Reed's overall durability is not good.",
               "Elise Reed has been finished five times in her career."
-            ]
-          }
-        },
-        {
-          "proposition": "Chanel Dyer — striking_offense",
-          "disagreementType": "compatible_claims",
-          "bothCanBeTrue": true,
-          "supporting": {
-            "position": "favors Chanel Dyer",
-            "claims": 3,
-            "independentOrigins": 3,
-            "amplifiers": 3,
-            "strength": "moderate",
-            "examples": [
-              "Chanel Dyer is a significantly better striker than Elise Reed.",
-              "Chanel Dyer holds a significant advantage in the striking department over Elise Reed."
-            ]
-          },
-          "opposing": {
-            "position": "against Chanel Dyer",
-            "claims": 1,
-            "independentOrigins": 1,
-            "amplifiers": 1,
-            "strength": "moderate",
-            "examples": [
-              "Chanel Dyer got knocked down three times against Carol Forro."
             ]
           }
         },
@@ -2097,29 +2099,32 @@
           "about": "Elise Reed",
           "topic": "other",
           "direction": "against_about",
-          "claimCount": 4,
+          "claimCount": 5,
           "kinds": [
             "film_study_observation",
-            "verified_hard_fact"
+            "verified_hard_fact",
+            "unsupported_narrative"
           ],
           "relevance": [
             "stable_historical_tendency",
-            "direct_current_matchup"
+            "direct_current_matchup",
+            "weakly_relevant"
           ],
           "freshness": [
             "unknown_timeframe"
           ],
           "origin": {
             "originType": "independent_analysis",
-            "independentOrigins": 4,
+            "independentOrigins": 5,
             "originIds": [
               "analyst:bookie beatdown",
               "record:chanelle.dyer.eight.elise.older.reed.years",
               "analyst:we want picks",
+              "analyst:uselyis",
               "analyst:artem mma"
             ],
-            "amplifyingChannels": 4,
-            "totalMentions": 4,
+            "amplifyingChannels": 5,
+            "totalMentions": 5,
             "independentObservations": 3,
             "citedOrigins": [],
             "composition": {
@@ -2127,7 +2132,7 @@
               "recorded": 1,
               "analytical": 3,
               "firsthand": 0,
-              "opinion": 0
+              "opinion": 1
             },
             "amplifiersByOrigin": {
               "analyst:bookie beatdown": [
@@ -2139,6 +2144,9 @@
               "analyst:we want picks": [
                 "We Want Picks"
               ],
+              "analyst:uselyis": [
+                "Uselyis"
+              ],
               "analyst:artem mma": [
                 "Artem MMA"
               ]
@@ -2147,7 +2155,7 @@
             "reportingChain": "3 independent analyst(s)",
             "note": null
           },
-          "marketAwareness": "public_but_possibly_underweighted",
+          "marketAwareness": "widely_public_probably_in_the_market",
           "strength": "moderate",
           "credibilityComponents": {
             "hasExactQuote": true,
@@ -2236,6 +2244,30 @@
               "mentionCount": 1,
               "sources": [
                 "We Want Picks"
+              ]
+            },
+            {
+              "claim": "Elise Reed is on her way out of the organization.",
+              "quote": "Elise Reed's on her way out.",
+              "channel": "Uselyis",
+              "videoId": "6FjxTf75tCo",
+              "segment": {
+                "startChar": 0,
+                "endChar": 2525,
+                "approxMinute": 0
+              },
+              "kind": "unsupported_narrative",
+              "claimClass": "unsupported_narrative",
+              "relevance": "weakly_relevant",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-20T00:54:47+00:00",
+              "about": "Elise Reed",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "other",
+              "mentionCount": 1,
+              "sources": [
+                "Uselyis"
               ]
             },
             {
@@ -2693,7 +2725,7 @@
           "about": "Elise Reed",
           "topic": "durability",
           "direction": "against_about",
-          "claimCount": 5,
+          "claimCount": 6,
           "kinds": [
             "film_study_observation",
             "verified_hard_fact",
@@ -2718,7 +2750,7 @@
               "record:decisions.elise.finished.gets.inside.losing.rather.reed.ufc"
             ],
             "amplifyingChannels": 5,
-            "totalMentions": 5,
+            "totalMentions": 6,
             "independentObservations": 1,
             "citedOrigins": [],
             "composition": {
@@ -2853,6 +2885,30 @@
               "relevance": "stable_historical_tendency",
               "freshness": "long_term_tendency",
               "publishedAt": "2026-08-17T03:54:43+00:00",
+              "about": "Elise Reed",
+              "direction": "against_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "durability",
+              "mentionCount": 1,
+              "sources": [
+                "Uselyis"
+              ]
+            },
+            {
+              "claim": "Elise Reed has been finished four times in the UFC.",
+              "quote": "Elise Reed has been finished four times in the UFC. Four times already",
+              "channel": "Uselyis",
+              "videoId": "6FjxTf75tCo",
+              "segment": {
+                "startChar": 0,
+                "endChar": 2525,
+                "approxMinute": 0
+              },
+              "kind": "verifiable_statistical_claim",
+              "claimClass": "statistical",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-20T00:54:47+00:00",
               "about": "Elise Reed",
               "direction": "against_about",
               "boutId": "UFC-2026-08-22-B14",
@@ -3432,35 +3488,41 @@
           "about": "Chanel Dyer",
           "topic": "recent_form",
           "direction": "neutral",
-          "claimCount": 1,
+          "claimCount": 2,
           "kinds": [
-            "verifiable_statistical_claim"
+            "verifiable_statistical_claim",
+            "verified_hard_fact"
           ],
           "relevance": [
-            "stable_historical_tendency"
+            "stable_historical_tendency",
+            "opponent_specific_historical"
           ],
           "freshness": [
             "unknown_timeframe"
           ],
           "origin": {
             "originType": "public_record",
-            "independentOrigins": 1,
+            "independentOrigins": 2,
             "originIds": [
-              "record:chanel.dyer.losses.submission.wins"
+              "record:chanel.dyer.losses.submission.wins",
+              "record:carol.chanel.dyer.foro.loss.one.only"
             ],
             "amplifyingChannels": 1,
-            "totalMentions": 1,
+            "totalMentions": 2,
             "independentObservations": 0,
             "citedOrigins": [],
             "composition": {
               "reported": 0,
-              "recorded": 1,
+              "recorded": 2,
               "analytical": 0,
               "firsthand": 0,
               "opinion": 0
             },
             "amplifiersByOrigin": {
               "record:chanel.dyer.losses.submission.wins": [
+                "Uselyis"
+              ],
+              "record:carol.chanel.dyer.foro.loss.one.only": [
                 "Uselyis"
               ]
             },
@@ -3478,12 +3540,12 @@
             "checkableAgainstFootageOrRecord": true,
             "specific": true,
             "givesSupportingExample": false,
-            "independentlyCorroborated": false,
+            "independentlyCorroborated": true,
             "amplifiedOnly": false,
             "contradicted": false,
             "recency": "unknown_timeframe",
             "strength": "moderate",
-            "_plus": 4,
+            "_plus": 5,
             "_minus": 1
           },
           "claims": [
@@ -3502,6 +3564,30 @@
               "relevance": "stable_historical_tendency",
               "freshness": "unknown_timeframe",
               "publishedAt": "2026-08-17T03:54:43+00:00",
+              "about": "Chanel Dyer",
+              "direction": "neutral",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "record",
+              "mentionCount": 1,
+              "sources": [
+                "Uselyis"
+              ]
+            },
+            {
+              "claim": "Chanel Dyer's one and only loss is to Carol Foro.",
+              "quote": "Dyer's one and only loss to Carol Fro.",
+              "channel": "Uselyis",
+              "videoId": "6FjxTf75tCo",
+              "segment": {
+                "startChar": 0,
+                "endChar": 2525,
+                "approxMinute": 0
+              },
+              "kind": "verified_hard_fact",
+              "claimClass": "hard_fact",
+              "relevance": "opponent_specific_historical",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-20T00:54:47+00:00",
               "about": "Chanel Dyer",
               "direction": "neutral",
               "boutId": "UFC-2026-08-22-B14",
@@ -3707,6 +3793,177 @@
               "mentionCount": 1,
               "sources": [
                 "138 MMA"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Chanel Dyer",
+          "topic": "striking_offense",
+          "direction": "favors_about",
+          "claimCount": 4,
+          "kinds": [
+            "film_study_observation",
+            "matchup_inference"
+          ],
+          "relevance": [
+            "stable_historical_tendency",
+            "direct_current_matchup"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 4,
+            "originIds": [
+              "analyst:uselyis",
+              "analyst:we want picks",
+              "analyst:the mike finch show",
+              "analyst:sean brady steadypicks"
+            ],
+            "amplifyingChannels": 4,
+            "totalMentions": 4,
+            "independentObservations": 4,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 4,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:uselyis": [
+                "Uselyis"
+              ],
+              "analyst:we want picks": [
+                "We Want Picks"
+              ],
+              "analyst:the mike finch show": [
+                "The Mike Finch Show"
+              ],
+              "analyst:sean brady steadypicks": [
+                "Sean Brady (SteadyPicks)"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "4 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "public_but_possibly_underweighted",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 4,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Chanel Dyer is heavy and very fast with her kicks upstairs and downstairs.",
+              "quote": "Chanel Dyer is heavy with her kicks upstairs and downstairs. Very fast with her kicks as well.",
+              "channel": "Uselyis",
+              "videoId": "6FjxTf75tCo",
+              "segment": {
+                "startChar": 0,
+                "endChar": 2525,
+                "approxMinute": 0
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "stable_historical_tendency",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-20T00:54:47+00:00",
+              "about": "Chanel Dyer",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Uselyis"
+              ]
+            },
+            {
+              "claim": "Chanel Dyer is a significantly better striker than Elise Reed.",
+              "quote": "Chanel Dyer is 10 times the striker.",
+              "channel": "We Want Picks",
+              "videoId": "0vDik7YV1Ls",
+              "segment": {
+                "startChar": 2647,
+                "endChar": 8647,
+                "approxMinute": 3
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-19T19:33:49+00:00",
+              "about": "Chanel Dyer",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "We Want Picks"
+              ]
+            },
+            {
+              "claim": "Chanel Dyer holds a significant advantage in the striking department over Elise Reed.",
+              "quote": "Dyer should just be much better at in the striking department.",
+              "channel": "The Mike Finch Show",
+              "videoId": "Lfu1xdric1Y",
+              "segment": {
+                "startChar": 5126,
+                "endChar": 11126,
+                "approxMinute": 5
+              },
+              "kind": "matchup_inference",
+              "claimClass": "matchup_analysis",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-18T18:05:23+00:00",
+              "about": "Chanel Dyer",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "The Mike Finch Show"
+              ]
+            },
+            {
+              "claim": "Chanel Dyer has strong Muay Thai and striking, and is big, tall, and aggressive.",
+              "quote": "I like her Muay Thai. I like the way she strikes. She's big. She's tall. She's aggressive.",
+              "channel": "Sean Brady (SteadyPicks)",
+              "videoId": "usl_fIv7VGc",
+              "segment": {
+                "startChar": 0,
+                "endChar": 5275,
+                "approxMinute": 0
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "direct_current_matchup",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-19T13:00:15+00:00",
+              "about": "Chanel Dyer",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-22-B14",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Sean Brady (SteadyPicks)"
               ]
             }
           ]
@@ -4132,148 +4389,6 @@
               "mentionCount": 1,
               "sources": [
                 "138 MMA"
-              ]
-            }
-          ]
-        },
-        {
-          "about": "Chanel Dyer",
-          "topic": "striking_offense",
-          "direction": "favors_about",
-          "claimCount": 3,
-          "kinds": [
-            "film_study_observation",
-            "matchup_inference"
-          ],
-          "relevance": [
-            "direct_current_matchup"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "origin": {
-            "originType": "independent_analysis",
-            "independentOrigins": 3,
-            "originIds": [
-              "analyst:we want picks",
-              "analyst:the mike finch show",
-              "analyst:sean brady steadypicks"
-            ],
-            "amplifyingChannels": 3,
-            "totalMentions": 3,
-            "independentObservations": 3,
-            "citedOrigins": [],
-            "composition": {
-              "reported": 0,
-              "recorded": 0,
-              "analytical": 3,
-              "firsthand": 0,
-              "opinion": 0
-            },
-            "amplifiersByOrigin": {
-              "analyst:we want picks": [
-                "We Want Picks"
-              ],
-              "analyst:the mike finch show": [
-                "The Mike Finch Show"
-              ],
-              "analyst:sean brady steadypicks": [
-                "Sean Brady (SteadyPicks)"
-              ]
-            },
-            "maxAmplifiersOnOneOrigin": 1,
-            "reportingChain": "3 independent analyst(s)",
-            "note": null
-          },
-          "marketAwareness": "public_but_possibly_underweighted",
-          "strength": "moderate",
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 4,
-            "_minus": 1
-          },
-          "claims": [
-            {
-              "claim": "Chanel Dyer is a significantly better striker than Elise Reed.",
-              "quote": "Chanel Dyer is 10 times the striker.",
-              "channel": "We Want Picks",
-              "videoId": "0vDik7YV1Ls",
-              "segment": {
-                "startChar": 2647,
-                "endChar": 8647,
-                "approxMinute": 3
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "direct_current_matchup",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-19T19:33:49+00:00",
-              "about": "Chanel Dyer",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-22-B14",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "We Want Picks"
-              ]
-            },
-            {
-              "claim": "Chanel Dyer holds a significant advantage in the striking department over Elise Reed.",
-              "quote": "Dyer should just be much better at in the striking department.",
-              "channel": "The Mike Finch Show",
-              "videoId": "Lfu1xdric1Y",
-              "segment": {
-                "startChar": 5126,
-                "endChar": 11126,
-                "approxMinute": 5
-              },
-              "kind": "matchup_inference",
-              "claimClass": "matchup_analysis",
-              "relevance": "direct_current_matchup",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-18T18:05:23+00:00",
-              "about": "Chanel Dyer",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-22-B14",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "The Mike Finch Show"
-              ]
-            },
-            {
-              "claim": "Chanel Dyer has strong Muay Thai and striking, and is big, tall, and aggressive.",
-              "quote": "I like her Muay Thai. I like the way she strikes. She's big. She's tall. She's aggressive.",
-              "channel": "Sean Brady (SteadyPicks)",
-              "videoId": "usl_fIv7VGc",
-              "segment": {
-                "startChar": 0,
-                "endChar": 5275,
-                "approxMinute": 0
-              },
-              "kind": "film_study_observation",
-              "claimClass": "film_study",
-              "relevance": "direct_current_matchup",
-              "freshness": "unknown_timeframe",
-              "publishedAt": "2026-08-19T13:00:15+00:00",
-              "about": "Chanel Dyer",
-              "direction": "favors_about",
-              "boutId": "UFC-2026-08-22-B14",
-              "evidenceType": "striking",
-              "mentionCount": 1,
-              "sources": [
-                "Sean Brady (SteadyPicks)"
               ]
             }
           ]
@@ -7571,11 +7686,11 @@
       "boutId": "UFC-2026-08-22-B08",
       "fight": "Jamall Emmers vs Lerryan Douglas",
       "coverage": "WELL COVERED",
-      "relevantClaims": 19,
-      "topicCount": 17,
-      "independentOrigins": 16,
+      "relevantClaims": 20,
+      "topicCount": 18,
+      "independentOrigins": 17,
       "originBreakdown": {
-        "analysts": 5,
+        "analysts": 6,
         "publicRecords": 11,
         "externalReports": 0,
         "commentary": 0
@@ -7596,9 +7711,10 @@
         "analyst:dfs by the numbers",
         "record:douglas.finished.larry.losses",
         "record:jamall emmers:n:53%,n:81%",
-        "analyst:we want picks"
+        "analyst:we want picks",
+        "analyst:uselyis"
       ],
-      "channels": 5,
+      "channels": 6,
       "strongestFactual": [
         {
           "topic": "wrestling_offense",
@@ -7694,6 +7810,12 @@
           "about": "Jamall Emmers",
           "marketAwareness": "niche_analytical_interpretation",
           "origins": 1
+        },
+        {
+          "topic": "durability",
+          "about": "Lorraine Douglas",
+          "marketAwareness": "niche_analytical_interpretation",
+          "origins": 1
         }
       ],
       "contradictions": [
@@ -7779,7 +7901,7 @@
         "cardio"
       ],
       "limitations": [
-        "14 topic(s) have no determinable timeframe"
+        "15 topic(s) have no determinable timeframe"
       ],
       "reviewItems": [
         {
@@ -9292,6 +9414,91 @@
               "mentionCount": 1,
               "sources": [
                 "We Want Picks"
+              ]
+            }
+          ]
+        },
+        {
+          "about": "Lorraine Douglas",
+          "topic": "durability",
+          "direction": "favors_about",
+          "claimCount": 1,
+          "kinds": [
+            "film_study_observation"
+          ],
+          "relevance": [
+            "opponent_specific_historical"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "origin": {
+            "originType": "independent_analysis",
+            "independentOrigins": 1,
+            "originIds": [
+              "analyst:uselyis"
+            ],
+            "amplifyingChannels": 1,
+            "totalMentions": 1,
+            "independentObservations": 1,
+            "citedOrigins": [],
+            "composition": {
+              "reported": 0,
+              "recorded": 0,
+              "analytical": 1,
+              "firsthand": 0,
+              "opinion": 0
+            },
+            "amplifiersByOrigin": {
+              "analyst:uselyis": [
+                "Uselyis"
+              ]
+            },
+            "maxAmplifiersOnOneOrigin": 1,
+            "reportingChain": "1 independent analyst(s)",
+            "note": null
+          },
+          "marketAwareness": "niche_analytical_interpretation",
+          "strength": "moderate",
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": false,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 3,
+            "_minus": 1
+          },
+          "claims": [
+            {
+              "claim": "Lorraine Douglas dropped Julian Rosa multiple times using his jab.",
+              "quote": "This guy was dropping Julian Rosa with a jab multiple times.",
+              "channel": "Uselyis",
+              "videoId": "6FjxTf75tCo",
+              "segment": {
+                "startChar": 1932,
+                "endChar": 4370,
+                "approxMinute": 2
+              },
+              "kind": "film_study_observation",
+              "claimClass": "film_study",
+              "relevance": "opponent_specific_historical",
+              "freshness": "unknown_timeframe",
+              "publishedAt": "2026-08-20T00:54:47+00:00",
+              "about": "Lorraine Douglas",
+              "direction": "favors_about",
+              "boutId": "UFC-2026-08-22-B08",
+              "evidenceType": "striking",
+              "mentionCount": 1,
+              "sources": [
+                "Uselyis"
               ]
             }
           ]
