@@ -342,13 +342,570 @@
       }
     ]
   },
-  "sealedAt": "2026-08-21T09:07:05.052Z",
+  "sealedAt": "2026-08-21T07:57:24.107Z",
   "rulesVersion": "7.0.0",
   "marketSource": "bfo",
   "forecasts": [
     {
-      "forecastId": "906bd753d68a0101",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "498539b712375224",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
+      "event": "UFC-2026-08-22",
+      "boutId": "UFC-2026-08-22-B06",
+      "fight": "Marquel Mederos vs Mason Jones",
+      "status": "COMPLETE",
+      "marketBaseline": {
+        "probability": 0.2855,
+        "forFighter": "Marquel Mederos",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
+        "sportsbooks": [
+          "FanDuel",
+          "Caesars",
+          "BetRivers",
+          "BetWay"
+        ],
+        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
+        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
+        "dispersion": 5.02,
+        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
+        "rawPrices": [
+          {
+            "book": "FanDuel",
+            "Marquel Mederos": "+235",
+            "Mason Jones": "-300",
+            "overround": 1.048507,
+            "deVigged": 0.284697
+          },
+          {
+            "book": "Caesars",
+            "Marquel Mederos": "+275",
+            "Mason Jones": "-350",
+            "overround": 1.044445,
+            "deVigged": 0.255319
+          },
+          {
+            "book": "BetRivers",
+            "Marquel Mederos": "+220",
+            "Mason Jones": "-286",
+            "overround": 1.053433,
+            "deVigged": 0.296649
+          },
+          {
+            "book": "BetWay",
+            "Marquel Mederos": "+210",
+            "Mason Jones": "-275",
+            "overround": 1.055914,
+            "deVigged": 0.305499
+          }
+        ],
+        "priceTimestamps": [
+          {
+            "book": "FanDuel",
+            "observedAt": "2026-08-21T07:57:24.098Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "Caesars",
+            "observedAt": "2026-08-21T07:57:24.098Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "BetRivers",
+            "observedAt": "2026-08-21T07:57:24.098Z",
+            "sourceProvided": null
+          },
+          {
+            "book": "BetWay",
+            "observedAt": "2026-08-21T07:57:24.098Z",
+            "sourceProvided": null
+          }
+        ],
+        "clockBasis": "WALL_CLOCK",
+        "derivedFrom": "live multi-book consensus",
+        "staleCheckEnforceable": true,
+        "oldestPriceAgeHours": 0,
+        "fallbackLevel": "A",
+        "missingSourceReasons": [],
+        "baselineHash": "16bf9a56d161d2e0"
+      },
+      "systemCentral": {
+        "Marquel Mederos": 0.2214,
+        "Mason Jones": 0.7786
+      },
+      "systemRange": {
+        "forFighter": "Marquel Mederos",
+        "low": 0.2014,
+        "high": 0.2414
+      },
+      "marketDisagreementPoints": -6.41,
+      "outcomeTree": {
+        "Marquel Mederos": {
+          "win": 0.2214,
+          "byKO": 0.0731,
+          "bySubmission": 0.0376,
+          "byDecision": 0.1107,
+          "koByRound": {
+            "r1": 0.0329,
+            "r2": 0.0234,
+            "r3": 0.0168
+          },
+          "submissionByRound": {
+            "r1": 0.0169,
+            "r2": 0.012,
+            "r3": 0.0086
+          }
+        },
+        "Mason Jones": {
+          "win": 0.7786,
+          "byKO": 0.2569,
+          "bySubmission": 0.1324,
+          "byDecision": 0.3893,
+          "koByRound": {
+            "r1": 0.1156,
+            "r2": 0.0822,
+            "r3": 0.0591
+          },
+          "submissionByRound": {
+            "r1": 0.0596,
+            "r2": 0.0424,
+            "r3": 0.0305
+          }
+        }
+      },
+      "treeCoherent": true,
+      "appliedAdjustments": [
+        {
+          "adjustmentId": "d96eedf0b8",
+          "boutId": "UFC-2026-08-22-B06",
+          "fighterFavored": "Mason Jones",
+          "outcomeAffected": "win",
+          "mechanism": "durability",
+          "evidenceTopics": [
+            "durability"
+          ],
+          "supportingEvidenceIds": [
+            "RVsjMDb-Ovk#57114",
+            "_-lkzydc_gM#23956"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 2,
+          "originIds": [
+            "record:mason jones:n:20",
+            "analyst:the mike finch show"
+          ],
+          "evidenceTypes": [
+            "verifiable_statistical_claim",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "long_term_tendency",
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "niche_analytical_interpretation"
+          ],
+          "direction": "favors Mason Jones",
+          "rawMagnitudeClass": "MINOR",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.06,
+          "finalAppliedLogOdds": 0.06,
+          "capOrReductionReason": null,
+          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=verifiable_statistical_claim/film_study_observation, relevance=stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "e6f45ff858",
+          "boutId": "UFC-2026-08-22-B06",
+          "fighterFavored": "Mason Jones",
+          "outcomeAffected": "win",
+          "mechanism": "activity",
+          "evidenceTopics": [
+            "recent_form"
+          ],
+          "supportingEvidenceIds": [
+            "RVsjMDb-Ovk#57114",
+            "CgKltc4rMYE#31297",
+            "A_ym0sOW3R4#23442"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 3,
+          "originIds": [
+            "record:davis.decisions.jones.klein.losses.ludovit.mason.mike.only.professional",
+            "record:mason jones:n:18,n:2",
+            "record:mason jones:n:10"
+          ],
+          "evidenceTypes": [
+            "verified_hard_fact",
+            "verifiable_statistical_claim"
+          ],
+          "relevance": [
+            "general_career_background",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "long_term_tendency",
+            "unknown_timeframe",
+            "recent_fights"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": true,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": false,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "long_term_tendency",
+            "strength": "strong",
+            "_plus": 5,
+            "_minus": 0
+          },
+          "marketAwareness": [
+            "widely_public_probably_in_the_market"
+          ],
+          "direction": "favors Mason Jones",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=strong, kinds=verified_hard_fact/verifiable_statistical_claim, relevance=general_career_background/stable_historical_tendency"
+        },
+        {
+          "adjustmentId": "d6de79c893",
+          "boutId": "UFC-2026-08-22-B06",
+          "fighterFavored": "Mason Jones",
+          "outcomeAffected": "win",
+          "mechanism": "cardio",
+          "evidenceTopics": [
+            "pressure_pace"
+          ],
+          "supportingEvidenceIds": [
+            "2_v7Xe_e9Fo#19101",
+            "_-lkzydc_gM#15129",
+            "0vDik7YV1Ls#2647"
+          ],
+          "contradictoryEvidenceIds": [],
+          "informationOriginCount": 3,
+          "originIds": [
+            "analyst:mma jawn",
+            "analyst:the mike finch show",
+            "analyst:we want picks"
+          ],
+          "evidenceTypes": [
+            "matchup_inference",
+            "film_study_observation"
+          ],
+          "relevance": [
+            "direct_current_matchup",
+            "stable_historical_tendency"
+          ],
+          "freshness": [
+            "unknown_timeframe"
+          ],
+          "credibilityComponents": {
+            "hasExactQuote": true,
+            "firsthand": false,
+            "secondhand": false,
+            "verifiable": false,
+            "checkableAgainstFootageOrRecord": true,
+            "specific": true,
+            "givesSupportingExample": true,
+            "independentlyCorroborated": true,
+            "amplifiedOnly": false,
+            "contradicted": false,
+            "recency": "unknown_timeframe",
+            "strength": "moderate",
+            "_plus": 5,
+            "_minus": 1
+          },
+          "marketAwareness": [
+            "public_but_possibly_underweighted"
+          ],
+          "direction": "favors Mason Jones",
+          "rawMagnitudeClass": "MODERATE",
+          "liftedTo": null,
+          "liftReason": null,
+          "shrunkMagnitudeLogOdds": 0.14,
+          "finalAppliedLogOdds": 0.14,
+          "capOrReductionReason": null,
+          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
+        }
+      ],
+      "consideredButZero": 5,
+      "netLogOdds": -0.34,
+      "capNote": null,
+      "exploration": {
+        "lane": "exploration",
+        "marketPriorA": 0.2855,
+        "coreAdjustmentLogOdds": -0.34,
+        "coreCentralA": 0.2214,
+        "creativeAdjustmentLogOddsTowardA": -0.2283,
+        "creativeCentralA": 0.1846,
+        "creativeMovePoints": -3.68,
+        "capped": false,
+        "cap": 1.6,
+        "activeHypotheses": 5,
+        "hypotheses": [
+          {
+            "hypothesis": "Mason Jones — durability: Mason Jones has never been finished in his 20 professional fights. (favors_about)",
+            "fighter": "Mason Jones",
+            "boutTopic": "durability",
+            "supportingFacts": [
+              "Mason Jones has never been finished in 20 professional fights.",
+              "give a slight lean to Mason Jones because he has durability. He has toughness. He likes to get into a fight."
+            ],
+            "supportingInferences": [
+              "2 independent origin(s), 2 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "durability → helps Mason Jones",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 2,
+              "amplifyingChannels": 2,
+              "composition": {
+                "reported": 0,
+                "recorded": 1,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Mason Jones shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.35,
+            "magnitudeBucket": "strong_multi_signal",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-21T07:57:24.141Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Mason Jones — psychological: Mason Jones has shown a big heart in his fights. (favors_about)",
+            "fighter": "Mason Jones",
+            "boutTopic": "psychological",
+            "supportingFacts": [
+              "him showing how big his heart is."
+            ],
+            "supportingInferences": [],
+            "verificationStatus": "WEAKLY SUPPORTED",
+            "causalMechanism": "psychological → helps Mason Jones",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Mason Jones shows no psychological effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.1,
+            "magnitudeBucket": "suggestive",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-21T07:57:24.141Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Mason Jones — power: Mason Jones is very well-rounded with good boxing, striking durability, and power. (favors_about)",
+            "fighter": "Mason Jones",
+            "boutTopic": "power",
+            "supportingFacts": [
+              "Mason Jones, is so well-rounded. You know, not only does he have the boxing, and he's super durable on the feet, he's got some power"
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "power → helps Mason Jones",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Mason Jones shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": true,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-21T07:57:24.141Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Mason Jones — striking_defense: Mason Jones is extremely hittable and lacks care for defense or head movement. (against_about)",
+            "fighter": "Mason Jones",
+            "boutTopic": "striking_defense",
+            "supportingFacts": [
+              "someone who is as extremely hitable as Mason Jones and he doesn't have so much care for the defense or the head movement."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "striking_defense → hurts Mason Jones",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Mason Jones shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.22,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-21T07:57:24.141Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          },
+          {
+            "hypothesis": "Mason Jones — cardio: Mason Jones is extremely tough and not much of a round one finisher. (neutral)",
+            "fighter": "Mason Jones",
+            "boutTopic": "cardio",
+            "supportingFacts": [
+              "Mason Jones is extremely tough and I don't think he's much of a round one finisher."
+            ],
+            "supportingInferences": [
+              "1 independent origin(s), 1 channel(s)"
+            ],
+            "verificationStatus": "MECHANISTICALLY RELEVANT",
+            "causalMechanism": "cardio → hurts Mason Jones",
+            "outcomeAffected": "fighter win probability",
+            "originInformation": {
+              "independentOrigins": 1,
+              "amplifyingChannels": 1,
+              "composition": {
+                "reported": 0,
+                "recorded": 0,
+                "analytical": 1,
+                "firsthand": 0,
+                "opinion": 0
+              },
+              "citedOrigins": []
+            },
+            "evidenceAgainst": "none recorded",
+            "alternativeExplanation": "the signal may be noise or already reflected in the line",
+            "novelty": "NOVEL",
+            "probablyPriced": false,
+            "falsificationCondition": "Mason Jones shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
+            "directionTowardSubject": false,
+            "adjustmentLogOdds": 0.2217,
+            "magnitudeBucket": "credible_single_origin",
+            "fatallyContradicted": false,
+            "version": "exploration-2.0.0-read",
+            "timestamp": "2026-08-21T07:57:24.141Z",
+            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
+          }
+        ],
+        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
+      },
+      "uncertainty": {
+        "halfWidthPoints": 2,
+        "primaryDrivers": [],
+        "conditionsThatWouldMove": []
+      },
+      "evidenceCoverage": "WELL COVERED",
+      "independentOrigins": 12,
+      "originBreakdown": {
+        "analysts": 5,
+        "publicRecords": 7,
+        "externalReports": 0,
+        "commentary": 0
+      },
+      "contradictions": 0,
+      "missingInformation": [
+        "wrestling_offense"
+      ],
+      "limitations": [
+        "9 topic(s) have no determinable timeframe"
+      ],
+      "leakageRejected": 0,
+      "admission": {
+        "claimsConsidered": 17,
+        "claimsAdmitted": 17,
+        "claimsRejected": 0,
+        "rejectedForLeakage": 0,
+        "rejectedAsMalformed": 0,
+        "rejections": [],
+        "allRejected": false
+      },
+      "versions": {
+        "rules": "7.0.0",
+        "evaluator": "phase6",
+        "extractor": "phase5"
+      },
+      "dataHashes": {
+        "evidenceEval": "6026e6b62b0fc881",
+        "baseline": "31e89e52587aa2e4",
+        "rules": "22a3275b9ea3fea9"
+      }
+    },
+    {
+      "forecastId": "56bb7e9232cfb61f",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B03",
       "fight": "Roman Dolidze vs Reinier de Ridder",
@@ -356,8 +913,8 @@
       "marketBaseline": {
         "probability": 0.2309,
         "forFighter": "Roman Dolidze",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -401,22 +958,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -426,7 +983,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "b608f6f0bcb5c422"
+        "baselineHash": "4c7640822cd97167"
       },
       "systemCentral": {
         "Roman Dolidze": 0.1675,
@@ -770,7 +1327,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -808,7 +1365,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -846,7 +1403,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -884,7 +1441,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -922,7 +1479,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -958,7 +1515,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -994,7 +1551,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1032,7 +1589,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1070,7 +1627,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.073Z",
+            "timestamp": "2026-08-21T07:57:24.127Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1114,13 +1671,13 @@
       },
       "dataHashes": {
         "evidenceEval": "91a6f2cad922c744",
-        "baseline": "1c176d31cbd734b5",
+        "baseline": "d27b2f2a85b5468b",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "125be75fe07d7706",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "5db441e2a0bb5961",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B04",
       "fight": "Gregory Rodrigues vs Anthony Hernandez",
@@ -1128,8 +1685,8 @@
       "marketBaseline": {
         "probability": 0.3775,
         "forFighter": "Gregory Rodrigues",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -1173,22 +1730,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -1198,7 +1755,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "bfae9c4de7c04088"
+        "baselineHash": "b0cdc635857de4e3"
       },
       "systemCentral": {
         "Gregory Rodrigues": 0.3143,
@@ -1545,7 +2102,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1584,7 +2141,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1622,7 +2179,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1661,7 +2218,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1700,7 +2257,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -1739,7 +2296,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.080Z",
+            "timestamp": "2026-08-21T07:57:24.133Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -1783,570 +2340,13 @@
       },
       "dataHashes": {
         "evidenceEval": "d8fe91ea54e3d306",
-        "baseline": "30fb0a293df0c27a",
+        "baseline": "257a4e9caaf7dbd9",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "ebbbb86e33fb9e6b",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
-      "event": "UFC-2026-08-22",
-      "boutId": "UFC-2026-08-22-B06",
-      "fight": "Marquel Mederos vs Mason Jones",
-      "status": "COMPLETE",
-      "marketBaseline": {
-        "probability": 0.2783,
-        "forFighter": "Marquel Mederos",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
-        "sportsbooks": [
-          "FanDuel",
-          "Caesars",
-          "BetRivers",
-          "BetWay"
-        ],
-        "deVigMethod": "per-book proportional normalisation: fair_A = raw_A / (raw_A + raw_B), applied to EACH book before any combination",
-        "consensusMethod": "unweighted mean of the per-book de-vigged probabilities",
-        "dispersion": 5.02,
-        "note": "A_MULTIBOOK_LIVE (fallback A); 4 independent books, de-vigged per book before combining",
-        "rawPrices": [
-          {
-            "book": "FanDuel",
-            "Marquel Mederos": "+235",
-            "Mason Jones": "-300",
-            "overround": 1.048507,
-            "deVigged": 0.284697
-          },
-          {
-            "book": "Caesars",
-            "Marquel Mederos": "+275",
-            "Mason Jones": "-350",
-            "overround": 1.044445,
-            "deVigged": 0.255319
-          },
-          {
-            "book": "BetRivers",
-            "Marquel Mederos": "+255",
-            "Mason Jones": "-335",
-            "overround": 1.051805,
-            "deVigged": 0.267816
-          },
-          {
-            "book": "BetWay",
-            "Marquel Mederos": "+210",
-            "Mason Jones": "-275",
-            "overround": 1.055914,
-            "deVigged": 0.305499
-          }
-        ],
-        "priceTimestamps": [
-          {
-            "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
-            "sourceProvided": null
-          },
-          {
-            "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
-            "sourceProvided": null
-          }
-        ],
-        "clockBasis": "WALL_CLOCK",
-        "derivedFrom": "live multi-book consensus",
-        "staleCheckEnforceable": true,
-        "oldestPriceAgeHours": 0,
-        "fallbackLevel": "A",
-        "missingSourceReasons": [],
-        "baselineHash": "626104d8b361e49f"
-      },
-      "systemCentral": {
-        "Marquel Mederos": 0.2154,
-        "Mason Jones": 0.7846
-      },
-      "systemRange": {
-        "forFighter": "Marquel Mederos",
-        "low": 0.1954,
-        "high": 0.2354
-      },
-      "marketDisagreementPoints": -6.29,
-      "outcomeTree": {
-        "Marquel Mederos": {
-          "win": 0.2154,
-          "byKO": 0.0711,
-          "bySubmission": 0.0366,
-          "byDecision": 0.1077,
-          "koByRound": {
-            "r1": 0.032,
-            "r2": 0.0228,
-            "r3": 0.0164
-          },
-          "submissionByRound": {
-            "r1": 0.0165,
-            "r2": 0.0117,
-            "r3": 0.0084
-          }
-        },
-        "Mason Jones": {
-          "win": 0.7846,
-          "byKO": 0.2589,
-          "bySubmission": 0.1334,
-          "byDecision": 0.3923,
-          "koByRound": {
-            "r1": 0.1165,
-            "r2": 0.0828,
-            "r3": 0.0595
-          },
-          "submissionByRound": {
-            "r1": 0.06,
-            "r2": 0.0427,
-            "r3": 0.0307
-          }
-        }
-      },
-      "treeCoherent": true,
-      "appliedAdjustments": [
-        {
-          "adjustmentId": "d96eedf0b8",
-          "boutId": "UFC-2026-08-22-B06",
-          "fighterFavored": "Mason Jones",
-          "outcomeAffected": "win",
-          "mechanism": "durability",
-          "evidenceTopics": [
-            "durability"
-          ],
-          "supportingEvidenceIds": [
-            "RVsjMDb-Ovk#57114",
-            "_-lkzydc_gM#23956"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 2,
-          "originIds": [
-            "record:mason jones:n:20",
-            "analyst:the mike finch show"
-          ],
-          "evidenceTypes": [
-            "verifiable_statistical_claim",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "long_term_tendency",
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "strong",
-            "_plus": 5,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "niche_analytical_interpretation"
-          ],
-          "direction": "favors Mason Jones",
-          "rawMagnitudeClass": "MINOR",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.06,
-          "finalAppliedLogOdds": 0.06,
-          "capOrReductionReason": null,
-          "magnitudeReason": "2 independent origin(s), strength=strong, kinds=verifiable_statistical_claim/film_study_observation, relevance=stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "e6f45ff858",
-          "boutId": "UFC-2026-08-22-B06",
-          "fighterFavored": "Mason Jones",
-          "outcomeAffected": "win",
-          "mechanism": "activity",
-          "evidenceTopics": [
-            "recent_form"
-          ],
-          "supportingEvidenceIds": [
-            "RVsjMDb-Ovk#57114",
-            "CgKltc4rMYE#31297",
-            "A_ym0sOW3R4#23442"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "record:davis.decisions.jones.klein.losses.ludovit.mason.mike.only.professional",
-            "record:mason jones:n:18,n:2",
-            "record:mason jones:n:10"
-          ],
-          "evidenceTypes": [
-            "verified_hard_fact",
-            "verifiable_statistical_claim"
-          ],
-          "relevance": [
-            "general_career_background",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "long_term_tendency",
-            "unknown_timeframe",
-            "recent_fights"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": true,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": false,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "long_term_tendency",
-            "strength": "strong",
-            "_plus": 5,
-            "_minus": 0
-          },
-          "marketAwareness": [
-            "widely_public_probably_in_the_market"
-          ],
-          "direction": "favors Mason Jones",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=strong, kinds=verified_hard_fact/verifiable_statistical_claim, relevance=general_career_background/stable_historical_tendency"
-        },
-        {
-          "adjustmentId": "d6de79c893",
-          "boutId": "UFC-2026-08-22-B06",
-          "fighterFavored": "Mason Jones",
-          "outcomeAffected": "win",
-          "mechanism": "cardio",
-          "evidenceTopics": [
-            "pressure_pace"
-          ],
-          "supportingEvidenceIds": [
-            "2_v7Xe_e9Fo#19101",
-            "_-lkzydc_gM#15129",
-            "0vDik7YV1Ls#2647"
-          ],
-          "contradictoryEvidenceIds": [],
-          "informationOriginCount": 3,
-          "originIds": [
-            "analyst:mma jawn",
-            "analyst:the mike finch show",
-            "analyst:we want picks"
-          ],
-          "evidenceTypes": [
-            "matchup_inference",
-            "film_study_observation"
-          ],
-          "relevance": [
-            "direct_current_matchup",
-            "stable_historical_tendency"
-          ],
-          "freshness": [
-            "unknown_timeframe"
-          ],
-          "credibilityComponents": {
-            "hasExactQuote": true,
-            "firsthand": false,
-            "secondhand": false,
-            "verifiable": false,
-            "checkableAgainstFootageOrRecord": true,
-            "specific": true,
-            "givesSupportingExample": true,
-            "independentlyCorroborated": true,
-            "amplifiedOnly": false,
-            "contradicted": false,
-            "recency": "unknown_timeframe",
-            "strength": "moderate",
-            "_plus": 5,
-            "_minus": 1
-          },
-          "marketAwareness": [
-            "public_but_possibly_underweighted"
-          ],
-          "direction": "favors Mason Jones",
-          "rawMagnitudeClass": "MODERATE",
-          "liftedTo": null,
-          "liftReason": null,
-          "shrunkMagnitudeLogOdds": 0.14,
-          "finalAppliedLogOdds": 0.14,
-          "capOrReductionReason": null,
-          "magnitudeReason": "3 independent origin(s), strength=moderate, kinds=matchup_inference/film_study_observation, relevance=direct_current_matchup/stable_historical_tendency"
-        }
-      ],
-      "consideredButZero": 5,
-      "netLogOdds": -0.34,
-      "capNote": null,
-      "exploration": {
-        "lane": "exploration",
-        "marketPriorA": 0.2783,
-        "coreAdjustmentLogOdds": -0.34,
-        "coreCentralA": 0.2154,
-        "creativeAdjustmentLogOddsTowardA": -0.2283,
-        "creativeCentralA": 0.1793,
-        "creativeMovePoints": -3.61,
-        "capped": false,
-        "cap": 1.6,
-        "activeHypotheses": 5,
-        "hypotheses": [
-          {
-            "hypothesis": "Mason Jones — durability: Mason Jones has never been finished in his 20 professional fights. (favors_about)",
-            "fighter": "Mason Jones",
-            "boutTopic": "durability",
-            "supportingFacts": [
-              "Mason Jones has never been finished in 20 professional fights.",
-              "give a slight lean to Mason Jones because he has durability. He has toughness. He likes to get into a fight."
-            ],
-            "supportingInferences": [
-              "2 independent origin(s), 2 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "durability → helps Mason Jones",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 2,
-              "amplifyingChannels": 2,
-              "composition": {
-                "reported": 0,
-                "recorded": 1,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mason Jones shows no durability effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.35,
-            "magnitudeBucket": "strong_multi_signal",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.087Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Mason Jones — psychological: Mason Jones has shown a big heart in his fights. (favors_about)",
-            "fighter": "Mason Jones",
-            "boutTopic": "psychological",
-            "supportingFacts": [
-              "him showing how big his heart is."
-            ],
-            "supportingInferences": [],
-            "verificationStatus": "WEAKLY SUPPORTED",
-            "causalMechanism": "psychological → helps Mason Jones",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mason Jones shows no psychological effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.1,
-            "magnitudeBucket": "suggestive",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.087Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Mason Jones — power: Mason Jones is very well-rounded with good boxing, striking durability, and power. (favors_about)",
-            "fighter": "Mason Jones",
-            "boutTopic": "power",
-            "supportingFacts": [
-              "Mason Jones, is so well-rounded. You know, not only does he have the boxing, and he's super durable on the feet, he's got some power"
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "power → helps Mason Jones",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mason Jones shows no power effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": true,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.087Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Mason Jones — striking_defense: Mason Jones is extremely hittable and lacks care for defense or head movement. (against_about)",
-            "fighter": "Mason Jones",
-            "boutTopic": "striking_defense",
-            "supportingFacts": [
-              "someone who is as extremely hitable as Mason Jones and he doesn't have so much care for the defense or the head movement."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "striking_defense → hurts Mason Jones",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mason Jones shows no striking_defense effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.22,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.087Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          },
-          {
-            "hypothesis": "Mason Jones — cardio: Mason Jones is extremely tough and not much of a round one finisher. (neutral)",
-            "fighter": "Mason Jones",
-            "boutTopic": "cardio",
-            "supportingFacts": [
-              "Mason Jones is extremely tough and I don't think he's much of a round one finisher."
-            ],
-            "supportingInferences": [
-              "1 independent origin(s), 1 channel(s)"
-            ],
-            "verificationStatus": "MECHANISTICALLY RELEVANT",
-            "causalMechanism": "cardio → hurts Mason Jones",
-            "outcomeAffected": "fighter win probability",
-            "originInformation": {
-              "independentOrigins": 1,
-              "amplifyingChannels": 1,
-              "composition": {
-                "reported": 0,
-                "recorded": 0,
-                "analytical": 1,
-                "firsthand": 0,
-                "opinion": 0
-              },
-              "citedOrigins": []
-            },
-            "evidenceAgainst": "none recorded",
-            "alternativeExplanation": "the signal may be noise or already reflected in the line",
-            "novelty": "NOVEL",
-            "probablyPriced": false,
-            "falsificationCondition": "Mason Jones shows no cardio effect at the weigh-in / in-fight, or a credible source disconfirms it before first bell",
-            "directionTowardSubject": false,
-            "adjustmentLogOdds": 0.2217,
-            "magnitudeBucket": "credible_single_origin",
-            "fatallyContradicted": false,
-            "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.087Z",
-            "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
-          }
-        ],
-        "label": "EXPLORATION — creative, capped, prospectively graded, unproven. Separate from the frozen v7.0.0 core."
-      },
-      "uncertainty": {
-        "halfWidthPoints": 2,
-        "primaryDrivers": [],
-        "conditionsThatWouldMove": []
-      },
-      "evidenceCoverage": "WELL COVERED",
-      "independentOrigins": 12,
-      "originBreakdown": {
-        "analysts": 5,
-        "publicRecords": 7,
-        "externalReports": 0,
-        "commentary": 0
-      },
-      "contradictions": 0,
-      "missingInformation": [
-        "wrestling_offense"
-      ],
-      "limitations": [
-        "9 topic(s) have no determinable timeframe"
-      ],
-      "leakageRejected": 0,
-      "admission": {
-        "claimsConsidered": 17,
-        "claimsAdmitted": 17,
-        "claimsRejected": 0,
-        "rejectedForLeakage": 0,
-        "rejectedAsMalformed": 0,
-        "rejections": [],
-        "allRejected": false
-      },
-      "versions": {
-        "rules": "7.0.0",
-        "evaluator": "phase6",
-        "extractor": "phase5"
-      },
-      "dataHashes": {
-        "evidenceEval": "6026e6b62b0fc881",
-        "baseline": "765eaf75fcf52d2a",
-        "rules": "22a3275b9ea3fea9"
-      }
-    },
-    {
-      "forecastId": "1d39d9840338ca8e",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "4e1ff51bfe692bc9",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B09",
       "fight": "Kennedy Nzechukwu vs Shamil Gaziev",
@@ -2354,8 +2354,8 @@
       "marketBaseline": {
         "probability": 0.4404,
         "forFighter": "Kennedy Nzechukwu",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -2399,22 +2399,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -2424,7 +2424,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "bd38eb08ed6cb5e0"
+        "baselineHash": "6427c2a2ea959484"
       },
       "systemCentral": {
         "Kennedy Nzechukwu": 0.4901,
@@ -2757,7 +2757,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2795,7 +2795,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2833,7 +2833,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2871,7 +2871,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2910,7 +2910,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2949,7 +2949,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -2987,7 +2987,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3025,7 +3025,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3063,7 +3063,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3099,7 +3099,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3135,7 +3135,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.097Z",
+            "timestamp": "2026-08-21T07:57:24.150Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -3189,13 +3189,13 @@
       },
       "dataHashes": {
         "evidenceEval": "269b5ab03f901a52",
-        "baseline": "94fc33e196ffd6d6",
+        "baseline": "bcf3e76b49f38055",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "8fc511a0a9c09d25",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "4d8f23751d90bc09",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B13",
       "fight": "Wesley Schultz vs Jackson McVey",
@@ -3204,7 +3204,7 @@
         "probability": 0.3571,
         "forFighter": "Wesley Schultz",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -3236,7 +3236,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "10c26dac05c79672"
+        "baselineHash": "897ba641548cfc15"
       },
       "systemCentral": {
         "Wesley Schultz": 0.4042,
@@ -3941,7 +3941,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -3979,7 +3979,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4015,7 +4015,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4053,7 +4053,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4092,7 +4092,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4131,7 +4131,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4170,7 +4170,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4208,7 +4208,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4247,7 +4247,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -4283,7 +4283,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.113Z",
+            "timestamp": "2026-08-21T07:57:24.165Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -4340,13 +4340,13 @@
       },
       "dataHashes": {
         "evidenceEval": "edf04c68d7d141d6",
-        "baseline": "acfdd423dc5542ed",
+        "baseline": "bc3c4b37ae2ba5eb",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "d3d6924eaf07244d",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "5e542453825c9a58",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B14",
       "fight": "Elise Reed vs Shanelle Dyer",
@@ -4354,8 +4354,8 @@
       "marketBaseline": {
         "probability": 0.138,
         "forFighter": "Elise Reed",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -4399,22 +4399,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -4424,7 +4424,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "d46ec49a012a3c83"
+        "baselineHash": "2876f758110aecf6"
       },
       "systemCentral": {
         "Elise Reed": 0.0926,
@@ -5116,7 +5116,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5152,7 +5152,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5190,7 +5190,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5228,7 +5228,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5267,7 +5267,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5305,7 +5305,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5344,7 +5344,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5382,7 +5382,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5420,7 +5420,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5456,7 +5456,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5495,7 +5495,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5531,7 +5531,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5569,7 +5569,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5607,7 +5607,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.122Z",
+            "timestamp": "2026-08-21T07:57:24.174Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -5658,13 +5658,13 @@
       },
       "dataHashes": {
         "evidenceEval": "0632daf4f048b933",
-        "baseline": "3e13a8d4a0709c17",
+        "baseline": "f5d3dcaa57846302",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3933162c8de167cf",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "46ba5a29c24cc555",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B08",
       "fight": "Jamall Emmers vs Lerryan Douglas",
@@ -5672,8 +5672,8 @@
       "marketBaseline": {
         "probability": 0.2333,
         "forFighter": "Jamall Emmers",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -5717,22 +5717,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -5742,7 +5742,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "dd862dee4bb9ebef"
+        "baselineHash": "fd4a695f127783be"
       },
       "systemCentral": {
         "Jamall Emmers": 0.2554,
@@ -5959,7 +5959,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -5995,7 +5995,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6033,7 +6033,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6069,7 +6069,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6107,7 +6107,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6143,7 +6143,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.092Z",
+            "timestamp": "2026-08-21T07:57:24.145Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6190,13 +6190,13 @@
       },
       "dataHashes": {
         "evidenceEval": "e94577126eff5d15",
-        "baseline": "9c6098f2af6ac2ed",
+        "baseline": "bfdb87fa24cff843",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "2ab4369b10706e45",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "33db678aa2dacaca",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B11",
       "fight": "Ryan Kuse vs Marcio Barbosa",
@@ -6204,8 +6204,8 @@
       "marketBaseline": {
         "probability": 0.1333,
         "forFighter": "Ryan Kuse",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -6249,22 +6249,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -6274,7 +6274,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "816eff1474b4edfb"
+        "baselineHash": "8e96a5fe74568345"
       },
       "systemCentral": {
         "Ryan Kuse": 0.1118,
@@ -6495,7 +6495,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.101Z",
+            "timestamp": "2026-08-21T07:57:24.154Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6533,7 +6533,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.101Z",
+            "timestamp": "2026-08-21T07:57:24.154Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6571,7 +6571,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.101Z",
+            "timestamp": "2026-08-21T07:57:24.154Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6617,13 +6617,13 @@
       },
       "dataHashes": {
         "evidenceEval": "630739c87942d3c4",
-        "baseline": "d6a9aecf14a408c7",
+        "baseline": "0753bd039599f962",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "c4748ee47c6df33b",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "ebd259e6b968f522",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B10",
       "fight": "Christopher Padilla vs Nasrat Haqparast",
@@ -6632,7 +6632,7 @@
         "probability": 0.4118,
         "forFighter": "Christopher Padilla",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -6664,7 +6664,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "a9a81b7fc0fbdbf0"
+        "baselineHash": "aabe2efd30d4d8b3"
       },
       "systemCentral": {
         "Christopher Padilla": 0.4264,
@@ -6823,7 +6823,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.099Z",
+            "timestamp": "2026-08-21T07:57:24.152Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6863,7 +6863,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.099Z",
+            "timestamp": "2026-08-21T07:57:24.152Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6899,7 +6899,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.099Z",
+            "timestamp": "2026-08-21T07:57:24.152Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -6937,7 +6937,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.099Z",
+            "timestamp": "2026-08-21T07:57:24.152Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -6985,13 +6985,13 @@
       },
       "dataHashes": {
         "evidenceEval": "d0c73abf1a3476f7",
-        "baseline": "f637cf31cc12b809",
+        "baseline": "296b91d418fce71a",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3b6415b252aa3d0e",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "b53f07997667b750",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B01",
       "fight": "Gauge Young vs Kody Steele",
@@ -7000,7 +7000,7 @@
         "probability": 0.6462,
         "forFighter": "Gauge Young",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -7032,7 +7032,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "a234d50677a3a1c1"
+        "baselineHash": "df99e4f28839f5ee"
       },
       "systemCentral": {
         "Gauge Young": 0.6462,
@@ -7123,13 +7123,13 @@
       },
       "dataHashes": {
         "evidenceEval": "0b58be9f56ffde1c",
-        "baseline": "79403f13c78f2973",
+        "baseline": "0d6871bbbeb4d7b8",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "1644a861a4f8d4f0",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "bd35d289bf71318b",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B02",
       "fight": "Anthony Wint vs Terrance Chatman",
@@ -7138,7 +7138,7 @@
         "probability": 0.8812,
         "forFighter": "Anthony Wint",
         "timestamp": null,
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "BestFightOdds opening consensus"
         ],
@@ -7170,7 +7170,7 @@
         "missingSourceReasons": [
           "A: no live multi-book snapshot supplied"
         ],
-        "baselineHash": "3238d5e4a708877d"
+        "baselineHash": "448fdc73b7ebe7c6"
       },
       "systemCentral": {
         "Anthony Wint": 0.8812,
@@ -7281,13 +7281,13 @@
       },
       "dataHashes": {
         "evidenceEval": "ece3eab6c600e463",
-        "baseline": "6e5e2a31a485d13f",
+        "baseline": "2451bd9d1b71b75a",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "ed5f79b45391eb45",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "72ddbdd3896767a4",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B05",
       "fight": "Serghei Spivac vs Vitor Petrino",
@@ -7295,8 +7295,8 @@
       "marketBaseline": {
         "probability": 0.4185,
         "forFighter": "Serghei Spivac",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7340,22 +7340,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -7365,7 +7365,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "7ed51afe4bbc97f5"
+        "baselineHash": "428ba88b918dc6ca"
       },
       "systemCentral": {
         "Serghei Spivac": 0.4185,
@@ -7579,7 +7579,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.083Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7615,7 +7615,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7653,7 +7653,7 @@
             "magnitudeBucket": "credible_single_origin",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7692,7 +7692,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7731,7 +7731,7 @@
             "magnitudeBucket": "strong_multi_signal",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7767,7 +7767,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           },
           {
@@ -7803,7 +7803,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.084Z",
+            "timestamp": "2026-08-21T07:57:24.137Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -7850,13 +7850,13 @@
       },
       "dataHashes": {
         "evidenceEval": "7150565cef805432",
-        "baseline": "9f4c947e87ee6c7a",
+        "baseline": "b4e2bdecf85fd76f",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "3b0f15a78d3f8ca2",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "c594b493ebacd455",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B07",
       "fight": "Carli Judice vs Jeisla Chaves",
@@ -7864,8 +7864,8 @@
       "marketBaseline": {
         "probability": 0.8149,
         "forFighter": "Carli Judice",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -7909,22 +7909,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -7934,7 +7934,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "9a53c235c07f8ac2"
+        "baselineHash": "caba0da7320fc346"
       },
       "systemCentral": {
         "Carli Judice": 0.8149,
@@ -8030,7 +8030,7 @@
             "magnitudeBucket": "suggestive",
             "fatallyContradicted": false,
             "version": "exploration-2.0.0-read",
-            "timestamp": "2026-08-21T09:07:05.088Z",
+            "timestamp": "2026-08-21T07:57:24.142Z",
             "label": "EXPLORATION — creative speculative hypothesis, capped, prospectively graded, unproven"
           }
         ],
@@ -8077,13 +8077,13 @@
       },
       "dataHashes": {
         "evidenceEval": "4eea0ee49b607c9e",
-        "baseline": "921fddbec56554a2",
+        "baseline": "dbb186edd2304084",
         "rules": "22a3275b9ea3fea9"
       }
     },
     {
-      "forecastId": "0d7ef1972f36498a",
-      "sealedAt": "2026-08-21T09:07:05.052Z",
+      "forecastId": "5cc0bc8dfab8d0f9",
+      "sealedAt": "2026-08-21T07:57:24.107Z",
       "event": "UFC-2026-08-22",
       "boutId": "UFC-2026-08-22-B12",
       "fight": "Gauge Young vs Stanley Dorsainvil",
@@ -8091,8 +8091,8 @@
       "marketBaseline": {
         "probability": 0.5774,
         "forFighter": "Gauge Young",
-        "timestamp": "2026-08-21T09:07:05.043Z",
-        "forecastTimestamp": "2026-08-21T09:07:05.052Z",
+        "timestamp": "2026-08-21T07:57:24.098Z",
+        "forecastTimestamp": "2026-08-21T07:57:24.107Z",
         "sportsbooks": [
           "FanDuel",
           "Caesars",
@@ -8136,22 +8136,22 @@
         "priceTimestamps": [
           {
             "book": "FanDuel",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "Caesars",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetRivers",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           },
           {
             "book": "BetWay",
-            "observedAt": "2026-08-21T09:07:05.043Z",
+            "observedAt": "2026-08-21T07:57:24.098Z",
             "sourceProvided": null
           }
         ],
@@ -8161,7 +8161,7 @@
         "oldestPriceAgeHours": 0,
         "fallbackLevel": "A",
         "missingSourceReasons": [],
-        "baselineHash": "49c6e5432faad432"
+        "baselineHash": "8cee11ee97bb9eab"
       },
       "systemCentral": {
         "Gauge Young": 0.5774,
@@ -8252,18 +8252,18 @@
       },
       "dataHashes": {
         "evidenceEval": "fb638dd2ea7283f1",
-        "baseline": "f2e07fa203e3d30a",
+        "baseline": "610cd81fbefc9c1c",
         "rules": "22a3275b9ea3fea9"
       }
     }
   ],
   "sealedBy": "run-forecast.js",
   "immutable": true,
-  "contentHash": "8b402ff1a55a53ae",
+  "contentHash": "d0e85e0f0eea6071",
   "supersedes": {
-    "file": "forecast-2026-08-22.v1787303225127.json",
-    "contentHash": "d0e85e0f0eea6071",
-    "sealHash": "caddb49729c76728"
+    "file": "forecast-2026-08-22.v1787299044179.json",
+    "contentHash": "82502658c84dbd1f",
+    "sealHash": "95270e28d55c0436"
   },
-  "sealHash": "fce94d2d58ffa958"
+  "sealHash": "caddb49729c76728"
 }
