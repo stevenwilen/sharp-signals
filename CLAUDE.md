@@ -20,23 +20,11 @@ build parlays), not an edge. The old market-beating machinery is gone; do not re
   calibrated `confidencePct`, a tier `label` (STRONG/LEAN/SLIGHT/TOSS-UP/UNDER-COVERED/NO-READ), `coverage`
   (how many ranked channels), the `why` (reasons the pick wins) + an honest `counterpoint`, and the `who`
   (the ranked channels behind it, with their tier). `run-confidence.js` writes it; the dashboard renders it.
-- **`evidenceBalance` + `expect` + `watchFor` + `liveWatchPrinciple/Protocol` (2026-08-17/18)** — the operator WATCHES the fights,
-  and sees things the corpus cannot. `evidenceBalance.oneSided` flags a read where nobody argued the other
-  side (UFC 330's 92% Njokuani/Alvarez had four reasons FOR and an empty counterpoint, and lost);
-  `watchFor` turns each counter-claim into an observable cue via a fixed topic→cue table; the card-level
-  `liveWatchProtocol` carries the standing checks the pick corpus structurally cannot supply. **None of
-  it feeds a confidence number and none of it mentions stakes or trading** — it exists so what the
-  operator sees live has something concrete to be checked against.
-- **ONE MOMENT IS NOT A PATTERN (2026-08-18).** The first cut listed every falsifier as an equal bullet,
-  and the operator reported the obvious failure: something on that list happens in EVERY fight, so the
-  first one to occur reads as the pick collapsing. Bailing because a favourite got taken down once and
-  stood straight back up is worse than showing nothing. So each cue in `OBSERVABLE` now carries
-  `confirms` (repetition or duration — the bar) and `dismisses` (the one-off that must NOT count);
-  exactly one item is `rank: primary`; live-OBSERVABLE topics outrank background ones (`live: false` on
-  `recent_form`/`quality_of_opposition`, which won on origins and led three straight fights with a cue
-  nobody can see); and `expect` states what the read looks like WORKING, so the card is not all red.
-  Cues use a `{o}` placeholder for the other fighter and NO gendered pronouns — the table is applied in
-  both directions and this roster has women's divisions.
+- **`evidenceBalance` (2026-08-17)** — flags a read where the corpus argued only ONE way. UFC 330's 92%
+  Njokuani/Alvarez carried four reasons FOR and an empty counterpoint, rendered as a blank space that
+  read as "no concerns" when it meant "nobody looked". It lost. Seventeen channels agreeing is not
+  seventeen confirmations; it is one case seventeen times. A fight with NO evidence either way is
+  UNCOVERED, not one-sided. It does not feed `confidencePct`.
 - **Channel weight = track record.** `lib/channel-weights.js` turns the graded record
   (`data/sources_graded.json`) into a per-channel weight (tier A/B/C/D, shrunk by sample). Honest: below
   tier A the edge signal is mostly noise, so weights are coarse and a thin sample can never dominate.
@@ -119,8 +107,9 @@ Read these before writing code; each cost real time.
   evaluated claims on six cards, 21 were tagged `psychological` (~1%). A technically better favourite who
   fights reluctantly — too much respect, no urgency, countering instead of initiating — is invisible to a
   consensus of pre-fight breakdowns. Do NOT try to model it from the transcripts; the signal is not there.
-  The answer is `watchFor`/`liveWatchProtocol`: hand the operator the falsifiers so their own eyes do the
-  part the corpus cannot. Never let that path leak into `confidencePct`.
+  A live-watch aid (`watchFor`/`expect`/`liveWatchProtocol`, 2026-08-17) was built to hand the operator
+  falsifiers to check against while watching, and REMOVED on 2026-08-22 at their request. Do not rebuild
+  it unasked. The corpus limitation is real and stands; the system simply does not try to cover it.
 - **Kalshi's KXUFCFIGHT series is not only UFC cards.** Dana White's Contender Series sits in the same
   series: a 5-fight Tuesday prospect showcase that essentially no prediction channel previews. The
   dispatcher takes the SOONEST open card, so on 2026-08-18 it took DWCS, `make-card-selection` correctly
