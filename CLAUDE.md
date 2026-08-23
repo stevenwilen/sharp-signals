@@ -97,6 +97,21 @@ Read these before writing code; each cost real time.
   ENTIRE high-confidence band — in no bucket at all, still counted in `accuracy`/`brier` but invisible
   on the dashboard, exactly where the operator most needs to check the number. The top bucket is now
   open-ended and an invariant exits 1 if any read falls outside the table. Do not close it again.
+- **Kalshi forgets, so the scoreboard must not depend on it.** Kalshi serves ~63 days of settled
+  markets. `run-fit-calibration` resolved every past read against that live list, so the oldest card
+  silently dropped out of `graded` each week — the record CHURNED instead of growing and could never
+  exceed ~8 cards, with no error to notice. It now resolves from `data/channel-results.json`
+  (`CG.winnerFromLedger`, permanent, back to 2024) and falls back to Kalshi only for something not yet
+  recorded. Keep that order.
+- **The headline must not blend covered and UNDER-COVERED reads.** A read below 3 channels is labelled
+  UNDER-COVERED — the engine saying too few voices weighed in to trust it — and was then folded into one
+  accuracy number anyway. They run 5/10 while covered reads run 59/73 (81%), so the blend understated
+  the engine AND hid that the thin ones are near coin-flips. `byCoverage` reports both. Do not drop the
+  thin ones instead: that would flatter the record.
+- **Kalshi lists some bouts twice.** 2026-08-22 carried Dolidze/de Ridder and Wint/Chatman as two event
+  tickers each, and the sealed card carried the duplicates through. `run-fit-calibration` dedupes by
+  surname pair before scoring. Separately, a fighter can legitimately appear in two DIFFERENT bouts on
+  one card (Gauge Young, 2026-08-22) — that is not a duplicate and must not be deduped away.
 - **Never score a card with weights that already know how it ended.** `run-fit-calibration.js` rebuilds
   each past card with the channel weights as of THAT card (`CG.rowsFromLedger({before})` →
   `W.buildFrom` → `C.buildCard(date, {weights})`). Grading a channel on a fight and then scoring its

@@ -69,12 +69,29 @@ function settledCards() {
     const weights = weightsAsOf(card);
     if (weights) walkForward++;
     const conf = C.buildCard(card, { weights });
+    const cardMs = Date.parse(`${card}T00:00:00Z`);
+    const seen = new Set();
     for (const f of conf.fights) {
       if (!f.pick) continue;
-      // the settled market whose YES side IS the picked fighter -> did the pick win?
-      const mkt = cardMkts.find((m) => N.surname(m.yes_sub_title) && C.surnameEq(N.surname(m.yes_sub_title), N.surname(f.pick)));
-      const won = mkt ? R.wonFromMarket(mkt) : null;
-      if (won !== 0 && won !== 1) continue;   // void / unmatched -> not a calibration point
+      // Kalshi lists some bouts twice under different event tickers (2026-08-22 carried Dolidze/de Ridder
+      // and Wint/Chatman as two events each), and the sealed card carries the duplicates through. Scoring
+      // both counts one fight twice in the record. First occurrence wins.
+      const key = [N.surname(f.a), N.surname(f.b)].sort().join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      // THE LEDGER FIRST, Kalshi second. The ledger keeps every winner permanently; Kalshi's settled list
+      // is a rolling ~63-day window, so resolving only against it meant the oldest card silently fell out
+      // of the scoreboard every week (2026-07-11's 14 reads were 20 days from vanishing) and the record
+      // could never grow past ~8 cards. Kalshi still covers anything the ledger has not recorded yet —
+      // a late-settling main event graded before it closed, which is how UFC 330's Makhachev read went
+      // ungraded for a week.
+      let won = CG.winnerFromLedger(ledger, f.pick, f.opponent || (f.pick === f.a ? f.b : f.a), cardMs, N.surname, C.surnameEq);
+      if (won !== 0 && won !== 1) {
+        const mkt = cardMkts.find((m) => N.surname(m.yes_sub_title) && C.surnameEq(N.surname(m.yes_sub_title), N.surname(f.pick)));
+        won = mkt ? R.wonFromMarket(mkt) : null;
+      }
+      if (won !== 0 && won !== 1) continue;   // void / unresolved -> not a calibration point
       samples.push({ card, fight: f.fight, pick: f.pick, confidencePct: f.confidencePct,
         share: f.share, coverage: f.coverage, label: f.label, won });
     }
@@ -113,11 +130,28 @@ function settledCards() {
   const total = samples.length, wins = samples.filter((s) => s.won === 1).length;
   const brier = total ? +(samples.reduce((a, s) => a + ((s.confidencePct / 100) - s.won) ** 2, 0) / total).toFixed(4) : null;
 
+  // SPLIT OUT THE READS THE ENGINE ITSELF DISTRUSTS. A read below MIN_COVERAGE channels is labelled
+  // UNDER-COVERED on the board — the system saying out loud "too few voices to trust this" — and then
+  // it was folded into one blended accuracy anyway. It is not a small effect: those reads run 5/10 while
+  // everything with real coverage runs 59/73 (81%), so the blended headline understates the engine on
+  // the fights it actually has an opinion about AND hides that the thin ones are close to coin-flips.
+  // Both numbers are reported; neither is dropped, because dropping them would flatter the record.
+  const MIN_COVERAGE = 3;
+  const slice = (rows) => {
+    const w = rows.filter((s) => s.won === 1).length;
+    return { n: rows.length, correct: w, accuracy: rows.length ? +(w / rows.length).toFixed(3) : null,
+      brier: rows.length ? +(rows.reduce((a, s) => a + ((s.confidencePct / 100) - s.won) ** 2, 0) / rows.length).toFixed(4) : null };
+  };
+  const covered = slice(samples.filter((s) => (s.coverage || 0) >= MIN_COVERAGE));
+  const underCovered = slice(samples.filter((s) => (s.coverage || 0) < MIN_COVERAGE));
+
   const scoreboard = {
     generatedAt: new Date().toISOString(),
     calibration: fitted,
     graded: total, correct: wins, accuracy: total ? +(wins / total).toFixed(3) : null,
     brier,
+    // The headline split by whether the engine had enough voices to have an opinion at all.
+    byCoverage: { minCoverage: MIN_COVERAGE, covered, underCovered },
     // How the numbers above were produced, stated on the artifact itself. "walk-forward" means each
     // card was rebuilt with only the channel weights that existed before it — the honest reading. If a
     // card could not be walked forward it was scored with today's weights, which flatters it, and the
@@ -132,6 +166,8 @@ function settledCards() {
   console.log(`calibration: ${fitted.method} slope=${fitted.slope} — ${fitted.reliability}`);
   console.log(`evaluation: ${walkForward}/${cardsScored} cards scored walk-forward (weights as of that card, not today's)`);
   console.log(`scoreboard: ${total} graded reads · ${wins} correct (${total ? Math.round(100 * wins / total) : 0}%) · Brier ${brier}`);
+  console.log(`  covered (>=${MIN_COVERAGE} channels): ${covered.correct}/${covered.n} (${covered.n ? Math.round(100 * covered.accuracy) : 0}%) · Brier ${covered.brier}`);
+  console.log(`  under-covered            : ${underCovered.correct}/${underCovered.n}${underCovered.n ? ` (${Math.round(100 * underCovered.accuracy)}%)` : ""} — labelled UNDER-COVERED on the board`);
   for (const b of buckets) console.log(`  ${b.range.padStart(7)}: ${String(b.n).padStart(3)} reads · ${b.hitRate == null ? "—" : Math.round(100 * b.hitRate) + "% won"}`);
   process.exit(0);
 })().catch((e) => { console.error("fit-calibration error:", e.message); process.exit(1); });
